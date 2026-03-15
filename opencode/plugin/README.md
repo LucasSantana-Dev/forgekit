@@ -39,6 +39,23 @@ const AUTO_CLEAN_INTERVAL_MS = 30 * 60 * 1000     // cleanup frequency
 - When you exceed 3 sessions per project, oldest empty sessions are pruned
 - Status prefixes are removed automatically when you resume a session
 
+## Performance Optimizer (`perf-optimizer.ts`)
+
+Auto-compacts idle sessions so they load faster when you switch to them.
+
+The main cause of slow session switching in OpenCode is rendering large message histories in the Tauri WebView. This plugin compacts sessions after 5 minutes of idle, reducing the message count and making the switch near-instant.
+
+| Trigger | Action |
+|---------|--------|
+| Session idle (>20 messages) | Summarizes/compacts the session |
+| Session gets new activity | Resets compaction flag |
+
+### Install
+
+```bash
+cp opencode/plugin/perf-optimizer.ts ~/.config/opencode/plugin/
+```
+
 ## Notify (`notify.ts`)
 
 Simple audio notification plugin.
