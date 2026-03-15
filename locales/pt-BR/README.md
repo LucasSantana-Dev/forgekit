@@ -9,7 +9,7 @@ This is the toolkit I use daily across 11+ repositories with Claude Code, OpenCo
 ### CLI Tools (`tools/`)
 Production-tested CLI tools that boost AI-assisted development:
 - **Terminal** — lazygit, fzf, bat, eza, delta, zoxide, atuin, btop
-- **Setup scripts** — one-command install for macOS and Ubuntu
+- **Setup scripts** — one-command install for macOS, Ubuntu, and Windows
 
 ### AI Coding Rules (`rules/`)
 Rules and conventions for AI agents (CLAUDE.md, AGENTS.md patterns):
@@ -54,6 +54,12 @@ cp rules/AGENTS.md your-project/AGENTS.md
 ### Ubuntu/Linux
 ```bash
 bash tools/install-ubuntu.sh
+```
+
+### Windows (PowerShell as Admin)
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+.\tools\install-windows.ps1
 ```
 
 ## Stack
