@@ -3,19 +3,69 @@ set -euo pipefail
 
 echo "=== AI Dev Toolkit — macOS Setup ==="
 
-# Core CLI tools
-brew install lazygit fzf git-delta zoxide eza atuin bat btop jq yq
+INSTALLED=()
+SKIPPED=()
 
-# Git delta config
+# Check if brew is installed
+if ! command -v brew &>/dev/null; then
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  INSTALLED+=("homebrew")
+else
+  echo "✓ Homebrew already installed"
+  SKIPPED+=("homebrew")
+fi
+
+# Core CLI tools
+TOOLS=(
+  "lazygit"
+  "fzf"
+  "git-delta"
+  "zoxide"
+  "eza"
+  "atuin"
+  "bat"
+  "btop"
+  "jq"
+  "yq"
+  "fd"
+  "ripgrep"
+  "chezmoi"
+)
+
+echo ""
+echo "=== Installing CLI tools ==="
+
+for tool in "${TOOLS[@]}"; do
+  if brew list --formula "$tool" &>/dev/null || brew list --cask "$tool" &>/dev/null; then
+    echo "✓ $tool already installed"
+    SKIPPED+=("$tool")
+  else
+    echo "Installing $tool..."
+    brew install "$tool"
+    INSTALLED+=("$tool")
+  fi
+done
+
+# Git delta config (idempotent — git config will update if already set)
+echo ""
+echo "=== Configuring git delta ==="
 git config --global core.pager delta
 git config --global interactive.diffFilter "delta --color-only"
 git config --global delta.navigate true
 git config --global delta.side-by-side true
 git config --global delta.line-numbers true
 git config --global merge.conflictstyle zdiff3
+echo "✓ Git delta configured"
 
-# Atuin (shell history sync)
-brew services start atuin
+# Atuin service (check if already running)
+if brew services list | grep -q "atuin.*started"; then
+  echo "✓ Atuin service already running"
+else
+  echo "Starting Atuin service..."
+  brew services start atuin
+  echo "✓ Atuin service started"
+fi
 
 echo ""
 echo "=== Shell Integration ==="
@@ -42,5 +92,25 @@ echo '  alias lg="lazygit"'
 echo '  alias ll="eza -la --git"'
 echo '  alias lt="eza -la --tree --level=2 --git"'
 echo '  alias cat="bat"'
+echo ""
+
+# Summary
+echo "=== Installation Summary ==="
+echo ""
+if [ ${#INSTALLED[@]} -gt 0 ]; then
+  echo "Newly installed (${#INSTALLED[@]}):"
+  for item in "${INSTALLED[@]}"; do
+    echo "  ✓ $item"
+  done
+fi
+
+if [ ${#SKIPPED[@]} -gt 0 ]; then
+  echo ""
+  echo "Already present (${#SKIPPED[@]}):"
+  for item in "${SKIPPED[@]}"; do
+    echo "  • $item"
+  done
+fi
+
 echo ""
 echo "=== Done! Restart your shell or run: exec \$SHELL ==="

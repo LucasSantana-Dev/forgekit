@@ -1,48 +1,182 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "=== Installing productivity tools on Ubuntu ==="
+echo "=== AI Dev Toolkit — Ubuntu Setup ==="
 
-# apt packages
+INSTALLED=()
+SKIPPED=()
+
+# Update apt cache
+echo "Updating apt cache..."
 sudo apt update -qq
-sudo apt install -y -qq fish fzf bat btop jq
+
+# APT packages
+APT_PACKAGES=(
+  "fish"
+  "fzf"
+  "bat"
+  "btop"
+  "jq"
+)
+
+echo ""
+echo "=== Installing apt packages ==="
+
+for pkg in "${APT_PACKAGES[@]}"; do
+  if dpkg -l | grep -q "^ii  $pkg "; then
+    echo "✓ $pkg already installed"
+    SKIPPED+=("$pkg")
+  else
+    echo "Installing $pkg..."
+    sudo apt install -y -qq "$pkg"
+    INSTALLED+=("$pkg")
+  fi
+done
 
 # batcat -> bat symlink (Ubuntu names it batcat)
 if command -v batcat &>/dev/null && ! command -v bat &>/dev/null; then
+  echo "Creating bat symlink..."
   sudo ln -sf "$(which batcat)" /usr/local/bin/bat
+  echo "✓ bat symlink created"
+fi
+
+# fd-find (Ubuntu package name) -> fd symlink
+if ! command -v fd &>/dev/null; then
+  if dpkg -l | grep -q "^ii  fd-find "; then
+    echo "✓ fd-find already installed"
+    SKIPPED+=("fd-find")
+  else
+    echo "Installing fd-find..."
+    sudo apt install -y -qq fd-find
+    INSTALLED+=("fd-find")
+  fi
+
+  if ! command -v fd &>/dev/null; then
+    echo "Creating fd symlink..."
+    sudo ln -sf "$(which fdfind)" /usr/local/bin/fd
+    echo "✓ fd symlink created"
+  fi
+else
+  echo "✓ fd already available"
+  SKIPPED+=("fd")
+fi
+
+# ripgrep
+if command -v rg &>/dev/null; then
+  echo "✓ ripgrep already installed"
+  SKIPPED+=("ripgrep")
+else
+  echo "Installing ripgrep..."
+  sudo apt install -y -qq ripgrep
+  INSTALLED+=("ripgrep")
+fi
+
+# chezmoi
+if command -v chezmoi &>/dev/null; then
+  echo "✓ chezmoi already installed"
+  SKIPPED+=("chezmoi")
+else
+  echo "Installing chezmoi..."
+  CHEZMOI_VERSION=$(curl -s "https://api.github.com/repos/twpayne/chezmoi/releases/latest" | jq -r '.tag_name' | tr -d 'v')
+  if [[ ! "$CHEZMOI_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+    echo "⚠️  Could not determine chezmoi version, skipping"
+    SKIPPED+=("chezmoi")
+  else
+    curl -sLo /tmp/chezmoi.deb "https://github.com/twpayne/chezmoi/releases/download/v${CHEZMOI_VERSION}/chezmoi_${CHEZMOI_VERSION}_linux_amd64.deb"
+    sudo dpkg -i /tmp/chezmoi.deb
+    rm /tmp/chezmoi.deb
+    INSTALLED+=("chezmoi")
+  fi
 fi
 
 # lazygit
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | jq -r '.tag_name' | tr -d 'v')
-curl -sLo /tmp/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-tar -xzf /tmp/lazygit.tar.gz -C /tmp lazygit
-sudo install /tmp/lazygit /usr/local/bin/lazygit
-rm /tmp/lazygit /tmp/lazygit.tar.gz
+if command -v lazygit &>/dev/null; then
+  echo "✓ lazygit already installed"
+  SKIPPED+=("lazygit")
+else
+  echo "Installing lazygit..."
+  LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | jq -r '.tag_name' | tr -d 'v')
+  if [[ ! "$LAZYGIT_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+    echo "⚠️  Could not determine lazygit version, skipping"
+    SKIPPED+=("lazygit")
+  else
+    curl -sLo /tmp/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    tar -xzf /tmp/lazygit.tar.gz -C /tmp lazygit
+    sudo install /tmp/lazygit /usr/local/bin/lazygit
+    rm /tmp/lazygit /tmp/lazygit.tar.gz
+    INSTALLED+=("lazygit")
+  fi
+fi
 
 # eza (modern ls)
-sudo mkdir -p /etc/apt/keyrings
-wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg 2>/dev/null || true
-echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list >/dev/null
-sudo apt update -qq
-sudo apt install -y -qq eza
+if command -v eza &>/dev/null; then
+  echo "✓ eza already installed"
+  SKIPPED+=("eza")
+else
+  echo "Installing eza..."
+  sudo mkdir -p /etc/apt/keyrings
+  wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg 2>/dev/null || true
+  echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list >/dev/null
+  sudo apt update -qq
+  sudo apt install -y -qq eza
+  INSTALLED+=("eza")
+fi
 
 # delta (git diff pager)
-DELTA_VERSION=$(curl -s "https://api.github.com/repos/dandavison/delta/releases/latest" | jq -r '.tag_name')
-curl -sLo /tmp/delta.deb "https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_amd64.deb"
-sudo dpkg -i /tmp/delta.deb
-rm /tmp/delta.deb
+if command -v delta &>/dev/null; then
+  echo "✓ git-delta already installed"
+  SKIPPED+=("git-delta")
+else
+  echo "Installing git-delta..."
+  DELTA_VERSION=$(curl -s "https://api.github.com/repos/dandavison/delta/releases/latest" | jq -r '.tag_name')
+  if [[ ! "$DELTA_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+    echo "⚠️  Could not determine git-delta version, skipping"
+    SKIPPED+=("git-delta")
+  else
+    curl -sLo /tmp/delta.deb "https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_amd64.deb"
+    sudo dpkg -i /tmp/delta.deb
+    rm /tmp/delta.deb
+    INSTALLED+=("git-delta")
+  fi
+fi
 
 # zoxide (smart cd)
-curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+if command -v zoxide &>/dev/null; then
+  echo "✓ zoxide already installed"
+  SKIPPED+=("zoxide")
+else
+  echo "Installing zoxide..."
+  curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+  INSTALLED+=("zoxide")
+fi
 
 # atuin (shell history sync)
-curl -sSf https://setup.atuin.sh | bash
+if command -v atuin &>/dev/null; then
+  echo "✓ atuin already installed"
+  SKIPPED+=("atuin")
+else
+  echo "Installing atuin..."
+  curl -sSf https://setup.atuin.sh | bash
+  INSTALLED+=("atuin")
+fi
 
 # yq (yaml processor)
-YQ_VERSION=$(curl -s "https://api.github.com/repos/mikefarah/yq/releases/latest" | jq -r '.tag_name')
-curl -sLo /tmp/yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64"
-sudo install /tmp/yq /usr/local/bin/yq
-rm /tmp/yq
+if command -v yq &>/dev/null; then
+  echo "✓ yq already installed"
+  SKIPPED+=("yq")
+else
+  echo "Installing yq..."
+  YQ_VERSION=$(curl -s "https://api.github.com/repos/mikefarah/yq/releases/latest" | jq -r '.tag_name')
+  if [[ ! "$YQ_VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+    echo "⚠️  Could not determine yq version, skipping"
+    SKIPPED+=("yq")
+  else
+    curl -sLo /tmp/yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64"
+    sudo install /tmp/yq /usr/local/bin/yq
+    rm /tmp/yq
+    INSTALLED+=("yq")
+  fi
+fi
 
 echo ""
 echo "=== Configuring git delta ==="
@@ -52,6 +186,7 @@ git config --global delta.navigate true
 git config --global delta.side-by-side true
 git config --global delta.line-numbers true
 git config --global merge.conflictstyle zdiff3
+echo "✓ Git delta configured"
 
 echo ""
 echo "=== Setting up fish shell ==="
@@ -94,9 +229,12 @@ end
 alias lg='lazygit'
 FISHEOF
 
+echo "✓ Fish shell configured"
+
 echo ""
 echo "=== Configuring bash fallback ==="
-cat >> ~/.bashrc << 'BASHEOF'
+if ! grep -q "# Productivity tools" ~/.bashrc 2>/dev/null; then
+  cat >> ~/.bashrc << 'BASHEOF'
 
 # Productivity tools
 eval "$(fzf --bash 2>/dev/null)"
@@ -106,24 +244,44 @@ alias lg='lazygit'
 [ -x "$(command -v bat)" ] && alias cat='bat'
 [ -x "$(command -v eza)" ] && alias ls='eza' && alias ll='eza -la --git'
 BASHEOF
+  echo "✓ Bash configured"
+else
+  echo "✓ Bash already configured"
+fi
 
 echo ""
 echo "=== Setting up atuin sync ==="
 echo "Run: atuin login"
 echo ""
 
-echo "=== Changing default shell to fish ==="
-FISH_PATH=$(which fish)
-if ! grep -q "$FISH_PATH" /etc/shells; then
-    echo "$FISH_PATH" | sudo tee -a /etc/shells
+echo "=== Shell Configuration ==="
+echo "To change your default shell to fish, run:"
+echo "  chsh -s \$(which fish)"
+echo ""
+
+# Summary
+echo ""
+echo "=== Installation Summary ==="
+echo ""
+if [ ${#INSTALLED[@]} -gt 0 ]; then
+  echo "Newly installed (${#INSTALLED[@]}):"
+  for item in "${INSTALLED[@]}"; do
+    echo "  ✓ $item"
+  done
 fi
-chsh -s "$FISH_PATH"
+
+if [ ${#SKIPPED[@]} -gt 0 ]; then
+  echo ""
+  echo "Already present (${#SKIPPED[@]}):"
+  for item in "${SKIPPED[@]}"; do
+    echo "  • $item"
+  done
+fi
 
 echo ""
 echo "=== Done! All tools installed ==="
-echo "Installed: lazygit, fzf, bat, eza, delta, zoxide, atuin, btop, jq, yq, fish"
 echo ""
 echo "Next steps:"
 echo "  1. Run: exec fish"
-echo "  2. Run: atuin login --username lucassantana"
+echo "  2. Run: atuin login"
 echo "  3. Run: atuin sync"
