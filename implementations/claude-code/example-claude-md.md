@@ -823,8 +823,8 @@ import Image from 'next/image';
 **Platform:** Vercel
 
 **Environments:**
-- Production: `main` branch → https://taskflow.app
-- Preview: All PRs → https://taskflow-git-<branch>.vercel.app
+- Production: `main` branch → `https://your-app.vercel.app`
+- Preview: All PRs → `https://your-app-git-<branch>.vercel.app`
 
 **Environment Variables:**
 - Set in Vercel dashboard
@@ -850,11 +850,11 @@ git push
 
 ## Resources
 
-- **Design System:** https://taskflow.app/design
-- **API Docs:** https://taskflow.app/api
-- **Supabase Dashboard:** https://app.supabase.com/project/abc123
-- **Monitoring:** https://vercel.com/taskflow/analytics
-- **Figma:** https://figma.com/file/xyz
+- **Design System:** `<your-design-system-url>`
+- **API Docs:** `<your-api-docs-url>`
+- **Supabase Dashboard:** `<your-supabase-dashboard-url>`
+- **Monitoring:** `<your-monitoring-url>`
+- **Figma:** `<your-figma-url>`
 
 ## Team
 

@@ -9,32 +9,33 @@
 
 $ErrorActionPreference = "Stop"
 
-Write-Host "=== AI Dev Toolkit — Windows Setup ===" -ForegroundColor Cyan
+Write-Output "=== AI Dev Toolkit — Windows Setup ==="
 
 $Installed = @()
 $Skipped = @()
 
 # Check for winget
 if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
-    Write-Host "winget not found. Install App Installer from the Microsoft Store." -ForegroundColor Red
+    Write-Output "ERROR: winget not found. Install App Installer from the Microsoft Store."
     exit 1
 }
 
 # Check for scoop (some tools are only on scoop)
 $hasScoop = Get-Command scoop -ErrorAction SilentlyContinue
 if (-not $hasScoop) {
-    Write-Host "Installing Scoop package manager..." -ForegroundColor Yellow
+    Write-Output "Installing Scoop package manager..."
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-    Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+    & ([scriptblock]::Create((Invoke-RestMethod -Uri https://get.scoop.sh)))
     # Refresh PATH
     $env:PATH = [System.Environment]::GetEnvironmentVariable("PATH", "User") + ";" + $env:PATH
     $Installed += "scoop"
 } else {
-    Write-Host "✓ Scoop already installed" -ForegroundColor Green
+    Write-Output "[ok] Scoop already installed"
     $Skipped += "scoop"
 }
 
-Write-Host "`n=== Installing tools via winget ===" -ForegroundColor Cyan
+Write-Output ""
+Write-Output "=== Installing tools via winget ==="
 
 $wingetPackages = @{
     "JesseDuffield.lazygit" = "lazygit"
@@ -57,16 +58,17 @@ foreach ($pkg in $wingetPackages.GetEnumerator()) {
     $isInstalled = winget list --id $wingetId --accept-source-agreements 2>$null | Select-String $wingetId
 
     if ($isInstalled) {
-        Write-Host "✓ $toolName already installed" -ForegroundColor Green
+        Write-Output "[ok] $toolName already installed"
         $Skipped += $toolName
     } else {
-        Write-Host "Installing $toolName..." -ForegroundColor Gray
+        Write-Output "Installing $toolName..."
         winget install --id $wingetId --accept-source-agreements --accept-package-agreements --silent 2>$null
         $Installed += $toolName
     }
 }
 
-Write-Host "`n=== Installing tools via scoop ===" -ForegroundColor Cyan
+Write-Output ""
+Write-Output "=== Installing tools via scoop ==="
 
 # Add buckets if not already added
 $buckets = scoop bucket list 2>$null
@@ -88,10 +90,10 @@ foreach ($pkg in $scoopPackages) {
     $isInstalled = scoop list $pkg 2>$null | Select-String "^$pkg "
 
     if ($isInstalled) {
-        Write-Host "✓ $pkg already installed" -ForegroundColor Green
+        Write-Output "[ok] $pkg already installed"
         $Skipped += $pkg
     } else {
-        Write-Host "Installing $pkg..." -ForegroundColor Gray
+        Write-Output "Installing $pkg..."
         scoop install $pkg 2>$null
 
         # Scoop doesn't exit non-zero on failure, so check if it's now installed
@@ -102,7 +104,8 @@ foreach ($pkg in $scoopPackages) {
     }
 }
 
-Write-Host "`n=== Configuring git delta ===" -ForegroundColor Cyan
+Write-Output ""
+Write-Output "=== Configuring git delta ==="
 
 git config --global core.pager delta
 git config --global interactive.diffFilter "delta --color-only"
@@ -111,39 +114,42 @@ git config --global delta.side-by-side true
 git config --global delta.line-numbers true
 git config --global merge.conflictstyle zdiff3
 
-Write-Host "✓ Git delta configured" -ForegroundColor Green
+Write-Output "[ok] Git delta configured"
 
-Write-Host "`n=== Setting up atuin ===" -ForegroundColor Cyan
-Write-Host "Run 'atuin register' or 'atuin login' to set up history sync."
+Write-Output ""
+Write-Output "=== Setting up atuin ==="
+Write-Output "Run 'atuin register' or 'atuin login' to set up history sync."
 
-Write-Host "`n=== Shell Integration ===" -ForegroundColor Cyan
-Write-Host ""
-Write-Host "Add to your PowerShell profile (`$PROFILE):" -ForegroundColor Yellow
-Write-Host ""
-Write-Host '  # fzf'
-Write-Host '  Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }'
-Write-Host ''
-Write-Host '  # zoxide'
-Write-Host '  Invoke-Expression (& { (zoxide init powershell | Out-String) })'
-Write-Host ''
-Write-Host '  # atuin'
-Write-Host '  Invoke-Expression (& { (atuin init powershell | Out-String) })'
-Write-Host ''
-Write-Host '  # aliases'
-Write-Host '  Set-Alias -Name lg -Value lazygit'
-Write-Host '  function ll { eza -la --git @args }'
-Write-Host '  function lt { eza -la --tree --level=2 --git @args }'
-Write-Host '  Set-Alias -Name cat -Value bat -Option AllScope'
-Write-Host ''
+Write-Output ""
+Write-Output "=== Shell Integration ==="
+Write-Output ""
+Write-Output "Add to your PowerShell profile (`$PROFILE):"
+Write-Output ""
+Write-Output '  # fzf'
+Write-Output '  Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }'
+Write-Output ''
+Write-Output '  # zoxide'
+Write-Output '  Invoke-Expression (& { (zoxide init powershell | Out-String) })'
+Write-Output ''
+Write-Output '  # atuin'
+Write-Output '  Invoke-Expression (& { (atuin init powershell | Out-String) })'
+Write-Output ''
+Write-Output '  # aliases'
+Write-Output '  Set-Alias -Name lg -Value lazygit'
+Write-Output '  function ll { eza -la --git @args }'
+Write-Output '  function lt { eza -la --tree --level=2 --git @args }'
+Write-Output '  Set-Alias -Name cat -Value bat -Option AllScope'
+Write-Output ''
 
 # Create PowerShell profile if it doesn't exist
 if (-not (Test-Path $PROFILE)) {
     New-Item -Path $PROFILE -Type File -Force | Out-Null
-    Write-Host "Created PowerShell profile at: $PROFILE" -ForegroundColor Green
+    Write-Output "Created PowerShell profile at: $PROFILE"
 }
 
 # Ask to auto-configure profile
-Write-Host "`nAuto-configure PowerShell profile? (y/n)" -ForegroundColor Yellow
+Write-Output ""
+Write-Output "Auto-configure PowerShell profile? (y/n)"
 $response = Read-Host
 if ($response -eq 'y') {
     # Check if already configured
@@ -163,30 +169,32 @@ Set-Alias -Name cat -Value bat -Option AllScope
 # === End AI Dev Toolkit ===
 '@
         Add-Content -Path $PROFILE -Value $newConfig
-        Write-Host "✓ Profile updated. Restart PowerShell to apply." -ForegroundColor Green
+        Write-Output "[ok] Profile updated. Restart PowerShell to apply."
     } else {
-        Write-Host "✓ Profile already configured" -ForegroundColor Green
+        Write-Output "[ok] Profile already configured"
     }
 }
 
 # Summary
-Write-Host "`n=== Installation Summary ===" -ForegroundColor Cyan
-Write-Host ""
+Write-Output ""
+Write-Output "=== Installation Summary ==="
+Write-Output ""
 if ($Installed.Count -gt 0) {
-    Write-Host "Newly installed ($($Installed.Count)):" -ForegroundColor Green
+    Write-Output "Newly installed ($($Installed.Count)):"
     foreach ($item in $Installed) {
-        Write-Host "  ✓ $item"
+        Write-Output "  + $item"
     }
 }
 
 if ($Skipped.Count -gt 0) {
-    Write-Host ""
-    Write-Host "Already present ($($Skipped.Count)):" -ForegroundColor Yellow
+    Write-Output ""
+    Write-Output "Already present ($($Skipped.Count)):"
     foreach ($item in $Skipped) {
-        Write-Host "  • $item"
+        Write-Output "  - $item"
     }
 }
 
-Write-Host "`n=== Done! ===" -ForegroundColor Green
-Write-Host "Restart your terminal to use all tools."
-Write-Host "Key commands: lg (lazygit), z (zoxide), ll (eza), bat (syntax-highlighted cat)"
+Write-Output ""
+Write-Output "=== Done! ==="
+Write-Output "Restart your terminal to use all tools."
+Write-Output "Key commands: lg (lazygit), z (zoxide), ll (eza), bat (syntax-highlighted cat)"

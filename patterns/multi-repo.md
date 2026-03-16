@@ -673,7 +673,7 @@ siza-gen v0.8.0 release notes:
 "Updated to use new context assembler API from @forgespace/patterns@1.5.0
 
 See forge-patterns v1.5.0 release notes for API details:
-https://github.com/org/forge-patterns/releases/tag/v1.5.0
+https://github.com/your-org/shared-lib/releases/tag/v1.5.0
 
 Migration guide:
 - Before: const ctx = assembleContext(brand);

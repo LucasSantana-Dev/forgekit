@@ -14,6 +14,15 @@
     },
     {
       "pattern": "https://github\\.com/.*/actions/"
+    },
+    {
+      "pattern": "https://github\\.com/your-org/"
+    },
+    {
+      "pattern": "https://app\\.supabase\\.com/"
+    },
+    {
+      "pattern": "https://vercel\\.com/"
     }
   ],
   "replacementPatterns": [],

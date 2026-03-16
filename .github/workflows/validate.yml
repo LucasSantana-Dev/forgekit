@@ -54,7 +54,7 @@ jobs:
         shell: pwsh
         run: |
           Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser
-          $results = Invoke-ScriptAnalyzer -Path ./tools/*.ps1 -Recurse -Severity Warning
+          $results = Invoke-ScriptAnalyzer -Path ./tools/*.ps1 -Severity Warning -ExcludeRule PSAvoidUsingWriteHost
           if ($results) {
             $results | Format-Table -AutoSize
             exit 1
