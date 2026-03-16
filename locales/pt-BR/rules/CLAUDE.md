@@ -1,5 +1,22 @@
 # Project Rules for AI Agents
 
+## Quick Reference
+```bash
+# Development
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run test         # Run test suite
+npm run lint         # Run linter
+npm run type-check   # TypeScript type checking
+
+# Git workflow
+git checkout -b feature/my-feature
+git add <specific-files>
+git commit -m "feat: description"
+npm run lint && npm run build && npm run test
+git push -u origin feature/my-feature
+```
+
 ## Identity
 - Code partner, not a follower — give opinions, push back on bad ideas
 - Work autonomously — only confirm for truly destructive/irreversible actions
@@ -33,3 +50,11 @@
 - Run vulnerability scan for high/critical issues before merge
 - Never commit secrets (.env, credentials, API keys)
 - Validate inputs at system boundaries
+
+## Gotchas
+- **Pre-commit hooks**: Always run before commits — use `HUSKY=0` prefix to skip only for non-code changes (docs, config)
+- **Branch protection**: Cannot push directly to `main` — all changes must go through PR (docs are exception)
+- **Test coverage**: Don't game the system with trivial tests — focus on business logic and user value
+- **Bundle size**: Check bundle impact before adding new dependencies
+- **Type safety**: `any` types are tech debt — use `unknown` and type guards instead
+- **Error handling**: Always handle promises — unhandled rejections crash the app

@@ -1,0 +1,93 @@
+name: Pattern Suggestion
+description: Suggest a new productivity pattern for the toolkit
+title: "[PATTERN] "
+labels: ["pattern", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a pattern! Patterns should be tool-agnostic principles that improve AI-assisted development workflows.
+
+  - type: input
+    id: pattern-name
+    attributes:
+      label: Pattern Name
+      description: A short, memorable name for this pattern
+      placeholder: "e.g., Atomic Commits, Verified Generations, Semantic Search First"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem it Solves
+      description: What pain point or inefficiency does this pattern address?
+      placeholder: |
+        Example: When generating code with AI, developers often accept outputs without validation, leading to bugs in production.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tool-agnostic
+    attributes:
+      label: Is this pattern tool-agnostic?
+      description: Can this pattern be applied regardless of which CLI tools or AI assistants you use?
+      options:
+        - "Yes - works with any tools"
+        - "No - requires specific tools"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Pattern Description
+      description: Explain the pattern in detail. How should developers apply it?
+      placeholder: |
+        Example:
+        1. Generate code with AI assistant
+        2. Run quality gates (lint, type-check, tests)
+        3. Review failures and iterate
+        4. Only commit when all gates pass
+
+        This creates a verification loop that catches issues before they reach production.
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples
+      description: Provide concrete examples or workflows (optional)
+      placeholder: |
+        Example workflow using this pattern:
+        - AI generates a React component
+        - Run `npm run lint` → fix ESLint errors
+        - Run `npm test` → write missing tests
+        - Run `npm run type-check` → fix TypeScript errors
+        - Commit only after all checks pass
+
+  - type: textarea
+    id: antipatterns
+    attributes:
+      label: Anti-patterns
+      description: What should developers NOT do? (optional)
+      placeholder: |
+        ❌ Committing generated code without running any checks
+        ❌ Disabling linters to make code "pass"
+        ❌ Skipping tests because "AI wrote it correctly"
+
+  - type: textarea
+    id: related
+    attributes:
+      label: Related Patterns
+      description: Are there existing patterns this builds on or complements? (optional)
+      placeholder: |
+        - Complements "Test-First Generation" pattern
+        - Similar to "Red-Green-Refactor" from TDD
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other information that would help evaluate this pattern
