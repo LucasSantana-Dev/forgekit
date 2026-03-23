@@ -49,6 +49,7 @@ These are high-signal tools from the shared X thread that fit this toolkit's wor
 ```bash
 # macOS
 bash tools/install-macos.sh
+bash tools/setup-ai-workflow-macos.sh
 
 # Ubuntu/Linux
 bash tools/install-ubuntu.sh
@@ -56,6 +57,22 @@ bash tools/install-ubuntu.sh
 # Windows (PowerShell as Admin)
 .\tools\install-windows.ps1
 ```
+
+## Local AI Workflow Commands
+
+After running `bash tools/setup-ai-workflow-macos.sh` and `source ~/.zshrc`:
+
+| Command | Purpose |
+|---------|---------|
+| `ai-eval` | Prompt evaluation with `promptfoo` |
+| `ai-flow` | Local automation server via `n8n` |
+| `ai-ollama` | Local model runtime via `ollama` |
+| `ai-webui` | Run Open WebUI locally in Docker (`localhost:3000`) |
+| `ai-portkey` | Run Portkey gateway locally in Docker (`localhost:8787`) |
+| `ai-browser-mcp` | Launch Playwright MCP server for browser automation |
+| `ai-docs` | Reminder to use Context7 MCP for docs-grounded coding |
+| `ai-search` | Reminder to use Tavily MCP for web research in agents |
+| `ai-crawl` | Reminder to use Firecrawl API/MCP for ingestion pipelines |
 
 ## Recommended Aliases
 

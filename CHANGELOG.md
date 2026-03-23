@@ -19,6 +19,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Curated "AI Productivity Additions" in `tools/README.md` covering Context7, Tavily,
   Firecrawl, promptfoo, Portkey AI Gateway, LangGraph, n8n, Dify, Ollama,
   Open WebUI, fastmcp, and Playwright MCP
+- `tools/setup-ai-workflow-macos.sh` for local AI workflow setup (Ollama, promptfoo,
+  n8n, and shell workflow aliases)
 
 ### Improved
 - README rewritten with problem-first framing and before/after examples
@@ -26,6 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `rules/CLAUDE.md` now includes Quick Reference and Gotchas sections
 - `best-practices/context-management.md` made tool-agnostic with separate tool-specific sections
 - README now links to the curated AI productivity tools section
+- `tools/README.md` now documents local workflow commands (`ai-eval`, `ai-flow`,
+  `ai-ollama`, `ai-webui`, `ai-portkey`, `ai-browser-mcp`)
 
 ## [0.1.0] - 2026-03-15
 
