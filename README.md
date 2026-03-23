@@ -100,6 +100,9 @@ lazygit, fzf, bat, eza, delta, zoxide, atuin, btop, fd, ripgrep, jq, yq, chezmoi
 
 One-command install for [macOS](tools/install-macos.sh), [Ubuntu](tools/install-ubuntu.sh), and [Windows](tools/install-windows.ps1).
 
+Also includes a curated list of high-impact AI productivity tools from community picks:
+[Curated AI Productivity Additions](tools/README.md#curated-ai-productivity-additions).
+
 ### Reference Implementations (`implementations/`)
 
 Concrete implementations of the patterns above for specific tools:
