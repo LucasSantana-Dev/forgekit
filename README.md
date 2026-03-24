@@ -102,6 +102,9 @@ One-command install for [macOS](tools/install-macos.sh), [Ubuntu](tools/install-
 
 Also includes a curated list of high-impact AI productivity tools from community picks:
 [Curated AI Productivity Additions](tools/README.md#curated-ai-productivity-additions).
+Recent additions include community-backed integrations for
+`planning-with-files`, `antigravity-awesome-skills`, `OpenViking`,
+`browser-use`, `Letta`, `Mem0`, and `Graphiti`.
 
 ### Reference Implementations (`implementations/`)
 

@@ -35,6 +35,25 @@ These are high-signal tools from the shared X thread that fit this toolkit's wor
 | [Open WebUI](https://github.com/open-webui/open-webui) | Team UX | Shared interface for local/self-hosted models and prompt workflows |
 | [fastmcp](https://github.com/jlowin/fastmcp) | MCP development | Faster path to build internal MCP servers with less boilerplate |
 | [Playwright MCP](https://github.com/microsoft/playwright-mcp) | UI automation | Stable browser actions and reproducible end-to-end validation loops |
+| [browser-use](https://github.com/browser-use/browser-use) | Browser agent | Persistent local/browser-cloud automation with CLI and Python APIs |
+| [Letta](https://github.com/letta-ai/letta) | Stateful agents | Durable memory-first agent runtime with CLI support |
+| [Mem0](https://github.com/mem0ai/mem0) | Memory layer | Production memory extraction/retrieval for agent workflows |
+| [Graphiti](https://github.com/getzep/graphiti) | Graph memory | Temporal and relationship-aware memory graph for long-running agents |
+| [planning-with-files](https://github.com/OthmanAdi/planning-with-files) | Planning workflow | Persistent 3-file planning pattern with session recovery and hook support |
+| [antigravity-awesome-skills](https://github.com/sickn33/antigravity-awesome-skills) | Skills catalog | Large cross-agent skill bundle installer with curated starter packs |
+| [OpenViking](https://github.com/volcengine/OpenViking) | Context DB | Filesystem-style long-term context store designed for agent workflows |
+
+### Manual/Optional Picks From Community Repos
+
+These are high-value, but not auto-installed because they are IDE-first, docs-first, or heavyweight stacks.
+
+| Tool | Source | Why manual |
+|------|--------|------------|
+| [Cline](https://github.com/cline/cline) | `cline/cline` | VS Code extension workflow, managed via editor marketplace |
+| [OpenHands](https://github.com/OpenHands/OpenHands) | `OpenHands/OpenHands` | Better adopted as containerized/SDK deployment rather than pipx bootstrap |
+| [Prompt Engineering Guide](https://github.com/dair-ai/Prompt-Engineering-Guide) | `dair-ai/Prompt-Engineering-Guide` | Reference knowledge base, not a runtime tool |
+| [Awesome LLM Apps](https://github.com/Shubhamsaboo/awesome-llm-apps) | `Shubhamsaboo/awesome-llm-apps` | Pattern/examples catalog for solution templates |
+| [System Prompts & Models](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools) | `x1xhlol/system-prompts-and-models-of-ai-tools` | Research/reference corpus, not an install target |
 
 ### Recommended Adoption Order
 
@@ -70,6 +89,15 @@ After running `bash tools/setup-ai-workflow-macos.sh` and `source ~/.zshrc`:
 | `ai-webui` | Run Open WebUI locally in Docker (`localhost:3000`) |
 | `ai-portkey` | Run Portkey gateway locally in Docker (`localhost:8787`) |
 | `ai-browser-mcp` | Launch Playwright MCP server for browser automation |
+| `ai-skills-find` | Discover community skills via the Skills CLI |
+| `ai-skills-add` | Install a skill package with the Skills CLI |
+| `ai-plan-files` | Install `planning-with-files` skill globally |
+| `ai-skill-pack` | Install Antigravity skill bundle for Claude-compatible paths |
+| `ai-openviking` | Start OpenViking server (if installed) |
+| `ai-browser-use` | Launch Browser Use CLI |
+| `ai-letta` | Launch Letta CLI |
+| `ai-memory-check` | Validate memory stack imports (`mem0`, `graphiti_core`) |
+| `ai-memory-python` | Open the dedicated memory-stack Python runtime |
 | `ai-docs` | Reminder to use Context7 MCP for docs-grounded coding |
 | `ai-search` | Reminder to use Tavily MCP for web research in agents |
 | `ai-crawl` | Reminder to use Firecrawl API/MCP for ingestion pipelines |

@@ -21,6 +21,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   Open WebUI, fastmcp, and Playwright MCP
 - `tools/setup-ai-workflow-macos.sh` for local AI workflow setup (Ollama, promptfoo,
   n8n, and shell workflow aliases)
+- Community workflow integrations for `planning-with-files`,
+  `antigravity-awesome-skills`, and `OpenViking` in setup/docs
+- Added community-picked `browser-use` and `letta` into setup/docs/aliases
+- Added a dedicated memory stack (`mem0ai` + `graphiti-core`) with
+  `ai-memory-check` and `ai-memory-python` helpers
 
 ### Improved
 - README rewritten with problem-first framing and before/after examples
@@ -30,6 +35,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - README now links to the curated AI productivity tools section
 - `tools/README.md` now documents local workflow commands (`ai-eval`, `ai-flow`,
   `ai-ollama`, `ai-webui`, `ai-portkey`, `ai-browser-mcp`)
+- `tools/setup-ai-workflow-macos.sh` now installs `pipx`, supports `openviking`,
+  and adds aliases for skills discovery and installation workflows
+- `tools/setup-ai-workflow-macos.sh` now also installs `browser-use` and
+  `letta` via `pipx` with matching aliases
+- `tools/setup-ai-workflow-macos.sh` now provisions a Python 3.13 memory venv
+  for `mem0ai` + `graphiti-core` and exposes health-check aliases
 
 ## [0.1.0] - 2026-03-15
 
