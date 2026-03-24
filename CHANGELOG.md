@@ -41,6 +41,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `letta` via `pipx` with matching aliases
 - `tools/setup-ai-workflow-macos.sh` now provisions a Python 3.13 memory venv
   for `mem0ai` + `graphiti-core` and exposes health-check aliases
+- `tools/install-windows.ps1` now checks Scoop buckets by exact name before
+  adding them, preventing duplicate-add failures on reruns
 
 ## [0.1.0] - 2026-03-15
 

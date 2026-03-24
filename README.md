@@ -99,6 +99,8 @@ CLI tools that boost productivity regardless of AI tool:
 lazygit, fzf, bat, eza, delta, zoxide, atuin, btop, fd, ripgrep, jq, yq, chezmoi
 
 One-command install for [macOS](tools/install-macos.sh), [Ubuntu](tools/install-ubuntu.sh), and [Windows](tools/install-windows.ps1).
+The Windows installer is idempotent for Scoop buckets and avoids duplicate bucket
+add errors on reruns.
 
 Also includes a curated list of high-impact AI productivity tools from community picks:
 [Curated AI Productivity Additions](tools/README.md#curated-ai-productivity-additions).

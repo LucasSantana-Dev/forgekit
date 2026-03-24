@@ -71,11 +71,17 @@ Write-Output ""
 Write-Output "=== Installing tools via scoop ==="
 
 # Add buckets if not already added
-$buckets = scoop bucket list 2>$null
-if ($buckets -notcontains "extras") {
+function Test-ScoopBucketInstalled {
+    param([string]$Name)
+
+    $pattern = "^\s*$([regex]::Escape($Name))\s"
+    return [bool](scoop bucket list 2>$null | Select-String -Pattern $pattern)
+}
+
+if (-not (Test-ScoopBucketInstalled -Name "extras")) {
     scoop bucket add extras 2>$null
 }
-if ($buckets -notcontains "main") {
+if (-not (Test-ScoopBucketInstalled -Name "main")) {
     scoop bucket add main 2>$null
 }
 
