@@ -50,19 +50,67 @@ install_npm_global() {
   INSTALLED+=("$package")
 }
 
+install_pipx_package() {
+  local package="$1"
+  local bin_name="$2"
+  if command -v "$bin_name" >/dev/null 2>&1; then
+    echo "✓ $package already installed"
+    SKIPPED+=("$package")
+    return
+  fi
+
+  if ! command -v pipx >/dev/null 2>&1; then
+    WARNINGS+=("pipx missing: skipped $package")
+    return
+  fi
+
+  echo "Installing $package..."
+  pipx install "$package" || WARNINGS+=("failed to install $package with pipx")
+  if command -v "$bin_name" >/dev/null 2>&1; then
+    INSTALLED+=("$package")
+  fi
+}
+
+install_memory_stack() {
+  local py_bin="python3.13"
+  local venv_dir="$HOME/.local/share/ai-memory-venv"
+  local py_in_venv="$venv_dir/bin/python"
+  local pip_in_venv="$venv_dir/bin/pip"
+  local check_cmd="$HOME/.local/bin/ai-memory-check"
+
+  if ! command -v "$py_bin" >/dev/null 2>&1; then
+    WARNINGS+=("python3.13 missing: skipped mem0ai/graphiti-core memory stack")
+    return
+  fi
+
+  echo "Installing memory stack (mem0ai + graphiti-core)..."
+  "$py_bin" -m venv "$venv_dir"
+  "$pip_in_venv" install --upgrade pip >/dev/null 2>&1 || true
+  if "$pip_in_venv" install mem0ai graphiti-core >/dev/null 2>&1; then
+    mkdir -p "$HOME/.local/bin"
+    cat >"$check_cmd" <<'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+"$HOME/.local/share/ai-memory-venv/bin/python" - <<'PY'
+import importlib
+for module in ("mem0", "graphiti_core"):
+    importlib.import_module(module)
+print("memory stack ok: mem0 + graphiti_core")
+PY
+EOF
+    chmod +x "$check_cmd"
+    INSTALLED+=("memory stack (mem0ai + graphiti-core)")
+  else
+    WARNINGS+=("failed to install mem0ai/graphiti-core memory stack")
+  fi
+}
+
 append_zsh_block() {
   local zshrc="$HOME/.zshrc"
   local begin="# >>> ai-dev-toolkit workflow >>>"
   local end="# <<< ai-dev-toolkit workflow <<<"
-
-  if grep -Fq "$begin" "$zshrc"; then
-    echo "✓ Workflow aliases already present in ~/.zshrc"
-    SKIPPED+=("zsh workflow block")
-    return
-  fi
-
-  cat >>"$zshrc" <<'EOF'
-
+  local block
+  block=$(cat <<'EOF'
 # >>> ai-dev-toolkit workflow >>>
 alias ai-eval='promptfoo'
 alias ai-flow='n8n'
@@ -73,19 +121,61 @@ alias ai-docs='echo "Use Context7 MCP in your agent for up-to-date docs groundin
 alias ai-search='echo "Use Tavily MCP for research queries in agent workflows."'
 alias ai-crawl='echo "Use Firecrawl API/MCP with FIRECRAWL_API_KEY for web-to-markdown ingestion."'
 alias ai-browser-mcp='npx -y @playwright/mcp@latest'
+alias ai-skills-find='npx -y skills find'
+alias ai-skills-add='npx -y skills add'
+alias ai-plan-files='npx -y skills add OthmanAdi/planning-with-files --skill planning-with-files -g'
+alias ai-skill-pack='npx -y antigravity-awesome-skills --claude'
+alias ai-openviking='openviking-server'
+alias ai-browser-use='browser-use'
+alias ai-letta='letta'
+alias ai-memory-check='$HOME/.local/bin/ai-memory-check'
+alias ai-memory-python='$HOME/.local/share/ai-memory-venv/bin/python'
 # <<< ai-dev-toolkit workflow <<<
 EOF
+)
 
-  INSTALLED+=("zsh workflow block")
-  echo "✓ Added workflow aliases to ~/.zshrc"
+  if [ ! -f "$zshrc" ]; then
+    printf "%s\n" "$block" >>"$zshrc"
+    INSTALLED+=("zsh workflow block")
+    echo "✓ Added workflow aliases to ~/.zshrc"
+    return
+  fi
+
+  if grep -Fq "$begin" "$zshrc" && grep -Fq "$end" "$zshrc"; then
+    python3 - "$zshrc" "$begin" "$end" "$block" <<'PY'
+from pathlib import Path
+import sys
+
+path = Path(sys.argv[1])
+begin = sys.argv[2]
+end = sys.argv[3]
+block = sys.argv[4]
+text = path.read_text()
+start = text.index(begin)
+finish = text.index(end) + len(end)
+new_text = text[:start].rstrip() + "\n\n" + block + "\n"
+path.write_text(new_text)
+PY
+    INSTALLED+=("zsh workflow block (updated)")
+    echo "✓ Updated workflow aliases in ~/.zshrc"
+  else
+    printf "\n%s\n" "$block" >>"$zshrc"
+    INSTALLED+=("zsh workflow block")
+    echo "✓ Added workflow aliases to ~/.zshrc"
+  fi
 }
 
 echo ""
 echo "=== Installing core local AI workflow tools ==="
 ensure_brew
 install_brew_formula "ollama"
+install_brew_formula "pipx"
 install_npm_global "promptfoo" "promptfoo"
 install_npm_global "n8n" "n8n"
+install_pipx_package "openviking" "openviking-server"
+install_pipx_package "browser-use" "browser-use"
+install_pipx_package "letta" "letta"
+install_memory_stack
 append_zsh_block
 
 echo ""
@@ -114,3 +204,6 @@ fi
 echo ""
 echo "Run: source ~/.zshrc"
 echo "Then try: ai-eval --help, ai-flow --help, ai-ollama --help, ai-browser-mcp --help"
+echo "Optional: ai-plan-files, ai-skill-pack, ai-openviking --help"
+echo "Optional: ai-browser-use --help, ai-letta --help"
+echo "Optional: ai-memory-check"
