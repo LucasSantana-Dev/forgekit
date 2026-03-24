@@ -3,139 +3,162 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-**Your AI agent writes generic code because it has zero context about your project.**
+Most AI coding sessions fail for one reason: the agent has no project context.
 
-This toolkit fixes that. It captures battle-tested, tool-agnostic patterns for AI-assisted development — the same patterns that work whether you use Claude Code, Cursor, Windsurf, Copilot, OpenCode, or something that doesn't exist yet.
+`ai-dev-toolkit` gives you reusable building blocks to fix that:
+- project rule templates
+- context and orchestration patterns
+- reference implementations
+- terminal setup scripts for AI-heavy workflows
 
-## Before / After
+The result is predictable AI behavior, less rework, and faster delivery.
 
-| Without this toolkit | With this toolkit |
-|---------------------|-------------------|
-| Agent writes generic boilerplate | Agent follows your conventions from line 1 |
-| You re-explain project structure every session | Context files give instant project understanding |
-| You manually dispatch work to each session | Task orchestrator auto-dispatches from a backlog |
-| Opus for everything ($$$) | Fast model for simple tasks, Opus only when needed |
-| Every Monday starts from zero | Memory carries decisions, preferences, and gotchas forward |
-| Agent force-pushes over your branch | Permission guards block dangerous operations |
+## Why This Toolkit
+
+| Without it | With it |
+|---|---|
+| Generic boilerplate output | Code aligned to your conventions |
+| Re-explaining project structure every session | Context files loaded on day one |
+| One expensive model for every task | Right model per task complexity |
+| Manual multi-session coordination | Queue and orchestration patterns |
+| Repeating decisions across weeks | Memory patterns and durable context |
+| Risky agent actions | Guardrails and permission boundaries |
+
+## Table of Contents
+
+- [Quick Start](#quick-start)
+- [How to Adopt in One Week](#how-to-adopt-in-one-week)
+- [Repository Map](#repository-map)
+- [Philosophy](#philosophy)
+- [Who This Is For](#who-this-is-for)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Quick Start
 
-**Step 1** — Add context rules to your project (2 minutes, highest impact):
+### 1) Add one rule file to your project (highest impact)
 
 ```bash
-# Pick your tool:
-cp rules/CLAUDE.md your-project/CLAUDE.md       # Claude Code / OpenCode
-cp rules/.cursorrules your-project/.cursorrules  # Cursor
+# Choose one, based on your AI coding tool:
+cp rules/CLAUDE.md your-project/CLAUDE.md         # Claude Code / OpenCode
+cp rules/.cursorrules your-project/.cursorrules   # Cursor
 cp rules/.windsurfrules your-project/.windsurfrules  # Windsurf
-cp rules/COPILOT.md your-project/COPILOT.md      # GitHub Copilot
+cp rules/COPILOT.md your-project/COPILOT.md       # GitHub Copilot
 ```
 
-**Step 2** — Read the [Context Building](patterns/context-building.md) pattern and customize the rules for your project.
+### 2) Read and apply the core pattern
 
-**Step 3** — Set up your terminal (optional but recommended):
+Start with [Context Building](patterns/context-building.md).  
+It is the foundation for all other patterns.
+
+### 3) Optional: install productivity CLI stack
 
 ```bash
-bash tools/install-macos.sh     # macOS
-bash tools/install-ubuntu.sh    # Ubuntu/Linux
-.\tools\install-windows.ps1     # Windows (PowerShell as Admin)
+bash tools/install-macos.sh      # macOS
+bash tools/install-ubuntu.sh     # Ubuntu/Linux
+.\tools\install-windows.ps1      # Windows (PowerShell as Admin)
 ```
 
-**Step 4** — Adopt incrementally. Pick one pattern, apply it for a week, then add another.
+The Windows installer is idempotent for Scoop buckets and avoids duplicate bucket
+add errors on reruns.
 
-> The key is the environment setting, not the actual tool. The context building, not the provider.
+## How to Adopt in One Week
 
-## Philosophy
+| Day | Focus | Output |
+|---|---|---|
+| 1 | Add rule file | Agent respects conventions |
+| 2 | Apply Context Building | Better first-pass code |
+| 3 | Add Task Orchestration | Less manual prompting |
+| 4 | Add Code Review + Testing patterns | Fewer regressions |
+| 5 | Add Memory Systems | Better continuity across sessions |
 
-1. **Context is everything** — A well-structured project with clear rules beats any model upgrade
-2. **Environment > Provider** — Invest in your dev environment, not in chasing the latest model
-3. **Automate the scheduler, not just the code** — Let AI manage task queues, not just execute prompts
-4. **Compound knowledge** — Every session should make the next one better
-5. **Decoupled patterns** — Everything here works across tools. Vendor lock-in is a bug
+## Repository Map
 
-## What's Inside
+### `patterns/`
+Practical, tool-agnostic playbooks.
 
-### Patterns (`patterns/`)
+| Pattern | Primary use |
+|---|---|
+| [Context Building](patterns/context-building.md) | Make the agent understand your project |
+| [Prompt Engineering](patterns/prompt-engineering.md) | Increase response precision |
+| [Task Orchestration](patterns/task-orchestration.md) | Manage multi-step work with less supervision |
+| [Multi-Model Routing](patterns/multi-model-routing.md) | Reduce cost and latency |
+| [Session Management](patterns/session-management.md) | Keep parallel sessions clean |
+| [Memory Systems](patterns/memory-systems.md) | Persist decisions and preferences |
+| [Code Review](patterns/code-review.md) | Catch bugs and risky changes |
+| [Testing with AI](patterns/testing.md) | Generate higher-value tests |
+| [Git Worktrees](patterns/git-worktrees.md) | Isolate concurrent tasks safely |
+| [Agent Gotchas](patterns/agent-gotchas.md) | Avoid common AI workflow failures |
+| [Multi-Repo Workflows](patterns/multi-repo.md) | Coordinate changes across repositories |
 
-Tool-agnostic working patterns for AI-assisted development:
+### `best-practices/`
+Cross-cutting rules for quality and safety.
 
-| Pattern | Problem it solves |
-|---------|------------------|
-| [Context Building](patterns/context-building.md) | AI doesn't understand your project |
-| [Prompt Engineering](patterns/prompt-engineering.md) | Vague prompts produce vague code |
-| [Task Orchestration](patterns/task-orchestration.md) | Manually re-prompting each session |
-| [Multi-Model Routing](patterns/multi-model-routing.md) | Overpaying for simple tasks |
-| [Session Management](patterns/session-management.md) | Cluttered workspaces, slow switching |
-| [Memory Systems](patterns/memory-systems.md) | Repeating yourself across sessions |
-| [Code Review](patterns/code-review.md) | Missing bugs in AI-generated code |
-| [Testing with AI](patterns/testing.md) | Brittle, low-value AI-generated tests |
-| [Git Worktrees](patterns/git-worktrees.md) | Multi-session branch conflicts |
-| [Agent Gotchas](patterns/agent-gotchas.md) | Silent failures, hallucinations, over-engineering |
-| [Multi-Repo Workflows](patterns/multi-repo.md) | Cross-repo coordination chaos |
+| Guide | Covers |
+|---|---|
+| [Security](best-practices/security.md) | Secrets, permissions, CI scanning |
+| [Workflow](best-practices/workflow.md) | Trunk-based flow, commits, quality gates |
+| [Context Optimization](best-practices/context-management.md) | Token efficiency, MCP usage, session hygiene |
 
-### Best Practices (`best-practices/`)
+### `rules/`
+Drop-in templates to encode project behavior per tool.
 
-| Guide | What it covers |
-|-------|---------------|
-| [Security](best-practices/security.md) | Secrets management, agent permissions, CI scanning |
-| [Workflow](best-practices/workflow.md) | Trunk-based dev, conventional commits, quality gates |
-| [Context Optimization](best-practices/context-management.md) | Token management, MCP strategy, session hygiene |
-
-### Rules (`rules/`)
-
-Drop-in project rules for every major AI coding tool:
-
-| File | Tool |
-|------|------|
+| File | Target tool |
+|---|---|
 | [`CLAUDE.md`](rules/CLAUDE.md) | Claude Code, OpenCode |
 | [`AGENTS.md`](rules/AGENTS.md) | OpenCode |
 | [`.cursorrules`](rules/.cursorrules) | Cursor |
 | [`.windsurfrules`](rules/.windsurfrules) | Windsurf |
 | [`COPILOT.md`](rules/COPILOT.md) | GitHub Copilot |
 
-### Terminal Tools (`tools/`)
+### `tools/`
+Installer scripts and curated additions for AI productivity tools.
 
-CLI tools that boost productivity regardless of AI tool:
+Core terminal stack includes:
+`lazygit`, `fzf`, `bat`, `eza`, `delta`, `zoxide`, `atuin`, `btop`, `fd`,
+`ripgrep`, `jq`, `yq`, `chezmoi`.
 
-lazygit, fzf, bat, eza, delta, zoxide, atuin, btop, fd, ripgrep, jq, yq, chezmoi
+See [Curated AI Productivity Additions](tools/README.md#curated-ai-productivity-additions)
+for advanced integrations such as Context7, Tavily, Firecrawl, OpenViking,
+browser-use, Letta, Mem0, and Graphiti.
 
-One-command install for [macOS](tools/install-macos.sh), [Ubuntu](tools/install-ubuntu.sh), and [Windows](tools/install-windows.ps1).
-The Windows installer is idempotent for Scoop buckets and avoids duplicate bucket
-add errors on reruns.
+### `implementations/`
+Concrete examples for specific tools.
 
-Also includes a curated list of high-impact AI productivity tools from community picks:
-[Curated AI Productivity Additions](tools/README.md#curated-ai-productivity-additions).
-Recent additions include community-backed integrations for
-`planning-with-files`, `antigravity-awesome-skills`, `OpenViking`,
-`browser-use`, `Letta`, `Mem0`, and `Graphiti`.
-
-### Reference Implementations (`implementations/`)
-
-Concrete implementations of the patterns above for specific tools:
-
-| Tool | What's included |
-|------|----------------|
-| [Claude Code](implementations/claude-code/) | Hooks, skills, memory structure, example CLAUDE.md |
+| Tool | Includes |
+|---|---|
+| [Claude Code](implementations/claude-code/) | Hooks, skills, memory structure, example `CLAUDE.md` |
 | [OpenCode](implementations/opencode/) | Task orchestrator plugin, session manager, DCP config |
 | [Cursor](implementations/cursor/) | Setup guide, scoped rules, memory workarounds |
 
-### Examples (`examples/`)
+### `examples/`
+Copy-ready starter assets.
 
-Ready-to-copy starter files:
-- [`backlog.json`](examples/backlog.json) — Task orchestration backlog
-- [`.claude/memory/`](examples/.claude/memory/) — Memory system structure
+- [`backlog.json`](examples/backlog.json): task queue example
+- [`.claude/memory/`](examples/.claude/memory/): memory structure template
+
+## Philosophy
+
+1. Context quality beats model upgrades.
+2. Environment design beats provider hopping.
+3. Automate scheduling, not only code generation.
+4. Keep decisions reusable across sessions.
+5. Stay tool-agnostic to avoid lock-in.
 
 ## Who This Is For
 
-- **Solo developers** using AI coding tools daily who want to be 2-3x more productive
-- **Teams** adopting AI-assisted development who need shared standards
-- **Anyone** setting up a new dev environment optimized for AI workflows
+- Developers using AI coding tools daily who want consistent output quality.
+- Teams creating shared standards for AI-assisted development.
+- New projects that need a strong AI-ready foundation from day one.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). We're especially looking for:
-- Reference implementations for Windsurf, Copilot, and other tools
-- New patterns you've validated in production
-- CLI tool recommendations
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+High-impact contributions:
+- new reference implementations
+- production-tested patterns
+- improvements to install scripts and safety guardrails
 
 ## License
 

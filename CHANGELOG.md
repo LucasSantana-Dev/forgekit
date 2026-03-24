@@ -43,6 +43,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   for `mem0ai` + `graphiti-core` and exposes health-check aliases
 - `tools/install-windows.ps1` now checks Scoop buckets by exact name before
   adding them, preventing duplicate-add failures on reruns
+- README structure improved with clearer quick start, adoption roadmap, table of
+  contents, and a more descriptive repository map
 
 ## [0.1.0] - 2026-03-15
 
