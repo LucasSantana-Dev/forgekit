@@ -7,6 +7,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- Remote Ollama homelab pattern: `OLLAMA_HOST` env var routes all `ollama` CLI calls to oac-workstation
+  (AMD RX 9070 XT, 15.9 GB VRAM) via Tailscale — no local GPU required
+- `openrtk` OpenCode plugin for 60-90% token savings by proxying commands through RTK
+- `ai-ollama-ps` alias — show running models and VRAM usage on remote Ollama
+- `ai-ollama-gpu` alias — list downloaded models via remote Ollama JSON API
+- Updated `ai-webui` alias to connect Open WebUI to remote Ollama via `OLLAMA_BASE_URL`
+- `configure_ollama_host()` function in setup script — idempotently adds `OLLAMA_HOST` to `~/.zshrc`
+- `install_openrtk()` function in setup script — installs `openrtk` npm package globally
+
+### Improved
+- `setup-ai-workflow-macos.sh`: removed local Ollama brew install (now homelab-only), added
+  `configure_ollama_host` and `install_openrtk` steps
+- `tools/README.md`: Ollama row updated to reflect remote/homelab GPU usage pattern
+- `implementations/opencode/opencode.jsonc`: added `openrtk` to plugin list
+- Adoption roadmap updated to include openrtk as step 6
+
 - New patterns: Prompt Engineering, Code Review, Testing with AI, Git Worktrees, Agent Gotchas, Multi-Repo Workflows
 - Rule templates for all major tools: `.cursorrules`, `.windsurfrules`, `COPILOT.md`
 - Claude Code reference implementation with hooks, skills, and memory structure

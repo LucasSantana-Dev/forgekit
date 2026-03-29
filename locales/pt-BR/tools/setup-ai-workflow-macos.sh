@@ -113,8 +113,10 @@ append_zsh_block() {
 # >>> ai-dev-toolkit workflow >>>
 alias ai-eval='promptfoo'
 alias ai-flow='n8n'
-alias ai-ollama='ollama'
-alias ai-webui='docker run --rm -p 3000:8080 --name open-webui ghcr.io/open-webui/open-webui:main'
+alias ai-ollama='ollama'                                          # routes to oac-workstation via OLLAMA_HOST
+alias ai-ollama-ps='ollama ps'                                    # show running models + VRAM usage
+alias ai-ollama-gpu='curl -s $OLLAMA_HOST/api/tags | python3 -m json.tool'
+alias ai-webui='docker run --rm -p 3000:8080 -e OLLAMA_BASE_URL=$OLLAMA_HOST --name open-webui ghcr.io/open-webui/open-webui:main'
 alias ai-portkey='docker run --rm -p 8787:8787 --name portkey-gateway portkeyai/gateway:latest'
 alias ai-docs='echo "Use Context7 MCP in your agent for up-to-date docs grounding."'
 alias ai-search='echo "Use Tavily MCP for research queries in agent workflows."'
@@ -164,10 +166,39 @@ PY
   fi
 }
 
+configure_ollama_host() {
+  local zshrc="$HOME/.zshrc"
+  local line='export OLLAMA_HOST="http://100.114.87.119:11434"'
+  if grep -Fq "OLLAMA_HOST" "$zshrc" 2>/dev/null; then
+    echo "✓ OLLAMA_HOST already set in ~/.zshrc"
+    SKIPPED+=("OLLAMA_HOST")
+  else
+    printf "\n%s\n" "$line" >>"$zshrc"
+    INSTALLED+=("OLLAMA_HOST → oac-workstation")
+    echo "✓ Added OLLAMA_HOST to ~/.zshrc"
+  fi
+}
+
+install_openrtk() {
+  if command -v openrtk >/dev/null 2>&1; then
+    echo "✓ openrtk already installed"
+    SKIPPED+=("openrtk")
+    return
+  fi
+
+  if ! command -v npm >/dev/null 2>&1; then
+    WARNINGS+=("npm missing: skipped openrtk")
+    return
+  fi
+
+  echo "Installing openrtk (OpenCode RTK plugin)..."
+  npm install -g openrtk
+  INSTALLED+=("openrtk")
+}
+
 echo ""
 echo "=== Installing core local AI workflow tools ==="
 ensure_brew
-install_brew_formula "ollama"
 install_brew_formula "pipx"
 install_npm_global "promptfoo" "promptfoo"
 install_npm_global "n8n" "n8n"
@@ -175,6 +206,8 @@ install_pipx_package "openviking" "openviking-server"
 install_pipx_package "browser-use" "browser-use"
 install_pipx_package "letta" "letta"
 install_memory_stack
+configure_ollama_host
+install_openrtk
 append_zsh_block
 
 echo ""
@@ -202,7 +235,7 @@ fi
 
 echo ""
 echo "Run: source ~/.zshrc"
-echo "Then try: ai-eval --help, ai-flow --help, ai-ollama --help, ai-browser-mcp --help"
+echo "Then try: ai-eval --help, ai-flow --help, ai-ollama list, ai-ollama-ps, ai-browser-mcp --help"
 echo "Optional: ai-plan-files, ai-skill-pack, ai-openviking --help"
 echo "Optional: ai-browser-use --help, ai-letta --help"
 echo "Optional: ai-memory-check"

@@ -31,7 +31,8 @@ These are high-signal tools from the shared X thread that fit this toolkit's wor
 | [LangGraph](https://github.com/langchain-ai/langgraph) | Agent workflows | Reliable stateful agent flows for longer multi-step tasks |
 | [n8n](https://github.com/n8n-io/n8n) | Automation | Turns repetitive dev/review/release tasks into reusable automations |
 | [Dify](https://github.com/langgenius/dify) | App orchestration | Speeds up shipping internal AI tools and chat workflows |
-| [Ollama](https://github.com/ollama/ollama) | Local inference | Fast local models for private/offline tasks and cheap iterations |
+| [Ollama](https://github.com/ollama/ollama) | Remote/homelab inference | GPU-accelerated models on homelab (oac-workstation, RX 9070 XT) — accessed via Tailscale `OLLAMA_HOST` |
+| [openrtk](https://github.com/martinstannard/openrtk) | OpenCode plugin | Routes OpenCode commands through RTK proxy for 60-90% token savings |
 | [Open WebUI](https://github.com/open-webui/open-webui) | Team UX | Shared interface for local/self-hosted models and prompt workflows |
 | [fastmcp](https://github.com/jlowin/fastmcp) | MCP development | Faster path to build internal MCP servers with less boilerplate |
 | [Playwright MCP](https://github.com/microsoft/playwright-mcp) | UI automation | Stable browser actions and reproducible end-to-end validation loops |
@@ -61,7 +62,8 @@ These are high-value, but not auto-installed because they are IDE-first, docs-fi
 2. Add `Portkey AI Gateway` when you need multi-provider governance and observability.
 3. Add `LangGraph` or `Dify` when simple chat flows become multi-step workflows.
 4. Add `n8n` for repeatable cross-tool automation and handoff reduction.
-5. Add `Ollama` + `Open WebUI` for private/local experimentation and cost control.
+5. Add `Ollama` + `Open WebUI` for private/homelab GPU inference and cost control.
+6. Add `openrtk` to OpenCode for token savings on every agent session.
 
 ## Install
 
@@ -85,8 +87,10 @@ After running `bash tools/setup-ai-workflow-macos.sh` and `source ~/.zshrc`:
 |---------|---------|
 | `ai-eval` | Prompt evaluation with `promptfoo` |
 | `ai-flow` | Local automation server via `n8n` |
-| `ai-ollama` | Local model runtime via `ollama` |
-| `ai-webui` | Run Open WebUI locally in Docker (`localhost:3000`) |
+| `ai-ollama` | Remote Ollama via `ollama` (routes to oac-workstation via `OLLAMA_HOST`) |
+| `ai-ollama-ps` | Show running models and VRAM usage on oac-workstation |
+| `ai-ollama-gpu` | List downloaded models (JSON) from remote Ollama API |
+| `ai-webui` | Run Open WebUI in Docker connected to oac-workstation (`localhost:3000`) |
 | `ai-portkey` | Run Portkey gateway locally in Docker (`localhost:8787`) |
 | `ai-browser-mcp` | Launch Playwright MCP server for browser automation |
 | `ai-skills-find` | Discover community skills via the Skills CLI |
