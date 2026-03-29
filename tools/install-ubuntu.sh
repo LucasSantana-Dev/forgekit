@@ -178,6 +178,17 @@ else
   fi
 fi
 
+# rtk (Rust Token Killer — Claude Code token optimizer)
+if command -v rtk &>/dev/null; then
+  echo "✓ rtk already installed"
+  SKIPPED+=("rtk")
+else
+  echo "Installing rtk..."
+  curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
+  grep -q '.local/bin' ~/.bashrc || echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+  INSTALLED+=("rtk")
+fi
+
 echo ""
 echo "=== Configuring git delta ==="
 git config --global core.pager delta
@@ -285,3 +296,4 @@ echo "Next steps:"
 echo "  1. Run: exec fish"
 echo "  2. Run: atuin login"
 echo "  3. Run: atuin sync"
+echo "  4. Run: rtk gain  (after a few sessions to see token savings)"

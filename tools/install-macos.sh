@@ -31,6 +31,7 @@ TOOLS=(
   "fd"
   "ripgrep"
   "chezmoi"
+  "rtk"
 )
 
 echo ""
@@ -57,6 +58,15 @@ git config --global delta.side-by-side true
 git config --global delta.line-numbers true
 git config --global merge.conflictstyle zdiff3
 echo "✓ Git delta configured"
+
+# RTK Claude Code hook
+echo ""
+echo "=== Configuring RTK ==="
+if command -v rtk &>/dev/null; then
+  rtk init -g --hook-only 2>/dev/null || true
+  echo "✓ RTK hook installed — Bash outputs compressed before reaching LLM context"
+  echo "  Run 'rtk gain' after a few sessions to see token savings"
+fi
 
 # Atuin service (check if already running)
 if brew services list | grep -q "atuin.*started"; then

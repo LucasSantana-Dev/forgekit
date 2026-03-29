@@ -16,6 +16,7 @@
 | [yq](https://github.com/mikefarah/yq) | YAML processor | Edit CI configs, k8s manifests |
 | [fd](https://github.com/sharkdp/fd) | Better `find` | Fast, respects .gitignore |
 | [ripgrep](https://github.com/BurntSushi/ripgrep) | Better `grep` | Fast, respects .gitignore |
+| [rtk](https://github.com/rtk-ai/rtk) | Token optimizer | Compresses Bash output before it hits LLM context; 60-90% savings on `git`, `npm`, `ls` and other dev commands |
 
 ## Curated AI Productivity Additions
 
@@ -134,3 +135,4 @@ Set-Alias -Name cat -Value bat -Option AllScope
 | btop | brew | apt | winget |
 | jq | brew | apt | winget |
 | yq | brew | GitHub release | scoop |
+| rtk | brew | install.sh | install.sh |
