@@ -113,7 +113,6 @@ append_zsh_block() {
 # >>> ai-dev-toolkit workflow >>>
 alias ai-eval='promptfoo'
 alias ai-flow='n8n'
-alias ai-ollama='ollama'
 alias ai-webui='docker run --rm -p 3000:8080 --name open-webui ghcr.io/open-webui/open-webui:main'
 alias ai-portkey='docker run --rm -p 8787:8787 --name portkey-gateway portkeyai/gateway:latest'
 alias ai-docs='echo "Use Context7 MCP in your agent for up-to-date docs grounding."'
@@ -165,9 +164,8 @@ PY
 }
 
 echo ""
-echo "=== Installing core local AI workflow tools ==="
+echo "=== Installing core AI workflow tools ==="
 ensure_brew
-install_brew_formula "ollama"
 install_brew_formula "pipx"
 install_npm_global "promptfoo" "promptfoo"
 install_npm_global "n8n" "n8n"
@@ -202,7 +200,7 @@ fi
 
 echo ""
 echo "Run: source ~/.zshrc"
-echo "Then try: ai-eval --help, ai-flow --help, ai-ollama --help, ai-browser-mcp --help"
+echo "Then try: ai-eval --help, ai-flow --help, ai-browser-mcp --help"
 echo "Optional: ai-plan-files, ai-skill-pack, ai-openviking --help"
 echo "Optional: ai-browser-use --help, ai-letta --help"
 echo "Optional: ai-memory-check"
