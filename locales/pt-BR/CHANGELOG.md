@@ -7,6 +7,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- `rtk` (Rust Token Killer) added to macOS and Ubuntu install scripts — 60-90%
+  token reduction on Bash outputs via a transparent Claude Code `PreToolUse` hook.
+  macOS: installed via `brew install rtk` + `rtk init -g`. Linux: installed via
+  official install.sh. Run `rtk gain` after a few sessions to track savings.
+- `TurboQuant` added to Curated AI Productivity Additions — Google's near-optimal
+  KV cache quantization algorithm (6x memory reduction, 8x inference speed).
+  Works with vLLM today via `0xSero/turboquant`; llama.cpp/Ollama integration
+  expected Q3 2026. Paired with Ollama in Recommended Adoption Order.
 - New patterns: Prompt Engineering, Code Review, Testing with AI, Git Worktrees, Agent Gotchas, Multi-Repo Workflows
 - Rule templates for all major tools: `.cursorrules`, `.windsurfrules`, `COPILOT.md`
 - Claude Code reference implementation with hooks, skills, and memory structure
@@ -45,6 +53,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   adding them, preventing duplicate-add failures on reruns
 - README structure improved with clearer quick start, adoption roadmap, table of
   contents, and a more descriptive repository map
+- `tools/README.md`: added `rtk` to core stack table and platform notes
+- `tools/README.md`: added `TurboQuant` to curated additions; updated Recommended
+  Adoption Order to pair Ollama + TurboQuant
+- `best-practices/context-management.md`: added RTK under Claude Code tips
+- `implementations/claude-code/README.md`: added RTK hook setup section and
+  listed RTK as the highest-impact token reduction strategy
 
 ## [0.1.0] - 2026-03-15
 

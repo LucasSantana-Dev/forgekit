@@ -59,6 +59,10 @@ End:    Commit → update CHANGELOG → sync memories → clean temp files
 - Hooks can auto-format on save, reducing back-and-forth
 - Skills bundle multi-step workflows into single commands
 - Memory files in `.claude/memory/` persist across sessions
+- **RTK hook**: Install `rtk` and run `rtk init -g --hook-only` to add a `PreToolUse` hook that
+  compresses Bash outputs before they reach the context window — 60-90% token
+  reduction on `git`, `npm`, `ls`, and other dev commands with no change to your
+  workflow. Run `rtk gain` to track cumulative savings.
 
 ### OpenCode
 - `@tarquinen/opencode-dcp` plugin prunes context automatically at configurable thresholds
