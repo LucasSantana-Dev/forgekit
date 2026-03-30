@@ -13,14 +13,25 @@ Don't read entire files upfront. Build context incrementally:
 ### Context Hygiene
 - Clean context between unrelated tasks (`/compact`, `/clear`, or start a new session)
 - Reference files by path (`@filename`) instead of pasting contents into chat
-- Save context state at ~70% usage before compression kicks in
+- Run `/compact` at **60-70%** context usage — waiting until 90% risks hitting session limits
 - Break long sessions into focused segments — a 500-message session is slower than 5 fresh ones
+
+### MEMORY.md Discipline
+The `MEMORY.md` index is loaded into context on **every message**. Bloat here is a fixed cost — it never goes away during the session.
+
+- Hard limit: **200 lines** (entries after line 200 are silently truncated)
+- Keep each entry to one line under ~150 characters
+- Move details into topic files (architecture.md, gotchas.md, workflows.md)
+- Only put information in MEMORY.md that you need to find *other* files
+- Audit and trim periodically — the index is a pointer, not storage
 
 ### MCP Server Strategy
 - Keep < 10 servers active globally
 - Prefer remote/lazy servers over local ones — remote tools register on-demand (cheaper on context)
 - Enable specialized servers per-project, not globally
 - Heavy servers (Playwright, Stitch, HuggingFace) should be disabled by default
+- **Plugin dual-registration**: Claude Code plugins can register the same MCP server a second time under a `mcp__plugin_*` namespace. If a server is in `.mcp.json` AND enabled as a plugin, every tool appears twice. Audit with `claude plugin list` and disable the plugin version for servers you manage directly.
+- **`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`**: Triples all MCP tool entries by adding a third `mcp__agents__*` namespace. Remove from `env` in `settings.json` if you're not using agent teams.
 
 ### Context Window Awareness
 Most models have 128K-200K token context windows. In practice:
@@ -55,14 +66,17 @@ End:    Commit → update CHANGELOG → sync memories → clean temp files
 ## Tool-Specific Tips
 
 ### Claude Code
-- Use `/compact` to summarize and free context
+- Use `/compact` to summarize and free context — trigger at **60-70%**, not 90%
 - Hooks can auto-format on save, reducing back-and-forth
 - Skills bundle multi-step workflows into single commands
-- Memory files in `.claude/memory/` persist across sessions
-- **RTK hook**: Install `rtk` and run `rtk init -g --hook-only` to add a `PreToolUse` hook that
+- Memory files in `~/.claude/projects/<path>/memory/` persist across sessions
+- **MEMORY.md**: Index is always loaded — keep under 200 lines. Move gotchas, architecture, and workflow details to topic files. MEMORY.md entries should be one-line pointers, not content.
+- **RTK hook**: Install `rtk` and run `rtk init -g` to add a `PreToolUse` hook that
   compresses Bash outputs before they reach the context window — 60-90% token
   reduction on `git`, `npm`, `ls`, and other dev commands with no change to your
   workflow. Run `rtk gain` to track cumulative savings.
+- **Plugin audit**: Run `claude plugin list` and disable plugins for MCP servers you
+  already have in `.mcp.json` — duplicate registrations double your tool count silently.
 
 ### OpenCode
 - `@tarquinen/opencode-dcp` plugin prunes context automatically at configurable thresholds
