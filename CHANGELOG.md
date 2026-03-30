@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-03-30
+
+### Added
+- `tools/setup-claude-code.sh`: new script that configures Claude Code from scratch —
+  creates `~/.claude/.mcp.json` with recommended MCP servers (tavily, context7,
+  playwright), sets default model to Sonnet 4.6 and subagent model to Haiku 4.5,
+  removes `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` if present, creates memory directory
+  structure with `MEMORY.md` and `gotchas.md` templates, and runs a plugin audit
+
+### Fixed
+- `tools/install-macos.sh`: corrected RTK init command (`rtk init -g`, not `--hook-only`)
+- `tools/install-ubuntu.sh`: same RTK init fix
+- `tools/setup-ai-workflow-macos.sh`: removed Ollama (local model — not universally
+  applicable); removed `ai-ollama` alias from the zsh workflow block
+
 ## [0.2.0] - 2026-03-30
 
 ### Added
