@@ -343,27 +343,45 @@ vercel rollback
 
 Claude Code supports Model Context Protocol servers for extending capabilities.
 
-**Global vs Per-Project:**
+**Config file locations:**
+
+```
+~/.claude/.mcp.json          # Global user-level servers (correct path)
+your-project/.mcp.json       # Project-specific servers
+```
+
+> **Note:** The correct global config file is `~/.claude/.mcp.json` — not `~/.claude/config.json`
+> or `~/.claude/settings.json`. The `mcpServers` key is **not** valid in `settings.json`;
+> adding it there will produce a schema validation error at startup.
+
+**Global config example:**
 
 ```json
-// ~/.claude/config.json (global servers)
+// ~/.claude/.mcp.json
 {
   "mcpServers": {
-    "filesystem": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/home/user"]
-    },
     "github": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-github"],
       "env": {
         "GITHUB_TOKEN": "${GITHUB_TOKEN}"
       }
+    },
+    "tavily": {
+      "command": "npx",
+      "args": ["-y", "tavily-mcp@latest"],
+      "env": {
+        "TAVILY_API_KEY": "${TAVILY_API_KEY}"
+      }
     }
   }
 }
+```
 
-// your-project/.claude/config.json (project-specific)
+**Project config example:**
+
+```json
+// your-project/.mcp.json
 {
   "mcpServers": {
     "supabase": {
@@ -379,20 +397,66 @@ Claude Code supports Model Context Protocol servers for extending capabilities.
 ```
 
 **Recommended global servers:**
-- `@modelcontextprotocol/server-filesystem` - File operations
 - `@modelcontextprotocol/server-github` - GitHub API access
-- `@modelcontextprotocol/server-postgres` - Database queries (if you use Postgres everywhere)
+- `tavily-mcp` - Web search
+- `@upstash/context7-mcp` - Library documentation lookup
 
 **Recommended per-project:**
-- Cloud provider SDKs (AWS, GCP, Supabase, Vercel)
+- Cloud provider SDKs (Supabase, Vercel, AWS)
 - Custom business logic servers
 - Domain-specific tools
 
 **Performance tips:**
 - Keep total servers under 10 (context overhead)
 - Keep total tools under 80 (tool selection accuracy)
-- Disable unused servers with `"enabled": false`
-- Use project-local configs for environment-specific tools
+- Use project-local `.mcp.json` for environment-specific tools
+
+### Plugin System and Dual Registration
+
+Claude Code's plugin marketplace can also register MCP servers. This creates a
+**dual-registration problem** you should be aware of:
+
+- A server added to `.mcp.json` registers as `mcp__<server>__*`
+- The same server enabled via a plugin registers as `mcp__plugin_<id>_<server>__*`
+- If both exist, every tool appears **twice** in the tool list — doubling context overhead
+
+**Audit your active tools periodically:**
+
+```bash
+# List installed plugins and their status
+claude plugin list
+
+# Disable a plugin (use marketplace format)
+claude plugin disable <plugin-name>@claude-plugins-official
+
+# Check what's in your .mcp.json
+cat ~/.claude/.mcp.json
+```
+
+**Rule of thumb:** For servers you use constantly (github, tavily, playwright), register
+them in `.mcp.json` directly and disable the corresponding plugin. For specialized servers
+used occasionally, prefer the plugin marketplace.
+
+### Agent Teams Env Var Warning
+
+If you see `mcp__agents__*` tool names in your session (e.g. `mcp__agents__github__*`),
+the `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` environment variable is set. This duplicates
+**all** registered MCP tools under an `agents` namespace — adding ~70+ extra tool name
+entries to the context window even when no teams are configured.
+
+**Fix:**
+
+```json
+// ~/.claude/settings.json — remove this line
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"   // <-- remove
+  }
+}
+```
+
+Only set this if you are actively using the agent teams feature with a configured `teams`
+key in `settings.json`.
 
 **Mapping to toolkit patterns:**
 - MCP servers = [Context Building](../../patterns/context-building.md)
@@ -402,11 +466,11 @@ Claude Code supports Model Context Protocol servers for extending capabilities.
 
 Claude Code supports three model tiers:
 
-| Model | Alias | Use For | Cost | Context |
-|-------|-------|---------|------|---------|
-| Sonnet 4.5 | `/fast` toggle off | Default work, most tasks | $3/$15 | 200K |
-| Opus 4.6 | Default | Complex architecture, deep analysis | $15/$75 | 1M |
-| Haiku 3.5 | Manual via API | Quick checks, formatting | $1/$5 | 200K |
+| Model | ID | Use For | Cost (in/out) | Context |
+|-------|-----|---------|------|---------|
+| claude-sonnet-4-6 | Sonnet 4.6 | Default work, most tasks | $3/$15 | 200K |
+| claude-opus-4-6 | Opus 4.6 | Complex architecture, deep analysis | $15/$75 | 1M |
+| claude-haiku-4-5-20251001 | Haiku 4.5 | Sub-agents, quick checks, formatting | $1/$5 | 200K |
 
 **Routing strategy:**
 
@@ -467,7 +531,7 @@ claude
 
 **Context management:**
 - Use `@filename` references instead of describing locations
-- Run `/compact` when context grows large (~70% of 200K tokens)
+- Run `/compact` when context reaches **60-70%** of 200K tokens — don't wait until 90%
 - Use `/clear` between unrelated tasks
 
 **Quality gates:**
@@ -630,7 +694,7 @@ Claude Code has a 200K token context window (Sonnet) or 1M (Opus).
 
 **Monitoring:**
 - Check token usage in bottom status bar
-- Run `/compact` at ~70% (140K tokens for Sonnet)
+- Run `/compact` at **60-70%** (120-140K tokens for Sonnet) — waiting until 90% risks hitting session limits on long tasks
 - Use `/clear` between unrelated tasks
 
 **Reduction strategies:**
