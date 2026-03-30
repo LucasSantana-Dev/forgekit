@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-03-30
+
 ### Added
 - `rtk` (Rust Token Killer) added to macOS and Ubuntu install scripts — 60-90%
   token reduction on Bash outputs via a transparent Claude Code `PreToolUse` hook.
@@ -25,15 +27,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - CI workflow for markdown link validation
 - CHANGELOG.md
 - Curated "AI Productivity Additions" in `tools/README.md` covering Context7, Tavily,
-  Firecrawl, promptfoo, Portkey AI Gateway, LangGraph, n8n, Dify, Ollama,
-  Open WebUI, fastmcp, and Playwright MCP
-- `tools/setup-ai-workflow-macos.sh` for local AI workflow setup (Ollama, promptfoo,
+  Firecrawl, promptfoo, Portkey AI Gateway, LangGraph, n8n, Dify, Open WebUI,
+  fastmcp, and Playwright MCP
+- `tools/setup-ai-workflow-macos.sh` for local AI workflow setup (promptfoo,
   n8n, and shell workflow aliases)
 - Community workflow integrations for `planning-with-files`,
   `antigravity-awesome-skills`, and `OpenViking` in setup/docs
 - Added community-picked `browser-use` and `letta` into setup/docs/aliases
 - Added a dedicated memory stack (`mem0ai` + `graphiti-core`) with
   `ai-memory-check` and `ai-memory-python` helpers
+- Claude Code MCP plugin dual-registration documentation and audit guidance
+- Claude Code `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` warning and fix
+- MEMORY.md 200-line discipline section with topic-file extraction strategy
 
 ### Improved
 - README rewritten with problem-first framing and before/after examples
@@ -42,7 +47,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `best-practices/context-management.md` made tool-agnostic with separate tool-specific sections
 - README now links to the curated AI productivity tools section
 - `tools/README.md` now documents local workflow commands (`ai-eval`, `ai-flow`,
-  `ai-ollama`, `ai-webui`, `ai-portkey`, `ai-browser-mcp`)
+  `ai-webui`, `ai-portkey`, `ai-browser-mcp`)
 - `tools/setup-ai-workflow-macos.sh` now installs `pipx`, supports `openviking`,
   and adds aliases for skills discovery and installation workflows
 - `tools/setup-ai-workflow-macos.sh` now also installs `browser-use` and
@@ -55,10 +60,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   contents, and a more descriptive repository map
 - `tools/README.md`: added `rtk` to core stack table and platform notes
 - `tools/README.md`: added `TurboQuant` to curated additions; updated Recommended
-  Adoption Order to pair Ollama + TurboQuant
-- `best-practices/context-management.md`: added RTK under Claude Code tips
-- `implementations/claude-code/README.md`: added RTK hook setup section and
-  listed RTK as the highest-impact token reduction strategy
+  Adoption Order to pair TurboQuant
+- `best-practices/context-management.md`: `/compact` threshold corrected to 60-70%;
+  added MEMORY.md discipline section; added plugin dual-registration and agent teams
+  warnings to MCP strategy
+- `implementations/claude-code/README.md`: fixed MCP config path to `~/.claude/.mcp.json`;
+  added plugin management section; added agent teams env var warning; updated model
+  table to Sonnet/Opus/Haiku 4.x IDs; corrected `/compact` threshold to 60-70%
 
 ## [0.1.0] - 2026-03-15
 
