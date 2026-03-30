@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.2] - 2026-03-30
+
+### Added
+- `tools/capture-training.py` — extract Claude Code sessions as alpaca-format instruction pairs
+  for fine-tuning. Parses `~/.claude/projects/**/*.jsonl`, deduplicates by session hash. Flags:
+  `--export`, `--min-turns`, `--dry-run`, `--output`.
+- `tools/setup-claude-code.sh` now installs `capture-training` to `~/.local/bin/` so it's
+  available as a CLI command after running the setup script.
+- Claude Code Router (CCR) pattern added to `patterns/multi-model-routing.md` — slot-based
+  routing (default/background/think/longContext) with minimal preset example.
+- Sub-agent routing section added to `patterns/multi-model-routing.md` — explains why
+  `CLAUDE_CODE_SUBAGENT_MODEL` matters and expected savings.
+- Sub-agent routing + CCR sections added to `implementations/claude-code/README.md`.
+- `training/README.md` — session capture workflow with `capture-training.py`, optional LoRA
+  fine-tuning section (axolotl + Ollama export).
+
 ## [Unreleased]
 
 ## [0.2.1] - 2026-03-30

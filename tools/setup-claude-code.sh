@@ -206,6 +206,29 @@ else
 fi
 
 # ---------------------------------------------------------------------------
+# 5. capture-training — install session export script to ~/.local/bin
+# ---------------------------------------------------------------------------
+echo ""
+echo "=== Training Data Capture ==="
+
+CAPTURE_TARGET="$HOME/.local/bin/capture-training"
+CAPTURE_SRC="$(cd "$(dirname "$0")" && pwd)/capture-training.py"
+
+if [ -f "$CAPTURE_TARGET" ]; then
+  echo "  ✓ capture-training already installed at $CAPTURE_TARGET"
+  SKIPPED+=("capture-training")
+elif [ -f "$CAPTURE_SRC" ]; then
+  mkdir -p "$HOME/.local/bin"
+  cp "$CAPTURE_SRC" "$CAPTURE_TARGET"
+  chmod +x "$CAPTURE_TARGET"
+  echo "  ✓ Installed capture-training → $CAPTURE_TARGET"
+  INSTALLED+=("capture-training")
+else
+  echo "  ℹ  capture-training.py not found next to this script — skipping"
+  echo "     To install manually: cp tools/capture-training.py ~/.local/bin/capture-training && chmod +x ~/.local/bin/capture-training"
+fi
+
+# ---------------------------------------------------------------------------
 # Summary
 # ---------------------------------------------------------------------------
 echo ""
@@ -248,3 +271,6 @@ echo ""
 echo "  5. Token monitoring during sessions:"
 echo "       rtk gain    (cumulative Bash output savings)"
 echo "       /compact    (run inside Claude at 60-70% context usage)"
+echo ""
+echo "  6. Capture Claude Code sessions as training data (runs after each session):"
+echo "       capture-training --export --min-turns 3"

@@ -65,6 +65,18 @@ These are high-value, but not auto-installed because they are IDE-first, docs-fi
 4. Add `n8n` for repeatable cross-tool automation and handoff reduction.
 5. Add `Ollama` + `TurboQuant` + `Open WebUI` for private/local experimentation — TurboQuant's KV-cache quantization can reduce memory usage on supported hardware (results vary by GPU architecture).
 
+## capture-training
+
+Extract your Claude Code sessions as instruction fine-tuning data:
+
+```bash
+python3 tools/capture-training.py --export --min-turns 3
+```
+
+Parses `~/.claude/projects/**/*.jsonl`, extracts user→assistant exchanges, deduplicates by session
+hash, and appends to a `dataset.jsonl` in alpaca format. Running `setup-claude-code.sh` installs
+this as `capture-training` in `~/.local/bin/`. See [training/README.md](../training/README.md).
+
 ## Install
 
 ```bash
