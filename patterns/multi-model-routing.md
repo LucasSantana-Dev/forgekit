@@ -82,3 +82,69 @@ Not every agent needs every tool:
 - **Always-Opus syndrome**: Using the most expensive model for everything "just to be safe"
 - **Penny-wise routing**: Using Fast for tasks that clearly need Standard, then spending 3x the tokens fixing the output
 - **No routing at all**: One model, one agent, one price for everything
+- **Ignoring sub-agents**: Claude Code spawns sub-agents for compaction and background work — they use your default model unless you override `CLAUDE_CODE_SUBAGENT_MODEL`
+
+## Sub-Agent Routing
+
+Claude Code sub-agents (background compaction, parallel task agents) default to the same model as the main session. This is wasteful — sub-agents do summarization and simple coordination, not complex reasoning.
+
+**Override in `settings.json` `env` block:**
+
+```json
+{
+  "env": {
+    "CLAUDE_CODE_SUBAGENT_MODEL": "claude-haiku-4-5-20251001"
+  }
+}
+```
+
+Expected savings: 60-80% on sub-agent costs with no quality impact on main session work.
+
+## Claude Code Router (CCR)
+
+[CCR](https://github.com/musistudio/claude-code-router) is a local proxy for Claude Code that
+routes requests to different models based on request slot type.
+
+**Slots:**
+
+| Slot | Triggered by | Recommended model |
+|------|-------------|-------------------|
+| `default` | Interactive work | Sonnet |
+| `background` | Auto-compaction, sub-agents | Haiku |
+| `think` | Complex reasoning tasks | Opus |
+| `longContext` | Conversations > threshold | Opus |
+
+**Minimal preset** (`~/.claude-code-router/presets/<name>/manifest.json`):
+
+```json
+{
+  "name": "my-preset",
+  "PORT": 3456,
+  "Providers": [
+    {
+      "name": "anthropic",
+      "api_base_url": "https://api.anthropic.com/v1/messages",
+      "api_key": "$ANTHROPIC_API_KEY",
+      "models": ["claude-sonnet-4-6", "claude-opus-4-6", "claude-haiku-4-5-20251001"],
+      "transformer": { "use": ["Anthropic"] }
+    }
+  ],
+  "Router": {
+    "default": "anthropic,claude-sonnet-4-6",
+    "background": "anthropic,claude-haiku-4-5-20251001",
+    "think": "anthropic,claude-opus-4-6",
+    "longContext": "anthropic,claude-opus-4-6",
+    "longContextThreshold": 120000
+  }
+}
+```
+
+**Use:**
+```bash
+npm install -g @musistudio/claude-code-router
+ccr my-preset start
+eval "$(ccr activate)"   # sets ANTHROPIC_BASE_URL for current shell
+claude                   # now routes through CCR
+```
+
+CCR and `CLAUDE_CODE_SUBAGENT_MODEL` can be used together — CCR handles slot routing for the main session flow, `CLAUDE_CODE_SUBAGENT_MODEL` handles agent spawning.

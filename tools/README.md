@@ -1,5 +1,17 @@
 # CLI Tools
 
+## capture-training.py
+
+Extract your Claude Code sessions as instruction fine-tuning data.
+
+```bash
+python3 tools/capture-training.py --export --min-turns 3
+```
+
+Parses `~/.claude/projects/**/*.jsonl`, extracts user→assistant exchanges, deduplicates by session hash,
+and appends new pairs to a `dataset.jsonl` in alpaca format. Run after each session to grow your dataset.
+See [training/README.md](../training/README.md) for the full fine-tuning workflow.
+
 ## The Stack
 
 | Tool | What | Why |
@@ -64,6 +76,18 @@ These are high-value, but not auto-installed because they are IDE-first, docs-fi
 3. Add `LangGraph` or `Dify` when simple chat flows become multi-step workflows.
 4. Add `n8n` for repeatable cross-tool automation and handoff reduction.
 5. Add `Ollama` + `TurboQuant` + `Open WebUI` for private/local experimentation — TurboQuant's KV-cache quantization can reduce memory usage on supported hardware (results vary by GPU architecture).
+
+## Claude Code Setup
+
+`setup-ai-workflow-macos.sh` also configures Claude Code:
+
+- **Sub-agent model routing** — sets `CLAUDE_CODE_SUBAGENT_MODEL=claude-haiku-4-5-20251001` in
+  `~/.claude/settings.json`. Background compaction and parallel sub-agents run on Haiku
+  (60-80% cost reduction) while your main session uses Sonnet.
+- **Global MCP servers** — creates `~/.claude/.mcp.json` with Tavily (web search) and Context7
+  (live documentation). Set `TAVILY_API_KEY` before running, or update the file after.
+
+To get a Tavily API key (free tier available): https://tavily.com
 
 ## Install
 

@@ -4,9 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [Unreleased]
+## [0.2.0] - 2026-03-30
 
 ### Added
+- `tools/capture-training.py` — extract Claude Code sessions as alpaca-format instruction pairs
+  for fine-tuning. Parses `~/.claude/projects/**/*.jsonl`, deduplicates by session hash, supports
+  `--export`, `--min-turns`, `--dry-run`, and `--output` flags.
+- `training/README.md` rewritten — leads with generic session capture pattern, LoRA fine-tuning
+  moved to optional section. Removed forge-specific deployment commands.
+- Claude Code sub-agent model routing — `setup-ai-workflow-macos.sh` now sets
+  `CLAUDE_CODE_SUBAGENT_MODEL=claude-haiku-4-5-20251001` in `~/.claude/settings.json`.
+  Background compaction and sub-agents run on Haiku; 60-80% cost reduction with no quality impact.
+- Global MCP server config — `setup-ai-workflow-macos.sh` now creates `~/.claude/.mcp.json` with
+  Tavily (web search) and Context7 (live docs). `TAVILY_API_KEY` is read from env if set.
+- Claude Code Router (CCR) pattern documented in `patterns/multi-model-routing.md` — slot-based
+  routing (default/background/think/longContext) with example preset.
+- Sub-agent routing section added to `patterns/multi-model-routing.md`.
+- `tools/README.md` now documents the Claude Code setup step (sub-agent routing + MCP config).
 - `rtk` (Rust Token Killer) added to macOS and Ubuntu install scripts — 60-90%
   token reduction on Bash outputs via a transparent Claude Code `PreToolUse` hook.
   macOS: installed via `brew install rtk` + `rtk init -g`. Linux: installed via
@@ -34,6 +48,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Added community-picked `browser-use` and `letta` into setup/docs/aliases
 - Added a dedicated memory stack (`mem0ai` + `graphiti-core`) with
   `ai-memory-check` and `ai-memory-python` helpers
+
+### Fixed
+- `implementations/claude-code/README.md`: MCP config path corrected from `~/.claude/config.json`
+  to `~/.claude/.mcp.json` — `mcpServers` is not a valid field in `settings.json`.
 
 ### Improved
 - README rewritten with problem-first framing and before/after examples

@@ -495,6 +495,61 @@ Claude Code supports three model tiers:
 2. Switch to Opus if Claude struggles after 2-3 turns
 3. Use Haiku for batch operations (via programmatic API, not CLI)
 
+### Sub-Agent Model Routing
+
+Claude Code spawns sub-agents for background work (compaction, parallel tasks). By default they
+use the same model as your main session. Route them to Haiku in `~/.claude/settings.json`:
+
+```json
+{
+  "env": {
+    "CLAUDE_CODE_SUBAGENT_MODEL": "claude-haiku-4-5-20251001"
+  }
+}
+```
+
+Expected savings: 60-80% on sub-agent costs with no quality impact on main session work.
+
+### Claude Code Router (CCR)
+
+[CCR](https://github.com/musistudio/claude-code-router) routes Claude Code requests to different
+models by slot type.
+
+**Install:**
+```bash
+npm install -g @musistudio/claude-code-router
+```
+
+**Preset** (`~/.claude-code-router/presets/<name>/manifest.json`):
+
+```json
+{
+  "name": "my-preset",
+  "PORT": 3456,
+  "Providers": [
+    {
+      "name": "anthropic",
+      "api_base_url": "https://api.anthropic.com/v1/messages",
+      "api_key": "$ANTHROPIC_API_KEY",
+      "models": ["claude-sonnet-4-6", "claude-opus-4-6", "claude-haiku-4-5-20251001"],
+      "transformer": { "use": ["Anthropic"] }
+    }
+  ],
+  "Router": {
+    "default": "anthropic,claude-sonnet-4-6",
+    "background": "anthropic,claude-haiku-4-5-20251001",
+    "think": "anthropic,claude-opus-4-6",
+    "longContext": "anthropic,claude-opus-4-6",
+    "longContextThreshold": 120000
+  }
+}
+```
+
+**Use:**
+```bash
+ccr my-preset start && eval "$(ccr activate)" && claude
+```
+
 **Mapping to toolkit patterns:**
 - Model routing = [Multi-Model Routing](../../patterns/multi-model-routing.md)
 - Cost optimization = [Context Management](../../best-practices/context-management.md)

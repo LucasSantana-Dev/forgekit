@@ -104,6 +104,66 @@ EOF
   fi
 }
 
+setup_claude_code() {
+  local settings_dir="$HOME/.claude"
+  local settings_file="$settings_dir/settings.json"
+  local mcp_file="$settings_dir/.mcp.json"
+
+  mkdir -p "$settings_dir"
+
+  # Sub-agent model routing: route background agents to Haiku (60-80% cost reduction)
+  if [ ! -f "$settings_file" ]; then
+    echo '{"env":{"CLAUDE_CODE_SUBAGENT_MODEL":"claude-haiku-4-5-20251001"}}' > "$settings_file"
+    INSTALLED+=("claude settings.json (sub-agent routing)")
+    echo "✓ Created ~/.claude/settings.json with sub-agent model routing"
+  elif ! python3 -c "import json,sys; d=json.load(open('$settings_file')); sys.exit(0 if d.get('env',{}).get('CLAUDE_CODE_SUBAGENT_MODEL') else 1)" 2>/dev/null; then
+    python3 - "$settings_file" <<'PY'
+import json, sys
+path = sys.argv[1]
+with open(path) as f:
+    data = json.load(f)
+data.setdefault("env", {})["CLAUDE_CODE_SUBAGENT_MODEL"] = "claude-haiku-4-5-20251001"
+with open(path, "w") as f:
+    json.dump(data, f, indent=2)
+PY
+    INSTALLED+=("claude settings.json (sub-agent routing added)")
+    echo "✓ Added CLAUDE_CODE_SUBAGENT_MODEL to ~/.claude/settings.json"
+  else
+    echo "✓ sub-agent model routing already configured"
+    SKIPPED+=("claude sub-agent routing")
+  fi
+
+  # Global MCP servers: Tavily (web search) + Context7 (live docs)
+  if [ ! -f "$mcp_file" ]; then
+    local tavily_key="${TAVILY_API_KEY:-your-tavily-api-key}"
+    cat > "$mcp_file" <<EOF
+{
+  "mcpServers": {
+    "tavily": {
+      "command": "npx",
+      "args": ["-y", "tavily-mcp@0.2.18"],
+      "env": {
+        "TAVILY_API_KEY": "$tavily_key"
+      }
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    }
+  }
+}
+EOF
+    INSTALLED+=("~/.claude/.mcp.json (Tavily + Context7)")
+    echo "✓ Created ~/.claude/.mcp.json with Tavily and Context7 MCP servers"
+    if [ "$tavily_key" = "your-tavily-api-key" ]; then
+      WARNINGS+=("Set TAVILY_API_KEY in ~/.claude/.mcp.json — get a free key at https://tavily.com")
+    fi
+  else
+    echo "✓ ~/.claude/.mcp.json already exists"
+    SKIPPED+=("~/.claude/.mcp.json")
+  fi
+}
+
 append_zsh_block() {
   local zshrc="$HOME/.zshrc"
   local begin="# >>> ai-dev-toolkit workflow >>>"
@@ -163,6 +223,10 @@ PY
     echo "✓ Added workflow aliases to ~/.zshrc"
   fi
 }
+
+echo ""
+echo "=== Configuring Claude Code ==="
+setup_claude_code
 
 echo ""
 echo "=== Installing core local AI workflow tools ==="

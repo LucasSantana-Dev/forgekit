@@ -21,6 +21,8 @@ Don't read entire files upfront. Build context incrementally:
 - Prefer remote/lazy servers over local ones — remote tools register on-demand (cheaper on context)
 - Enable specialized servers per-project, not globally
 - Heavy servers (Playwright, Stitch, HuggingFace) should be disabled by default
+- Configure global MCP servers via `~/.claude/.mcp.json` (not `settings.json` — `mcpServers` is not a valid settings field)
+- Start with Tavily (web search) and Context7 (live docs) as the two highest-ROI global servers
 
 ### Context Window Awareness
 Most models have 128K-200K token context windows. In practice:
@@ -63,6 +65,11 @@ End:    Commit → update CHANGELOG → sync memories → clean temp files
   compresses Bash outputs before they reach the context window — 60-90% token
   reduction on `git`, `npm`, `ls`, and other dev commands with no change to your
   workflow. Run `rtk gain` to track cumulative savings.
+- **Sub-agent routing**: Set `CLAUDE_CODE_SUBAGENT_MODEL=claude-haiku-4-5-20251001` in `settings.json`
+  `env` block to route background agents to a cheaper model. 60-80% cost reduction on
+  auto-compaction and parallel sub-agent work.
+- **Global MCP servers**: Add Tavily and Context7 to `~/.claude/.mcp.json` for web search and
+  live docs in every session. See [Claude Code implementation](../implementations/claude-code/README.md#mcp-server-strategy).
 
 ### OpenCode
 - `@tarquinen/opencode-dcp` plugin prunes context automatically at configurable thresholds
