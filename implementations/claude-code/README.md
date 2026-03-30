@@ -168,6 +168,7 @@ Claude Code supports two hook types:
 Runs **before** Claude executes a tool. Use for:
 - Blocking dangerous commands
 - Adding confirmation gates
+- Rewriting commands before execution (e.g. RTK token compression)
 - Injecting environment setup
 
 **Location:** `~/.claude/hooks/PreToolUse.sh` or `.claude/hooks/PreToolUse.sh` (project-local)
@@ -194,6 +195,36 @@ if [[ "$TOOL_NAME" == "Bash" ]] && [[ ! -f .env ]]; then
   cp .env.example .env
 fi
 ```
+
+#### RTK: Token-Compressing Hook
+
+[RTK (Rust Token Killer)](https://github.com/rtk-ai/rtk) is a PreToolUse hook that
+transparently rewrites Bash commands to pipe output through a Rust binary before it
+lands in the context window. 60-90% savings on `git`, `npm`, `ls`, and other
+high-volume dev commands.
+
+**Install and wire (macOS):**
+```bash
+brew install rtk
+rtk init -g   # installs hook + patches settings.json
+```
+
+**Install and wire (Linux):**
+```bash
+curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
+export PATH="$HOME/.local/bin:$PATH"
+rtk init -g
+```
+
+**Verify:**
+```bash
+rtk --version   # rtk 0.x.x
+rtk gain        # shows cumulative token savings
+```
+
+The hook uses an exit-code protocol: exit 0 = rewrite+allow, exit 1 = pass through
+unchanged, exit 2 = deny (let Claude Code handle), exit 3 = rewrite+prompt user.
+Commands RTK doesn't know how to compress pass through at exit 1 with zero overhead.
 
 ### PostToolUse Hook
 
@@ -604,24 +635,33 @@ Claude Code has a 200K token context window (Sonnet) or 1M (Opus).
 
 **Reduction strategies:**
 
-1. **Targeted file reading**
+1. **RTK hook (highest impact, zero workflow change)**
+   Install RTK to compress Bash outputs before they reach the model. A single
+   `git log` can produce 10K tokens of raw output; RTK filters it to under 1K.
+   ```bash
+   brew install rtk && rtk init -g   # macOS
+   # or: curl installer + rtk init -g  (Linux)
+   ```
+   See [RTK hook setup](#rtk-token-compressing-hook) for full instructions.
+
+2. **Targeted file reading**
    ```
    Instead of: "Read all files in src/"
    Do: "@src/components/Button.tsx @src/hooks/useAuth.ts"
    ```
 
-2. **Glob patterns for specific files**
+3. **Glob patterns for specific files**
    ```
    Instead of: "@**/*"
    Do: "@**/*.test.ts" or "@src/lib/**/*.ts"
    ```
 
-3. **Summarize before loading**
+4. **Summarize before loading**
    ```
    "List files in src/components/, then I'll tell you which to read"
    ```
 
-4. **Use memory files**
+5. **Use memory files**
    - Store architectural decisions in memory/architecture.md
    - Reference: "Check architecture.md for DB schema"
    - Avoids re-reading large files
@@ -759,6 +799,13 @@ Solution: Move details to topic files, keep index under limit
 ```
 Problem: Pre-commit hook fails but Claude Code proceeds
 Solution: PreToolUse hook should exit 1 on failure to block
+```
+
+**6. RTK not rewriting commands**
+```
+Problem: rtk binary not in PATH when hook runs
+Solution: Use full path in hook or ensure PATH includes ~/.local/bin
+         Run: rtk --version to confirm binary is reachable
 ```
 
 ### Debug Mode

@@ -16,6 +16,7 @@
 | [yq](https://github.com/mikefarah/yq) | YAML processor | Edit CI configs, k8s manifests |
 | [fd](https://github.com/sharkdp/fd) | Better `find` | Fast, respects .gitignore |
 | [ripgrep](https://github.com/BurntSushi/ripgrep) | Better `grep` | Fast, respects .gitignore |
+| [rtk](https://github.com/rtk-ai/rtk) | Token optimizer | Compresses Bash output before it hits LLM context; 60-90% savings on `git`, `npm`, `ls` and other dev commands |
 
 ## Curated AI Productivity Additions
 
@@ -32,6 +33,7 @@ These are high-signal tools from the shared X thread that fit this toolkit's wor
 | [n8n](https://github.com/n8n-io/n8n) | Automation | Turns repetitive dev/review/release tasks into reusable automations |
 | [Dify](https://github.com/langgenius/dify) | App orchestration | Speeds up shipping internal AI tools and chat workflows |
 | [Ollama](https://github.com/ollama/ollama) | Local inference | Fast local models for private/offline tasks and cheap iterations |
+| [TurboQuant](https://github.com/0xSero/turboquant) | Local inference optimizer | Google's KV-cache quantization (demonstrated 6x memory reduction, 8x speed on H100 GPUs per March 2026 research) — vLLM integration available; llama.cpp/Ollama support under community development |
 | [Open WebUI](https://github.com/open-webui/open-webui) | Team UX | Shared interface for local/self-hosted models and prompt workflows |
 | [fastmcp](https://github.com/jlowin/fastmcp) | MCP development | Faster path to build internal MCP servers with less boilerplate |
 | [Playwright MCP](https://github.com/microsoft/playwright-mcp) | UI automation | Stable browser actions and reproducible end-to-end validation loops |
@@ -61,7 +63,7 @@ These are high-value, but not auto-installed because they are IDE-first, docs-fi
 2. Add `Portkey AI Gateway` when you need multi-provider governance and observability.
 3. Add `LangGraph` or `Dify` when simple chat flows become multi-step workflows.
 4. Add `n8n` for repeatable cross-tool automation and handoff reduction.
-5. Add `Ollama` + `Open WebUI` for private/local experimentation and cost control.
+5. Add `Ollama` + `TurboQuant` + `Open WebUI` for private/local experimentation — TurboQuant's KV-cache quantization can reduce memory usage on supported hardware (results vary by GPU architecture).
 
 ## Install
 
@@ -134,3 +136,4 @@ Set-Alias -Name cat -Value bat -Option AllScope
 | btop | brew | apt | winget |
 | jq | brew | apt | winget |
 | yq | brew | GitHub release | scoop |
+| rtk | brew | install.sh | manual (see [rtk docs](https://github.com/rtk-ai/rtk)) |
