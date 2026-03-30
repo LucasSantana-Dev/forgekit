@@ -189,6 +189,16 @@ else
   INSTALLED+=("rtk")
 fi
 
+# RTK Claude Code hook
+echo ""
+echo "=== Configuring RTK ==="
+if command -v rtk &>/dev/null || [ -x "$HOME/.local/bin/rtk" ]; then
+  export PATH="$HOME/.local/bin:$PATH"
+  rtk init -g --hook-only 2>/dev/null || true
+  echo "✓ RTK hook installed — Bash outputs compressed before reaching LLM context"
+  echo "  Run 'rtk gain' after a few sessions to see token savings"
+fi
+
 echo ""
 echo "=== Configuring git delta ==="
 git config --global core.pager delta

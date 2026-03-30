@@ -24,8 +24,8 @@ cd your-project
 cp implementations/claude-code/example-claude-md.md CLAUDE.md
 
 # Setup memory structure
-mkdir -p ~/.claude/projects/$(pwd | sed 's/\//- /g')/memory
-echo "# Memory Index" > ~/.claude/projects/$(pwd | sed 's/\//- /g')/memory/MEMORY.md
+mkdir -p ~/.claude/projects/$(pwd | sed 's/\//-/g')/memory
+echo "# Memory Index" > ~/.claude/projects/$(pwd | sed 's/\//-/g')/memory/MEMORY.md
 
 # Add hooks (optional)
 mkdir -p ~/.claude/hooks
