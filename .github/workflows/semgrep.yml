@@ -1,0 +1,16 @@
+name: Semgrep
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  semgrep:
+    uses: Forge-Space/github-org-workflows/.github/workflows/reusable-semgrep.yml@main
+    with:
+      scan-paths: "scripts/ tools/"
