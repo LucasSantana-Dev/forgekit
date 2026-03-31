@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-03-31
+
+### Fixed
+- `.github/workflows/release.yml` — release notes now written to a temp file and passed via
+  `--notes-file` to avoid backtick shell expansion corrupting markdown code spans in notes.
+
 ## [0.3.1] - 2026-03-31
 
 ### Added

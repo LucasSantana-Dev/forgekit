@@ -36,16 +36,10 @@ jobs:
           fi
 
       - name: Extract release notes from CHANGELOG
-        id: notes
         if: steps.tag_check.outputs.exists == 'false'
         run: |
           version="${{ steps.version.outputs.version }}"
-          notes=$(awk "/^## \[${version}\]/{found=1; next} found && /^## \[/{exit} found{print}" CHANGELOG.md)
-          {
-            echo "notes<<EOF"
-            echo "${notes}"
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
+          awk "/^## \[${version}\]/{found=1; next} found && /^## \[/{exit} found{print}" CHANGELOG.md > /tmp/release-notes.md
 
       - name: Create tag and GitHub release
         if: steps.tag_check.outputs.exists == 'false'
@@ -54,5 +48,5 @@ jobs:
         run: |
           gh release create "${{ steps.version.outputs.tag }}" \
             --title "${{ steps.version.outputs.tag }}" \
-            --notes "${{ steps.notes.outputs.notes }}" \
+            --notes-file /tmp/release-notes.md \
             --target main
