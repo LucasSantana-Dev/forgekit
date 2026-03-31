@@ -1,6 +1,6 @@
 {
   "name": "ai-dev-toolkit",
-  "version": "0.5.0",
+  "version": "0.7.0",
   "description": "Reusable patterns, rules, and agent companies for AI-assisted development",
   "type": "module",
   "private": false,
