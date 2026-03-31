@@ -1,17 +1,14 @@
 # AI Dev Toolkit
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Latest Release](https://img.shields.io/github/v/release/LucasSantana-Dev/ai-dev-toolkit)](https://github.com/LucasSantana-Dev/ai-dev-toolkit/releases)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 Most AI coding sessions fail for one reason: the agent has no project context.
 
-`ai-dev-toolkit` gives you reusable building blocks to fix that:
-- project rule templates
-- context and orchestration patterns
-- reference implementations
-- terminal setup scripts for AI-heavy workflows
-
-The result is predictable AI behavior, less rework, and faster delivery.
+`ai-dev-toolkit` gives you reusable building blocks to fix that — rule templates, context
+and orchestration patterns, reference implementations, and terminal setup scripts for
+AI-heavy workflows. The result is predictable output, less rework, and faster delivery.
 
 ## Why This Toolkit
 
@@ -23,6 +20,7 @@ The result is predictable AI behavior, less rework, and faster delivery.
 | Manual multi-session coordination | Queue and orchestration patterns |
 | Repeating decisions across weeks | Memory patterns and durable context |
 | Risky agent actions | Guardrails and permission boundaries |
+| Agent output you can't audit | Traces, regression tests, security scans |
 
 ## Table of Contents
 
@@ -36,64 +34,77 @@ The result is predictable AI behavior, less rework, and faster delivery.
 
 ## Quick Start
 
-### 1) Add one rule file to your project (highest impact)
+### 1) Add one rule file to your project
 
 ```bash
 # Choose one, based on your AI coding tool:
-cp rules/CLAUDE.md your-project/CLAUDE.md         # Claude Code / OpenCode
-cp rules/AGENTS.md your-project/AGENTS.md         # Codex CLI / OpenCode
-cp rules/.cursorrules your-project/.cursorrules   # Cursor
-cp rules/.windsurfrules your-project/.windsurfrules  # Windsurf
-cp rules/COPILOT.md your-project/COPILOT.md       # GitHub Copilot
+cp rules/CLAUDE.md your-project/CLAUDE.md             # Claude Code / OpenCode
+cp rules/AGENTS.md your-project/AGENTS.md             # Codex CLI / OpenCode
+cp rules/.cursorrules your-project/.cursorrules       # Cursor
+cp rules/.windsurfrules your-project/.windsurfrules   # Windsurf
+cp rules/COPILOT.md your-project/COPILOT.md           # GitHub Copilot
 ```
 
-### 2) Read and apply the core pattern
+This is the single highest-impact change you can make. The agent gets your conventions
+before the first prompt.
 
-Start with [Context Building](patterns/context-building.md).  
-It is the foundation for all other patterns.
+### 2) Read the core pattern
 
-### 3) Optional: install productivity CLI stack
+Start with [Context Building](patterns/context-building.md) — the foundation for all
+other patterns.
+
+### 3) (Optional) Set up Claude Code from scratch
 
 ```bash
-bash tools/install-macos.sh      # macOS
-bash tools/install-ubuntu.sh     # Ubuntu/Linux
-.\tools\install-windows.ps1      # Windows (PowerShell as Admin)
+bash tools/setup-claude-code.sh
 ```
 
-The Windows installer is idempotent for Scoop buckets and avoids duplicate bucket
-add errors on reruns.
+Configures `~/.claude/.mcp.json` with recommended MCP servers (Tavily, Context7,
+Playwright, markdownify-mcp), sets default and subagent model, creates a memory
+directory, and runs a plugin audit.
+
+### 4) (Optional) Install the productivity CLI stack
+
+```bash
+bash tools/install-macos.sh              # macOS — core terminal tools
+bash tools/install-ubuntu.sh            # Ubuntu/Linux
+.\tools\install-windows.ps1            # Windows (PowerShell as Admin)
+bash tools/setup-ai-workflow-macos.sh  # macOS — AI workflow tools (promptfoo, n8n, lmnr, browser-use…)
+```
 
 ## How to Adopt in One Week
 
-| Day | Focus | Output |
+| Day | Action | Resource |
 |---|---|---|
-| 1 | Add rule file | Agent respects conventions |
-| 2 | Apply Context Building | Better first-pass code |
-| 3 | Add Task Orchestration | Less manual prompting |
-| 4 | Add Code Review + Testing patterns | Fewer regressions |
-| 5 | Add Memory Systems | Better continuity across sessions |
+| 1 | Add a rule file | `rules/CLAUDE.md` or equivalent |
+| 2 | Apply Context Building | [`patterns/context-building.md`](patterns/context-building.md) |
+| 3 | Add Task Orchestration | [`patterns/task-orchestration.md`](patterns/task-orchestration.md) |
+| 4 | Add Code Review + Testing patterns | [`patterns/code-review.md`](patterns/code-review.md), [`patterns/testing.md`](patterns/testing.md) |
+| 5 | Add Memory Systems + Observability | [`patterns/memory-systems.md`](patterns/memory-systems.md), [`patterns/agent-observability.md`](patterns/agent-observability.md) |
 
 ## Repository Map
 
 ### `patterns/`
-Practical, tool-agnostic playbooks.
 
-| Pattern | Primary use |
+Tool-agnostic playbooks for recurring AI workflow problems.
+
+| Pattern | Use when |
 |---|---|
-| [Context Building](patterns/context-building.md) | Make the agent understand your project |
-| [Prompt Engineering](patterns/prompt-engineering.md) | Increase response precision |
-| [Task Orchestration](patterns/task-orchestration.md) | Manage multi-step work with less supervision |
-| [Multi-Model Routing](patterns/multi-model-routing.md) | Reduce cost and latency |
-| [Session Management](patterns/session-management.md) | Keep parallel sessions clean |
-| [Memory Systems](patterns/memory-systems.md) | Persist decisions and preferences |
-| [Code Review](patterns/code-review.md) | Catch bugs and risky changes |
-| [Testing with AI](patterns/testing.md) | Generate higher-value tests |
-| [Git Worktrees](patterns/git-worktrees.md) | Isolate concurrent tasks safely |
-| [Agent Gotchas](patterns/agent-gotchas.md) | Avoid common AI workflow failures |
-| [Multi-Repo Workflows](patterns/multi-repo.md) | Coordinate changes across repositories |
-| [Agent Observability](patterns/agent-observability.md) | Trace, evaluate, and regression-test agent behavior |
+| [Context Building](patterns/context-building.md) | Agent lacks project knowledge |
+| [Prompt Engineering](patterns/prompt-engineering.md) | Responses are imprecise or inconsistent |
+| [Task Orchestration](patterns/task-orchestration.md) | Multi-step work needs less supervision |
+| [Multi-Model Routing](patterns/multi-model-routing.md) | Cost or latency needs reducing |
+| [Session Management](patterns/session-management.md) | Parallel sessions conflict or diverge |
+| [Memory Systems](patterns/memory-systems.md) | Decisions need to persist across sessions |
+| [Code Review](patterns/code-review.md) | Catching bugs and risky changes |
+| [Testing with AI](patterns/testing.md) | Generating higher-value tests |
+| [Git Worktrees](patterns/git-worktrees.md) | Isolating concurrent tasks safely |
+| [Agent Gotchas](patterns/agent-gotchas.md) | Avoiding common AI workflow failures |
+| [Multi-Repo Workflows](patterns/multi-repo.md) | Coordinating changes across repositories |
+| [Agent Observability](patterns/agent-observability.md) | Tracing, evaluating, and regression-testing agent behavior |
 
 ### `best-practices/`
+
 Cross-cutting rules for quality and safety.
 
 | Guide | Covers |
@@ -103,7 +114,8 @@ Cross-cutting rules for quality and safety.
 | [Context Optimization](best-practices/context-management.md) | Token efficiency, MCP usage, session hygiene |
 
 ### `rules/`
-Drop-in templates to encode project behavior per tool.
+
+Drop-in templates. Copy one to your project and edit the sections marked for your stack.
 
 | File | Target tool |
 |---|---|
@@ -114,31 +126,42 @@ Drop-in templates to encode project behavior per tool.
 | [`COPILOT.md`](rules/COPILOT.md) | GitHub Copilot |
 
 ### `tools/`
-Installer scripts and curated additions for AI productivity tools.
 
-Core terminal stack includes:
-`lazygit`, `fzf`, `bat`, `eza`, `delta`, `zoxide`, `atuin`, `btop`, `fd`,
-`ripgrep`, `jq`, `yq`, `chezmoi`.
+Scripts and curated additions for AI productivity workflows.
 
-See [Curated AI Productivity Additions](tools/README.md#curated-ai-productivity-additions)
-for advanced integrations including Context7, Tavily, Firecrawl, markdownify-mcp, lmnr,
-TDD Guard, container-use, Superpowers skills, and the Anthropic official skills collection.
+**Install scripts**
+
+| Script | What it does |
+|---|---|
+| `install-macos.sh` | Core terminal stack: `lazygit`, `fzf`, `bat`, `eza`, `delta`, `zoxide`, `atuin`, `btop`, `fd`, `ripgrep`, `jq`, `yq`, `chezmoi` |
+| `install-ubuntu.sh` | Same stack for Ubuntu/Debian, including `lmnr` and user-local `promptfoo` |
+| `install-windows.ps1` | Scoop-based equivalent for Windows |
+| `setup-claude-code.sh` | Full Claude Code setup: MCP servers, model config, memory directory, plugin audit |
+| `setup-ai-workflow-macos.sh` | AI workflow tools: `promptfoo`, `n8n`, `lmnr`, `browser-use`, `letta`, memory stack |
+| `capture-training.py` | Extract Claude Code sessions as Alpaca-format instruction pairs for fine-tuning |
+
+See [tools/README.md](tools/README.md) for the full list of curated AI productivity
+additions (Context7, Tavily, Firecrawl, markdownify-mcp, lmnr, TDD Guard, container-use,
+Superpowers skills, and the Anthropic official skills collection) and the recommended
+adoption order.
 
 ### `implementations/`
-Concrete examples for specific tools.
 
-| Tool | Includes |
+Concrete reference setups for specific tools.
+
+| Tool | What's included |
 |---|---|
 | [Claude Code](implementations/claude-code/) | Hooks, skills, memory structure, example `CLAUDE.md` |
-| [Codex CLI](implementations/codex/) | Setup guide, config.toml, approval policies, sandbox modes |
+| [Codex CLI](implementations/codex/) | Setup guide, `config.toml`, approval policies, sandbox modes |
 | [OpenCode](implementations/opencode/) | Task orchestrator plugin, session manager, DCP config |
 | [Cursor](implementations/cursor/) | Setup guide, scoped rules, memory workarounds |
 
 ### `examples/`
+
 Copy-ready starter assets.
 
-- [`backlog.json`](examples/backlog.json): task queue example
-- [`.claude/memory/`](examples/.claude/memory/): memory structure template
+- [`backlog.json`](examples/backlog.json) — task queue structure for AI orchestration
+- [`.claude/memory/`](examples/.claude/memory/) — memory directory template for Claude Code
 
 ## Philosophy
 
@@ -151,7 +174,7 @@ Copy-ready starter assets.
 ## Who This Is For
 
 - Developers using AI coding tools daily who want consistent output quality.
-- Teams creating shared standards for AI-assisted development.
+- Teams building shared standards for AI-assisted development.
 - New projects that need a strong AI-ready foundation from day one.
 
 ## Contributing
@@ -159,8 +182,8 @@ Copy-ready starter assets.
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 High-impact contributions:
-- new reference implementations
-- production-tested patterns
+- new reference implementations for tools not yet covered
+- production-tested patterns with real failure examples
 - improvements to install scripts and safety guardrails
 
 ## License
