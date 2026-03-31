@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-03-31
+
+### Added
+- `companies/` — pre-built agent organizations with specialized roles, skills, and routing protocols
+- `fullstack-forge` company (49 agents, 66 skills, 10 teams) imported from paperclipai/companies (MIT)
+- `tools/validate-companies.sh` — validates agent frontmatter, required sections, reportsTo references, and skill existence
+- CI validation for company schemas in `.github/workflows/validate.yml`
+
 ## [0.3.3] - 2026-03-31
 
 ### Fixed
