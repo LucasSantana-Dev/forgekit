@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-03-31
+
+### Added
+- `.github/workflows/release.yml` — automatic tag and GitHub release on every push to main;
+  parses version from `CHANGELOG.md`, skips if tag already exists, extracts matching section
+  as release notes.
+
 ## [0.3.0] - 2026-03-31
 
 ### Added
