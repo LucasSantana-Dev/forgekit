@@ -131,6 +131,7 @@ alias ai-browser-use='browser-use'
 alias ai-letta='letta'
 alias ai-memory-check='$HOME/.local/bin/ai-memory-check'
 alias ai-memory-python='$HOME/.local/share/ai-memory-venv/bin/python'
+alias ai-codex='codex'                                                # OpenAI Codex CLI (sandbox-first)
 # <<< ai-dev-toolkit workflow <<<
 EOF
 )
@@ -196,6 +197,23 @@ install_openrtk() {
   INSTALLED+=("openrtk")
 }
 
+install_codex() {
+  if command -v codex >/dev/null 2>&1; then
+    echo "✓ codex already installed"
+    SKIPPED+=("@openai/codex")
+    return
+  fi
+
+  if ! command -v npm >/dev/null 2>&1; then
+    WARNINGS+=("npm missing: skipped @openai/codex")
+    return
+  fi
+
+  echo "Installing @openai/codex..."
+  npm install -g @openai/codex
+  INSTALLED+=("@openai/codex")
+}
+
 echo ""
 echo "=== Installing core local AI workflow tools ==="
 ensure_brew
@@ -208,6 +226,7 @@ install_pipx_package "letta" "letta"
 install_memory_stack
 configure_ollama_host
 install_openrtk
+install_codex
 append_zsh_block
 
 echo ""
@@ -239,3 +258,4 @@ echo "Then try: ai-eval --help, ai-flow --help, ai-ollama list, ai-ollama-ps, ai
 echo "Optional: ai-plan-files, ai-skill-pack, ai-openviking --help"
 echo "Optional: ai-browser-use --help, ai-letta --help"
 echo "Optional: ai-memory-check"
+echo "Optional: ai-codex (requires OPENAI_API_KEY)"

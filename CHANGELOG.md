@@ -6,7 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-03-30
+
 ### Added
+- Codex CLI reference implementation: `implementations/codex/` with setup guide, approval policy guidance,
+  sandbox modes, multi-model routing table, and task orchestration patterns
+- `implementations/codex/config.toml` — annotated reference config for `~/.codex/config.toml`
+- `rules/AGENTS.md` now covers both Codex CLI and OpenCode; model routing table split by tool
+- "How Codex Differs" section explaining sandbox-first design vs trust-first tools (Claude Code, OpenCode, Cursor)
+- Approval policy autonomy dial: `untrusted → on-request → on-failure → never` with rationale for `on-request` as dev default
+- Trust model mismatch gotcha in `patterns/agent-gotchas.md` — comparison table and cross-tool guidance
+- `@openai/codex` install in `tools/setup-ai-workflow-macos.sh` via `install_codex()`
+- `ai-codex` alias in zsh workflow block
+- Codex CLI entry in `tools/README.md` curated additions and adoption order (step 7)
+
+### Added (previous unreleased)
 - Remote Ollama homelab pattern: `OLLAMA_HOST` env var routes all `ollama` CLI calls to oac-workstation
   (AMD RX 9070 XT, 15.9 GB VRAM) via Tailscale — no local GPU required
 - `openrtk` OpenCode plugin for 60-90% token savings by proxying commands through RTK

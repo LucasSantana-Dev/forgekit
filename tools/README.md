@@ -32,6 +32,7 @@ These are high-signal tools from the shared X thread that fit this toolkit's wor
 | [n8n](https://github.com/n8n-io/n8n) | Automation | Turns repetitive dev/review/release tasks into reusable automations |
 | [Dify](https://github.com/langgenius/dify) | App orchestration | Speeds up shipping internal AI tools and chat workflows |
 | [Ollama](https://github.com/ollama/ollama) | Remote/homelab inference | GPU-accelerated models on homelab (oac-workstation, RX 9070 XT) — accessed via Tailscale `OLLAMA_HOST` |
+| [Codex CLI](https://github.com/openai/codex) | AI coding agent | Sandbox-first terminal agent (OpenAI). Defaults: `workspace-write`, network disabled, `on-request` approval |
 | [openrtk](https://github.com/martinstannard/openrtk) | OpenCode plugin | Routes OpenCode commands through RTK proxy for 60-90% token savings |
 | [Open WebUI](https://github.com/open-webui/open-webui) | Team UX | Shared interface for local/self-hosted models and prompt workflows |
 | [fastmcp](https://github.com/jlowin/fastmcp) | MCP development | Faster path to build internal MCP servers with less boilerplate |
@@ -64,6 +65,7 @@ These are high-value, but not auto-installed because they are IDE-first, docs-fi
 4. Add `n8n` for repeatable cross-tool automation and handoff reduction.
 5. Add `Ollama` + `Open WebUI` for private/homelab GPU inference and cost control.
 6. Add `openrtk` to OpenCode for token savings on every agent session.
+7. Add `Codex CLI` for a sandbox-first alternative agent on OpenAI models.
 
 ## Install
 
@@ -102,6 +104,7 @@ After running `bash tools/setup-ai-workflow-macos.sh` and `source ~/.zshrc`:
 | `ai-letta` | Launch Letta CLI |
 | `ai-memory-check` | Validate memory stack imports (`mem0`, `graphiti_core`) |
 | `ai-memory-python` | Open the dedicated memory-stack Python runtime |
+| `ai-codex` | Launch Codex CLI (requires `OPENAI_API_KEY`) |
 | `ai-docs` | Reminder to use Context7 MCP for docs-grounded coding |
 | `ai-search` | Reminder to use Tavily MCP for web research in agents |
 | `ai-crawl` | Reminder to use Firecrawl API/MCP for ingestion pipelines |

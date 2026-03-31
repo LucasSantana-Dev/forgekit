@@ -732,6 +732,38 @@ You: "You're uncertain. Let's diagnose first:"
 [Make targeted fix]
 ```
 
+## Trust Model Mismatch When Switching Tools
+
+**Problem:** Different AI coding tools have opposite default trust models. Switching between them without adjusting expectations causes surprises.
+
+| Tool | Default trust model | Isolation requires |
+|------|--------------------|--------------------|
+| Claude Code | Trust-first | Explicit permission boundaries |
+| OpenCode | Trust-first | Explicit sandbox config |
+| Cursor | Trust-first | No built-in sandboxing |
+| **Codex CLI** | **Sandbox-first** | **Opting out of restrictions** |
+
+Codex runs `workspace-write` mode and disables network by default. If a Codex task silently fails or can't reach an API, check sandbox mode before debugging the code.
+
+**Solution:**
+
+Match your approval policy to the task, not to the tool's default:
+
+```bash
+# Codex: loosen when you need network or cross-dir writes
+codex --sandbox danger-full-access "deploy to staging"
+
+# Claude Code / OpenCode: tighten when running unreviewed tasks
+# (use scoped /plan mode or restrict tool permissions in config)
+```
+
+When switching between tools in the same workflow, explicitly state the trust context in your prompt:
+```
+# Be explicit regardless of which tool you're using:
+"Read-only: explain the auth flow without making changes."
+"Full access needed: update the database migration and test it."
+```
+
 ## Verification Checklist
 
 After any agent-generated code:

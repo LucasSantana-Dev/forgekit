@@ -1,0 +1,48 @@
+# ~/.codex/config.toml
+# Reference config for AI Dev Toolkit — copy to ~/.codex/config.toml
+
+# Model configuration
+model = "o4-mini"
+model_reasoning_effort = "medium"  # none, minimal, low, medium, high, xhigh
+model_reasoning_summary = "concise"  # auto, concise, detailed, none
+
+# Approval policy
+# untrusted   — approve every action (maximum control)
+# on-request  — approve when Codex is unsure (recommended for dev)
+# on-failure  — only interrupt on errors
+# never       — full-auto, no interruptions (CI/containers only)
+approval_policy = "on-request"
+
+# Sandbox mode
+# read-only        — no writes, no network
+# workspace-write  — writes within project, no network (recommended)
+# danger-full-access — unrestricted (only in containers)
+sandbox_mode = "workspace-write"
+
+# History
+[history]
+persistence = "save-all"
+max_bytes = 10485760  # 10 MB
+
+# TUI
+[tui]
+animations = true
+theme = "dark"
+
+# MCP servers (enable only what the project needs)
+[mcp_servers.filesystem]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-filesystem", "."]
+enabled = true
+
+[mcp_servers.github]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-github"]
+env = { GITHUB_TOKEN = "$GITHUB_TOKEN" }
+enabled = false  # enable per-project
+
+# Feature flags
+[features]
+memories = true
+web_search = false
+multi_agent = false  # enable for complex orchestration tasks

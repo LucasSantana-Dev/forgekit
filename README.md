@@ -41,6 +41,7 @@ The result is predictable AI behavior, less rework, and faster delivery.
 ```bash
 # Choose one, based on your AI coding tool:
 cp rules/CLAUDE.md your-project/CLAUDE.md         # Claude Code / OpenCode
+cp rules/AGENTS.md your-project/AGENTS.md         # Codex CLI / OpenCode
 cp rules/.cursorrules your-project/.cursorrules   # Cursor
 cp rules/.windsurfrules your-project/.windsurfrules  # Windsurf
 cp rules/COPILOT.md your-project/COPILOT.md       # GitHub Copilot
@@ -106,7 +107,7 @@ Drop-in templates to encode project behavior per tool.
 | File | Target tool |
 |---|---|
 | [`CLAUDE.md`](rules/CLAUDE.md) | Claude Code, OpenCode |
-| [`AGENTS.md`](rules/AGENTS.md) | OpenCode |
+| [`AGENTS.md`](rules/AGENTS.md) | Codex CLI, OpenCode |
 | [`.cursorrules`](rules/.cursorrules) | Cursor |
 | [`.windsurfrules`](rules/.windsurfrules) | Windsurf |
 | [`COPILOT.md`](rules/COPILOT.md) | GitHub Copilot |
@@ -128,6 +129,7 @@ Concrete examples for specific tools.
 | Tool | Includes |
 |---|---|
 | [Claude Code](implementations/claude-code/) | Hooks, skills, memory structure, example `CLAUDE.md` |
+| [Codex CLI](implementations/codex/) | Setup guide, config.toml, approval policies, sandbox modes |
 | [OpenCode](implementations/opencode/) | Task orchestrator plugin, session manager, DCP config |
 | [Cursor](implementations/cursor/) | Setup guide, scoped rules, memory workarounds |
 

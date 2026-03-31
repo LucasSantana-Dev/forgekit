@@ -1,14 +1,28 @@
 # Agent Routing Guide
 
+> **Applies to**: Codex CLI and OpenCode — both read `AGENTS.md` automatically.  
+> For Claude Code, pair this with `CLAUDE.md`. Deeply nested `AGENTS.md` files override parent-level ones.
+
 ## Multi-Model Strategy
 
 Use different models for different task complexities:
 
-| Agent | Model Tier | Use For |
-|-------|-----------|---------|
-| **primary** | GPT-5.3 / Claude Sonnet | Default. Implementation, debugging, refactoring |
+**OpenCode agents:**
+
+| Agent | Model | Use For |
+|-------|-------|---------|
+| **primary** | Claude Sonnet | Default. Implementation, debugging, refactoring |
 | **architect** | Claude Opus | Complex design, cross-repo impact, API design |
-| **fast** | Claude Haiku / Sonnet | Linting, formatting, simple edits, quick lookups |
+| **fast** | Claude Haiku | Linting, formatting, simple edits, quick lookups |
+
+**Codex CLI models** (set via `--model` or `config.toml`):
+
+| Task | Model |
+|------|-------|
+| Default / exploration | `o4-mini` |
+| Complex architecture | `o3` |
+| Quick edits | `gpt-4.1-mini` |
+| Full codebase reasoning | `gpt-4.1` |
 
 ## Tool Allocation
 
