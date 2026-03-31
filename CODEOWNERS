@@ -1,0 +1,14 @@
+# Patterns and rules
+/patterns/    @Forge-Space/core
+/rules/       @Forge-Space/core
+/best-practices/ @Forge-Space/core
+
+# Agent companies
+/companies/   @Forge-Space/core
+
+# Tools and scripts
+/tools/       @Forge-Space/core
+/scripts/     @Forge-Space/core
+
+# CI/CD
+/.github/     @Forge-Space/core

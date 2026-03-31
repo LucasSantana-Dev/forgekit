@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-03-31
+
+### Added
+- `package.json` — npm scripts for validation, testing, and formatting
+- `scripts/validate-schemas.js` — JS schema validator (enables jest coverage)
+- `test/validate-schemas.test.js` — jest test suite (75% coverage target)
+- `jest.config.js` — jest ESM configuration
+- `SECURITY.md` — security policy and reporting guide
+- `CODEOWNERS` — code ownership for forge-space integration
+- `.github/workflows/secret-scan.yml` — TruffleHog secret scanning
+- `.github/workflows/semgrep.yml` — SAST scanning for scripts/
+- `.github/workflows/stale.yml` — stale issue/PR management
+- `.github/dependabot.yml` — automated dependency updates
+
 ## [0.4.0] - 2026-03-31
 
 ### Added

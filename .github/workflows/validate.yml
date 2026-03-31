@@ -60,8 +60,25 @@ jobs:
             exit 1
           }
 
+  validate-schema:
+    name: Validate company schemas
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Validate schemas
+        run: npm run validate:schema
+
   validate-companies:
-    name: Validate Company Schemas
+    name: Validate Company Schemas (Bash)
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
