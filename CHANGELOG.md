@@ -20,23 +20,48 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `ai-codex` alias in zsh workflow block
 - Codex CLI entry in `tools/README.md` curated additions and adoption order (step 7)
 
-### Added (previous unreleased)
-- Remote Ollama homelab pattern: `OLLAMA_HOST` env var routes all `ollama` CLI calls to oac-workstation
-  (AMD RX 9070 XT, 15.9 GB VRAM) via Tailscale — no local GPU required
-- `openrtk` OpenCode plugin for 60-90% token savings by proxying commands through RTK
-- `ai-ollama-ps` alias — show running models and VRAM usage on remote Ollama
-- `ai-ollama-gpu` alias — list downloaded models via remote Ollama JSON API
-- Updated `ai-webui` alias to connect Open WebUI to remote Ollama via `OLLAMA_BASE_URL`
-- `configure_ollama_host()` function in setup script — idempotently adds `OLLAMA_HOST` to `~/.zshrc`
-- `install_openrtk()` function in setup script — installs `openrtk` npm package globally
+## [0.2.2] - 2026-03-30
 
-### Improved
-- `setup-ai-workflow-macos.sh`: removed local Ollama brew install (now homelab-only), added
-  `configure_ollama_host` and `install_openrtk` steps
-- `tools/README.md`: Ollama row updated to reflect remote/homelab GPU usage pattern
-- `implementations/opencode/opencode.jsonc`: added `openrtk` to plugin list
-- Adoption roadmap updated to include openrtk as step 6
+### Added
+- `tools/capture-training.py` — extract Claude Code sessions as alpaca-format instruction pairs
+  for fine-tuning. Parses `~/.claude/projects/**/*.jsonl`, deduplicates by session hash. Flags:
+  `--export`, `--min-turns`, `--dry-run`, `--output`.
+- `tools/setup-claude-code.sh` now installs `capture-training` to `~/.local/bin/` so it's
+  available as a CLI command after running the setup script.
+- Claude Code Router (CCR) pattern added to `patterns/multi-model-routing.md` — slot-based
+  routing (default/background/think/longContext) with minimal preset example.
+- Sub-agent routing section added to `patterns/multi-model-routing.md` — explains why
+  `CLAUDE_CODE_SUBAGENT_MODEL` matters and expected savings.
+- Sub-agent routing + CCR sections added to `implementations/claude-code/README.md`.
+- `training/README.md` — session capture workflow with `capture-training.py`, optional LoRA
+  fine-tuning section (axolotl + Ollama export).
 
+## [0.2.1] - 2026-03-30
+
+### Added
+- `tools/setup-claude-code.sh`: new script that configures Claude Code from scratch —
+  creates `~/.claude/.mcp.json` with recommended MCP servers (tavily, context7,
+  playwright), sets default model to Sonnet 4.6 and subagent model to Haiku 4.5,
+  removes `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` if present, creates memory directory
+  structure with `MEMORY.md` and `gotchas.md` templates, and runs a plugin audit
+
+### Fixed
+- `tools/install-macos.sh`: corrected RTK init command (`rtk init -g`, not `--hook-only`)
+- `tools/install-ubuntu.sh`: same RTK init fix
+- `tools/setup-ai-workflow-macos.sh`: removed Ollama (local model — not universally
+  applicable); removed `ai-ollama` alias from the zsh workflow block
+
+## [0.2.0] - 2026-03-30
+
+### Added
+- `rtk` (Rust Token Killer) added to macOS and Ubuntu install scripts — 60-90%
+  token reduction on Bash outputs via a transparent Claude Code `PreToolUse` hook.
+  macOS: installed via `brew install rtk` + `rtk init -g`. Linux: installed via
+  official install.sh. Run `rtk gain` after a few sessions to track savings.
+- `TurboQuant` added to Curated AI Productivity Additions — Google's near-optimal
+  KV cache quantization algorithm (6x memory reduction, 8x inference speed).
+  Works with vLLM today via `0xSero/turboquant`; llama.cpp/Ollama integration
+  expected Q3 2026. Paired with Ollama in Recommended Adoption Order.
 - New patterns: Prompt Engineering, Code Review, Testing with AI, Git Worktrees, Agent Gotchas, Multi-Repo Workflows
 - Rule templates for all major tools: `.cursorrules`, `.windsurfrules`, `COPILOT.md`
 - Claude Code reference implementation with hooks, skills, and memory structure
@@ -47,15 +72,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - CI workflow for markdown link validation
 - CHANGELOG.md
 - Curated "AI Productivity Additions" in `tools/README.md` covering Context7, Tavily,
-  Firecrawl, promptfoo, Portkey AI Gateway, LangGraph, n8n, Dify, Ollama,
-  Open WebUI, fastmcp, and Playwright MCP
-- `tools/setup-ai-workflow-macos.sh` for local AI workflow setup (Ollama, promptfoo,
+  Firecrawl, promptfoo, Portkey AI Gateway, LangGraph, n8n, Dify, Open WebUI,
+  fastmcp, and Playwright MCP
+- `tools/setup-ai-workflow-macos.sh` for local AI workflow setup (promptfoo,
   n8n, and shell workflow aliases)
 - Community workflow integrations for `planning-with-files`,
   `antigravity-awesome-skills`, and `OpenViking` in setup/docs
 - Added community-picked `browser-use` and `letta` into setup/docs/aliases
 - Added a dedicated memory stack (`mem0ai` + `graphiti-core`) with
   `ai-memory-check` and `ai-memory-python` helpers
+- Claude Code MCP plugin dual-registration documentation and audit guidance
+- Claude Code `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` warning and fix
+- MEMORY.md 200-line discipline section with topic-file extraction strategy
 
 ### Improved
 - README rewritten with problem-first framing and before/after examples
@@ -64,7 +92,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `best-practices/context-management.md` made tool-agnostic with separate tool-specific sections
 - README now links to the curated AI productivity tools section
 - `tools/README.md` now documents local workflow commands (`ai-eval`, `ai-flow`,
-  `ai-ollama`, `ai-webui`, `ai-portkey`, `ai-browser-mcp`)
+  `ai-webui`, `ai-portkey`, `ai-browser-mcp`)
 - `tools/setup-ai-workflow-macos.sh` now installs `pipx`, supports `openviking`,
   and adds aliases for skills discovery and installation workflows
 - `tools/setup-ai-workflow-macos.sh` now also installs `browser-use` and
@@ -75,6 +103,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   adding them, preventing duplicate-add failures on reruns
 - README structure improved with clearer quick start, adoption roadmap, table of
   contents, and a more descriptive repository map
+- `tools/README.md`: added `rtk` to core stack table and platform notes
+- `tools/README.md`: added `TurboQuant` to curated additions; updated Recommended
+  Adoption Order to pair TurboQuant
+- `best-practices/context-management.md`: `/compact` threshold corrected to 60-70%;
+  added MEMORY.md discipline section; added plugin dual-registration and agent teams
+  warnings to MCP strategy
+- `implementations/claude-code/README.md`: fixed MCP config path to `~/.claude/.mcp.json`;
+  added plugin management section; added agent teams env var warning; updated model
+  table to Sonnet/Opus/Haiku 4.x IDs; corrected `/compact` threshold to 60-70%
 
 ## [0.1.0] - 2026-03-15
 

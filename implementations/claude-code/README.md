@@ -168,6 +168,7 @@ Claude Code supports two hook types:
 Runs **before** Claude executes a tool. Use for:
 - Blocking dangerous commands
 - Adding confirmation gates
+- Rewriting commands before execution (e.g. RTK token compression)
 - Injecting environment setup
 
 **Location:** `~/.claude/hooks/PreToolUse.sh` or `.claude/hooks/PreToolUse.sh` (project-local)
@@ -194,6 +195,36 @@ if [[ "$TOOL_NAME" == "Bash" ]] && [[ ! -f .env ]]; then
   cp .env.example .env
 fi
 ```
+
+#### RTK: Token-Compressing Hook
+
+[RTK (Rust Token Killer)](https://github.com/rtk-ai/rtk) is a PreToolUse hook that
+transparently rewrites Bash commands to pipe output through a Rust binary before it
+lands in the context window. 60-90% savings on `git`, `npm`, `ls`, and other
+high-volume dev commands.
+
+**Install and wire (macOS):**
+```bash
+brew install rtk
+rtk init -g   # installs hook + patches settings.json
+```
+
+**Install and wire (Linux):**
+```bash
+curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
+export PATH="$HOME/.local/bin:$PATH"
+rtk init -g
+```
+
+**Verify:**
+```bash
+rtk --version   # rtk 0.x.x
+rtk gain        # shows cumulative token savings
+```
+
+The hook uses an exit-code protocol: exit 0 = rewrite+allow, exit 1 = pass through
+unchanged, exit 2 = deny (let Claude Code handle), exit 3 = rewrite+prompt user.
+Commands RTK doesn't know how to compress pass through at exit 1 with zero overhead.
 
 ### PostToolUse Hook
 
@@ -312,27 +343,45 @@ vercel rollback
 
 Claude Code supports Model Context Protocol servers for extending capabilities.
 
-**Global vs Per-Project:**
+**Config file locations:**
+
+```
+~/.claude/.mcp.json          # Global user-level servers (correct path)
+your-project/.mcp.json       # Project-specific servers
+```
+
+> **Note:** The correct global config file is `~/.claude/.mcp.json` — not `~/.claude/config.json`
+> or `~/.claude/settings.json`. The `mcpServers` key is **not** valid in `settings.json`;
+> adding it there will produce a schema validation error at startup.
+
+**Global config example:**
 
 ```json
-// ~/.claude/config.json (global servers)
+// ~/.claude/.mcp.json
 {
   "mcpServers": {
-    "filesystem": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/home/user"]
-    },
     "github": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-github"],
       "env": {
         "GITHUB_TOKEN": "${GITHUB_TOKEN}"
       }
+    },
+    "tavily": {
+      "command": "npx",
+      "args": ["-y", "tavily-mcp@latest"],
+      "env": {
+        "TAVILY_API_KEY": "${TAVILY_API_KEY}"
+      }
     }
   }
 }
+```
 
-// your-project/.claude/config.json (project-specific)
+**Project config example:**
+
+```json
+// your-project/.mcp.json
 {
   "mcpServers": {
     "supabase": {
@@ -348,20 +397,66 @@ Claude Code supports Model Context Protocol servers for extending capabilities.
 ```
 
 **Recommended global servers:**
-- `@modelcontextprotocol/server-filesystem` - File operations
 - `@modelcontextprotocol/server-github` - GitHub API access
-- `@modelcontextprotocol/server-postgres` - Database queries (if you use Postgres everywhere)
+- `tavily-mcp` - Web search
+- `@upstash/context7-mcp` - Library documentation lookup
 
 **Recommended per-project:**
-- Cloud provider SDKs (AWS, GCP, Supabase, Vercel)
+- Cloud provider SDKs (Supabase, Vercel, AWS)
 - Custom business logic servers
 - Domain-specific tools
 
 **Performance tips:**
 - Keep total servers under 10 (context overhead)
 - Keep total tools under 80 (tool selection accuracy)
-- Disable unused servers with `"enabled": false`
-- Use project-local configs for environment-specific tools
+- Use project-local `.mcp.json` for environment-specific tools
+
+### Plugin System and Dual Registration
+
+Claude Code's plugin marketplace can also register MCP servers. This creates a
+**dual-registration problem** you should be aware of:
+
+- A server added to `.mcp.json` registers as `mcp__<server>__*`
+- The same server enabled via a plugin registers as `mcp__plugin_<id>_<server>__*`
+- If both exist, every tool appears **twice** in the tool list — doubling context overhead
+
+**Audit your active tools periodically:**
+
+```bash
+# List installed plugins and their status
+claude plugin list
+
+# Disable a plugin (use marketplace format)
+claude plugin disable <plugin-name>@claude-plugins-official
+
+# Check what's in your .mcp.json
+cat ~/.claude/.mcp.json
+```
+
+**Rule of thumb:** For servers you use constantly (github, tavily, playwright), register
+them in `.mcp.json` directly and disable the corresponding plugin. For specialized servers
+used occasionally, prefer the plugin marketplace.
+
+### Agent Teams Env Var Warning
+
+If you see `mcp__agents__*` tool names in your session (e.g. `mcp__agents__github__*`),
+the `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` environment variable is set. This duplicates
+**all** registered MCP tools under an `agents` namespace — adding ~70+ extra tool name
+entries to the context window even when no teams are configured.
+
+**Fix:**
+
+```json
+// ~/.claude/settings.json — remove this line
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"   // <-- remove
+  }
+}
+```
+
+Only set this if you are actively using the agent teams feature with a configured `teams`
+key in `settings.json`.
 
 **Mapping to toolkit patterns:**
 - MCP servers = [Context Building](../../patterns/context-building.md)
@@ -371,11 +466,11 @@ Claude Code supports Model Context Protocol servers for extending capabilities.
 
 Claude Code supports three model tiers:
 
-| Model | Alias | Use For | Cost | Context |
-|-------|-------|---------|------|---------|
-| Sonnet 4.5 | `/fast` toggle off | Default work, most tasks | $3/$15 | 200K |
-| Opus 4.6 | Default | Complex architecture, deep analysis | $15/$75 | 1M |
-| Haiku 3.5 | Manual via API | Quick checks, formatting | $1/$5 | 200K |
+| Model | ID | Use For | Cost (in/out) | Context |
+|-------|-----|---------|------|---------|
+| claude-sonnet-4-6 | Sonnet 4.6 | Default work, most tasks | $3/$15 | 200K |
+| claude-opus-4-6 | Opus 4.6 | Complex architecture, deep analysis | $15/$75 | 1M |
+| claude-haiku-4-5-20251001 | Haiku 4.5 | Sub-agents, quick checks, formatting | $1/$5 | 200K |
 
 **Routing strategy:**
 
@@ -399,6 +494,64 @@ Claude Code supports three model tiers:
 1. Start with Sonnet for general work
 2. Switch to Opus if Claude struggles after 2-3 turns
 3. Use Haiku for batch operations (via programmatic API, not CLI)
+
+### Sub-Agent Model Routing
+
+Claude Code spawns sub-agents for background work (compaction, parallel tasks). By default they
+use the same model as your main session. Route them to Haiku automatically:
+
+In `~/.claude/settings.json` (or run `bash tools/setup-claude-code.sh` — it does this for you):
+
+```json
+{
+  "env": {
+    "CLAUDE_CODE_SUBAGENT_MODEL": "claude-haiku-4-5-20251001"
+  }
+}
+```
+
+Expected savings: 60-80% on sub-agent costs with no quality impact on main session work.
+
+### Claude Code Router (CCR)
+
+[CCR](https://github.com/musistudio/claude-code-router) is a local proxy that routes Claude Code
+requests to different model slots, enabling finer-grained cost control.
+
+**Install:**
+```bash
+npm install -g @musistudio/claude-code-router
+```
+
+**Preset** (`~/.claude-code-router/presets/<name>/manifest.json`):
+
+```json
+{
+  "name": "my-preset",
+  "PORT": 3456,
+  "Providers": [
+    {
+      "name": "anthropic",
+      "api_base_url": "https://api.anthropic.com/v1/messages",
+      "api_key": "$ANTHROPIC_API_KEY",
+      "models": ["claude-sonnet-4-6", "claude-opus-4-6", "claude-haiku-4-5-20251001"],
+      "transformer": { "use": ["Anthropic"] }
+    }
+  ],
+  "Router": {
+    "default": "anthropic,claude-sonnet-4-6",
+    "background": "anthropic,claude-haiku-4-5-20251001",
+    "think": "anthropic,claude-opus-4-6",
+    "longContext": "anthropic,claude-opus-4-6",
+    "longContextThreshold": 120000
+  }
+}
+```
+
+Slots: `default` (interactive work), `background` (auto-compaction, sub-agents), `think` (complex reasoning), `longContext` (>120K tokens).
+
+```bash
+ccr my-preset start && eval "$(ccr activate)" && claude
+```
 
 **Mapping to toolkit patterns:**
 - Model routing = [Multi-Model Routing](../../patterns/multi-model-routing.md)
@@ -436,7 +589,7 @@ claude
 
 **Context management:**
 - Use `@filename` references instead of describing locations
-- Run `/compact` when context grows large (~70% of 200K tokens)
+- Run `/compact` when context reaches **60-70%** of 200K tokens — don't wait until 90%
 - Use `/clear` between unrelated tasks
 
 **Quality gates:**
@@ -599,29 +752,38 @@ Claude Code has a 200K token context window (Sonnet) or 1M (Opus).
 
 **Monitoring:**
 - Check token usage in bottom status bar
-- Run `/compact` at ~70% (140K tokens for Sonnet)
+- Run `/compact` at **60-70%** (120-140K tokens for Sonnet) — waiting until 90% risks hitting session limits on long tasks
 - Use `/clear` between unrelated tasks
 
 **Reduction strategies:**
 
-1. **Targeted file reading**
+1. **RTK hook (highest impact, zero workflow change)**
+   Install RTK to compress Bash outputs before they reach the model. A single
+   `git log` can produce 10K tokens of raw output; RTK filters it to under 1K.
+   ```bash
+   brew install rtk && rtk init -g   # macOS
+   # or: curl installer + rtk init -g  (Linux)
+   ```
+   See [RTK hook setup](#rtk-token-compressing-hook) for full instructions.
+
+2. **Targeted file reading**
    ```
    Instead of: "Read all files in src/"
    Do: "@src/components/Button.tsx @src/hooks/useAuth.ts"
    ```
 
-2. **Glob patterns for specific files**
+3. **Glob patterns for specific files**
    ```
    Instead of: "@**/*"
    Do: "@**/*.test.ts" or "@src/lib/**/*.ts"
    ```
 
-3. **Summarize before loading**
+4. **Summarize before loading**
    ```
    "List files in src/components/, then I'll tell you which to read"
    ```
 
-4. **Use memory files**
+5. **Use memory files**
    - Store architectural decisions in memory/architecture.md
    - Reference: "Check architecture.md for DB schema"
    - Avoids re-reading large files
@@ -759,6 +921,13 @@ Solution: Move details to topic files, keep index under limit
 ```
 Problem: Pre-commit hook fails but Claude Code proceeds
 Solution: PreToolUse hook should exit 1 on failure to block
+```
+
+**6. RTK not rewriting commands**
+```
+Problem: rtk binary not in PATH when hook runs
+Solution: Use full path in hook or ensure PATH includes ~/.local/bin
+         Run: rtk --version to confirm binary is reachable
 ```
 
 ### Debug Mode
