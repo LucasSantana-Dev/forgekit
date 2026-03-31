@@ -49,10 +49,10 @@ for company_dir in "$COMPANIES_DIR"/*/; do
     check_section "$agent_file" "What you produce"
     check_section "$agent_file" "Who you hand off to"
 
-    # Validate reportsTo references exist (skip if no reportsTo)
+    # Validate reportsTo references exist (skip if null or missing)
     if grep -qE "^reportsTo:" "$agent_file"; then
       reports_to=$(grep -E "^reportsTo:" "$agent_file" | sed 's/reportsTo: *//' | tr -d '[:space:]')
-      if [ -n "$reports_to" ] && [ ! -d "${company_dir}agents/${reports_to}" ]; then
+      if [ -n "$reports_to" ] && [ "$reports_to" != "null" ] && [ ! -d "${company_dir}agents/${reports_to}" ]; then
         echo -e "${RED}ERROR${NC}: Agent '${agent_name}' reportsTo '${reports_to}' but no such agent exists in ${company}/agents/"
         ERRORS=$((ERRORS + 1))
       fi
