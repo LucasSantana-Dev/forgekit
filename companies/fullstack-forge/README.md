@@ -4,7 +4,7 @@
 
 > An [Agent Company](https://agentcompanies.io) based on [claude-skills](https://github.com/jeffallan/claude-skills) — a broad software engineering skill set spanning 12 languages, multiple frameworks, cloud infrastructure, security, and ML
 
-![Org Chart](images/org-chart.png)
+![Org Chart](https://raw.githubusercontent.com/paperclipai/companies/main/fullstack-forge/images/org-chart.png)
 
 ## What's Inside
 
