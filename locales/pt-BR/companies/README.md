@@ -1,0 +1,85 @@
+# Companies
+
+Pre-built agent organizations for AI-assisted development. Each company is a complete team of specialized agents with defined roles, skills, and routing protocols — ready to drop into any project.
+
+## Concept
+
+A company maps work to the right specialist automatically:
+
+```
+Task → CEO → CTO → Team Lead → Specialist
+```
+
+Each agent has a strict contract:
+- **What triggers it** — conditions that activate the agent
+- **What it does** — specific responsibilities
+- **What it produces** — concrete outputs
+- **Who it hands off to** — next agent in the chain
+
+## File format
+
+```
+companies/
+  <company-name>/
+    COMPANY.md          ← manifest (name, schema, goals)
+    README.md           ← usage guide
+    agents/
+      <role>/
+        AGENTS.md       ← agent definition (frontmatter + body)
+    skills/
+      <skill>/
+        SKILL.md        ← reusable skill definition
+    teams/
+      <team>/
+        TEAM.md         ← team grouping with members
+```
+
+### Agent format (`AGENTS.md`)
+
+```yaml
+---
+name: React Engineer
+title: Senior React/Next.js Engineer
+reportsTo: frontend-lead
+skills:
+  - react-expert
+  - nextjs-developer
+---
+
+You are the React Engineer. You handle React and Next.js projects.
+
+## What triggers you
+...
+
+## What you do
+...
+
+## What you produce
+...
+
+## Who you hand off to
+...
+```
+
+The `skills` field references entries in the company's `skills/` directory.
+
+## Using with AI tools
+
+### Claude Code / OpenCode
+Copy the agent's `AGENTS.md` to `.claude/agents/<role>/AGENTS.md` in your project.
+
+### Codex CLI
+Agents follow the standard `AGENTS.md` format — drop into your repo root or subdirectory.
+
+### Cursor / Windsurf
+Use the agent body as a scoped `.cursorrules` or `.windsurfrules` entry.
+
+## Available companies
+
+| Company | Agents | Skills | Teams | Description |
+|---------|--------|--------|-------|-------------|
+| [fullstack-forge](./fullstack-forge/) | 49 | 66 | 10 | Full-service software development consultancy across 11 departments |
+
+## Attribution
+
+Companies are MIT licensed. `fullstack-forge` was imported from [paperclipai/companies](https://github.com/paperclipai/companies).

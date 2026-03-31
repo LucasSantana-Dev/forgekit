@@ -103,6 +103,13 @@ Tool-agnostic playbooks for recurring AI workflow problems.
 | [Multi-Repo Workflows](patterns/multi-repo.md) | Coordinating changes across repositories |
 | [Agent Observability](patterns/agent-observability.md) | Tracing, evaluating, and regression-testing agent behavior |
 
+### `companies/`
+Pre-built agent organizations with specialized roles, skills, and routing protocols.
+
+| Company | Description |
+|---------|-------------|
+| [fullstack-forge](companies/fullstack-forge/) | 49 agents, 66 skills, 10 teams across 11 departments |
+
 ### `best-practices/`
 
 Cross-cutting rules for quality and safety.

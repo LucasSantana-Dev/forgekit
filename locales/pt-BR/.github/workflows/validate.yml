@@ -59,3 +59,13 @@ jobs:
             $results | Format-Table -AutoSize
             exit 1
           }
+
+  validate-companies:
+    name: Validate Company Schemas
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate company schemas
+        run: bash tools/validate-companies.sh
