@@ -119,3 +119,89 @@ The dispatch mechanism varies by tool:
 ### Reference Implementation
 
 See: [`implementations/opencode/plugin/orchestrator.ts`](../implementations/opencode/plugin/orchestrator.ts)
+
+## OMC-Inspired Orchestration Patterns
+
+Patterns derived from [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) — a multi-agent orchestration framework built on Claude Code.
+
+### 3-Layer Composition
+
+```
+ultrawork → ralph → autopilot
+```
+
+| Layer | Role | When to use |
+|-------|------|-------------|
+| `ultrawork` | Parallel execution engine with model tier routing | Multiple independent tasks, cost optimization |
+| `ralph` | PRD-driven persistence loop, story-by-story | Single cohesive feature with explicit acceptance criteria |
+| `autopilot` | Lightweight sequential runner | Simple chained tasks with no branching |
+
+Use the layers independently or compose them. Example: `ultrawork` dispatches parallel stories, each story runs `ralph` internally.
+
+### Model Tier Routing (Ultrawork Pattern)
+
+Route subagents to the cheapest model that can do the job:
+
+| Tier | Model | Task Types |
+|------|-------|-----------|
+| Haiku | Fast/cheap | Trivial fixes, config edits, lookups, spec review (mechanical) |
+| Sonnet | Default | Standard implementation, bug fixes, test writing, code quality review |
+| Opus | Slow/expensive | Architecture decisions, cross-repo analysis, ambiguous requirements |
+
+**Routing heuristics:**
+- Lines changed < 20 → Haiku; 20–200 → Sonnet; >200 or architectural → Opus
+- Single file → Haiku; multi-file → Sonnet; cross-repo → Opus
+
+### Ralph — PRD-Driven Persistence
+
+The `ralph` pattern prevents agents from hallucinating completion. Key properties:
+
+1. **Explicit acceptance criteria** — defined in `prd.json` before execution starts
+2. **Story-by-story iteration** — one story at a time, not all at once
+3. **Reviewer sign-off required** — a fresh subagent must return `APPROVED` before marking a story done
+4. **Persistent state** — `prd.json` story statuses survive context resets
+
+```json
+{
+  "feature": "feature name",
+  "stories": [
+    {
+      "id": "S1",
+      "title": "story title",
+      "acceptance_criteria": ["criterion 1", "criterion 2"],
+      "status": "pending | in_progress | done | blocked"
+    }
+  ],
+  "done_criteria": ["CI passing", "CHANGELOG.md updated"]
+}
+```
+
+### Preemptive Compaction
+
+For local models with small context windows, track tokens cumulatively (O(1) per iteration) and compact before the context fills:
+
+```python
+# Instead of re-summing all messages each iteration:
+cumulative_tokens = 0  # running total
+
+# On each new message added:
+cumulative_tokens += len(str(new_content)) // 4
+
+# Compact at ~44% of context window to leave room for tool outputs:
+if cumulative_tokens > COMPACT_THRESHOLD:
+    messages = compact_messages(messages)
+    cumulative_tokens = estimate_tokens(messages)  # reset to actual
+```
+
+For Claude Code (200K context), compact at 70% threshold. For local 16K models, compact at 44%.
+
+### Verify-Deliverables Hook
+
+After each subagent completes, verify it actually produced output before the parent continues. Prevents "I would implement..." responses from being treated as completions:
+
+**Checklist before accepting subagent output:**
+1. Did the subagent write or modify at least one file?
+2. Do tests pass?
+3. Does the output match the task spec (not just "here's how I would do it")?
+
+If any check fails: re-dispatch the subagent with explicit instructions to execute, not describe.

@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-03-31
+
+### Added
+- `patterns/task-orchestration.md` — OMC-Inspired Orchestration Patterns section covering:
+  - 3-layer composition (`ultrawork` → `ralph` → `autopilot`)
+  - Model tier routing table (Haiku/Sonnet/Opus with routing heuristics)
+  - Ralph PRD-driven persistence pattern with `prd.json` schema
+  - Preemptive compaction pattern (O(1) cumulative token tracking)
+  - Verify-deliverables hook checklist
+
 ## [0.5.0] - 2026-03-31
 
 ### Added
