@@ -40,6 +40,26 @@ cp implementations/claude-code/skills/*.md ~/.claude/skills/
 claude
 ```
 
+## Agent Organizations
+
+The `companies/` directory provides pre-built teams of specialized agents with defined roles,
+skills, and routing protocols. Each agent maps directly to Claude Code's `.claude/agents/` format.
+
+```bash
+# Copy a single agent into your project
+mkdir -p .claude/agents/react-engineer
+cp ../../companies/fullstack-forge/agents/react-engineer/AGENTS.md .claude/agents/react-engineer/
+
+# Or copy an entire team (e.g. frontend)
+for agent in react-engineer vue-engineer angular-engineer frontend-lead; do
+  mkdir -p .claude/agents/$agent
+  cp ../../companies/fullstack-forge/agents/$agent/AGENTS.md .claude/agents/$agent/
+done
+```
+
+Claude Code will then auto-route to the right specialist based on task context. See
+[companies/README.md](../../companies/README.md) for available companies and agent list.
+
 ## Context Building
 
 ### CLAUDE.md Layering
