@@ -46,6 +46,35 @@ These are high-signal tools from the shared X thread that fit this toolkit's wor
 | [OpenViking](https://github.com/volcengine/OpenViking) | Context DB | Filesystem-style long-term context store designed for agent workflows |
 | [Codex CLI](https://github.com/openai/codex) | AI coding agent | Sandbox-first terminal agent (OpenAI). Defaults: `workspace-write`, network disabled, `on-request` approval |
 
+| [markdownify-mcp](https://github.com/zcaceres/markdownify-mcp) | Document ingestion | Converts PDFs, images, and audio into Markdown for RAG pipelines and context injection |
+| [MCPHub](https://github.com/samanhappy/mcphub) | MCP management | HTTP proxy that aggregates and routes multiple MCP servers — reduces connection overhead |
+| [lmnr](https://github.com/lmnr-ai/lmnr) | Agent observability | Traces, evaluates, and monitors agent behavior in production — complements promptfoo for runtime visibility |
+| [TDD Guard](https://github.com/nizos/tdd-guard) | Testing enforcement | Claude Code hook that blocks implementation before tests exist — enforces test-first at the agent level |
+| [container-use](https://github.com/dagger/container-use) | Agent isolation | Dagger-based containerized environments for coding agents — prevents host contamination on risky tasks |
+| [claude-code-security-review](https://github.com/anthropics/claude-code-security-review) | Security scanning | Official Anthropic action that analyzes PRs for security issues — drop-in CI step |
+
+### Claude Code Skills
+
+Skills are `.md` files placed in `~/.claude/skills/` that teach Claude workflows and patterns.
+High-signal picks from the community:
+
+| Skill | Stars | Why it matters |
+|-------|-------|---------------|
+| [Superpowers](https://github.com/obra/superpowers) | 96k+ | 20+ battle-tested skills: TDD pipeline, plan-to-execute, systematic debugging |
+| [Context Optimization](https://github.com/muratcankoylan/agent-skills-for-context-engineering) | 13.9k | KV-cache tricks and token reduction — directly complements RTK |
+| [claude-deep-research-skill](https://github.com/199-biotechnologies/claude-deep-research-skill) | — | 8-phase research with auto-continuation for deep dives |
+| [Anthropic Official Skills](https://github.com/anthropics/skills) | — | PDF, DOCX, XLSX, PPTX, Canvas Design, Frontend Design, Brand Guidelines |
+
+**Install:**
+```bash
+# Global install
+git clone <repo-url> && cp <repo>/skills/*.md ~/.claude/skills/
+
+# Or via skills CLI
+npx -y skills add obra/superpowers -g
+npx -y skills add anthropics/skills -g
+```
+
 ### Manual/Optional Picks From Community Repos
 
 These are high-value, but not auto-installed because they are IDE-first, docs-first, or heavyweight stacks.
@@ -62,10 +91,14 @@ These are high-value, but not auto-installed because they are IDE-first, docs-fi
 
 1. Start with `Context7`, `promptfoo`, and `Playwright MCP` for immediate quality gains.
 2. Add `Portkey AI Gateway` when you need multi-provider governance and observability.
-3. Add `LangGraph` or `Dify` when simple chat flows become multi-step workflows.
-4. Add `n8n` for repeatable cross-tool automation and handoff reduction.
-5. Add `Ollama` + `TurboQuant` + `Open WebUI` for private/local experimentation — TurboQuant's KV-cache quantization can reduce memory usage on supported hardware (results vary by GPU architecture).
-6. Add `Codex CLI` for a sandbox-first alternative agent on OpenAI models.
+3. Add `Superpowers` skills and `Context Optimization` skill to enrich Claude Code's workflow library.
+4. Add `markdownify-mcp` and `lmnr` when building RAG pipelines or agent workflows that need observability.
+5. Add `TDD Guard` to enforce test-first behavior at the agent level.
+6. Add `LangGraph` or `Dify` when simple chat flows become multi-step workflows.
+7. Add `n8n` for repeatable cross-tool automation and handoff reduction.
+8. Add `Ollama` + `TurboQuant` + `Open WebUI` for private/local experimentation — TurboQuant's KV-cache quantization can reduce memory usage on supported hardware (results vary by GPU architecture).
+9. Add `container-use` when agent tasks carry meaningful risk of host contamination.
+10. Add `Codex CLI` for a sandbox-first alternative agent on OpenAI models.
 
 ## capture-training
 
@@ -112,6 +145,9 @@ After running `bash tools/setup-ai-workflow-macos.sh` and `source ~/.zshrc`:
 | `ai-openviking` | Start OpenViking server (if installed) |
 | `ai-browser-use` | Launch Browser Use CLI |
 | `ai-letta` | Launch Letta CLI |
+| `ai-lmnr` | Open lmnr dashboard for agent tracing and evaluation |
+| `ai-markdownify` | Run markdownify-mcp — convert PDF/image/audio to Markdown |
+| `ai-mcphub` | Start MCPHub proxy to manage multiple MCP servers |
 | `ai-memory-check` | Validate memory stack imports (`mem0`, `graphiti_core`) |
 | `ai-memory-python` | Open the dedicated memory-stack Python runtime |
 | `ai-docs` | Reminder to use Context7 MCP for docs-grounded coding |

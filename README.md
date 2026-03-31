@@ -91,6 +91,7 @@ Practical, tool-agnostic playbooks.
 | [Git Worktrees](patterns/git-worktrees.md) | Isolate concurrent tasks safely |
 | [Agent Gotchas](patterns/agent-gotchas.md) | Avoid common AI workflow failures |
 | [Multi-Repo Workflows](patterns/multi-repo.md) | Coordinate changes across repositories |
+| [Agent Observability](patterns/agent-observability.md) | Trace, evaluate, and regression-test agent behavior |
 
 ### `best-practices/`
 Cross-cutting rules for quality and safety.
@@ -120,8 +121,8 @@ Core terminal stack includes:
 `ripgrep`, `jq`, `yq`, `chezmoi`.
 
 See [Curated AI Productivity Additions](tools/README.md#curated-ai-productivity-additions)
-for advanced integrations such as Context7, Tavily, Firecrawl, OpenViking,
-browser-use, Letta, Mem0, and Graphiti.
+for advanced integrations including Context7, Tavily, Firecrawl, markdownify-mcp, lmnr,
+TDD Guard, container-use, Superpowers skills, and the Anthropic official skills collection.
 
 ### `implementations/`
 Concrete examples for specific tools.

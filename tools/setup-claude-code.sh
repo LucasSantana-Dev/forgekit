@@ -41,6 +41,10 @@ recommended = {
     "playwright": {
         "command": "npx",
         "args": ["-y", "@playwright/mcp@latest"]
+    },
+    "markdownify": {
+        "command": "npx",
+        "args": ["-y", "markdownify-mcp@latest"]
     }
 }
 
@@ -76,6 +80,10 @@ data = {
         "playwright": {
             "command": "npx",
             "args": ["-y", "@playwright/mcp@latest"]
+        },
+        "markdownify": {
+            "command": "npx",
+            "args": ["-y", "markdownify-mcp@latest"]
         }
     }
 }
@@ -86,7 +94,7 @@ PYEOF
 fi
 
 echo ""
-echo "  Servers: tavily (web search), context7 (library docs), playwright (browser automation)"
+echo "  Servers: tavily (web search), context7 (library docs), playwright (browser automation), markdownify (PDF/image/audio→Markdown)"
 echo "  Set TAVILY_API_KEY in your shell env for tavily to work: export TAVILY_API_KEY=tvly-..."
 echo "  For project-specific servers, create .mcp.json in your project root."
 

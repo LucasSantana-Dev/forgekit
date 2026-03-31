@@ -6,6 +6,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-03-31
+
+### Added
+- `patterns/agent-observability.md` — new pattern covering the three-layer observability
+  stack: lmnr tracing, promptfoo regression testing, TDD Guard enforcement, and
+  `claude-code-security-review` CI integration. Explains when and how to combine them.
+- `tools/README.md`: six new entries in Curated AI Productivity Additions:
+  `markdownify-mcp` (PDF/image/audio→Markdown), `MCPHub` (multi-server HTTP proxy),
+  `lmnr` (agent tracing and eval), `TDD Guard` (test-first enforcement hook),
+  `container-use` (Dagger-based agent sandboxing), and `claude-code-security-review`
+  (official Anthropic PR security action).
+- `tools/README.md`: new **Claude Code Skills** subsection documenting `Superpowers`,
+  `Context Optimization`, `claude-deep-research-skill`, and the Anthropic official
+  skills collection (PDF, DOCX, XLSX, PPTX, Canvas Design, Frontend Design).
+- `setup-claude-code.sh`: `markdownify-mcp` added to the MCP server merge list —
+  auto-installed alongside tavily, context7, and playwright on fresh setups.
+- `setup-ai-workflow-macos.sh`: new aliases `ai-markdownify`, `ai-mcphub`, `ai-lmnr`,
+  `ai-tdd-guard` added to the workflow block.
+- README pattern table updated with `Agent Observability` entry.
+- Recommended Adoption Order in `tools/README.md` expanded to include skills,
+  markdownify-mcp, lmnr, TDD Guard, and container-use with positioning rationale.
+- Dead link `skillsmp.com` removed from Claude Code Skills section.
+
 ## [0.2.3] - 2026-03-30
 
 ### Added
@@ -18,7 +41,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Trust model mismatch gotcha in `patterns/agent-gotchas.md` — comparison table and cross-tool guidance
 - `@openai/codex` install in `tools/setup-ai-workflow-macos.sh` via `install_codex()`
 - `ai-codex` alias in zsh workflow block
-- Codex CLI entry in `tools/README.md` curated additions and adoption order (step 7)
+- Codex CLI entry in `tools/README.md` curated additions and adoption order
 
 ## [0.2.2] - 2026-03-30
 

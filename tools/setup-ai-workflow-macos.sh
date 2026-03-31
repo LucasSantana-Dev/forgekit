@@ -145,6 +145,10 @@ alias ai-browser-use='browser-use'
 alias ai-letta='letta'
 alias ai-memory-check='$HOME/.local/bin/ai-memory-check'
 alias ai-memory-python='$HOME/.local/share/ai-memory-venv/bin/python'
+alias ai-markdownify='npx -y markdownify-mcp@latest'
+alias ai-mcphub='npx -y mcphub'
+alias ai-lmnr='echo "Install: pip install lmnr — then: lmnr --help"'
+alias ai-tdd-guard='echo "TDD Guard: drop tdd-guard.json into project root — see github.com/nizos/tdd-guard"'
 alias ai-codex='codex'                                                # OpenAI Codex CLI (sandbox-first)
 # <<< ai-dev-toolkit workflow <<<
 EOF
