@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-03-31
+
+### Fixed
+- `tools/setup-ai-workflow-macos.sh`: `lmnr` now auto-installed via `pipx install lmnr`
+  (macOS Python 3.14 uses uv and is externally managed — `pip3 install` fails with PEP 668
+  error). `ai-lmnr` alias updated to point to `~/.local/bin/lmnr`.
+- `tools/install-ubuntu.sh`: Added `lmnr` install section using
+  `pip3 install lmnr --break-system-packages`. Added `promptfoo` user-local install via
+  `npm install --prefix ~/.npm-global` — avoids `better-sqlite3` native module version
+  mismatch on Ubuntu + Node 22 (NODE_MODULE_VERSION 115 vs 127).
+- `patterns/agent-observability.md`: install instructions now split by platform —
+  `pipx install lmnr` for macOS, `pip3 install lmnr --break-system-packages` for Linux,
+  and user-local promptfoo pattern for Ubuntu + Node 22.
+
 ## [0.3.2] - 2026-03-31
 
 ### Fixed

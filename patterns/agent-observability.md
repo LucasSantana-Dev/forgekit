@@ -33,7 +33,11 @@ you can query, replay, and annotate.
 
 **Install:**
 ```bash
-pip install lmnr
+# macOS — system Python is externally managed (PEP 668); use pipx
+pipx install lmnr          # CLI: ~/.local/bin/lmnr
+
+# Ubuntu/Linux
+pip3 install lmnr --break-system-packages
 ```
 
 **Instrument a Python agent:**
@@ -72,7 +76,14 @@ identify good examples, then encode them as promptfoo test cases.
 
 **Install:**
 ```bash
+# macOS / any Node version
 npm install -g promptfoo
+
+# Ubuntu + Node 22 — better-sqlite3 has a native module version mismatch when
+# installed globally. Install user-local instead so it compiles against current Node.
+mkdir -p ~/.npm-global
+npm install --prefix ~/.npm-global promptfoo@latest
+echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.bashrc
 ```
 
 **Define a test suite** (`promptfooconfig.yaml`):

@@ -271,6 +271,37 @@ else
 fi
 
 echo ""
+echo "=== lmnr (agent observability) ==="
+if python3 -c "import lmnr" 2>/dev/null; then
+  echo "✓ lmnr already installed"
+  SKIPPED+=("lmnr")
+else
+  echo "Installing lmnr..."
+  # Ubuntu protects system Python (PEP 668). --break-system-packages is safe for
+  # user-scoped tools on machines where you control the Python environment.
+  pip3 install lmnr --break-system-packages --quiet 2>&1 | grep -E "Successfully|already" || true
+  python3 -c "import lmnr" 2>/dev/null && INSTALLED+=("lmnr") || echo "⚠  lmnr install failed — try: pip3 install lmnr --user"
+fi
+
+echo ""
+echo "=== promptfoo (prompt regression testing) ==="
+# Node 22 on Ubuntu: better-sqlite3 native module compiled for older Node versions
+# will fail with NODE_MODULE_VERSION mismatch if installed globally.
+# Install user-local to compile against current Node, then add to PATH.
+PROMPTFOO_BIN="$HOME/.npm-global/bin/promptfoo"
+if [ -x "$PROMPTFOO_BIN" ] && "$PROMPTFOO_BIN" --version &>/dev/null 2>&1; then
+  echo "✓ promptfoo already installed"
+  SKIPPED+=("promptfoo")
+else
+  echo "Installing promptfoo (user-local to avoid Node version mismatch)..."
+  mkdir -p "$HOME/.npm-global"
+  npm install --prefix "$HOME/.npm-global" promptfoo@latest --quiet 2>&1 | grep -E "added|error" | head -3 || true
+  grep -q 'npm-global' "$HOME/.bashrc" || echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> "$HOME/.bashrc"
+  export PATH="$HOME/.npm-global/bin:$PATH"
+  command -v promptfoo &>/dev/null && INSTALLED+=("promptfoo") || echo "⚠  promptfoo install failed"
+fi
+
+echo ""
 echo "=== Setting up atuin sync ==="
 echo "Run: atuin login"
 echo ""

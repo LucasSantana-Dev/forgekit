@@ -147,7 +147,7 @@ alias ai-memory-check='$HOME/.local/bin/ai-memory-check'
 alias ai-memory-python='$HOME/.local/share/ai-memory-venv/bin/python'
 alias ai-markdownify='npx -y markdownify-mcp@latest'
 alias ai-mcphub='npx -y mcphub'
-alias ai-lmnr='echo "Install: pip install lmnr — then: lmnr --help"'
+alias ai-lmnr='$HOME/.local/bin/lmnr'
 alias ai-tdd-guard='echo "TDD Guard: drop tdd-guard.json into project root — see github.com/nizos/tdd-guard"'
 alias ai-codex='codex'                                                # OpenAI Codex CLI (sandbox-first)
 # <<< ai-dev-toolkit workflow <<<
@@ -194,6 +194,7 @@ install_npm_global "n8n" "n8n"
 install_pipx_package "openviking" "openviking-server"
 install_pipx_package "browser-use" "browser-use"
 install_pipx_package "letta" "letta"
+install_pipx_package "lmnr" "lmnr"
 install_memory_stack
 install_codex
 append_zsh_block
