@@ -31,7 +31,8 @@
     "format:check": "prettier --check \"**/*.{md,json,yml,yaml}\" --ignore-path .prettierignore"
   },
   "devDependencies": {
-    "eslint": "^9",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10",
     "jest": "^30",
     "prettier": "^3",
     "yaml": "^2"
