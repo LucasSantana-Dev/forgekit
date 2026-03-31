@@ -102,6 +102,9 @@ Tool-agnostic playbooks for recurring AI workflow problems.
 | [Agent Gotchas](patterns/agent-gotchas.md) | Avoiding common AI workflow failures |
 | [Multi-Repo Workflows](patterns/multi-repo.md) | Coordinating changes across repositories |
 | [Agent Observability](patterns/agent-observability.md) | Tracing, evaluating, and regression-testing agent behavior |
+| [Streaming Orchestration](patterns/streaming-orchestration.md) | Event-driven turn loops, budgeting, and transcript compaction |
+| [Tool Registry Patterns](patterns/tool-registry-patterns.md) | Decoupling tool metadata from implementation; runtime filtering |
+| [Permission Boundaries](patterns/permission-boundaries.md) | Minimum-privilege tool access, confirmation gates, trust profiles |
 
 ### `companies/`
 Pre-built agent organizations with specialized roles, skills, and routing protocols.

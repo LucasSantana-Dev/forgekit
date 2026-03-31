@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-03-31
+
+### Added
+- `patterns/streaming-orchestration.md` — event-driven turn loops, turn budgeting, transcript compaction, session persistence, stop reason handling
+- `patterns/tool-registry-patterns.md` — separating tool metadata from implementation, JSON snapshots, permission contexts, trust-gated init, parity checking
+- `patterns/permission-boundaries.md` — three-layer permission model (filter/block/confirm), named profiles, CLAUDE.md permission sections, PreToolUse hook patterns
+
 ## [0.6.0] - 2026-03-31
 
 ### Added
