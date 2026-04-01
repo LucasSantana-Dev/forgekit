@@ -75,6 +75,68 @@ npx -y skills add obra/superpowers -g
 npx -y skills add anthropics/skills -g
 ```
 
+### OpenCode Plugins
+
+Drop into `~/.config/opencode/opencode.jsonc` under the `"plugin"` array. Restart OpenCode after changes.
+
+```jsonc
+{
+  "plugin": [
+    "oh-my-openagent",        // orchestration
+    "opencode-claude-auth",   // auth
+    "@kompassdev/opencode",   // repo navigation
+    "opencode-scheduler"      // scheduling
+  ]
+}
+```
+
+#### Auth
+
+| Plugin | What | Notes |
+|--------|------|-------|
+| [`opencode-claude-auth`](https://github.com/griffinmartin/opencode-claude-auth) | Reuses your Claude Code OAuth credentials — no separate API key or login | Reads macOS Keychain or `~/.claude/.credentials.json`; auto-refreshes tokens |
+| [`opencode-gemini-auth`](https://github.com/jenslys/opencode-gemini-auth) | Gemini OAuth via browser flow — no API key needed | ⚠️ Google warns this is a ToS violation; use API key if account risk matters |
+| [`opencode-antigravity-auth`](https://github.com/NoeFabris/opencode-antigravity-auth) | Gemini 3 Pro + Claude 4.6 via Antigravity IDE OAuth; two quota pools, multi-account rotation | ⚠️ Same ToS risk as above; free access to otherwise paid models |
+
+#### Orchestration & Workflow
+
+| Plugin | What | Notes |
+|--------|------|-------|
+| [`oh-my-openagent`](https://ohmyopenagent.com) | Multi-model agent harness — type `ulw` to trigger autonomous plan → research → parallel agents → self-correct loop | 40+ lifecycle hooks; `boulder.json` session resumability; routes tasks to optimal model |
+| [`@kompassdev/opencode`](https://github.com/kompassdev/kompass) | Keeps agents grounded in real repo state via `changes_load`, `pr_load`, `ticket_load` | Adds `/dev`, `/ship`, `/commit`, `/todo` commands; prevents drift on long tasks |
+| [`@plannotator/opencode`](https://github.com/backnotprop/plannotator) | Interactive plan review with visual diff annotation before agent proceeds | Approve/reject/comment on plans; AES-256-GCM encrypted sharing; `/plannotator-review` command |
+| [`opencode-scheduler`](https://github.com/different-ai/opencode-scheduler) | Schedule recurring agent tasks using native OS schedulers (launchd/systemd/Task Scheduler) | Cron syntax; overlap prevention; timeout enforcement; runs from project dir with full MCP config |
+
+#### Memory
+
+| Plugin | What | Notes |
+|--------|------|-------|
+| [`opencode-graphiti`](https://github.com/vicary/opencode-graphiti) | Persistent temporal + relationship-aware memory via Graphiti knowledge graph | Best for long-running projects where decisions chain across sessions |
+| [`opencode-mem`](https://github.com/supermemoryai/opencode-mem) | Local vector DB memory with semantic search | Lighter than graphiti; good default starting point |
+
+#### Code Quality
+
+| Plugin | What | Notes |
+|--------|------|-------|
+| [`opencode-codegraph`](https://www.npmjs.com/package/opencode-codegraph) | CPG-powered code analysis — understands call graphs, data flow, and AST structure | Useful for large codebases where grep-based context falls short |
+| [`opencode-plugin-openspec`](https://github.com/Octane0411/opencode-plugin-openspec) | Dedicated agent for planning and specifying software architecture before implementation | Surfaces API contracts and interface decisions early |
+
+#### Notifications
+
+| Plugin | What | Notes |
+|--------|------|-------|
+| [`opencode-plugin-apprise`](https://github.com/or1is1/opencode-plugin-apprise) | Sends rich notifications (macOS, Slack, email, Discord) when agent needs attention | Requires [Apprise CLI](https://github.com/caronc/apprise); configure notification targets in plugin config |
+
+#### Recommended Adoption Order (OpenCode)
+
+1. `opencode-claude-auth` — zero-friction auth if you already use Claude Code
+2. `oh-my-openagent` — the `ulw` command alone is worth the install
+3. `@kompassdev/opencode` — add when agents start drifting on multi-step tasks
+4. `opencode-scheduler` — add when you have recurring agent workflows (summaries, scans, uptime checks)
+5. `opencode-graphiti` — add when decision context needs to persist across weeks of sessions
+6. `@plannotator/opencode` — add when team review of agent plans becomes a bottleneck
+7. `opencode-codegraph` — add for large codebases where structural analysis matters
+
 ### Manual/Optional Picks From Community Repos
 
 These are high-value, but not auto-installed because they are IDE-first, docs-first, or heavyweight stacks.

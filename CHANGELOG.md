@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-04-01
+
+### Added
+- `tools/README.md` — OpenCode Plugins section with curated catalog across five categories: Auth, Orchestration & Workflow, Memory, Code Quality, Notifications
+  - Auth: `opencode-claude-auth` (reuses Claude Code credentials), `opencode-gemini-auth` and `opencode-antigravity-auth` (Gemini OAuth, with ToS risk notes)
+  - Orchestration: `oh-my-openagent` (multi-model harness, `ulw` command), `@kompassdev/opencode` (repo-grounded workflows), `@plannotator/opencode` (interactive plan review), `opencode-scheduler` (launchd/systemd recurring agent tasks)
+  - Memory: `opencode-graphiti` (Graphiti knowledge graph), `opencode-mem` (local vector DB)
+  - Code Quality: `opencode-codegraph` (CPG analysis), `opencode-plugin-openspec` (architecture spec agent)
+  - Notifications: `opencode-plugin-apprise` (Apprise CLI integration)
+- Recommended adoption order for OpenCode plugins (7-step progression)
+- Install snippet showing `opencode.jsonc` plugin array configuration
+
 ## [0.7.0] - 2026-03-31
 
 ### Added
