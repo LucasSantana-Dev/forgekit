@@ -1,0 +1,43 @@
+{
+  "$schema": "../schema/agents.schema.json",
+  "version": "1.0.0",
+  "agents": {
+    "orchestrator": {
+      "tier": "opus",
+      "role": "Plans tasks, delegates to specialists, drives work to completion",
+      "skills": ["plan", "ship", "verify"],
+      "durable": true,
+      "aliases": ["sisyphus", "main", "primary"]
+    },
+    "architect": {
+      "tier": "opus",
+      "role": "Deep architectural reasoning, cross-repo impact analysis, ADR authoring",
+      "skills": ["review"],
+      "aliases": ["hephaestus", "oracle", "deep"]
+    },
+    "worker": {
+      "tier": "sonnet",
+      "role": "Focused implementation: features, fixes, refactors",
+      "skills": ["verify", "ship"],
+      "aliases": ["executor", "junior", "implementer"]
+    },
+    "reviewer": {
+      "tier": "sonnet",
+      "role": "Code review, security scan, test adequacy check",
+      "skills": ["review"],
+      "aliases": ["critic", "validator", "risk-assessor"]
+    },
+    "researcher": {
+      "tier": "sonnet",
+      "role": "Web search, docs lookup, library research",
+      "skills": ["research"],
+      "aliases": ["librarian", "prometheus", "deep-research"]
+    },
+    "explorer": {
+      "tier": "haiku",
+      "role": "Fast codebase grep, file lookups, symbol search",
+      "skills": [],
+      "aliases": ["grep", "find", "search"]
+    }
+  }
+}

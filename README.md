@@ -157,6 +157,24 @@ additions (Context7, Tavily, Firecrawl, markdownify-mcp, lmnr, TDD Guard, contai
 Superpowers skills, and the Anthropic official skills collection) and the recommended
 adoption order.
 
+### `kit/`
+
+forge-kit: one-command installer that syncs rules, skills, and MCP config across all supported AI tools.
+
+```bash
+FORGE_KIT_DIR=./kit sh kit/install.sh --profile standard
+```
+
+| Component | Description |
+|---|---|
+| `kit/install.sh` | Entry point — `--tools`, `--profile`, `--dry-run`, `--status`, `--uninstall` |
+| `kit/core/rules.md` | Single source of truth for agent behavior rules |
+| `kit/core/providers.json` | Unified provider + model registry |
+| `kit/core/mcp.json` | Curated MCP server definitions |
+| `kit/core/skills/` | 6 portable skills: `plan`, `verify`, `ship`, `review`, `debug`, `research` |
+| `kit/adapters/` | Per-tool adapters: `claude-code`, `codex`, `opencode`, `cursor`, `windsurf`, `antigravity` |
+| `kit/profiles/` | Install profiles: `standard`, `minimal`, `research`, `durable` |
+
 ### `implementations/`
 
 Concrete reference setups for specific tools.

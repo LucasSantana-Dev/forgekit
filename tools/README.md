@@ -112,13 +112,13 @@ Drop into `~/.config/opencode/opencode.jsonc` under the `"plugin"` array. Restar
 | Plugin | What | Notes |
 |--------|------|-------|
 | [`opencode-graphiti`](https://github.com/vicary/opencode-graphiti) | Persistent temporal + relationship-aware memory via Graphiti knowledge graph | Best for long-running projects where decisions chain across sessions |
-| [`opencode-mem`](https://github.com/supermemoryai/opencode-mem) | Local vector DB memory with semantic search | Lighter than graphiti; good default starting point |
+| `opencode-mem` | Local vector DB memory with semantic search | Lighter than graphiti; good default starting point |
 
 #### Code Quality
 
 | Plugin | What | Notes |
 |--------|------|-------|
-| [`opencode-codegraph`](https://www.npmjs.com/package/opencode-codegraph) | CPG-powered code analysis — understands call graphs, data flow, and AST structure | Useful for large codebases where grep-based context falls short |
+| `opencode-codegraph` | CPG-powered code analysis — understands call graphs, data flow, and AST structure | Useful for large codebases where grep-based context falls short |
 | [`opencode-plugin-openspec`](https://github.com/Octane0411/opencode-plugin-openspec) | Dedicated agent for planning and specifying software architecture before implementation | Surfaces API contracts and interface decisions early |
 
 #### Notifications

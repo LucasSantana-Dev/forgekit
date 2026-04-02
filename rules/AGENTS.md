@@ -7,7 +7,33 @@
 
 Use different models for different task complexities:
 
-**OpenCode agents:**
+**OpenCode with oh-my-openagent** ([reference config](../implementations/opencode/oh-my-openagent.jsonc)):
+
+Sisyphus delegates by **category**, not model name — change one line in `oh-my-opencode.jsonc` to reroute entire task classes.
+
+| Agent | Model | Use For |
+|-------|-------|---------|
+| **Sisyphus** | Opus max | Default orchestrator — plans, delegates, drives to completion |
+| **Hephaestus** | Opus max | Deep architecture, multi-file debugging, cross-domain reasoning |
+| **Prometheus** | Opus max | Strategic planning and interview mode |
+| **Oracle** | Opus max | Architecture consultation, trade-off analysis |
+| **Librarian** | Opus max | Documentation search, code reference, pattern lookup |
+| **Atlas** | Sonnet | Todo orchestration and parallel execution |
+| **Sisyphus-Junior** | Sonnet | Sub-tasks delegated from Sisyphus |
+| **Explore** | Haiku | Fast codebase grep, quick lookups |
+
+| Category | Model | Trigger |
+|----------|-------|---------|
+| `visual-engineering` | Gemini Pro | UI/UX, CSS, design, animation |
+| `ultrabrain` | Opus max | Deep architecture, complex reasoning |
+| `deep` | Opus max | Autonomous research, thorough investigation |
+| `artistry` | Gemini Pro | Creative or unconventional approaches |
+| `writing` | Sonnet | Docs, CHANGELOG, README, prose |
+| `quick` | Haiku | Trivial edits, typo fixes, single-line changes |
+| `unspecified-low` | Sonnet | General low-effort tasks |
+| `unspecified-high` | Sonnet max | General high-effort tasks |
+
+**Vanilla OpenCode agents** (without oh-my-openagent):
 
 | Agent | Model | Use For |
 |-------|-------|---------|
@@ -26,7 +52,9 @@ Use different models for different task complexities:
 
 ## Tool Allocation
 
-Not every agent needs every tool:
+With oh-my-openagent, tool access is set per-agent in `oh-my-opencode.jsonc` via `permission` overrides.
+
+Without oh-my-openagent:
 - **primary**: All tools (bash, read, write, edit, glob, grep, webfetch, task, todo)
 - **architect**: All tools (needs planning capabilities)
 - **fast**: Core only (bash, read, write, edit, glob, grep — no webfetch, no task)

@@ -1,0 +1,46 @@
+{
+  "$schema": "../schema/routing.schema.json",
+  "version": "1.0.0",
+  "tiers": {
+    "haiku":  { "description": "Fast, cheap — search, lookup, grep, simple Q&A" },
+    "sonnet": { "description": "Balanced — standard implementation, code review, debugging" },
+    "opus":   { "description": "Powerful — architecture, planning, complex multi-file work" }
+  },
+  "categories": {
+    "quick":          { "tier": "haiku",  "description": "Grep, search, file read, simple lookup" },
+    "standard":       { "tier": "sonnet", "description": "Feature implementation, bug fix, refactor" },
+    "review":         { "tier": "sonnet", "description": "Code review, security scan, test coverage" },
+    "visual":         { "tier": "sonnet", "description": "UI/UX, CSS, design, component work" },
+    "deep":           { "tier": "opus",   "description": "Architecture, cross-repo, complex debugging" },
+    "planning":       { "tier": "opus",   "description": "PRD creation, task planning, roadmap" },
+    "orchestration":  { "tier": "opus",   "description": "Multi-agent coordination, long autonomous runs" }
+  },
+  "heuristics": {
+    "lines_threshold_quick":  20,
+    "lines_threshold_deep":   200,
+    "cross_repo_always_deep": true,
+    "fallback_order":         ["sonnet", "haiku", "opus"]
+  },
+  "providers": {
+    "anthropic": {
+      "haiku":  "claude-haiku-4-5",
+      "sonnet": "claude-sonnet-4-6",
+      "opus":   "claude-opus-4-6"
+    },
+    "openai": {
+      "haiku":  "gpt-4o-mini",
+      "sonnet": "gpt-4o",
+      "opus":   "o1"
+    },
+    "google": {
+      "haiku":  "gemini-2.0-flash",
+      "sonnet": "gemini-2.5-pro",
+      "opus":   "gemini-2.5-pro"
+    },
+    "ollama": {
+      "haiku":  "qwen2.5-coder:7b",
+      "sonnet": "qwen2.5-coder:14b",
+      "opus":   "qwen2.5-coder:32b"
+    }
+  }
+}

@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.10.0] - 2026-04-02
+
+### Added
+- `kit/` — forge-kit: universal AI dev toolkit installer with cross-tool adapter architecture
+  - `kit/install.sh` — main entry point with `--tools`, `--profile`, `--dry-run`, `--status`, `--uninstall` flags
+  - `kit/core/rules.md` — single source of truth for agent behavior rules (all adapters read from here)
+  - `kit/core/providers.json` — unified provider + model registry (Anthropic, OpenAI, Google, Groq, Ollama)
+  - `kit/core/mcp.json` — curated MCP server definitions with required env vars and profiles
+  - `kit/core/agents.json` — multi-model agent routing config (Sisyphus/Hephaestus/Artemis/Hermes pattern)
+  - `kit/core/routing.json` — task complexity classifier for automatic model selection
+  - `kit/core/skills/` — 6 portable skill definitions: `plan`, `verify`, `ship`, `review`, `debug`, `research`
+  - Adapters for 6 tools: `claude-code` (CLAUDE.md + skills + MCP), `codex` (AGENTS.md + providers), `opencode` (system.md + MCP), `cursor` (.cursor/rules/forge.mdc + MCP), `windsurf` (.windsurfrules + MCP), `antigravity` (rules.md + MCP)
+  - 4 install profiles: `standard` (rules+skills+MCP), `minimal` (rules only), `research` (rules+MCP), `durable` (full+durable execution)
+  - `kit/lib/` — shared shell libraries: `log.sh` (colored output), `os.sh` (platform helpers), `merge.sh` (JSON merge via python3), `detect.sh` (auto-detect installed tools)
+- `implementations/opencode/oh-my-openagent.jsonc` — reference config for oh-my-openagent plugin
+- `implementations/opencode/README.md` — updated setup instructions for oh-my-openagent workflow
+- `rules/AGENTS.md` — expanded agent routing table with oh-my-openagent Sisyphus delegation model
+
 ## [0.9.0] - 2026-04-02
 
 ### Added
