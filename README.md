@@ -81,6 +81,7 @@ bash tools/setup-ai-workflow-macos.sh  # macOS — AI workflow tools (promptfoo,
 | 3 | Add Task Orchestration | [`patterns/task-orchestration.md`](patterns/task-orchestration.md) |
 | 4 | Add Code Review + Testing patterns | [`patterns/code-review.md`](patterns/code-review.md), [`patterns/testing.md`](patterns/testing.md) |
 | 5 | Add Memory Systems + Observability | [`patterns/memory-systems.md`](patterns/memory-systems.md), [`patterns/agent-observability.md`](patterns/agent-observability.md) |
+| 6 | Apply Spec Driven Development | [`patterns/spec-driven-development.md`](patterns/spec-driven-development.md) |
 
 ## Repository Map
 
@@ -105,6 +106,7 @@ Tool-agnostic playbooks for recurring AI workflow problems.
 | [Streaming Orchestration](patterns/streaming-orchestration.md) | Event-driven turn loops, budgeting, and transcript compaction |
 | [Tool Registry Patterns](patterns/tool-registry-patterns.md) | Decoupling tool metadata from implementation; runtime filtering |
 | [Permission Boundaries](patterns/permission-boundaries.md) | Minimum-privilege tool access, confirmation gates, trust profiles |
+| [Spec Driven Development](patterns/spec-driven-development.md) | Agents need a stable contract to implement against |
 
 ### `companies/`
 Pre-built agent organizations with specialized roles, skills, and routing protocols.

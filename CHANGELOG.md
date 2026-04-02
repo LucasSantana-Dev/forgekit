@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-04-02
+
+### Added
+- `patterns/spec-driven-development.md` — spec-first workflow for AI development covering:
+  - Three roles a spec plays: agent instruction, inter-agent contract, regression anchor
+  - Minimal spec template with purpose, scope, inputs, outputs, behavior statements, and constraints
+  - Workflow: write spec → implement → test → change control
+  - Grounding agents to specs via prompt injection and directory-level `CLAUDE.md` auto-load
+  - Multi-agent coordination pattern using spec as shared contract
+  - Spec granularity guide (when to apply SDD vs skip it)
+- README: added `Spec Driven Development` entry to Repository Map and Day 6 to the adoption week table
+
 ## [0.8.0] - 2026-04-01
 
 ### Added
