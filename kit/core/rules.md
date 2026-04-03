@@ -1,18 +1,17 @@
-# forge-kit Universal Rules
-#
-# Single source of truth for AI agent behavior across all tools.
-# Adapters extract sections via <!-- section: X --> / <!-- /section --> tags.
-# HTML comments are invisible to all AI tools — agents see only the content.
-#
-# Sections:
-#   quick-reference   — build/test/lint commands (tool fills in actual values)
-#   identity          — agent persona and collaboration style
-#   code-standards    — function size, complexity, style rules
-#   workflow          — branching, commits, PR process
-#   testing           — coverage targets and test philosophy
-#   documentation     — doc governance rules
-#   security          — secrets, permissions, scanning
-#   gotchas           — common failure modes and how to avoid them
+<!--
+forge-kit Universal Rules
+Single source of truth for AI agent behavior across all tools.
+Adapters extract sections via dedicated section markers in this file.
+Sections:
+  quick-reference   — build/test/lint commands (tool fills in actual values)
+  identity          — agent persona and collaboration style
+  code-standards    — function size, complexity, style rules
+  workflow          — branching, commits, PR process
+  testing           — coverage targets and test philosophy
+  documentation     — doc governance rules
+  security          — secrets, permissions, scanning
+  gotchas           — common failure modes and how to avoid them
+-->
 
 <!-- section: quick-reference -->
 ## Quick Reference

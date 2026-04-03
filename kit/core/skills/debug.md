@@ -33,7 +33,7 @@ Systematic 7-step debugging. Don't guess — trace.
 
 ## Output
 
-```
+```text
 Root cause: <one sentence>
 Location:   <file>:<line>
 Fix:        <what to change and why>

@@ -5,18 +5,18 @@
 # Existing keys in base are preserved; new keys from override are added.
 # Usage: json_merge base.json override.json output.json
 json_merge() {
-  base="$1"
-  override="$2"
-  output="$3"
+	base="$1"
+	override="$2"
+	output="$3"
 
-  python3 - "$base" "$override" "$output" <<'PYEOF'
+	python3 - "$base" "$override" "$output" <<'PYEOF'
 import json, sys
 from pathlib import Path
 
 base_path, override_path, out_path = Path(sys.argv[1]), Path(sys.argv[2]), Path(sys.argv[3])
 
-base_data    = json.loads(base_path.read_text())    if base_path.exists() and base_path.stat().st_size > 0 else {}
-override_data = json.loads(override_path.read_text()) if override_path.exists() else {}
+base_data    = json.loads(base_path.read_text()) if base_path.exists() and base_path.stat().st_size > 0 else {}
+override_data = json.loads(override_path.read_text()) if override_path.exists() and override_path.stat().st_size > 0 else {}
 
 def deep_merge(base, override):
     result = dict(base)
@@ -35,11 +35,11 @@ PYEOF
 # Add a top-level key to a JSON file if not already present (idempotent)
 # Usage: json_add_key file.json key value_json
 json_add_key() {
-  file="$1"
-  key="$2"
-  value="$3"
+	file="$1"
+	key="$2"
+	value="$3"
 
-  python3 - "$file" "$key" "$value" <<'PYEOF'
+	python3 - "$file" "$key" "$value" <<'PYEOF'
 import json, sys
 from pathlib import Path
 
@@ -56,7 +56,7 @@ PYEOF
 
 # Pretty-print a JSON file in-place
 json_format() {
-  python3 - "$1" <<'PYEOF'
+	python3 - "$1" <<'PYEOF'
 import json, sys
 from pathlib import Path
 p = Path(sys.argv[1])
@@ -68,10 +68,10 @@ PYEOF
 # Usage: extract_section rules.md identity
 # Outputs the content between <!-- section: X --> and <!-- /section -->
 extract_section() {
-  rules_file="$1"
-  section_name="$2"
+	rules_file="$1"
+	section_name="$2"
 
-  python3 - "$rules_file" "$section_name" <<'PYEOF'
+	python3 - "$rules_file" "$section_name" <<'PYEOF'
 import sys, re
 from pathlib import Path
 
@@ -88,13 +88,13 @@ PYEOF
 # Extract multiple sections from rules.md
 # Usage: extract_sections rules.md "identity code-standards workflow"
 extract_sections() {
-  rules_file="$1"
-  sections="$2"
+	rules_file="$1"
+	sections="$2"
 
-  for section in $sections; do
-    content="$(extract_section "$rules_file" "$section")"
-    if [ -n "$content" ]; then
-      printf '## %s\n\n%s\n\n' "$(printf '%s' "$section" | tr '-' ' ' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1))substr($i,2)}1')" "$content"
-    fi
-  done
+	for section in $sections; do
+		content="$(extract_section "$rules_file" "$section")"
+		if [ -n "$content" ]; then
+			printf '## %s\n\n%s\n\n' "$(printf '%s' "$section" | tr '-' ' ' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1))substr($i,2)}1')" "$content"
+		fi
+	done
 }

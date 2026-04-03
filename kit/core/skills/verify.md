@@ -32,7 +32,7 @@ npm run build        # confirm no build errors
 ## Output
 
 Report status for each gate:
-```
+```text
 ✓ lint        — passed
 ✓ type-check  — passed
 ✓ tests       — 142 passed, 87% coverage

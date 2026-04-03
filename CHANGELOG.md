@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- `forge-kit` adapter hardening from PR review feedback:
+  - `kit/adapters/claude-code.sh` avoids duplicate durable header append, creates `.forge-kit` marker on skills install, fixes uninstall marker detection, and normalizes skill count parsing
+  - `kit/adapters/windsurf.sh` uses cross-platform hashing for content comparison and shared `json_merge` for MCP merge
+  - `kit/adapters/cursor.sh` only uninstalls `forge.mdc` when file is marked as forge-managed
+  - `kit/adapters/codex.sh` preserves local `providers.json` by skipping no-op copies and only updating when content changes
+- `kit/install.sh` now validates `--tools` and `--profile` argument values before parsing
+- `kit/lib/log.sh`, `kit/lib/merge.sh`, `kit/lib/os.sh`, and `kit/lib/detect.sh` improved portability and safer fallback behaviors
+- `kit/core/rules.md` and core skill docs updated to satisfy markdown lint expectations; `tools/README.md` plugin references now include source links for `opencode-mem` and `opencode-codegraph`
+
 ## [0.10.0] - 2026-04-02
 
 ### Added

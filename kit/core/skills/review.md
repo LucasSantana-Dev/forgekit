@@ -39,7 +39,7 @@ Systematic code review covering correctness, security, tests, and style.
 ## Output Format
 
 For each issue found:
-```
+```text
 [SEVERITY] file:line — description
   Why: <why this is a problem>
   Fix: <specific suggestion>
