@@ -153,12 +153,12 @@ Tasks are routed to the right specialist automatically:
     "ci-cd": "devops",
     "testing": "tester",
     "security-scan": "security",
-    "documentation": "writer",
-    "code-review": "reviewer",
-    "ts-review": "ts-reviewer",
-    "python-review": "python-reviewer",
-    "go-review": "go-reviewer",
-    "rust-review": "rust-reviewer"
+      "documentation": "writer",
+      "code-review": "reviewer",
+      "ts-review": "ts-reviewer",
+      "python-review": "python-reviewer",
+      "go-review": "go-reviewer",
+      "rust-review": "rust-reviewer"
   }
 }
 ```

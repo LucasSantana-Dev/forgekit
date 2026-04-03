@@ -1,4 +1,5 @@
 {
+  "$schema": "../schema/loop.schema.json",
   "version": "1.0.0",
   "loop": {
     "name": "dev-cycle",
@@ -94,7 +95,11 @@
       "requiredBeforeCommit": ["lint", "type-check"],
       "requiredBeforePush": ["test"],
       "requiredBeforePR": ["build", "security-scan"],
-      "blockOn": ["CRITICAL security finding", "test regression", "build failure"],
+      "blockOn": [
+        "CRITICAL security finding",
+        "test regression",
+        "build failure"
+      ],
       "neverBlock": ["lint warning", "coverage dip < 2%", "style nit"]
     }
   }

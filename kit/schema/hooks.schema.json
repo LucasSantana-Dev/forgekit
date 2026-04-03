@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "hooks.schema.json",
+  "type": "object",
+  "required": ["$schema", "version", "hooks", "toolMapping"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string" },
+    "hooks": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["description", "triggers", "actions", "rules"],
+        "properties": {
+          "description": { "type": "string" },
+          "triggers": { "type": "array", "items": { "type": "string" } },
+          "actions": { "type": "array", "items": { "type": "string" } },
+          "rules": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["id", "condition", "action"],
+              "properties": {
+                "id": { "type": "string" },
+                "tool": { "type": "string" },
+                "condition": { "type": "string" },
+                "action": { "type": "string" },
+                "message": { "type": "string" },
+                "transform": { "type": "string" },
+                "followup": { "type": "string" }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "runtimeControls": {
+      "type": "object",
+      "properties": {
+        "profiles": { "type": "object" },
+        "envOverrides": { "type": "object" },
+        "precedence": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "toolMapping": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

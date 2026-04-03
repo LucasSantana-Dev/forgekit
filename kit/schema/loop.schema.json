@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "loop.schema.json",
+  "type": "object",
+  "required": ["$schema", "version", "loop"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string" },
+    "loop": {
+      "type": "object",
+      "required": [
+        "name",
+        "description",
+        "phases",
+        "postLoop",
+        "resume",
+        "fallback",
+        "governance"
+      ],
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "phases": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/phaseDef" }
+        },
+        "postLoop": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/phaseDef" }
+        },
+        "resume": {
+          "type": "object",
+          "required": ["strategy", "planDirectory", "stateFile"],
+          "additionalProperties": true
+        },
+        "fallback": {
+          "type": "object",
+          "required": ["perPhase", "loopLevel"],
+          "additionalProperties": true
+        },
+        "governance": {
+          "type": "object",
+          "required": [
+            "requiredBeforeCommit",
+            "requiredBeforePush",
+            "requiredBeforePR",
+            "blockOn",
+            "neverBlock"
+          ],
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "phaseDef": {
+      "type": "object",
+      "required": ["name", "verify"],
+      "properties": {
+        "name": { "type": "string" },
+        "agent": { "type": "string" },
+        "skill": { "type": "string" },
+        "input": { "type": "string" },
+        "output": { "type": "string" },
+        "verify": { "type": "string" },
+        "canFail": { "type": "boolean" },
+        "maxRetries": { "type": "integer", "minimum": 1 },
+        "onFail": { "type": "string" },
+        "async": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

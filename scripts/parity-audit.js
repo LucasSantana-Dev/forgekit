@@ -16,14 +16,6 @@ const FEATURES = [
 
 const ADAPTERS = ['claude-code', 'codex', 'opencode', 'cursor', 'windsurf', 'antigravity']
 
-function safeParseJson(filePath) {
-  try {
-    return JSON.parse(fs.readFileSync(filePath, 'utf8'))
-  } catch {
-    return null
-  }
-}
-
 function auditAdapter(name) {
   const adapterPath = path.join(rootDir, 'kit', 'adapters', `${name}.sh`)
   if (!fs.existsSync(adapterPath)) return null
@@ -107,50 +99,43 @@ const QUALITY_CHECKS = [
   { id: 'agents-have-fallback', label: 'All agents have fallback chains', check: (root) => {
     const p = path.join(root, 'kit/core/agents.json')
     if (!fs.existsSync(p)) return false
-    const d = safeParseJson(p)
-    if (!d) return false
+    const d = JSON.parse(fs.readFileSync(p, 'utf8'))
     return Object.values(d.agents).every(a => a.fallback?.chain?.length > 0)
   }},
   { id: 'agents-have-tools', label: 'All agents have tool access lists', check: (root) => {
     const p = path.join(root, 'kit/core/agents.json')
     if (!fs.existsSync(p)) return false
-    const d = safeParseJson(p)
-    if (!d) return false
+    const d = JSON.parse(fs.readFileSync(p, 'utf8'))
     return Object.values(d.agents).every(a => a.tools?.length > 0)
   }},
   { id: 'routing-has-classifier', label: 'Routing has complexity classifier', check: (root) => {
     const p = path.join(root, 'kit/core/routing.json')
     if (!fs.existsSync(p)) return false
-    const d = safeParseJson(p)
-    if (!d) return false
+    const d = JSON.parse(fs.readFileSync(p, 'utf8'))
     return !!d.classifier
   }},
   { id: 'loop-has-governance', label: 'Loop has governance gates', check: (root) => {
     const p = path.join(root, 'kit/core/loop.json')
     if (!fs.existsSync(p)) return false
-    const d = safeParseJson(p)
-    if (!d) return false
+    const d = JSON.parse(fs.readFileSync(p, 'utf8'))
     return !!d.loop?.governance
   }},
   { id: 'hooks-have-profiles', label: 'Hooks have runtime profiles', check: (root) => {
     const p = path.join(root, 'kit/core/hooks.json')
     if (!fs.existsSync(p)) return false
-    const d = safeParseJson(p)
-    if (!d) return false
+    const d = JSON.parse(fs.readFileSync(p, 'utf8'))
     return !!d.runtimeControls?.profiles
   }},
   { id: 'autopilot-default-autonomous', label: 'Autopilot defaults to autonomous', check: (root) => {
     const p = path.join(root, 'kit/core/autopilot.json')
     if (!fs.existsSync(p)) return false
-    const d = safeParseJson(p)
-    if (!d) return false
+    const d = JSON.parse(fs.readFileSync(p, 'utf8'))
     return d.defaultLevel === 'autonomous'
   }},
   { id: 'cost-tracking-enabled', label: 'Cost tracking configured', check: (root) => {
     const p = path.join(root, 'kit/core/token-optimization.json')
     if (!fs.existsSync(p)) return false
-    const d = safeParseJson(p)
-    if (!d) return false
+    const d = JSON.parse(fs.readFileSync(p, 'utf8'))
     return !!d.cost?.tracking
   }},
   { id: 'skills-count-gte-15', label: '15+ portable skills', check: (root) => {
@@ -161,15 +146,13 @@ const QUALITY_CHECKS = [
   { id: 'mcp-profiles-defined', label: 'MCP server profiles defined', check: (root) => {
     const p = path.join(root, 'kit/core/mcp.json')
     if (!fs.existsSync(p)) return false
-    const d = safeParseJson(p)
-    if (!d) return false
+    const d = JSON.parse(fs.readFileSync(p, 'utf8'))
     return !!d.profiles && Object.keys(d.profiles).length >= 2
   }},
   { id: 'org-chart-defined', label: 'Agent org chart defined', check: (root) => {
     const p = path.join(root, 'kit/core/agents.json')
     if (!fs.existsSync(p)) return false
-    const d = safeParseJson(p)
-    if (!d) return false
+    const d = JSON.parse(fs.readFileSync(p, 'utf8'))
     return !!d.orgChart && Object.keys(d.orgChart).length > 0
   }},
 ]
