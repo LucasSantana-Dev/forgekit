@@ -96,9 +96,25 @@ describe('validateKit', () => {
     }
   })
 
-  test('every agent has a tools access list', () => {
+  test('agents include specialty roles with org chart', () => {
+    const agents = JSON.parse(fs.readFileSync(path.join(rootDir, 'kit/core/agents.json'), 'utf8'))
+    const names = Object.keys(agents.agents)
+    expect(names.length).toBeGreaterThanOrEqual(10)
+    expect(names).toContain('frontend')
+    expect(names).toContain('backend')
+    expect(names).toContain('devops')
+    expect(names).toContain('tester')
+    expect(names).toContain('security')
+    expect(names).toContain('writer')
+    expect(agents.orgChart).toBeDefined()
+    expect(agents.orgChart.orchestrator.directReports.length).toBeGreaterThan(0)
+    expect(agents.orgChart.architect.directReports.length).toBeGreaterThan(0)
+  })
+
+  test('every agent has title, tools, and valid reportsTo', () => {
     const agents = JSON.parse(fs.readFileSync(path.join(rootDir, 'kit/core/agents.json'), 'utf8'))
     for (const [, agent] of Object.entries(agents.agents)) {
+      expect(agent.title).toBeDefined()
       expect(agent.tools).toBeDefined()
       expect(Array.isArray(agent.tools)).toBe(true)
       expect(agent.tools.length).toBeGreaterThan(0)

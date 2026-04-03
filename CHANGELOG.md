@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- `kit/core/agents.json` v4 — Paperclip-inspired specialty agents with org chart:
+  - 12 agents (was 6): orchestrator, architect, frontend, backend, devops, tester, security, reviewer, writer, researcher, explorer
+  - Each agent has `title`, `role`, `skills`, `tools`, `reportsTo`, `fallback` chain
+  - `orgChart` section defining hierarchy: orchestrator → architect → engineering specialists
+  - `specialtyRouting` in dispatch config: UI work → frontend, API work → backend, CI/CD → devops, etc.
+  - Escalation: if specialist unavailable, fall back to generic worker
+  - Governance tests: agent title validation, reportsTo reference integrity, org chart consistency
+
 - Optional `forge-kit` oh-my compatibility mode via `--oh-my-compat`:
   - `kit/install.sh` supports `--oh-my-compat` and surfaces compatibility status during installs
   - profiles now include `FORGE_OHMY_COMPAT` (default `false`) to keep default installs tool-agnostic
