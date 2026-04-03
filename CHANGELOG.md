@@ -6,6 +6,46 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- `forge-kit` adapter hardening from PR review feedback:
+  - `kit/adapters/claude-code.sh` avoids duplicate durable header append, creates `.forge-kit` marker on skills install, fixes uninstall marker detection, and normalizes skill count parsing
+  - `kit/adapters/windsurf.sh` uses cross-platform hashing for content comparison and shared `json_merge` for MCP merge
+  - `kit/adapters/cursor.sh` only uninstalls `forge.mdc` when file is marked as forge-managed
+  - `kit/adapters/codex.sh` preserves local `providers.json` by skipping no-op copies and only updating when content changes
+- `kit/install.sh` now validates `--tools` and `--profile` argument values before parsing
+- `kit/lib/log.sh`, `kit/lib/merge.sh`, `kit/lib/os.sh`, and `kit/lib/detect.sh` improved portability and safer fallback behaviors
+- `kit/core/rules.md` and core skill docs updated to satisfy markdown lint expectations; `tools/README.md` plugin references now include source links for `opencode-mem` and `opencode-codegraph`
+
+## [0.10.0] - 2026-04-02
+
+### Added
+- `kit/` — forge-kit: universal AI dev toolkit installer with cross-tool adapter architecture
+  - `kit/install.sh` — main entry point with `--tools`, `--profile`, `--dry-run`, `--status`, `--uninstall` flags
+  - `kit/core/rules.md` — single source of truth for agent behavior rules (all adapters read from here)
+  - `kit/core/providers.json` — unified provider + model registry (Anthropic, OpenAI, Google, Groq, Ollama)
+  - `kit/core/mcp.json` — curated MCP server definitions with required env vars and profiles
+  - `kit/core/agents.json` — multi-model agent routing config (Sisyphus/Hephaestus/Artemis/Hermes pattern)
+  - `kit/core/routing.json` — task complexity classifier for automatic model selection
+  - `kit/core/skills/` — 6 portable skill definitions: `plan`, `verify`, `ship`, `review`, `debug`, `research`
+  - Adapters for 6 tools: `claude-code` (CLAUDE.md + skills + MCP), `codex` (AGENTS.md + providers), `opencode` (system.md + MCP), `cursor` (.cursor/rules/forge.mdc + MCP), `windsurf` (.windsurfrules + MCP), `antigravity` (rules.md + MCP)
+  - 4 install profiles: `standard` (rules+skills+MCP), `minimal` (rules only), `research` (rules+MCP), `durable` (full+durable execution)
+  - `kit/lib/` — shared shell libraries: `log.sh` (colored output), `os.sh` (platform helpers), `merge.sh` (JSON merge via python3), `detect.sh` (auto-detect installed tools)
+- `implementations/opencode/oh-my-openagent.jsonc` — reference config for oh-my-openagent plugin
+- `implementations/opencode/README.md` — updated setup instructions for oh-my-openagent workflow
+- `rules/AGENTS.md` — expanded agent routing table with oh-my-openagent Sisyphus delegation model
+
+## [0.9.0] - 2026-04-02
+
+### Added
+- `patterns/spec-driven-development.md` — spec-first workflow for AI development covering:
+  - Three roles a spec plays: agent instruction, inter-agent contract, regression anchor
+  - Minimal spec template with purpose, scope, inputs, outputs, behavior statements, and constraints
+  - Workflow: write spec → implement → test → change control
+  - Grounding agents to specs via prompt injection and directory-level `CLAUDE.md` auto-load
+  - Multi-agent coordination pattern using spec as shared contract
+  - Spec granularity guide (when to apply SDD vs skip it)
+- README: added `Spec Driven Development` entry to Repository Map and Day 6 to the adoption week table
+
 ## [0.8.0] - 2026-04-01
 
 ### Added

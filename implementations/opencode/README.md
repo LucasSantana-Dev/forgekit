@@ -5,13 +5,24 @@ Reference implementation of the toolkit patterns for [OpenCode](https://opencode
 ## Setup
 
 ```bash
-# Copy config
+# Core OpenCode config
 cp opencode.jsonc ~/.config/opencode/opencode.jsonc
 cp dcp.jsonc ~/.config/opencode/dcp.jsonc
 
-# Copy plugins
-cp plugin/*.ts ~/.config/opencode/plugin/
+# oh-my-openagent plugin config (if using oh-my-openagent)
+cp oh-my-openagent.jsonc ~/.config/opencode/oh-my-opencode.jsonc
 ```
+
+## oh-my-openagent
+
+[oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent) replaces the local plugin `.ts` files with a batteries-included npm plugin. When using it, skip the `plugin/` step above.
+
+Add to `opencode.jsonc` plugins:
+```json
+{ "plugin": ["oh-my-openagent"] }
+```
+
+Configure agents and category routing in `oh-my-openagent.jsonc`. The `prompt_append` field on Sisyphus injects your `AGENTS.md` rules into every session automatically.
 
 ## Plugins
 
