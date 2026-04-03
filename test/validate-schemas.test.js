@@ -1,5 +1,9 @@
 import { describe, test, expect } from "@jest/globals";
-import { validateCompany, validateAll, validateKit } from "../scripts/validate-schemas.js";
+import {
+  validateCompany,
+  validateAll,
+  validateKit,
+} from "../scripts/validate-schemas.js";
 import { runParityAudit } from "../scripts/parity-audit.js";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -41,7 +45,10 @@ describe("validateCompany", () => {
       path.join(agentDir, "AGENTS.md"),
       "---\nname: Test\n---\n## What triggers you\n## What you do\n## What you produce\n## Who you hand off to",
     );
-    fs.writeFileSync(path.join(skillDir, "SKILL.md"), "---\nname: Test Skill\n---\n");
+    fs.writeFileSync(
+      path.join(skillDir, "SKILL.md"),
+      "---\nname: Test Skill\n---\n",
+    );
     const errors = validateCompany(tmpDir);
     expect(errors.some((e) => e.includes("missing field: title"))).toBe(true);
     fs.rmSync(tmpDir, { recursive: true });
@@ -57,9 +64,14 @@ describe("validateCompany", () => {
       path.join(agentDir, "AGENTS.md"),
       "---\nname: Eng\ntitle: Engineer\nskills:\n  - missing-skill\n---\n## What triggers you\n## What you do\n## What you produce\n## Who you hand off to",
     );
-    fs.writeFileSync(path.join(skillDir, "SKILL.md"), "---\nname: Real Skill\n---\n");
+    fs.writeFileSync(
+      path.join(skillDir, "SKILL.md"),
+      "---\nname: Real Skill\n---\n",
+    );
     const errors = validateCompany(tmpDir);
-    expect(errors.some((e) => e.includes("unknown skill: missing-skill"))).toBe(true);
+    expect(errors.some((e) => e.includes("unknown skill: missing-skill"))).toBe(
+      true,
+    );
     fs.rmSync(tmpDir, { recursive: true });
   });
 });
@@ -97,14 +109,18 @@ describe("validateKit", () => {
   });
 
   test("every agent references a valid tier", () => {
-    const agents = JSON.parse(fs.readFileSync(path.join(rootDir, "kit/core/agents.json"), "utf8"));
+    const agents = JSON.parse(
+      fs.readFileSync(path.join(rootDir, "kit/core/agents.json"), "utf8"),
+    );
     for (const [, agent] of Object.entries(agents.agents)) {
       expect(["haiku", "sonnet", "opus"]).toContain(agent.tier);
     }
   });
 
   test("agents include specialty roles with org chart", () => {
-    const agents = JSON.parse(fs.readFileSync(path.join(rootDir, "kit/core/agents.json"), "utf8"));
+    const agents = JSON.parse(
+      fs.readFileSync(path.join(rootDir, "kit/core/agents.json"), "utf8"),
+    );
     const names = Object.keys(agents.agents);
     expect(names.length).toBeGreaterThanOrEqual(10);
     expect(names).toContain("worker");
@@ -115,7 +131,9 @@ describe("validateKit", () => {
     expect(names).toContain("security");
     expect(names).toContain("writer");
     expect(agents.orgChart).toBeDefined();
-    expect(agents.orgChart.orchestrator.directReports.length).toBeGreaterThan(0);
+    expect(agents.orgChart.orchestrator.directReports.length).toBeGreaterThan(
+      0,
+    );
     expect(agents.orgChart.architect.directReports.length).toBeGreaterThan(0);
     expect(agents.orgChart.reviewer.directReports).toEqual(
       expect.arrayContaining([
@@ -128,7 +146,9 @@ describe("validateKit", () => {
   });
 
   test("every agent has title, tools, and valid reportsTo", () => {
-    const agents = JSON.parse(fs.readFileSync(path.join(rootDir, "kit/core/agents.json"), "utf8"));
+    const agents = JSON.parse(
+      fs.readFileSync(path.join(rootDir, "kit/core/agents.json"), "utf8"),
+    );
     for (const [, agent] of Object.entries(agents.agents)) {
       expect(agent.title).toBeDefined();
       expect(agent.tools).toBeDefined();
@@ -138,7 +158,9 @@ describe("validateKit", () => {
   });
 
   test("hooks.json has rules and tool mapping", () => {
-    const hooks = JSON.parse(fs.readFileSync(path.join(rootDir, "kit/core/hooks.json"), "utf8"));
+    const hooks = JSON.parse(
+      fs.readFileSync(path.join(rootDir, "kit/core/hooks.json"), "utf8"),
+    );
     expect(hooks.hooks).toBeDefined();
     expect(Object.keys(hooks.hooks).length).toBeGreaterThanOrEqual(4);
     expect(hooks.toolMapping).toBeDefined();
@@ -150,7 +172,10 @@ describe("validateKit", () => {
 
   test("token-optimization has cost tracking config", () => {
     const cfg = JSON.parse(
-      fs.readFileSync(path.join(rootDir, "kit/core/token-optimization.json"), "utf8"),
+      fs.readFileSync(
+        path.join(rootDir, "kit/core/token-optimization.json"),
+        "utf8",
+      ),
     );
     expect(cfg.cost).toBeDefined();
     expect(cfg.cost.tracking).toBeDefined();
@@ -182,7 +207,9 @@ describe("validateKit", () => {
   });
 
   test("loop.json has governance section", () => {
-    const loop = JSON.parse(fs.readFileSync(path.join(rootDir, "kit/core/loop.json"), "utf8"));
+    const loop = JSON.parse(
+      fs.readFileSync(path.join(rootDir, "kit/core/loop.json"), "utf8"),
+    );
     expect(loop.loop.governance).toBeDefined();
     expect(loop.loop.governance.requiredBeforeCommit).toBeDefined();
     expect(loop.loop.governance.blockOn).toBeDefined();

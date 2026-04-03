@@ -100,7 +100,11 @@ export function validateCompany(companyDir) {
       }
     }
 
-    if (fm.reportsTo && fm.reportsTo !== null && !agentNames.includes(fm.reportsTo)) {
+    if (
+      fm.reportsTo &&
+      fm.reportsTo !== null &&
+      !agentNames.includes(fm.reportsTo)
+    ) {
       errors.push(`Agent ${agent} reportsTo unknown agent: ${fm.reportsTo}`);
     }
 
@@ -142,9 +146,15 @@ export function validateAll(companiesDir = "./companies") {
       total++;
     }
     if (errors.length === 0) {
-      const agentsCount = fs.readdirSync(path.join(companiesDir, company, "agents")).length;
-      const skillsCount = fs.readdirSync(path.join(companiesDir, company, "skills")).length;
-      console.log(`✓ ${company} — agents: ${agentsCount}, skills: ${skillsCount}`);
+      const agentsCount = fs.readdirSync(
+        path.join(companiesDir, company, "agents"),
+      ).length;
+      const skillsCount = fs.readdirSync(
+        path.join(companiesDir, company, "skills"),
+      ).length;
+      console.log(
+        `✓ ${company} — agents: ${agentsCount}, skills: ${skillsCount}`,
+      );
     }
   }
 
@@ -204,12 +214,18 @@ export function validateKit(rootDir = ".") {
       if (agent.fallback && !agent.fallback.chain) {
         errors.push(`Agent ${name} has fallback without chain`);
       }
-      if (!agent.tools || !Array.isArray(agent.tools) || agent.tools.length === 0) {
+      if (
+        !agent.tools ||
+        !Array.isArray(agent.tools) ||
+        agent.tools.length === 0
+      ) {
         errors.push(`Agent ${name} missing tools access list`);
       }
       if (!agent.title) errors.push(`Agent ${name} missing title`);
       if (agent.reportsTo && !agents.agents[agent.reportsTo]) {
-        errors.push(`Agent ${name} reportsTo unknown agent: ${agent.reportsTo}`);
+        errors.push(
+          `Agent ${name} reportsTo unknown agent: ${agent.reportsTo}`,
+        );
       }
     }
 
@@ -234,7 +250,8 @@ export function validateKit(rootDir = ".") {
     if (hookTypes.length === 0) errors.push("Hooks has no hook types defined");
     for (const hookType of hookTypes) {
       const hook = hooks.hooks[hookType];
-      if (!hook.description) errors.push(`Hook ${hookType} missing description`);
+      if (!hook.description)
+        errors.push(`Hook ${hookType} missing description`);
       if (!hook.rules || hook.rules.length === 0) {
         errors.push(`Hook ${hookType} has no rules`);
       }
@@ -262,7 +279,8 @@ export function validateKit(rootDir = ".") {
     if (phases.length === 0) errors.push("Loop has no phases defined");
     for (const phase of phases) {
       if (!phase.name) errors.push("Loop phase missing name");
-      if (!phase.verify) errors.push(`Loop phase ${phase.name || "?"} missing verify`);
+      if (!phase.verify)
+        errors.push(`Loop phase ${phase.name || "?"} missing verify`);
     }
     if (!loop.loop?.governance) errors.push("Loop missing governance section");
   }
@@ -282,12 +300,15 @@ export function validateKit(rootDir = ".") {
     const routineIds = new Set();
     for (const routine of routines) {
       if (!routine.id) errors.push("Schedule routine missing id");
-      if (!routine.name) errors.push(`Schedule routine ${routine.id || "?"} missing name`);
+      if (!routine.name)
+        errors.push(`Schedule routine ${routine.id || "?"} missing name`);
       if (!routine.trigger) {
         errors.push(`Schedule routine ${routine.id || "?"} missing trigger`);
       }
-      if (!routine.agent) errors.push(`Schedule routine ${routine.id || "?"} missing agent`);
-      if (!routine.skill) errors.push(`Schedule routine ${routine.id || "?"} missing skill`);
+      if (!routine.agent)
+        errors.push(`Schedule routine ${routine.id || "?"} missing agent`);
+      if (!routine.skill)
+        errors.push(`Schedule routine ${routine.id || "?"} missing skill`);
 
       if (routine.id) {
         if (routineIds.has(routine.id)) {
@@ -298,7 +319,9 @@ export function validateKit(rootDir = ".") {
 
       if (routine.trigger === "daily" || routine.trigger === "weekly") {
         if (!routine.schedule) {
-          errors.push(`Schedule routine ${routine.id || "?"} missing cron schedule`);
+          errors.push(
+            `Schedule routine ${routine.id || "?"} missing cron schedule`,
+          );
         }
       }
 
