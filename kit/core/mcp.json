@@ -1,34 +1,62 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "mcpServers": {
-    "tavily": {
-      "command": "npx",
-      "args": ["-y", "tavily-mcp@latest"],
-      "env": { "TAVILY_API_KEY": "${TAVILY_API_KEY}" },
-      "description": "Web search — use for current events, docs, research",
-      "required_env": ["TAVILY_API_KEY"],
-      "profile": "standard"
-    },
     "context7": {
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp@latest"],
       "description": "Library docs — fetch up-to-date docs for any npm/pip package",
       "required_env": [],
-      "profile": "standard"
+      "profile": "standard",
+      "category": "research"
     },
-    "playwright": {
+    "sequential-thinking": {
       "command": "npx",
-      "args": ["-y", "@playwright/mcp@latest"],
-      "description": "Browser automation — screenshot, click, form fill, E2E",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "description": "Structured reasoning — chain-of-thought problem solving",
       "required_env": [],
-      "profile": "full"
+      "profile": "standard",
+      "category": "reasoning"
+    },
+    "tavily": {
+      "command": "npx",
+      "args": ["-y", "tavily-mcp@latest"],
+      "env": { "TAVILY_API_KEY": "${TAVILY_API_KEY}" },
+      "description": "Web search — current events, docs, research",
+      "required_env": ["TAVILY_API_KEY"],
+      "profile": "standard",
+      "category": "research"
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "description": "Persistent knowledge graph — cross-session memory",
+      "required_env": [],
+      "profile": "standard",
+      "category": "memory"
+    },
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"],
+      "description": "HTTP fetch — retrieve and parse web content",
+      "required_env": [],
+      "profile": "standard",
+      "category": "research"
     },
     "filesystem": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-filesystem", "${HOME}"],
       "description": "File system access beyond the project directory",
       "required_env": [],
-      "profile": "full"
+      "profile": "full",
+      "category": "tools"
+    },
+    "git": {
+      "command": "uvx",
+      "args": ["mcp-server-git"],
+      "description": "Git operations — status, diff, log, commit, branch",
+      "required_env": [],
+      "profile": "standard",
+      "category": "tools"
     },
     "github": {
       "command": "npx",
@@ -36,7 +64,48 @@
       "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}" },
       "description": "GitHub API — issues, PRs, search, repos",
       "required_env": ["GITHUB_TOKEN"],
-      "profile": "full"
+      "profile": "full",
+      "category": "tools"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"],
+      "description": "Browser automation — screenshot, click, form fill, E2E",
+      "required_env": [],
+      "profile": "full",
+      "category": "testing"
+    },
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": { "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}" },
+      "description": "Web scraping — extract structured data from URLs",
+      "required_env": ["FIRECRAWL_API_KEY"],
+      "profile": "full",
+      "category": "research"
     }
+  },
+  "profiles": {
+    "standard": {
+      "description": "Essential servers for everyday development",
+      "servers": ["context7", "sequential-thinking", "tavily", "memory", "fetch", "git"]
+    },
+    "full": {
+      "description": "All servers including browser, filesystem, and GitHub",
+      "servers": ["context7", "sequential-thinking", "tavily", "memory", "fetch", "git", "filesystem", "github", "playwright", "firecrawl"]
+    },
+    "minimal": {
+      "description": "Bare minimum — just docs and search",
+      "servers": ["context7", "fetch"]
+    }
+  },
+  "agentMapping": {
+    "researcher": ["context7", "tavily", "fetch", "firecrawl"],
+    "explorer": ["context7"],
+    "worker": ["git", "filesystem"],
+    "devops": ["git", "github"],
+    "tester": ["playwright"],
+    "orchestrator": ["git", "github", "memory"],
+    "writer": ["context7", "fetch"]
   }
 }

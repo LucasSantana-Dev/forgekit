@@ -99,6 +99,54 @@ extract_sections() {
 	done
 }
 
+install_providers() {
+	providers_src="$1"
+	providers_dst="$2"
+
+	if [ ! -f "$providers_src" ]; then
+		return
+	fi
+
+	if [ -f "$providers_dst" ] && files_equal "$providers_src" "$providers_dst"; then
+		log_dim "  (no changes)"
+	else
+		if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+			if [ -f "$providers_dst" ]; then
+				log_info "  [DRY RUN] Would update providers config"
+			else
+				log_info "  [DRY RUN] Would create providers config"
+			fi
+		else
+			cp "$providers_src" "$providers_dst"
+			log_success "providers config installed"
+		fi
+	fi
+}
+
+install_durable() {
+	rules_file="$1"
+	target_file="$2"
+
+	if [ ! -f "$target_file" ]; then
+		return
+	fi
+
+	if grep -q "## Durable Execution" "$target_file"; then
+		log_dim "  (durable execution section already present)"
+	else
+		durable_section="$(extract_section "$rules_file" "durable-execution")"
+
+		if [ -n "$durable_section" ]; then
+			if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+				log_info "  [DRY RUN] Would append durable execution section"
+			else
+				printf '\n%s\n' "$durable_section" >>"$target_file"
+				log_success "Durable execution section added"
+			fi
+		fi
+	fi
+}
+
 install_skills() {
 	skills_src="$1"
 	skills_dst="$2"
