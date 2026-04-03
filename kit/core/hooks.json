@@ -1,4 +1,5 @@
 {
+  "$schema": "../schema/hooks.schema.json",
   "version": "1.0.0",
   "hooks": {
     "PreToolUse": {
@@ -139,7 +140,12 @@
       "minimal": {
         "description": "Only hard-block rules — secrets, destructive commands",
         "enabledHooks": ["PreToolUse"],
-        "enabledRules": ["block-secrets-in-write", "block-rm-rf", "block-force-push-main", "block-secrets-in-diff"]
+        "enabledRules": [
+          "block-secrets-in-write",
+          "block-rm-rf",
+          "block-force-push-main",
+          "block-secrets-in-diff"
+        ]
       },
       "standard": {
         "description": "Security + quality gates — default profile",

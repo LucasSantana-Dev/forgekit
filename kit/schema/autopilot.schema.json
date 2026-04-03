@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "autopilot.schema.json",
+  "type": "object",
+  "required": [
+    "$schema",
+    "version",
+    "defaultLevel",
+    "levels",
+    "guardrails",
+    "durableExecution",
+    "fallback",
+    "session"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string" },
+    "defaultLevel": {
+      "type": "string",
+      "enum": ["supervised", "assisted", "autonomous"]
+    },
+    "levels": {
+      "type": "object",
+      "required": ["supervised", "assisted", "autonomous"],
+      "additionalProperties": false,
+      "properties": {
+        "supervised": { "$ref": "#/$defs/levelDef" },
+        "assisted": { "$ref": "#/$defs/levelDef" },
+        "autonomous": { "$ref": "#/$defs/levelDef" }
+      }
+    },
+    "guardrails": {
+      "type": "object",
+      "required": ["hardBlock", "neverPauseFor", "qualityGates"],
+      "additionalProperties": true
+    },
+    "durableExecution": {
+      "type": "object",
+      "required": [
+        "continueUntilComplete",
+        "persistOnInterrupt",
+        "resumeFromCheckpoint",
+        "maxConsecutiveFailures",
+        "onMaxFailures",
+        "verifyBeforeClaiming"
+      ],
+      "additionalProperties": true
+    },
+    "fallback": {
+      "type": "object",
+      "required": [
+        "onModelFailure",
+        "onProviderFailure",
+        "onTierFailure",
+        "onContextOverflow",
+        "maxRetries",
+        "backoff"
+      ],
+      "additionalProperties": true
+    },
+    "session": {
+      "type": "object",
+      "required": [
+        "autoResume",
+        "saveAfterEachPhase",
+        "planDirectory",
+        "memorySync"
+      ],
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "levelDef": {
+      "type": "object",
+      "required": [
+        "description",
+        "autoCommit",
+        "autoPush",
+        "autoPR",
+        "autoDispatch",
+        "autoFix",
+        "maxUnattendedPhases"
+      ],
+      "properties": {
+        "description": { "type": "string" },
+        "autoCommit": { "type": "boolean" },
+        "autoPush": { "type": "boolean" },
+        "autoPR": { "type": "boolean" },
+        "autoDispatch": { "type": "boolean" },
+        "autoFix": { "type": "boolean" },
+        "autoEscalate": { "type": "boolean" },
+        "autoFallback": { "type": "boolean" },
+        "maxUnattendedPhases": { "type": "integer", "minimum": 1 },
+        "pauseOn": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

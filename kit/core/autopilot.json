@@ -1,4 +1,5 @@
 {
+  "$schema": "../schema/autopilot.schema.json",
   "version": "2.0.0",
   "defaultLevel": "autonomous",
   "levels": {

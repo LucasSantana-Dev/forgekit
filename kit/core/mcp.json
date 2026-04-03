@@ -1,4 +1,5 @@
 {
+  "$schema": "../schema/mcp.schema.json",
   "version": "2.0.0",
   "mcpServers": {
     "context7": {
@@ -88,11 +89,29 @@
   "profiles": {
     "standard": {
       "description": "Essential servers for everyday development",
-      "servers": ["context7", "sequential-thinking", "tavily", "memory", "fetch", "git"]
+      "servers": [
+        "context7",
+        "sequential-thinking",
+        "tavily",
+        "memory",
+        "fetch",
+        "git"
+      ]
     },
     "full": {
       "description": "All servers including browser, filesystem, and GitHub",
-      "servers": ["context7", "sequential-thinking", "tavily", "memory", "fetch", "git", "filesystem", "github", "playwright", "firecrawl"]
+      "servers": [
+        "context7",
+        "sequential-thinking",
+        "tavily",
+        "memory",
+        "fetch",
+        "git",
+        "filesystem",
+        "github",
+        "playwright",
+        "firecrawl"
+      ]
     },
     "minimal": {
       "description": "Bare minimum — just docs and search",

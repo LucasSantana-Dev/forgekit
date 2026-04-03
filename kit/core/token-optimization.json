@@ -1,14 +1,18 @@
 {
+  "$schema": "../schema/token-optimization.schema.json",
   "version": "1.0.0",
   "presets": {
     "standard": {
       "description": "Balanced context management for typical sessions",
-      "compactionThreshold": 0.70,
+      "compactionThreshold": 0.7,
       "compactionStrategy": "prune-stale",
       "preserveActiveState": true,
       "maxSessionMessages": 200,
       "toolOutputTruncation": 2000,
-      "rtk": { "enabled": false, "note": "Install RTK separately: brew install rtk && rtk init -g" }
+      "rtk": {
+        "enabled": false,
+        "note": "Install RTK separately: brew install rtk && rtk init -g"
+      }
     },
     "aggressive": {
       "description": "Maximum token savings for long autonomous runs",
@@ -39,7 +43,11 @@
       "reportFormat": "inline"
     },
     "budgets": {
-      "sessionMax": { "value": null, "unit": "USD", "note": "null = unlimited, set a number to cap" },
+      "sessionMax": {
+        "value": null,
+        "unit": "USD",
+        "note": "null = unlimited, set a number to cap"
+      },
       "agentMax": {
         "orchestrator": null,
         "architect": null,

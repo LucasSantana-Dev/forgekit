@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "token-optimization.schema.json",
+  "type": "object",
+  "required": ["$schema", "version", "presets", "cost", "rules"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string" },
+    "presets": {
+      "type": "object",
+      "required": ["standard", "aggressive", "minimal"],
+      "additionalProperties": { "$ref": "#/$defs/presetDef" }
+    },
+    "cost": {
+      "type": "object",
+      "required": ["tracking", "budgets", "reportTemplate"],
+      "properties": {
+        "tracking": {
+          "type": "object",
+          "required": ["perSession", "perAgent", "perPhase", "reportFormat"],
+          "additionalProperties": true
+        },
+        "budgets": {
+          "type": "object",
+          "required": ["sessionMax", "agentMax", "onBudgetExceeded"],
+          "additionalProperties": true
+        },
+        "reportTemplate": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "rules": {
+      "type": "object",
+      "required": ["alwaysPreserve", "safeToRemove", "compactionTriggers"],
+      "properties": {
+        "alwaysPreserve": { "type": "array", "items": { "type": "string" } },
+        "safeToRemove": { "type": "array", "items": { "type": "string" } },
+        "compactionTriggers": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "presetDef": {
+      "type": "object",
+      "required": [
+        "description",
+        "compactionThreshold",
+        "compactionStrategy",
+        "preserveActiveState",
+        "maxSessionMessages",
+        "toolOutputTruncation",
+        "rtk"
+      ],
+      "properties": {
+        "description": { "type": "string" },
+        "compactionThreshold": { "type": "number", "minimum": 0, "maximum": 1 },
+        "compactionStrategy": { "type": "string" },
+        "preserveActiveState": { "type": "boolean" },
+        "maxSessionMessages": { "type": "integer", "minimum": 1 },
+        "toolOutputTruncation": { "type": "integer", "minimum": 1 },
+        "pruneCompletedTodos": { "type": "boolean" },
+        "pruneOldSearchResults": { "type": "boolean" },
+        "rtk": {
+          "type": "object",
+          "required": ["enabled"],
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "note": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

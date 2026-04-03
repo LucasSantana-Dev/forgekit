@@ -7,9 +7,9 @@
       "env_key": "ANTHROPIC_API_KEY",
       "base_url": "https://api.anthropic.com",
       "models": {
-        "haiku":  "claude-haiku-4-5-20251001",
+        "haiku": "claude-haiku-4-5-20251001",
         "sonnet": "claude-sonnet-4-6",
-        "opus":   "claude-opus-4-6"
+        "opus": "claude-opus-4-6"
       }
     },
     "openai": {
@@ -17,9 +17,9 @@
       "env_key": "OPENAI_API_KEY",
       "base_url": "https://api.openai.com/v1",
       "models": {
-        "haiku":  "gpt-4o-mini",
+        "haiku": "gpt-4o-mini",
         "sonnet": "gpt-4o",
-        "opus":   "o1"
+        "opus": "o1"
       }
     },
     "google": {
@@ -27,9 +27,9 @@
       "env_key": "GOOGLE_API_KEY",
       "base_url": "https://generativelanguage.googleapis.com/v1beta",
       "models": {
-        "haiku":  "gemini-2.0-flash",
+        "haiku": "gemini-2.0-flash",
         "sonnet": "gemini-2.5-pro",
-        "opus":   "gemini-2.5-pro"
+        "opus": "gemini-2.5-pro"
       }
     },
     "ollama": {
@@ -37,9 +37,9 @@
       "env_key": "",
       "base_url": "http://localhost:11434",
       "models": {
-        "haiku":  "qwen2.5-coder:7b",
+        "haiku": "qwen2.5-coder:7b",
         "sonnet": "qwen2.5-coder:14b",
-        "opus":   "qwen2.5-coder:32b"
+        "opus": "qwen2.5-coder:32b"
       },
       "notes": "No API key required. Run: ollama pull qwen2.5-coder:14b"
     },
@@ -48,9 +48,9 @@
       "env_key": "OPENROUTER_API_KEY",
       "base_url": "https://openrouter.ai/api/v1",
       "models": {
-        "haiku":  "anthropic/claude-haiku-4-5",
+        "haiku": "anthropic/claude-haiku-4-5",
         "sonnet": "anthropic/claude-sonnet-4-6",
-        "opus":   "anthropic/claude-opus-4-6"
+        "opus": "anthropic/claude-opus-4-6"
       },
       "notes": "Unified access to 200+ models. Useful for fallback routing."
     }
