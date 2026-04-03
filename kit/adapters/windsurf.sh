@@ -93,6 +93,7 @@ adapter_install() {
 						log_info "  [DRY RUN] Would create oh-my-windsurf.md"
 					fi
 				else
+					ensure_dir "$(dirname "$compat_dst")"
 					cp "$compat_src" "$compat_dst"
 					log_success "oh-my compatibility reference installed"
 				fi
