@@ -122,17 +122,22 @@ Key skills for autonomous development:
 
 ## How does the agent system work?
 
-12 specialty agents organized in an org chart, each with a defined role, tier, tool access list, and fallback chain:
+15 specialty agents organized in an org chart, each with a defined role, tier, tool access list, and fallback chain:
 
-```
+```text
 orchestrator (Lead Orchestrator)
 ├── architect (Software Architect)
 │   ├── frontend — React, CSS, UI, animations
 │   ├── backend — APIs, databases, auth, services
+│   ├── worker — Generalist implementation and execution
 │   ├── devops — CI/CD, Docker, deployment, monitoring
 │   ├── tester — Tests, coverage, e2e, regression
 │   └── security — Vulns, secrets, OWASP, audit
 ├── reviewer — Code review, style, logic defects
+│   ├── ts-reviewer — TypeScript and JavaScript review
+│   ├── python-reviewer — Python review
+│   ├── go-reviewer — Go review
+│   └── rust-reviewer — Rust review
 ├── writer — README, docs, CHANGELOG, API docs
 ├── researcher — Web search, library investigation
 └── explorer — Fast codebase grep (cheapest tier)
@@ -148,8 +153,12 @@ Tasks are routed to the right specialist automatically:
     "ci-cd": "devops",
     "testing": "tester",
     "security-scan": "security",
-    "documentation": "writer",
-    "code-review": "reviewer"
+      "documentation": "writer",
+      "code-review": "reviewer",
+      "ts-review": "ts-reviewer",
+      "python-review": "python-reviewer",
+      "go-review": "go-reviewer",
+      "rust-review": "rust-reviewer"
   }
 }
 ```
@@ -160,7 +169,7 @@ Agents reference tiers (`haiku`/`sonnet`/`opus`), not specific models. Swap prov
 
 The loop engine runs the full dev cycle without stopping:
 
-```
+```text
 PLAN → IMPLEMENT → VERIFY → REVIEW → SECURE → COMMIT
   ↓ (repeat per phase)
 QUALITY GATES → PUSH → PR
@@ -206,14 +215,14 @@ node scripts/parity-audit.js
 
 Example parity audit output:
 
-```
-Coverage: claude-code 6/6, codex 6/6, opencode 6/6, cursor 5/6, windsurf 5/6
-Skills: 18 | Configs: 8 | Gaps: 3
+```text
+Coverage: claude-code 6/6, codex 6/6, opencode 6/6, cursor 6/6, windsurf 6/6, antigravity 6/6
+Skills: 19 | Configs: 8 | Gaps: 0
 ```
 
 ## What does the repository contain?
 
-```
+```text
 patterns/            15 tool-agnostic workflow playbooks
 rules/               Drop-in rule templates (Claude, Codex, Cursor, Windsurf, Copilot)
 kit/
@@ -222,7 +231,7 @@ kit/
   kit/core/          8 engine configs + 18 portable skills
   kit/adapters/      Per-tool adapters (6 tools)
   kit/profiles/      Install profiles (standard, minimal, research, durable)
-implementations/     Reference setups for Claude Code, Codex, OpenCode, Cursor
+implementations/     Reference setups for Claude Code, Codex, OpenCode, Cursor, Windsurf, Antigravity
 companies/           Pre-built multi-agent organizations
 tools/               Setup scripts + curated productivity stack
 best-practices/      Security, workflow, context management standards

@@ -91,6 +91,30 @@ PYEOF
 			fi
 		fi
 	fi
+
+	if [ "${FORGE_OHMY_COMPAT:-false}" = "true" ]; then
+		compat_src="$FORGE_KIT_DIR/../implementations/antigravity/oh-my-antigravity.md"
+		compat_dst="$ag_dir/oh-my-antigravity.md"
+
+		if [ -f "$compat_src" ]; then
+			log_step "Installing oh-my compatibility reference to $compat_dst"
+
+			if [ -f "$compat_dst" ] && files_equal "$compat_src" "$compat_dst"; then
+				log_dim "  (no changes)"
+			else
+				if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+					if [ -f "$compat_dst" ]; then
+						log_info "  [DRY RUN] Would update oh-my-antigravity.md"
+					else
+						log_info "  [DRY RUN] Would create oh-my-antigravity.md"
+					fi
+				else
+					cp "$compat_src" "$compat_dst"
+					log_success "oh-my compatibility reference installed"
+				fi
+			fi
+		fi
+	fi
 }
 
 adapter_verify() {
@@ -119,6 +143,17 @@ adapter_uninstall() {
 			else
 				rm "$rules_file"
 				log_success "Removed rules.md"
+			fi
+		fi
+	fi
+
+	if [ -f "$ag_dir/oh-my-antigravity.md" ]; then
+		if grep -qm1 "^# forge-kit" "$ag_dir/oh-my-antigravity.md" 2>/dev/null; then
+			if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+				log_info "[DRY RUN] Would remove $ag_dir/oh-my-antigravity.md"
+			else
+				rm "$ag_dir/oh-my-antigravity.md"
+				log_success "Removed oh-my compatibility reference"
 			fi
 		fi
 	fi

@@ -89,7 +89,7 @@ PYEOF
 		install_providers "$FORGE_KIT_DIR/core/providers.json" "$opencode_dir/providers.json"
 	fi
 
-	if [ "${FORGE_DURABLE:-false}" = "true" ]; then
+	if [ "${FORGE_DURABLE:-false}" = "true" ] && [ -f "$opencode_dir/system.md" ]; then
 		log_step "Adding durable execution config"
 		install_durable "$FORGE_KIT_DIR/core/rules.md" "$opencode_dir/system.md"
 	fi

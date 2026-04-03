@@ -139,7 +139,7 @@
     "profiles": {
       "minimal": {
         "description": "Only hard-block rules — secrets, destructive commands",
-        "enabledHooks": ["PreToolUse"],
+        "enabledHooks": ["PreToolUse", "PreCommit"],
         "enabledRules": [
           "block-secrets-in-write",
           "block-rm-rf",

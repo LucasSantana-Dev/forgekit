@@ -99,6 +99,20 @@
       },
       "aliases": ["api", "server", "data"]
     },
+    "worker": {
+      "tier": "sonnet",
+      "title": "Generalist Worker",
+      "role": "Standard implementation, verification, and commit-ready execution across domains",
+      "skills": ["verify", "ship", "tdd", "debug"],
+      "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "LSP", "TodoWrite", "MCP"],
+      "autonomous": true,
+      "reportsTo": "architect",
+      "fallback": {
+        "chain": ["sonnet", "haiku", "opus"],
+        "onFailure": "retry-then-escalate"
+      },
+      "aliases": ["executor", "generalist", "implementer"]
+    },
     "devops": {
       "tier": "sonnet",
       "title": "DevOps Engineer",
@@ -268,17 +282,17 @@
         "reviewer",
         "writer",
         "researcher",
-        "explorer",
-        "ts-reviewer",
-        "python-reviewer",
-        "go-reviewer",
-        "rust-reviewer"
+        "explorer"
       ],
       "description": "Top-level orchestrator manages all agents"
     },
     "architect": {
-      "directReports": ["frontend", "backend", "devops", "tester", "security"],
+      "directReports": ["frontend", "backend", "worker", "devops", "tester", "security"],
       "description": "CTO manages engineering specialists"
+    },
+    "reviewer": {
+      "directReports": ["ts-reviewer", "python-reviewer", "go-reviewer", "rust-reviewer"],
+      "description": "Code reviewer manages language-specific review specialists"
     }
   },
   "orchestration": {
