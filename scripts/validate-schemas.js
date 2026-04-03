@@ -20,6 +20,40 @@ function extractFrontmatter(content) {
   return parseYaml(match[1]);
 }
 
+function schemaFileFromRef(configPath, schemaRef) {
+  return path.resolve(path.dirname(configPath), schemaRef);
+}
+
+function loadJson(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
+function validateJsonWithSchema(configPath) {
+  const data = loadJson(configPath);
+  if (!data.$schema) {
+    return [`Missing $schema in ${configPath}`];
+  }
+
+  const schemaPath = schemaFileFromRef(configPath, data.$schema);
+  if (!fs.existsSync(schemaPath)) {
+    return [`Missing schema file for ${configPath}: ${schemaPath}`];
+  }
+
+  const schema = loadJson(schemaPath);
+  const ajv = new Ajv({ allErrors: true, strict: false });
+  const validate = ajv.compile(schema);
+  const valid = validate(data);
+
+  if (valid) {
+    return [];
+  }
+
+  return (validate.errors || []).map((err) => {
+    const location = err.instancePath || "(root)";
+    return `${path.relative(process.cwd(), configPath)} schema error at ${location}: ${err.message}`;
+  });
+}
+
 export function validateCompany(companyDir) {
   const errors = [];
 
@@ -61,8 +95,9 @@ export function validateCompany(companyDir) {
     }
 
     for (const section of REQUIRED_AGENT_SECTIONS) {
-      if (!content.includes(section))
+      if (!content.includes(section)) {
         errors.push(`Agent ${agent} missing section: ${section}`);
+      }
     }
 
     if (
@@ -90,8 +125,9 @@ export function validateCompany(companyDir) {
     }
     const content = fs.readFileSync(skillFile, "utf8");
     const fm = extractFrontmatter(content);
-    if (!fm || !fm.name)
+    if (!fm || !fm.name) {
       errors.push(`Skill ${skill} missing name in frontmatter`);
+    }
   }
 
   return errors;
@@ -140,33 +176,10 @@ const REQUIRED_KIT_CONFIGS = [
   "kit/core/loop.json",
   "kit/core/hooks.json",
   "kit/core/mcp.json",
+  "kit/core/schedules.json",
 ];
 
 const VALID_TIERS = ["haiku", "sonnet", "opus"];
-
-function validateJsonSchema(rootDir, configPath) {
-  const full = path.join(rootDir, configPath);
-  const parsed = JSON.parse(fs.readFileSync(full, "utf8"));
-  if (!parsed.$schema) {
-    return [`Missing $schema in ${configPath}`];
-  }
-
-  const schemaPath = path.resolve(path.dirname(full), parsed.$schema);
-  if (!fs.existsSync(schemaPath)) {
-    return [`Missing schema file for ${configPath}: ${parsed.$schema}`];
-  }
-
-  const schema = JSON.parse(fs.readFileSync(schemaPath, "utf8"));
-  const ajv = new Ajv({ allErrors: true, strict: false });
-  const validate = ajv.compile(schema);
-  const valid = validate(parsed);
-  if (valid) return [];
-
-  return (validate.errors || []).map((error) => {
-    const location = error.instancePath || "/";
-    return `Schema validation failed for ${configPath} at ${location}: ${error.message}`;
-  });
-}
 
 export function validateKit(rootDir = ".") {
   const errors = [];
@@ -177,18 +190,22 @@ export function validateKit(rootDir = ".") {
       errors.push(`Missing config: ${configPath}`);
       continue;
     }
+
     try {
-      JSON.parse(fs.readFileSync(full, "utf8"));
+      loadJson(full);
     } catch {
       errors.push(`Invalid JSON: ${configPath}`);
       continue;
     }
-    errors.push(...validateJsonSchema(rootDir, configPath));
+
+    for (const schemaError of validateJsonWithSchema(full)) {
+      errors.push(schemaError);
+    }
   }
 
   const agentsPath = path.join(rootDir, "kit/core/agents.json");
   if (fs.existsSync(agentsPath)) {
-    const agents = JSON.parse(fs.readFileSync(agentsPath, "utf8"));
+    const agents = loadJson(agentsPath);
     for (const [name, agent] of Object.entries(agents.agents || {})) {
       if (!VALID_TIERS.includes(agent.tier)) {
         errors.push(`Agent ${name} has invalid tier: ${agent.tier}`);
@@ -214,11 +231,13 @@ export function validateKit(rootDir = ".") {
 
     if (agents.orgChart) {
       for (const [mgr, org] of Object.entries(agents.orgChart)) {
-        if (!agents.agents[mgr])
+        if (!agents.agents[mgr]) {
           errors.push(`Org chart references unknown manager: ${mgr}`);
+        }
         for (const report of org.directReports || []) {
-          if (!agents.agents[report])
+          if (!agents.agents[report]) {
             errors.push(`Org chart: ${mgr} has unknown report: ${report}`);
+          }
         }
       }
     }
@@ -226,22 +245,23 @@ export function validateKit(rootDir = ".") {
 
   const hooksPath = path.join(rootDir, "kit/core/hooks.json");
   if (fs.existsSync(hooksPath)) {
-    const hooks = JSON.parse(fs.readFileSync(hooksPath, "utf8"));
+    const hooks = loadJson(hooksPath);
     const hookTypes = Object.keys(hooks.hooks || {});
     if (hookTypes.length === 0) errors.push("Hooks has no hook types defined");
     for (const hookType of hookTypes) {
       const hook = hooks.hooks[hookType];
       if (!hook.description)
         errors.push(`Hook ${hookType} missing description`);
-      if (!hook.rules || hook.rules.length === 0)
+      if (!hook.rules || hook.rules.length === 0) {
         errors.push(`Hook ${hookType} has no rules`);
+      }
     }
     if (!hooks.toolMapping) errors.push("Hooks missing toolMapping section");
   }
 
   const routingPath = path.join(rootDir, "kit/core/routing.json");
   if (fs.existsSync(routingPath)) {
-    const routing = JSON.parse(fs.readFileSync(routingPath, "utf8"));
+    const routing = loadJson(routingPath);
     for (const [cat, def] of Object.entries(routing.categories || {})) {
       if (!VALID_TIERS.includes(def.tier)) {
         errors.push(`Routing category ${cat} has invalid tier: ${def.tier}`);
@@ -254,7 +274,7 @@ export function validateKit(rootDir = ".") {
 
   const loopPath = path.join(rootDir, "kit/core/loop.json");
   if (fs.existsSync(loopPath)) {
-    const loop = JSON.parse(fs.readFileSync(loopPath, "utf8"));
+    const loop = loadJson(loopPath);
     const phases = loop.loop?.phases || [];
     if (phases.length === 0) errors.push("Loop has no phases defined");
     for (const phase of phases) {
@@ -263,6 +283,57 @@ export function validateKit(rootDir = ".") {
         errors.push(`Loop phase ${phase.name || "?"} missing verify`);
     }
     if (!loop.loop?.governance) errors.push("Loop missing governance section");
+  }
+
+  const schedulesPath = path.join(rootDir, "kit/core/schedules.json");
+  if (fs.existsSync(schedulesPath)) {
+    const schedules = loadJson(schedulesPath);
+
+    if (!schedules.defaults) errors.push("Schedules missing defaults section");
+    if (!schedules.triggers || Object.keys(schedules.triggers).length === 0) {
+      errors.push("Schedules has no triggers defined");
+    }
+
+    const routines = schedules.routines || [];
+    if (routines.length === 0) errors.push("Schedules has no routines defined");
+
+    const routineIds = new Set();
+    for (const routine of routines) {
+      if (!routine.id) errors.push("Schedule routine missing id");
+      if (!routine.name)
+        errors.push(`Schedule routine ${routine.id || "?"} missing name`);
+      if (!routine.trigger) {
+        errors.push(`Schedule routine ${routine.id || "?"} missing trigger`);
+      }
+      if (!routine.agent)
+        errors.push(`Schedule routine ${routine.id || "?"} missing agent`);
+      if (!routine.skill)
+        errors.push(`Schedule routine ${routine.id || "?"} missing skill`);
+
+      if (routine.id) {
+        if (routineIds.has(routine.id)) {
+          errors.push(`Duplicate schedule routine id: ${routine.id}`);
+        }
+        routineIds.add(routine.id);
+      }
+
+      if (routine.trigger === "daily" || routine.trigger === "weekly") {
+        if (!routine.schedule) {
+          errors.push(
+            `Schedule routine ${routine.id || "?"} missing cron schedule`,
+          );
+        }
+      }
+
+      if (
+        schedules.agentMapping?.[routine.agent] &&
+        !schedules.agentMapping[routine.agent].includes(routine.id)
+      ) {
+        errors.push(
+          `Schedule routine ${routine.id || "?"} not mapped under agent ${routine.agent}`,
+        );
+      }
+    }
   }
 
   const skillsDir = path.join(rootDir, "kit/core/skills");

@@ -100,6 +100,7 @@ describe("validateKit", () => {
       "kit/core/loop.json",
       "kit/core/hooks.json",
       "kit/core/mcp.json",
+      "kit/core/schedules.json",
     ];
     for (const cfg of configs) {
       const full = path.join(rootDir, cfg);
@@ -117,6 +118,7 @@ describe("validateKit", () => {
       "kit/core/loop.json",
       "kit/core/hooks.json",
       "kit/core/mcp.json",
+      "kit/core/schedules.json",
     ];
 
     for (const cfg of configs) {
@@ -159,9 +161,7 @@ describe("validateKit", () => {
     const errors = validateKit(tmpDir);
     expect(
       errors.some(
-        (e) =>
-          e.includes("providers.json") &&
-          e.includes("Schema validation failed"),
+        (e) => e.includes("providers.json") && e.includes("schema error"),
       ),
     ).toBe(true);
 
@@ -246,7 +246,7 @@ describe("validateKit", () => {
     const audit = runParityAudit();
     expect(audit.results.length).toBe(6);
     expect(audit.skills.length).toBeGreaterThanOrEqual(16);
-    expect(audit.configs.length).toBeGreaterThanOrEqual(7);
+    expect(audit.configs.length).toBeGreaterThanOrEqual(8);
     for (const r of audit.results) {
       expect(r.features.rules).toBe(true);
       expect(r.features.skills).toBe(true);
@@ -273,5 +273,28 @@ describe("validateKit", () => {
     expect(loop.loop.governance).toBeDefined();
     expect(loop.loop.governance.requiredBeforeCommit).toBeDefined();
     expect(loop.loop.governance.blockOn).toBeDefined();
+  });
+
+  test("schedules.json has defaults, triggers, and mapped routines", () => {
+    const schedules = JSON.parse(
+      fs.readFileSync(path.join(rootDir, "kit/core/schedules.json"), "utf8"),
+    );
+
+    expect(schedules.defaults).toBeDefined();
+    expect(schedules.triggers).toBeDefined();
+    expect(Array.isArray(schedules.routines)).toBe(true);
+    expect(schedules.routines.length).toBeGreaterThanOrEqual(4);
+
+    const ids = new Set();
+    for (const routine of schedules.routines) {
+      expect(routine.id).toBeDefined();
+      expect(ids.has(routine.id)).toBe(false);
+      ids.add(routine.id);
+      expect(routine.agent).toBeDefined();
+      expect(routine.skill).toBeDefined();
+      if (routine.trigger === "daily" || routine.trigger === "weekly") {
+        expect(routine.schedule).toBeDefined();
+      }
+    }
   });
 });
