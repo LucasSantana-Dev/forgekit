@@ -1,81 +1,140 @@
 {
   "$schema": "../schema/agents.schema.json",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "agents": {
     "orchestrator": {
       "tier": "opus",
+      "title": "Lead Orchestrator",
       "role": "Plans, delegates, drives entire dev cycles to completion without stopping",
-      "skills": ["loop", "plan", "orchestrate", "ship", "verify", "route", "resume", "fallback"],
+      "skills": ["loop", "plan", "orchestrate", "ship", "verify", "route", "resume", "fallback", "dispatch", "cost"],
+      "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "WebFetch", "WebSearch", "TodoWrite", "Skill", "Agent", "MCP"],
       "durable": true,
       "autonomous": true,
-      "fallback": {
-        "chain": ["opus", "sonnet"],
-        "onFailure": "escalate-or-switch"
-      },
-      "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "WebFetch", "WebSearch", "TodoWrite", "Skill", "Agent", "MCP"],
-      "aliases": ["sisyphus", "main", "primary", "autopilot"]
+      "reportsTo": null,
+      "fallback": { "chain": ["opus", "sonnet"], "onFailure": "escalate-or-switch" },
+      "aliases": ["sisyphus", "main", "primary", "autopilot", "ceo"]
     },
     "architect": {
       "tier": "opus",
-      "role": "Architecture decisions, cross-repo impact, ADRs — consulted, never blocks",
+      "title": "Software Architect",
+      "role": "Architecture decisions, cross-repo impact, ADRs, system design — consulted, never blocks",
       "skills": ["review", "plan", "research"],
-      "readOnly": true,
-      "fallback": {
-        "chain": ["opus", "sonnet"],
-        "onFailure": "degrade-gracefully"
-      },
       "tools": ["FileRead", "Glob", "Grep", "WebFetch", "WebSearch"],
-      "aliases": ["hephaestus", "oracle", "deep"]
+      "readOnly": true,
+      "reportsTo": "orchestrator",
+      "fallback": { "chain": ["opus", "sonnet"], "onFailure": "degrade-gracefully" },
+      "aliases": ["hephaestus", "oracle", "cto"]
     },
-    "worker": {
+    "frontend": {
       "tier": "sonnet",
-      "role": "Focused implementation — features, fixes, refactors. Runs to completion.",
-      "skills": ["verify", "ship", "tdd", "debug", "fallback"],
-      "autonomous": true,
-      "fallback": {
-        "chain": ["sonnet", "haiku", "opus"],
-        "onFailure": "retry-then-escalate"
-      },
+      "title": "Frontend Engineer",
+      "role": "React, CSS, UI components, animations, design systems, visual work",
+      "skills": ["verify", "ship", "tdd", "debug"],
       "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "LSP", "TodoWrite"],
-      "aliases": ["executor", "junior", "implementer"]
+      "autonomous": true,
+      "reportsTo": "architect",
+      "fallback": { "chain": ["sonnet", "haiku", "opus"], "onFailure": "retry-then-escalate" },
+      "aliases": ["ui", "designer", "css"]
+    },
+    "backend": {
+      "tier": "sonnet",
+      "title": "Backend Engineer",
+      "role": "APIs, databases, services, middleware, auth, server-side logic",
+      "skills": ["verify", "ship", "tdd", "debug", "secure"],
+      "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "LSP", "TodoWrite", "MCP"],
+      "autonomous": true,
+      "reportsTo": "architect",
+      "fallback": { "chain": ["sonnet", "haiku", "opus"], "onFailure": "retry-then-escalate" },
+      "aliases": ["api", "server", "data"]
+    },
+    "devops": {
+      "tier": "sonnet",
+      "title": "DevOps Engineer",
+      "role": "CI/CD, Docker, deployment, infrastructure, monitoring, pipelines",
+      "skills": ["verify", "ship", "secure", "schedule"],
+      "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "TodoWrite"],
+      "autonomous": true,
+      "reportsTo": "architect",
+      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "retry-then-escalate" },
+      "aliases": ["infra", "ci", "deploy", "ops"]
+    },
+    "tester": {
+      "tier": "sonnet",
+      "title": "QA Engineer",
+      "role": "Test strategy, integration tests, e2e tests, coverage analysis, regression hunting",
+      "skills": ["tdd", "verify", "debug", "review"],
+      "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "LSP", "TodoWrite"],
+      "autonomous": true,
+      "reportsTo": "architect",
+      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "retry-then-escalate" },
+      "aliases": ["qa", "test-engineer", "coverage"]
+    },
+    "security": {
+      "tier": "sonnet",
+      "title": "Security Engineer",
+      "role": "Vulnerability scanning, dependency audit, secrets detection, OWASP checks, threat modeling",
+      "skills": ["secure", "review", "research"],
+      "tools": ["Bash", "FileRead", "Glob", "Grep", "WebFetch", "WebSearch"],
+      "readOnly": true,
+      "reportsTo": "architect",
+      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "degrade-gracefully" },
+      "aliases": ["appsec", "vuln-scanner", "audit"]
     },
     "reviewer": {
       "tier": "sonnet",
-      "role": "Code review, security scan, test adequacy — reports issues, never blocks progress",
+      "title": "Code Reviewer",
+      "role": "Code review, style enforcement, logic defect detection — reports issues, never blocks",
       "skills": ["review", "secure"],
-      "readOnly": true,
-      "fallback": {
-        "chain": ["sonnet", "haiku"],
-        "onFailure": "skip-review-log-warning"
-      },
       "tools": ["FileRead", "Glob", "Grep", "LSP"],
+      "readOnly": true,
+      "reportsTo": "orchestrator",
+      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "skip-review-log-warning" },
       "aliases": ["critic", "validator", "momus"]
+    },
+    "writer": {
+      "tier": "sonnet",
+      "title": "Technical Writer",
+      "role": "README, CHANGELOG, API docs, inline docs, PR descriptions, commit messages",
+      "skills": ["research", "memory"],
+      "tools": ["FileRead", "FileWrite", "Glob", "Grep", "WebFetch"],
+      "autonomous": true,
+      "reportsTo": "orchestrator",
+      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "degrade-gracefully" },
+      "aliases": ["docs", "documentation", "copywriter"]
     },
     "researcher": {
       "tier": "sonnet",
-      "role": "Docs, web search, library investigation — async, never blocks main loop",
-      "skills": ["research"],
+      "title": "Research Analyst",
+      "role": "Docs, web search, library investigation, competitive analysis — async, never blocks",
+      "skills": ["research", "memory"],
+      "tools": ["FileRead", "Glob", "Grep", "WebFetch", "WebSearch", "MCP"],
       "readOnly": true,
       "async": true,
-      "fallback": {
-        "chain": ["sonnet", "haiku"],
-        "onFailure": "proceed-without"
-      },
-      "tools": ["FileRead", "Glob", "Grep", "WebFetch", "WebSearch", "MCP"],
-      "aliases": ["librarian", "prometheus"]
+      "reportsTo": "orchestrator",
+      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "proceed-without" },
+      "aliases": ["librarian", "prometheus", "analyst"]
     },
     "explorer": {
       "tier": "haiku",
+      "title": "Codebase Scout",
       "role": "Fast codebase grep, file lookups, symbol search — cheapest possible",
       "skills": [],
+      "tools": ["FileRead", "Glob", "Grep"],
       "readOnly": true,
       "async": true,
-      "fallback": {
-        "chain": ["haiku"],
-        "onFailure": "use-direct-tools"
-      },
-      "tools": ["FileRead", "Glob", "Grep"],
-      "aliases": ["grep", "find", "search"]
+      "reportsTo": "orchestrator",
+      "fallback": { "chain": ["haiku"], "onFailure": "use-direct-tools" },
+      "aliases": ["grep", "find", "search", "scout"]
+    }
+  },
+  "orgChart": {
+    "orchestrator": {
+      "directReports": ["architect", "reviewer", "writer", "researcher", "explorer"],
+      "description": "Top-level orchestrator manages all agents"
+    },
+    "architect": {
+      "directReports": ["frontend", "backend", "devops", "tester", "security"],
+      "description": "CTO manages engineering specialists"
     }
   },
   "orchestration": {
@@ -84,13 +143,26 @@
       "maxPhases": 7,
       "verifyBetweenPhases": true,
       "parallelizeIndependent": true,
-      "neverPauseFor": ["lint-fix", "type-fix", "test-fix", "commit", "push"]
+      "neverPauseFor": ["lint-fix", "type-fix", "test-fix", "commit", "push"],
+      "specialtyRouting": {
+        "ui-work": "frontend",
+        "api-work": "backend",
+        "ci-cd": "devops",
+        "testing": "tester",
+        "security-scan": "security",
+        "documentation": "writer",
+        "code-review": "reviewer",
+        "research": "researcher",
+        "file-search": "explorer",
+        "architecture": "architect"
+      }
     },
     "escalation": {
       "workerFails2x": "consult-architect-then-continue",
       "explorerEmpty": "promote-to-researcher",
       "reviewFindsArchIssue": "consult-architect-async",
-      "modelUnavailable": "fallback-chain"
+      "modelUnavailable": "fallback-chain",
+      "specialistUnavailable": "fall-back-to-worker"
     },
     "loop": {
       "defaultMode": "autonomous",

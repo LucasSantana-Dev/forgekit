@@ -161,6 +161,19 @@ export function validateKit(rootDir = '.') {
       if (!agent.tools || !Array.isArray(agent.tools) || agent.tools.length === 0) {
         errors.push(`Agent ${name} missing tools access list`)
       }
+      if (!agent.title) errors.push(`Agent ${name} missing title`)
+      if (agent.reportsTo && !agents.agents[agent.reportsTo]) {
+        errors.push(`Agent ${name} reportsTo unknown agent: ${agent.reportsTo}`)
+      }
+    }
+
+    if (agents.orgChart) {
+      for (const [mgr, org] of Object.entries(agents.orgChart)) {
+        if (!agents.agents[mgr]) errors.push(`Org chart references unknown manager: ${mgr}`)
+        for (const report of org.directReports || []) {
+          if (!agents.agents[report]) errors.push(`Org chart: ${mgr} has unknown report: ${report}`)
+        }
+      }
     }
   }
 
