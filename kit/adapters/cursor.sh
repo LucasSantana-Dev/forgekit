@@ -93,6 +93,30 @@ PYEOF
 			fi
 		fi
 	fi
+
+	if [ "${FORGE_OHMY_COMPAT:-false}" = "true" ]; then
+		compat_src="$FORGE_KIT_DIR/../implementations/cursor/oh-my-cursor.md"
+		compat_dst="$project_dir/.cursor/oh-my-cursor.md"
+
+		if [ -f "$compat_src" ]; then
+			log_step "Installing oh-my compatibility reference to $compat_dst"
+
+			if [ -f "$compat_dst" ] && files_equal "$compat_src" "$compat_dst"; then
+				log_dim "  (no changes)"
+			else
+				if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+					if [ -f "$compat_dst" ]; then
+						log_info "  [DRY RUN] Would update oh-my-cursor.md"
+					else
+						log_info "  [DRY RUN] Would create oh-my-cursor.md"
+					fi
+				else
+					cp "$compat_src" "$compat_dst"
+					log_success "oh-my compatibility reference installed"
+				fi
+			fi
+		fi
+	fi
 }
 
 adapter_verify() {
@@ -125,6 +149,17 @@ adapter_uninstall() {
 			fi
 		else
 			log_warn "Skipping $rules_file (not marked by forge-kit)"
+		fi
+	fi
+
+	if [ -f "$project_dir/.cursor/oh-my-cursor.md" ]; then
+		if grep -qm1 "^# forge-kit" "$project_dir/.cursor/oh-my-cursor.md" 2>/dev/null; then
+			if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+				log_info "[DRY RUN] Would remove $project_dir/.cursor/oh-my-cursor.md"
+			else
+				rm "$project_dir/.cursor/oh-my-cursor.md"
+				log_success "Removed oh-my compatibility reference"
+			fi
 		fi
 	fi
 }

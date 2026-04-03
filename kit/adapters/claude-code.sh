@@ -90,7 +90,7 @@ PYEOF
 		install_providers "$FORGE_KIT_DIR/core/providers.json" "$claude_dir/providers.json"
 	fi
 
-	if [ "${FORGE_DURABLE:-false}" = "true" ]; then
+	if [ "${FORGE_DURABLE:-false}" = "true" ] && [ -f "$claude_dir/CLAUDE.md" ]; then
 		log_step "Adding durable execution config"
 		install_durable "$FORGE_KIT_DIR/core/rules.md" "$claude_dir/CLAUDE.md"
 	fi

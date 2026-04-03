@@ -43,6 +43,9 @@ Key capabilities:
 - [Claude Code](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/implementations/claude-code/README.md): Setup guide for Claude Code
 - [Codex CLI](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/implementations/codex/README.md): Setup guide for Codex
 - [OpenCode](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/implementations/opencode/README.md): Setup guide for OpenCode with oh-my-openagent
+- [Cursor](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/implementations/cursor/README.md): Setup guide for Cursor
+- [Windsurf](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/implementations/windsurf/README.md): Setup guide for Windsurf
+- [Antigravity](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/implementations/antigravity/README.md): Setup guide for Antigravity
 
 ## Optional
 
