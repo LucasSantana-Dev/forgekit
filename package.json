@@ -27,6 +27,7 @@
     "backlog:check": "node scripts/reconcile-backlog-state.mjs --check",
     "backlog:reconcile": "node scripts/reconcile-backlog-state.mjs --write",
     "backlog:reconcile:dry": "node scripts/reconcile-backlog-state.mjs",
+    "typecheck:plugin": "npx --yes -p typescript@5.9.3 tsc -p tsconfig.plugin.json",
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
     "test:coverage": "node --experimental-vm-modules node_modules/.bin/jest --coverage",
     "lint": "eslint scripts/ test/",

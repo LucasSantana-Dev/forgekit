@@ -94,6 +94,23 @@ jobs:
       - name: Run tests
         run: npm test
 
+  typecheck-plugin:
+    name: Typecheck OpenCode plugin
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Typecheck plugin sources
+        run: npm run typecheck:plugin
+
   validate-companies:
     name: Validate Company Schemas (Bash)
     runs-on: ubuntu-latest
