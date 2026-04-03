@@ -46,6 +46,16 @@ adapter_install() {
 		install_skills "$FORGE_KIT_DIR/core/skills" "$ag_dir/skills"
 	fi
 
+	if [ "${FORGE_PROVIDERS:-false}" = "true" ]; then
+		log_step "Installing providers to $ag_dir/providers.json"
+		install_providers "$FORGE_KIT_DIR/core/providers.json" "$ag_dir/providers.json"
+	fi
+
+	if [ "${FORGE_DURABLE:-false}" = "true" ]; then
+		log_step "Adding durable execution config"
+		install_durable "$FORGE_KIT_DIR/core/rules.md" "$ag_dir/rules.md"
+	fi
+
 	# 2. FORGE_MCP=true: merge MCP servers into ~/.antigravity/mcp.json
 	if [ "${FORGE_MCP:-false}" = "true" ]; then
 		mcp_dst="$ag_dir/mcp.json"

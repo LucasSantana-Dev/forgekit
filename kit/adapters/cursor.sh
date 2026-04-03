@@ -47,6 +47,16 @@ adapter_install() {
 		install_skills "$FORGE_KIT_DIR/core/skills" "$project_dir/.cursor/skills"
 	fi
 
+	if [ "${FORGE_PROVIDERS:-false}" = "true" ]; then
+		log_step "Installing providers to $project_dir/.cursor/providers.json"
+		install_providers "$FORGE_KIT_DIR/core/providers.json" "$project_dir/.cursor/providers.json"
+	fi
+
+	if [ "${FORGE_DURABLE:-false}" = "true" ]; then
+		log_step "Adding durable execution config"
+		install_durable "$FORGE_KIT_DIR/core/rules.md" "$cursor_rules_dir/forge.mdc"
+	fi
+
 	# 2. FORGE_MCP=true: merge MCP servers into .cursor/mcp.json
 	if [ "${FORGE_MCP:-false}" = "true" ]; then
 		cursor_dir="$project_dir/.cursor"

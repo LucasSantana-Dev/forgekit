@@ -84,6 +84,16 @@ PYEOF
 		install_skills "$FORGE_KIT_DIR/core/skills" "$opencode_dir/skills"
 	fi
 
+	if [ "${FORGE_PROVIDERS:-false}" = "true" ]; then
+		log_step "Installing providers to $opencode_dir/providers.json"
+		install_providers "$FORGE_KIT_DIR/core/providers.json" "$opencode_dir/providers.json"
+	fi
+
+	if [ "${FORGE_DURABLE:-false}" = "true" ]; then
+		log_step "Adding durable execution config"
+		install_durable "$FORGE_KIT_DIR/core/rules.md" "$opencode_dir/system.md"
+	fi
+
 	if [ "${FORGE_OHMY_COMPAT:-false}" = "true" ]; then
 		compat_src="$FORGE_KIT_DIR/../implementations/opencode/oh-my-openagent.jsonc"
 		compat_dst="$opencode_dir/oh-my-opencode.jsonc"
