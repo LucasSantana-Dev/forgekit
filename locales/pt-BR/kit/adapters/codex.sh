@@ -80,6 +80,27 @@ adapter_install() {
 		install_skills "$FORGE_KIT_DIR/core/skills" "$codex_dir/skills"
 	fi
 
+	if [ "${FORGE_MCP:-false}" = "true" ]; then
+		log_step "Merging MCP servers to $codex_dir/mcp.json"
+
+		mcp_src="$FORGE_KIT_DIR/core/mcp.json"
+		mcp_dst="$codex_dir/mcp.json"
+
+		if [ -f "$mcp_src" ]; then
+			if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+				log_info "  [DRY RUN] Would merge MCP servers"
+			else
+				json_merge "$mcp_dst" "$mcp_src" "$mcp_dst"
+				log_success "MCP servers merged"
+			fi
+		fi
+	fi
+
+	if [ "${FORGE_DURABLE:-false}" = "true" ]; then
+		log_step "Adding durable execution config"
+		install_durable "$FORGE_KIT_DIR/core/rules.md" "$codex_dir/AGENTS.md"
+	fi
+
 	if [ "${FORGE_OHMY_COMPAT:-false}" = "true" ]; then
 		compat_src="$FORGE_KIT_DIR/../implementations/codex/oh-my-codex.md"
 		compat_dst="$codex_dir/oh-my-codex.md"

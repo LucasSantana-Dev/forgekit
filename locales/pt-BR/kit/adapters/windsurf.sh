@@ -47,6 +47,16 @@ adapter_install() {
 		install_skills "$FORGE_KIT_DIR/core/skills" "$project_dir/.windsurf/skills"
 	fi
 
+	if [ "${FORGE_PROVIDERS:-false}" = "true" ]; then
+		log_step "Installing providers to $project_dir/.windsurf/providers.json"
+		install_providers "$FORGE_KIT_DIR/core/providers.json" "$project_dir/.windsurf/providers.json"
+	fi
+
+	if [ "${FORGE_DURABLE:-false}" = "true" ]; then
+		log_step "Adding durable execution config"
+		install_durable "$FORGE_KIT_DIR/core/rules.md" "$rules_dst"
+	fi
+
 	# 2. FORGE_MCP=true: merge MCP into .windsurf/mcp.json
 	if [ "${FORGE_MCP:-false}" = "true" ]; then
 		windsurf_dir="$project_dir/.windsurf"

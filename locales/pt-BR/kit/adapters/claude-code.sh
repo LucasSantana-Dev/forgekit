@@ -85,28 +85,14 @@ PYEOF
 		fi
 	fi
 
-	# 4. FORGE_DURABLE=true: append Durable Execution section
+	if [ "${FORGE_PROVIDERS:-false}" = "true" ]; then
+		log_step "Installing providers to $claude_dir/providers.json"
+		install_providers "$FORGE_KIT_DIR/core/providers.json" "$claude_dir/providers.json"
+	fi
+
 	if [ "${FORGE_DURABLE:-false}" = "true" ]; then
 		log_step "Adding durable execution config"
-
-		claude_md_path="$claude_dir/CLAUDE.md"
-
-		if [ -f "$claude_md_path" ]; then
-			if grep -q "## Durable Execution" "$claude_md_path"; then
-				log_dim "  (durable execution section already present)"
-			else
-				durable_section="$(extract_section "$FORGE_KIT_DIR/core/rules.md" "durable-execution")"
-
-				if [ -n "$durable_section" ]; then
-					if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
-						log_info "  [DRY RUN] Would append durable execution section"
-					else
-						printf '\n%s\n' "$durable_section" >>"$claude_md_path"
-						log_success "Durable execution section added"
-					fi
-				fi
-			fi
-		fi
+		install_durable "$FORGE_KIT_DIR/core/rules.md" "$claude_dir/CLAUDE.md"
 	fi
 
 	if [ "${FORGE_OHMY_COMPAT:-false}" = "true" ]; then

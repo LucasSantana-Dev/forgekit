@@ -91,6 +91,50 @@
       "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "skip-review-log-warning" },
       "aliases": ["critic", "validator", "momus"]
     },
+    "ts-reviewer": {
+      "tier": "sonnet",
+      "title": "TypeScript Reviewer",
+      "role": "TypeScript/JavaScript code review — types, async patterns, React, Node.js idioms",
+      "skills": ["review", "tdd"],
+      "tools": ["FileRead", "Glob", "Grep", "LSP"],
+      "readOnly": true,
+      "reportsTo": "reviewer",
+      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "fall-back-to-reviewer" },
+      "aliases": ["typescript-reviewer", "js-reviewer"]
+    },
+    "python-reviewer": {
+      "tier": "sonnet",
+      "title": "Python Reviewer",
+      "role": "Python code review — typing, async/await, Django/Flask/FastAPI patterns, PEP compliance",
+      "skills": ["review", "tdd"],
+      "tools": ["FileRead", "Glob", "Grep", "LSP"],
+      "readOnly": true,
+      "reportsTo": "reviewer",
+      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "fall-back-to-reviewer" },
+      "aliases": ["py-reviewer"]
+    },
+    "go-reviewer": {
+      "tier": "sonnet",
+      "title": "Go Reviewer",
+      "role": "Go code review — error handling, concurrency, interfaces, stdlib patterns",
+      "skills": ["review", "tdd"],
+      "tools": ["FileRead", "Glob", "Grep", "LSP"],
+      "readOnly": true,
+      "reportsTo": "reviewer",
+      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "fall-back-to-reviewer" },
+      "aliases": ["golang-reviewer"]
+    },
+    "rust-reviewer": {
+      "tier": "sonnet",
+      "title": "Rust Reviewer",
+      "role": "Rust code review — ownership, lifetimes, unsafe blocks, error handling, async patterns",
+      "skills": ["review", "secure"],
+      "tools": ["FileRead", "Glob", "Grep", "LSP"],
+      "readOnly": true,
+      "reportsTo": "reviewer",
+      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "fall-back-to-reviewer" },
+      "aliases": ["rs-reviewer"]
+    },
     "writer": {
       "tier": "sonnet",
       "title": "Technical Writer",
@@ -129,7 +173,7 @@
   },
   "orgChart": {
     "orchestrator": {
-      "directReports": ["architect", "reviewer", "writer", "researcher", "explorer"],
+      "directReports": ["architect", "reviewer", "writer", "researcher", "explorer", "ts-reviewer", "python-reviewer", "go-reviewer", "rust-reviewer"],
       "description": "Top-level orchestrator manages all agents"
     },
     "architect": {
@@ -152,6 +196,10 @@
         "security-scan": "security",
         "documentation": "writer",
         "code-review": "reviewer",
+        "ts-review": "ts-reviewer",
+        "python-review": "python-reviewer",
+        "go-review": "go-reviewer",
+        "rust-review": "rust-reviewer",
         "research": "researcher",
         "file-search": "explorer",
         "architecture": "architect"
