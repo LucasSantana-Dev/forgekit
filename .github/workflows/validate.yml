@@ -23,9 +23,9 @@ jobs:
       - name: Check links in Markdown files
         uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
-          use-quiet-mode: 'yes'
-          use-verbose-mode: 'no'
-          config-file: '.github/markdown-link-check-config.json'
+          use-quiet-mode: "yes"
+          use-verbose-mode: "no"
+          config-file: ".github/markdown-link-check-config.json"
 
   shell-scripts:
     name: Validate Shell Scripts
@@ -38,9 +38,9 @@ jobs:
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@2.0.0
         with:
-          scandir: './tools'
+          scandir: "./tools"
           severity: warning
-          ignore_paths: '*.ps1'
+          ignore_paths: "*.ps1"
 
   powershell-scripts:
     name: Validate PowerShell Scripts
@@ -76,6 +76,23 @@ jobs:
         run: npm ci
       - name: Validate schemas
         run: npm run validate:schema
+
+  test:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
 
   validate-companies:
     name: Validate Company Schemas (Bash)

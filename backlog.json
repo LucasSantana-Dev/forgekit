@@ -1,76 +1,123 @@
 {
-  "version": 2,
+  "version": 1,
   "paused": false,
   "project": "ai-dev-toolkit",
   "repository": "https://github.com/Forge-Space/ai-dev-toolkit",
   "tasks": [
     {
-      "id": "release-v0-11",
-      "title": "Release v0.11.0",
-      "description": "Promote CHANGELOG [Unreleased] to v0.11.0, bump package.json, tag, create GitHub release.\n\nScope: CHANGELOG.md, package.json, git tag",
+      "id": "hooks-manifest",
+      "title": "Portable hook manifest (kit/core/hooks.json)",
+      "description": "Create a tool-agnostic hook definition format that adapters translate into each tool's native hook system. Covers PreToolUse, PostToolUse, SessionStart, SessionEnd. Inspired by claw-code's hook execution pipeline.\n\nScope: kit/core/hooks.json (new), kit/adapters/*.sh (update to install hooks)\nTest: Add validateKit() checks for hook schema validity.",
+      "priority": "high",
+      "status": "ready",
+      "tags": ["governance", "hooks", "cross-tool"],
+      "dependsOn": null
+    },
+    {
+      "id": "agent-tool-access",
+      "title": "Per-agent tool access control in agents.json",
+      "description": "Define which tools each agent tier can use. Prevents expensive opus agents from doing cheap grep work. Adds a 'tools' allowlist per agent in agents.json.\n\nScope: kit/core/agents.json (update)\nTest: Validate tool references exist in a tool registry.",
+      "priority": "high",
+      "status": "ready",
+      "tags": ["governance", "routing", "cost-control"],
+      "dependsOn": null
+    },
+    {
+      "id": "cost-tracking",
+      "title": "Cost tracking config and session budget limits",
+      "description": "Add cost awareness to token-optimization.json: per-session budget caps, per-agent cost limits, cost report format. Inspired by claw-code's cost_tracker.py and costHook.py.\n\nScope: kit/core/token-optimization.json (update), kit/core/skills/cost.md (new skill)\nTest: Validate cost config structure.",
+      "priority": "high",
+      "status": "ready",
+      "tags": ["cost-control", "token-optimization"],
+      "dependsOn": null
+    },
+    {
+      "id": "dispatch-skill",
+      "title": "Create dispatch skill for spawning subtasks",
+      "description": "Skill for breaking work into parallel subtasks, assigning to worker agents, and collecting results. Maps to claw-code's Task*/Team* tool pattern but as a portable skill.\n\nScope: kit/core/skills/dispatch.md (new)\nTest: Validate skill frontmatter.",
+      "priority": "high",
+      "status": "ready",
+      "tags": ["orchestration", "skills"],
+      "dependsOn": null
+    },
+    {
+      "id": "schedule-skill",
+      "title": "Create schedule skill for recurring automated runs",
+      "description": "Skill for defining recurring agent tasks (cron-like). Covers CI monitoring, dependency updates, security scans on schedule. Inspired by claw-code's ScheduleCronTool.\n\nScope: kit/core/skills/schedule.md (new)\nTest: Validate skill frontmatter.",
+      "priority": "medium",
+      "status": "ready",
+      "tags": ["automation", "skills"],
+      "dependsOn": null
+    },
+    {
+      "id": "merge-pr-24",
+      "title": "Review and merge PR #24 (autonomous loop + skills)",
+      "description": "Wait for CI, address any review comments, merge the feature/oh-my-compat-adapters branch into main.\n\nURL: https://github.com/Forge-Space/ai-dev-toolkit/pull/24",
       "priority": "critical",
-      "status": "ready",
+      "status": "done",
+      "tags": ["ship", "pr"],
+      "dependsOn": null,
+      "completedAt": 1775199807000
+    },
+    {
+      "id": "release-v0-11",
+      "title": "Release v0.11.0 after PR #24 merge",
+      "description": "Promote CHANGELOG [Unreleased] to v0.11.0, bump package.json, tag, create GitHub release.\n\nScope: CHANGELOG.md, package.json, git tag",
+      "priority": "high",
+      "status": "done",
       "tags": ["release"],
-      "dependsOn": null
-    },
-    {
-      "id": "json-schemas",
-      "title": "Formal JSON schemas for all kit/core configs",
-      "description": "Create JSON Schema files for agents.json, routing.json, autopilot.json, loop.json, token-optimization.json, hooks.json. Enable IDE validation and CI enforcement.\n\nScope: kit/schema/*.schema.json (new/update), scripts/validate-schemas.js (update)",
-      "priority": "high",
-      "status": "ready",
-      "tags": ["governance", "dx"],
-      "dependsOn": null
-    },
-    {
-      "id": "adapter-parity-close",
-      "title": "Close top parity gaps across adapters",
-      "description": "Parity audit shows 14 gaps. Highest impact: add MCP merge to codex adapter, add durable execution to opencode/codex/cursor/windsurf/antigravity.\n\nScope: kit/adapters/*.sh",
-      "priority": "high",
-      "status": "ready",
-      "tags": ["cross-tool", "parity"],
-      "dependsOn": null
+      "dependsOn": "merge-pr-24",
+      "completedAt": 1775220968000
     },
     {
       "id": "mcp-tool-registry",
       "title": "Expand kit/core/mcp.json with recommended MCP servers per tool",
       "description": "Current mcp.json is minimal. Add recommended servers (filesystem, git, fetch, context7, sequential-thinking) with per-tool enable/disable guidance.\n\nScope: kit/core/mcp.json (update), adapters (update MCP merge logic)",
       "priority": "medium",
-      "status": "ready",
+      "status": "backlog",
       "tags": ["mcp", "cross-tool"],
+      "dependsOn": null
+    },
+    {
+      "id": "memory-skill",
+      "title": "Create memory skill for cross-session persistence",
+      "description": "Skill for syncing decisions, preferences, and project state to persistent memory. Covers what to remember, where to store it, and how to recall it.\n\nScope: kit/core/skills/memory.md (new)",
+      "priority": "medium",
+      "status": "backlog",
+      "tags": ["memory", "skills"],
+      "dependsOn": null
+    },
+    {
+      "id": "parity-audit-script",
+      "title": "Create parity audit script comparing kit/core capabilities across tools",
+      "description": "Inspired by claw-code's PARITY.md — a script that audits which features each tool adapter actually supports vs what kit/core defines. Produces a gap report.\n\nScope: scripts/parity-audit.js (new), test (new)",
+      "priority": "medium",
+      "status": "backlog",
+      "tags": ["governance", "quality"],
+      "dependsOn": null
+    },
+    {
+      "id": "json-schemas",
+      "title": "Formal JSON schemas for all kit/core configs",
+      "description": "Create JSON Schema files for agents.json, routing.json, autopilot.json, loop.json, token-optimization.json, hooks.json. Enable IDE validation and CI enforcement.\n\nScope: kit/schema/*.schema.json (new), scripts/validate-schemas.js (update)",
+      "priority": "medium",
+      "status": "backlog",
+      "tags": ["governance", "dx"],
       "dependsOn": null
     },
     {
       "id": "plugin-system",
       "title": "Design portable plugin system for kit extensions",
-      "description": "Allow third-party skills, hooks, and tool configs to be installed via forge-kit. Inspired by claw-code's plugin lifecycle and Paperclip's plugin model.\n\nScope: kit/plugins/ (new directory), kit/install.sh (update), design doc",
-      "priority": "medium",
+      "description": "Allow third-party skills, hooks, and tool configs to be installed via forge-kit. Inspired by claw-code's plugin lifecycle and oh-my-openagent's plugin model.\n\nScope: kit/plugins/ (new directory), kit/install.sh (update), design doc",
+      "priority": "low",
       "status": "backlog",
       "tags": ["architecture", "extensibility"],
-      "dependsOn": null
-    },
-    {
-      "id": "company-templates",
-      "title": "Pre-built company templates (Paperclip Clipmart style)",
-      "description": "Create importable org templates in companies/ beyond fullstack-forge: solopreneur, startup-mvp, agency, open-source-maintainer. Each with agents, skills, and routing tailored to the org type.\n\nScope: companies/ (new directories)",
-      "priority": "medium",
-      "status": "backlog",
-      "tags": ["templates", "companies"],
-      "dependsOn": null
-    },
-    {
-      "id": "heartbeat-schedule",
-      "title": "Heartbeat/routine system for scheduled agent work",
-      "description": "Agents should be able to run on schedules (daily dep audit, weekly security scan, on-PR CI watch). Inspired by Paperclip's heartbeat system. Define schedule format and adapter hooks.\n\nScope: kit/core/schedules.json (new), schedule skill already exists",
-      "priority": "medium",
-      "status": "backlog",
-      "tags": ["automation", "scheduling"],
-      "dependsOn": null
+      "dependsOn": "hooks-manifest"
     },
     {
       "id": "cursor-windsurf-skill-format",
       "title": "Document skill format differences for Cursor and Windsurf",
-      "description": "Cursor uses .mdc rules format, Windsurf uses .windsurfrules. Document how kit/core/skills/*.md map to each tool's native skill/rule format and update adapters if needed.\n\nScope: implementations/cursor/README.md, implementations/windsurf/README.md (new)",
+      "description": "Cursor uses .mdc rules format, Windsurf uses .windsurfrules. Document how kit/core/skills/*.md map to each tool's native skill/rule format and update adapters if needed.\n\nScope: implementations/cursor/README.md, implementations/ (new windsurf/README.md)",
       "priority": "low",
       "status": "backlog",
       "tags": ["docs", "cross-tool"],
@@ -84,77 +131,6 @@
       "status": "backlog",
       "tags": ["docs", "antigravity"],
       "dependsOn": null
-    },
-    {
-      "id": "hooks-manifest",
-      "title": "Portable hook manifest (kit/core/hooks.json)",
-      "priority": "high",
-      "status": "done",
-      "tags": ["governance", "hooks"],
-      "completedIn": "PR #24"
-    },
-    {
-      "id": "agent-tool-access",
-      "title": "Per-agent tool access control in agents.json",
-      "priority": "high",
-      "status": "done",
-      "tags": ["governance", "routing"],
-      "completedIn": "PR #24"
-    },
-    {
-      "id": "cost-tracking",
-      "title": "Cost tracking config and session budget limits",
-      "priority": "high",
-      "status": "done",
-      "tags": ["cost-control"],
-      "completedIn": "PR #24"
-    },
-    {
-      "id": "dispatch-skill",
-      "title": "Create dispatch skill for spawning subtasks",
-      "priority": "high",
-      "status": "done",
-      "tags": ["orchestration", "skills"],
-      "completedIn": "PR #24"
-    },
-    {
-      "id": "schedule-skill",
-      "title": "Create schedule skill for recurring automated runs",
-      "priority": "medium",
-      "status": "done",
-      "tags": ["automation", "skills"],
-      "completedIn": "PR #24"
-    },
-    {
-      "id": "memory-skill",
-      "title": "Create memory skill for cross-session persistence",
-      "priority": "medium",
-      "status": "done",
-      "tags": ["memory", "skills"],
-      "completedIn": "PR #24"
-    },
-    {
-      "id": "parity-audit-script",
-      "title": "Parity audit script (cross-tool capability gap report)",
-      "priority": "medium",
-      "status": "done",
-      "tags": ["governance", "quality"],
-      "completedIn": "PR #24"
-    },
-    {
-      "id": "specialty-agents",
-      "title": "Paperclip-inspired specialty agents with org chart",
-      "priority": "high",
-      "status": "done",
-      "tags": ["agents", "orchestration"],
-      "completedIn": "PR #25"
-    },
-    {
-      "id": "merge-pr-24",
-      "title": "Review and merge PR #24",
-      "priority": "critical",
-      "status": "done",
-      "completedIn": "merged"
     }
   ]
 }
