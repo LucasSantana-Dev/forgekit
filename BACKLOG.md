@@ -15,10 +15,10 @@ _Last updated: 2026-04-03_
 
 ### Confirmed urgent signals
 
-- `backlog.json` marks `release-v0-11` as **critical** and **ready**.
-- GitHub latest release is still **`v0.10.0`**.
-- `package.json` still reports **`0.10.0`** while the working branch is `release/v0.11.0`.
-- `CHANGELOG.md` contains substantial `Unreleased` content that appears intended for `v0.11.0`.
+- GitHub latest release is now **`v0.11.0`**.
+- The highest-value next work has moved from release execution to post-release governance hardening.
+- `backlog.json` is the primary operational queue and should stay aligned with merged PR and release state.
+- The strongest near-term quality gains come from schemas, adapter parity, and recurring backlog hygiene.
 
 ### Confirmed missing implementation surfaces
 
@@ -40,26 +40,25 @@ _Last updated: 2026-04-03_
 
 ## Now
 
-### 1. Ship `v0.11.0` cleanly
+### 1. Stabilize post-release backlog governance
 
 **Why now**
 
-- This is the only backlog item already tagged `critical` + `ready`.
-- The repository is presenting `v0.11.0` work, but external release state is still `v0.10.0`.
+- `v0.11.0` is already published, so the remaining risk is backlog/process drift rather than release execution.
+- The repo now depends on `backlog.json` as an operational control surface for follow-on work.
 
 **Evidence**
 
-- `backlog.json` → `release-v0-11`
-- `gh release list` → latest release `v0.10.0`
-- `package.json` version mismatch on `release/v0.11.0`
+- GitHub latest release → `v0.11.0`
+- `backlog.json` still carries multiple governance and parity items as the active next work
+- Human-readable backlog context was missing before this document
 
 **First action**
 
-- Turn the release into a concrete checklist:
-  1. promote `CHANGELOG.md` unreleased entries to `0.11.0`
-  2. bump `package.json`
-  3. verify tag/release workflow
-  4. publish the release
+- Keep `backlog.json` and the human-readable backlog in sync:
+  1. reconcile shipped work to `done`
+  2. add drift detection and recurring triage
+  3. prioritize the next governance lanes for shipment
 
 ### 2. Formalize JSON schemas for forge-kit core config
 
@@ -228,7 +227,7 @@ Add a release gate that fails if:
 
 ### C. Keep local install noise out of planning
 
-The current checkout contains local `node_modules/` noise. Keep planning and backlog work in a clean worktree to avoid false backlog signals.
+If your checkout contains local workspace noise such as `node_modules/`, keep planning and backlog work in a clean worktree to avoid false backlog signals.
 
 ---
 
@@ -247,4 +246,4 @@ The current checkout contains local `node_modules/` noise. Keep planning and bac
 
 ## Immediate recommended next task
 
-**Execute `release-v0-11` as a real release lane** with explicit checklist + verification gates.
+**Ship the next post-release governance lane** with explicit checklist + verification gates.
