@@ -11,6 +11,7 @@ Task → CEO → CTO → Team Lead → Specialist
 ```
 
 Each agent has a strict contract:
+
 - **What triggers it** — conditions that activate the agent
 - **What it does** — specific responsibilities
 - **What it produces** — concrete outputs
@@ -45,18 +46,13 @@ skills:
   - react-expert
   - nextjs-developer
 ---
-
 You are the React Engineer. You handle React and Next.js projects.
-
 ## What triggers you
 ...
-
 ## What you do
 ...
-
 ## What you produce
 ...
-
 ## Who you hand off to
 ...
 ```
@@ -66,19 +62,26 @@ The `skills` field references entries in the company's `skills/` directory.
 ## Using with AI tools
 
 ### Claude Code / OpenCode
+
 Copy the agent's `AGENTS.md` to `.claude/agents/<role>/AGENTS.md` in your project.
 
 ### Codex CLI
+
 Agents follow the standard `AGENTS.md` format — drop into your repo root or subdirectory.
 
 ### Cursor / Windsurf
+
 Use the agent body as a scoped `.cursorrules` or `.windsurfrules` entry.
 
 ## Available companies
 
-| Company | Agents | Skills | Teams | Description |
-|---------|--------|--------|-------|-------------|
-| [fullstack-forge](./fullstack-forge/) | 49 | 66 | 10 | Full-service software development consultancy across 11 departments |
+| Company                                             | Agents | Skills | Teams | Description                                                         |
+| --------------------------------------------------- | ------ | ------ | ----- | ------------------------------------------------------------------- |
+| [solopreneur](./solopreneur/)                       | 3      | 3      | 0     | Founder-led product studio for solo SaaS and indie product work     |
+| [startup-mvp](./startup-mvp/)                       | 4      | 4      | 0     | Early-stage startup pack for MVP building and launch iteration      |
+| [agency](./agency/)                                 | 5      | 4      | 0     | Client delivery model for discovery, execution, QA, and comms       |
+| [open-source-maintainer](./open-source-maintainer/) | 5      | 4      | 0     | Maintainer-focused org for triage, releases, docs, and community    |
+| [fullstack-forge](./fullstack-forge/)               | 49     | 66     | 10    | Full-service software development consultancy across 11 departments |
 
 ## Attribution
 
