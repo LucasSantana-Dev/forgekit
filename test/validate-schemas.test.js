@@ -108,6 +108,66 @@ describe("validateKit", () => {
     }
   });
 
+  test("every core config declares a schema and that schema file exists", () => {
+    const configs = [
+      "kit/core/agents.json",
+      "kit/core/routing.json",
+      "kit/core/providers.json",
+      "kit/core/autopilot.json",
+      "kit/core/token-optimization.json",
+      "kit/core/loop.json",
+      "kit/core/hooks.json",
+      "kit/core/mcp.json",
+      "kit/core/schedules.json",
+    ];
+
+    for (const cfg of configs) {
+      const full = path.join(rootDir, cfg);
+      const parsed = JSON.parse(fs.readFileSync(full, "utf8"));
+      expect(parsed.$schema).toBeDefined();
+      const schemaPath = path.resolve(path.dirname(full), parsed.$schema);
+      expect(fs.existsSync(schemaPath)).toBe(true);
+    }
+  });
+
+  test("validateKit catches schema violations for malformed core config", () => {
+    const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "test-kit-schema-"));
+    fs.mkdirSync(path.join(tmpDir, "kit/core"), { recursive: true });
+    fs.mkdirSync(path.join(tmpDir, "kit/schema"), { recursive: true });
+
+    const schemaSrc = path.join(rootDir, "kit/schema/providers.schema.json");
+    const schemaDst = path.join(tmpDir, "kit/schema/providers.schema.json");
+    fs.copyFileSync(schemaSrc, schemaDst);
+
+    const badProviders = {
+      $schema: "../schema/providers.schema.json",
+      version: "1.0.0",
+      providers: {
+        anthropic: {
+          name: "Anthropic",
+          env_key: "ANTHROPIC_API_KEY",
+          base_url: "https://api.anthropic.com",
+        },
+      },
+      default_provider: "anthropic",
+      fallback_chain: ["anthropic"],
+    };
+
+    fs.writeFileSync(
+      path.join(tmpDir, "kit/core/providers.json"),
+      JSON.stringify(badProviders, null, 2) + "\n",
+    );
+
+    const errors = validateKit(tmpDir);
+    expect(
+      errors.some(
+        (e) => e.includes("providers.json") && e.includes("schema error"),
+      ),
+    ).toBe(true);
+
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  });
+
   test("every agent references a valid tier", () => {
     const agents = JSON.parse(
       fs.readFileSync(path.join(rootDir, "kit/core/agents.json"), "utf8"),
