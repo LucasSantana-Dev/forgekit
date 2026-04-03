@@ -250,6 +250,8 @@ examples/            Starter assets (backlog, memory structure)
 | 6   | Spec-driven contracts            | [`patterns/spec-driven-development.md`](patterns/spec-driven-development.md)                                                     |
 | 7   | Full team setup with forge-kit   | [`kit/`](kit/) + [`implementations/`](implementations/)                                                                          |
 
+Need the current prioritized repository work instead of the general adoption guide? See [`BACKLOG.md`](BACKLOG.md).
+
 ## How do I contribute?
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
