@@ -336,7 +336,7 @@ triggers:
 **Examples:**
 
 - [skills/verify.md](./skills/verify.md) - Quality gate (lint, type-check, test, build)
-- [skills/ship.md](./skills/ship.md) - Git commit + push + PR creation
+- [skills/ship.md](./skills/ship.md) - Git workflow skill
 
 **Best practices:**
 
@@ -412,11 +412,9 @@ Claude Code supports Model Context Protocol servers for extending capabilities.
 **Config file locations:**
 
 ```
-
-~/.claude/.mcp.json # Global user-level servers (correct path)
-your-project/.mcp.json # Project-specific servers
-
-````
+~/.claude/.mcp.json              # Global user-level servers (correct path)
+your-project/.mcp.json           # Project-specific servers
+```
 
 > **Note:** The correct global config file is `~/.claude/.mcp.json` — not `~/.claude/config.json`
 > or `~/.claude/settings.json`. The `mcpServers` key is **not** valid in `settings.json`;
@@ -444,7 +442,7 @@ your-project/.mcp.json # Project-specific servers
     }
   }
 }
-````
+```
 
 **Project config example:**
 
@@ -759,7 +757,7 @@ description: Complete feature development workflow
    - Add to MEMORY.md active tasks
    - Document any gotchas discovered
 
-````
+```
 
 **Progress tracking:**
 
@@ -776,7 +774,7 @@ Use MEMORY.md for lightweight tracking:
 - [ ] Update docs
 
 Next: Write logout handler, then E2E tests
-````
+```
 
 For complex projects, use external tools (Linear, GitHub Projects) and sync via MCP.
 
@@ -809,7 +807,7 @@ if [[ "$TOOL_NAME" == "Write" ]] || [[ "$TOOL_NAME" == "Edit" ]]; then
   if command -v gitleaks &> /dev/null; then
     gitleaks detect --no-git --source="$FILE_PATH"
   fi
-fi
+}
 ```
 
 **Best practices:**
@@ -1167,7 +1165,7 @@ Improvements welcome! If you discover better patterns or encounter issues:
 
 ## Resources
 
-- [Claude Code Documentation](https://docs.anthropic.com/claude/docs/claude-code)
+- [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code/overview)
 - [Model Context Protocol](https://modelcontextprotocol.io/)
 - [AI Dev Toolkit Patterns](../../patterns/)
 

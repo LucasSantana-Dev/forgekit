@@ -1,6 +1,6 @@
 {
   "name": "ai-dev-toolkit",
-  "version": "0.11.0",
+  "version": "0.10.0",
   "description": "Reusable patterns, rules, and agent companies for AI-assisted development",
   "type": "module",
   "private": false,
@@ -24,6 +24,9 @@
     "validate": "npm run validate:shell && npm run validate:schema",
     "validate:shell": "shellcheck tools/*.sh",
     "validate:schema": "node scripts/validate-schemas.js",
+    "backlog:check": "node scripts/reconcile-backlog-state.mjs --check",
+    "backlog:reconcile": "node scripts/reconcile-backlog-state.mjs --write",
+    "backlog:reconcile:dry": "node scripts/reconcile-backlog-state.mjs",
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
     "test:coverage": "node --experimental-vm-modules node_modules/.bin/jest --coverage",
     "lint": "eslint scripts/ test/",

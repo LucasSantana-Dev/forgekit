@@ -1,0 +1,26 @@
+name: Backlog Triage
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 10 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  backlog-drift:
+    name: Detect backlog drift
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Check backlog lifecycle drift
+        run: npm run backlog:check
