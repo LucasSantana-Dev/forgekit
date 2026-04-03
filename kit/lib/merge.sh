@@ -98,3 +98,61 @@ extract_sections() {
 		fi
 	done
 }
+
+install_skills() {
+	skills_src="$1"
+	skills_dst="$2"
+
+	if [ ! -d "$skills_src" ]; then
+		return
+	fi
+
+	ensure_dir "$skills_dst"
+
+	if [ "${FORGE_DRY_RUN:-false}" != "true" ]; then
+		: >"$skills_dst/.forge-kit"
+	fi
+
+	count=0
+	for skill_file in "$skills_src"/*.md; do
+		if [ -f "$skill_file" ]; then
+			filename="$(basename "$skill_file")"
+			dst="$skills_dst/$filename"
+
+			if [ -f "$dst" ]; then
+				old_sha="$(file_sha256 "$dst")"
+				new_sha="$(file_sha256 "$skill_file")"
+				if [ "$old_sha" = "$new_sha" ]; then
+					log_dim "  (skip) $filename"
+					continue
+				fi
+			fi
+
+			if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+				log_info "  [DRY RUN] Would copy $filename"
+			else
+				cp "$skill_file" "$dst"
+				count=$((count + 1))
+			fi
+		fi
+	done
+
+	if [ "${FORGE_DRY_RUN:-false}" != "true" ]; then
+		log_success "$count skills installed"
+	fi
+}
+
+uninstall_skills() {
+	skills_dst="$1"
+
+	if [ -d "$skills_dst" ]; then
+		if [ -f "$skills_dst/.forge-kit" ] || grep -qm1 "^---" "$skills_dst"/*.md 2>/dev/null; then
+			if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+				log_info "[DRY RUN] Would remove $skills_dst/"
+			else
+				rm -rf "$skills_dst"
+				log_success "Removed skills directory"
+			fi
+		fi
+	fi
+}

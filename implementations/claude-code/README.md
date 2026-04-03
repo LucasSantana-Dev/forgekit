@@ -5,6 +5,7 @@ Comprehensive reference implementation of AI Dev Toolkit patterns for [Claude Co
 ## Overview
 
 Claude Code is Anthropic's official CLI and VSCode extension for Claude. It excels at:
+
 - Deep codebase exploration with built-in search tools
 - Persistent memory across sessions
 - Extensibility via MCP servers, skills, and hooks
@@ -38,6 +39,17 @@ cp implementations/claude-code/skills/*.md ~/.claude/skills/
 
 # Start session
 claude
+```
+
+## oh-my-claudecode Compatibility
+
+Use [oh-my-claudecode.md](./oh-my-claudecode.md) as the ownership boundary when combining
+`forge-kit` with oh-my orchestration.
+
+`forge-kit` can install this reference to `~/.claude/oh-my-claudecode.md` with:
+
+```bash
+FORGE_KIT_DIR=./kit sh kit/install.sh --tools claude-code --oh-my-compat
 ```
 
 ## Agent Organizations
@@ -78,6 +90,7 @@ your-project/
 ```
 
 **Best practices:**
+
 - Root CLAUDE.md: architecture, tech stack, workflow, gotchas
 - Subdirectory CLAUDE.md: module-specific conventions, APIs, testing patterns
 - Keep under 500 lines per file (Claude Code loads entire file into context)
@@ -89,33 +102,40 @@ your-project/
 # Project Name
 
 ## Quick Reference
+
 - Stack: TypeScript, React, Supabase
 - Build: `npm run build`
 - Test: `npm test`
 - Deploy: `npm run deploy`
 
 ## Architecture
+
 [2-3 paragraph overview]
 
 ## Code Standards
+
 - Functions: <50 lines, cyclomatic complexity <10
 - No comments unless required for complex logic
 - Prefer composition over inheritance
 
 ## Workflow
-- Branch: feature/* or fix/*
+
+- Branch: feature/_ or fix/_
 - Commit: Conventional Commits format
 - Test before PR, lint on pre-commit
 
 ## Testing Strategy
+
 - Unit: business logic, edge cases
 - Integration: API routes, database interactions
 - E2E: critical user paths
 
 ## Gotchas
+
 - [Specific issues that waste time]
 
 ## Security
+
 - Never commit .env files
 - Use secret scanning in CI
 ```
@@ -144,24 +164,29 @@ Claude Code maintains persistent memory at `~/.claude/projects/<path>/memory/`.
 # Memory Index
 
 ## Quick Facts
+
 - Last deployed: 2026-03-10
 - Current version: v1.2.3
 - Active branch: feature/new-auth
 
 ## Key Decisions
+
 - [2026-03-10] Switched to Supabase Auth (see architecture.md)
 - [2026-03-05] Adopted Conventional Commits (see workflows.md)
 
 ## Active Tasks
+
 - [ ] Implement OAuth flow (PR #42)
 - [ ] Fix mobile responsiveness (issue #38)
 
 ## Gotchas Index
+
 - See gotchas.md for full list
 - Husky pre-commit fails on WSL → use HUSKY=0
 - Docker build requires 16GB RAM minimum
 
 ## Learning
+
 - [Key insights from recent work]
 
 File paths: [link to topic files]
@@ -175,6 +200,7 @@ File paths: [link to topic files]
 4. **Cleanup**: Keep MEMORY.md under 200 lines, move details to topic files
 
 **Mapping to toolkit patterns:**
+
 - MEMORY.md = [Memory Systems: Session Memory](../../patterns/memory-systems.md#session-memory)
 - Topic files = [Memory Systems: Knowledge Base](../../patterns/memory-systems.md#knowledge-base)
 - Update workflow = [Memory Systems: Update Protocol](../../patterns/memory-systems.md#update-protocol)
@@ -186,6 +212,7 @@ Claude Code supports two hook types:
 ### PreToolUse Hook
 
 Runs **before** Claude executes a tool. Use for:
+
 - Blocking dangerous commands
 - Adding confirmation gates
 - Rewriting commands before execution (e.g. RTK token compression)
@@ -196,6 +223,7 @@ Runs **before** Claude executes a tool. Use for:
 **Example:** See [hooks/pre-tool-use.sh](./hooks/pre-tool-use.sh)
 
 **Common patterns:**
+
 ```bash
 # Block dangerous operations
 if [[ "$TOOL_NAME" == "Bash" ]] && [[ "$COMMAND" =~ "rm -rf /" ]]; then
@@ -224,12 +252,14 @@ lands in the context window. 60-90% savings on `git`, `npm`, `ls`, and other
 high-volume dev commands.
 
 **Install and wire (macOS):**
+
 ```bash
 brew install rtk
 rtk init -g   # installs hook + patches settings.json
 ```
 
 **Install and wire (Linux):**
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
 export PATH="$HOME/.local/bin:$PATH"
@@ -237,6 +267,7 @@ rtk init -g
 ```
 
 **Verify:**
+
 ```bash
 rtk --version   # rtk 0.x.x
 rtk gain        # shows cumulative token savings
@@ -249,6 +280,7 @@ Commands RTK doesn't know how to compress pass through at exit 1 with zero overh
 ### PostToolUse Hook
 
 Runs **after** tool execution. Use for:
+
 - Auto-formatting modified files
 - Running linters
 - Validating outputs
@@ -259,11 +291,13 @@ Runs **after** tool execution. Use for:
 **Example:** See [hooks/post-tool-use.sh](./hooks/post-tool-use.sh)
 
 **Important gotchas:**
+
 - PostToolUse hooks that modify files can create edit loops (Edit tool → hook modifies → Edit again)
 - Use conditional logic to skip formatting if file already formatted
 - For multi-file bulk edits, disable hooks temporarily or use Bash with inline python scripts
 
 **Mapping to toolkit patterns:**
+
 - PreToolUse = [Agent Gotchas](../../patterns/agent-gotchas.md)
 - PostToolUse = [Workflow Best Practices](../../best-practices/workflow.md)
 
@@ -287,21 +321,25 @@ triggers:
 [Detailed instructions for Claude to execute]
 
 ## Steps
+
 1. First do X
 2. Then do Y
 3. Finally Z
 
 ## Important Notes
+
 - [Constraints or gotchas]
 ```
 
 **Location:** `~/.claude/skills/` (global) or `.claude/skills/` (project-local)
 
 **Examples:**
+
 - [skills/verify.md](./skills/verify.md) - Quality gate (lint, type-check, test, build)
 - [skills/ship.md](./skills/ship.md) - Git commit + push + PR creation
 
 **Best practices:**
+
 - Keep skills focused (one workflow per skill)
 - Include error handling instructions
 - Specify success criteria
@@ -309,7 +347,7 @@ triggers:
 
 **Creating custom skills:**
 
-```markdown
+````markdown
 ---
 name: deploy-staging
 description: Deploy current branch to staging environment
@@ -321,7 +359,9 @@ triggers:
 # Deploy to Staging
 
 ## Prerequisites
+
 Check that:
+
 1. All tests pass (`npm test`)
 2. No uncommitted changes (`git status`)
 3. Current branch is pushed to remote
@@ -332,8 +372,10 @@ Check that:
    ```bash
    npm run build
    ```
+````
 
 2. **Deploy to Vercel staging**
+
    ```bash
    vercel deploy --prebuilt
    ```
@@ -344,15 +386,19 @@ Check that:
    - Update MEMORY.md with deployment URL and timestamp
 
 ## Success Criteria
+
 - Deployment URL returned
 - No build errors
 - Staging environment accessible
 
 ## Rollback
+
 If deployment fails:
+
 ```bash
 vercel rollback
 ```
+
 ```
 
 **Mapping to toolkit patterns:**
@@ -366,9 +412,11 @@ Claude Code supports Model Context Protocol servers for extending capabilities.
 **Config file locations:**
 
 ```
-~/.claude/.mcp.json          # Global user-level servers (correct path)
-your-project/.mcp.json       # Project-specific servers
-```
+
+~/.claude/.mcp.json # Global user-level servers (correct path)
+your-project/.mcp.json # Project-specific servers
+
+````
 
 > **Note:** The correct global config file is `~/.claude/.mcp.json` — not `~/.claude/config.json`
 > or `~/.claude/settings.json`. The `mcpServers` key is **not** valid in `settings.json`;
@@ -396,7 +444,7 @@ your-project/.mcp.json       # Project-specific servers
     }
   }
 }
-```
+````
 
 **Project config example:**
 
@@ -417,16 +465,19 @@ your-project/.mcp.json       # Project-specific servers
 ```
 
 **Recommended global servers:**
+
 - `@modelcontextprotocol/server-github` - GitHub API access
 - `tavily-mcp` - Web search
 - `@upstash/context7-mcp` - Library documentation lookup
 
 **Recommended per-project:**
+
 - Cloud provider SDKs (Supabase, Vercel, AWS)
 - Custom business logic servers
 - Domain-specific tools
 
 **Performance tips:**
+
 - Keep total servers under 10 (context overhead)
 - Keep total tools under 80 (tool selection accuracy)
 - Use project-local `.mcp.json` for environment-specific tools
@@ -470,7 +521,7 @@ entries to the context window even when no teams are configured.
 // ~/.claude/settings.json — remove this line
 {
   "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"   // <-- remove
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1" // <-- remove
   }
 }
 ```
@@ -479,6 +530,7 @@ Only set this if you are actively using the agent teams feature with a configure
 key in `settings.json`.
 
 **Mapping to toolkit patterns:**
+
 - MCP servers = [Context Building](../../patterns/context-building.md)
 - Server configuration = [Context Building](../../patterns/context-building.md)
 
@@ -486,11 +538,11 @@ key in `settings.json`.
 
 Claude Code supports three model tiers:
 
-| Model | ID | Use For | Cost (in/out) | Context |
-|-------|-----|---------|------|---------|
-| claude-sonnet-4-6 | Sonnet 4.6 | Default work, most tasks | $3/$15 | 200K |
-| claude-opus-4-6 | Opus 4.6 | Complex architecture, deep analysis | $15/$75 | 1M |
-| claude-haiku-4-5-20251001 | Haiku 4.5 | Sub-agents, quick checks, formatting | $1/$5 | 200K |
+| Model                     | ID         | Use For                              | Cost (in/out) | Context |
+| ------------------------- | ---------- | ------------------------------------ | ------------- | ------- |
+| claude-sonnet-4-6         | Sonnet 4.6 | Default work, most tasks             | $3/$15        | 200K    |
+| claude-opus-4-6           | Opus 4.6   | Complex architecture, deep analysis  | $15/$75       | 1M      |
+| claude-haiku-4-5-20251001 | Haiku 4.5  | Sub-agents, quick checks, formatting | $1/$5         | 200K    |
 
 **Routing strategy:**
 
@@ -538,6 +590,7 @@ Expected savings: 60-80% on sub-agent costs with no quality impact on main sessi
 requests to different model slots, enabling finer-grained cost control.
 
 **Install:**
+
 ```bash
 npm install -g @musistudio/claude-code-router
 ```
@@ -553,7 +606,11 @@ npm install -g @musistudio/claude-code-router
       "name": "anthropic",
       "api_base_url": "https://api.anthropic.com/v1/messages",
       "api_key": "$ANTHROPIC_API_KEY",
-      "models": ["claude-sonnet-4-6", "claude-opus-4-6", "claude-haiku-4-5-20251001"],
+      "models": [
+        "claude-sonnet-4-6",
+        "claude-opus-4-6",
+        "claude-haiku-4-5-20251001"
+      ],
       "transformer": { "use": ["Anthropic"] }
     }
   ],
@@ -574,6 +631,7 @@ ccr my-preset start && eval "$(ccr activate)" && claude
 ```
 
 **Mapping to toolkit patterns:**
+
 - Model routing = [Multi-Model Routing](../../patterns/multi-model-routing.md)
 - Cost optimization = [Context Management](../../best-practices/context-management.md)
 
@@ -601,6 +659,7 @@ claude
 ```
 
 **Automatic checks** (via skill or manual):
+
 - Check git status, current branch
 - Review open issues/PRs
 - Check active tasks from MEMORY.md
@@ -608,16 +667,19 @@ claude
 ### During Work
 
 **Context management:**
+
 - Use `@filename` references instead of describing locations
 - Run `/compact` when context reaches **60-70%** of 200K tokens — don't wait until 90%
 - Use `/clear` between unrelated tasks
 
 **Quality gates:**
+
 - Run `/verify` skill after significant changes
 - Commit frequently with meaningful messages
 - Update MEMORY.md when discovering new patterns
 
 **Gotcha prevention:**
+
 - Read existing files before editing (Edit tool requires prior Read)
 - Check test output for false positives
 - Validate CI passes before requesting PR creation
@@ -648,6 +710,7 @@ claude
 ```
 
 **Mapping to toolkit patterns:**
+
 - Session workflow = [Session Management](../../patterns/session-management.md)
 - Commit workflow = [Workflow Best Practices](../../best-practices/workflow.md)
 - Memory sync = [Memory Systems: Update Protocol](../../patterns/memory-systems.md#update-protocol)
@@ -656,7 +719,7 @@ claude
 
 For multi-step workflows, use skills with explicit state management:
 
-```markdown
+````markdown
 ---
 name: feature-flow
 description: Complete feature development workflow
@@ -665,6 +728,7 @@ description: Complete feature development workflow
 # Feature Development Flow
 
 ## Input Required
+
 - Feature name
 - Target branch (default: main)
 
@@ -674,6 +738,7 @@ description: Complete feature development workflow
    ```bash
    git checkout -b feature/[feature-name]
    ```
+````
 
 2. **Implement feature**
    - Write code
@@ -693,7 +758,8 @@ description: Complete feature development workflow
 5. **Update memory**
    - Add to MEMORY.md active tasks
    - Document any gotchas discovered
-```
+
+````
 
 **Progress tracking:**
 
@@ -710,11 +776,12 @@ Use MEMORY.md for lightweight tracking:
 - [ ] Update docs
 
 Next: Write logout handler, then E2E tests
-```
+````
 
 For complex projects, use external tools (Linear, GitHub Projects) and sync via MCP.
 
 **Mapping to toolkit patterns:**
+
 - Multi-step workflows = [Task Orchestration](../../patterns/task-orchestration.md)
 - Progress tracking = [Task Orchestration: State Management](../../patterns/task-orchestration.md#state-management)
 
@@ -746,6 +813,7 @@ fi
 ```
 
 **Best practices:**
+
 - Use environment variables for all secrets
 - Add `.env` to `.gitignore`
 - Use secret scanning in CI (GitGuardian, Gitleaks, Trivy)
@@ -761,6 +829,7 @@ See [hooks/pre-tool-use.sh](./hooks/pre-tool-use.sh) for comprehensive examples:
 - Validate database migrations before applying
 
 **Mapping to toolkit patterns:**
+
 - Secret scanning = [Security Best Practices](../../best-practices/security.md)
 - Safeguards = [Agent Gotchas](../../patterns/agent-gotchas.md)
 
@@ -771,6 +840,7 @@ See [hooks/pre-tool-use.sh](./hooks/pre-tool-use.sh) for comprehensive examples:
 Claude Code has a 200K token context window (Sonnet) or 1M (Opus).
 
 **Monitoring:**
+
 - Check token usage in bottom status bar
 - Run `/compact` at **60-70%** (120-140K tokens for Sonnet) — waiting until 90% risks hitting session limits on long tasks
 - Use `/clear` between unrelated tasks
@@ -780,25 +850,30 @@ Claude Code has a 200K token context window (Sonnet) or 1M (Opus).
 1. **RTK hook (highest impact, zero workflow change)**
    Install RTK to compress Bash outputs before they reach the model. A single
    `git log` can produce 10K tokens of raw output; RTK filters it to under 1K.
+
    ```bash
    brew install rtk && rtk init -g   # macOS
    # or: curl installer + rtk init -g  (Linux)
    ```
+
    See [RTK hook setup](#rtk-token-compressing-hook) for full instructions.
 
 2. **Targeted file reading**
+
    ```
    Instead of: "Read all files in src/"
    Do: "@src/components/Button.tsx @src/hooks/useAuth.ts"
    ```
 
 3. **Glob patterns for specific files**
+
    ```
    Instead of: "@**/*"
    Do: "@**/*.test.ts" or "@src/lib/**/*.ts"
    ```
 
 4. **Summarize before loading**
+
    ```
    "List files in src/components/, then I'll tell you which to read"
    ```
@@ -813,11 +888,13 @@ Claude Code has a 200K token context window (Sonnet) or 1M (Opus).
 Claude Code caches tool definitions and file contents between turns.
 
 **Optimization:**
+
 - Re-use `@filename` references (cached after first read)
 - Keep CLAUDE.md stable (re-parsed on change)
 - Minimize MCP server restarts (tools re-indexed on restart)
 
 **Mapping to toolkit patterns:**
+
 - Token management = [Context Management](../../best-practices/context-management.md)
 - Caching = [Context Management](../../best-practices/context-management.md)
 
@@ -836,6 +913,7 @@ description: Generate comprehensive tests for a module
 # Generate Tests
 
 ## Inputs
+
 - Target file path
 - Test type (unit, integration, e2e)
 
@@ -847,7 +925,7 @@ description: Generate comprehensive tests for a module
    - Note edge cases, error conditions
 
 2. **Create test file**
-   - Follow project naming convention (*.test.ts or *.spec.ts)
+   - Follow project naming convention (_.test.ts or _.spec.ts)
    - Import testing framework (Jest, Vitest, Playwright)
    - Setup mocks if needed
 
@@ -906,6 +984,7 @@ npm run build
 ```
 
 **Mapping to toolkit patterns:**
+
 - Test generation = [Testing](../../patterns/testing.md)
 - Quality gates = [Workflow Best Practices](../../best-practices/workflow.md)
 
@@ -914,36 +993,42 @@ npm run build
 ### Common Issues
 
 **1. Edit tool fails with "file not read"**
+
 ```
 Solution: Read file first with @filename or Read tool
 Always: Read → Edit workflow
 ```
 
 **2. Hooks create infinite loops**
+
 ```
 Problem: PostToolUse hook modifies file → triggers another Edit
 Solution: Add conditional check in hook to skip if already formatted
 ```
 
 **3. MCP server timeout**
+
 ```
 Problem: Server takes >30s to respond
 Solution: Reduce tool count, optimize server startup, check network
 ```
 
 **4. Memory file not loading**
+
 ```
 Problem: MEMORY.md over 200 lines
 Solution: Move details to topic files, keep index under limit
 ```
 
 **5. Git hooks conflict with Claude Code hooks**
+
 ```
 Problem: Pre-commit hook fails but Claude Code proceeds
 Solution: PreToolUse hook should exit 1 on failure to block
 ```
 
 **6. RTK not rewriting commands**
+
 ```
 Problem: rtk binary not in PATH when hook runs
 Solution: Use full path in hook or ensure PATH includes ~/.local/bin
@@ -963,6 +1048,7 @@ claude --debug
 ```
 
 **Log locations:**
+
 - `~/.claude/logs/` - Session logs
 - `~/.claude/mcp-logs/` - MCP server logs
 
@@ -984,12 +1070,14 @@ cd apps/web && claude --prompt "Write E2E tests for login"
 ```
 
 **When to use:**
+
 - 3+ independent tasks
 - No shared state/files
 - Clear file boundaries
 - Parallel CI jobs
 
 **Coordination:**
+
 - Use git branches (merge after completion)
 - Update shared MEMORY.md last (to avoid conflicts)
 - Communication via GitHub issues/PRs
@@ -1002,16 +1090,19 @@ For tasks where B depends on A output:
 ## Workflow: API + Client Generation
 
 ### Step 1: Update API schema
+
 1. Modify `schema.prisma`
 2. Run `prisma generate`
 3. Commit schema changes
 
 ### Step 2: Generate client types
+
 1. Wait for Step 1 completion
 2. Run `npm run codegen` (generates types from schema)
 3. Verify types in `src/generated/`
 
 ### Step 3: Update frontend
+
 1. Wait for Step 2 completion
 2. Update React components with new types
 3. Run type-check to verify
@@ -1028,10 +1119,13 @@ description: Complete flow for schema changes (API → types → frontend)
 # Schema Update Flow
 
 ## Step 1: Update Schema
+
 [Instructions...]
 
 ## Step 2: Generate Types (requires Step 1)
+
 Check that Step 1 completed:
+
 - [ ] schema.prisma modified
 - [ ] prisma generate ran successfully
 - [ ] Changes committed
@@ -1039,7 +1133,9 @@ Check that Step 1 completed:
 Then run: `npm run codegen`
 
 ## Step 3: Update Frontend (requires Step 2)
+
 Check that Step 2 completed:
+
 - [ ] Types generated in src/generated/
 - [ ] No type errors in codegen output
 
@@ -1047,6 +1143,7 @@ Then update components...
 ```
 
 **Mapping to toolkit patterns:**
+
 - Parallel work = [Task Orchestration: Parallel Execution](../../patterns/task-orchestration.md#parallel-execution)
 - Sequential deps = [Task Orchestration: Dependency Management](../../patterns/task-orchestration.md#dependency-management)
 

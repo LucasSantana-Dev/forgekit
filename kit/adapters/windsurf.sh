@@ -42,6 +42,11 @@ adapter_install() {
 		fi
 	fi
 
+	if [ "${FORGE_SKILLS:-false}" = "true" ]; then
+		log_step "Installing skills to $project_dir/.windsurf/skills/"
+		install_skills "$FORGE_KIT_DIR/core/skills" "$project_dir/.windsurf/skills"
+	fi
+
 	# 2. FORGE_MCP=true: merge MCP into .windsurf/mcp.json
 	if [ "${FORGE_MCP:-false}" = "true" ]; then
 		windsurf_dir="$project_dir/.windsurf"
@@ -79,6 +84,8 @@ adapter_status() {
 adapter_uninstall() {
 	project_dir="${CWD:-$(pwd)}"
 	rules_file="$project_dir/.windsurfrules"
+
+	uninstall_skills "$project_dir/.windsurf/skills"
 
 	if [ -f "$rules_file" ]; then
 		if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then

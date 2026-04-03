@@ -74,6 +74,35 @@ adapter_install() {
 			fi
 		fi
 	fi
+
+	if [ "${FORGE_SKILLS:-false}" = "true" ]; then
+		log_step "Installing skills to $codex_dir/skills/"
+		install_skills "$FORGE_KIT_DIR/core/skills" "$codex_dir/skills"
+	fi
+
+	if [ "${FORGE_OHMY_COMPAT:-false}" = "true" ]; then
+		compat_src="$FORGE_KIT_DIR/../implementations/codex/oh-my-codex.md"
+		compat_dst="$codex_dir/oh-my-codex.md"
+
+		if [ -f "$compat_src" ]; then
+			log_step "Installing oh-my compatibility reference to $compat_dst"
+
+			if [ -f "$compat_dst" ] && files_equal "$compat_src" "$compat_dst"; then
+				log_dim "  (no changes)"
+			else
+				if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+					if [ -f "$compat_dst" ]; then
+						log_info "  [DRY RUN] Would update oh-my-codex.md"
+					else
+						log_info "  [DRY RUN] Would create oh-my-codex.md"
+					fi
+				else
+					cp "$compat_src" "$compat_dst"
+					log_success "oh-my compatibility reference installed"
+				fi
+			fi
+		fi
+	fi
 }
 
 adapter_verify() {
@@ -97,6 +126,19 @@ adapter_uninstall() {
 			else
 				rm "$codex_dir/AGENTS.md"
 				log_success "Removed AGENTS.md"
+			fi
+		fi
+	fi
+
+	uninstall_skills "$codex_dir/skills"
+
+	if [ -f "$codex_dir/oh-my-codex.md" ]; then
+		if grep -q "^# forge-kit" "$codex_dir/oh-my-codex.md" 2>/dev/null; then
+			if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+				log_info "[DRY RUN] Would remove $codex_dir/oh-my-codex.md"
+			else
+				rm "$codex_dir/oh-my-codex.md"
+				log_success "Removed oh-my compatibility reference"
 			fi
 		fi
 	fi

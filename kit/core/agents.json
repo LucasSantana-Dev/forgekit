@@ -1,43 +1,107 @@
 {
   "$schema": "../schema/agents.schema.json",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "agents": {
     "orchestrator": {
       "tier": "opus",
-      "role": "Plans tasks, delegates to specialists, drives work to completion",
-      "skills": ["plan", "ship", "verify"],
+      "role": "Plans, delegates, drives entire dev cycles to completion without stopping",
+      "skills": ["loop", "plan", "orchestrate", "ship", "verify", "route", "resume", "fallback"],
       "durable": true,
-      "aliases": ["sisyphus", "main", "primary"]
+      "autonomous": true,
+      "fallback": {
+        "chain": ["opus", "sonnet"],
+        "onFailure": "escalate-or-switch"
+      },
+      "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "WebFetch", "WebSearch", "TodoWrite", "Skill", "Agent", "MCP"],
+      "aliases": ["sisyphus", "main", "primary", "autopilot"]
     },
     "architect": {
       "tier": "opus",
-      "role": "Deep architectural reasoning, cross-repo impact analysis, ADR authoring",
-      "skills": ["review"],
+      "role": "Architecture decisions, cross-repo impact, ADRs — consulted, never blocks",
+      "skills": ["review", "plan", "research"],
+      "readOnly": true,
+      "fallback": {
+        "chain": ["opus", "sonnet"],
+        "onFailure": "degrade-gracefully"
+      },
+      "tools": ["FileRead", "Glob", "Grep", "WebFetch", "WebSearch"],
       "aliases": ["hephaestus", "oracle", "deep"]
     },
     "worker": {
       "tier": "sonnet",
-      "role": "Focused implementation: features, fixes, refactors",
-      "skills": ["verify", "ship"],
+      "role": "Focused implementation — features, fixes, refactors. Runs to completion.",
+      "skills": ["verify", "ship", "tdd", "debug", "fallback"],
+      "autonomous": true,
+      "fallback": {
+        "chain": ["sonnet", "haiku", "opus"],
+        "onFailure": "retry-then-escalate"
+      },
+      "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "LSP", "TodoWrite"],
       "aliases": ["executor", "junior", "implementer"]
     },
     "reviewer": {
       "tier": "sonnet",
-      "role": "Code review, security scan, test adequacy check",
-      "skills": ["review"],
-      "aliases": ["critic", "validator", "risk-assessor"]
+      "role": "Code review, security scan, test adequacy — reports issues, never blocks progress",
+      "skills": ["review", "secure"],
+      "readOnly": true,
+      "fallback": {
+        "chain": ["sonnet", "haiku"],
+        "onFailure": "skip-review-log-warning"
+      },
+      "tools": ["FileRead", "Glob", "Grep", "LSP"],
+      "aliases": ["critic", "validator", "momus"]
     },
     "researcher": {
       "tier": "sonnet",
-      "role": "Web search, docs lookup, library research",
+      "role": "Docs, web search, library investigation — async, never blocks main loop",
       "skills": ["research"],
-      "aliases": ["librarian", "prometheus", "deep-research"]
+      "readOnly": true,
+      "async": true,
+      "fallback": {
+        "chain": ["sonnet", "haiku"],
+        "onFailure": "proceed-without"
+      },
+      "tools": ["FileRead", "Glob", "Grep", "WebFetch", "WebSearch", "MCP"],
+      "aliases": ["librarian", "prometheus"]
     },
     "explorer": {
       "tier": "haiku",
-      "role": "Fast codebase grep, file lookups, symbol search",
+      "role": "Fast codebase grep, file lookups, symbol search — cheapest possible",
       "skills": [],
+      "readOnly": true,
+      "async": true,
+      "fallback": {
+        "chain": ["haiku"],
+        "onFailure": "use-direct-tools"
+      },
+      "tools": ["FileRead", "Glob", "Grep"],
       "aliases": ["grep", "find", "search"]
+    }
+  },
+  "orchestration": {
+    "dispatch": {
+      "strategy": "dependency-first",
+      "maxPhases": 7,
+      "verifyBetweenPhases": true,
+      "parallelizeIndependent": true,
+      "neverPauseFor": ["lint-fix", "type-fix", "test-fix", "commit", "push"]
+    },
+    "escalation": {
+      "workerFails2x": "consult-architect-then-continue",
+      "explorerEmpty": "promote-to-researcher",
+      "reviewFindsArchIssue": "consult-architect-async",
+      "modelUnavailable": "fallback-chain"
+    },
+    "loop": {
+      "defaultMode": "autonomous",
+      "phases": ["plan", "implement", "verify", "review", "fix", "commit"],
+      "exitCondition": "all-phases-complete-and-quality-gates-pass",
+      "autoResume": true
+    },
+    "session": {
+      "resumeFromPlan": true,
+      "persistStateOnInterrupt": true,
+      "planDirectory": ".agents/plans/"
     }
   }
 }

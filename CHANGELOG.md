@@ -6,7 +6,68 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- Optional `forge-kit` oh-my compatibility mode via `--oh-my-compat`:
+  - `kit/install.sh` supports `--oh-my-compat` and surfaces compatibility status during installs
+  - profiles now include `FORGE_OHMY_COMPAT` (default `false`) to keep default installs tool-agnostic
+  - `kit/adapters/opencode.sh` can bootstrap `~/.config/opencode/oh-my-opencode.jsonc` from the toolkit reference when absent
+  - `kit/adapters/claude-code.sh` can install `~/.claude/oh-my-claudecode.md` ownership guidance
+  - `kit/adapters/codex.sh` can install `~/.codex/oh-my-codex.md` ownership guidance
+- New compatibility references:
+  - `implementations/claude-code/oh-my-claudecode.md`
+  - `implementations/codex/oh-my-codex.md`
+- 6 new portable skills in `kit/core/skills/`:
+  - `route.md` — multi-model routing and task complexity classification
+  - `resume.md` — session recovery from git state, plans, and open PRs
+  - `orchestrate.md` — multi-phase task breakdown with dependency tracking and verification checkpoints
+  - `tdd.md` — test-driven development red/green/refactor workflow
+  - `secure.md` — security scan checklist (secrets, deps, inputs, permissions, injection)
+  - `context.md` — context window optimization and session compaction
+- Skill installation now works across ALL 6 tool adapters (was claude-code only):
+  - codex, opencode, cursor, windsurf, antigravity adapters now install/uninstall skills
+  - Shared `install_skills` and `uninstall_skills` helpers extracted to `kit/lib/merge.sh`
+- `kit/setup.sh` — interactive CLI setup wizard:
+  - Prompts for primary provider, fallback provider, local model usage, token optimization strategy
+  - Prompts for profile, oh-my compatibility, orchestration, worktrees, and backlog preferences
+  - Generates `.forge-setup.json` with resolved model maps, routing, agent assignments, token presets, and autopilot config
+- 2 additional portable skills:
+  - `loop.md` — autonomous dev cycle (plan → implement → test → review → fix → commit → PR) without stopping
+  - `fallback.md` — provider/model fallback chain behavior with escalation rules
+- `kit/core/loop.json` — autonomous loop engine definition:
+  - 5 loop phases (plan, implement, review, secure, commit) + 3 post-loop steps (quality gates, push, PR)
+  - Per-phase fallback (retry → switch model → switch provider → escalate tier, max 5 attempts)
+  - Loop-level guardrails: max 3 consecutive phase failures → stop and save state
+  - Governance gates: required checks before commit, push, PR, and merge; block/never-block rules
+  - Resume from last incomplete phase with `.agents/plans/.loop-state.json`
+- `kit/core/autopilot.json` v2 — autonomy levels and guardrails:
+  - `supervised` / `assisted` / `autonomous` levels (default: `autonomous`)
+  - `neverPauseFor` list: lint fixes, type fixes, test fixes, commits, pushes, file edits
+  - `hardBlock` list: only genuinely destructive actions (rm -rf /, drop database, force push main)
+  - Durable execution: continue until complete, persist on interrupt, resume from checkpoint
+  - Fallback config: model/provider/tier switching with exponential backoff
+- `kit/core/agents.json` v3 — agents with fallback chains and autonomy flags:
+  - Every agent has a `fallback.chain` (list of tiers to try) and `fallback.onFailure` policy
+  - `autonomous: true` on orchestrator and worker — they never pause for trivial confirmations
+  - `async: true` on researcher and explorer — they run in background, never block the main loop
+  - `readOnly: true` on architect, reviewer, researcher, explorer — they advise, never block progress
+  - Orchestration dispatch: dependency-first, parallelize independent phases, `neverPauseFor` list
+  - Escalation rules: worker fails 2x → consult architect, model unavailable → fallback chain
+- `kit/core/routing.json` v2 — complexity classifier with signals and escalation:
+  - Per-category signal lists for automatic classification
+  - Per-tier token budgets and context budget levels
+  - Escalation rule: 2 consecutive failures → promote to next tier
+  - Target distribution: 40% haiku / 45% sonnet / 15% opus
+- `kit/core/token-optimization.json` — 3 presets (standard, aggressive, minimal):
+  - Compaction thresholds, tool output truncation, session message limits
+  - Rules for what is always safe to remove vs always preserve
+- Governance enforcement via expanded test suite:
+  - `validateKit()` validates all core JSON configs, agent tiers, routing categories, skill frontmatter, and loop governance
+  - 5 new tests (11 total): kit config parsing, agent tier validity, skill completeness, loop governance
+- README rewritten with conversion-focused structure, scannable pattern table, and forge-kit flag reference
+
 ### Fixed
+
 - `forge-kit` adapter hardening from PR review feedback:
   - `kit/adapters/claude-code.sh` avoids duplicate durable header append, creates `.forge-kit` marker on skills install, fixes uninstall marker detection, and normalizes skill count parsing
   - `kit/adapters/windsurf.sh` uses cross-platform hashing for content comparison and shared `json_merge` for MCP merge
@@ -19,6 +80,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.10.0] - 2026-04-02
 
 ### Added
+
 - `kit/` — forge-kit: universal AI dev toolkit installer with cross-tool adapter architecture
   - `kit/install.sh` — main entry point with `--tools`, `--profile`, `--dry-run`, `--status`, `--uninstall` flags
   - `kit/core/rules.md` — single source of truth for agent behavior rules (all adapters read from here)
@@ -37,6 +99,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.9.0] - 2026-04-02
 
 ### Added
+
 - `patterns/spec-driven-development.md` — spec-first workflow for AI development covering:
   - Three roles a spec plays: agent instruction, inter-agent contract, regression anchor
   - Minimal spec template with purpose, scope, inputs, outputs, behavior statements, and constraints
@@ -49,6 +112,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.8.0] - 2026-04-01
 
 ### Added
+
 - `tools/README.md` — OpenCode Plugins section with curated catalog across five categories: Auth, Orchestration & Workflow, Memory, Code Quality, Notifications
   - Auth: `opencode-claude-auth` (reuses Claude Code credentials), `opencode-gemini-auth` and `opencode-antigravity-auth` (Gemini OAuth, with ToS risk notes)
   - Orchestration: `oh-my-openagent` (multi-model harness, `ulw` command), `@kompassdev/opencode` (repo-grounded workflows), `@plannotator/opencode` (interactive plan review), `opencode-scheduler` (launchd/systemd recurring agent tasks)
@@ -61,6 +125,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.7.0] - 2026-03-31
 
 ### Added
+
 - `patterns/streaming-orchestration.md` — event-driven turn loops, turn budgeting, transcript compaction, session persistence, stop reason handling
 - `patterns/tool-registry-patterns.md` — separating tool metadata from implementation, JSON snapshots, permission contexts, trust-gated init, parity checking
 - `patterns/permission-boundaries.md` — three-layer permission model (filter/block/confirm), named profiles, CLAUDE.md permission sections, PreToolUse hook patterns
@@ -68,6 +133,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.6.0] - 2026-03-31
 
 ### Added
+
 - `patterns/task-orchestration.md` — OMC-Inspired Orchestration Patterns section covering:
   - 3-layer composition (`ultrawork` → `ralph` → `autopilot`)
   - Model tier routing table (Haiku/Sonnet/Opus with routing heuristics)
@@ -78,6 +144,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.5.0] - 2026-03-31
 
 ### Added
+
 - `package.json` — npm scripts for validation, testing, and formatting
 - `scripts/validate-schemas.js` — JS schema validator (enables jest coverage)
 - `test/validate-schemas.test.js` — jest test suite (75% coverage target)
@@ -92,6 +159,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.4.0] - 2026-03-31
 
 ### Added
+
 - `companies/` — pre-built agent organizations with specialized roles, skills, and routing protocols
 - `fullstack-forge` company (49 agents, 66 skills, 10 teams) imported from paperclipai/companies (MIT)
 - `tools/validate-companies.sh` — validates agent frontmatter, required sections, reportsTo references, and skill existence
@@ -100,6 +168,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.3.3] - 2026-03-31
 
 ### Fixed
+
 - `tools/setup-ai-workflow-macos.sh`: `lmnr` now auto-installed via `pipx install lmnr`
   (macOS Python 3.14 uses uv and is externally managed — `pip3 install` fails with PEP 668
   error). `ai-lmnr` alias updated to point to `~/.local/bin/lmnr`.
@@ -114,12 +183,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.3.2] - 2026-03-31
 
 ### Fixed
+
 - `.github/workflows/release.yml` — release notes now written to a temp file and passed via
   `--notes-file` to avoid backtick shell expansion corrupting markdown code spans in notes.
 
 ## [0.3.1] - 2026-03-31
 
 ### Added
+
 - `.github/workflows/release.yml` — automatic tag and GitHub release on every push to main;
   parses version from `CHANGELOG.md`, skips if tag already exists, extracts matching section
   as release notes.
@@ -127,6 +198,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.3.0] - 2026-03-31
 
 ### Added
+
 - `patterns/agent-observability.md` — new pattern covering the three-layer observability
   stack: lmnr tracing, promptfoo regression testing, TDD Guard enforcement, and
   `claude-code-security-review` CI integration. Explains when and how to combine them.
@@ -150,6 +222,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.2.3] - 2026-03-30
 
 ### Added
+
 - Codex CLI reference implementation: `implementations/codex/` with setup guide, approval policy guidance,
   sandbox modes, multi-model routing table, and task orchestration patterns
 - `implementations/codex/config.toml` — annotated reference config for `~/.codex/config.toml`
@@ -164,6 +237,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.2.2] - 2026-03-30
 
 ### Added
+
 - `tools/capture-training.py` — extract Claude Code sessions as alpaca-format instruction pairs
   for fine-tuning. Parses `~/.claude/projects/**/*.jsonl`, deduplicates by session hash. Flags:
   `--export`, `--min-turns`, `--dry-run`, `--output`.
@@ -180,6 +254,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.2.1] - 2026-03-30
 
 ### Added
+
 - `tools/setup-claude-code.sh`: new script that configures Claude Code from scratch —
   creates `~/.claude/.mcp.json` with recommended MCP servers (tavily, context7,
   playwright), sets default model to Sonnet 4.6 and subagent model to Haiku 4.5,
@@ -187,6 +262,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   structure with `MEMORY.md` and `gotchas.md` templates, and runs a plugin audit
 
 ### Fixed
+
 - `tools/install-macos.sh`: corrected RTK init command (`rtk init -g`, not `--hook-only`)
 - `tools/install-ubuntu.sh`: same RTK init fix
 - `tools/setup-ai-workflow-macos.sh`: removed Ollama (local model — not universally
@@ -195,6 +271,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.2.0] - 2026-03-30
 
 ### Added
+
 - `rtk` (Rust Token Killer) added to macOS and Ubuntu install scripts — 60-90%
   token reduction on Bash outputs via a transparent Claude Code `PreToolUse` hook.
   macOS: installed via `brew install rtk` + `rtk init -g`. Linux: installed via
@@ -227,6 +304,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - MEMORY.md 200-line discipline section with topic-file extraction strategy
 
 ### Improved
+
 - README rewritten with problem-first framing and before/after examples
 - Install scripts: added missing tools (fd, ripgrep, chezmoi), idempotency checks
 - `rules/CLAUDE.md` now includes Quick Reference and Gotchas sections
@@ -257,6 +335,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.1.0] - 2026-03-15
 
 ### Added
+
 - Initial release
 - 5 tool-agnostic patterns: Context Building, Task Orchestration, Multi-Model Routing, Session Management, Memory Systems
 - 3 best practices guides: Context Management, Workflow, Security

@@ -7,11 +7,12 @@ Reference implementation of the toolkit patterns for [Codex CLI](https://github.
 Most AI coding tools (Claude Code, OpenCode, Cursor) are **trust-first**: they assume you want maximum access and require explicit setup to add isolation. Codex is the opposite — **sandbox-first by default**.
 
 Out of the box:
+
 - File writes are restricted to the project directory (`workspace-write`)
 - Network access is disabled
 - Every uncertain action pauses for approval (`on-request`)
 
-You opt *out* of safety, not into it. This means the defaults are already right for most dev work — you only need to change them for specific use cases (CI, container environments, read-only audits).
+You opt _out_ of safety, not into it. This means the defaults are already right for most dev work — you only need to change them for specific use cases (CI, container environments, read-only audits).
 
 **Approval policy as an autonomy dial:**
 
@@ -45,6 +46,17 @@ Set your API key:
 export OPENAI_API_KEY=sk-...
 ```
 
+## oh-my-codex Compatibility
+
+Use [oh-my-codex.md](./oh-my-codex.md) as the ownership boundary when combining
+`forge-kit` with an oh-my-codex orchestration layer.
+
+`forge-kit` can install this reference to `~/.codex/oh-my-codex.md` with:
+
+```bash
+FORGE_KIT_DIR=./kit sh kit/install.sh --tools codex --oh-my-compat
+```
+
 ## AGENTS.md Scope Rules
 
 Codex reads `AGENTS.md` hierarchically — more deeply nested files take precedence:
@@ -61,12 +73,12 @@ See [Context Building pattern](../../patterns/context-building.md).
 
 ## Approval Policies
 
-| Policy | Interrupts on | When to use |
-|--------|--------------|-------------|
-| `untrusted` | Every action | Security audits, untrusted codebases |
-| `on-request` | Uncertainty | **Interactive dev** — flow-preserving oversight |
-| `on-failure` | Errors only | Repetitive tasks you've already validated |
-| `never` | Nothing | CI pipelines, containers, fully scripted runs |
+| Policy       | Interrupts on | When to use                                     |
+| ------------ | ------------- | ----------------------------------------------- |
+| `untrusted`  | Every action  | Security audits, untrusted codebases            |
+| `on-request` | Uncertainty   | **Interactive dev** — flow-preserving oversight |
+| `on-failure` | Errors only   | Repetitive tasks you've already validated       |
+| `never`      | Nothing       | CI pipelines, containers, fully scripted runs   |
 
 `on-request` is the right default for dev because Codex only pauses when it's genuinely uncertain — not on every routine file write or shell command. `untrusted` looks safer but trains you to click through every prompt, which defeats the point of oversight.
 
@@ -80,11 +92,11 @@ codex --approval-mode never "generate a changelog summary"  # CI
 
 ## Sandbox Modes
 
-| Mode | File access | Network | Use case |
-|------|-------------|---------|----------|
-| `read-only` | Read only | Disabled | Audit / explain |
-| `workspace-write` | Write within project | Disabled | **Default dev** |
-| `danger-full-access` | Unrestricted | Enabled | Containers only |
+| Mode                 | File access          | Network  | Use case        |
+| -------------------- | -------------------- | -------- | --------------- |
+| `read-only`          | Read only            | Disabled | Audit / explain |
+| `workspace-write`    | Write within project | Disabled | **Default dev** |
+| `danger-full-access` | Unrestricted         | Enabled  | Containers only |
 
 ## Common Workflows
 
@@ -107,12 +119,12 @@ codex --model gpt-4.1 "review this PR diff for security issues"
 
 ## Multi-Model Routing
 
-| Task type | Recommended model | Flag |
-|-----------|------------------|------|
-| Exploration, explanation | `o4-mini` (default) | — |
-| Complex architecture | `o3` | `--model o3` |
-| Quick edits, formatting | `gpt-4.1-mini` | `--model gpt-4.1-mini` |
-| Full codebase reasoning | `gpt-4.1` | `--model gpt-4.1` |
+| Task type                | Recommended model   | Flag                   |
+| ------------------------ | ------------------- | ---------------------- |
+| Exploration, explanation | `o4-mini` (default) | —                      |
+| Complex architecture     | `o3`                | `--model o3`           |
+| Quick edits, formatting  | `gpt-4.1-mini`      | `--model gpt-4.1-mini` |
+| Full codebase reasoning  | `gpt-4.1`           | `--model gpt-4.1`      |
 
 See [Multi-Model Routing pattern](../../patterns/multi-model-routing.md).
 
@@ -121,6 +133,7 @@ See [Multi-Model Routing pattern](../../patterns/multi-model-routing.md).
 Codex supports persistent memories when `features.memories = true` in `config.toml`.
 
 For cross-session context beyond memories, follow the [Memory Systems pattern](../../patterns/memory-systems.md):
+
 - Keep a `DECISIONS.md` or `.codex/context/` directory
 - Reference it in your root `AGENTS.md`: "Read `.codex/context/` for project decisions"
 

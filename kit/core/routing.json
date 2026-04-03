@@ -1,46 +1,60 @@
 {
   "$schema": "../schema/routing.schema.json",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "tiers": {
-    "haiku":  { "description": "Fast, cheap — search, lookup, grep, simple Q&A" },
-    "sonnet": { "description": "Balanced — standard implementation, code review, debugging" },
-    "opus":   { "description": "Powerful — architecture, planning, complex multi-file work" }
+    "haiku": {
+      "description": "Fast, cheap — search, lookup, grep, simple Q&A",
+      "maxTokens": 2000,
+      "contextBudget": "low"
+    },
+    "sonnet": {
+      "description": "Balanced — standard implementation, code review, debugging",
+      "maxTokens": 8000,
+      "contextBudget": "standard"
+    },
+    "opus": {
+      "description": "Powerful — architecture, planning, complex multi-file work",
+      "maxTokens": 16000,
+      "contextBudget": "high"
+    }
   },
   "categories": {
-    "quick":          { "tier": "haiku",  "description": "Grep, search, file read, simple lookup" },
-    "standard":       { "tier": "sonnet", "description": "Feature implementation, bug fix, refactor" },
-    "review":         { "tier": "sonnet", "description": "Code review, security scan, test coverage" },
-    "visual":         { "tier": "sonnet", "description": "UI/UX, CSS, design, component work" },
-    "deep":           { "tier": "opus",   "description": "Architecture, cross-repo, complex debugging" },
-    "planning":       { "tier": "opus",   "description": "PRD creation, task planning, roadmap" },
-    "orchestration":  { "tier": "opus",   "description": "Multi-agent coordination, long autonomous runs" }
+    "quick":          { "tier": "haiku",  "signals": ["<20 lines", "single file", "typo", "config edit", "rename"] },
+    "standard":       { "tier": "sonnet", "signals": ["20-200 lines", "multi-file", "bug fix", "refactor", "test writing"] },
+    "review":         { "tier": "sonnet", "signals": ["diff review", "security scan", "test coverage check"] },
+    "visual":         { "tier": "sonnet", "signals": ["UI/UX", "CSS", "design", "component", "animation"], "override": "always visual-capable model" },
+    "writing":        { "tier": "sonnet", "signals": ["docs", "README", "CHANGELOG", "PR description", "commit message"] },
+    "deep":           { "tier": "opus",   "signals": [">200 lines", "cross-repo", "root cause analysis", "migration"] },
+    "planning":       { "tier": "opus",   "signals": ["PRD", "architecture decision", "roadmap", "multi-system design"] },
+    "orchestration":  { "tier": "opus",   "signals": ["multi-agent", "long autonomous run", "phase-based execution"] }
   },
-  "heuristics": {
-    "lines_threshold_quick":  20,
-    "lines_threshold_deep":   200,
-    "cross_repo_always_deep": true,
-    "fallback_order":         ["sonnet", "haiku", "opus"]
+  "classifier": {
+    "steps": [
+      "Estimate lines changed and file count",
+      "Check for cross-repo or multi-system impact",
+      "Check for visual/UI domain override",
+      "Check for writing/docs domain override",
+      "Apply threshold: <20 → quick, 20-200 → standard, >200 → deep",
+      "If uncertain, start at standard and escalate on failure"
+    ],
+    "escalation": {
+      "trigger": "2 consecutive failures at current tier",
+      "action": "promote to next tier",
+      "chain": ["haiku", "sonnet", "opus"]
+    }
   },
   "providers": {
-    "anthropic": {
-      "haiku":  "claude-haiku-4-5",
-      "sonnet": "claude-sonnet-4-6",
-      "opus":   "claude-opus-4-6"
-    },
-    "openai": {
-      "haiku":  "gpt-4o-mini",
-      "sonnet": "gpt-4o",
-      "opus":   "o1"
-    },
-    "google": {
-      "haiku":  "gemini-2.0-flash",
-      "sonnet": "gemini-2.5-pro",
-      "opus":   "gemini-2.5-pro"
-    },
-    "ollama": {
-      "haiku":  "qwen2.5-coder:7b",
-      "sonnet": "qwen2.5-coder:14b",
-      "opus":   "qwen2.5-coder:32b"
-    }
+    "anthropic": { "haiku": "claude-haiku-4-5", "sonnet": "claude-sonnet-4-6", "opus": "claude-opus-4-6" },
+    "openai":    { "haiku": "gpt-4.1-nano", "sonnet": "gpt-4.1", "opus": "o3" },
+    "google":    { "haiku": "gemini-2.0-flash", "sonnet": "gemini-2.5-pro", "opus": "gemini-2.5-pro" },
+    "openrouter": { "haiku": "anthropic/claude-haiku-4-5", "sonnet": "anthropic/claude-sonnet-4-6", "opus": "anthropic/claude-opus-4-6" },
+    "ollama":    { "haiku": "qwen3.5:9b", "sonnet": "qwen3.5:27b", "opus": "qwen3.5:27b" }
+  },
+  "heuristics": {
+    "lines_threshold_quick": 20,
+    "lines_threshold_deep": 200,
+    "cross_repo_always_deep": true,
+    "target_distribution": { "haiku": 0.4, "sonnet": 0.45, "opus": 0.15 },
+    "fallback_order": ["sonnet", "haiku", "opus"]
   }
 }

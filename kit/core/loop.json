@@ -1,0 +1,101 @@
+{
+  "version": "1.0.0",
+  "loop": {
+    "name": "dev-cycle",
+    "description": "Autonomous development loop — plan through PR without stopping",
+    "phases": [
+      {
+        "name": "plan",
+        "agent": "orchestrator",
+        "skill": "plan",
+        "input": "task description",
+        "output": "phased plan in .agents/plans/",
+        "verify": "plan file exists and has >= 1 phase",
+        "canFail": false
+      },
+      {
+        "name": "implement",
+        "agent": "worker",
+        "skill": "tdd",
+        "input": "current phase from plan",
+        "output": "code changes + passing tests",
+        "verify": "lint + type-check + tests pass",
+        "canFail": true,
+        "maxRetries": 3,
+        "onFail": "debug-and-retry"
+      },
+      {
+        "name": "review",
+        "agent": "reviewer",
+        "skill": "review",
+        "input": "diff since last commit",
+        "output": "review report",
+        "verify": "no CRITICAL findings",
+        "canFail": true,
+        "onFail": "fix-and-re-review",
+        "async": true
+      },
+      {
+        "name": "secure",
+        "agent": "reviewer",
+        "skill": "secure",
+        "input": "staged changes",
+        "output": "security scan report",
+        "verify": "no CRITICAL findings",
+        "canFail": false
+      },
+      {
+        "name": "commit",
+        "agent": "worker",
+        "skill": "ship",
+        "input": "verified changes",
+        "output": "conventional commit",
+        "verify": "commit exists in log",
+        "canFail": false
+      }
+    ],
+    "postLoop": [
+      {
+        "name": "quality-gates",
+        "agent": "worker",
+        "skill": "verify",
+        "verify": "lint + types + tests + build all pass"
+      },
+      {
+        "name": "push",
+        "verify": "branch pushed to remote"
+      },
+      {
+        "name": "pr",
+        "agent": "orchestrator",
+        "skill": "ship",
+        "verify": "PR created and URL returned"
+      }
+    ],
+    "resume": {
+      "strategy": "from-last-incomplete-phase",
+      "planDirectory": ".agents/plans/",
+      "stateFile": ".agents/plans/.loop-state.json"
+    },
+    "fallback": {
+      "perPhase": {
+        "retry": 2,
+        "switchModel": true,
+        "switchProvider": true,
+        "escalateTier": true,
+        "maxAttempts": 5
+      },
+      "loopLevel": {
+        "maxConsecutivePhaseFailures": 3,
+        "onMaxFailures": "stop-save-state-report"
+      }
+    },
+    "governance": {
+      "requiredBeforeCommit": ["lint", "type-check"],
+      "requiredBeforePush": ["test"],
+      "requiredBeforePR": ["build", "security-scan"],
+      "blockOn": ["CRITICAL security finding", "test regression", "build failure"],
+      "neverBlock": ["lint warning", "coverage dip < 2%", "style nit"]
+    }
+  }
+}

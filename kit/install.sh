@@ -24,6 +24,8 @@ FORGE_KIT_DIR="${FORGE_KIT_DIR:-$(cd "$(dirname "$0")" && pwd)}"
 FORGE_TOOLS="auto"
 FORGE_PROFILE="standard"
 FORGE_DRY_RUN="false"
+FORGE_OHMY_COMPAT="false"
+FORGE_OHMY_COMPAT_CLI=""
 FORGE_ACTION="install"
 
 # Parse args
@@ -47,6 +49,11 @@ while [ "$#" -gt 0 ]; do
 		;;
 	--dry-run)
 		FORGE_DRY_RUN="true"
+		shift
+		;;
+	--oh-my-compat)
+		FORGE_OHMY_COMPAT="true"
+		FORGE_OHMY_COMPAT_CLI="true"
 		shift
 		;;
 	--uninstall)
@@ -81,6 +88,7 @@ Options:
   --tools <list>     Tools: all, auto, or claude-code,codex,opencode,cursor,windsurf,antigravity
   --profile <name>   Profile: standard (default), minimal, research, durable
   --dry-run          Show what would change without making changes
+  --oh-my-compat     Enable optional oh-my compatibility assets
   --uninstall        Remove forge-kit managed files
   --status           Show current installation status
   --help             Show this help
@@ -88,6 +96,7 @@ Options:
 Examples:
   sh install.sh                                  # auto-detect tools, standard profile
   sh install.sh --tools claude-code --profile minimal
+  sh install.sh --tools all --oh-my-compat
   sh install.sh --tools all --dry-run
   sh install.sh --uninstall
 
@@ -102,7 +111,10 @@ load_profile() {
 	fi
 	# shellcheck disable=SC1090
 	. "$profile_file"
-	export FORGE_RULES FORGE_SKILLS FORGE_MCP FORGE_PROVIDERS FORGE_DURABLE
+	if [ -n "$FORGE_OHMY_COMPAT_CLI" ]; then
+		FORGE_OHMY_COMPAT="$FORGE_OHMY_COMPAT_CLI"
+	fi
+	export FORGE_RULES FORGE_SKILLS FORGE_MCP FORGE_PROVIDERS FORGE_DURABLE FORGE_OHMY_COMPAT
 }
 
 run_adapter() {
@@ -150,6 +162,7 @@ main() {
 
 	log_info "Profile:  $FORGE_PROFILE"
 	log_info "Tools:    $resolved_tools"
+	log_info "Compat:   ${FORGE_OHMY_COMPAT}"
 	[ "$FORGE_DRY_RUN" = "true" ] && log_warn "DRY RUN — no changes will be made"
 	printf '\n'
 

@@ -42,48 +42,9 @@ adapter_install() {
 		fi
 	fi
 
-	# 2. FORGE_SKILLS=true: copy skill files
 	if [ "${FORGE_SKILLS:-false}" = "true" ]; then
 		log_step "Installing skills to $claude_dir/skills/"
-
-		skills_src="$FORGE_KIT_DIR/core/skills"
-		skills_dst="$claude_dir/skills"
-
-		if [ -d "$skills_src" ]; then
-			ensure_dir "$skills_dst"
-
-			if [ "${FORGE_DRY_RUN:-false}" != "true" ]; then
-				: >"$skills_dst/.forge-kit"
-			fi
-
-			count=0
-			for skill_file in "$skills_src"/*.md; do
-				if [ -f "$skill_file" ]; then
-					filename="$(basename "$skill_file")"
-					dst="$skills_dst/$filename"
-
-					if [ -f "$dst" ]; then
-						old_sha="$(file_sha256 "$dst")"
-						new_sha="$(file_sha256 "$skill_file")"
-						if [ "$old_sha" = "$new_sha" ]; then
-							log_dim "  (skip) $filename"
-							continue
-						fi
-					fi
-
-					if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
-						log_info "  [DRY RUN] Would copy $filename"
-					else
-						cp "$skill_file" "$dst"
-						count=$((count + 1))
-					fi
-				fi
-			done
-
-			if [ "${FORGE_DRY_RUN:-false}" != "true" ]; then
-				log_success "$count skills installed"
-			fi
-		fi
+		install_skills "$FORGE_KIT_DIR/core/skills" "$claude_dir/skills"
 	fi
 
 	# 3. FORGE_MCP=true: merge MCP servers
@@ -147,6 +108,30 @@ PYEOF
 			fi
 		fi
 	fi
+
+	if [ "${FORGE_OHMY_COMPAT:-false}" = "true" ]; then
+		compat_src="$FORGE_KIT_DIR/../implementations/claude-code/oh-my-claudecode.md"
+		compat_dst="$claude_dir/oh-my-claudecode.md"
+
+		if [ -f "$compat_src" ]; then
+			log_step "Installing oh-my compatibility reference to $compat_dst"
+
+			if [ -f "$compat_dst" ] && files_equal "$compat_src" "$compat_dst"; then
+				log_dim "  (no changes)"
+			else
+				if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+					if [ -f "$compat_dst" ]; then
+						log_info "  [DRY RUN] Would update oh-my-claudecode.md"
+					else
+						log_info "  [DRY RUN] Would create oh-my-claudecode.md"
+					fi
+				else
+					cp "$compat_src" "$compat_dst"
+					log_success "oh-my compatibility reference installed"
+				fi
+			fi
+		fi
+	fi
 }
 
 adapter_verify() {
@@ -181,14 +166,15 @@ adapter_uninstall() {
 		fi
 	fi
 
-	# Remove skills directory if marked
-	if [ -d "$claude_dir/skills" ]; then
-		if [ -f "$claude_dir/skills/.forge-kit" ] || grep -qm1 "^# forge-kit" "$claude_dir/skills"/*.md 2>/dev/null; then
+	uninstall_skills "$claude_dir/skills"
+
+	if [ -f "$claude_dir/oh-my-claudecode.md" ]; then
+		if grep -q "^# forge-kit" "$claude_dir/oh-my-claudecode.md" 2>/dev/null; then
 			if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
-				log_info "[DRY RUN] Would remove $claude_dir/skills/"
+				log_info "[DRY RUN] Would remove $claude_dir/oh-my-claudecode.md"
 			else
-				rm -rf "$claude_dir/skills"
-				log_success "Removed skills directory"
+				rm "$claude_dir/oh-my-claudecode.md"
+				log_success "Removed oh-my compatibility reference"
 			fi
 		fi
 	fi

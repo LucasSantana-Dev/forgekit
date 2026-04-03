@@ -42,6 +42,11 @@ adapter_install() {
 		fi
 	fi
 
+	if [ "${FORGE_SKILLS:-false}" = "true" ]; then
+		log_step "Installing skills to $cursor_rules_dir/../skills/"
+		install_skills "$FORGE_KIT_DIR/core/skills" "$project_dir/.cursor/skills"
+	fi
+
 	# 2. FORGE_MCP=true: merge MCP servers into .cursor/mcp.json
 	if [ "${FORGE_MCP:-false}" = "true" ]; then
 		cursor_dir="$project_dir/.cursor"
@@ -97,6 +102,8 @@ adapter_status() {
 adapter_uninstall() {
 	project_dir="${CWD:-$(pwd)}"
 	rules_file="$project_dir/.cursor/rules/forge.mdc"
+
+	uninstall_skills "$project_dir/.cursor/skills"
 
 	if [ -f "$rules_file" ]; then
 		if grep -qm1 "^# forge-kit" "$rules_file" 2>/dev/null; then

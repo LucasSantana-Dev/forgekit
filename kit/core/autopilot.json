@@ -1,0 +1,86 @@
+{
+  "version": "2.0.0",
+  "defaultLevel": "autonomous",
+  "levels": {
+    "supervised": {
+      "description": "Training wheels — confirm before every write action",
+      "autoCommit": false,
+      "autoPush": false,
+      "autoPR": false,
+      "autoDispatch": false,
+      "autoFix": false,
+      "maxUnattendedPhases": 1
+    },
+    "assisted": {
+      "description": "Agent runs phases autonomously, pauses only at ship boundary",
+      "autoCommit": true,
+      "autoPush": true,
+      "autoPR": false,
+      "autoDispatch": true,
+      "autoFix": true,
+      "maxUnattendedPhases": 7,
+      "pauseOn": ["PR creation", "deploy to production"]
+    },
+    "autonomous": {
+      "description": "Full autopilot — runs entire dev cycle to completion without interruption",
+      "autoCommit": true,
+      "autoPush": true,
+      "autoPR": true,
+      "autoDispatch": true,
+      "autoFix": true,
+      "autoEscalate": true,
+      "autoFallback": true,
+      "maxUnattendedPhases": 99,
+      "pauseOn": ["deploy to production", "database migration", "force push"]
+    }
+  },
+  "guardrails": {
+    "hardBlock": [
+      "rm -rf /",
+      "drop database",
+      "force push to main",
+      "delete production branch",
+      "expose secrets in commits"
+    ],
+    "neverPauseFor": [
+      "lint fix",
+      "type error fix",
+      "test fix",
+      "commit",
+      "push to feature branch",
+      "file creation",
+      "file edit",
+      "dependency install",
+      "branch creation",
+      "git stash"
+    ],
+    "qualityGates": {
+      "beforeCommit": ["lint", "type-check"],
+      "beforePush": ["test"],
+      "beforePR": ["build", "security-scan"],
+      "beforeMerge": ["all-ci-green"]
+    }
+  },
+  "durableExecution": {
+    "continueUntilComplete": true,
+    "persistOnInterrupt": true,
+    "resumeFromCheckpoint": true,
+    "maxConsecutiveFailures": 5,
+    "onMaxFailures": "stop-and-report",
+    "verifyBeforeClaiming": ["lint", "types", "tests", "build"]
+  },
+  "fallback": {
+    "onModelFailure": "switch-model-same-tier",
+    "onProviderFailure": "switch-provider",
+    "onTierFailure": "escalate-tier",
+    "onContextOverflow": "compact-and-retry",
+    "maxRetries": 5,
+    "backoff": [1, 2, 4, 8, 16]
+  },
+  "session": {
+    "autoResume": true,
+    "saveAfterEachPhase": true,
+    "planDirectory": ".agents/plans/",
+    "memorySync": "on-session-end"
+  }
+}

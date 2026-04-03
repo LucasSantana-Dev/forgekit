@@ -116,6 +116,121 @@ export function validateAll(companiesDir = './companies') {
   console.log('\nAll validations passed.')
 }
 
+const REQUIRED_SKILL_FIELDS = ['name', 'description', 'triggers']
+
+const REQUIRED_KIT_CONFIGS = [
+  'kit/core/agents.json',
+  'kit/core/routing.json',
+  'kit/core/providers.json',
+  'kit/core/autopilot.json',
+  'kit/core/token-optimization.json',
+  'kit/core/loop.json',
+  'kit/core/hooks.json',
+  'kit/core/mcp.json',
+]
+
+const VALID_TIERS = ['haiku', 'sonnet', 'opus']
+
+export function validateKit(rootDir = '.') {
+  const errors = []
+
+  for (const configPath of REQUIRED_KIT_CONFIGS) {
+    const full = path.join(rootDir, configPath)
+    if (!fs.existsSync(full)) {
+      errors.push(`Missing config: ${configPath}`)
+      continue
+    }
+    try {
+      JSON.parse(fs.readFileSync(full, 'utf8'))
+    } catch {
+      errors.push(`Invalid JSON: ${configPath}`)
+    }
+  }
+
+  const agentsPath = path.join(rootDir, 'kit/core/agents.json')
+  if (fs.existsSync(agentsPath)) {
+    const agents = JSON.parse(fs.readFileSync(agentsPath, 'utf8'))
+    for (const [name, agent] of Object.entries(agents.agents || {})) {
+      if (!VALID_TIERS.includes(agent.tier)) {
+        errors.push(`Agent ${name} has invalid tier: ${agent.tier}`)
+      }
+      if (!agent.role) errors.push(`Agent ${name} missing role`)
+      if (agent.fallback && !agent.fallback.chain) {
+        errors.push(`Agent ${name} has fallback without chain`)
+      }
+      if (!agent.tools || !Array.isArray(agent.tools) || agent.tools.length === 0) {
+        errors.push(`Agent ${name} missing tools access list`)
+      }
+    }
+  }
+
+  const hooksPath = path.join(rootDir, 'kit/core/hooks.json')
+  if (fs.existsSync(hooksPath)) {
+    const hooks = JSON.parse(fs.readFileSync(hooksPath, 'utf8'))
+    const hookTypes = Object.keys(hooks.hooks || {})
+    if (hookTypes.length === 0) errors.push('Hooks has no hook types defined')
+    for (const hookType of hookTypes) {
+      const hook = hooks.hooks[hookType]
+      if (!hook.description) errors.push(`Hook ${hookType} missing description`)
+      if (!hook.rules || hook.rules.length === 0) errors.push(`Hook ${hookType} has no rules`)
+    }
+    if (!hooks.toolMapping) errors.push('Hooks missing toolMapping section')
+  }
+
+  const routingPath = path.join(rootDir, 'kit/core/routing.json')
+  if (fs.existsSync(routingPath)) {
+    const routing = JSON.parse(fs.readFileSync(routingPath, 'utf8'))
+    for (const [cat, def] of Object.entries(routing.categories || {})) {
+      if (!VALID_TIERS.includes(def.tier)) {
+        errors.push(`Routing category ${cat} has invalid tier: ${def.tier}`)
+      }
+    }
+    if (!routing.providers || Object.keys(routing.providers).length === 0) {
+      errors.push('Routing has no providers defined')
+    }
+  }
+
+  const loopPath = path.join(rootDir, 'kit/core/loop.json')
+  if (fs.existsSync(loopPath)) {
+    const loop = JSON.parse(fs.readFileSync(loopPath, 'utf8'))
+    const phases = loop.loop?.phases || []
+    if (phases.length === 0) errors.push('Loop has no phases defined')
+    for (const phase of phases) {
+      if (!phase.name) errors.push('Loop phase missing name')
+      if (!phase.verify) errors.push(`Loop phase ${phase.name || '?'} missing verify`)
+    }
+    if (!loop.loop?.governance) errors.push('Loop missing governance section')
+  }
+
+  const skillsDir = path.join(rootDir, 'kit/core/skills')
+  if (fs.existsSync(skillsDir)) {
+    const skills = fs.readdirSync(skillsDir).filter(f => f.endsWith('.md'))
+    for (const skill of skills) {
+      const content = fs.readFileSync(path.join(skillsDir, skill), 'utf8')
+      const fm = extractFrontmatter(content)
+      if (!fm) {
+        errors.push(`Skill ${skill} missing frontmatter`)
+        continue
+      }
+      for (const field of REQUIRED_SKILL_FIELDS) {
+        if (!fm[field]) errors.push(`Skill ${skill} missing field: ${field}`)
+      }
+    }
+  }
+
+  return errors
+}
+
 if (process.argv[1] === __filename) {
   validateAll()
+
+  const kitErrors = validateKit()
+  for (const e of kitErrors) {
+    console.error(`ERROR [kit]: ${e}`)
+  }
+  if (kitErrors.length > 0) {
+    console.error(`\n${kitErrors.length} kit validation error(s) found.`)
+    process.exit(1)
+  }
+  console.log('✓ kit/core — all configs and skills valid')
 }

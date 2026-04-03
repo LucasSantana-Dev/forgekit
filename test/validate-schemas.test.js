@@ -1,5 +1,6 @@
 import { describe, test, expect } from '@jest/globals'
-import { validateCompany, validateAll } from '../scripts/validate-schemas.js'
+import { validateCompany, validateAll, validateKit } from '../scripts/validate-schemas.js'
+import { runParityAudit } from '../scripts/parity-audit.js'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import fs from 'fs'
@@ -60,5 +61,96 @@ describe('validateCompany', () => {
 describe('validateAll', () => {
   test('companies/ directory passes full validation', () => {
     expect(() => validateAll(companiesDir)).not.toThrow()
+  })
+})
+
+const rootDir = path.join(__dirname, '..')
+
+describe('validateKit', () => {
+  test('kit/core configs and skills pass all validations', () => {
+    const errors = validateKit(rootDir)
+    expect(errors).toEqual([])
+  })
+
+  test('all core JSON configs parse successfully', () => {
+    const configs = [
+      'kit/core/agents.json',
+      'kit/core/routing.json',
+      'kit/core/providers.json',
+      'kit/core/autopilot.json',
+      'kit/core/token-optimization.json',
+      'kit/core/loop.json',
+      'kit/core/hooks.json',
+      'kit/core/mcp.json',
+    ]
+    for (const cfg of configs) {
+      const full = path.join(rootDir, cfg)
+      expect(() => JSON.parse(fs.readFileSync(full, 'utf8'))).not.toThrow()
+    }
+  })
+
+  test('every agent references a valid tier', () => {
+    const agents = JSON.parse(fs.readFileSync(path.join(rootDir, 'kit/core/agents.json'), 'utf8'))
+    for (const [, agent] of Object.entries(agents.agents)) {
+      expect(['haiku', 'sonnet', 'opus']).toContain(agent.tier)
+    }
+  })
+
+  test('every agent has a tools access list', () => {
+    const agents = JSON.parse(fs.readFileSync(path.join(rootDir, 'kit/core/agents.json'), 'utf8'))
+    for (const [, agent] of Object.entries(agents.agents)) {
+      expect(agent.tools).toBeDefined()
+      expect(Array.isArray(agent.tools)).toBe(true)
+      expect(agent.tools.length).toBeGreaterThan(0)
+    }
+  })
+
+  test('hooks.json has rules and tool mapping', () => {
+    const hooks = JSON.parse(fs.readFileSync(path.join(rootDir, 'kit/core/hooks.json'), 'utf8'))
+    expect(hooks.hooks).toBeDefined()
+    expect(Object.keys(hooks.hooks).length).toBeGreaterThanOrEqual(4)
+    expect(hooks.toolMapping).toBeDefined()
+    for (const [, hook] of Object.entries(hooks.hooks)) {
+      expect(hook.description).toBeDefined()
+      expect(hook.rules.length).toBeGreaterThan(0)
+    }
+  })
+
+  test('token-optimization has cost tracking config', () => {
+    const cfg = JSON.parse(fs.readFileSync(path.join(rootDir, 'kit/core/token-optimization.json'), 'utf8'))
+    expect(cfg.cost).toBeDefined()
+    expect(cfg.cost.tracking).toBeDefined()
+    expect(cfg.cost.budgets).toBeDefined()
+  })
+
+  test('parity audit runs and reports all adapters', () => {
+    const audit = runParityAudit()
+    expect(audit.results.length).toBe(6)
+    expect(audit.skills.length).toBeGreaterThanOrEqual(16)
+    expect(audit.configs.length).toBeGreaterThanOrEqual(7)
+    for (const r of audit.results) {
+      expect(r.features.rules).toBe(true)
+      expect(r.features.skills).toBe(true)
+    }
+  })
+
+  test('every skill has name, description, and triggers', () => {
+    const skillsDir = path.join(rootDir, 'kit/core/skills')
+    const skills = fs.readdirSync(skillsDir).filter(f => f.endsWith('.md'))
+    expect(skills.length).toBeGreaterThanOrEqual(16)
+    for (const skill of skills) {
+      const content = fs.readFileSync(path.join(skillsDir, skill), 'utf8')
+      expect(content).toMatch(/^---\n/)
+      expect(content).toMatch(/name:/)
+      expect(content).toMatch(/description:/)
+      expect(content).toMatch(/triggers:/)
+    }
+  })
+
+  test('loop.json has governance section', () => {
+    const loop = JSON.parse(fs.readFileSync(path.join(rootDir, 'kit/core/loop.json'), 'utf8'))
+    expect(loop.loop.governance).toBeDefined()
+    expect(loop.loop.governance.requiredBeforeCommit).toBeDefined()
+    expect(loop.loop.governance.blockOn).toBeDefined()
   })
 })
