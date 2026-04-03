@@ -134,6 +134,36 @@
       ]
     }
   },
+  "runtimeControls": {
+    "profiles": {
+      "minimal": {
+        "description": "Only hard-block rules — secrets, destructive commands",
+        "enabledHooks": ["PreToolUse"],
+        "enabledRules": ["block-secrets-in-write", "block-rm-rf", "block-force-push-main", "block-secrets-in-diff"]
+      },
+      "standard": {
+        "description": "Security + quality gates — default profile",
+        "enabledHooks": ["PreToolUse", "PostToolUse", "PreCommit", "PrePush"],
+        "enabledRules": "all"
+      },
+      "strict": {
+        "description": "All hooks including session lifecycle and auto-lint",
+        "enabledHooks": "all",
+        "enabledRules": "all"
+      }
+    },
+    "envOverrides": {
+      "FORGE_HOOK_PROFILE": "minimal | standard | strict (default: standard)",
+      "FORGE_DISABLED_HOOKS": "comma-separated rule IDs to disable at runtime",
+      "FORGE_DISABLED_HOOK_TYPES": "comma-separated hook types to disable (e.g., PostToolUse,SessionEnd)"
+    },
+    "precedence": [
+      "FORGE_DISABLED_HOOKS overrides profile (individual rule disable)",
+      "FORGE_DISABLED_HOOK_TYPES overrides profile (entire hook type disable)",
+      "FORGE_HOOK_PROFILE selects base profile",
+      "Default: standard profile with all rules enabled"
+    ]
+  },
   "toolMapping": {
     "claude-code": "settings.json hooks array (PreToolUse/PostToolUse)",
     "opencode": "oh-my-opencode.json hooks section",
