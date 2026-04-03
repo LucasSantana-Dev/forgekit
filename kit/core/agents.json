@@ -6,12 +6,38 @@
       "tier": "opus",
       "title": "Lead Orchestrator",
       "role": "Plans, delegates, drives entire dev cycles to completion without stopping",
-      "skills": ["loop", "plan", "orchestrate", "ship", "verify", "route", "resume", "fallback", "dispatch", "cost"],
-      "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "WebFetch", "WebSearch", "TodoWrite", "Skill", "Agent", "MCP"],
+      "skills": [
+        "loop",
+        "plan",
+        "orchestrate",
+        "ship",
+        "verify",
+        "route",
+        "resume",
+        "fallback",
+        "dispatch",
+        "cost"
+      ],
+      "tools": [
+        "Bash",
+        "FileRead",
+        "FileWrite",
+        "Glob",
+        "Grep",
+        "WebFetch",
+        "WebSearch",
+        "TodoWrite",
+        "Skill",
+        "Agent",
+        "MCP"
+      ],
       "durable": true,
       "autonomous": true,
       "reportsTo": null,
-      "fallback": { "chain": ["opus", "sonnet"], "onFailure": "escalate-or-switch" },
+      "fallback": {
+        "chain": ["opus", "sonnet"],
+        "onFailure": "escalate-or-switch"
+      },
       "aliases": ["sisyphus", "main", "primary", "autopilot", "ceo"]
     },
     "architect": {
@@ -22,7 +48,10 @@
       "tools": ["FileRead", "Glob", "Grep", "WebFetch", "WebSearch"],
       "readOnly": true,
       "reportsTo": "orchestrator",
-      "fallback": { "chain": ["opus", "sonnet"], "onFailure": "degrade-gracefully" },
+      "fallback": {
+        "chain": ["opus", "sonnet"],
+        "onFailure": "degrade-gracefully"
+      },
       "aliases": ["hephaestus", "oracle", "cto"]
     },
     "frontend": {
@@ -30,10 +59,21 @@
       "title": "Frontend Engineer",
       "role": "React, CSS, UI components, animations, design systems, visual work",
       "skills": ["verify", "ship", "tdd", "debug"],
-      "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "LSP", "TodoWrite"],
+      "tools": [
+        "Bash",
+        "FileRead",
+        "FileWrite",
+        "Glob",
+        "Grep",
+        "LSP",
+        "TodoWrite"
+      ],
       "autonomous": true,
       "reportsTo": "architect",
-      "fallback": { "chain": ["sonnet", "haiku", "opus"], "onFailure": "retry-then-escalate" },
+      "fallback": {
+        "chain": ["sonnet", "haiku", "opus"],
+        "onFailure": "retry-then-escalate"
+      },
       "aliases": ["ui", "designer", "css"]
     },
     "backend": {
@@ -41,10 +81,22 @@
       "title": "Backend Engineer",
       "role": "APIs, databases, services, middleware, auth, server-side logic",
       "skills": ["verify", "ship", "tdd", "debug", "secure"],
-      "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "LSP", "TodoWrite", "MCP"],
+      "tools": [
+        "Bash",
+        "FileRead",
+        "FileWrite",
+        "Glob",
+        "Grep",
+        "LSP",
+        "TodoWrite",
+        "MCP"
+      ],
       "autonomous": true,
       "reportsTo": "architect",
-      "fallback": { "chain": ["sonnet", "haiku", "opus"], "onFailure": "retry-then-escalate" },
+      "fallback": {
+        "chain": ["sonnet", "haiku", "opus"],
+        "onFailure": "retry-then-escalate"
+      },
       "aliases": ["api", "server", "data"]
     },
     "devops": {
@@ -55,7 +107,10 @@
       "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "TodoWrite"],
       "autonomous": true,
       "reportsTo": "architect",
-      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "retry-then-escalate" },
+      "fallback": {
+        "chain": ["sonnet", "haiku"],
+        "onFailure": "retry-then-escalate"
+      },
       "aliases": ["infra", "ci", "deploy", "ops"]
     },
     "tester": {
@@ -63,10 +118,21 @@
       "title": "QA Engineer",
       "role": "Test strategy, integration tests, e2e tests, coverage analysis, regression hunting",
       "skills": ["tdd", "verify", "debug", "review"],
-      "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "LSP", "TodoWrite"],
+      "tools": [
+        "Bash",
+        "FileRead",
+        "FileWrite",
+        "Glob",
+        "Grep",
+        "LSP",
+        "TodoWrite"
+      ],
       "autonomous": true,
       "reportsTo": "architect",
-      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "retry-then-escalate" },
+      "fallback": {
+        "chain": ["sonnet", "haiku"],
+        "onFailure": "retry-then-escalate"
+      },
       "aliases": ["qa", "test-engineer", "coverage"]
     },
     "security": {
@@ -77,7 +143,10 @@
       "tools": ["Bash", "FileRead", "Glob", "Grep", "WebFetch", "WebSearch"],
       "readOnly": true,
       "reportsTo": "architect",
-      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "degrade-gracefully" },
+      "fallback": {
+        "chain": ["sonnet", "haiku"],
+        "onFailure": "degrade-gracefully"
+      },
       "aliases": ["appsec", "vuln-scanner", "audit"]
     },
     "reviewer": {
@@ -88,7 +157,10 @@
       "tools": ["FileRead", "Glob", "Grep", "LSP"],
       "readOnly": true,
       "reportsTo": "orchestrator",
-      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "skip-review-log-warning" },
+      "fallback": {
+        "chain": ["sonnet", "haiku"],
+        "onFailure": "skip-review-log-warning"
+      },
       "aliases": ["critic", "validator", "momus"]
     },
     "ts-reviewer": {
@@ -99,7 +171,10 @@
       "tools": ["FileRead", "Glob", "Grep", "LSP"],
       "readOnly": true,
       "reportsTo": "reviewer",
-      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "fall-back-to-reviewer" },
+      "fallback": {
+        "chain": ["sonnet", "haiku"],
+        "onFailure": "fall-back-to-reviewer"
+      },
       "aliases": ["typescript-reviewer", "js-reviewer"]
     },
     "python-reviewer": {
@@ -110,7 +185,10 @@
       "tools": ["FileRead", "Glob", "Grep", "LSP"],
       "readOnly": true,
       "reportsTo": "reviewer",
-      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "fall-back-to-reviewer" },
+      "fallback": {
+        "chain": ["sonnet", "haiku"],
+        "onFailure": "fall-back-to-reviewer"
+      },
       "aliases": ["py-reviewer"]
     },
     "go-reviewer": {
@@ -121,7 +199,10 @@
       "tools": ["FileRead", "Glob", "Grep", "LSP"],
       "readOnly": true,
       "reportsTo": "reviewer",
-      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "fall-back-to-reviewer" },
+      "fallback": {
+        "chain": ["sonnet", "haiku"],
+        "onFailure": "fall-back-to-reviewer"
+      },
       "aliases": ["golang-reviewer"]
     },
     "rust-reviewer": {
@@ -132,7 +213,10 @@
       "tools": ["FileRead", "Glob", "Grep", "LSP"],
       "readOnly": true,
       "reportsTo": "reviewer",
-      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "fall-back-to-reviewer" },
+      "fallback": {
+        "chain": ["sonnet", "haiku"],
+        "onFailure": "fall-back-to-reviewer"
+      },
       "aliases": ["rs-reviewer"]
     },
     "writer": {
@@ -143,7 +227,10 @@
       "tools": ["FileRead", "FileWrite", "Glob", "Grep", "WebFetch"],
       "autonomous": true,
       "reportsTo": "orchestrator",
-      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "degrade-gracefully" },
+      "fallback": {
+        "chain": ["sonnet", "haiku"],
+        "onFailure": "degrade-gracefully"
+      },
       "aliases": ["docs", "documentation", "copywriter"]
     },
     "researcher": {
@@ -155,7 +242,10 @@
       "readOnly": true,
       "async": true,
       "reportsTo": "orchestrator",
-      "fallback": { "chain": ["sonnet", "haiku"], "onFailure": "proceed-without" },
+      "fallback": {
+        "chain": ["sonnet", "haiku"],
+        "onFailure": "proceed-without"
+      },
       "aliases": ["librarian", "prometheus", "analyst"]
     },
     "explorer": {
@@ -173,7 +263,17 @@
   },
   "orgChart": {
     "orchestrator": {
-      "directReports": ["architect", "reviewer", "writer", "researcher", "explorer", "ts-reviewer", "python-reviewer", "go-reviewer", "rust-reviewer"],
+      "directReports": [
+        "architect",
+        "reviewer",
+        "writer",
+        "researcher",
+        "explorer",
+        "ts-reviewer",
+        "python-reviewer",
+        "go-reviewer",
+        "rust-reviewer"
+      ],
       "description": "Top-level orchestrator manages all agents"
     },
     "architect": {

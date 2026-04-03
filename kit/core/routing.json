@@ -19,14 +19,61 @@
     }
   },
   "categories": {
-    "quick":          { "tier": "haiku",  "signals": ["<20 lines", "single file", "typo", "config edit", "rename"] },
-    "standard":       { "tier": "sonnet", "signals": ["20-200 lines", "multi-file", "bug fix", "refactor", "test writing"] },
-    "review":         { "tier": "sonnet", "signals": ["diff review", "security scan", "test coverage check"] },
-    "visual":         { "tier": "sonnet", "signals": ["UI/UX", "CSS", "design", "component", "animation"], "override": "always visual-capable model" },
-    "writing":        { "tier": "sonnet", "signals": ["docs", "README", "CHANGELOG", "PR description", "commit message"] },
-    "deep":           { "tier": "opus",   "signals": [">200 lines", "cross-repo", "root cause analysis", "migration"] },
-    "planning":       { "tier": "opus",   "signals": ["PRD", "architecture decision", "roadmap", "multi-system design"] },
-    "orchestration":  { "tier": "opus",   "signals": ["multi-agent", "long autonomous run", "phase-based execution"] }
+    "quick": {
+      "tier": "haiku",
+      "signals": ["<20 lines", "single file", "typo", "config edit", "rename"]
+    },
+    "standard": {
+      "tier": "sonnet",
+      "signals": [
+        "20-200 lines",
+        "multi-file",
+        "bug fix",
+        "refactor",
+        "test writing"
+      ]
+    },
+    "review": {
+      "tier": "sonnet",
+      "signals": ["diff review", "security scan", "test coverage check"]
+    },
+    "visual": {
+      "tier": "sonnet",
+      "signals": ["UI/UX", "CSS", "design", "component", "animation"],
+      "override": "always visual-capable model"
+    },
+    "writing": {
+      "tier": "sonnet",
+      "signals": [
+        "docs",
+        "README",
+        "CHANGELOG",
+        "PR description",
+        "commit message"
+      ]
+    },
+    "deep": {
+      "tier": "opus",
+      "signals": [
+        ">200 lines",
+        "cross-repo",
+        "root cause analysis",
+        "migration"
+      ]
+    },
+    "planning": {
+      "tier": "opus",
+      "signals": [
+        "PRD",
+        "architecture decision",
+        "roadmap",
+        "multi-system design"
+      ]
+    },
+    "orchestration": {
+      "tier": "opus",
+      "signals": ["multi-agent", "long autonomous run", "phase-based execution"]
+    }
   },
   "classifier": {
     "steps": [
@@ -44,11 +91,27 @@
     }
   },
   "providers": {
-    "anthropic": { "haiku": "claude-haiku-4-5", "sonnet": "claude-sonnet-4-6", "opus": "claude-opus-4-6" },
-    "openai":    { "haiku": "gpt-4.1-nano", "sonnet": "gpt-4.1", "opus": "o3" },
-    "google":    { "haiku": "gemini-2.0-flash", "sonnet": "gemini-2.5-pro", "opus": "gemini-2.5-pro" },
-    "openrouter": { "haiku": "anthropic/claude-haiku-4-5", "sonnet": "anthropic/claude-sonnet-4-6", "opus": "anthropic/claude-opus-4-6" },
-    "ollama":    { "haiku": "qwen3.5:9b", "sonnet": "qwen3.5:27b", "opus": "qwen3.5:27b" }
+    "anthropic": {
+      "haiku": "claude-haiku-4-5",
+      "sonnet": "claude-sonnet-4-6",
+      "opus": "claude-opus-4-6"
+    },
+    "openai": { "haiku": "gpt-4.1-nano", "sonnet": "gpt-4.1", "opus": "o3" },
+    "google": {
+      "haiku": "gemini-2.0-flash",
+      "sonnet": "gemini-2.5-pro",
+      "opus": "gemini-2.5-pro"
+    },
+    "openrouter": {
+      "haiku": "anthropic/claude-haiku-4-5",
+      "sonnet": "anthropic/claude-sonnet-4-6",
+      "opus": "anthropic/claude-opus-4-6"
+    },
+    "ollama": {
+      "haiku": "qwen3.5:9b",
+      "sonnet": "qwen3.5:27b",
+      "opus": "qwen3.5:27b"
+    }
   },
   "heuristics": {
     "lines_threshold_quick": 20,
