@@ -132,6 +132,20 @@ const QUALITY_CHECKS = [
     },
   },
   {
+    id: "agent-tools-resolve",
+    label: "Agent tools resolve via tool registry",
+    check: (root) => {
+      const p = path.join(root, "kit/core/agents.json");
+      if (!fs.existsSync(p)) return false;
+      const d = JSON.parse(fs.readFileSync(p, "utf8"));
+      const registry = new Set(Object.keys(d.toolRegistry || {}));
+      if (registry.size === 0) return false;
+      return Object.values(d.agents).every((a) =>
+        (a.tools || []).every((tool) => registry.has(tool)),
+      );
+    },
+  },
+  {
     id: "routing-has-classifier",
     label: "Routing has complexity classifier",
     check: (root) => {
