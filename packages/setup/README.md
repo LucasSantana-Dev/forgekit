@@ -81,6 +81,18 @@ Isso ajuda com:
 - orientação para `opencode auth login`
 - orientação para login do Claude Code
 
+Para MCPs com OAuth/autenticação, use:
+
+```bash
+bash ./scripts/auth-mcp-tools.sh
+```
+
+Ou diretamente para um provedor configurado, por exemplo:
+
+```bash
+bash ./scripts/auth-mcp-tools.sh linear
+```
+
 ## O que será configurado para AI tools
 
 O bootstrap agora também prepara:
@@ -114,6 +126,7 @@ Isso cobre a base de:
 - compressão de contexto e token optimization via DCP
 - plugins base para worktrees e memória local
 - comandos compartilhados para contexto, verificação e worktrees
+- entradas opcionais de MCPs hospedados para provedores comuns
 
 Ainda ficam manuais:
 

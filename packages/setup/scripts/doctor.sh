@@ -96,6 +96,12 @@ else
 	warn "worktree workflow plugin not configured"
 fi
 
+if [[ -f "$HOME/.config/opencode/opencode.jsonc" ]] && grep -q '"linear"' "$HOME/.config/opencode/opencode.jsonc"; then
+	ok "optional hosted MCP entries seeded"
+else
+	warn "optional hosted MCP entries missing"
+fi
+
 if [[ -n "${OPENAI_API_KEY:-}" || -n "${ANTHROPIC_API_KEY:-}" || -n "${GITHUB_TOKEN:-}" ]]; then
 	ok "at least one AI/provider token is loaded in environment"
 else
@@ -119,6 +125,7 @@ echo "Next recommended commands:"
 echo "  source ~/.bashrc   # or source ~/.zshrc"
 echo "  gh auth login"
 echo "  bash ./scripts/auth-ai-tools.sh   # guided auth helper"
+echo "  bash ./scripts/auth-mcp-tools.sh  # guided MCP auth helper"
 echo "  edit ~/.config/ai-dev-toolkit/local.env"
 echo "  opencode --help    # verify CLI if installed"
 echo "  repo-terminal-ready"

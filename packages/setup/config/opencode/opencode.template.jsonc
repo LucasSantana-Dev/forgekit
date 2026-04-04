@@ -98,6 +98,54 @@
       "url": "https://mcp.context7.com/mcp",
       "enabled": true,
       "timeout": 10000
+    },
+    "supabase": {
+      "type": "remote",
+      "url": "https://mcp.supabase.com/mcp",
+      "enabled": false,
+      "timeout": 10000
+    },
+    "vercel": {
+      "type": "remote",
+      "url": "https://mcp.vercel.com",
+      "enabled": false,
+      "timeout": 10000
+    },
+    "sentry": {
+      "type": "remote",
+      "url": "https://mcp.sentry.dev/mcp",
+      "enabled": false,
+      "timeout": 10000
+    },
+    "linear": {
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp",
+      "enabled": false,
+      "timeout": 10000
+    },
+    "cloudflare": {
+      "type": "remote",
+      "url": "https://bindings.mcp.cloudflare.com/mcp",
+      "enabled": false,
+      "timeout": 10000
+    },
+    "huggingface": {
+      "type": "remote",
+      "url": "https://huggingface.co/mcp?login&gradio=none",
+      "enabled": false,
+      "timeout": 10000
+    },
+    "stitch": {
+      "type": "remote",
+      "url": "https://stitch.googleapis.com/mcp",
+      "enabled": false,
+      "timeout": 10000
+    },
+    "jam": {
+      "type": "remote",
+      "url": "https://mcp.jam.dev/mcp",
+      "enabled": false,
+      "timeout": 10000
     }
   },
   "plugin": [
