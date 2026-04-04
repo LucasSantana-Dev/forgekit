@@ -6,6 +6,7 @@ import json
 import re
 import subprocess
 import sys
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -18,6 +19,20 @@ class VersionSurface:
 
 
 SEMVER_RE = re.compile(r"^(\d+)\.(\d+)\.(\d+)$")
+CONVENTIONAL_RE = re.compile(
+    r"^(feat|fix|docs|refactor|test|ci|build|perf|chore)(\([^)]+\))?!?:\s*(.+)$"
+)
+SECTION_TITLES = {
+    "feat": "Features",
+    "fix": "Fixes",
+    "docs": "Documentation",
+    "refactor": "Refactors",
+    "test": "Tests",
+    "ci": "CI",
+    "build": "Build",
+    "perf": "Performance",
+    "chore": "Chores",
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -41,6 +56,10 @@ def parse_args() -> argparse.Namespace:
         "--github-release",
         action="store_true",
         help="Create a GitHub release after tagging when gh is available",
+    )
+    parser.add_argument(
+        "--notes-file",
+        help="Write generated release notes to this path (repo-relative paths are supported)",
     )
     return parser.parse_args()
 
@@ -133,6 +152,83 @@ def current_head(repo: Path) -> str:
     return run(["git", "rev-parse", "--short", "HEAD"], cwd=repo).stdout.strip()
 
 
+def latest_tag(repo: Path) -> str | None:
+    result = run(["git", "describe", "--tags", "--abbrev=0"], cwd=repo, check=False)
+    if result.returncode != 0:
+        return None
+    return result.stdout.strip() or None
+
+
+def commit_subjects(repo: Path, since_tag: str | None) -> list[str]:
+    revision_range = f"{since_tag}..HEAD" if since_tag else "HEAD"
+    result = run(["git", "log", revision_range, "--pretty=format:%s"], cwd=repo)
+    return [line.strip() for line in result.stdout.splitlines() if line.strip()]
+
+
+def render_release_notes(subjects: list[str], since_tag: str | None) -> str:
+    sections: dict[str, list[str]] = {title: [] for title in SECTION_TITLES.values()}
+    other_changes: list[str] = []
+
+    for subject in subjects:
+        match = CONVENTIONAL_RE.match(subject)
+        if not match:
+            other_changes.append(subject)
+            continue
+
+        kind = match.group(1)
+        message = match.group(3)
+        sections[SECTION_TITLES[kind]].append(message)
+
+    lines = ["# Release Notes", ""]
+    if since_tag:
+        lines.append(f"Changes since `{since_tag}`")
+    else:
+        lines.append("Changes since repository start")
+    lines.append("")
+
+    for title, entries in sections.items():
+        if not entries:
+            continue
+        lines.append(f"## {title}")
+        for entry in entries:
+            lines.append(f"- {entry}")
+        lines.append("")
+
+    if other_changes:
+        lines.append("## Other Changes")
+        for entry in other_changes:
+            lines.append(f"- {entry}")
+        lines.append("")
+
+    if lines[-1] != "":
+        lines.append("")
+    return "\n".join(lines)
+
+
+def resolve_notes_path(repo: Path, raw_path: str | None) -> Path | None:
+    if raw_path is None:
+        return None
+    candidate = Path(raw_path)
+    if not candidate.is_absolute():
+        candidate = repo / candidate
+    return candidate.resolve()
+
+
+def is_repo_relative(repo: Path, path: Path) -> bool:
+    try:
+        path.relative_to(repo)
+        return True
+    except ValueError:
+        return False
+
+
+def write_notes(notes_path: Path | None, notes: str) -> None:
+    if notes_path is None:
+        return
+    notes_path.parent.mkdir(parents=True, exist_ok=True)
+    notes_path.write_text(notes)
+
+
 def create_release_commit_and_tag(
     repo: Path, tag: str, changed_paths: list[Path]
 ) -> None:
@@ -142,10 +238,26 @@ def create_release_commit_and_tag(
     run(["git", "tag", "-a", tag, "-m", f"Release {tag}"], cwd=repo)
 
 
-def maybe_create_github_release(repo: Path, tag: str) -> None:
+def maybe_create_github_release(repo: Path, tag: str, notes_path: Path) -> None:
     ensure_gh_cli_available()
     ensure_gh_authenticated(repo)
-    run(["gh", "release", "create", tag, "--generate-notes", "--title", tag], cwd=repo)
+    result = run(
+        [
+            "gh",
+            "release",
+            "create",
+            tag,
+            "--title",
+            tag,
+            "--notes-file",
+            str(notes_path),
+        ],
+        cwd=repo,
+        check=False,
+    )
+    if result.returncode != 0:
+        detail = (result.stderr or result.stdout).strip() or "unknown gh release error"
+        raise SystemExit(f"gh release create failed: {detail}")
 
 
 def shutil_which(cmd: str) -> str | None:
@@ -173,6 +285,9 @@ def print_plan(
     tag: str,
     dry_run: bool,
     github_release: bool,
+    notes_path: Path | None,
+    notes_count: int,
+    since_tag: str | None,
 ) -> None:
     print("Release helper")
     print(f"repo: {repo}")
@@ -186,6 +301,11 @@ def print_plan(
     if next_version is not None:
         print(f"next version: {next_version}")
     print(f"tag: {tag}")
+    print(f"notes commits: {notes_count}")
+    if since_tag:
+        print(f"notes base tag: {since_tag}")
+    if notes_path is not None:
+        print(f"notes file: {notes_path}")
     if github_release:
         availability = "gh cli available" if shutil_which("gh") else "gh cli missing"
         print(f"github release: requested ({availability})")
@@ -199,6 +319,7 @@ def main() -> int:
 
     surface = detect_version_surface(repo)
     next_version: str | None = None
+    since_tag = latest_tag(repo)
 
     if args.level == "tag-only":
         if not args.tag:
@@ -215,8 +336,23 @@ def main() -> int:
     if args.github_release:
         ensure_gh_cli_available()
 
+    notes_path = resolve_notes_path(repo, args.notes_file)
+    subjects = commit_subjects(repo, since_tag)
+    notes = render_release_notes(subjects, since_tag)
+    if args.dry_run:
+        write_notes(notes_path, notes)
+
     print_plan(
-        repo, args.level, surface, next_version, tag, args.dry_run, args.github_release
+        repo,
+        args.level,
+        surface,
+        next_version,
+        tag,
+        args.dry_run,
+        args.github_release,
+        notes_path,
+        len(subjects),
+        since_tag,
     )
     if args.dry_run:
         return 0
@@ -229,13 +365,30 @@ def main() -> int:
         update_version_surface(surface, next_version)
         changed_paths.append(surface.path)
 
+    temp_notes_file: Path | None = None
+    if notes_path is not None:
+        write_notes(notes_path, notes)
+        if is_repo_relative(repo, notes_path):
+            changed_paths.append(notes_path)
+    elif args.github_release:
+        temp_handle = tempfile.NamedTemporaryFile("w", delete=False, suffix=".md")
+        temp_handle.write(notes)
+        temp_handle.close()
+        temp_notes_file = Path(temp_handle.name)
+
     if changed_paths:
         create_release_commit_and_tag(repo, tag, changed_paths)
     else:
         run(["git", "tag", "-a", tag, "-m", f"Release {tag}"], cwd=repo)
 
     if args.github_release:
-        maybe_create_github_release(repo, tag)
+        github_notes_path = notes_path or temp_notes_file
+        if github_notes_path is None:
+            raise SystemExit("Missing generated notes file for --github-release")
+        maybe_create_github_release(repo, tag, github_notes_path)
+
+    if temp_notes_file is not None and temp_notes_file.exists():
+        temp_notes_file.unlink()
 
     print(f"released from HEAD {current_head(repo)}")
     return 0
