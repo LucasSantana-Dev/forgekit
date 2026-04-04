@@ -100,11 +100,75 @@ describe("validateKit", () => {
       "kit/core/loop.json",
       "kit/core/hooks.json",
       "kit/core/mcp.json",
+      "kit/core/schedules.json",
     ];
+
     for (const cfg of configs) {
       const full = path.join(rootDir, cfg);
       expect(() => JSON.parse(fs.readFileSync(full, "utf8"))).not.toThrow();
     }
+  });
+
+  test("every core config declares a schema and that schema file exists", () => {
+    const configs = [
+      "kit/core/agents.json",
+      "kit/core/routing.json",
+      "kit/core/providers.json",
+      "kit/core/autopilot.json",
+      "kit/core/token-optimization.json",
+      "kit/core/loop.json",
+      "kit/core/hooks.json",
+      "kit/core/mcp.json",
+      "kit/core/schedules.json",
+    ];
+
+    for (const cfg of configs) {
+      const full = path.join(rootDir, cfg);
+      const parsed = JSON.parse(fs.readFileSync(full, "utf8"));
+      expect(parsed.$schema).toBeDefined();
+      const schemaPath = path.resolve(path.dirname(full), parsed.$schema);
+      expect(fs.existsSync(schemaPath)).toBe(true);
+    }
+  });
+
+  test("validateKit catches schema violations for malformed core config", () => {
+    const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "test-kit-schema-"));
+    fs.mkdirSync(path.join(tmpDir, "kit/core"), { recursive: true });
+    fs.mkdirSync(path.join(tmpDir, "kit/schema"), { recursive: true });
+
+    const schemaSrc = path.join(rootDir, "kit/schema/providers.schema.json");
+    const schemaDst = path.join(tmpDir, "kit/schema/providers.schema.json");
+    fs.copyFileSync(schemaSrc, schemaDst);
+
+    const badProviders = {
+      $schema: "../schema/providers.schema.json",
+      version: "1.0.0",
+      providers: {
+        anthropic: {
+          name: "Anthropic",
+          env_key: "ANTHROPIC_API_KEY",
+          base_url: "https://api.anthropic.com",
+        },
+      },
+      default_provider: "anthropic",
+      fallback_chain: ["anthropic"],
+    };
+
+    fs.writeFileSync(
+      path.join(tmpDir, "kit/core/providers.json"),
+      JSON.stringify(badProviders, null, 2) + "\n",
+    );
+
+    const errors = validateKit(tmpDir);
+    expect(
+      errors.some(
+        (e) =>
+          e.includes("providers.json") &&
+          e.includes("Schema validation failed"),
+      ),
+    ).toBe(true);
+
+    fs.rmSync(tmpDir, { recursive: true, force: true });
   });
 
   test("every agent references a valid tier", () => {
@@ -113,6 +177,21 @@ describe("validateKit", () => {
     );
     for (const [, agent] of Object.entries(agents.agents)) {
       expect(["haiku", "sonnet", "opus"]).toContain(agent.tier);
+    }
+  });
+
+  test("every agent tool resolves through the canonical tool registry", () => {
+    const agents = JSON.parse(
+      fs.readFileSync(path.join(rootDir, "kit/core/agents.json"), "utf8"),
+    );
+    const registry = agents.toolRegistry;
+    expect(registry).toBeDefined();
+    expect(Object.keys(registry).length).toBeGreaterThanOrEqual(10);
+
+    for (const [, agent] of Object.entries(agents.agents)) {
+      for (const tool of agent.tools) {
+        expect(registry[tool]).toBeDefined();
+      }
     }
   });
 
@@ -178,7 +257,7 @@ describe("validateKit", () => {
     const audit = runParityAudit();
     expect(audit.results.length).toBe(6);
     expect(audit.skills.length).toBeGreaterThanOrEqual(16);
-    expect(audit.configs.length).toBeGreaterThanOrEqual(7);
+    expect(audit.configs.length).toBeGreaterThanOrEqual(8);
     for (const r of audit.results) {
       expect(r.features.rules).toBe(true);
       expect(r.features.skills).toBe(true);
@@ -209,5 +288,28 @@ describe("validateKit", () => {
     expect(loop.loop.governance).toBeDefined();
     expect(loop.loop.governance.requiredBeforeCommit).toBeDefined();
     expect(loop.loop.governance.blockOn).toBeDefined();
+  });
+
+  test("schedules.json has defaults, triggers, and mapped routines", () => {
+    const schedules = JSON.parse(
+      fs.readFileSync(path.join(rootDir, "kit/core/schedules.json"), "utf8"),
+    );
+
+    expect(schedules.defaults).toBeDefined();
+    expect(schedules.triggers).toBeDefined();
+    expect(Array.isArray(schedules.routines)).toBe(true);
+    expect(schedules.routines.length).toBeGreaterThanOrEqual(4);
+
+    const ids = new Set();
+    for (const routine of schedules.routines) {
+      expect(routine.id).toBeDefined();
+      expect(ids.has(routine.id)).toBe(false);
+      ids.add(routine.id);
+      expect(routine.agent).toBeDefined();
+      expect(routine.skill).toBeDefined();
+      if (routine.trigger === "daily" || routine.trigger === "weekly") {
+        expect(routine.schedule).toBeDefined();
+      }
+    }
   });
 });

@@ -1,6 +1,68 @@
 {
   "$schema": "../schema/agents.schema.json",
   "version": "4.0.0",
+  "toolRegistry": {
+    "Bash": {
+      "category": "execution",
+      "access": "write",
+      "description": "Shell command execution and automation"
+    },
+    "FileRead": {
+      "category": "filesystem",
+      "access": "read",
+      "description": "Read repository files and artifacts"
+    },
+    "FileWrite": {
+      "category": "filesystem",
+      "access": "write",
+      "description": "Create and modify repository files"
+    },
+    "Glob": {
+      "category": "filesystem",
+      "access": "read",
+      "description": "Find files by path pattern"
+    },
+    "Grep": {
+      "category": "search",
+      "access": "read",
+      "description": "Search repository content"
+    },
+    "WebFetch": {
+      "category": "web",
+      "access": "network",
+      "description": "Fetch specific external URLs"
+    },
+    "WebSearch": {
+      "category": "web",
+      "access": "network",
+      "description": "Search external web sources"
+    },
+    "TodoWrite": {
+      "category": "coordination",
+      "access": "write",
+      "description": "Track execution state with structured todos"
+    },
+    "Skill": {
+      "category": "coordination",
+      "access": "read",
+      "description": "Load reusable skill instructions"
+    },
+    "Agent": {
+      "category": "orchestration",
+      "access": "delegate",
+      "description": "Spawn or delegate work to specialist agents"
+    },
+    "MCP": {
+      "category": "integration",
+      "access": "network",
+      "description": "Access external MCP-backed services"
+    },
+    "LSP": {
+      "category": "analysis",
+      "access": "read",
+      "description": "Language-server code navigation and diagnostics"
+    }
+  },
   "agents": {
     "orchestrator": {
       "tier": "opus",
@@ -98,20 +160,6 @@
         "onFailure": "retry-then-escalate"
       },
       "aliases": ["api", "server", "data"]
-    },
-    "worker": {
-      "tier": "sonnet",
-      "title": "Generalist Worker",
-      "role": "Standard implementation, verification, and commit-ready execution across domains",
-      "skills": ["verify", "ship", "tdd", "debug"],
-      "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "LSP", "TodoWrite", "MCP"],
-      "autonomous": true,
-      "reportsTo": "architect",
-      "fallback": {
-        "chain": ["sonnet", "haiku", "opus"],
-        "onFailure": "retry-then-escalate"
-      },
-      "aliases": ["executor", "generalist", "implementer"]
     },
     "devops": {
       "tier": "sonnet",
@@ -287,7 +335,7 @@
       "description": "Top-level orchestrator manages all agents"
     },
     "architect": {
-      "directReports": ["frontend", "backend", "worker", "devops", "tester", "security"],
+      "directReports": ["frontend", "backend", "devops", "tester", "security"],
       "description": "CTO manages engineering specialists"
     },
     "reviewer": {
