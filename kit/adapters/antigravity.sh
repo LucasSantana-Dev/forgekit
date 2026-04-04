@@ -46,6 +46,37 @@ adapter_install() {
 		install_skills "$FORGE_KIT_DIR/core/skills" "$ag_dir/skills"
 	fi
 
+	if [ "${FORGE_HOOKS:-false}" = "true" ]; then
+		hooks_src="$FORGE_KIT_DIR/core/hooks.json"
+		hooks_dst="$ag_dir/hooks.json"
+		hooks_marker="$ag_dir/.forge-kit-hooks"
+
+		if [ -f "$hooks_src" ]; then
+			log_step "Installing hooks manifest to $hooks_dst"
+			if [ -f "$hooks_dst" ]; then
+				old_sha="$(file_sha256 "$hooks_dst")"
+				new_sha="$(file_sha256 "$hooks_src")"
+				if [ "$old_sha" = "$new_sha" ]; then
+					log_dim "  (no changes)"
+				elif [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+					log_info "  [DRY RUN] Would overwrite $hooks_dst"
+				else
+					cp "$hooks_src" "$hooks_dst"
+					: >"$hooks_marker"
+					log_success "hooks manifest updated"
+				fi
+			else
+				if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+					log_info "  [DRY RUN] Would create $hooks_dst"
+				else
+					cp "$hooks_src" "$hooks_dst"
+					: >"$hooks_marker"
+					log_success "hooks manifest created"
+				fi
+			fi
+		fi
+	fi
+
 	if [ "${FORGE_PROVIDERS:-false}" = "true" ]; then
 		log_step "Installing providers to $ag_dir/providers.json"
 		install_providers "$FORGE_KIT_DIR/core/providers.json" "$ag_dir/providers.json"
@@ -91,30 +122,6 @@ PYEOF
 			fi
 		fi
 	fi
-
-	if [ "${FORGE_OHMY_COMPAT:-false}" = "true" ]; then
-		compat_src="$FORGE_KIT_DIR/../implementations/antigravity/oh-my-antigravity.md"
-		compat_dst="$ag_dir/oh-my-antigravity.md"
-
-		if [ -f "$compat_src" ]; then
-			log_step "Installing oh-my compatibility reference to $compat_dst"
-
-			if [ -f "$compat_dst" ] && files_equal "$compat_src" "$compat_dst"; then
-				log_dim "  (no changes)"
-			else
-				if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
-					if [ -f "$compat_dst" ]; then
-						log_info "  [DRY RUN] Would update oh-my-antigravity.md"
-					else
-						log_info "  [DRY RUN] Would create oh-my-antigravity.md"
-					fi
-				else
-					cp "$compat_src" "$compat_dst"
-					log_success "oh-my compatibility reference installed"
-				fi
-			fi
-		fi
-	fi
 }
 
 adapter_verify() {
@@ -127,14 +134,39 @@ adapter_status() {
 	rules_file="$ag_dir/rules.md"
 	status=""
 	[ -f "$rules_file" ] && status="rules.md ✓" || status="rules.md ✗"
-	printf 'antigravity | %s | config → %s/\n' "$status" "$ag_dir"
+	hooks_status="hooks.json ✗"
+	[ -f "$ag_dir/hooks.json" ] && hooks_status="hooks.json ✓"
+	printf 'antigravity | %s | %s | config → %s/\n' "$status" "$hooks_status" "$ag_dir"
 }
 
 adapter_uninstall() {
 	ag_dir="$(get_config_dir antigravity)"
 	rules_file="$ag_dir/rules.md"
+	removed_hooks="false"
 
 	uninstall_skills "$ag_dir/skills"
+
+	if [ -f "$ag_dir/hooks.json" ]; then
+		if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+			log_info "[DRY RUN] Would remove $ag_dir/hooks.json"
+		else
+			rm "$ag_dir/hooks.json"
+		fi
+		removed_hooks="true"
+	fi
+
+	if [ -f "$ag_dir/.forge-kit-hooks" ]; then
+		if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+			log_info "[DRY RUN] Would remove $ag_dir/.forge-kit-hooks"
+		else
+			rm "$ag_dir/.forge-kit-hooks"
+		fi
+		removed_hooks="true"
+	fi
+
+	if [ "$removed_hooks" = "true" ]; then
+		log_success "Removed hooks manifest"
+	fi
 
 	if [ -f "$rules_file" ]; then
 		if grep -q "^# forge-kit" "$rules_file" 2>/dev/null; then
@@ -143,17 +175,6 @@ adapter_uninstall() {
 			else
 				rm "$rules_file"
 				log_success "Removed rules.md"
-			fi
-		fi
-	fi
-
-	if [ -f "$ag_dir/oh-my-antigravity.md" ]; then
-		if grep -qm1 "^# forge-kit" "$ag_dir/oh-my-antigravity.md" 2>/dev/null; then
-			if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
-				log_info "[DRY RUN] Would remove $ag_dir/oh-my-antigravity.md"
-			else
-				rm "$ag_dir/oh-my-antigravity.md"
-				log_success "Removed oh-my compatibility reference"
 			fi
 		fi
 	fi

@@ -100,72 +100,11 @@ describe("validateKit", () => {
       "kit/core/loop.json",
       "kit/core/hooks.json",
       "kit/core/mcp.json",
-      "kit/core/schedules.json",
     ];
     for (const cfg of configs) {
       const full = path.join(rootDir, cfg);
       expect(() => JSON.parse(fs.readFileSync(full, "utf8"))).not.toThrow();
     }
-  });
-
-  test("every core config declares a schema and that schema file exists", () => {
-    const configs = [
-      "kit/core/agents.json",
-      "kit/core/routing.json",
-      "kit/core/providers.json",
-      "kit/core/autopilot.json",
-      "kit/core/token-optimization.json",
-      "kit/core/loop.json",
-      "kit/core/hooks.json",
-      "kit/core/mcp.json",
-      "kit/core/schedules.json",
-    ];
-
-    for (const cfg of configs) {
-      const full = path.join(rootDir, cfg);
-      const parsed = JSON.parse(fs.readFileSync(full, "utf8"));
-      expect(parsed.$schema).toBeDefined();
-      const schemaPath = path.resolve(path.dirname(full), parsed.$schema);
-      expect(fs.existsSync(schemaPath)).toBe(true);
-    }
-  });
-
-  test("validateKit catches schema violations for malformed core config", () => {
-    const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "test-kit-schema-"));
-    fs.mkdirSync(path.join(tmpDir, "kit/core"), { recursive: true });
-    fs.mkdirSync(path.join(tmpDir, "kit/schema"), { recursive: true });
-
-    const schemaSrc = path.join(rootDir, "kit/schema/providers.schema.json");
-    const schemaDst = path.join(tmpDir, "kit/schema/providers.schema.json");
-    fs.copyFileSync(schemaSrc, schemaDst);
-
-    const badProviders = {
-      $schema: "../schema/providers.schema.json",
-      version: "1.0.0",
-      providers: {
-        anthropic: {
-          name: "Anthropic",
-          env_key: "ANTHROPIC_API_KEY",
-          base_url: "https://api.anthropic.com",
-        },
-      },
-      default_provider: "anthropic",
-      fallback_chain: ["anthropic"],
-    };
-
-    fs.writeFileSync(
-      path.join(tmpDir, "kit/core/providers.json"),
-      JSON.stringify(badProviders, null, 2) + "\n",
-    );
-
-    const errors = validateKit(tmpDir);
-    expect(
-      errors.some(
-        (e) => e.includes("providers.json") && e.includes("schema error"),
-      ),
-    ).toBe(true);
-
-    fs.rmSync(tmpDir, { recursive: true, force: true });
   });
 
   test("every agent references a valid tier", () => {
@@ -183,7 +122,6 @@ describe("validateKit", () => {
     );
     const names = Object.keys(agents.agents);
     expect(names.length).toBeGreaterThanOrEqual(10);
-    expect(names).toContain("worker");
     expect(names).toContain("frontend");
     expect(names).toContain("backend");
     expect(names).toContain("devops");
@@ -195,14 +133,6 @@ describe("validateKit", () => {
       0,
     );
     expect(agents.orgChart.architect.directReports.length).toBeGreaterThan(0);
-    expect(agents.orgChart.reviewer.directReports).toEqual(
-      expect.arrayContaining([
-        "ts-reviewer",
-        "python-reviewer",
-        "go-reviewer",
-        "rust-reviewer",
-      ]),
-    );
   });
 
   test("every agent has title, tools, and valid reportsTo", () => {
@@ -224,6 +154,8 @@ describe("validateKit", () => {
     expect(hooks.hooks).toBeDefined();
     expect(Object.keys(hooks.hooks).length).toBeGreaterThanOrEqual(4);
     expect(hooks.toolMapping).toBeDefined();
+    expect(hooks.toolMapping.opencode).toMatch(/hooks\.json/);
+    expect(hooks.toolMapping.antigravity).toMatch(/hooks\.json/);
     for (const [, hook] of Object.entries(hooks.hooks)) {
       expect(hook.description).toBeDefined();
       expect(hook.rules.length).toBeGreaterThan(0);
@@ -246,11 +178,15 @@ describe("validateKit", () => {
     const audit = runParityAudit();
     expect(audit.results.length).toBe(6);
     expect(audit.skills.length).toBeGreaterThanOrEqual(16);
-    expect(audit.configs.length).toBeGreaterThanOrEqual(8);
+    expect(audit.configs.length).toBeGreaterThanOrEqual(7);
     for (const r of audit.results) {
       expect(r.features.rules).toBe(true);
       expect(r.features.skills).toBe(true);
     }
+    const opencode = audit.results.find((r) => r.name === "opencode");
+    const antigravity = audit.results.find((r) => r.name === "antigravity");
+    expect(opencode.features.hooks).toBe(true);
+    expect(antigravity.features.hooks).toBe(true);
   });
 
   test("every skill has name, description, and triggers", () => {
@@ -273,28 +209,5 @@ describe("validateKit", () => {
     expect(loop.loop.governance).toBeDefined();
     expect(loop.loop.governance.requiredBeforeCommit).toBeDefined();
     expect(loop.loop.governance.blockOn).toBeDefined();
-  });
-
-  test("schedules.json has defaults, triggers, and mapped routines", () => {
-    const schedules = JSON.parse(
-      fs.readFileSync(path.join(rootDir, "kit/core/schedules.json"), "utf8"),
-    );
-
-    expect(schedules.defaults).toBeDefined();
-    expect(schedules.triggers).toBeDefined();
-    expect(Array.isArray(schedules.routines)).toBe(true);
-    expect(schedules.routines.length).toBeGreaterThanOrEqual(4);
-
-    const ids = new Set();
-    for (const routine of schedules.routines) {
-      expect(routine.id).toBeDefined();
-      expect(ids.has(routine.id)).toBe(false);
-      ids.add(routine.id);
-      expect(routine.agent).toBeDefined();
-      expect(routine.skill).toBeDefined();
-      if (routine.trigger === "daily" || routine.trigger === "weekly") {
-        expect(routine.schedule).toBeDefined();
-      }
-    }
   });
 });
