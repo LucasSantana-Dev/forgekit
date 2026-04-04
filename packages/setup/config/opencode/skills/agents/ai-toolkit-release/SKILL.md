@@ -23,11 +23,11 @@ metadata:
 
 ## Workflow
 
-1. Run `release-plan --repo /path/to/repo --level patch|minor|major --notes-file RELEASE_NOTES.md --changelog` when the target repo already has `CHANGELOG.md` and you want the helper to preview both notes and changelog updates.
+1. Run `release-plan --repo /path/to/repo --level patch|minor|major --notes-file RELEASE_NOTES.md --changelog` when the target repo already has `CHANGELOG.md` with a `## [Unreleased]` section and you want the helper to preview both notes and changelog updates.
 2. Refuse to continue if verification has not already passed or the release target is ambiguous.
 3. If a GitHub Release is required, use `release-plan-github` first so the helper validates `gh` CLI availability before any mutation.
 4. Execute `release-patch`, `release-minor`, `release-major`, `release-tag --tag vX.Y.Z`, or the matching `*-github` wrapper in the target repo, and pass `--notes-file` and `--changelog` when you want tracked markdown outputs.
-5. Let the helper update only supported version sources (`VERSION`, `package.json`, or `pyproject.toml`), generate reusable release notes, optionally insert a new versioned section into an existing `CHANGELOG.md`, create the annotated tag, and create the GitHub release only after `gh auth status` succeeds.
+5. Let the helper update only supported version sources (`VERSION`, `package.json`, or `pyproject.toml`), generate reusable release notes, optionally insert a new versioned section into an existing `CHANGELOG.md` only when it already contains `## [Unreleased]`, create the annotated tag, and create the GitHub release only after `gh auth status` succeeds.
 6. Report the final release state: version source, notes file, changelog path, tag, and any skipped GitHub release or publish steps with reasons.
 
 ## Outputs / Evidence

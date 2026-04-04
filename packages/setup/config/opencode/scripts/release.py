@@ -242,6 +242,14 @@ def detect_changelog(repo: Path) -> Path | None:
     return None
 
 
+def validate_changelog_structure(changelog_path: Path) -> None:
+    text = changelog_path.read_text()
+    if not re.search(r"^##\s+\[?Unreleased\]?\s*$", text, re.M):
+        raise SystemExit(
+            "Unsupported CHANGELOG.md format: expected a '## [Unreleased]' section"
+        )
+
+
 def version_label(next_version: str | None, tag: str) -> str:
     if next_version is not None:
         return next_version
@@ -418,6 +426,8 @@ def main() -> int:
     changelog_path = detect_changelog(repo) if args.changelog else None
     if args.changelog and changelog_path is None:
         raise SystemExit("CHANGELOG.md not found for --changelog")
+    if changelog_path is not None:
+        validate_changelog_structure(changelog_path)
     subjects = commit_subjects(repo, since_tag)
     notes = render_release_notes(subjects, since_tag)
     if args.dry_run:
