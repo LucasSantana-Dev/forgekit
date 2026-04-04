@@ -61,8 +61,9 @@ export function validateCompany(companyDir) {
     }
 
     for (const section of REQUIRED_AGENT_SECTIONS) {
-      if (!content.includes(section))
+      if (!content.includes(section)) {
         errors.push(`Agent ${agent} missing section: ${section}`);
+      }
     }
 
     if (
@@ -90,8 +91,9 @@ export function validateCompany(companyDir) {
     }
     const content = fs.readFileSync(skillFile, "utf8");
     const fm = extractFrontmatter(content);
-    if (!fm || !fm.name)
+    if (!fm || !fm.name) {
       errors.push(`Skill ${skill} missing name in frontmatter`);
+    }
   }
 
   return errors;
@@ -226,11 +228,13 @@ export function validateKit(rootDir = ".") {
 
     if (agents.orgChart) {
       for (const [mgr, org] of Object.entries(agents.orgChart)) {
-        if (!agents.agents[mgr])
+        if (!agents.agents[mgr]) {
           errors.push(`Org chart references unknown manager: ${mgr}`);
+        }
         for (const report of org.directReports || []) {
-          if (!agents.agents[report])
+          if (!agents.agents[report]) {
             errors.push(`Org chart: ${mgr} has unknown report: ${report}`);
+          }
         }
       }
     }
@@ -239,16 +243,18 @@ export function validateKit(rootDir = ".") {
   const hooksPath = path.join(rootDir, "kit/core/hooks.json");
   if (fs.existsSync(hooksPath)) {
     const hooks = JSON.parse(fs.readFileSync(hooksPath, "utf8"));
-    const hookTypes = Object.keys(hooks.hooks || {}));
+    const hookTypes = Object.keys(hooks.hooks || {});
     if (hookTypes.length === 0) errors.push("Hooks has no hook types defined");
     for (const hookType of hookTypes) {
       const hook = hooks.hooks[hookType];
-      if (!hook.description)
+      if (!hook.description) {
         errors.push(`Hook ${hookType} missing description`);
-      if (!hook.rules || hook.rules.length === 0)
+      }
+      if (!hook.rules || hook.rules.length === 0) {
         errors.push(`Hook ${hookType} has no rules`);
-      if (!hooks.toolMapping) errors.push("Hooks missing toolMapping section");
+      }
     }
+    if (!hooks.toolMapping) errors.push("Hooks missing toolMapping section");
   }
 
   const routingPath = path.join(rootDir, "kit/core/routing.json");
