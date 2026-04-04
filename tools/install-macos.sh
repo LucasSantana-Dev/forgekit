@@ -8,44 +8,44 @@ SKIPPED=()
 
 # Check if brew is installed
 if ! command -v brew &>/dev/null; then
-  echo "Installing Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  INSTALLED+=("homebrew")
+	echo "Installing Homebrew..."
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	INSTALLED+=("homebrew")
 else
-  echo "✓ Homebrew already installed"
-  SKIPPED+=("homebrew")
+	echo "✓ Homebrew already installed"
+	SKIPPED+=("homebrew")
 fi
 
 # Core CLI tools
 TOOLS=(
-  "lazygit"
-  "fzf"
-  "git-delta"
-  "zoxide"
-  "eza"
-  "atuin"
-  "bat"
-  "btop"
-  "jq"
-  "yq"
-  "fd"
-  "ripgrep"
-  "chezmoi"
-  "rtk"
+	"lazygit"
+	"fzf"
+	"git-delta"
+	"zoxide"
+	"eza"
+	"atuin"
+	"bat"
+	"btop"
+	"jq"
+	"yq"
+	"fd"
+	"ripgrep"
+	"chezmoi"
+	"rtk"
 )
 
 echo ""
 echo "=== Installing CLI tools ==="
 
 for tool in "${TOOLS[@]}"; do
-  if brew list --formula "$tool" &>/dev/null || brew list --cask "$tool" &>/dev/null; then
-    echo "✓ $tool already installed"
-    SKIPPED+=("$tool")
-  else
-    echo "Installing $tool..."
-    brew install "$tool"
-    INSTALLED+=("$tool")
-  fi
+	if brew list --formula "$tool" &>/dev/null || brew list --cask "$tool" &>/dev/null; then
+		echo "✓ $tool already installed"
+		SKIPPED+=("$tool")
+	else
+		echo "Installing $tool..."
+		brew install "$tool"
+		INSTALLED+=("$tool")
+	fi
 done
 
 # Git delta config (idempotent — git config will update if already set)
@@ -63,18 +63,36 @@ echo "✓ Git delta configured"
 echo ""
 echo "=== Configuring RTK ==="
 if command -v rtk &>/dev/null; then
-  rtk init -g 2>/dev/null || true
-  echo "✓ RTK hook installed — Bash outputs compressed before reaching LLM context"
-  echo "  Run 'rtk gain' after a few sessions to see token savings"
+	rtk init -g 2>/dev/null || true
+	echo "✓ RTK hook installed — Bash outputs compressed before reaching LLM context"
+	echo "  Run 'rtk gain' after a few sessions to see token savings"
 fi
+
+echo ""
+echo "=== Installing AI agent tools ==="
+AI_NPM_TOOLS=(
+	"oh-my-claude-sisyphus"
+	"openclaw"
+)
+
+for tool in "${AI_NPM_TOOLS[@]}"; do
+	if npm list -g "$tool" &>/dev/null; then
+		echo "✓ $tool already installed"
+		SKIPPED+=("$tool")
+	else
+		echo "Installing $tool..."
+		npm install -g "$tool"
+		INSTALLED+=("$tool")
+	fi
+done
 
 # Atuin service (check if already running)
 if brew services list | grep -q "atuin.*started"; then
-  echo "✓ Atuin service already running"
+	echo "✓ Atuin service already running"
 else
-  echo "Starting Atuin service..."
-  brew services start atuin
-  echo "✓ Atuin service started"
+	echo "Starting Atuin service..."
+	brew services start atuin
+	echo "✓ Atuin service started"
 fi
 
 echo ""
@@ -108,18 +126,18 @@ echo ""
 echo "=== Installation Summary ==="
 echo ""
 if [ ${#INSTALLED[@]} -gt 0 ]; then
-  echo "Newly installed (${#INSTALLED[@]}):"
-  for item in "${INSTALLED[@]}"; do
-    echo "  ✓ $item"
-  done
+	echo "Newly installed (${#INSTALLED[@]}):"
+	for item in "${INSTALLED[@]}"; do
+		echo "  ✓ $item"
+	done
 fi
 
 if [ ${#SKIPPED[@]} -gt 0 ]; then
-  echo ""
-  echo "Already present (${#SKIPPED[@]}):"
-  for item in "${SKIPPED[@]}"; do
-    echo "  • $item"
-  done
+	echo ""
+	echo "Already present (${#SKIPPED[@]}):"
+	for item in "${SKIPPED[@]}"; do
+		echo "  • $item"
+	done
 fi
 
 echo ""

@@ -1,0 +1,169 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "openai/gpt-5.3-codex",
+  "skills": {
+    "paths": [
+      "__HOME__/.opencode/skills/agents",
+      "__HOME__/.opencode/skills/codex"
+    ]
+  },
+  "agent": {
+    "codex-primary": {
+      "description": "Primary coding agent for full-stack implementation",
+      "model": "openai/gpt-5.3-codex"
+    },
+    "architect": {
+      "description": "Architecture and planning agent",
+      "model": "anthropic/claude-opus-4-1"
+    },
+    "fast": {
+      "description": "Fast edits and quick lookup agent",
+      "model": "anthropic/claude-sonnet-4-5"
+    },
+    "reviewer": {
+      "description": "Code review and quality agent",
+      "model": "anthropic/claude-sonnet-4-5"
+    },
+    "planner": {
+      "description": "Planning and task breakdown agent",
+      "model": "anthropic/claude-sonnet-4-5"
+    }
+  },
+  "command": {
+    "resume": {
+      "description": "Resume work by reading repo state and local instructions",
+      "template": "Check git status and recent log. Read README.md, AGENTS.md, and CLAUDE.md if present. Summarize current state and suggest the highest-value next action.",
+      "subtask": false
+    },
+    "verify": {
+      "description": "Run lint, type-check, test, and build",
+      "template": "Run the project's lint, type-check, test, and build commands in sequence. Report failures with exact command and error. Do not fix automatically.",
+      "subtask": false
+    },
+    "context": {
+      "description": "Show context usage and recommended compaction actions",
+      "template": "Report current context window usage and summarize what can be pruned or compacted if the window is getting full.",
+      "subtask": false
+    },
+    "optimize": {
+      "description": "Prune stale context and compact history",
+      "template": "Optimize context usage by pruning stale tool results and compacting obsolete history while preserving recent work.",
+      "subtask": false
+    },
+    "worktree": {
+      "description": "Create an isolated git worktree for a feature branch",
+      "template": "Create a git worktree for a new feature/fix/chore branch, then report the path and branch name.",
+      "subtask": false
+    },
+    "validate": {
+      "description": "Run a full repo health scorecard",
+      "template": "Run lint, type-check, tests, and security checks if available. Return a pass/fail scorecard.",
+      "subtask": false
+    }
+  },
+  "mcp": {
+    "filesystem": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "__HOME__"
+      ],
+      "enabled": true,
+      "timeout": 10000
+    },
+    "memory": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "enabled": true,
+      "timeout": 10000
+    },
+    "sequential-thinking": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "enabled": true,
+      "timeout": 10000
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "enabled": true,
+      "timeout": 10000
+    },
+    "supabase": {
+      "type": "remote",
+      "url": "https://mcp.supabase.com/mcp",
+      "enabled": false,
+      "timeout": 10000
+    },
+    "vercel": {
+      "type": "remote",
+      "url": "https://mcp.vercel.com",
+      "enabled": false,
+      "timeout": 10000
+    },
+    "sentry": {
+      "type": "remote",
+      "url": "https://mcp.sentry.dev/mcp",
+      "enabled": false,
+      "timeout": 10000
+    },
+    "linear": {
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp",
+      "enabled": false,
+      "timeout": 10000
+    },
+    "cloudflare": {
+      "type": "remote",
+      "url": "https://bindings.mcp.cloudflare.com/mcp",
+      "enabled": false,
+      "timeout": 10000
+    },
+    "huggingface": {
+      "type": "remote",
+      "url": "https://huggingface.co/mcp?login&gradio=none",
+      "enabled": false,
+      "timeout": 10000
+    },
+    "stitch": {
+      "type": "remote",
+      "url": "https://stitch.googleapis.com/mcp",
+      "enabled": false,
+      "timeout": 10000
+    },
+    "jam": {
+      "type": "remote",
+      "url": "https://mcp.jam.dev/mcp",
+      "enabled": false,
+      "timeout": 10000
+    }
+  },
+  "plugin": [
+    "@tarquinen/opencode-dcp@latest",
+    "opencode-worktree",
+    "opencode-mem",
+    "oh-my-opencode-slim"
+  ],
+  "watcher": {
+    "ignore": [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/.next/**",
+      "**/.turbo/**",
+      "**/coverage/**",
+      "**/__pycache__/**",
+      "**/.mypy_cache/**",
+      ".worktrees/**"
+    ]
+  }
+}
