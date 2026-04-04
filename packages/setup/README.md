@@ -117,6 +117,13 @@ Ou diretamente para um provedor configurado, por exemplo:
 bash ./scripts/auth-mcp-tools.sh linear
 ```
 
+Depois, valide o estado live do MCP com:
+
+```bash
+mcp-health
+mcp-health linear
+```
+
 ## O que será configurado para AI tools
 
 O bootstrap agora também prepara:
