@@ -87,7 +87,7 @@ test -f "$HOME/.opencode/skills/agents/ai-toolkit-repo-intake/SKILL.md"
 test -f "$HOME/.opencode/skills/agents/ai-toolkit-release/SKILL.md"
 test -f "$HOME/.opencode/skills/codex/ai-toolkit-plan-change/SKILL.md"
 bash -lc 'source "$HOME/.config/ai-dev-toolkit/shell.sh" && type mcp-health >/dev/null'
-bash -lc 'source "$HOME/.config/ai-dev-toolkit/shell.sh" && type release-plan >/dev/null && type release-tag >/dev/null'
+bash -lc 'source "$HOME/.config/ai-dev-toolkit/shell.sh" && type release-plan >/dev/null && type release-plan-github >/dev/null && type release-tag >/dev/null && type release-tag-github >/dev/null'
 python3 "$HOME/.config/opencode/scripts/release.py" --help >/dev/null 2>&1
 python3 "$HOME/.config/opencode/scripts/mcp-health.py" --help >/dev/null 2>&1
 
@@ -121,6 +121,8 @@ git -C "$plain_repo" commit -qm 'chore: seed version'
 python3 "$HOME/.config/opencode/scripts/release.py" --repo "$plain_repo" --level patch --dry-run >"$tmpdir/release-plan.txt"
 grep -q 'next version: 0.1.1' "$tmpdir/release-plan.txt"
 grep -q 'tag: v0.1.1' "$tmpdir/release-plan.txt"
+python3 "$HOME/.config/opencode/scripts/release.py" --repo "$plain_repo" --level patch --dry-run --github-release >"$tmpdir/release-plan-github.txt"
+grep -q 'github release: requested (gh cli available)' "$tmpdir/release-plan-github.txt"
 tmux kill-session -t ci_verify_plain 2>/dev/null || true
 tmux new-session -d -s ci_verify_plain -c "$plain_repo"
 "$HOME/.config/tmux/bootstrap-project-session.sh" ci_verify_plain "$plain_repo"
