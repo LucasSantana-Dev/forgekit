@@ -76,22 +76,8 @@ bash scripts/setup-local-env.sh "$ROOT"
 
 test -f "$HOME/.config/ai-dev-toolkit/shell.sh"
 test -f "$HOME/.config/ai-dev-toolkit/local.env"
-test -f "$HOME/.config/opencode/opencode.jsonc"
-test -f "$HOME/.config/opencode/dcp.jsonc"
-test -f "$HOME/.config/opencode/scripts/release.py"
-test -f "$HOME/.config/opencode/scripts/mcp-health.py"
-test -f "$HOME/.config/opencode/scripts/toggle-mcp.py"
-test -f "$HOME/.opencode/skills/agents/mcp-health/SKILL.md"
-test -f "$HOME/.opencode/skills/agents/repo-intake/SKILL.md"
-test -f "$HOME/.opencode/skills/agents/release-flow/SKILL.md"
-test -f "$HOME/.opencode/skills/agents/plan-change/SKILL.md"
-bash -lc 'source "$HOME/.config/ai-dev-toolkit/shell.sh" && type mcp-health >/dev/null'
-bash -lc 'source "$HOME/.config/ai-dev-toolkit/shell.sh" && type release-plan >/dev/null && type release-plan-github >/dev/null && type release-tag >/dev/null && type release-tag-github >/dev/null'
-python3 "$HOME/.config/opencode/scripts/release.py" --help >/dev/null 2>&1
-python3 "$HOME/.config/opencode/scripts/mcp-health.py" --help >/dev/null 2>&1
-
-python3 "$HOME/.config/opencode/scripts/toggle-mcp.py" enable linear >/dev/null
-python3 "$HOME/.config/opencode/scripts/toggle-mcp.py" disable linear >/dev/null
+test -f "$HOME/.config/ai-dev-toolkit/.toolkit-version"
+bash -lc 'source "$HOME/.config/ai-dev-toolkit/shell.sh"'
 
 node_repo="$tmpdir/node-repo"
 mkdir -p "$node_repo"
@@ -114,52 +100,9 @@ mkdir -p "$plain_repo"
 git -C "$plain_repo" init -q
 git -C "$plain_repo" config user.name "CI"
 git -C "$plain_repo" config user.email "ci@example.com"
-printf '0.1.0\n' >"$plain_repo/VERSION"
-git -C "$plain_repo" add VERSION
-git -C "$plain_repo" commit -qm 'chore: seed version'
 printf 'demo\n' >"$plain_repo/demo.txt"
-cat >"$plain_repo/CHANGELOG.md" <<'EOF'
-# Changelog
-
-## [Unreleased]
-EOF
 git -C "$plain_repo" add demo.txt
-git -C "$plain_repo" add CHANGELOG.md
-git -C "$plain_repo" commit -qm 'feat: add demo file'
-python3 "$HOME/.config/opencode/scripts/release.py" --repo "$plain_repo" --level patch --dry-run --notes-file "$tmpdir/release-notes.md" >"$tmpdir/release-plan.txt"
-resolved_release_notes="$(python3 -c 'from pathlib import Path; import sys; print(Path(sys.argv[1]).resolve())' "$tmpdir/release-notes.md")"
-grep -q 'next version: 0.1.1' "$tmpdir/release-plan.txt"
-grep -q 'tag: v0.1.1' "$tmpdir/release-plan.txt"
-grep -q "notes file: $resolved_release_notes" "$tmpdir/release-plan.txt"
-grep -q '^## Features' "$tmpdir/release-notes.md"
-grep -q 'add demo file' "$tmpdir/release-notes.md"
-python3 "$HOME/.config/opencode/scripts/release.py" --repo "$plain_repo" --level patch --changelog --notes-file "$plain_repo/RELEASE_NOTES.md" >/dev/null
-grep -q '^## \[0.1.1\]' "$plain_repo/CHANGELOG.md"
-grep -q '^### Features' "$plain_repo/CHANGELOG.md"
-grep -q 'add demo file' "$plain_repo/CHANGELOG.md"
-test -f "$plain_repo/RELEASE_NOTES.md"
-broken_repo="$tmpdir/broken-repo"
-mkdir -p "$broken_repo"
-git -C "$broken_repo" init -q
-git -C "$broken_repo" config user.name "CI"
-git -C "$broken_repo" config user.email "ci@example.com"
-printf '0.1.0\n' >"$broken_repo/VERSION"
-cat >"$broken_repo/CHANGELOG.md" <<'EOF'
-# Changelog
-
-Malformed release notes
-EOF
-git -C "$broken_repo" add VERSION CHANGELOG.md
-git -C "$broken_repo" commit -qm 'chore: seed malformed changelog'
-if python3 "$HOME/.config/opencode/scripts/release.py" --repo "$broken_repo" --level patch --changelog >"$tmpdir/broken-release.txt" 2>&1; then
-	echo 'release.py unexpectedly accepted malformed CHANGELOG.md' >&2
-	exit 1
-fi
-grep -q 'Unsupported CHANGELOG.md format' "$tmpdir/broken-release.txt"
-python3 "$HOME/.config/opencode/scripts/release.py" --repo "$plain_repo" --level patch --dry-run --github-release --notes-file "$tmpdir/release-notes-github.md" >"$tmpdir/release-plan-github.txt"
-resolved_release_notes_github="$(python3 -c 'from pathlib import Path; import sys; print(Path(sys.argv[1]).resolve())' "$tmpdir/release-notes-github.md")"
-grep -q 'github release: requested (gh cli available)' "$tmpdir/release-plan-github.txt"
-grep -q "notes file: $resolved_release_notes_github" "$tmpdir/release-plan-github.txt"
+git -C "$plain_repo" commit -qm 'feat: add demo'
 tmux kill-session -t ci_verify_plain 2>/dev/null || true
 tmux new-session -d -s ci_verify_plain -c "$plain_repo"
 "$HOME/.config/tmux/bootstrap-project-session.sh" ci_verify_plain "$plain_repo"

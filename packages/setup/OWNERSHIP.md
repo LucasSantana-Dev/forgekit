@@ -65,19 +65,18 @@ ai-dev-toolkit-setup consumes**.
 |------|-------|-------|
 | `config/iterm2/*` | setup-owned | iTerm2 profiles |
 
-### config/opencode/ — MIGRATION ZONE
+### config/ai-tools/ — Offline Fallback Files
 
-| Path | Owner | Migration Status |
-|------|-------|------------------|
-| `config/opencode/README.md` | setup-owned | Stays — documents local setup |
-| `config/opencode/AGENTS.md` | **toolkit-sourced** | Moving to toolkit `rules/AGENTS.md` |
-| `config/opencode/opencode.template.jsonc` | **toolkit-sourced** | Moving to toolkit `implementations/opencode/` |
-| `config/opencode/dcp.template.jsonc` | **toolkit-sourced** | Moving to toolkit `kit/core/` |
-| `config/opencode/skills/agents/*` | **toolkit-sourced** | Moving to toolkit `kit/core/skills/` |
-| `config/opencode/skills/codex/*` | **toolkit-sourced** | Moving to toolkit `kit/core/skills/` |
-| `config/opencode/scripts/mcp-health.py` | **toolkit-sourced** | Moving to toolkit `tools/` |
-| `config/opencode/scripts/toggle-mcp.py` | **toolkit-sourced** | Moving to toolkit `tools/` |
-| `config/opencode/scripts/release.py` | **toolkit-sourced** | Moving to toolkit `tools/` |
+| Path | Owner | Notes |
+|------|-------|-------|
+| `config/ai-tools/README.md` | setup-owned | Documents fallback role |
+| `config/ai-tools/AGENTS.md` | setup-owned | Minimal fallback guidance (offline only) |
+| `config/ai-tools/opencode.template.jsonc` | setup-owned | OpenCode fallback template (offline only) |
+| `config/ai-tools/dcp.template.jsonc` | setup-owned | DCP fallback template (offline only) |
+
+When online, `setup-ai-tools.sh` delegates to toolkit `kit/install.sh`
+which auto-detects installed tools and configures each one. These local
+files are only used when the toolkit tarball is unreachable.
 
 ### templates/
 

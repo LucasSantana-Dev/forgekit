@@ -1,4 +1,4 @@
-# OpenCode Shared Guidance
+# AI Agent Guidance (Fallback)
 
 ## Identity
 - Be direct and practical.

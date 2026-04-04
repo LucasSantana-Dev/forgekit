@@ -1,27 +1,29 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ok() {
-	printf '✅ %s\n' "$1"
-}
-
-warn() {
-	printf '⚠️  %s\n' "$1"
-}
+ok() { printf '✅ %s\n' "$1"; }
+warn() { printf '⚠️  %s\n' "$1"; }
 
 check_cmd() {
-	local cmd="$1"
-	local label="$2"
-	if command -v "$cmd" >/dev/null 2>&1; then
-		ok "$label"
+	if command -v "$1" >/dev/null 2>&1; then
+		ok "$2"
 	else
-		warn "$label not found"
+		warn "$2 not found"
+	fi
+}
+
+check_npm_global() {
+	if npm list -g "$1" >/dev/null 2>&1; then
+		ok "$2"
+	else
+		warn "$2 not installed (npm i -g $1)"
 	fi
 }
 
 echo "ai-dev-toolkit doctor"
 echo
 
+echo "== Core tools =="
 check_cmd git "git"
 check_cmd gh "GitHub CLI"
 check_cmd node "Node.js"
@@ -31,23 +33,76 @@ check_cmd rg "ripgrep"
 check_cmd fd "fd"
 check_cmd fzf "fzf"
 check_cmd tmux "tmux"
-check_cmd opencode "OpenCode CLI"
-check_cmd claude "Claude CLI"
 check_cmd rtk "RTK token optimizer"
 
-if npm list -g oh-my-claude-sisyphus >/dev/null 2>&1; then
-	ok "oh-my-openagents (oh-my-claude-sisyphus)"
+echo
+echo "== AI coding tools =="
+
+AI_TOOLS_FOUND=0
+
+if command -v claude >/dev/null 2>&1; then
+	ok "Claude Code"
+	AI_TOOLS_FOUND=$((AI_TOOLS_FOUND + 1))
+	if [[ -f "$HOME/.claude/CLAUDE.md" ]]; then
+		ok "  Claude Code rules installed"
+	else
+		warn "  Claude Code rules missing"
+	fi
 else
-	warn "oh-my-openagents not installed (npm i -g oh-my-claude-sisyphus)"
+	warn "Claude Code not installed (optional)"
 fi
 
-if npm list -g openclaw >/dev/null 2>&1; then
-	ok "openclaw"
+if command -v opencode >/dev/null 2>&1; then
+	ok "OpenCode"
+	AI_TOOLS_FOUND=$((AI_TOOLS_FOUND + 1))
+	if [[ -f "$HOME/.config/opencode/opencode.jsonc" ]]; then
+		ok "  OpenCode config installed"
+	else
+		warn "  OpenCode config missing"
+	fi
 else
-	warn "openclaw not installed (npm i -g openclaw)"
+	warn "OpenCode not installed (optional)"
+fi
+
+if command -v codex >/dev/null 2>&1; then
+	ok "Codex CLI"
+	AI_TOOLS_FOUND=$((AI_TOOLS_FOUND + 1))
+	local_codex="${HOME}/.codex"
+	[[ -d "${HOME}/.config/codex" ]] && local_codex="${HOME}/.config/codex"
+	if [[ -f "$local_codex/AGENTS.md" ]]; then
+		ok "  Codex rules installed"
+	else
+		warn "  Codex rules missing"
+	fi
+else
+	warn "Codex CLI not installed (optional)"
+fi
+
+if [[ -d "/Applications/Cursor.app" ]] || [[ -d "$HOME/Applications/Cursor.app" ]]; then
+	ok "Cursor"
+	AI_TOOLS_FOUND=$((AI_TOOLS_FOUND + 1))
+else
+	warn "Cursor not installed (optional)"
+fi
+
+if [[ -d "/Applications/Windsurf.app" ]] || [[ -d "$HOME/Applications/Windsurf.app" ]]; then
+	ok "Windsurf"
+	AI_TOOLS_FOUND=$((AI_TOOLS_FOUND + 1))
+else
+	warn "Windsurf not installed (optional)"
+fi
+
+if [[ $AI_TOOLS_FOUND -eq 0 ]]; then
+	warn "No AI coding tools detected — install at least one"
 fi
 
 echo
+echo "== Agent orchestration (optional) =="
+check_npm_global oh-my-claude-sisyphus "oh-my-openagents"
+check_npm_global openclaw "openclaw"
+
+echo
+echo "== Environment =="
 
 if gh auth status >/dev/null 2>&1; then
 	ok "GitHub authentication"
@@ -55,120 +110,44 @@ else
 	warn "GitHub CLI not authenticated (run: gh auth login)"
 fi
 
+if [[ -n "${OPENAI_API_KEY:-}" || -n "${ANTHROPIC_API_KEY:-}" || -n "${GOOGLE_API_KEY:-}" || -n "${GITHUB_TOKEN:-}" ]]; then
+	ok "at least one AI/provider token loaded"
+else
+	warn "no AI/provider tokens loaded (edit ~/.config/ai-dev-toolkit/local.env)"
+fi
+
 if [[ -f "$HOME/.config/ai-dev-toolkit/shell.sh" ]]; then
-	ok "portable shell config installed"
+	ok "portable shell config"
 else
 	warn "portable shell config missing"
 fi
 
 if [[ -f "$HOME/.config/ai-dev-toolkit/local.env" ]]; then
-	ok "local AI env template installed"
+	ok "local env template"
 else
-	warn "local AI env template missing"
-fi
-
-if [[ -f "$HOME/.config/opencode/opencode.jsonc" ]]; then
-	ok "OpenCode config installed"
-else
-	warn "OpenCode config missing"
-fi
-
-if [[ -f "$HOME/.config/opencode/dcp.jsonc" ]]; then
-	ok "context compression / DCP config installed"
-else
-	warn "context compression / DCP config missing"
-fi
-
-if [[ -f "$HOME/.config/opencode/AGENTS.md" ]]; then
-	ok "OpenCode rules/guidance installed"
-else
-	warn "OpenCode rules/guidance missing"
-fi
-
-if [[ -d "$HOME/.opencode/skills/agents" && -d "$HOME/.opencode/skills/codex" ]]; then
-	ok "OpenCode skills directories prepared"
-else
-	warn "OpenCode skills directories missing"
-fi
-
-if [[ -f "$HOME/.opencode/skills/agents/repo-intake/SKILL.md" ]] ||
-	[[ -f "$HOME/.opencode/skills/agents/ai-toolkit-repo-intake/SKILL.md" ]]; then
-	ok "portable skills installed"
-else
-	warn "portable skills missing (run setup-ai-tools.sh)"
-fi
-
-if [[ -f "$HOME/.opencode/skills/agents/plan-change/SKILL.md" ]] ||
-	[[ -f "$HOME/.opencode/skills/codex/ai-toolkit-plan-change/SKILL.md" ]]; then
-	ok "planning/debug skills installed"
-else
-	warn "planning/debug skills missing (run setup-ai-tools.sh)"
-fi
-
-if [[ -f "$HOME/.config/opencode/opencode.jsonc" ]] && grep -q 'opencode-worktree' "$HOME/.config/opencode/opencode.jsonc"; then
-	ok "worktree workflow plugin configured"
-else
-	warn "worktree workflow plugin not configured"
-fi
-
-if [[ -f "$HOME/.config/opencode/opencode.jsonc" ]] && grep -q '"linear"' "$HOME/.config/opencode/opencode.jsonc"; then
-	ok "optional hosted MCP entries seeded"
-else
-	warn "optional hosted MCP entries missing"
-fi
-
-for helper in toggle-mcp.py mcp-health.py release.py; do
-	label="${helper%.py}"
-	if [[ -f "$HOME/.config/opencode/scripts/$helper" ]]; then
-		ok "$label helper installed"
-	else
-		warn "$label helper missing"
-	fi
-done
-
-if [[ -n "${OPENAI_API_KEY:-}" || -n "${ANTHROPIC_API_KEY:-}" || -n "${GITHUB_TOKEN:-}" ]]; then
-	ok "at least one AI/provider token is loaded in environment"
-else
-	warn "no AI/provider tokens loaded yet (edit ~/.config/ai-dev-toolkit/local.env)"
+	warn "local env template missing"
 fi
 
 if [[ -f "$HOME/.config/tmux/sessionizer.sh" ]]; then
-	ok "tmux toolkit installed"
+	ok "tmux toolkit"
 else
 	warn "tmux toolkit missing"
 fi
 
-if [[ -f "$HOME/.config/iterm2/forge_terminal_stack.py" ]]; then
-	ok "iTerm2 support installed"
-else
-	warn "iTerm2 support not installed (optional)"
-fi
+echo
+echo "== Toolkit sync =="
 
 TOOLKIT_STAMP="$HOME/.config/ai-dev-toolkit/.toolkit-version"
 if [[ -f "$TOOLKIT_STAMP" ]]; then
 	STAMP_VAL="$(cat "$TOOLKIT_STAMP")"
 	if [[ "$STAMP_VAL" == "local-fallback" || "$STAMP_VAL" == "no-pin" ]]; then
-		warn "toolkit content source: $STAMP_VAL (not synced from ai-dev-toolkit)"
+		warn "toolkit source: $STAMP_VAL (not synced from ai-dev-toolkit)"
 	else
 		ok "toolkit content from ai-dev-toolkit v${STAMP_VAL}"
 	fi
 else
-	warn "toolkit version stamp missing (run bootstrap to sync from ai-dev-toolkit)"
+	warn "toolkit version stamp missing (run setup-ai-tools.sh)"
 fi
 
 echo
-echo "Next recommended commands:"
-echo "  source ~/.bashrc   # or source ~/.zshrc"
-echo "  gh auth login"
-echo "  mcp-status        # list seeded MCP providers"
-echo "  mcp-enable linear # example: enable one hosted MCP"
-echo "  mcp-health linear # inspect live MCP/auth status"
-echo "  release-plan --repo /path/to/repo --level patch"
-echo "  release-plan-github --repo /path/to/repo --level patch"
-echo "  release-tag --repo /path/to/repo --tag v1.2.3"
-echo "  release-tag-github --repo /path/to/repo --tag v1.2.3"
-echo "  bash ./scripts/auth-ai-tools.sh   # guided auth helper"
-echo "  bash ./scripts/auth-mcp-tools.sh  # guided MCP auth helper"
-echo "  edit ~/.config/ai-dev-toolkit/local.env"
-echo "  opencode --help    # verify CLI if installed"
-echo "  repo-terminal-ready"
+echo "Run: bash scripts/setup-ai-tools.sh . # to install/update AI tool configs"
