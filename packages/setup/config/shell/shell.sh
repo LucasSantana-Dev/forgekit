@@ -59,6 +59,26 @@ mcp-health() {
 	python3 "$HOME/.config/opencode/scripts/mcp-health.py" "$@"
 }
 
+release-plan() {
+	python3 "$HOME/.config/opencode/scripts/release.py" --dry-run "$@"
+}
+
+release-patch() {
+	python3 "$HOME/.config/opencode/scripts/release.py" --level patch "$@"
+}
+
+release-minor() {
+	python3 "$HOME/.config/opencode/scripts/release.py" --level minor "$@"
+}
+
+release-major() {
+	python3 "$HOME/.config/opencode/scripts/release.py" --level major "$@"
+}
+
+release-tag() {
+	python3 "$HOME/.config/opencode/scripts/release.py" --level tag-only "$@"
+}
+
 mcp-enable() {
 	python3 "$HOME/.config/opencode/scripts/toggle-mcp.py" enable "$1"
 }

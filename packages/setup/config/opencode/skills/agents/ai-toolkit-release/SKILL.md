@@ -16,19 +16,18 @@ metadata:
 ## Inputs / Prereqs
 
 - Repository root.
+- Installed `release.py` helper from the shared setup.
 - Existing version source if present (`package.json`, `pyproject.toml`, `VERSION`, tags, or release docs).
 - GitHub access for tags or releases.
 - Registry auth only if the repo actually publishes artifacts.
 
 ## Workflow
 
-1. Detect the release surface that actually exists: version file, changelog, tags, release workflow, package manager, and publish target.
+1. Run `release-plan --repo /path/to/repo --level patch|minor|major` to inspect the detected version source and next tag before changing anything.
 2. Refuse to continue if verification has not already passed or the release target is ambiguous.
-3. Choose the release scope from user intent and commit history: patch, minor, major, or tag-only.
-4. Update only the tracked release artifacts that already exist, such as version file, `CHANGELOG.md`, or release notes.
-5. Create the release commit and tag with exact evidence for what changed.
-6. Create the GitHub release and publish artifacts only when the repo supports it and auth is available.
-7. Report the final release state: version, tag, published targets, and any skipped steps with reasons.
+3. Execute `release-patch`, `release-minor`, `release-major`, or `release-tag --tag vX.Y.Z` in the target repo.
+4. Let the helper update only supported version sources (`VERSION`, `package.json`, or `pyproject.toml`) and create the annotated tag.
+5. Report the final release state: version source, tag, and any skipped GitHub release or publish steps with reasons.
 
 ## Outputs / Evidence
 
