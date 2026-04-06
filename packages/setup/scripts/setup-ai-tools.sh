@@ -5,6 +5,7 @@ ROOT="${1:?repo root required}"
 TOOLKIT_REPO="Forge-Space/ai-dev-toolkit"
 TOOLKIT_STAMP_DIR="$HOME/.config/ai-dev-toolkit"
 TOOLKIT_STAMP="$TOOLKIT_STAMP_DIR/.toolkit-version"
+TOOLKIT_DIR_OVERRIDE="${TOOLKIT_DIR_OVERRIDE:-}"
 
 TOOLKIT_VERSION_FILE="$ROOT/TOOLKIT_VERSION"
 if [[ -f "$TOOLKIT_VERSION_FILE" ]]; then
@@ -20,6 +21,15 @@ mkdir -p "$TOOLKIT_STAMP_DIR"
 
 fetch_toolkit() {
 	local version="$1"
+	if [[ -n "$TOOLKIT_DIR_OVERRIDE" ]]; then
+		if [[ -d "$TOOLKIT_DIR_OVERRIDE" ]]; then
+			TOOLKIT_DIR="$TOOLKIT_DIR_OVERRIDE"
+			return 0
+		fi
+		echo "  WARNING: TOOLKIT_DIR_OVERRIDE does not exist: $TOOLKIT_DIR_OVERRIDE"
+		return 1
+	fi
+
 	local url="https://github.com/${TOOLKIT_REPO}/archive/refs/tags/v${version}.tar.gz"
 	local tmpdir
 	tmpdir="$(mktemp -d)"
@@ -35,6 +45,22 @@ fetch_toolkit() {
 	fi
 }
 
+install_toolkit_helpers() {
+	local toolkit_root="$1"
+	local helper_dir="$HOME/.config/opencode/scripts"
+	local helpers=(mcp-health.py toggle-mcp.py release.py)
+
+	mkdir -p "$helper_dir"
+	for helper in "${helpers[@]}"; do
+		if [[ ! -f "$toolkit_root/tools/$helper" ]]; then
+			echo "  WARNING: Toolkit helper missing: tools/$helper"
+			return 1
+		fi
+		cp "$toolkit_root/tools/$helper" "$helper_dir/$helper"
+		chmod +x "$helper_dir/$helper"
+	done
+}
+
 install_via_toolkit() {
 	local toolkit_root="$1"
 	echo "  Running kit/install.sh --tools $FORGE_KIT_TOOLS --profile $FORGE_KIT_PROFILE ..."
@@ -42,6 +68,7 @@ install_via_toolkit() {
 		sh "$toolkit_root/kit/install.sh" \
 		--tools "$FORGE_KIT_TOOLS" \
 		--profile "$FORGE_KIT_PROFILE"
+	install_toolkit_helpers "$toolkit_root"
 }
 
 install_fallback() {
@@ -73,8 +100,12 @@ TOOLKIT_DIR=""
 if [[ -n "$TOOLKIT_VERSION" ]]; then
 	if fetch_toolkit "$TOOLKIT_VERSION"; then
 		install_via_toolkit "$TOOLKIT_DIR"
-		echo "$TOOLKIT_VERSION" >"$TOOLKIT_STAMP"
-		rm -rf "$(dirname "$TOOLKIT_DIR")"
+		if [[ -n "$TOOLKIT_DIR_OVERRIDE" ]]; then
+			echo "override-local" >"$TOOLKIT_STAMP"
+		else
+			echo "$TOOLKIT_VERSION" >"$TOOLKIT_STAMP"
+			rm -rf "$(dirname "$TOOLKIT_DIR")"
+		fi
 	else
 		install_fallback
 		echo "local-fallback" >"$TOOLKIT_STAMP"

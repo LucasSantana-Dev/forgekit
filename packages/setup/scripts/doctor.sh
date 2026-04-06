@@ -142,12 +142,22 @@ if [[ -f "$TOOLKIT_STAMP" ]]; then
 	STAMP_VAL="$(cat "$TOOLKIT_STAMP")"
 	if [[ "$STAMP_VAL" == "local-fallback" || "$STAMP_VAL" == "no-pin" ]]; then
 		warn "toolkit source: $STAMP_VAL (not synced from ai-dev-toolkit)"
+	elif [[ "$STAMP_VAL" == "override-local" ]]; then
+		ok "toolkit content from local override source"
 	else
 		ok "toolkit content from ai-dev-toolkit v${STAMP_VAL}"
 	fi
 else
 	warn "toolkit version stamp missing (run setup-ai-tools.sh)"
 fi
+
+for helper in mcp-health.py toggle-mcp.py release.py; do
+	if [[ -f "$HOME/.config/opencode/scripts/$helper" ]]; then
+		ok "OpenCode helper installed: $helper"
+	else
+		warn "OpenCode helper missing: $helper"
+	fi
+done
 
 echo
 echo "Run: bash scripts/setup-ai-tools.sh . # to install/update AI tool configs"
