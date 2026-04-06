@@ -201,7 +201,7 @@ python3 tools/release.py --repo /path/to/repo --dry-run --level patch --notes-fi
 python3 tools/release.py --repo /path/to/repo --level patch --notes-file RELEASE_NOTES.md --changelog
 ```
 
-When `--github-release` is added, preflight also checks `gh` availability and auth before any mutation.
+When `--github-release` is added, preflight also checks `gh` availability and auth; it always checks git identity and target tag availability before any mutation.
 
 ## Local AI Workflow Commands
 
