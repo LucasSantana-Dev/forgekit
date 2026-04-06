@@ -67,6 +67,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Update an existing CHANGELOG.md with the generated release notes",
     )
+    parser.add_argument(
+        "--verify",
+        action="store_true",
+        help="Run release preflight checks without mutating the repository",
+    )
     return parser.parse_args()
 
 
@@ -145,6 +150,11 @@ def ensure_git_clean(repo: Path) -> None:
     status = run(["git", "status", "--porcelain"], cwd=repo)
     if status.stdout.strip():
         raise SystemExit("Working tree must be clean before running release helper")
+
+
+def git_is_clean(repo: Path) -> bool:
+    status = run(["git", "status", "--porcelain"], cwd=repo)
+    return not status.stdout.strip()
 
 
 def ensure_git_identity(repo: Path) -> None:
@@ -360,6 +370,94 @@ def ensure_gh_authenticated(repo: Path) -> None:
         raise SystemExit("gh CLI is not authenticated for --github-release")
 
 
+def notes_destination_ready(notes_path: Path | None) -> tuple[bool, str]:
+    if notes_path is None:
+        return True, "skipped (no notes file requested)"
+    parent = notes_path.parent
+    if parent.exists() and parent.is_dir():
+        return True, str(notes_path)
+    return False, f"parent directory missing: {parent}"
+
+
+def preflight_checks(
+    repo: Path,
+    level: str,
+    tag: str,
+    surface: VersionSurface | None,
+    notes_path: Path | None,
+    changelog_path: Path | None,
+    github_release: bool,
+) -> list[tuple[str, bool, str]]:
+    checks: list[tuple[str, bool, str]] = []
+    clean = git_is_clean(repo)
+    checks.append(
+        (
+            "git working tree",
+            clean,
+            "clean" if clean else "working tree must be clean",
+        )
+    )
+
+    if level == "tag-only":
+        checks.append(("version source", True, f"tag-only release ({tag})"))
+    else:
+        checks.append(
+            (
+                "version source",
+                surface is not None,
+                surface.kind
+                if surface is not None
+                else "missing VERSION/package.json/pyproject.toml",
+            )
+        )
+
+    notes_ready, notes_detail = notes_destination_ready(notes_path)
+    checks.append(("notes file", notes_ready, notes_detail))
+
+    if changelog_path is None:
+        checks.append(("changelog", True, "skipped"))
+    else:
+        try:
+            validate_changelog_structure(changelog_path)
+            checks.append(("changelog", True, str(changelog_path)))
+        except SystemExit as exc:
+            checks.append(("changelog", False, str(exc)))
+
+    if github_release:
+        gh_available = shutil_which("gh") is not None
+        checks.append(
+            (
+                "github cli",
+                gh_available,
+                "available"
+                if gh_available
+                else "gh CLI not found for --github-release",
+            )
+        )
+        if gh_available:
+            status = run(["gh", "auth", "status"], cwd=repo, check=False)
+            auth_ok = status.returncode == 0
+            detail = (
+                "authenticated"
+                if auth_ok
+                else "gh CLI is not authenticated for --github-release"
+            )
+            checks.append(("github auth", auth_ok, detail))
+    else:
+        checks.append(("github release", True, "skipped"))
+
+    return checks
+
+
+def print_preflight(checks: list[tuple[str, bool, str]]) -> int:
+    print("Release helper preflight")
+    overall = all(ok for _, ok, _ in checks)
+    for name, ok, detail in checks:
+        print(f"{name}: {'ready' if ok else 'blocked'} {detail}")
+    print(f"overall: {'ready' if overall else 'blocked'}")
+    return 0 if overall else 1
+
+
 def print_plan(
     repo: Path,
     level: str,
@@ -446,6 +544,17 @@ def main() -> int:
         len(subjects),
         since_tag,
     )
+    if args.verify:
+        checks = preflight_checks(
+            repo,
+            args.level,
+            tag,
+            surface,
+            notes_path,
+            changelog_path,
+            args.github_release,
+        )
+        return print_preflight(checks)
     if args.dry_run:
         return 0
 

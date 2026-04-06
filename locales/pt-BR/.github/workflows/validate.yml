@@ -42,6 +42,41 @@ jobs:
           severity: warning
           ignore_paths: "*.ps1"
 
+  python-tools:
+    name: Validate Python Tools
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Validate Python syntax
+        run: python3 -m py_compile tools/*.py
+
+      - name: Smoke test release preflight
+        run: |
+          tmpdir="$(mktemp -d)"
+          trap 'rm -rf "$tmpdir"' EXIT
+          repo="$tmpdir/repo"
+          mkdir -p "$repo"
+          git -C "$repo" init -q
+          git -C "$repo" config user.name "CI"
+          git -C "$repo" config user.email "ci@example.com"
+          printf '0.1.0\n' > "$repo/VERSION"
+          cat > "$repo/CHANGELOG.md" <<'EOF'
+          # Changelog
+
+          ## [Unreleased]
+          EOF
+          git -C "$repo" add VERSION CHANGELOG.md
+          git -C "$repo" commit -qm 'chore: seed release inputs'
+          python3 tools/release.py --repo "$repo" --verify --level patch --notes-file "$tmpdir/RELEASE_NOTES.md" --changelog > "$tmpdir/preflight.txt"
+          grep -q '^overall: ready$' "$tmpdir/preflight.txt"
+          grep -q '^git working tree: ready clean$' "$tmpdir/preflight.txt"
+          grep -q '^version source: ready VERSION$' "$tmpdir/preflight.txt"
+          grep -q '^changelog: ready ' "$tmpdir/preflight.txt"
+          grep -q '^notes file: ready ' "$tmpdir/preflight.txt"
+
   powershell-scripts:
     name: Validate PowerShell Scripts
     runs-on: windows-latest

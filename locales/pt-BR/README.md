@@ -213,6 +213,15 @@ npm run validate:schema  # Schema validation only
 node scripts/parity-audit.js
 ```
 
+## How do I preflight a release before mutating a repo?
+
+```bash
+python3 tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog
+python3 tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog --github-release
+```
+
+The preflight checks git cleanliness, version source detection, notes-file destination, changelog readiness, and optional `gh` readiness before any release mutation.
+
 Example parity audit output:
 
 ```text
