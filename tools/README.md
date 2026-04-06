@@ -191,6 +191,18 @@ bash tools/install-ubuntu.sh
 .\tools\install-windows.ps1
 ```
 
+## Release Helper
+
+Use `tools/release.py` to preview or execute versioned releases.
+
+```bash
+python3 tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog
+python3 tools/release.py --repo /path/to/repo --dry-run --level patch --notes-file RELEASE_NOTES.md --changelog
+python3 tools/release.py --repo /path/to/repo --level patch --notes-file RELEASE_NOTES.md --changelog
+```
+
+When `--github-release` is added, preflight also checks `gh` availability and auth before any mutation.
+
 ## Local AI Workflow Commands
 
 After running `bash tools/setup-ai-workflow-macos.sh` and `source ~/.zshrc`:
