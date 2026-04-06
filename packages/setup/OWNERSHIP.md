@@ -38,7 +38,7 @@ ai-dev-toolkit-setup consumes**.
 | `scripts/install-ai-clis.sh` | setup-owned | AI CLI install (opencode, claude) |
 | `scripts/setup-shell.sh` | setup-owned | Shell helper installation |
 | `scripts/setup-tmux.sh` | setup-owned | Tmux workflow installation |
-| `scripts/setup-ai-tools.sh` | setup-owned | OpenCode bootstrap (fetches from toolkit) |
+| `scripts/setup-ai-tools.sh` | setup-owned | Toolkit bootstrap plus helper-script installation into runtime paths |
 | `scripts/setup-local-env.sh` | setup-owned | Local env file creation |
 | `scripts/setup-iterm2.sh` | setup-owned | iTerm2 macOS setup |
 | `scripts/auth-ai-tools.sh` | setup-owned | Interactive auth guidance |
@@ -75,8 +75,9 @@ ai-dev-toolkit-setup consumes**.
 | `config/ai-tools/dcp.template.jsonc` | setup-owned | DCP fallback template (offline only) |
 
 When online, `setup-ai-tools.sh` delegates to toolkit `kit/install.sh`
-which auto-detects installed tools and configures each one. These local
-files are only used when the toolkit tarball is unreachable.
+which auto-detects installed tools and configures each one, then copies
+canonical toolkit helpers from `tools/*.py` into `~/.config/opencode/scripts/`.
+These local files are only used when the toolkit tarball is unreachable.
 
 ### templates/
 

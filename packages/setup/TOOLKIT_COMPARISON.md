@@ -7,7 +7,9 @@
 
 > **Migration status**: This repo is transitioning to consume content from
 > ai-dev-toolkit instead of shipping its own copies. See `OWNERSHIP.md` for the
-> current ownership map and `TOOLKIT_VERSION` for the pinned release.
+> current ownership map, `TOOLKIT_VERSION` for the pinned release, and the
+> toolkit-side canonical declaration in
+> [ai-dev-toolkit/OWNERSHIP.md](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/OWNERSHIP.md).
 
 ---
 
@@ -93,13 +95,15 @@ The **ai-dev-toolkit-setup** repository provides **machine-level bootstrap and o
 - **Provider-agnostic**: Yes — guides the user through provider-specific auth, but doesn't automate it
 
 ### 6. **MCP Health & Status Helpers**
-- **Files**: `config/opencode/scripts/mcp-health.py`, `toggle-mcp.py`
+- **Canonical source**: `ai-dev-toolkit/tools/mcp-health.py`, `ai-dev-toolkit/tools/toggle-mcp.py`
+- **Setup repo role**: install/bootstrap wiring and optional fallback delivery
 - **What**: Check MCP server status, enable/disable MCPs, validate connections
 - **Scope**: Runtime MCP management
 - **Provider-agnostic**: Yes — works with any MCP configuration
 
 ### 7. **Release Automation**
-- **File**: `config/opencode/scripts/release.py`
+- **Canonical source**: `ai-dev-toolkit/tools/release.py`
+- **Setup repo role**: install/bootstrap wiring and optional fallback delivery
 - **What**: Bump versions, promote CHANGELOG, tag, push, create GitHub releases
 - **Scope**: Portable release workflow for any repo
 - **Provider-agnostic**: Yes — uses GitHub CLI, not provider-specific APIs
@@ -276,4 +280,3 @@ Copy additional skills from `ai-dev-toolkit` into `~/.opencode/skills/agents/` o
 2. **MCP provider auth** — Linear, Sentry, Vercel, etc.
 3. **Project customization** — per-project AGENTS.md, rules, skills
 4. **Local secrets** — GitHub token, private API keys
-
