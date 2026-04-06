@@ -70,10 +70,15 @@ jobs:
           EOF
           git -C "$repo" add VERSION CHANGELOG.md
           git -C "$repo" commit -qm 'chore: seed release inputs'
+          git -C "$repo" tag -a v0.1.1 -m 'chore: seed release tag'
+          git -C "$repo" config --unset user.name
+          git -C "$repo" config --unset user.email
           python3 tools/release.py --repo "$repo" --verify --level patch --notes-file "$tmpdir/RELEASE_NOTES.md" --changelog > "$tmpdir/preflight.txt"
-          grep -q '^overall: ready$' "$tmpdir/preflight.txt"
+          grep -q '^overall: blocked$' "$tmpdir/preflight.txt"
           grep -q '^git working tree: ready clean$' "$tmpdir/preflight.txt"
+          grep -q '^git identity: blocked missing user.name, user.email$' "$tmpdir/preflight.txt"
           grep -q '^version source: ready VERSION$' "$tmpdir/preflight.txt"
+          grep -q '^target tag: blocked v0.1.1 already exists$' "$tmpdir/preflight.txt"
           grep -q '^changelog: ready ' "$tmpdir/preflight.txt"
           grep -q '^notes file: ready ' "$tmpdir/preflight.txt"
 
