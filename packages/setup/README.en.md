@@ -171,6 +171,13 @@ Note: this repo is still pinned to `TOOLKIT_VERSION=0.12.0`. Newly merged canoni
 
 You can check local pin drift with `bash ./scripts/doctor.sh`. If it reports `toolkit pin drift`, run `bash scripts/setup-ai-tools.sh .` to re-sync your environment with this repo's `TOOLKIT_VERSION`.
 
+To check whether a newer toolkit release already exists before bumping the pin:
+
+```bash
+toolkit-version-check
+toolkit-version-sync
+```
+
 ## What is configured for AI tools
 
 Bootstrap prepares:

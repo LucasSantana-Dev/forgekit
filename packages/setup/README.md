@@ -173,6 +173,13 @@ Observação: o pin atual deste repositório ainda é `TOOLKIT_VERSION=0.12.0`. 
 
 Você pode verificar drift local do pin com `bash ./scripts/doctor.sh`. Se ele reportar `toolkit pin drift`, rode `bash scripts/setup-ai-tools.sh .` para re-sincronizar o ambiente com o `TOOLKIT_VERSION` deste repositório.
 
+Para verificar se já existe um release novo do toolkit antes de fazer bump do pin:
+
+```bash
+toolkit-version-check
+toolkit-version-sync
+```
+
 ## O que será configurado para AI tools
 
 O bootstrap agora também prepara:
