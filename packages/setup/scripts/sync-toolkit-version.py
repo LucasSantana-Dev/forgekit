@@ -37,6 +37,10 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Print a ready-to-use PR summary for a toolkit version bump without modifying files",
     )
+    parser.add_argument(
+        "--pr-body-file",
+        help="Optional path to write the generated PR body markdown when using --prepare-pr",
+    )
     return parser.parse_args()
 
 
@@ -51,6 +55,19 @@ def render_pr_prep(current: tuple[int, int, int], latest: tuple[int, int, int]) 
             "- Re-run bash ./scripts/ci-check.sh after updating the pin.",
         ]
     )
+
+
+def resolve_optional_path(raw_path: str | None) -> Path | None:
+    if raw_path is None:
+        return None
+    return Path(raw_path).expanduser().resolve()
+
+
+def write_optional_file(path: Path | None, content: str) -> None:
+    if path is None:
+        return
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(content)
 
 
 def parse_version(text: str) -> tuple[int, int, int]:
@@ -100,6 +117,10 @@ def main() -> int:
     if args.apply and args.prepare_pr:
         raise SystemExit("Choose only one of --apply or --prepare-pr")
 
+    pr_body_path = resolve_optional_path(args.pr_body_file)
+    if pr_body_path is not None and not args.prepare_pr:
+        raise SystemExit("--pr-body-file requires --prepare-pr")
+
     version_path = Path(args.version_file).resolve()
     current_raw = version_path.read_text().strip()
     current = parse_version(current_raw)
@@ -114,9 +135,16 @@ def main() -> int:
             version_path.write_text(format_version(latest)[1:] + "\n")
             print(f"action: updated to {format_version(latest)}")
         elif args.prepare_pr:
+            pr_body = render_pr_prep(current, latest)
+            write_optional_file(pr_body_path, pr_body)
             print("action: prepare toolkit bump")
+            print(
+                f"commit-message: chore: bump toolkit version to {format_version(latest)}"
+            )
             print(f"pr-title: chore: bump toolkit version to {format_version(latest)}")
-            print(render_pr_prep(current, latest))
+            if pr_body_path is not None:
+                print(f"pr-body-file: {pr_body_path}")
+            print(pr_body)
         else:
             print("action: update available")
     else:

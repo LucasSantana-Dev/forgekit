@@ -107,6 +107,10 @@ toolkit-version-prepare() {
 	python3 "$HOME/.config/ai-dev-toolkit/scripts/sync-toolkit-version.py" --prepare-pr "$@"
 }
 
+toolkit-version-pr() {
+	python3 "$HOME/.config/ai-dev-toolkit/scripts/sync-toolkit-version.py" --prepare-pr "$@"
+}
+
 toolkit-version-sync() {
 	python3 "$HOME/.config/ai-dev-toolkit/scripts/sync-toolkit-version.py" --apply "$@"
 }
