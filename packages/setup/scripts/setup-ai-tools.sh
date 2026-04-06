@@ -65,7 +65,7 @@ install_via_toolkit() {
 	local toolkit_root="$1"
 	echo "  Running kit/install.sh --tools $FORGE_KIT_TOOLS --profile $FORGE_KIT_PROFILE ..."
 	FORGE_KIT_DIR="$toolkit_root/kit" \
-		sh "$toolkit_root/kit/install.sh" \
+		bash "$toolkit_root/kit/install.sh" \
 		--tools "$FORGE_KIT_TOOLS" \
 		--profile "$FORGE_KIT_PROFILE"
 	install_toolkit_helpers "$toolkit_root"
