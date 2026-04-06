@@ -73,8 +73,12 @@ jobs:
           git -C "$repo" tag -a v0.1.1 -m 'chore: seed release tag'
           git -C "$repo" config --unset user.name
           git -C "$repo" config --unset user.email
+          set +e
           HOME="$tmpdir/home" GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_SYSTEM=/dev/null \
             python3 tools/release.py --repo "$repo" --verify --level patch --notes-file "$tmpdir/RELEASE_NOTES.md" --changelog > "$tmpdir/preflight.txt"
+          rc=$?
+          set -e
+          test "$rc" -eq 1
           cat "$tmpdir/preflight.txt"
           grep -q '^overall: blocked$' "$tmpdir/preflight.txt"
           grep -q '^git working tree: ready clean$' "$tmpdir/preflight.txt"
