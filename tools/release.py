@@ -157,11 +157,40 @@ def git_is_clean(repo: Path) -> bool:
     return not status.stdout.strip()
 
 
-def ensure_git_identity(repo: Path) -> None:
+def git_identity_ready(repo: Path) -> tuple[bool, str]:
+    missing: list[str] = []
     for key in ("user.name", "user.email"):
         result = run(["git", "config", key], cwd=repo, check=False)
         if result.returncode != 0 or not result.stdout.strip():
-            raise SystemExit(f"Missing git config {key} in {repo}")
+            missing.append(key)
+
+    if missing:
+        return False, ", ".join(missing)
+
+    return True, "configured"
+
+
+def ensure_git_identity(repo: Path) -> None:
+    ready, detail = git_identity_ready(repo)
+    if not ready:
+        raise SystemExit(f"Missing git config {detail} in {repo}")
+
+
+def target_tag_available(repo: Path, tag: str) -> tuple[bool, str]:
+    result = run(
+        ["git", "rev-parse", "--verify", "--quiet", f"refs/tags/{tag}"],
+        cwd=repo,
+        check=False,
+    )
+    if result.returncode == 0:
+        return False, f"{tag} already exists"
+    return True, "available"
+
+
+def ensure_release_tag_available(repo: Path, tag: str) -> None:
+    available, detail = target_tag_available(repo, tag)
+    if not available:
+        raise SystemExit(f"Target tag already exists: {detail}")
 
 
 def current_head(repo: Path) -> str:
@@ -398,6 +427,15 @@ def preflight_checks(
         )
     )
 
+    identity_ready, identity_detail = git_identity_ready(repo)
+    checks.append(
+        (
+            "git identity",
+            identity_ready,
+            identity_detail if identity_ready else f"missing {identity_detail}",
+        )
+    )
+
     if level == "tag-only":
         checks.append(("version source", True, f"tag-only release ({tag})"))
     else:
@@ -410,6 +448,9 @@ def preflight_checks(
                 else "missing VERSION/package.json/pyproject.toml",
             )
         )
+
+    tag_ready, tag_detail = target_tag_available(repo, tag)
+    checks.append(("target tag", tag_ready, tag_detail))
 
     notes_ready, notes_detail = notes_destination_ready(notes_path)
     checks.append(("notes file", notes_ready, notes_detail))
@@ -560,6 +601,7 @@ def main() -> int:
 
     ensure_git_clean(repo)
     ensure_git_identity(repo)
+    ensure_release_tag_available(repo, tag)
 
     changed_paths: list[Path] = []
     if next_version is not None and surface is not None:

@@ -220,7 +220,7 @@ python3 tools/release.py --repo /path/to/repo --verify --level patch --notes-fil
 python3 tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog --github-release
 ```
 
-The preflight checks git cleanliness, version source detection, notes-file destination, changelog readiness, and optional `gh` readiness before any release mutation.
+The preflight checks git cleanliness, git identity, target tag availability, version source detection, notes-file destination, changelog readiness, and optional `gh` readiness before any release mutation.
 
 Example parity audit output:
 
