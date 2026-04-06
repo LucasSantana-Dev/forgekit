@@ -171,6 +171,8 @@ Quando usar `--changelog`, o repositório alvo precisa ter `CHANGELOG.md` com um
 
 Observação: o pin atual deste repositório ainda é `TOOLKIT_VERSION=0.12.0`. Recursos novos do helper canônico — como release preflight / verify — só chegam aqui depois do próximo release tag do `ai-dev-toolkit` e de um bump explícito desse pin.
 
+Você pode verificar drift local do pin com `bash ./scripts/doctor.sh`. Se ele reportar `toolkit pin drift`, rode `bash scripts/setup-ai-tools.sh .` para re-sincronizar o ambiente com o `TOOLKIT_VERSION` deste repositório.
+
 ## O que será configurado para AI tools
 
 O bootstrap agora também prepara:

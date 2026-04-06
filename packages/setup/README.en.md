@@ -169,6 +169,8 @@ When using `--changelog`, the target repository must already have a `CHANGELOG.m
 
 Note: this repo is still pinned to `TOOLKIT_VERSION=0.12.0`. Newly merged canonical helper capabilities — including release preflight / verify — only become available here after the next `ai-dev-toolkit` release tag and an explicit pin bump in this repo.
 
+You can check local pin drift with `bash ./scripts/doctor.sh`. If it reports `toolkit pin drift`, run `bash scripts/setup-ai-tools.sh .` to re-sync your environment with this repo's `TOOLKIT_VERSION`.
+
 ## What is configured for AI tools
 
 Bootstrap prepares:
