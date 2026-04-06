@@ -184,3 +184,9 @@ done
 
 echo
 echo "Run: bash scripts/setup-ai-tools.sh . # to install/update AI tool configs"
+echo "Run: python3 scripts/sync-toolkit-version.py    # check for a newer toolkit tag"
+if [[ -f "$HOME/.config/ai-dev-toolkit/scripts/sync-toolkit-version.py" ]]; then
+	ok "toolkit version sync helper installed"
+else
+	warn "toolkit version sync helper missing"
+fi

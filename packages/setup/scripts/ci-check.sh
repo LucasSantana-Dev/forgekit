@@ -78,8 +78,10 @@ repo_toolkit_version="$(tr -d '\n' <TOOLKIT_VERSION)"
 test -f "$HOME/.config/ai-dev-toolkit/shell.sh"
 test -f "$HOME/.config/ai-dev-toolkit/local.env"
 test -f "$HOME/.config/ai-dev-toolkit/.toolkit-version"
+test -f "$HOME/.config/ai-dev-toolkit/scripts/sync-toolkit-version.py"
+test -f "$ROOT/scripts/sync-toolkit-version.py"
 grep -qx "$repo_toolkit_version" "$HOME/.config/ai-dev-toolkit/.toolkit-version"
-bash -lc 'source "$HOME/.config/ai-dev-toolkit/shell.sh"'
+bash -lc 'source "$HOME/.config/ai-dev-toolkit/shell.sh" && type toolkit-version-check >/dev/null && type toolkit-version-sync >/dev/null'
 bash ./scripts/doctor.sh >"$tmpdir/doctor.txt"
 grep -q "toolkit pin sync: v${repo_toolkit_version}" "$tmpdir/doctor.txt"
 printf '9.9.9\n' >"$HOME/.config/ai-dev-toolkit/.toolkit-version"
@@ -87,6 +89,21 @@ bash ./scripts/doctor.sh >"$tmpdir/doctor-mismatch.txt"
 grep -q "toolkit pin drift" "$tmpdir/doctor-mismatch.txt"
 grep -q "expected v${repo_toolkit_version}, found v9.9.9" "$tmpdir/doctor-mismatch.txt"
 printf '%s\n' "$repo_toolkit_version" >"$HOME/.config/ai-dev-toolkit/.toolkit-version"
+
+cat >"$tmpdir/toolkit-releases.json" <<'EOF'
+[
+  {"tag_name":"v0.12.1","draft":false,"prerelease":false},
+  {"tag_name":"v0.12.0","draft":false,"prerelease":false}
+]
+EOF
+printf '0.12.0\n' >"$tmpdir/TOOLKIT_VERSION"
+python3 "$ROOT/scripts/sync-toolkit-version.py" --version-file "$tmpdir/TOOLKIT_VERSION" --releases-file "$tmpdir/toolkit-releases.json" >"$tmpdir/toolkit-version-check.txt"
+grep -q '^current: v0.12.0$' "$tmpdir/toolkit-version-check.txt"
+grep -q '^latest: v0.12.1$' "$tmpdir/toolkit-version-check.txt"
+grep -q '^action: update available$' "$tmpdir/toolkit-version-check.txt"
+python3 "$ROOT/scripts/sync-toolkit-version.py" --version-file "$tmpdir/TOOLKIT_VERSION" --releases-file "$tmpdir/toolkit-releases.json" --apply >"$tmpdir/toolkit-version-sync.txt"
+grep -q '^action: updated to v0.12.1$' "$tmpdir/toolkit-version-sync.txt"
+grep -qx '0.12.1' "$tmpdir/TOOLKIT_VERSION"
 
 override_toolkit="$tmpdir/toolkit-override"
 mkdir -p "$override_toolkit/kit" "$override_toolkit/tools"
