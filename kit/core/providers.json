@@ -17,9 +17,9 @@
       "env_key": "OPENAI_API_KEY",
       "base_url": "https://api.openai.com/v1",
       "models": {
-        "haiku": "gpt-4o-mini",
-        "sonnet": "gpt-4o",
-        "opus": "o1"
+        "haiku": "gpt-5.4-mini",
+        "sonnet": "gpt-5.4",
+        "opus": "gpt-5-codex"
       }
     },
     "google": {

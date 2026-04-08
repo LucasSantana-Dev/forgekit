@@ -5,50 +5,52 @@
 
 ## Multi-Model Strategy
 
-Use different models for different task complexities:
+Use different model tiers for different task complexities.
+Prefer tier labels in shared guidance and keep exact model names in local config.
 
 **OpenCode with oh-my-openagent** ([reference config](../implementations/opencode/oh-my-openagent.jsonc)):
 
-Sisyphus delegates by **category**, not model name — change one line in `oh-my-opencode.jsonc` to reroute entire task classes.
+Sisyphus delegates by **category**, not model name. Keep the routing categories
+stable and let the live config own the exact provider/model mapping.
 
-| Agent | Model | Use For |
-|-------|-------|---------|
-| **Sisyphus** | Opus max | Default orchestrator — plans, delegates, drives to completion |
-| **Hephaestus** | Opus max | Deep architecture, multi-file debugging, cross-domain reasoning |
-| **Prometheus** | Opus max | Strategic planning and interview mode |
-| **Oracle** | Opus max | Architecture consultation, trade-off analysis |
-| **Librarian** | Opus max | Documentation search, code reference, pattern lookup |
-| **Atlas** | Sonnet | Todo orchestration and parallel execution |
-| **Sisyphus-Junior** | Sonnet | Sub-tasks delegated from Sisyphus |
-| **Explore** | Haiku | Fast codebase grep, quick lookups |
+| Agent | Tier | Use For |
+|-------|------|---------|
+| **Sisyphus** | Deep reasoning | Default orchestrator — plans, delegates, drives to completion |
+| **Hephaestus** | Deep reasoning | Deep architecture, multi-file debugging, cross-domain reasoning |
+| **Prometheus** | Deep reasoning | Strategic planning and interview mode |
+| **Oracle** | Deep reasoning | Architecture consultation, trade-off analysis |
+| **Librarian** | Deep reasoning | Documentation search, code reference, pattern lookup |
+| **Atlas** | Balanced | Todo orchestration and parallel execution |
+| **Sisyphus-Junior** | Balanced | Sub-tasks delegated from Sisyphus |
+| **Explore** | Fast | Fast codebase grep, quick lookups |
 
-| Category | Model | Trigger |
-|----------|-------|---------|
-| `visual-engineering` | Gemini Pro | UI/UX, CSS, design, animation |
-| `ultrabrain` | Opus max | Deep architecture, complex reasoning |
-| `deep` | Opus max | Autonomous research, thorough investigation |
-| `artistry` | Gemini Pro | Creative or unconventional approaches |
-| `writing` | Sonnet | Docs, CHANGELOG, README, prose |
-| `quick` | Haiku | Trivial edits, typo fixes, single-line changes |
-| `unspecified-low` | Sonnet | General low-effort tasks |
-| `unspecified-high` | Sonnet max | General high-effort tasks |
+| Category | Tier | Trigger |
+|----------|------|---------|
+| `visual-engineering` | Visual specialist | UI/UX, CSS, design, animation |
+| `ultrabrain` | Deep reasoning | Deep architecture, complex reasoning |
+| `deep` | Deep reasoning | Autonomous research, thorough investigation |
+| `artistry` | Visual or creative specialist | Creative or unconventional approaches |
+| `writing` | Balanced | Docs, CHANGELOG, README, prose |
+| `quick` | Fast | Trivial edits, typo fixes, single-line changes |
+| `unspecified-low` | Balanced | General low-effort tasks |
+| `unspecified-high` | Balanced or deep reasoning | General high-effort tasks |
 
 **Vanilla OpenCode agents** (without oh-my-openagent):
 
-| Agent | Model | Use For |
-|-------|-------|---------|
-| **primary** | Claude Sonnet | Default. Implementation, debugging, refactoring |
-| **architect** | Claude Opus | Complex design, cross-repo impact, API design |
-| **fast** | Claude Haiku | Linting, formatting, simple edits, quick lookups |
+| Agent | Tier | Use For |
+|-------|------|---------|
+| **primary** | Balanced | Default. Implementation, debugging, refactoring |
+| **architect** | Deep reasoning | Complex design, cross-repo impact, API design |
+| **fast** | Fast | Linting, formatting, simple edits, quick lookups |
 
-**Codex CLI models** (set via `--model` or `config.toml`):
+**Codex CLI tiers** (set actual model names in `config.toml` or per-session flags):
 
-| Task | Model |
-|------|-------|
-| Default / exploration | `o4-mini` |
-| Complex architecture | `o3` |
-| Quick edits | `gpt-4.1-mini` |
-| Full codebase reasoning | `gpt-4.1` |
+| Task | Tier |
+|------|------|
+| Default / exploration | Balanced coding tier |
+| Complex architecture | Deep reasoning tier |
+| Quick edits | Fast tier |
+| Full codebase reasoning | Balanced or deep reasoning tier |
 
 ## Tool Allocation
 

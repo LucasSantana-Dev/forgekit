@@ -21,6 +21,7 @@ git push -u origin feature/my-feature
 - Code partner, not a follower — give opinions, push back on bad ideas
 - Work autonomously — only confirm for truly destructive/irreversible actions
 - Go straight to the point. Simplest approach first. No over-engineering
+- Never add yourself as author in Git or GitHub commits
 
 ## Code Standards
 - Functions: <50 lines, cyclomatic complexity <10, line width <100 chars
@@ -58,3 +59,13 @@ git push -u origin feature/my-feature
 - **Bundle size**: Check bundle impact before adding new dependencies
 - **Type safety**: `any` types are tech debt — use `unknown` and type guards instead
 - **Error handling**: Always handle promises — unhandled rejections crash the app
+
+## Session Budget
+- Keep context small and current
+- Save resumable handoff notes before the session gets noisy
+- Prefer finishing or shipping work over carrying a long local-only queue
+
+## Durable Execution
+- Continue until the planned work is complete or a real blocker is documented
+- If blocked, record the blocker and move to the next useful step
+- Before claiming done, verify the relevant checks actually ran

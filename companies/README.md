@@ -58,12 +58,19 @@ You are the React Engineer. You handle React and Next.js projects.
 ```
 
 The `skills` field references entries in the company's `skills/` directory.
+This format is toolkit-native. Some tools can use it directly; others need an adapter.
 
 ## Using with AI tools
 
-### Claude Code / OpenCode
+### Claude Code
 
-Copy the agent's `AGENTS.md` to `.claude/agents/<role>/AGENTS.md` in your project.
+Treat `companies/` as source material. Export or adapt an agent into Claude's native
+subagent format as `.claude/agents/<role>.md` with Claude-specific frontmatter such as
+`name` and `description`.
+
+### OpenCode
+
+Use the toolkit agent body as source material for your OpenCode agent or prompt layer.
 
 ### Codex CLI
 

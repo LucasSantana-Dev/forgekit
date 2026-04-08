@@ -12,9 +12,9 @@ Using a frontier model for every task wastes money and time. Using a weak model 
 
 | Tier | Use For | Examples |
 |------|---------|---------|
-| **Fast** (Haiku, GPT-4o-mini, Flash) | Simple edits, formatting, config changes, file renames, quick lookups | Fix a typo, rename a variable, update a dependency version |
-| **Standard** (Sonnet, GPT-4o, Pro) | Implementation, debugging, refactoring, test writing | Build a feature, fix a bug, write tests, code review |
-| **Deep** (Opus, o1/o3, Deep Research) | Architecture design, cross-system impact, complex debugging, planning | Design an API, analyze a race condition, plan a migration |
+| **Fast** (Haiku, GPT-5.4 mini, Flash) | Simple edits, formatting, config changes, file renames, quick lookups | Fix a typo, rename a variable, update a dependency version |
+| **Standard** (Sonnet, GPT-5.4, Pro) | Implementation, debugging, refactoring, test writing | Build a feature, fix a bug, write tests, code review |
+| **Deep** (Opus, GPT-5-Codex, Deep Research) | Architecture design, cross-system impact, complex debugging, planning | Design an API, analyze a race condition, plan a migration |
 
 ### Routing Heuristics
 
@@ -50,9 +50,9 @@ A typical day might be: 70% Fast, 25% Standard, 5% Deep.
 
 | Tier | Claude | OpenAI | Google |
 |------|--------|--------|--------|
-| Fast | Haiku 4.5 | GPT-4o-mini | Flash 2.5 |
-| Standard | Sonnet 4.6 | GPT-4o / Codex | Pro 2.5 |
-| Deep | Opus 4.6 | o3 | Deep Research |
+| Fast | Haiku 4.5 | GPT-5.4 mini | Flash 2.5 |
+| Standard | Sonnet 4.6 | GPT-5.4 | Pro 2.5 |
+| Deep | Opus 4.6 | GPT-5-Codex | Deep Research |
 
 ## Implementation
 

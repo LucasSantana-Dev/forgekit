@@ -14,6 +14,16 @@ Claude Code is Anthropic's official CLI and VSCode extension for Claude. It exce
 
 This implementation shows how to apply the toolkit patterns to Claude Code's architecture.
 
+The stable parts of Claude Code guidance are:
+
+- `CLAUDE.md` for repository behavior
+- hierarchical `settings.json` files for actual tool config
+- hooks for guardrails and automation
+- a small always-on plugin set
+- project-local memory and context files
+
+Keep model names and plugin choices in config. Keep workflow rules in `CLAUDE.md`.
+
 ## Quick Start
 
 ```bash
@@ -28,18 +38,36 @@ cp implementations/claude-code/example-claude-md.md CLAUDE.md
 mkdir -p ~/.claude/projects/$(pwd | sed 's/\//-/g')/memory
 echo "# Memory Index" > ~/.claude/projects/$(pwd | sed 's/\//-/g')/memory/MEMORY.md
 
-# Add hooks (optional)
-mkdir -p ~/.claude/hooks
-cp implementations/claude-code/hooks/*.sh ~/.claude/hooks/
-chmod +x ~/.claude/hooks/*.sh
-
-# Add skills (optional)
-mkdir -p ~/.claude/skills
-cp implementations/claude-code/skills/*.md ~/.claude/skills/
+# Add starter settings (optional)
+mkdir -p .claude
+cp implementations/claude-code/settings.project.example.json .claude/settings.json
+cp implementations/claude-code/settings.user.example.json ~/.claude/settings.json
 
 # Start session
 claude
 ```
+
+## Settings Hierarchy
+
+Claude Code's official configuration surface is hierarchical:
+
+- `~/.claude/settings.json` for global settings
+- `.claude/settings.json` for project-shared settings
+- `.claude/settings.local.json` for local project settings that should not be committed
+
+Use `/config` inside Claude Code when you want to inspect or change settings interactively.
+
+Best practice:
+
+- keep global settings minimal
+- put team-shared behavior in project `CLAUDE.md`
+- put risky experiments in `.claude/settings.local.json`
+- keep hooks, permissions, plugins, attribution, and model overrides in `settings.json`
+
+Starter templates:
+
+- [settings.user.example.json](./settings.user.example.json)
+- [settings.project.example.json](./settings.project.example.json)
 
 ## oh-my-claudecode Compatibility
 
@@ -55,21 +83,20 @@ FORGE_KIT_DIR=./kit sh kit/install.sh --tools claude-code --oh-my-compat
 ## Agent Organizations
 
 The `companies/` directory provides pre-built teams of specialized agents with defined roles,
-skills, and routing protocols. Each agent maps directly to Claude Code's `.claude/agents/` format.
+skills, and routing protocols. These are toolkit-native agent definitions, not Claude-native
+subagents by themselves.
 
 ```bash
-# Copy a single agent into your project
-mkdir -p .claude/agents/react-engineer
-cp ../../companies/fullstack-forge/agents/react-engineer/AGENTS.md .claude/agents/react-engineer/
-
-# Or copy an entire team (e.g. frontend)
-for agent in react-engineer vue-engineer angular-engineer frontend-lead; do
-  mkdir -p .claude/agents/$agent
-  cp ../../companies/fullstack-forge/agents/$agent/AGENTS.md .claude/agents/$agent/
-done
+# Export or adapt a toolkit agent into Claude's native subagent format
+mkdir -p .claude/agents
+cp implementations/claude-code/subagents/react-engineer.md .claude/agents/react-engineer.md
 ```
 
-Claude Code will then auto-route to the right specialist based on task context. See
+Claude subagents are markdown files placed directly in `.claude/agents/` or
+`~/.claude/agents/` with Claude-native frontmatter such as `name` and `description`.
+Treat `companies/` as the source material and export or adapt it for the target tool.
+
+See
 [companies/README.md](../../companies/README.md) for available companies and agent list.
 
 ## Context Building
@@ -207,7 +234,18 @@ File paths: [link to topic files]
 
 ## Hooks
 
-Claude Code supports two hook types:
+Claude Code hooks are configured in `settings.json`, not by dropping shell scripts into
+`~/.claude/hooks/`.
+
+Use hooks for:
+
+- blocking destructive actions
+- adding explicit review gates
+- logging or notifying after tool use
+- lightweight validation that does not silently rewrite user files
+
+The example scripts in [`hooks/`](./hooks/) are starter commands you can wire from
+`settings.json`. They read hook payload JSON from stdin and are safe to adapt.
 
 ### PreToolUse Hook
 
@@ -218,31 +256,51 @@ Runs **before** Claude executes a tool. Use for:
 - Rewriting commands before execution (e.g. RTK token compression)
 - Injecting environment setup
 
-**Location:** `~/.claude/hooks/PreToolUse.sh` or `.claude/hooks/PreToolUse.sh` (project-local)
-
 **Example:** See [hooks/pre-tool-use.sh](./hooks/pre-tool-use.sh)
+
+**Example `settings.json` wiring:**
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$PROJECT_ROOT/implementations/claude-code/hooks/pre-tool-use.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
 
 **Common patterns:**
 
-```bash
+```text
 # Block dangerous operations
-if [[ "$TOOL_NAME" == "Bash" ]] && [[ "$COMMAND" =~ "rm -rf /" ]]; then
-  echo "BLOCKED: Dangerous rm command"
-  exit 1
-fi
+deny when command matches destructive patterns
 
 # Warn on destructive git operations
-if [[ "$COMMAND" =~ "git push.*--force.*main" ]]; then
-  echo "WARNING: Force-pushing to main"
-  read -p "Continue? (y/N): " confirm
-  [[ "$confirm" != "y" ]] && exit 1
-fi
+require confirmation or deny when command force-pushes protected branches
 
 # Inject setup
-if [[ "$TOOL_NAME" == "Bash" ]] && [[ ! -f .env ]]; then
-  cp .env.example .env
-fi
+allow only lightweight, explicit setup checks
 ```
+
+Additional hook events worth knowing:
+
+- `PostToolUse`
+- `SessionStart`
+- `UserPromptSubmit`
+- `SessionEnd`
+- `PreCompact`
+- `SubagentStop`
+
+Use hooks for guardrails and lightweight automation, not for hiding critical workflow logic that should live in `CLAUDE.md`.
 
 #### RTK: Token-Compressing Hook
 
@@ -257,6 +315,55 @@ high-volume dev commands.
 brew install rtk
 rtk init -g   # installs hook + patches settings.json
 ```
+
+## Plugin and Tool Surface
+
+Keep the always-on surface small.
+
+A strong default is:
+
+- core Claude features
+- a small number of high-value plugins
+- project-local hooks
+- project-local memory
+
+Prefer on-demand skills and temporary tool activation over a large permanently enabled plugin set. This reduces noise, cost, and unexpected behavior drift.
+
+## High-Value Settings to Document Explicitly
+
+The most important Claude settings to standardize are:
+
+- `permissions`
+- `hooks`
+- `statusLine`
+- `enabledPlugins`
+- `extraKnownMarketplaces`
+- `modelOverrides`
+- `attribution`
+
+Useful environment-driven overrides:
+
+- `CLAUDE_CODE_SUBAGENT_MODEL`
+- any project-specific env var needed by hooks or MCP servers
+
+Keep the team guidance generic in `CLAUDE.md`, and keep machine-specific choices in
+`settings.json`.
+
+## Subagents
+
+Claude Code subagents should be treated as a scaling tool, not the default for every task.
+
+Use subagents when:
+
+- tasks are independent
+- the write surfaces are disjoint
+- the main agent can continue useful work in parallel
+
+Avoid subagents when:
+
+- the next step is blocked on the answer
+- the task is tightly coupled to the current local context
+- orchestration overhead exceeds the value of parallelism
 
 **Install and wire (Linux):**
 
@@ -281,20 +388,37 @@ Commands RTK doesn't know how to compress pass through at exit 1 with zero overh
 
 Runs **after** tool execution. Use for:
 
-- Auto-formatting modified files
-- Running linters
+- Running non-mutating checks
 - Validating outputs
 - Logging/metrics
 
-**Location:** `~/.claude/hooks/PostToolUse.sh` or `.claude/hooks/PostToolUse.sh`
-
 **Example:** See [hooks/post-tool-use.sh](./hooks/post-tool-use.sh)
+
+**Example `settings.json` wiring:**
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$PROJECT_ROOT/implementations/claude-code/hooks/post-tool-use.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
 
 **Important gotchas:**
 
-- PostToolUse hooks that modify files can create edit loops (Edit tool → hook modifies → Edit again)
-- Use conditional logic to skip formatting if file already formatted
-- For multi-file bulk edits, disable hooks temporarily or use Bash with inline python scripts
+- PostToolUse hooks that modify files can create edit loops
+- Prefer notify, lint, or log behavior over hidden edits
+- For multi-file bulk edits, keep hooks lightweight or disable them temporarily
 
 **Mapping to toolkit patterns:**
 
