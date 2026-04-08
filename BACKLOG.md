@@ -22,7 +22,6 @@ _Last updated: 2026-04-03_
 
 ### Confirmed missing implementation surfaces
 
-- `kit/schema/` is missing.
 - `kit/core/schedules.json` is missing.
 - `kit/plugins/` is missing.
 - `implementations/antigravity/` is missing.
@@ -33,6 +32,7 @@ _Last updated: 2026-04-03_
 - `kit/core/mcp.json` exists.
 - `kit/core/agents.json` exists.
 - `kit/core/routing.json` exists.
+- `kit/schema/` exists with 9 JSON schemas.
 - `implementations/cursor/README.md` exists.
 - `companies/fullstack-forge/` exists, but no additional company templates were found.
 

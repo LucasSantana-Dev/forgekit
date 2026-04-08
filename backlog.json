@@ -10,7 +10,11 @@
       "description": "Create a tool-agnostic hook definition format that adapters translate into each tool's native hook system. Covers PreToolUse, PostToolUse, SessionStart, SessionEnd. Inspired by claw-code's hook execution pipeline.\n\nScope: kit/core/hooks.json (new), kit/adapters/*.sh (update to install hooks)\nTest: Add validateKit() checks for hook schema validity.",
       "priority": "high",
       "status": "ready",
-      "tags": ["governance", "hooks", "cross-tool"],
+      "tags": [
+        "governance",
+        "hooks",
+        "cross-tool"
+      ],
       "dependsOn": null
     },
     {
@@ -19,7 +23,11 @@
       "description": "Define which tools each agent tier can use. Prevents expensive opus agents from doing cheap grep work. Adds a 'tools' allowlist per agent in agents.json.\n\nScope: kit/core/agents.json (update)\nTest: Validate tool references exist in a tool registry.",
       "priority": "high",
       "status": "ready",
-      "tags": ["governance", "routing", "cost-control"],
+      "tags": [
+        "governance",
+        "routing",
+        "cost-control"
+      ],
       "dependsOn": null
     },
     {
@@ -28,7 +36,10 @@
       "description": "Add cost awareness to token-optimization.json: per-session budget caps, per-agent cost limits, cost report format. Inspired by claw-code's cost_tracker.py and costHook.py.\n\nScope: kit/core/token-optimization.json (update), kit/core/skills/cost.md (new skill)\nTest: Validate cost config structure.",
       "priority": "high",
       "status": "ready",
-      "tags": ["cost-control", "token-optimization"],
+      "tags": [
+        "cost-control",
+        "token-optimization"
+      ],
       "dependsOn": null
     },
     {
@@ -37,7 +48,10 @@
       "description": "Skill for breaking work into parallel subtasks, assigning to worker agents, and collecting results. Maps to claw-code's Task*/Team* tool pattern but as a portable skill.\n\nScope: kit/core/skills/dispatch.md (new)\nTest: Validate skill frontmatter.",
       "priority": "high",
       "status": "ready",
-      "tags": ["orchestration", "skills"],
+      "tags": [
+        "orchestration",
+        "skills"
+      ],
       "dependsOn": null
     },
     {
@@ -46,7 +60,10 @@
       "description": "Skill for defining recurring agent tasks (cron-like). Covers CI monitoring, dependency updates, security scans on schedule. Inspired by claw-code's ScheduleCronTool.\n\nScope: kit/core/skills/schedule.md (new)\nTest: Validate skill frontmatter.",
       "priority": "medium",
       "status": "ready",
-      "tags": ["automation", "skills"],
+      "tags": [
+        "automation",
+        "skills"
+      ],
       "dependsOn": null
     },
     {
@@ -55,7 +72,10 @@
       "description": "Wait for CI, address any review comments, merge the feature/oh-my-compat-adapters branch into main.\n\nURL: https://github.com/Forge-Space/ai-dev-toolkit/pull/24",
       "priority": "critical",
       "status": "done",
-      "tags": ["ship", "pr"],
+      "tags": [
+        "ship",
+        "pr"
+      ],
       "dependsOn": null,
       "completedAt": 1775199807000
     },
@@ -65,7 +85,9 @@
       "description": "Promote CHANGELOG [Unreleased] to v0.11.0, bump package.json, tag, create GitHub release.\n\nScope: CHANGELOG.md, package.json, git tag",
       "priority": "high",
       "status": "done",
-      "tags": ["release"],
+      "tags": [
+        "release"
+      ],
       "dependsOn": "merge-pr-24",
       "completedAt": 1775220968000
     },
@@ -75,7 +97,10 @@
       "description": "Current mcp.json is minimal. Add recommended servers (filesystem, git, fetch, context7, sequential-thinking) with per-tool enable/disable guidance.\n\nScope: kit/core/mcp.json (update), adapters (update MCP merge logic)",
       "priority": "medium",
       "status": "backlog",
-      "tags": ["mcp", "cross-tool"],
+      "tags": [
+        "mcp",
+        "cross-tool"
+      ],
       "dependsOn": null
     },
     {
@@ -84,16 +109,22 @@
       "description": "Skill for syncing decisions, preferences, and project state to persistent memory. Covers what to remember, where to store it, and how to recall it.\n\nScope: kit/core/skills/memory.md (new)",
       "priority": "medium",
       "status": "backlog",
-      "tags": ["memory", "skills"],
+      "tags": [
+        "memory",
+        "skills"
+      ],
       "dependsOn": null
     },
     {
       "id": "parity-audit-script",
       "title": "Create parity audit script comparing kit/core capabilities across tools",
-      "description": "Inspired by claw-code's PARITY.md — a script that audits which features each tool adapter actually supports vs what kit/core defines. Produces a gap report.\n\nScope: scripts/parity-audit.js (new), test (new)",
+      "description": "Inspired by claw-code's PARITY.md \u2014 a script that audits which features each tool adapter actually supports vs what kit/core defines. Produces a gap report.\n\nScope: scripts/parity-audit.js (new), test (new)",
       "priority": "medium",
       "status": "backlog",
-      "tags": ["governance", "quality"],
+      "tags": [
+        "governance",
+        "quality"
+      ],
       "dependsOn": null
     },
     {
@@ -101,8 +132,11 @@
       "title": "Formal JSON schemas for all kit/core configs",
       "description": "Create JSON Schema files for agents.json, routing.json, autopilot.json, loop.json, token-optimization.json, hooks.json. Enable IDE validation and CI enforcement.\n\nScope: kit/schema/*.schema.json (new), scripts/validate-schemas.js (update)",
       "priority": "medium",
-      "status": "backlog",
-      "tags": ["governance", "dx"],
+      "status": "done",
+      "tags": [
+        "governance",
+        "dx"
+      ],
       "dependsOn": null
     },
     {
@@ -111,7 +145,10 @@
       "description": "Allow third-party skills, hooks, and tool configs to be installed via forge-kit. Inspired by claw-code's plugin lifecycle and oh-my-openagent's plugin model.\n\nScope: kit/plugins/ (new directory), kit/install.sh (update), design doc",
       "priority": "low",
       "status": "backlog",
-      "tags": ["architecture", "extensibility"],
+      "tags": [
+        "architecture",
+        "extensibility"
+      ],
       "dependsOn": "hooks-manifest"
     },
     {
@@ -120,7 +157,10 @@
       "description": "Cursor uses .mdc rules format, Windsurf uses .windsurfrules. Document how kit/core/skills/*.md map to each tool's native skill/rule format and update adapters if needed.\n\nScope: implementations/cursor/README.md, implementations/ (new windsurf/README.md)",
       "priority": "low",
       "status": "backlog",
-      "tags": ["docs", "cross-tool"],
+      "tags": [
+        "docs",
+        "cross-tool"
+      ],
       "dependsOn": null
     },
     {
@@ -129,7 +169,10 @@
       "description": "Antigravity adapter exists but has no reference implementation docs. Create setup guide similar to claude-code/codex/opencode.\n\nScope: implementations/antigravity/ (new directory + README.md)",
       "priority": "low",
       "status": "backlog",
-      "tags": ["docs", "antigravity"],
+      "tags": [
+        "docs",
+        "antigravity"
+      ],
       "dependsOn": null
     }
   ]

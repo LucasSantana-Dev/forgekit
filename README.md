@@ -5,6 +5,10 @@
 
 Reusable patterns, drop-in rules, portable skills, and cross-tool setup automation so AI coding agents produce code aligned with your project from the first session.
 
+## First-time install?
+
+Most users should start with **[ai-dev-toolkit-setup](https://github.com/LucasSantana-Dev/ai-dev-toolkit-setup)** — the machine bootstrap layer that consumes this toolkit at a pinned version. It detects your installed tools, applies pre-built configurations, and installs the entire skill and rule set in one command. See the setup repository for platform-specific installation instructions.
+
 ## How do I start using this?
 
 Copy one rule file into your project. That single file gives your AI agent your conventions, workflow, and guardrails before the first prompt.
@@ -26,7 +30,7 @@ Open your AI tool in `~/my-project/`. The agent now follows your rules automatic
 
 ## How do I install everything at once with forge-kit?
 
-`forge-kit` detects your tools, syncs rules, installs 18 portable skills, merges MCP servers, and configures provider registries — all in one command.
+`forge-kit` detects your tools, syncs rules, installs 29 portable skills, merges MCP servers, and configures provider registries — all in one command.
 
 ```bash
 # Auto-detect installed tools and apply standard profile
@@ -94,7 +98,7 @@ It prompts for:
 
 ## What skills are included?
 
-18 portable skills installed to every tool via `forge-kit`:
+29 portable skills installed to every tool via `forge-kit`:
 
 ```bash
 # Skills live in kit/core/skills/ and get copied to each tool's skill directory
@@ -237,7 +241,7 @@ rules/               Drop-in rule templates (Claude, Codex, Cursor, Windsurf, Co
 kit/
   kit/install.sh     Entry point for forge-kit
   kit/setup.sh       Interactive setup wizard
-  kit/core/          8 engine configs + 18 portable skills
+  kit/core/          8 engine configs + 29 portable skills
   kit/adapters/      Per-tool adapters (6 tools)
   kit/profiles/      Install profiles (standard, minimal, research, durable)
 implementations/     Reference setups for Claude Code, Codex, OpenCode, Cursor, Windsurf, Antigravity
@@ -260,6 +264,40 @@ examples/            Starter assets (backlog, memory structure)
 | 7   | Full team setup with forge-kit   | [`kit/`](kit/) + [`implementations/`](implementations/)                                                                          |
 
 Need the current prioritized repository work instead of the general adoption guide? See [`BACKLOG.md`](BACKLOG.md).
+
+## Troubleshooting
+
+### Missing Node ≥22
+
+The toolkit requires Node 22 or later. Check your version:
+
+```bash
+node --version
+```
+
+If you see `v20.*` or earlier, update Node via your package manager or [nodejs.org](https://nodejs.org).
+
+### Wrong shell
+
+Some tools only work in bash or zsh. Check:
+
+```bash
+echo $SHELL
+```
+
+If it shows a different shell, switch: `exec bash` or `exec zsh`.
+
+### ~/.claude directory permissions
+
+If `forge-kit` reports permission errors installing to `~/.claude`, fix ownership:
+
+```bash
+chmod -R u+rwx ~/.claude
+```
+
+### Unsupported provider combinations
+
+Not all provider fallback chains are supported. Example: Anthropic + Ollama fallback is not a valid pairing. The setup wizard will guide you to valid combinations. If you configured manually, verify your `~/.forge-setup.json` provider chain against the docs.
 
 ## How do I contribute?
 
