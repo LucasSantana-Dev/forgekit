@@ -743,7 +743,8 @@ You: "You're uncertain. Let's diagnose first:"
 | Cursor | Trust-first | No built-in sandboxing |
 | **Codex CLI** | **Sandbox-first** | **Opting out of restrictions** |
 
-Codex runs `workspace-write` mode and disables network by default. If a Codex task silently fails or can't reach an API, check sandbox mode before debugging the code.
+Codex starts from a conservative sandbox posture. If a Codex task silently fails or
+cannot reach an API, check sandbox mode and approval settings before debugging the code.
 
 **Solution:**
 

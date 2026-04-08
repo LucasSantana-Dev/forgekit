@@ -1,5 +1,5 @@
 # ~/.codex/config.toml
-# Reference config for AI Dev Toolkit — copy to ~/.codex/config.toml
+# Minimal starter config for AI Dev Toolkit — adapt before copying to ~/.codex/config.toml
 
 # Model configuration
 model = "gpt-5.4"
@@ -15,10 +15,14 @@ model_reasoning_effort = "medium"  # low, medium, high, xhigh
 approval_policy = "on-request"
 
 # Sandbox mode
-# read-only        — no writes, no network
-# workspace-write  — writes within project, no network (recommended)
+# read-only          — documented conservative baseline
+# workspace-write    — recommended active-dev mode
 # danger-full-access — unrestricted (only in containers)
 sandbox_mode = "workspace-write"
+
+# Web search policy
+# Use "disabled" for local-first work or "cached" when web retrieval is useful.
+web_search = "disabled"
 
 # History
 [history]
@@ -33,7 +37,7 @@ theme = "dark"
 # MCP servers (enable only what the project needs)
 [mcp_servers.filesystem]
 command = "npx"
-args = ["-y", "@modelcontextprotocol/server-filesystem", "."]
+args = ["-y", "@modelcontextprotocol/server-filesystem", "/Users/<you>"]
 enabled = true
 
 [mcp_servers.github]
@@ -44,6 +48,4 @@ enabled = false  # enable per-project
 
 # Feature flags
 [features]
-memories = true
-web_search = false
 multi_agent = true  # enable when parallel subagents materially help

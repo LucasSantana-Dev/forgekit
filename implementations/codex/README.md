@@ -6,13 +6,15 @@ Reference implementation of the toolkit patterns for [Codex CLI](https://github.
 
 Most AI coding tools (Claude Code, OpenCode, Cursor) are **trust-first**: they assume you want maximum access and require explicit setup to add isolation. Codex is the opposite — **sandbox-first by default**.
 
-Out of the box:
+Documented defaults are conservative:
 
-- File writes are restricted to the project directory (`workspace-write`)
-- Network access is disabled
-- Every uncertain action pauses for approval (`on-request`)
+- `read-only` sandbox
+- network disabled unless you explicitly broaden access
+- approval prompts when the agent needs to go beyond its current trust boundary
 
-You opt _out_ of safety, not into it. This means the defaults are already right for most dev work — you only need to change them for specific use cases (CI, container environments, read-only audits).
+For active implementation work, many teams intentionally move to `workspace-write`
+with `on-request` approval. That is a recommended dev posture, not the documented
+baseline.
 
 **Approval policy as an autonomy dial:**
 
@@ -99,7 +101,7 @@ codex --approval-mode never "generate a changelog summary"  # CI
 | Mode                 | File access          | Network  | Use case        |
 | -------------------- | -------------------- | -------- | --------------- |
 | `read-only`          | Read only            | Disabled | Audit / explain |
-| `workspace-write`    | Write within project | Disabled | **Default dev** |
+| `workspace-write`    | Write within project | Disabled | Recommended active-dev mode |
 | `danger-full-access` | Unrestricted         | Enabled  | Containers only |
 
 ## Common Workflows
@@ -141,14 +143,22 @@ As of today, the safest operational rule is:
 - keep the actual model names in local config
 - periodically verify the current recommended coding models in official OpenAI docs
 
+Current OpenAI examples that fit those tiers:
+
+- fast: `gpt-5.4-mini` or `gpt-5.4-nano`
+- balanced: `gpt-5.4`
+- long-horizon coding: `gpt-5.2-codex`
+
 ## Memory
 
-Codex supports persistent memories when `features.memories = true` in `config.toml`.
+Treat Codex memory as an external layer, not a built-in toggle in this starter config.
 
-For cross-session context beyond memories, follow the [Memory Systems pattern](../../patterns/memory-systems.md):
+For cross-session context, follow the [Memory Systems pattern](../../patterns/memory-systems.md):
 
 - Keep a `DECISIONS.md` or `.codex/context/` directory
 - Reference it in your root `AGENTS.md`: "Read `.codex/context/` for project decisions"
+- Add an MCP memory server only if you actually use one
+- Prefer simple handoff files over always-on memory complexity when a project is small
 
 ## MCP Servers
 

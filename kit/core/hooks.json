@@ -171,7 +171,7 @@
     ]
   },
   "toolMapping": {
-    "claude-code": "settings.json hooks array (planned)",
+    "claude-code": "settings.json hooks array",
     "opencode": "~/.config/opencode/hooks.json (installed by forge-kit)",
     "codex": "AGENTS.md hook instructions (declarative)",
     "cursor": ".cursor/rules/ hook rules (declarative)",

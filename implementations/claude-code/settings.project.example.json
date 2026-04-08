@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": ["Read", "Glob", "Grep", "LS", "Edit", "Write", "MultiEdit"]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$PROJECT_ROOT/implementations/claude-code/hooks/pre-tool-use.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$PROJECT_ROOT/implementations/claude-code/hooks/post-tool-use.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": [],
+  "modelOverrides": {},
+  "env": {
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
+  }
+}
