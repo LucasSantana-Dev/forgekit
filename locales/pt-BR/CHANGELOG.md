@@ -4,6 +4,60 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+### Added
+
+- ESLint CI job (`.github/workflows/validate.yml`) so `.mjs` lint errors are
+  caught on every PR instead of only in local runs.
+
+### Fixed
+
+- `scripts/reconcile-backlog-state.mjs` no longer reports 8 `no-undef` errors
+  for `process` and `console` — the ESLint config now covers `.mjs` files and
+  declares the node globals they need.
+
+## [0.12.0] — 2026-04-04
+
+### Added
+
+- **Consolidated setup-repo content** (#37): 10 portable skills, governance
+  templates, and helper scripts merged into `kit/` so a single clone is
+  enough to bootstrap an AI-assisted workflow. Complements the companion
+  `ai-dev-toolkit-setup` bootstrapper.
+- **29 portable skills** total in `kit/core/skills/` (was 18) covering
+  routing, resume, ship, sync-memories, plan, focus, optimize, and the full
+  forge-kit lifecycle.
+- **Formal JSON schemas for all core configs** (#29): 10 schemas under
+  `kit/schema/` validate agents, dispatch, hooks, routines, rules, and
+  skills at install time.
+- **Canonical agent tool registry** (#39): enforces which tools each
+  specialty agent may invoke, with governance tests for title validation,
+  `reportsTo` reference integrity, and org-chart consistency.
+- **Release helper preflight** (`tools/release.py --verify`): blocks a
+  release when the git working tree is dirty, git identity is missing, the
+  target tag already exists, or the changelog / release notes are malformed.
+  CI smoke-tests every blocker path in `validate.yml`.
+- **Portable hooks manifests** (#35) installed for every supported adapter
+  (`claude-code`, `codex`, `opencode`, `windsurf`, `cursor`).
+- **Company templates** (#31): solopreneur, startup MVP, agency, and
+  open-source maintainer presets ready for `forge-kit` consumption.
+- **Heartbeat routine system** (#30): schedule config + validation so
+  recurring maintenance tasks can be declared once and executed by any
+  adapter.
+- **Backlog triage automation** (#33) + backlog map + README link (#32).
+- **OpenCode plugin typecheck lane** (#34) in CI.
+- **Adapter parity expansion** (#27): MCP coverage, c7score README,
+  language reviewers, and harness audit across all adapters.
+- **`oh-my` compatibility support** (#28) for the remaining adapters
+  (previously only `opencode` and `claude-code`).
+
+### Fixed
+
+- Release preflight now catches adapter parity blockers before tagging (#41)
+  so a release with missing adapter files is refused at `--verify` time
+  instead of at publish time.
+
 ## [0.11.0] — 2026-04-03
 
 ### Added
