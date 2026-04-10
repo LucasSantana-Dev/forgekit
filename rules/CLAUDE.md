@@ -69,3 +69,36 @@ git push -u origin feature/my-feature
 - Continue until the planned work is complete or a real blocker is documented
 - If blocked, record the blocker and move to the next useful step
 - Before claiming done, verify the relevant checks actually ran
+
+## Skill Auto-Invocation
+
+Apply these skill patterns automatically when the situation matches — do not wait to be asked.
+
+| Skill | Auto-trigger condition |
+|---|---|
+| **rag** | Building document search, semantic search, knowledge-base chatbot, vector embeddings, chunking, context retrieval |
+| **eval** | Changing a prompt, switching models, modifying RAG config, claiming an AI feature works |
+| **self-heal** | Tool call fails, loop phase errors, tests fail unexpectedly, context overflows mid-task |
+| **debug** | Any error, test failure, unexpected output, broken build |
+| **context** | Context ≥ 60% of limit, switching major tasks, after completing a large phase |
+| **memory** | Session ending, key architectural decision made, surprising gotcha discovered |
+| **secure** | Code touches auth, payments, credentials, user data, permissions, external APIs |
+| **verify** | Before creating a PR, before claiming any phase complete |
+
+### rag
+When the task involves document retrieval, semantic search, or any RAG pipeline: follow chunk → embed → hybrid retrieve → rerank → augment. Apply the full pipeline pattern, not just retrieval.
+
+### eval
+Before shipping any LLM change: write the eval first, run baseline, measure delta. Gate on regression > 5%. Do not claim an AI feature works without measurement evidence.
+
+### self-heal
+When an error occurs in an autonomous loop: diagnose before retrying. Transient errors → exponential backoff. Deterministic errors → fix root cause first, then retry. Unknown → checkpoint state and surface to human.
+
+### context
+At 60-70% capacity: prune stale outputs first. At 80%+: checkpoint to `.agents/plans/checkpoint-<date>.md` immediately. Summarize completed subtasks rather than dropping them silently.
+
+### memory
+At session end: write a dated episodic entry (what/why/outcome/gotcha) for each significant decision or discovery. Store at `.agents/memory/`. Do not leave key decisions only in the conversation.
+
+### verify
+Before every PR: run lint + type-check + tests + build. Evidence of passing checks belongs in the PR description, not just assumed.

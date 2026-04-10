@@ -10,6 +10,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - ESLint CI job (`.github/workflows/validate.yml`) so `.mjs` lint errors are
   caught on every PR instead of only in local runs.
+- **Skill auto-invocation system** — agents now know when to apply each skill
+  without being manually triggered:
+  - `kit/core/rules.md`: new `skill-auto-invoke` section with per-skill trigger
+    conditions (rag, eval, self-heal, debug, context, memory, secure, verify)
+  - `rules/CLAUDE.md`: matching auto-invocation routing table and per-skill
+    action descriptions installed into every project's agent instructions
+  - `kit/core/agents.json`: rag + eval + self-heal added to orchestrator skills;
+    rag + eval added to backend; rag added to researcher; new specialty routing
+    entries for rag-pipeline, vector-search, document-retrieval, llm-eval,
+    agent-recovery, error-recovery
+  - `kit/core/hooks.json`: three new PostToolUse rules (suggest-self-heal on
+    bash error, suggest-eval after prompt file write, suggest-memory at context
+    limit) and a SessionEnd rule that applies memory skill at every session end
+  - `kit/core/skills/auto-invoke.md`: new meta-skill with routing table,
+    decision protocol, and rules for when NOT to auto-invoke
 - 3 new portable skills derived from AI engineering curriculum patterns:
   - `kit/core/skills/rag.md` — RAG pipeline skill: chunking strategy, embedding
     selection, hybrid retrieval (dense + sparse), cross-encoder reranking, context
