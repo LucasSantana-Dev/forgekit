@@ -26,6 +26,9 @@ Apply the right skill automatically. Do not wait to be asked — recognize the s
 | Before claiming any phase done | **verify** | Every time, no exceptions |
 | Picking model/agent for a task | **route** | At task assignment, before delegating |
 | Long autonomous run | **loop** | At the start; defines phases and exit conditions |
+| Building or extending an MCP server | **mcp-patterns** | Before writing any tool handler code |
+| Coordinating multiple specialized agents | **multi-agent** | When task requires >1 agent with dependencies |
+| Choosing or configuring an inference server | **model-serving** | Before selecting vLLM/TGI/Ollama or quantization |
 
 ## Decision Protocol
 
@@ -38,6 +41,9 @@ When you encounter a new task or event, ask in this order:
 5. **Is the session ending?** → `memory` (persist decisions)
 6. **Is security-sensitive code changing?** → `secure` (checklist)
 7. **Is a phase or PR about to be marked done?** → `verify` (evidence)
+8. **Building an MCP server or tool?** → `mcp-patterns` (schema design + security)
+9. **Coordinating multi-agent work?** → `multi-agent` (DAG + failure handling)
+10. **Choosing an inference server?** → `model-serving` (vLLM/TGI/Ollama decision tree)
 
 ## Rules
 

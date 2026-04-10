@@ -82,7 +82,8 @@
         "self-heal",
         "memory",
         "context",
-        "eval"
+        "eval",
+        "multi-agent"
       ],
       "tools": [
         "Bash",
@@ -146,7 +147,7 @@
       "tier": "sonnet",
       "title": "Backend Engineer",
       "role": "APIs, databases, services, middleware, auth, server-side logic",
-      "skills": ["verify", "ship", "tdd", "debug", "secure", "rag", "eval"],
+      "skills": ["verify", "ship", "tdd", "debug", "secure", "rag", "eval", "mcp-patterns"],
       "tools": [
         "Bash",
         "FileRead",
@@ -169,7 +170,7 @@
       "tier": "sonnet",
       "title": "DevOps Engineer",
       "role": "CI/CD, Docker, deployment, infrastructure, monitoring, pipelines",
-      "skills": ["verify", "ship", "secure", "schedule"],
+      "skills": ["verify", "ship", "secure", "schedule", "model-serving"],
       "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "TodoWrite"],
       "autonomous": true,
       "reportsTo": "architect",
@@ -374,7 +375,15 @@
         "document-retrieval": "researcher",
         "llm-eval": "orchestrator",
         "agent-recovery": "orchestrator",
-        "error-recovery": "orchestrator"
+        "error-recovery": "orchestrator",
+        "mcp-server": "backend",
+        "tool-schema": "backend",
+        "multi-agent": "orchestrator",
+        "dag-execution": "orchestrator",
+        "agent-teams": "orchestrator",
+        "model-serving": "devops",
+        "inference-server": "devops",
+        "ai-observability": "devops"
       }
     },
     "escalation": {

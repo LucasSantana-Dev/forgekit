@@ -8,6 +8,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- 4 new portable skills and patterns from AI engineering curriculum (Phases 13, 16, 17):
+  - `kit/core/skills/mcp-patterns.md` — MCP server implementation: tool schema design,
+    stateful tools, async/streaming patterns, error handling, security (input sanitization,
+    rate limiting, authorization), and testing strategy
+  - `kit/core/skills/multi-agent.md` — Multi-agent orchestration: DAG execution,
+    orchestrator-worker and fan-out/fan-in team patterns, capability-based task routing,
+    state sharing, failure recovery with retry→escalate ladder
+  - `kit/core/skills/model-serving.md` — Inference server selection: vLLM vs TGI vs
+    Ollama comparison, decision tree, quantization guide (FP16→INT4 AWQ), batching
+    patterns (dynamic/continuous/static), and scaling rules
+  - `patterns/ai-observability.md` — Production AI monitoring: TTFT/TPS/cost/error-rate
+    metrics with healthy/alert thresholds, LLM-as-judge output scoring, data drift
+    detection, OTel instrumentation patterns, and production go-live checklist
+- `kit/core/agents.json`: multi-agent added to orchestrator skills; mcp-patterns added
+  to backend; model-serving added to devops; 7 new specialty routing entries
+  (mcp-server, tool-schema, multi-agent, dag-execution, agent-teams, model-serving,
+  ai-observability, inference-server)
+- `kit/core/skills/auto-invoke.md`: routing table and decision protocol extended with
+  3 new auto-trigger rules (mcp-patterns, multi-agent, model-serving)
+
 - ESLint CI job (`.github/workflows/validate.yml`) so `.mjs` lint errors are
   caught on every PR instead of only in local runs.
 - **Skill auto-invocation system** — agents now know when to apply each skill
