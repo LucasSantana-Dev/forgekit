@@ -10,6 +10,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - ESLint CI job (`.github/workflows/validate.yml`) so `.mjs` lint errors are
   caught on every PR instead of only in local runs.
+- 3 new portable skills derived from AI engineering curriculum patterns:
+  - `kit/core/skills/rag.md` — RAG pipeline skill: chunking strategy, embedding
+    selection, hybrid retrieval (dense + sparse), cross-encoder reranking, context
+    augmentation, and a debugging checklist with output report format
+  - `kit/core/skills/eval.md` — LLM evaluation skill: automated metrics (ROUGE,
+    BERTScore, Pass@K), LLM-as-judge protocol, golden dataset pattern, regression
+    gate, and eval report format
+  - `kit/core/skills/self-heal.md` — Self-healing agent skill: recovery decision
+    tree, retry rules with exponential backoff, checkpoint pattern, diagnosis-first
+    fix protocol, escalation ladder, and hard-block list
+- 2 new pattern documents:
+  - `patterns/rag-architecture.md` — Comprehensive RAG patterns: naive RAG,
+    advanced RAG (query expansion + hybrid retrieval + reranking), hierarchical RAG,
+    agentic RAG, chunking strategies, embedding selection, evaluation, failure modes,
+    and a production checklist
+  - `patterns/llm-evaluation.md` — LLM evaluation patterns: 4-layer evaluation
+    stack (automated metrics, LLM-as-judge, human preference, production monitoring),
+    golden dataset build process, regression gate design, eval-driven development
+    workflow, common pitfalls, and report template
+- Enhanced `kit/core/skills/memory.md` with structured memory types: episodic
+  (timestamped event log with what/why/outcome/gotcha format) and semantic
+  (domain concepts and entity relationship patterns)
+- Enhanced `kit/core/skills/context.md` with 3 compression strategies (prune,
+  summarize, checkpoint), context prioritization ranking, and 80% capacity
+  hard-checkpoint rule
 
 ### Fixed
 
