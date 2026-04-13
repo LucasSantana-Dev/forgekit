@@ -114,6 +114,32 @@ Never use the most expensive model for trivial tasks. Route intentionally.
 - Persist state in memory/plan files so resuming a session recovers context
 <!-- /section -->
 
+
+<!-- section: session-budget -->
+## Session Budget
+
+### Message Thresholds
+- ~12 messages: warn "Context at ~45% — consider /compact soon"
+- ~18 messages: warn "Context at ~70% — /compact recommended"
+- ~22 messages: auto-generate handoff file, print resume command
+
+### Compact Trigger Rules
+- Use `/compact` at 50-70% context, not at 90% (leaves runway for next phase)
+- Before compacting: save active task state to a plan or handoff file
+- After compacting: re-load plan file and verify next action is clear
+
+### Plugin Budget
+- Keep ≤ 6 plugins active per session
+- Measure plugin overhead before adding: `wc -c ~/.claude/plugins/*/PLUGIN.md`
+- Disable any plugin >10KB that is not needed for the current session
+- On-demand plugins: invoke with full path instead of loading globally
+
+### Context Recovery
+- If context is lost mid-task: check `~/.claude/handoffs/<project>/latest.md`
+- If no handoff: reconstruct from `git log --oneline -5` + plan files
+- Never restart from scratch — enough state survives in git to recover
+<!-- /section -->
+
 <!-- section: skill-auto-invoke -->
 ## Skill Auto-Invocation
 
