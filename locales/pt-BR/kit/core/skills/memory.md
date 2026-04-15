@@ -1,6 +1,6 @@
 ---
 name: memory
-description: Persista decisões, preferências e estado do projeto entre sessões
+description: Persist decisions, preferences, and project state across sessions using structured memory types
 triggers:
   - memory
   - lembre disso
@@ -13,46 +13,73 @@ triggers:
 
 Sincronize contexto importante com armazenamento persistente para que sessões futuras comecem informadas.
 
+## Memory Types
+
+| Type            | What it stores                                       | Storage location                |
+| --------------- | ---------------------------------------------------- | ------------------------------- |
+| **Decisions**   | Architecture choices, API design, naming conventions | `.agents/memory/decisions.md`   |
+| **Preferences** | Code style, commit format, PR template               | `.agents/memory/preferences.md` |
+| **Blockers**    | Known issues, dependency constraints, quirks         | `.agents/memory/blockers.md`    |
+| **Episodic**    | Timestamped event log — what happened and why        | `.agents/memory/episodes.md`    |
+| **Semantic**    | Domain concepts, entity relationships, glossary      | `.agents/memory/semantic.md`    |
+
 ## What to Remember
 
-| Categoria | Exemplos | Prioridade |
-|---|---|---|
-| Decisions | Escolhas de arquitetura, design de API, convenções de nomes | alta |
-| Preferences | Estilo de código, formato de commit, template de PR | alta |
-| Blockers | Issues conhecidas, restrições de dependência, peculiaridades de ambiente | alta |
-| Progress | Fases concluídas, PRs entregues, histórico de releases | média |
-| Context | Integrantes do time, relações entre repos, alvos de deploy | média |
+| Category        | Priority | Examples                                                 |
+| --------------- | -------- | -------------------------------------------------------- |
+| Decisions       | high     | Architecture choices, API design, naming conventions     |
+| Preferences     | high     | Code style, commit format, PR template                   |
+| Blockers        | high     | Known issues, dependency constraints, environment quirks |
+| Episodic events | medium   | What was tried, what failed, what succeeded and why      |
+| Progress        | medium   | Completed phases, shipped PRs, release history           |
+| Context         | medium   | Team members, repo relationships, deployment targets     |
 
 ## What NOT to Remember
 
-- Saída transitória de debugging
-- Logs de execução de ferramentas
-- Itens de todo já concluídos (já estão no histórico git)
-- Leituras de arquivos específicas da sessão
+- Transient debugging output
+- Tool execution logs
+- Completed todo items (already in git history)
+- Session-specific file reads
+- Information derivable from reading the codebase
+
+## Episodic Memory Pattern
+
+Record significant events with context so future sessions can learn from them:
+
+```markdown
+## 2026-04-10 — Auth middleware rewrite
+
+- **What**: Replaced JWT validation middleware with JWKS-based approach
+- **Why**: Compliance requirement from legal (session token storage)
+- **Outcome**: 3 tests added, all green, deployed to staging
+- **Gotcha**: `validateToken()` now async — callers needed await
+```
+
+## Semantic Memory Pattern
+
+Store domain knowledge and entity relationships:
+
+```markdown
+## Domain: Payments
+
+- Order → has many → LineItems
+- Payment → belongs to → Order
+- Refund → references → Payment.id
+- Rule: never delete a Payment; set status = 'refunded' instead
+```
 
 ## Steps
 
-1. Identifique decisões, preferências ou bloqueadores da sessão atual
-2. Verifique se já existem na memória (evite duplicatas)
-3. Escreva no armazenamento apropriado:
-   - `.agents/memory/` para memória local do projeto
-   - Arquivos de plano para estado de trabalho em andamento
-   - Mensagens de commit git para decisões já entregues
-4. Confirme o que foi persistido
-
-## Storage Locations
-
-```text
-.agents/memory/decisions.md    — decisões de arquitetura e design
-.agents/memory/preferences.md  — preferências de estilo de código e workflow
-.agents/memory/blockers.md     — issues conhecidas e restrições
-.agents/plans/<task>.md         — estado de trabalho em andamento
-```
+1. Identify decisions, preferences, blockers, or events from the current session
+2. Check if they already exist in memory (avoid duplicates)
+3. Write to the appropriate storage location with today's date
+4. Remove entries that are no longer true
 
 ## Rules
 
-- Escreva memória no fim da sessão, não continuamente
-- Mantenha entradas concisas — uma linha por decisão
-- Adicione data às entradas para detectar obsolescência
-- Remova entradas que não são mais verdadeiras
-- Memória é complementar — a base de código é a fonte de verdade
+- Write memory at session end, not continuously
+- Keep entries concise — one line per decision, dated entries for episodes
+- Date-stamp all entries for staleness detection
+- Remove entries that are no longer true
+- Memory is supplementary — the codebase is the source of truth
+- Never store credentials, tokens, or secrets in memory files

@@ -1,16 +1,17 @@
 <!--
 forge-kit Universal Rules
-Fonte única de verdade para o comportamento de agentes de IA em todas as ferramentas.
-Os adapters extraem seções por meio de marcadores de seção dedicados neste arquivo.
-Seções:
-  quick-reference   — comandos de build/test/lint (a ferramenta preenche os valores reais)
-  identity          — persona do agente e estilo de colaboração
-  code-standards    — tamanho de função, complexidade e regras de estilo
-  workflow          — branching, commits e processo de PR
-  testing           — metas de cobertura e filosofia de testes
-  documentation     — regras de governança da documentação
-  security          — segredos, permissões e scanning
-  gotchas           — modos comuns de falha e como evitá-los
+Single source of truth for AI agent behavior across all tools.
+Adapters extract sections via dedicated section markers in this file.
+Sections:
+  quick-reference   — build/test/lint commands (tool fills in actual values)
+  identity          — agent persona and collaboration style
+  code-standards    — function size, complexity, style rules
+  workflow          — branching, commits, PR process
+  testing           — coverage targets and test philosophy
+  documentation     — doc governance rules
+  security          — secrets, permissions, scanning
+  gotchas           — common failure modes and how to avoid them
+  skill-auto-invoke — when to apply each skill autonomously (no manual trigger needed)
 -->
 
 <!-- section: quick-reference -->
@@ -111,4 +112,68 @@ Nunca use o modelo mais caro para tarefas triviais. Faça roteamento intencional
 - Se houver bloqueio, documente o bloqueador e vá para a próxima tarefa; depois volte
 - Antes de afirmar que terminou, verifique: lint passa, testes passam, build funciona
 - Persista o estado em arquivos de memória/plano para que uma retomada de sessão recupere o contexto
+<!-- /section -->
+
+
+<!-- section: session-budget -->
+## Session Budget
+
+### Message Thresholds
+- ~12 messages: warn "Context at ~45% — consider /compact soon"
+- ~18 messages: warn "Context at ~70% — /compact recommended"
+- ~22 messages: auto-generate handoff file, print resume command
+
+### Compact Trigger Rules
+- Use `/compact` at 50-70% context, not at 90% (leaves runway for next phase)
+- Before compacting: save active task state to a plan or handoff file
+- After compacting: re-load plan file and verify next action is clear
+
+### Plugin Budget
+- Keep ≤ 6 plugins active per session
+- Measure plugin overhead before adding: `wc -c ~/.claude/plugins/*/PLUGIN.md`
+- Disable any plugin >10KB that is not needed for the current session
+- On-demand plugins: invoke with full path instead of loading globally
+
+### Context Recovery
+- If context is lost mid-task: check `~/.claude/handoffs/<project>/latest.md`
+- If no handoff: reconstruct from `git log --oneline -5` + plan files
+- Never restart from scratch — enough state survives in git to recover
+<!-- /section -->
+
+<!-- section: skill-auto-invoke -->
+## Skill Auto-Invocation
+
+Apply these skill patterns automatically when the situation matches — do not wait to be asked.
+
+### rag — apply when building retrieval features
+**Trigger**: task involves document search, semantic search, "answer from docs", chatbot with knowledge base, vector embeddings, chunking, context retrieval, or any RAG pipeline.
+**Action**: Follow the full RAG pipeline (chunk → embed → hybrid retrieve → rerank → augment). Check the `rag` skill for the complete decision framework.
+
+### eval — apply before shipping any LLM change
+**Trigger**: changing a prompt, switching models, modifying RAG config, tuning temperature/parameters, or claiming an AI-powered feature is working correctly.
+**Action**: Write the eval first. Run baseline. Measure delta. Gate on regression > 5%. Check the `eval` skill for metrics and the golden-dataset pattern.
+
+### self-heal — apply when an error occurs in an autonomous loop
+**Trigger**: tool call fails, loop phase errors, test suite fails unexpectedly, context overflows mid-task, agent returns an error.
+**Action**: Diagnose before retrying. Checkpoint state. Follow the recovery decision tree (transient → retry; deterministic → fix first; unknown → surface to human). Check the `self-heal` skill.
+
+### debug — apply when any error occurs
+**Trigger**: error message, test failure, unexpected output, broken build.
+**Action**: Follow the 7-step trace (reproduce → locate → hypothesize → evidence → test → fix → verify). Never change code before knowing the root cause. Check the `debug` skill.
+
+### context — apply proactively at 60-70% capacity
+**Trigger**: context approaching 60-70% of limit, switching between unrelated major tasks, after completing a large phase.
+**Action**: Prune stale outputs first (10-30% savings). Summarize completed subtasks (30-60%). Checkpoint to file if > 80%. Check the `context` skill for the compression strategies.
+
+### memory — apply at session end and after key decisions
+**Trigger**: session is ending, a key architectural decision was made, a surprising gotcha was discovered, a significant bug was fixed with non-obvious cause.
+**Action**: Write an episodic entry (what/why/outcome/gotcha) or decision entry to `.agents/memory/`. Do not wait to be asked. Check the `memory` skill for storage locations.
+
+### secure — apply before any security-sensitive PR
+**Trigger**: code touches auth, payments, credentials, user data, permissions, input validation, file I/O, or external APIs.
+**Action**: Run the security checklist autonomously before the PR is created. Check the `secure` skill.
+
+### verify — apply before every PR and after every phase
+**Trigger**: about to create a PR, about to claim a phase is done.
+**Action**: Run lint, type-check, tests, build. Never claim done without verification evidence. Check the `verify` skill.
 <!-- /section -->

@@ -78,7 +78,12 @@
         "resume",
         "fallback",
         "dispatch",
-        "cost"
+        "cost",
+        "self-heal",
+        "memory",
+        "context",
+        "eval",
+        "multi-agent"
       ],
       "tools": [
         "Bash",
@@ -142,7 +147,7 @@
       "tier": "sonnet",
       "title": "Backend Engineer",
       "role": "APIs, databases, services, middleware, auth, server-side logic",
-      "skills": ["verify", "ship", "tdd", "debug", "secure"],
+      "skills": ["verify", "ship", "tdd", "debug", "secure", "rag", "eval", "mcp-patterns"],
       "tools": [
         "Bash",
         "FileRead",
@@ -165,7 +170,7 @@
       "tier": "sonnet",
       "title": "DevOps Engineer",
       "role": "CI/CD, Docker, deployment, infrastructure, monitoring, pipelines",
-      "skills": ["verify", "ship", "secure", "schedule"],
+      "skills": ["verify", "ship", "secure", "schedule", "model-serving"],
       "tools": ["Bash", "FileRead", "FileWrite", "Glob", "Grep", "TodoWrite"],
       "autonomous": true,
       "reportsTo": "architect",
@@ -299,7 +304,7 @@
       "tier": "sonnet",
       "title": "Research Analyst",
       "role": "Docs, web search, library investigation, competitive analysis — async, never blocks",
-      "skills": ["research", "memory"],
+      "skills": ["research", "memory", "rag"],
       "tools": ["FileRead", "Glob", "Grep", "WebFetch", "WebSearch", "MCP"],
       "readOnly": true,
       "async": true,
@@ -364,7 +369,21 @@
         "rust-review": "rust-reviewer",
         "research": "researcher",
         "file-search": "explorer",
-        "architecture": "architect"
+        "architecture": "architect",
+        "rag-pipeline": "backend",
+        "vector-search": "backend",
+        "document-retrieval": "researcher",
+        "llm-eval": "orchestrator",
+        "agent-recovery": "orchestrator",
+        "error-recovery": "orchestrator",
+        "mcp-server": "backend",
+        "tool-schema": "backend",
+        "multi-agent": "orchestrator",
+        "dag-execution": "orchestrator",
+        "agent-teams": "orchestrator",
+        "model-serving": "devops",
+        "inference-server": "devops",
+        "ai-observability": "devops"
       }
     },
     "escalation": {

@@ -8,8 +8,68 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 
 ### Adicionado
 
+- 4 new portable skills and patterns from AI engineering curriculum (Phases 13, 16, 17):
+  - `kit/core/skills/mcp-patterns.md` — MCP server implementation: tool schema design,
+    stateful tools, async/streaming patterns, error handling, security (input sanitization,
+    rate limiting, authorization), and testing strategy
+  - `kit/core/skills/multi-agent.md` — Multi-agent orchestration: DAG execution,
+    orchestrator-worker and fan-out/fan-in team patterns, capability-based task routing,
+    state sharing, failure recovery with retry→escalate ladder
+  - `kit/core/skills/model-serving.md` — Inference server selection: vLLM vs TGI vs
+    Ollama comparison, decision tree, quantization guide (FP16→INT4 AWQ), batching
+    patterns (dynamic/continuous/static), and scaling rules
+  - `patterns/ai-observability.md` — Production AI monitoring: TTFT/TPS/cost/error-rate
+    metrics with healthy/alert thresholds, LLM-as-judge output scoring, data drift
+    detection, OTel instrumentation patterns, and production go-live checklist
+- `kit/core/agents.json`: multi-agent added to orchestrator skills; mcp-patterns added
+  to backend; model-serving added to devops; 7 new specialty routing entries
+  (mcp-server, tool-schema, multi-agent, dag-execution, agent-teams, model-serving,
+  ai-observability, inference-server)
+- `kit/core/skills/auto-invoke.md`: routing table and decision protocol extended with
+  3 new auto-trigger rules (mcp-patterns, multi-agent, model-serving)
+
 - ESLint CI job (`.github/workflows/validate.yml`) so `.mjs` lint errors are
   caught on every PR instead of only in local runs.
+- **Skill auto-invocation system** — agents now know when to apply each skill
+  without being manually triggered:
+  - `kit/core/rules.md`: new `skill-auto-invoke` section with per-skill trigger
+    conditions (rag, eval, self-heal, debug, context, memory, secure, verify)
+  - `rules/CLAUDE.md`: matching auto-invocation routing table and per-skill
+    action descriptions installed into every project's agent instructions
+  - `kit/core/agents.json`: rag + eval + self-heal added to orchestrator skills;
+    rag + eval added to backend; rag added to researcher; new specialty routing
+    entries for rag-pipeline, vector-search, document-retrieval, llm-eval,
+    agent-recovery, error-recovery
+  - `kit/core/hooks.json`: three new PostToolUse rules (suggest-self-heal on
+    bash error, suggest-eval after prompt file write, suggest-memory at context
+    limit) and a SessionEnd rule that applies memory skill at every session end
+  - `kit/core/skills/auto-invoke.md`: new meta-skill with routing table,
+    decision protocol, and rules for when NOT to auto-invoke
+- 3 new portable skills derived from AI engineering curriculum patterns:
+  - `kit/core/skills/rag.md` — RAG pipeline skill: chunking strategy, embedding
+    selection, hybrid retrieval (dense + sparse), cross-encoder reranking, context
+    augmentation, and a debugging checklist with output report format
+  - `kit/core/skills/eval.md` — LLM evaluation skill: automated metrics (ROUGE,
+    BERTScore, Pass@K), LLM-as-judge protocol, golden dataset pattern, regression
+    gate, and eval report format
+  - `kit/core/skills/self-heal.md` — Self-healing agent skill: recovery decision
+    tree, retry rules with exponential backoff, checkpoint pattern, diagnosis-first
+    fix protocol, escalation ladder, and hard-block list
+- 2 new pattern documents:
+  - `patterns/rag-architecture.md` — Comprehensive RAG patterns: naive RAG,
+    advanced RAG (query expansion + hybrid retrieval + reranking), hierarchical RAG,
+    agentic RAG, chunking strategies, embedding selection, evaluation, failure modes,
+    and a production checklist
+  - `patterns/llm-evaluation.md` — LLM evaluation patterns: 4-layer evaluation
+    stack (automated metrics, LLM-as-judge, human preference, production monitoring),
+    golden dataset build process, regression gate design, eval-driven development
+    workflow, common pitfalls, and report template
+- Enhanced `kit/core/skills/memory.md` with structured memory types: episodic
+  (timestamped event log with what/why/outcome/gotcha format) and semantic
+  (domain concepts and entity relationship patterns)
+- Enhanced `kit/core/skills/context.md` with 3 compression strategies (prune,
+  summarize, checkpoint), context prioritization ranking, and 80% capacity
+  hard-checkpoint rule
 
 ### Corrigido
 

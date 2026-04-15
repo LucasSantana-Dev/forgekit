@@ -55,6 +55,27 @@
           "condition": "file extension is .ts, .tsx, .js, .jsx, .py",
           "action": "trigger-followup",
           "followup": "run lint on changed file"
+        },
+        {
+          "id": "suggest-self-heal-on-bash-error",
+          "tool": "Bash",
+          "condition": "exit code non-zero",
+          "action": "trigger-followup",
+          "followup": "apply self-heal skill: diagnose root cause before retrying"
+        },
+        {
+          "id": "suggest-eval-after-llm-prompt-write",
+          "tool": "FileWrite",
+          "condition": "file path contains 'prompt' or 'system' or content matches LLM API call pattern",
+          "action": "trigger-followup",
+          "followup": "apply eval skill: measure output quality before shipping"
+        },
+        {
+          "id": "suggest-memory-on-context-limit",
+          "tool": "*",
+          "condition": "session approaching context limit (>80%)",
+          "action": "trigger-followup",
+          "followup": "apply memory skill: write episodic entry and checkpoint before compacting"
         }
       ]
     },
@@ -93,6 +114,12 @@
           "condition": "key decisions made this session",
           "action": "sync-memory",
           "message": "Syncing session decisions to persistent memory"
+        },
+        {
+          "id": "apply-memory-skill-on-end",
+          "condition": "always",
+          "action": "trigger-followup",
+          "followup": "apply memory skill: write episodic entry for any significant decisions, discoveries, or gotchas"
         }
       ]
     },
