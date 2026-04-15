@@ -60,3 +60,27 @@ Or via MCP: wire `mcp_server.py` into your Claude Code `settings.json` under `mc
 - You just want grep → use grep.
 - You need code symbols in your current repo → use Serena.
 - Your knowledge lives in a hosted notion/Obsidian → this stays local-MD-first on purpose.
+
+
+## Portable configuration
+
+All paths are env-overridable. See `.env.example` for the full list.
+
+### Quick profiles
+
+**Personal (default)** — indexes Claude memory/plans/handoffs/skills + any repos in `RAG_REPOS`.
+
+**Work laptop** — `export RAG_WORK_MODE=1 RAG_REPOS=$HOME/work/repo-a:$HOME/work/repo-b` before running `install-rag.sh`. Skips personal memory entirely; only indexes your work repos and their specs/roadmap/docs.
+
+**Friend on Cursor/Codex-only** — same as above with `RAG_CLAUDE_ROOT` empty or pointing at their AI tool's root. Everything else (MCP server, reranker, hooks) works identically.
+
+### Common vars
+| Var | Effect |
+|---|---|
+| `RAG_HOME` | Where index + scripts live (default `~/.claude/rag-index`) |
+| `RAG_CLAUDE_ROOT` | Claude Code root for memory/skills (default `~/.claude`) |
+| `RAG_REPOS` | Colon-separated extra repo paths |
+| `RAG_WORK_MODE=1` | Skip all personal memory/plans/handoffs sources |
+| `RAG_EXTRA_MD_GLOBS` | Colon-separated extra markdown globs to index |
+| `RAG_RERANK=on\|off` | Toggle cross-encoder reranker |
+| `HF_HUB_OFFLINE=1` | Never hit the Hugging Face Hub after first cache warm |

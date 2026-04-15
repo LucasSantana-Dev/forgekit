@@ -24,7 +24,13 @@ sys.path.insert(0, str(Path(__file__).parent))
 import subprocess
 from chunkers import chunk_file, detect_language
 
-ROOT = Path.home() / ".claude" / "rag-index"
+import os
+
+RAG_HOME = Path(os.environ.get("RAG_HOME", str(Path.home() / ".claude" / "rag-index"))).expanduser()
+CLAUDE_ROOT = Path(os.environ.get("RAG_CLAUDE_ROOT", str(Path.home() / ".claude"))).expanduser()
+WORK_MODE = os.environ.get("RAG_WORK_MODE", "0") in ("1", "true", "yes")
+_EXTRA_REPOS = [Path(p).expanduser() for p in os.environ.get("RAG_REPOS", "").split(os.pathsep) if p]
+ROOT = RAG_HOME
 DB = ROOT / "index.sqlite"
 MODEL_NAME = "all-MiniLM-L6-v2"
 DIM = 384
