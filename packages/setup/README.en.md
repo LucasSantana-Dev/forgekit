@@ -296,3 +296,13 @@ So it:
 - **leaves the environment ready**
 
 But some providers and tools still require manual authentication and secrets before full use.
+
+## Optional: RAG engine
+
+After cloning `ai-dev-toolkit` alongside this repo, install the local RAG engine:
+
+```bash
+bash scripts/install-rag.sh
+```
+
+Sets up a Python venv with `sentence-transformers` + `rank-bm25`, copies scripts to `~/.claude/rag-index/`, skills to `~/.claude/skills/`, and runs the first full index build. Idempotent; rerun with `--force` to refresh.

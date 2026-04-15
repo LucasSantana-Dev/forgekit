@@ -290,3 +290,13 @@ The bootstrap copies `templates/local.env.example` automatically if the file doe
 ## Related repository
 
 - [`Forge-Space/ai-dev-toolkit`](https://github.com/Forge-Space/ai-dev-toolkit) — reusable rules, patterns, skills, companies, and reference setups
+
+## Optional: RAG engine
+
+After cloning `ai-dev-toolkit` alongside this repo, install the local RAG engine:
+
+```bash
+bash scripts/install-rag.sh
+```
+
+Sets up a Python venv with `sentence-transformers` + `rank-bm25`, copies scripts to `~/.claude/rag-index/`, skills to `~/.claude/skills/`, and runs the first full index build. Idempotent; rerun with `--force` to refresh.
