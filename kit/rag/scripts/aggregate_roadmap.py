@@ -2,11 +2,13 @@
 """Aggregate every curated repo's docs/specs/* into one per-user roadmap view.
 
 Reads each repo's spec frontmatters (proposed / active / shipped) and writes
-~/.claude/projects/-Users-lucassantana/memory/roadmap-all.md. Idempotent.
+to OUTPUT_PATH or ~/.claude/projects/<first-project>/memory/roadmap-all.md.
+Idempotent.
 """
 from __future__ import annotations
 
 import datetime
+import os
 import re
 import sys
 from pathlib import Path
@@ -14,15 +16,16 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from build import CURATED_REPOS  # reuse the whitelist
 
-OUT = (
-    Path.home()
-    / ".claude"
-    / "projects"
-    / "-Users-lucassantana"
-    / "memory"
-    / "roadmap-all.md"
-)
 FRONT_RE = re.compile(r"^---\n(.*?)\n---\n", re.DOTALL)
+
+
+def output_path() -> Path:
+    if os.environ.get("OUTPUT_PATH"):
+        return Path(os.environ["OUTPUT_PATH"]).expanduser()
+    projects = Path.home() / ".claude" / "projects"
+    memory_dirs = sorted(projects.glob("*/memory"))
+    base = memory_dirs[0] if memory_dirs else projects / "default" / "memory"
+    return base / "roadmap-all.md"
 
 
 def read_frontmatter(path: Path) -> dict:
@@ -111,9 +114,10 @@ def main() -> int:
         if not repo.is_dir():
             continue
         all_buckets.append((repo.name, collect(repo)))
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(render(all_buckets))
-    print(OUT)
+    out = output_path()
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(render(all_buckets))
+    print(out)
     return 0
 
 

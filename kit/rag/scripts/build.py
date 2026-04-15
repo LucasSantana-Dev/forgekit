@@ -73,7 +73,7 @@ CURATED_REPOS = [
 ]
 
 SOURCES: list[tuple[str, str]] = [
-    ("memory", str(HOME / ".claude/projects/-Users-lucassantana/memory/*.md")),
+    ("memory", str(HOME / ".claude/projects/*/memory/*.md")),
     ("plans", str(HOME / ".claude/plans/*.md")),
     ("handoffs", str(HOME / ".claude/handoffs/*/*.md")),
     ("skills", str(HOME / ".claude/skills/*/SKILL.md")),

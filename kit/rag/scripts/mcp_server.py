@@ -38,10 +38,23 @@ TOOL_SCHEMA = {
                 "description": "repo names (Lucky, homelab, siza-desktop, core, siza-gen, ui-mcp, mcp-gateway, branding-mcp) or pass ['all'] to disable auto-scoping",
             },
             "cwd": {"type": "string", "description": "working dir to drive auto-scoping (defaults to server cwd)"},
+            "rerank": {
+                "type": "boolean",
+                "default": True,
+                "description": "whether to rerank retrieved results",
+            },
         },
         "required": ["query"],
     },
 }
+
+
+def _bool_arg(value, default: bool = True) -> bool:
+    if value is None:
+        return default
+    if isinstance(value, str):
+        return value.strip().lower() not in {"false", "0", "off", "no", "n"}
+    return bool(value)
 
 
 def _render(results: list[dict]) -> str:
@@ -122,7 +135,7 @@ def main() -> int:
                     scope_types=scope_types,
                     scope_repos=scope_repos,
                     cwd=cwd,
-                    rerank=bool(args.get("rerank", True)),
+                    rerank=_bool_arg(args.get("rerank"), True),
                 )
                 _respond(
                     msg_id,

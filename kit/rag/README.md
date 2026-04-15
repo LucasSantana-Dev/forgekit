@@ -5,6 +5,7 @@ Local-first retrieval over markdown memory, session plans, skill docs, codex rul
 Reference deployment lives at `~/.claude/rag-index/`. The files in `scripts/` are that reference, unmodified. They use `Path.home()` internally so the same scripts work for any user — the only thing to customize is the `CURATED_REPOS` list in `build.py` and the `SOURCES` list (memory / plans / handoffs paths).
 
 ## One-time setup
+
 ```bash
 python3 -m venv ~/.claude/rag-index/venv
 ~/.claude/rag-index/venv/bin/pip install sentence-transformers rank-bm25
@@ -14,41 +15,48 @@ cp -r kit/rag/skills/* ~/.claude/skills/
 ```
 
 ## Customize for your machine
+
 Edit these constants in `scripts/build.py`:
+
 - `CURATED_REPOS` — list of repo paths to index (code + docs + git log).
 - `SOURCES` — globs for markdown memory/plans/handoffs/skills specific to your setup.
 
 Everything else is language-agnostic and works as-is.
 
 ## Daily use
+
 ```bash
 ~/.claude/rag-index/venv/bin/python ~/.claude/rag-index/query.py "<question>"
 ~/.claude/rag-index/venv/bin/python ~/.claude/rag-index/pack.py "<task>" --diff --budget 4000
 ```
+
 Or via MCP: wire `mcp_server.py` into your Claude Code `settings.json` under `mcpServers.rag-index`.
 
 ## Components
-| File | Role |
-|---|---|
-| `build.py` | Chunk + embed + write sqlite. `--incremental <file>` for hot updates. |
-| `query.py` | CLI: top-K ranked chunks. `--fast` disables reranker. |
-| `pack.py` | Task-aware bundle for `plan`/`ship`/`pr-flow` skills. |
-| `retrieval.py` | Shared search (BM25 + cosine + RRF + rerank + cwd-scope + query log). |
-| `chunkers.py` | Language-aware splitters (`ast` for Python, regex for TS/JS/shell). |
-| `mcp_server.py` | Stdio MCP server exposing `rag_query` tool. |
-| `aggregate_roadmap.py` | Cross-repo roadmap synthesizer. |
-| `autorecall-hook.sh` | UserPromptSubmit hook — conservative top-hit injection. |
-| `reindex-hook.sh` | PostToolUse hook — incremental reindex on Write/Edit. |
-| `sessionstart-report.sh` | SessionStart hook — refreshes `weekly.md`. |
-| `report.py` | Weekly observability (index stats + zero-hit queries + stale chunks). |
+
+| File                     | Role                                                                  |
+| ------------------------ | --------------------------------------------------------------------- |
+| `build.py`               | Chunk + embed + write sqlite. `--incremental <file>` for hot updates. |
+| `query.py`               | CLI: top-K ranked chunks. `--fast` disables reranker.                 |
+| `pack.py`                | Task-aware bundle for `plan`/`ship`/`pr-flow` skills.                 |
+| `retrieval.py`           | Shared search (BM25 + cosine + RRF + rerank + cwd-scope + query log). |
+| `chunkers.py`            | Language-aware splitters (`ast` for Python, regex for TS/JS/shell).   |
+| `mcp_server.py`          | Stdio MCP server exposing `rag_query` tool.                           |
+| `aggregate_roadmap.py`   | Cross-repo roadmap synthesizer.                                       |
+| `autorecall-hook.sh`     | UserPromptSubmit hook — conservative top-hit injection.               |
+| `reindex-hook.sh`        | PostToolUse hook — incremental reindex on Write/Edit.                 |
+| `sessionstart-report.sh` | SessionStart hook — refreshes `weekly.md`.                            |
+| `report.py`              | Weekly observability (index stats + zero-hit queries + stale chunks). |
 
 ## Benchmarks (reference deployment, 17k chunks, MiniLM-L6-v2)
+
 - Full rebuild: ~55 s
 - Incremental single-file: ~0.3 s
 - Query p50: ~200 ms (rerank off); ~800 ms (rerank on)
 - Eval baseline: MRR 0.72 · Hit@3 0.80 · Hit@5 0.80
 
 ## When NOT to use this
+
 - You just want grep → use grep.
 - You need code symbols in your current repo → use Serena.
 - Your knowledge lives in a hosted notion/Obsidian → this stays local-MD-first on purpose.

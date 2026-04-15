@@ -24,50 +24,65 @@ def section(title: str, body: str) -> str:
     return f"## {title}\n\n{body}\n\n"
 
 
+def has_table(conn: sqlite3.Connection, table: str) -> bool:
+    row = conn.execute(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table,)
+    ).fetchone()
+    return row is not None
+
+
 def zero_hits() -> list[tuple]:
     if not QLOG.exists():
         return []
-    conn = sqlite3.connect(QLOG)
-    rows = conn.execute(
-        "SELECT query, top_score, top_path, ts FROM queries WHERE ts >= ? AND top_score < ? ORDER BY ts DESC LIMIT 50",
-        (SINCE, ZERO_HIT_THRESHOLD),
-    ).fetchall()
-    conn.close()
-    return rows
+    with sqlite3.connect(QLOG) as conn:
+        if not has_table(conn, "queries"):
+            return []
+        cols = {r[1] for r in conn.execute("PRAGMA table_info(queries)").fetchall()}
+        query_col = "query" if "query" in cols else "query_hash"
+        return conn.execute(
+            f"SELECT {query_col}, top_score, top_path, ts FROM queries WHERE ts >= ? AND top_score < ? ORDER BY ts DESC LIMIT 50",
+            (SINCE, ZERO_HIT_THRESHOLD),
+        ).fetchall()
 
 
 def freq_queries() -> list[tuple]:
     if not QLOG.exists():
         return []
-    conn = sqlite3.connect(QLOG)
-    rows = conn.execute(
-        "SELECT query, COUNT(*) c, AVG(top_score) s FROM queries WHERE ts >= ? GROUP BY query ORDER BY c DESC LIMIT 15",
-        (SINCE,),
-    ).fetchall()
-    conn.close()
-    return rows
+    with sqlite3.connect(QLOG) as conn:
+        if not has_table(conn, "queries"):
+            return []
+        cols = {r[1] for r in conn.execute("PRAGMA table_info(queries)").fetchall()}
+        query_col = "query" if "query" in cols else "query_hash"
+        return conn.execute(
+            f"SELECT {query_col}, COUNT(*) c, AVG(top_score) s FROM queries WHERE ts >= ? GROUP BY {query_col} ORDER BY c DESC LIMIT 15",
+            (SINCE,),
+        ).fetchall()
 
 
 def stale_chunks() -> list[str]:
     if not DB.exists():
         return []
-    conn = sqlite3.connect(DB)
-    rows = conn.execute("SELECT DISTINCT path FROM chunks").fetchall()
-    conn.close()
+    with sqlite3.connect(DB) as conn:
+        if not has_table(conn, "chunks"):
+            return []
+        rows = conn.execute("SELECT DISTINCT path FROM chunks").fetchall()
     missing = [r[0] for r in rows if not Path(r[0]).exists()]
     return missing[:50]
 
 
 def index_stats() -> dict:
-    conn = sqlite3.connect(DB)
-    total = conn.execute("SELECT COUNT(*) FROM chunks").fetchone()[0]
-    by_type = conn.execute(
-        "SELECT source_type, COUNT(*) FROM chunks GROUP BY source_type ORDER BY 2 DESC"
-    ).fetchall()
-    by_repo = conn.execute(
-        "SELECT repo, COUNT(*) FROM chunks WHERE repo IS NOT NULL GROUP BY repo ORDER BY 2 DESC"
-    ).fetchall()
-    conn.close()
+    if not DB.exists():
+        return {"total": 0, "by_type": [], "by_repo": []}
+    with sqlite3.connect(DB) as conn:
+        if not has_table(conn, "chunks"):
+            return {"total": 0, "by_type": [], "by_repo": []}
+        total = conn.execute("SELECT COUNT(*) FROM chunks").fetchone()[0]
+        by_type = conn.execute(
+            "SELECT source_type, COUNT(*) FROM chunks GROUP BY source_type ORDER BY 2 DESC"
+        ).fetchall()
+        by_repo = conn.execute(
+            "SELECT repo, COUNT(*) FROM chunks WHERE repo IS NOT NULL GROUP BY repo ORDER BY 2 DESC"
+        ).fetchall()
     return {"total": total, "by_type": by_type, "by_repo": by_repo}
 
 

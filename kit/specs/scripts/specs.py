@@ -184,7 +184,8 @@ def cmd_ship(args) -> int:
     archived_root.mkdir(parents=True, exist_ok=True)
     dest = archived_root / folder.name
     if dest.exists():
-        shutil.rmtree(dest)
+        stamp = datetime.datetime.now().strftime("%H%M%S")
+        dest = archived_root / f"{folder.name}-{stamp}"
     shutil.move(str(folder), str(dest))
     print(dest)
     return 0

@@ -7,11 +7,14 @@ from __future__ import annotations
 import os
 import re
 import sqlite3
+import hashlib
 from pathlib import Path
 from typing import Any
 
 import numpy as np
 from rank_bm25 import BM25Okapi
+
+from build import CURATED_REPOS
 
 ROOT = Path.home() / ".claude" / "rag-index"
 DB = ROOT / "index.sqlite"
@@ -19,18 +22,6 @@ QLOG = ROOT / "queries.sqlite"
 MODEL_NAME = "all-MiniLM-L6-v2"
 DIM = 384
 RRF_K = 60
-
-HOME = Path.home()
-REPO_ROOTS = [
-    HOME / "Desenvolvimento" / "Lucky",
-    HOME / "Desenvolvimento" / "homelab",
-    HOME / "Desenvolvimento" / "siza-desktop",
-    HOME / "Desenvolvimento" / "forge-space" / "core",
-    HOME / "Desenvolvimento" / "forge-space" / "siza-gen",
-    HOME / "Desenvolvimento" / "forge-space" / "ui-mcp",
-    HOME / "Desenvolvimento" / "forge-space" / "mcp-gateway",
-    HOME / "Desenvolvimento" / "forge-space" / "branding-mcp",
-]
 
 _TOKEN_RE = re.compile(r"[A-Za-z_][\w$]{1,}")
 _model = None
@@ -64,7 +55,7 @@ def _tokenize(text: str) -> list[str]:
 def cwd_repo(cwd: str | None = None) -> str | None:
     """Detect which curated repo the cwd lives in, returning the repo.name."""
     path = Path(cwd or os.getcwd()).resolve()
-    for repo in REPO_ROOTS:
+    for repo in CURATED_REPOS:
         try:
             path.relative_to(repo)
             return repo.name
@@ -75,6 +66,7 @@ def cwd_repo(cwd: str | None = None) -> str | None:
 
 def _load(scope_types: list[str] | None, scope_repos: list[str] | None) -> tuple:
     key = (
+        DB.stat().st_mtime_ns if DB.exists() else 0,
         tuple(sorted(scope_types)) if scope_types else None,
         tuple(sorted(scope_repos)) if scope_repos else None,
     )
@@ -176,11 +168,13 @@ def search(
             ce_scores = _get_reranker().predict(pairs, show_progress_bar=False)
         except Exception:
             ce_scores = [0.0] * len(pairs)
+        ce_map = {idx: float(score) for (idx, _), score in zip(candidate_order, ce_scores)}
         reranked = sorted(
             zip(candidate_order, ce_scores), key=lambda x: -float(x[1])
         )[:top]
-        fused = [(idx_score[0][0], float(idx_score[1])) for idx_score in reranked]
+        fused = [(idx_score[0][0], idx_score[0][1]) for idx_score in reranked]
     else:
+        ce_map = {}
         fused = sorted(rrf.items(), key=lambda kv: -kv[1])[:top]
 
     results: list[dict] = []
@@ -192,6 +186,7 @@ def search(
                 "rrf": round(float(score), 4),
                 "cos": round(float(cos[idx]), 3),
                 "bm25": round(float(bm_scores[idx]), 2),
+                "ce": round(ce_map[idx], 4) if idx in ce_map else None,
                 "reranked": rerank,
                 "source_type": m["source_type"],
                 "repo": m["repo"],
@@ -203,7 +198,7 @@ def search(
                 "text": m["text"],
             }
         )
-    if os.environ.get("RAG_QLOG", "on").lower() in ("on", "1", "true"):
+    if os.environ.get("RAG_QLOG", "off").lower() in ("on", "1", "true"):
         _log_query(query, scope_types, scope_repos, cwd, rerank, results)
     return results
 
@@ -221,18 +216,20 @@ def _log_query(
         conn.execute(
             """CREATE TABLE IF NOT EXISTS queries (
                 ts REAL NOT NULL,
-                cwd TEXT, query TEXT, scope_types TEXT, scope_repos TEXT,
+                cwd_hash TEXT, query_hash TEXT, scope_types TEXT, scope_repos TEXT,
                 rerank INTEGER, top_score REAL, top_path TEXT, n_results INTEGER
             )"""
         )
         top_score = float(results[0]["cos"]) if results else 0.0
         top_path = results[0]["path"] if results else ""
+        query_hash = hashlib.sha256(query[:500].encode()).hexdigest()
+        cwd_hash = hashlib.sha256((cwd or os.getcwd()).encode()).hexdigest()
         conn.execute(
             "INSERT INTO queries VALUES (?,?,?,?,?,?,?,?,?)",
             (
                 __import__("time").time(),
-                cwd or os.getcwd(),
-                query[:500],
+                cwd_hash,
+                query_hash,
                 ",".join(scope_types or []),
                 ",".join(scope_repos or []),
                 1 if rerank else 0,

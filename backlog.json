@@ -174,6 +174,34 @@
         "antigravity"
       ],
       "dependsOn": null
+    },
+    {
+      "id": "rag-kit",
+      "title": "Add local RAG engine kit",
+      "description": "Add kit/rag with SQLite-backed MiniLM embeddings, BM25 + RRF retrieval, optional reranker, MCP server, hooks, context-pack, and weekly drift reporting.",
+      "priority": "high",
+      "status": "done",
+      "tags": [
+        "rag",
+        "ai-engineering",
+        "tooling"
+      ],
+      "dependsOn": null,
+      "completedAt": 1776261600000
+    },
+    {
+      "id": "specs-kit",
+      "title": "Add Agent-OS-inspired specs kit",
+      "description": "Add kit/specs with per-feature docs/specs frontmatter, tasks.md lifecycle, shipped archive flow, and generated per-repo plus cross-repo roadmap views.",
+      "priority": "high",
+      "status": "done",
+      "tags": [
+        "specs",
+        "roadmap",
+        "tooling"
+      ],
+      "dependsOn": null,
+      "completedAt": 1776261600000
     }
   ]
 }

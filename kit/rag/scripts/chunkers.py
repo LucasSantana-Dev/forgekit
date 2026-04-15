@@ -52,13 +52,11 @@ _TS_DECL = re.compile(
 
 def chunk_ts(text: str) -> List[Chunk]:
     lines = text.splitlines()
-    matches = list(_TS_DECL.finditer(text))
+    matches = [m for m in _TS_DECL.finditer(text) if not m.group("indent")]
     if not matches:
         return chunk_fallback(text)
     chunks: List[Chunk] = []
     for i, m in enumerate(matches):
-        if m.group("indent"):
-            continue  # only top-level declarations
         name = m.group("fn") or m.group("cls") or m.group("var") or m.group("ty") or "?"
         start_line = text.count("\n", 0, m.start()) + 1
         end_line = (

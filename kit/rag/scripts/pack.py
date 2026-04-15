@@ -27,6 +27,7 @@ def approx_tokens(text: str) -> int:
 def pack(task: str, files: list[str], budget_tokens: int, cwd: str | None) -> str:
     budget = budget_tokens
     out: list[str] = []
+    cwd_path = Path(cwd).expanduser().resolve() if cwd else Path.cwd()
 
     def emit(header: str, chunks: list[dict], per_chunk_cap: int) -> None:
         nonlocal budget
@@ -62,7 +63,8 @@ def pack(task: str, files: list[str], budget_tokens: int, cwd: str | None) -> st
     if files:
         out.append("## Explicit files")
         for f in files:
-            p = Path(f).expanduser().resolve()
+            raw = Path(f).expanduser()
+            p = raw.resolve() if raw.is_absolute() else (cwd_path / raw).resolve()
             hits = search(task, top=2, scope_types=["code"], scope_repos=["all"], cwd=cwd)
             hits = [h for h in hits if h["path"] == str(p)]
             if not hits:
@@ -108,6 +110,7 @@ def main() -> int:
                 capture_output=True,
                 text=True,
                 check=True,
+                cwd=args.cwd or None,
             )
             files.extend([f for f in proc.stdout.splitlines() if f])
         except (subprocess.CalledProcessError, FileNotFoundError):

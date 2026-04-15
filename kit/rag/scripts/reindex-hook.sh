@@ -16,7 +16,7 @@ except Exception:
 [ -z "$FILE" ] && exit 0
 
 case "$FILE" in
-  "$HOME"/.claude/projects/-Users-lucassantana/memory/*.md|\
+  "$HOME"/.claude/projects/*/memory/*.md|\
   "$HOME"/.claude/plans/*.md|\
   "$HOME"/.claude/handoffs/*/*.md|\
   "$HOME"/.claude/skills/*/SKILL.md|\

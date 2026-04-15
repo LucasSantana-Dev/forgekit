@@ -21,10 +21,17 @@ sys.path.insert(0, str(Path(__file__).parent))
 from retrieval import search
 
 
+def bounded_top(value: str) -> int:
+    n = int(value)
+    if not 1 <= n <= 20:
+        raise argparse.ArgumentTypeError("--top must be between 1 and 20")
+    return n
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("query", help="natural-language question")
-    ap.add_argument("--top", type=int, default=5)
+    ap.add_argument("--top", type=bounded_top, default=5)
     ap.add_argument("--scope", default="", help="comma-separated source types")
     ap.add_argument(
         "--scope-repo",

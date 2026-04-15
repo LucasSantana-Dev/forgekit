@@ -247,7 +247,3 @@ If your checkout contains local workspace noise such as `node_modules/`, keep pl
 ## Immediate recommended next task
 
 **Ship the next post-release governance lane** with explicit checklist + verification gates.
-
-## 2026-04-15
-- Added `kit/rag/` — local RAG engine (sqlite + MiniLM + BM25 + rerank, MCP server, hooks).
-- Added `kit/specs/` — Agent-OS-inspired per-feature spec + derived roadmap flow.
