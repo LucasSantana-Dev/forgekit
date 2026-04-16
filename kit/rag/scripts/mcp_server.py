@@ -35,7 +35,7 @@ TOOL_SCHEMA = {
             "scope_repos": {
                 "type": "array",
                 "items": {"type": "string"},
-                "description": "repo names (Lucky, homelab, siza-desktop, core, siza-gen, ui-mcp, mcp-gateway, branding-mcp) or pass ['all'] to disable auto-scoping",
+                "description": "repo names configured via RAG_REPOS env var or .forge-kit.env, or pass ['all'] to disable auto-scoping",
             },
             "cwd": {"type": "string", "description": "working dir to drive auto-scoping (defaults to server cwd)"},
             "rerank": {

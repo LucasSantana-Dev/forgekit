@@ -45,10 +45,11 @@ Outputs markdown suitable for pasting into Jira, Linear, or GitHub Issues. Usefu
 
 ## Examples
 
+<!-- Replace with your actual author email. -->
 ```
 ## Summary
 Branch: feat/auth-provider-refresh
-Author: lucas.diassantana@gmail.com
+Author: your.email@example.com
 CWD: ai-dev-toolkit/
 
 ## Changes
