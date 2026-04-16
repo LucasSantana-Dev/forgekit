@@ -78,7 +78,7 @@ It prompts for:
 
 ## What patterns are included?
 
-15 tool-agnostic playbooks covering the full AI-assisted development lifecycle:
+17 tool-agnostic playbooks covering the full AI-assisted development lifecycle:
 
 | Pattern                                                        | When you need it                                     |
 | -------------------------------------------------------------- | ---------------------------------------------------- |
@@ -92,8 +92,10 @@ It prompts for:
 | [Prompt Engineering](patterns/prompt-engineering.md)           | Inconsistent or imprecise agent responses            |
 | [Git Worktrees](patterns/git-worktrees.md)                     | Isolating concurrent tasks on separate branches      |
 | [Agent Observability](patterns/agent-observability.md)         | Tracing and regression-testing agent behavior        |
+| [OpenTelemetry GenAI](patterns/opentelemetry-genai.md)         | Vendor-neutral LLM instrumentation and telemetry     |
 | [Multi-Repo Workflows](patterns/multi-repo.md)                 | Cross-repository coordination                        |
 | [Permission Boundaries](patterns/permission-boundaries.md)     | Minimum-privilege tool access                        |
+| [Prompt Injection Defense](patterns/prompt-injection-defense.md) | Layered defenses against direct and indirect attacks |
 | [Streaming Orchestration](patterns/streaming-orchestration.md) | Event-driven turn loops and token budgeting          |
 | [Tool Registry Patterns](patterns/tool-registry-patterns.md)   | Decoupling tool metadata from implementation         |
 | [Spec Driven Development](patterns/spec-driven-development.md) | Agents need a stable contract before building        |
