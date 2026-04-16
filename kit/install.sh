@@ -8,6 +8,7 @@
 #   --profile <name>   Profile to use (default: standard)
 #                      Values: standard, minimal, research, durable
 #   --dry-run          Print what would be done without making changes
+#   --with-hooks       Install code hooks (format, typecheck, evaluate)
 #   --uninstall        Remove forge-kit managed files
 #   --status           Show installation status
 #   --help             Show this help message
@@ -26,6 +27,7 @@ FORGE_PROFILE="standard"
 FORGE_DRY_RUN="false"
 FORGE_OHMY_COMPAT="false"
 FORGE_OHMY_COMPAT_CLI=""
+FORGE_WITH_HOOKS="false"
 FORGE_ACTION="install"
 
 # Parse args
@@ -56,6 +58,10 @@ while [ "$#" -gt 0 ]; do
 		FORGE_OHMY_COMPAT_CLI="true"
 		shift
 		;;
+	--with-hooks)
+		FORGE_WITH_HOOKS="true"
+		shift
+		;;
 	--uninstall)
 		FORGE_ACTION="uninstall"
 		shift
@@ -75,7 +81,7 @@ while [ "$#" -gt 0 ]; do
 	esac
 done
 
-export FORGE_KIT_DIR FORGE_DRY_RUN
+export FORGE_KIT_DIR FORGE_DRY_RUN FORGE_WITH_HOOKS
 
 show_help() {
 	cat <<'EOF'
@@ -88,6 +94,7 @@ Options:
   --tools <list>     Tools: all, auto, or claude-code,codex,opencode,cursor,windsurf,antigravity
   --profile <name>   Profile: standard (default), minimal, research, durable
   --dry-run          Show what would change without making changes
+  --with-hooks       Install code hooks (format, typecheck, evaluate) to ~/.claude/hooks/
   --oh-my-compat     Enable optional oh-my compatibility assets
   --uninstall        Remove forge-kit managed files
   --status           Show current installation status
@@ -97,6 +104,7 @@ Examples:
   sh install.sh                                  # auto-detect tools, standard profile
   sh install.sh --tools claude-code --profile minimal
   sh install.sh --tools all --oh-my-compat
+  sh install.sh --with-hooks                    # install hooks only
   sh install.sh --tools all --dry-run
   sh install.sh --uninstall
 
@@ -135,6 +143,45 @@ run_adapter() {
 	uninstall) adapter_uninstall ;;
 	status) adapter_status ;;
 	esac
+}
+
+install_hooks() {
+	if [ "$FORGE_WITH_HOOKS" != "true" ]; then
+		return 0
+	fi
+
+	hooks_src_dir="$FORGE_KIT_DIR/hooks"
+	hooks_dst_dir="$HOME/.claude/hooks"
+
+	if [ ! -d "$hooks_src_dir" ]; then
+		log_warn "Hooks directory not found: $hooks_src_dir (skipping)"
+		return
+	fi
+
+	log_step "Installing code hooks to $hooks_dst_dir"
+
+	if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
+		log_info "  [DRY RUN] Would install hooks: post-edit-format.sh, post-edit-typecheck.sh, evaluate-response.sh"
+		return
+	fi
+
+	mkdir -p "$hooks_dst_dir"
+
+	for hook_file in post-edit-format.sh post-edit-typecheck.sh evaluate-response.sh; do
+		src="$hooks_src_dir/$hook_file"
+		dst="$hooks_dst_dir/$hook_file"
+
+		if [ -f "$src" ]; then
+			rm -f "$dst"
+			ln -s "$src" "$dst"
+			chmod 755 "$src" 2>/dev/null || true
+			log_dim "  ✓ $hook_file linked"
+		else
+			log_warn "  Hook not found: $hook_file"
+		fi
+	done
+
+	log_success "hooks installed (run 'cat ~/.claude/hooks.json' to verify hooks.json has hook definitions)"
 }
 
 main() {
@@ -176,6 +223,11 @@ main() {
 		run_adapter "$tool" "$FORGE_ACTION"
 		printf '\n'
 	done
+
+	if [ "$FORGE_WITH_HOOKS" = "true" ] && [ "$FORGE_ACTION" = "install" ]; then
+		install_hooks
+		printf '\n'
+	fi
 
 	if [ "$FORGE_ACTION" = "install" ] && [ "$FORGE_DRY_RUN" != "true" ]; then
 		log_success "forge-kit installation complete"
