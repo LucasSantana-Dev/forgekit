@@ -62,7 +62,6 @@ git push -u origin feature/my-feature
 
 ## Session Budget
 - Keep context small and current
-- Save resumable handoff notes before the session gets noisy
 - Prefer finishing or shipping work over carrying a long local-only queue
 
 ## Durable Execution

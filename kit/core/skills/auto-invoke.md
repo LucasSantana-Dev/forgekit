@@ -29,7 +29,6 @@ Apply the right skill automatically. Do not wait to be asked — recognize the s
 | Building or extending an MCP server | **mcp-patterns** | Before writing any tool handler code |
 | Coordinating multiple specialized agents | **multi-agent** | When task requires >1 agent with dependencies |
 | Choosing or configuring an inference server | **model-serving** | Before selecting vLLM/TGI/Ollama or quantization |
-| Preserving session state across tool switches | **handoff-system** | At context limit (message 22), before /compact, or tool switch |
 | Proactive context cleanup at 45% capacity | **context-hygiene** | After completing a large phase or at 45-50% context |
 
 ## Decision Protocol

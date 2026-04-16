@@ -121,11 +121,9 @@ Never use the most expensive model for trivial tasks. Route intentionally.
 ### Message Thresholds
 - ~12 messages: warn "Context at ~45% — consider /compact soon"
 - ~18 messages: warn "Context at ~70% — /compact recommended"
-- ~22 messages: auto-generate handoff file, print resume command
 
 ### Compact Trigger Rules
 - Use `/compact` at 50-70% context, not at 90% (leaves runway for next phase)
-- Before compacting: save active task state to a plan or handoff file
 - After compacting: re-load plan file and verify next action is clear
 
 ### Plugin Budget
@@ -135,8 +133,6 @@ Never use the most expensive model for trivial tasks. Route intentionally.
 - On-demand plugins: invoke with full path instead of loading globally
 
 ### Context Recovery
-- If context is lost mid-task: check `~/.claude/handoffs/<project>/latest.md`
-- If no handoff: reconstruct from `git log --oneline -5` + plan files
 - Never restart from scratch — enough state survives in git to recover
 <!-- /section -->
 
