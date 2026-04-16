@@ -67,16 +67,50 @@ EXCLUDED_DIR_PARTS = {
 }
 CODE_EXTS = {".py", ".ts", ".tsx", ".js", ".jsx", ".mjs", ".sh", ".bash", ".zsh"}
 
-CURATED_REPOS = [
-    HOME / "Desenvolvimento" / "Lucky",
-    HOME / "Desenvolvimento" / "homelab",
-    HOME / "Desenvolvimento" / "siza-desktop",
-    HOME / "Desenvolvimento" / "forge-space" / "core",
-    HOME / "Desenvolvimento" / "forge-space" / "siza-gen",
-    HOME / "Desenvolvimento" / "forge-space" / "ui-mcp",
-    HOME / "Desenvolvimento" / "forge-space" / "mcp-gateway",
-    HOME / "Desenvolvimento" / "forge-space" / "branding-mcp",
-]
+def _load_curated_repos() -> list[Path]:
+    """Load curated repos from RAG_REPOS env var or .forge-kit.env file.
+    
+    RAG_REPOS: comma-separated list of repo paths (e.g. "/path/to/repo1,/path/to/repo2")
+    .forge-kit.env: INI-style file with RAG_REPOS=... line (relative to repo root)
+    Default: empty list (no repos indexed)
+    """
+    repos: list[Path] = []
+    
+    # Try environment variable first
+    env_repos = os.environ.get("RAG_REPOS", "").strip()
+    if env_repos:
+        for r in env_repos.split(","):
+            r = r.strip()
+            if r:
+                repos.append(Path(r).expanduser().resolve())
+        return repos
+    
+    # Try .forge-kit.env file in repo root
+    forge_env = Path(__file__).parent.parent.parent / ".forge-kit.env"
+    if forge_env.exists():
+        try:
+            content = forge_env.read_text(encoding="utf-8")
+            for line in content.splitlines():
+                line = line.strip()
+                if line.startswith("RAG_REPOS="):
+                    raw_repos = line.split("=", 1)[1].strip()
+                    for r in raw_repos.split(","):
+                        r = r.strip()
+                        if r:
+                            repos.append(Path(r).expanduser().resolve())
+                    return repos
+        except OSError:
+            pass
+    
+    # Default: empty list, warn user
+    print(
+        "WARNING: No curated repos configured. Set RAG_REPOS env var or create .forge-kit.env",
+        file=sys.stderr
+    )
+    return repos
+
+CURATED_REPOS = _load_curated_repos()
+
 
 SOURCES: list[tuple[str, str]] = [
     ("memory", str(HOME / ".claude/projects/*/memory/*.md")),
