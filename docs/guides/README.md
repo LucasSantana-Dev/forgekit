@@ -1,0 +1,34 @@
+---
+status: draft
+audience: all
+---
+
+# AI Dev Toolkit Guides
+
+Batteries-included, opt-in-per-skill reference layer for AI-assisted development. Thin pointers into existing skills, rules, and patterns — not re-documentation.
+
+Pick your entry point:
+
+## First Time Here?
+- **[Getting Started](./getting-started.md)** — 10-minute clone → install → first query (5 min read)
+
+## By Role
+- **[For Individual Devs](./for-individual-devs.md)** — personal workflows, skill map, plan → ship → spec loop (8 min)
+- **[For Teams](./for-teams.md)** — adoption, governance, compliance Q&A at work (12 min)
+
+## Core Concepts
+- **[Primitives](./primitives.md)** — 4-primitive model: Rules, Skills, Agents, Hooks. Decision flowchart: "What should this be?" (7 min)
+- **[AI-Assisted Development](./ai-assisted-development.md)** — AAD pillar: context, standards, gates, memory (6 min)
+- **[Agent-Driven Development](./agent-driven-development.md)** — ADD pillar: agents.json, auto-invoke, Command → Agent → Skill (8 min)
+- **[Agents vs Skills](./agents-vs-skills.md)** — when to pick noun-named agents over verb-named skills (3 min)
+- **[Conventions as Code](./conventions-as-code.md)** — rules/ rendering, tool-overlay model, sliced standards (5 min)
+
+## Operations
+- **[Hooks](./hooks.md)** — edit-moment hooks pack: format, typecheck, evaluate-response. Signature feature (6 min)
+- **[Governance](./governance.md)** — compliance Q&A: data, secrets, deps, audit, chezmoi vs dual-branch (10 min)
+- **[Tool Matrix](./tool-matrix.md)** — skill × tool (Claude Code / Codex / Cursor / Copilot / Gemini) × primitive (4 min)
+- **[Benchmarks](./benchmarks.md)** — eval numbers, methodology, reproduction (3 min)
+
+---
+
+Internal links assume `docs/guides/` as root. See [AI_ASSISTED_DEVELOPMENT_SUMMARY.md](../AI_ASSISTED_DEVELOPMENT_SUMMARY.md) for repository overview.
