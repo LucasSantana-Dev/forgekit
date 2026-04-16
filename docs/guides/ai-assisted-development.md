@@ -8,6 +8,8 @@ primitive: mixed
 
 **Context + Standards + Gates = Repeatable Quality**
 
+> **Personal-branch extras:** this branch adds `handoff` + `resume` skills for cross-vendor (Claude ↔ Codex) session continuity. See `kit/core/skills/handoff*.md`. Not on `main` for governance reasons.
+
 The AAD pillar ensures every AI response respects your project's norms before the first word is written.
 
 ---

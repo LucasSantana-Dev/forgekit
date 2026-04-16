@@ -8,6 +8,8 @@ primitive: agent
 
 **Command → Agent → Skill Orchestration**
 
+> **Personal-branch extras:** this branch adds session-handoff agents and the `resume` skill for Claude ↔ Codex continuity. See `kit/core/skills/handoff*.md`. Excluded from `main` so the work-safe kit has zero vendor-CLI coupling.
+
 Route complex tasks to the right persona. Agents pick their own tools.
 
 ---
