@@ -77,6 +77,40 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   for `process` and `console` — the ESLint config now covers `.mjs` files and
   declares the node globals they need.
 
+## [0.13.0] - 2026-04-15
+
+### Features
+- portable env-var configuration (#55)
+- add rag + specs modules (#54)
+- handoff system, session-budget rules, resume anti-false-completion (#51)
+- MCP patterns, multi-agent orchestration, model serving, AI observability (#49)
+- skill auto-invocation — agents apply skills autonomously based on situation (#48)
+- add RAG, eval, and self-heal skills + pattern guides from AI engineering curriculum (#47)
+- add release helper preflight
+- enforce canonical agent tool registry (rebased) (#39)
+- consolidate setup-repo content — 10 portable skills, templates, and helper scripts (#37)
+- install portable hooks manifests for supported adapters (#35)
+- add company templates for solopreneur, startup MVP, agency, and open-source maintainers (#31)
+- add heartbeat routine system with schedule config and validation (#30)
+- add formal JSON schemas for all core configs (#29)
+- adapter parity, MCP expansion, c7score README, language reviewers, harness audit (#27)
+### Fixes
+- Backfill [0.12.0] changelog and wire ESLint into validate workflow
+- catch release preflight parity blockers (#41)
+- add oh-my compat support to remaining adapters (#28)
+### Documentation
+- add AI-assisted summary and Portuguese onboarding
+- refresh claude and codex guidance
+- add backlog map and README link (#32)
+### CI
+- add OpenCode plugin typecheck lane (#34)
+### Chores
+- bump prettier from 3.8.1 to 3.8.3 (#56)
+- bump trufflesecurity/trufflehog from 3.94.1 to 3.94.2 (#42)
+- bump eslint from 10.1.0 to 10.2.0 (#43)
+- release v0.12.0 — consolidated setup content, 29 skills (#38)
+- reconcile backlog state and add triage automation (#33)
+
 ## [0.12.0] — 2026-04-04
 
 ### Added
