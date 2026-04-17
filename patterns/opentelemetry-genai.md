@@ -249,5 +249,5 @@ Use OTel GenAI when:
 
 - [OpenTelemetry Instrumentation](https://opentelemetry.io/docs/instrumentation/python/) — language-specific setup
 - [OTel Collector Configuration](https://opentelemetry.io/docs/collector/configuration/) — advanced exporter/processor recipes
-- [NIST AI RMF: Measure (DO.2)](https://nvlpubs.nist.gov/nistpubs/AI/NIST.AI.100-2.pdf) — measurement and monitoring practices
+- [NIST AI RMF: Measure (DO.2)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf) — measurement and monitoring practices
 - [`patterns/agent-observability.md`](./agent-observability.md) — agent-level tracing beyond LLM calls
