@@ -78,7 +78,7 @@ It prompts for:
 
 ## What patterns are included?
 
-20 tool-agnostic playbooks covering the full AI-assisted development lifecycle:
+21 tool-agnostic playbooks covering the full AI-assisted development lifecycle:
 
 | Pattern                                                        | When you need it                                     |
 | -------------------------------------------------------------- | ---------------------------------------------------- |
@@ -102,6 +102,7 @@ It prompts for:
 | [MCP Tool Lazy-Loading](patterns/mcp-tool-lazy-loading.md)     | Reducing context bloat from 50+ tool schemas         |
 | [Agent Evals as CI](patterns/agent-evals-ci.md)               | Threshold-based PR gates for agent reliability       |
 | [Benchmark Reality Gap](patterns/benchmark-reality-gap.md)     | Agent eval accuracy when curated benchmarks overestimate |
+| [SKILL.md Adoption](patterns/skill-md-adoption.md)            | Vendor-neutral skill discovery and cross-tool auto-invocation |
 
 ## What skills are included?
 
