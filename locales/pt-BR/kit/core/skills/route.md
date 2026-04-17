@@ -1,48 +1,59 @@
 ---
 name: route
-description: Classifique a complexidade da tarefa e escolha o tier de modelo certo para evitar gasto excessivo em trabalho trivial
-triggers:
-  - route
-  - qual modelo
-  - seleção de modelo
-  - complexidade da tarefa
-  - escolher modelo
 ---
+
+> **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [ai-dev-toolkit-pt-br](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br/issues).
+
 
 # Route
 
-Classifique a tarefa e recomende um tier de modelo antes da execução.
+Route a task to the most fitting skill or agent. Meta-router above `dispatch`. Parses the user intent, checks the installed-skill inventory, and picks the best match (single skill or chain). If fuzzy, runs `recall` first.
 
-## Classificação
+## Purpose
 
-| Sinal | Barato | Médio | Caro |
-|---|---|---|---|
-| Linhas alteradas | <20, arquivo único | 20-200, vários arquivos | >200 ou cross-repo |
-| Profundidade de raciocínio | Lookup, grep, rename | Bug fix, escrita de testes | Arquitetura, migração |
-| Domínio | Config, docs, typo | Implementação padrão | Design multi-sistema |
+Eliminate ambiguity when a task could fit multiple skills or agents. Route makes the decision, either immediately (high confidence) or after a quick context-pack query (low confidence).
 
-## Overrides
+## When to use
 
-- Trabalho visual/UI → modelo com capacidade visual independentemente do tamanho
-- Docs/escrita → tier intermediário com limite alto de tokens
-- Auditoria de segurança → no mínimo tier intermediário
+- "I need to refactor the auth module but I'm not sure what approach"
+- "Is this a testing problem or a design problem?"
+- "Which skill handles this better: security-audit or code-review?"
 
-## Steps
+## Decision Protocol
 
-1. Estime linhas alteradas e quantidade de arquivos
-2. Avalie a profundidade de raciocínio necessária
-3. Verifique overrides de domínio
-4. Produza a recomendação
+1. **Parse intent** — Extract primary verb (implement, fix, refactor, test, deploy, document, review) and object (code, config, feature, test, docs, infra).
+2. **Check skill inventory** — Query `~/.claude/skills/` dirs + `/kit/core/skills/` for matching trigger keywords.
+3. **Score matches** — Confidence based on trigger word overlap + description relevance.
+4. **High confidence (≥0.85)** — Fire the skill immediately, no additional input.
+5. **Medium confidence (0.65–0.84)** — Run `recall` to pull context, then decide.
+6. **Low confidence (<0.65)** — Ask user for clarification or suggest top 3 candidates.
 
 ## Output
 
-```text
-Tier: cheap | mid | expensive
-Reason: <justificativa em uma frase>
+- **Single skill** → "Routing to `/security-audit`. Running now." + auto-invoke
+- **Chain** → "This needs 2 steps: 1) `code-review`, then 2) `simplify`" + invoke in order, await completion
+- **Ambiguous** → "Could be `test-driven-development` or `architecture-patterns`. Which fits?"
+
+## Example Invocations
+
+```
+User: "Route: I'm rewriting a REST API to GraphQL"
+Route: Queries skill inventory, finds `api-design-principles`, scores 0.89
+Output: "Routing to `api-design-principles`. Invoking now."
+
+User: "Route: Weird test timeout, maybe a race condition or a real bug?"
+Route: Scores `systematic-debugging` 0.78, `test-driven-development` 0.72
+Output: Runs recall("test timeout race condition"), gets pattern context
+Output: "Likely a race in beforeEach/afterEach. Routing to `systematic-debugging`."
+
+User: "Route: Need to set up GitHub Actions for monorepo CI"
+Route: Finds `ci-watch` (0.82), `turborepo` (0.75), `deploment-automation` (0.71)
+Output: "Multiple fits. Suggest: 1) `turborepo` (monorepo structure), 2) `ci-watch` (CI flow), or a chain. Which?"
 ```
 
-## Rules
+## References
 
-- Por padrão, use o tier mais barato capaz de lidar com a tarefa
-- Em caso de dúvida, comece barato e escale se falhar
-- Nunca use o tier caro para edições em um único arquivo com menos de 20 linhas
+- Skill inventory: `~/.claude/skills/` (local) + `kit/core/skills/` (toolkit)
+- Auto-invoke rules: `~/.claude/standards/skill-auto-invoke.md`
+- Dispatch skill: `dispatch` (lower-level routing)
+- Context retrieval: `recall` (pulls RAG index)

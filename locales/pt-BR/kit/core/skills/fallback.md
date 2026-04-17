@@ -1,66 +1,89 @@
 ---
 name: fallback
-description: Lide com falhas de modelo e provedor com cadeias automáticas de fallback
-triggers:
-  - fallback
-  - modelo falhou
-  - provedor fora
-  - rate limited
-  - trocar modelo
-  - tentar com outro modelo
 ---
+
+> **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [ai-dev-toolkit-pt-br](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br/issues).
+
 
 # Fallback
 
-Quando um modelo ou provedor falhar, siga a cadeia de fallback em vez de parar.
+Graceful degradation when primary approach fails. If preferred agent/skill/tool fails, try alternates in priority order. Record which path succeeded for future routing decisions.
 
-## Failure Types
+## Purpose
 
-| Tipo | Detecção | Ação |
-|---|---|---|
-| Rate limit | 429 / "rate limited" | Espere e tente novamente, depois faça fallback |
-| Falha de auth | 401 / 403 | Troque de provedor imediatamente |
-| Modelo indisponível | 404 / "model not found" | Troque para o modelo de fallback |
-| Timeout | Sem resposta em 60s | Tente uma vez de novo, depois faça fallback |
-| Overflow de contexto | "context too long" | Compacte o contexto (use a skill de context), tente novamente |
-| Qualidade da saída | Saída quebrada/vazia | Escale para o próximo tier |
+Increase resilience. Instead of crashing on first failure, attempt a ladder of fallback strategies. Log outcomes for analytics and future routing optimization.
 
-## Fallback Chain
+## When to use
 
-```text
-1. Tentar novamente com o mesmo modelo (lida com erros transitórios)
-2. Trocar para o modelo de fallback no mesmo tier
-3. Trocar para o provedor de fallback no mesmo tier
-4. Escalar para o próximo tier com o provedor principal
-5. Escalar para o próximo tier com o provedor de fallback
-6. STOP — reporte a falha com a cadeia completa tentada
+- Primary API rate-limited → try cheaper model or cached result
+- Preferred tool unavailable (Playwright, Firecrawl) → shell equivalent or simpler approach
+- Test framework broken → manual verification or other test harness
+- Deployment target down → try alternate region or staging
+
+## Fallback Ladder Pattern
+
+1. **Try primary** — Execute preferred approach.
+2. **On failure** — Capture error, severity, and root cause.
+3. **Try secondary** — Run alternate (lower cost, lower latency, or lower feature fidelity).
+4. **Try tertiary** — Final fallback (minimal viable approach).
+5. **Escalate** — If all fail, ask user or escalate to architect.
+6. **Record** — Log which path succeeded + why for future routing.
+
+## Example Ladder
+
+```
+Task: "Extract text from PDF at https://example.com/doc.pdf"
+
+Primary: Firecrawl + advanced extraction (costs $0.10, ~2s)
+  → Fails: Rate limit / unavailable
+  
+Secondary: pypdf + manual page parse (costs $0, ~5s)
+  → Succeeds: Extracts text (lower quality)
+  → Log: "fallback-pdf-extraction:pypdf" for next time
+
+---
+
+Task: "Validate auth flow under load"
+
+Primary: k6 load test (needs staging env)
+  → Fails: Staging DB offline
+  
+Secondary: Locust (Python, lower overhead)
+  → Succeeds: Simulates load
+  → Log: "fallback-loadtest:locust" for future
+  
+Tertiary: Manual curl loop (minimal viable)
+  → Would execute if Locust also failed
 ```
 
-## Provider Priority
+## Invocation
 
-Leia de `.forge-setup.json` ou `routing.json`:
-
-```text
-Primary: <provedor escolhido pelo usuário>
-Fallback: <provedor de fallback escolhido pelo usuário>
-Local: ollama (se habilitado)
+```bash
+fallback --task "Extract data" --primary "firecrawl" --secondary "pypdf" --tertiary "pdfplumber"
 ```
 
-## Rules
+Or via skill trigger: "Try fallback for PDF extraction"
 
-- Nunca degrade silenciosamente — sempre registre qual modelo/provedor está ativo
-- Rate limits: exponential backoff (1s → 2s → 4s → 8s → parar)
-- Falhas de auth pulam retry — troque de provedor imediatamente
-- Overflow de contexto dispara compactação antes do retry
-- Acompanhe custo/tokens totais por sessão para consciência operacional
-- Depois que o fallback ativar, continue no fallback — não volte no meio da tarefa
+## Logging Format
 
-## Output on Fallback
+Each fallback attempt logs to `~/.claude/logs/fallback.jsonl`:
 
-```text
-⚠ Fallback activated
-  Reason: <rate limit | auth | unavailable | timeout | overflow | quality>
-  From: <provider/model>
-  To: <provider/model>
-  Attempt: N/5
+```json
+{
+  "timestamp": "2026-04-16T14:22:00Z",
+  "task": "pdf-extraction",
+  "primary": "firecrawl",
+  "status": "failed",
+  "error": "rate_limit_exceeded",
+  "fallback_used": "pypdf",
+  "result": "success",
+  "cost_saved": 0.10,
+  "latency_impact": "+3s"
+}
 ```
+
+## References
+
+- Smart model select: `smart-model-select` (similar fallback for model choice)
+- Dispatch skill: `dispatch` (routes to alternates)
+- Error handling patterns: `best-practices/error-handling.md`
