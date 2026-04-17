@@ -1,6 +1,6 @@
 # Roadmap — ai-dev-toolkit
 
-_Auto-regenerated 2026-04-15 from `docs/specs/`._
+_Auto-regenerated 2026-04-16 from `docs/specs/`._
 
 ## Now (active)
 
