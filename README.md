@@ -78,7 +78,7 @@ It prompts for:
 
 ## What patterns are included?
 
-17 tool-agnostic playbooks covering the full AI-assisted development lifecycle:
+18 tool-agnostic playbooks covering the full AI-assisted development lifecycle:
 
 | Pattern                                                        | When you need it                                     |
 | -------------------------------------------------------------- | ---------------------------------------------------- |
@@ -99,6 +99,7 @@ It prompts for:
 | [Streaming Orchestration](patterns/streaming-orchestration.md) | Event-driven turn loops and token budgeting          |
 | [Tool Registry Patterns](patterns/tool-registry-patterns.md)   | Decoupling tool metadata from implementation         |
 | [Spec Driven Development](patterns/spec-driven-development.md) | Agents need a stable contract before building        |
+| [Benchmark Reality Gap](patterns/benchmark-reality-gap.md)     | Agent eval accuracy when curated benchmarks overestimate |
 
 ## What skills are included?
 
