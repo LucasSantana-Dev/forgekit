@@ -1,4 +1,6 @@
 ---
+
+> **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [ai-dev-toolkit-pt-br](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br/issues).
 name: fallback
 description: Graceful degradation when primary approach fails. Try alternates in priority order; record which path succeeded for future routing.
 triggers:
@@ -7,6 +9,8 @@ triggers:
   - "alternate approach"
   - "plan b"
 ---
+
+> **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [ai-dev-toolkit-pt-br](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br/issues).
 
 # Fallback
 
@@ -45,6 +49,8 @@ Secondary: pypdf + manual page parse (costs $0, ~5s)
   → Log: "fallback-pdf-extraction:pypdf" for next time
 
 ---
+
+> **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [ai-dev-toolkit-pt-br](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br/issues).
 
 Task: "Validate auth flow under load"
 
