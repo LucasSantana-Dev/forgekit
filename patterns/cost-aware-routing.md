@@ -157,4 +157,4 @@ Cost: (2500 * 0.9 discount) + 300 + 200 = 2800 input equivalent, saves ~$0.005
 
 - [`patterns/multi-model-routing.md`](./multi-model-routing.md) — task-based routing without cost focus
 - [`patterns/prompting-discipline.md`](./prompting-discipline.md) — prompt structure that reduces iterations
-- [`standards/session-budget.md`](../standards/session-budget.md) — cost governance for long-running sessions
+- `standards/session-budget.md` — cost governance for long-running sessions (user-local file)
