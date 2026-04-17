@@ -1,6 +1,4 @@
 ---
-
-> **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [ai-dev-toolkit-pt-br](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br/issues).
 name: orchestrate
 description: Coordinate multiple subagents/worktrees for parallel workstreams. Decomposes larger tasks into independent sub-tasks, dispatches each to a dedicated agent.
 triggers:
@@ -11,6 +9,7 @@ triggers:
 ---
 
 > **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [ai-dev-toolkit-pt-br](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br/issues).
+
 
 # Orchestrate
 

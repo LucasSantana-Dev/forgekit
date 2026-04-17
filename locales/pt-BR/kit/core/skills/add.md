@@ -1,6 +1,4 @@
 ---
-
-> **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [ai-dev-toolkit-pt-br](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br/issues).
 name: add
 description: Meta-adder for toolkit artifacts. Single entry point to add a skill, pattern, best-practice, hook, agent, or guide with correct frontmatter + sync to 4 publish targets.
 triggers:
@@ -13,6 +11,7 @@ triggers:
 ---
 
 > **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [ai-dev-toolkit-pt-br](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br/issues).
+
 
 # Add
 
@@ -57,42 +56,30 @@ add hook "name" --event "post-commit" --body "..."
 **Skills**:
 ```yaml
 ---
-
-> **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [ai-dev-toolkit-pt-br](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br/issues).
 name: <slug>
 description: <1 sentence>
 triggers:
   - "trigger 1"
   - "trigger 2"
 ---
-
-> **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [ai-dev-toolkit-pt-br](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br/issues).
 ```
 
 **Patterns**:
 ```yaml
 ---
-
-> **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [ai-dev-toolkit-pt-br](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br/issues).
 name: <slug>
 description: <1 sentence>
 context: <when to use>
 ---
-
-> **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [ai-dev-toolkit-pt-br](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br/issues).
 ```
 
 **Best-Practices**:
 ```yaml
 ---
-
-> **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [ai-dev-toolkit-pt-br](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br/issues).
 name: <slug>
 description: <1 sentence>
 applies_to: [framework1, framework2]
 ---
-
-> **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [ai-dev-toolkit-pt-br](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br/issues).
 ```
 
 ## Example: Add a Skill
