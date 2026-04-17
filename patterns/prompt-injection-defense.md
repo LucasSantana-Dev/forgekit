@@ -2,7 +2,7 @@
 
 Prompt injection is not a theoretical attack. By Q1 2026, the benchmark is real: CaMeL achieves 67% injection block rate on AgentDojo. NIST AI RMF frames it as agent hijacking. Defense is not a single gate; it's depth.
 
-> _Reference: [CaMeL: A Weakly Supervised Learning Framework for Community Detection](https://arxiv.org/abs/2312.03193), [AgentDojo Benchmark](https://agentdojo.zelda.dev), [NIST AI 100-2: Threat Modeling](https://nvlpubs.nist.gov/nistpubs/AI/NIST.AI.100-2.pdf), [OWASP LLM Top 10 (2023)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)._
+> _Reference: [CaMeL: A Weakly Supervised Learning Framework for Community Detection](https://arxiv.org/abs/2312.03193), [AgentDojo Benchmark](https://agentdojo.zelda.dev), [NIST AI 100-2: Threat Modeling](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf), [OWASP LLM Top 10 (2023)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)._
 
 ## Threat model
 
@@ -353,6 +353,6 @@ def retrieve_and_frame(query: str) -> str:
 
 - [`patterns/agent-sandboxing.md`](./agent-sandboxing.md) — Technical sandboxing implementation
 - [`patterns/permission-boundaries.md`](./permission-boundaries.md) — Permission model for agents
-- [NIST AI RMF: Threats and Defenses](https://nvlpubs.nist.gov/nistpubs/AI/NIST.AI.100-2.pdf) — Government threat modeling
+- [NIST AI RMF: Threats and Defenses](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf) — Government threat modeling
 - [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — Industry attack catalog
 - [CaMeL Benchmark](https://arxiv.org/abs/2312.03193) — Academic evaluation of injection defenses
