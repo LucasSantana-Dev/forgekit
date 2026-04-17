@@ -1,66 +1,92 @@
 ---
 name: fallback
-description: Handle model and provider failures with automatic fallback chains
+description: Graceful degradation when primary approach fails. Try alternates in priority order; record which path succeeded for future routing.
 triggers:
-  - fallback
-  - model failed
-  - provider down
-  - rate limited
-  - switch model
-  - retry with different model
+  - "try fallback"
+  - "primary failed"
+  - "alternate approach"
+  - "plan b"
 ---
 
 # Fallback
 
-When a model or provider fails, follow the fallback chain instead of stopping.
+Graceful degradation when primary approach fails. If preferred agent/skill/tool fails, try alternates in priority order. Record which path succeeded for future routing decisions.
 
-## Failure Types
+## Purpose
 
-| Type | Detection | Action |
-|---|---|---|
-| Rate limit | 429 / "rate limited" | Wait and retry, then fallback |
-| Auth failure | 401 / 403 | Switch provider immediately |
-| Model unavailable | 404 / "model not found" | Switch to fallback model |
-| Timeout | No response in 60s | Retry once, then fallback |
-| Context overflow | "context too long" | Compact context (use context skill), retry |
-| Output quality | Broken/empty output | Escalate to next tier |
+Increase resilience. Instead of crashing on first failure, attempt a ladder of fallback strategies. Log outcomes for analytics and future routing optimization.
 
-## Fallback Chain
+## When to use
 
-```text
-1. Retry same model (handles transient errors)
-2. Switch to fallback model at same tier
-3. Switch to fallback provider at same tier
-4. Escalate to next tier with primary provider
-5. Escalate to next tier with fallback provider
-6. STOP — report failure with full chain attempted
+- Primary API rate-limited → try cheaper model or cached result
+- Preferred tool unavailable (Playwright, Firecrawl) → shell equivalent or simpler approach
+- Test framework broken → manual verification or other test harness
+- Deployment target down → try alternate region or staging
+
+## Fallback Ladder Pattern
+
+1. **Try primary** — Execute preferred approach.
+2. **On failure** — Capture error, severity, and root cause.
+3. **Try secondary** — Run alternate (lower cost, lower latency, or lower feature fidelity).
+4. **Try tertiary** — Final fallback (minimal viable approach).
+5. **Escalate** — If all fail, ask user or escalate to architect.
+6. **Record** — Log which path succeeded + why for future routing.
+
+## Example Ladder
+
+```
+Task: "Extract text from PDF at https://example.com/doc.pdf"
+
+Primary: Firecrawl + advanced extraction (costs $0.10, ~2s)
+  → Fails: Rate limit / unavailable
+  
+Secondary: pypdf + manual page parse (costs $0, ~5s)
+  → Succeeds: Extracts text (lower quality)
+  → Log: "fallback-pdf-extraction:pypdf" for next time
+
+---
+
+Task: "Validate auth flow under load"
+
+Primary: k6 load test (needs staging env)
+  → Fails: Staging DB offline
+  
+Secondary: Locust (Python, lower overhead)
+  → Succeeds: Simulates load
+  → Log: "fallback-loadtest:locust" for future
+  
+Tertiary: Manual curl loop (minimal viable)
+  → Would execute if Locust also failed
 ```
 
-## Provider Priority
+## Invocation
 
-Read from `.forge-setup.json` or `routing.json`:
-
-```text
-Primary: <user-selected provider>
-Fallback: <user-selected fallback>
-Local: ollama (if enabled)
+```bash
+fallback --task "Extract data" --primary "firecrawl" --secondary "pypdf" --tertiary "pdfplumber"
 ```
 
-## Rules
+Or via skill trigger: "Try fallback for PDF extraction"
 
-- Never silently degrade — always log which model/provider is active
-- Rate limits: exponential backoff (1s → 2s → 4s → 8s → stop)
-- Auth failures skip retry — switch provider immediately
-- Context overflow triggers compaction before retry
-- Track total cost/tokens per session for awareness
-- After fallback activates, continue on fallback — do not switch back mid-task
+## Logging Format
 
-## Output on Fallback
+Each fallback attempt logs to `~/.claude/logs/fallback.jsonl`:
 
-```text
-⚠ Fallback activated
-  Reason: <rate limit | auth | unavailable | timeout | overflow | quality>
-  From: <provider/model>
-  To: <provider/model>
-  Attempt: N/5
+```json
+{
+  "timestamp": "2026-04-16T14:22:00Z",
+  "task": "pdf-extraction",
+  "primary": "firecrawl",
+  "status": "failed",
+  "error": "rate_limit_exceeded",
+  "fallback_used": "pypdf",
+  "result": "success",
+  "cost_saved": 0.10,
+  "latency_impact": "+3s"
+}
 ```
+
+## References
+
+- Smart model select: `smart-model-select` (similar fallback for model choice)
+- Dispatch skill: `dispatch` (routes to alternates)
+- Error handling patterns: `best-practices/error-handling.md`
