@@ -6,76 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.15.0] - 2026-04-16
+
 ### Added
 
-- 4 new portable skills and patterns from AI engineering curriculum (Phases 13, 16, 17):
-  - `kit/core/skills/mcp-patterns.md` — MCP server implementation: tool schema design,
-    stateful tools, async/streaming patterns, error handling, security (input sanitization,
-    rate limiting, authorization), and testing strategy
-  - `kit/core/skills/multi-agent.md` — Multi-agent orchestration: DAG execution,
-    orchestrator-worker and fan-out/fan-in team patterns, capability-based task routing,
-    state sharing, failure recovery with retry→escalate ladder
-  - `kit/core/skills/model-serving.md` — Inference server selection: vLLM vs TGI vs
-    Ollama comparison, decision tree, quantization guide (FP16→INT4 AWQ), batching
-    patterns (dynamic/continuous/static), and scaling rules
-  - `patterns/ai-observability.md` — Production AI monitoring: TTFT/TPS/cost/error-rate
-    metrics with healthy/alert thresholds, LLM-as-judge output scoring, data drift
-    detection, OTel instrumentation patterns, and production go-live checklist
-- `kit/core/agents.json`: multi-agent added to orchestrator skills; mcp-patterns added
-  to backend; model-serving added to devops; 7 new specialty routing entries
-  (mcp-server, tool-schema, multi-agent, dag-execution, agent-teams, model-serving,
-  ai-observability, inference-server)
-- `kit/core/skills/auto-invoke.md`: routing table and decision protocol extended with
-  3 new auto-trigger rules (mcp-patterns, multi-agent, model-serving)
-
-- ESLint CI job (`.github/workflows/validate.yml`) so `.mjs` lint errors are
-  caught on every PR instead of only in local runs.
-- **Skill auto-invocation system** — agents now know when to apply each skill
-  without being manually triggered:
-  - `kit/core/rules.md`: new `skill-auto-invoke` section with per-skill trigger
-    conditions (rag, eval, self-heal, debug, context, memory, secure, verify)
-  - `rules/CLAUDE.md`: matching auto-invocation routing table and per-skill
-    action descriptions installed into every project's agent instructions
-  - `kit/core/agents.json`: rag + eval + self-heal added to orchestrator skills;
-    rag + eval added to backend; rag added to researcher; new specialty routing
-    entries for rag-pipeline, vector-search, document-retrieval, llm-eval,
-    agent-recovery, error-recovery
-  - `kit/core/hooks.json`: three new PostToolUse rules (suggest-self-heal on
-    bash error, suggest-eval after prompt file write, suggest-memory at context
-    limit) and a SessionEnd rule that applies memory skill at every session end
-  - `kit/core/skills/auto-invoke.md`: new meta-skill with routing table,
-    decision protocol, and rules for when NOT to auto-invoke
-- 3 new portable skills derived from AI engineering curriculum patterns:
-  - `kit/core/skills/rag.md` — RAG pipeline skill: chunking strategy, embedding
-    selection, hybrid retrieval (dense + sparse), cross-encoder reranking, context
-    augmentation, and a debugging checklist with output report format
-  - `kit/core/skills/eval.md` — LLM evaluation skill: automated metrics (ROUGE,
-    BERTScore, Pass@K), LLM-as-judge protocol, golden dataset pattern, regression
-    gate, and eval report format
-  - `kit/core/skills/self-heal.md` — Self-healing agent skill: recovery decision
-    tree, retry rules with exponential backoff, checkpoint pattern, diagnosis-first
-    fix protocol, escalation ladder, and hard-block list
-- 2 new pattern documents:
-  - `patterns/rag-architecture.md` — Comprehensive RAG patterns: naive RAG,
-    advanced RAG (query expansion + hybrid retrieval + reranking), hierarchical RAG,
-    agentic RAG, chunking strategies, embedding selection, evaluation, failure modes,
-    and a production checklist
-  - `patterns/llm-evaluation.md` — LLM evaluation patterns: 4-layer evaluation
-    stack (automated metrics, LLM-as-judge, human preference, production monitoring),
-    golden dataset build process, regression gate design, eval-driven development
-    workflow, common pitfalls, and report template
-- Enhanced `kit/core/skills/memory.md` with structured memory types: episodic
-  (timestamped event log with what/why/outcome/gotcha format) and semantic
-  (domain concepts and entity relationship patterns)
-- Enhanced `kit/core/skills/context.md` with 3 compression strategies (prune,
-  summarize, checkpoint), context prioritization ranking, and 80% capacity
-  hard-checkpoint rule
+- **Agent Sandboxing Patterns** — Isolation strategies for untrusted agent code: process boundaries, capability revocation, audit logging, recovery mechanisms, and sandboxing layer selection guide
+- **OpenTelemetry GenAI Instrumentation** — Production observability for multi-agent systems: span creation for agent/tool/LLM steps, metric collection (latency, token count, cost), trace context propagation, and dashboard templates
+- **Prompt Injection Defense** — Attack surface analysis and mitigation strategies: input sanitization patterns, structured parsing, output validation, and detection rules
+- **Cost-Aware Routing** — Token/cost prediction before model selection: embedding vector similarity search over model capability profiles, cost-latency Pareto frontiers, budgeted sampling, and telemetry-driven model assignment
+- **Local-First Agents** — Edge deployment patterns: embedding cache strategies, on-device inference routing, network failure recovery, and sync protocols with cloud fallback
+- **Reasoning Model Prompting** — Structured thought patterns for o1/Claude-with-thinking: chain-of-thought scaffolding, hypothesis validation, error injection during reasoning, and token-budget planning
+- **AI Skill Stewardship & Prompting Discipline** best practices — Governance patterns for maintaining a curated skill library: skill lifecycle (conception → triage → graduation → archival), version-pinned imports, skill auto-invocation conditions, and prompting discipline standards (explicit grounding, isolation, testing)
+- **Plugin Audit Skill** (`kit/core/skills/plugin-audit.md`) — Marketplace governance: version compatibility checks, security scanning, feature gap analysis, upgrade path validation, and certification readiness checklist
+- **Bilingual README Sync Skill** (`kit/core/skills/bilingual-readme-sync.md`) — Multi-language documentation automation: PT ↔ EN synchronization, diff detection, translator sourcing, and Markdown structure preservation
+- Environment variable generalization across multi-repo setups: `CURATED_REPOS` now accepts comma-separated paths (both file and remote URLs); email placeholder moved to env config; `kit/core/rules.md` and `agents.json` now reference env-substituted values for broader deployment flexibility
+- GitHub Actions Marketplace discovery pattern — automated audit of installed GitHub Apps and Actions for deprecation + cost tracking
 
 ### Fixed
 
-- `scripts/reconcile-backlog-state.mjs` no longer reports 8 `no-undef` errors
-  for `process` and `console` — the ESLint config now covers `.mjs` files and
-  declares the node globals they need.
+- None (clean release)
 
 ## [0.14.0] - 2026-04-15
 
