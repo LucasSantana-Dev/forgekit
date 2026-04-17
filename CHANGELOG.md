@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.16.0] - 2026-04-16
+
+### Added
+
+- **3 New Patterns** — `mcp-tool-lazy-loading` (dynamic MCP tool registration), `agent-evals-ci` (autonomous evaluation pipeline in GitHub Actions), `benchmark-reality-gap` (empirical vs. theoretical performance analysis)
+- **5 New Autonomous-Dev Skills** — `route.md` (request routing), `orchestrate.md` (multi-step task coordination), `fallback.md` (graceful degradation), `add.md` (code generation), `secure.md` (security analysis)
+
+### Fixed
+
+- NIST AI 100-2 reference link in patterns documentation
+
+### Changed
+
+- Roadmap refresh for Q2 2026
+
+
 ## [0.15.0] - 2026-04-16
 
 ### Added
