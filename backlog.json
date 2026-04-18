@@ -164,24 +164,26 @@
       "title": "Document skill format differences for Cursor and Windsurf",
       "description": "Cursor uses .mdc rules format, Windsurf uses .windsurfrules. Document how kit/core/skills/*.md map to each tool's native skill/rule format and update adapters if needed.\n\nScope: implementations/cursor/README.md, implementations/ (new windsurf/README.md)",
       "priority": "low",
-      "status": "backlog",
+      "status": "done",
       "tags": [
         "docs",
         "cross-tool"
       ],
-      "dependsOn": null
+      "dependsOn": null,
+      "completedAt": 1776672000000
     },
     {
       "id": "antigravity-impl",
       "title": "Create implementations/antigravity/ reference guide",
       "description": "Antigravity adapter exists but has no reference implementation docs. Create setup guide similar to claude-code/codex/opencode.\n\nScope: implementations/antigravity/ (new directory + README.md)",
       "priority": "low",
-      "status": "backlog",
+      "status": "done",
       "tags": [
         "docs",
         "antigravity"
       ],
-      "dependsOn": null
+      "dependsOn": null,
+      "completedAt": 1776672000000
     },
     {
       "id": "rag-kit",
