@@ -1,225 +1,128 @@
 # ai-dev-toolkit Backlog Map
 
-_Last updated: 2026-04-03_
+_Last updated: 2026-04-18_
 
 ## Snapshot
 
-- Current branch inspected: `release/v0.11.0`
+- Current branch inspected: `main`
 - Default branch: `main`
+- Latest release: `v0.16.0`
 - Open PRs: `0`
 - Open issues: `0`
 - Primary backlog source: `backlog.json`
-- Strategic roadmap source: `.claude/plans/universal-toolkit-installer.md`
+- Strategic roadmap source: `docs/roadmap.md` (regenerated from `docs/specs/`)
 
 ## Evidence Summary
 
-### Confirmed urgent signals
+### Confirmed recent shipments
 
-- GitHub latest release is now **`v0.11.0`**.
-- The highest-value next work has moved from release execution to post-release governance hardening.
-- `backlog.json` is the primary operational queue and should stay aligned with merged PR and release state.
-- The strongest near-term quality gains come from schemas, adapter parity, and recurring backlog hygiene.
+- `v0.16.0` released (PR #79).
+- Dev-assets-sync workspace backup skill shipped (PR #81).
+- Vendor-neutral `SKILL.md` adoption pattern shipped (PR #80).
+- Autonomous routing skills (`loop`, `route`, `orchestrate`, `dispatch`, `fallback`, `add`, `secure`) shipped (PR #78).
+- MCP tool lazy-loading + agent-evals-as-CI patterns shipped (PR #76).
+- Benchmark-reality gap pattern shipped (PR #77).
+- EN→PT sync skill shipped (PR #72).
+- AI Guides wave 1 — primitives, hooks pack, governance, benchmarks, adoption playbook, agents migration, index — shipped (PR #61).
+- RAG kit + specs kit shipped.
+- Portable hook manifest (`kit/core/hooks.json`) + schema shipped.
+- MCP tool registry (`kit/core/mcp.json`) shipped with 10 servers across 3 profiles.
+- `parity-audit-script` (`scripts/parity-audit.js`) shipped.
+- `memory-skill`, `dispatch-skill`, `schedule-skill` shipped.
+- Formal JSON schemas for all kit/core configs shipped.
 
-### Confirmed missing implementation surfaces
+### Confirmed remaining gaps
 
-- `kit/core/schedules.json` is missing.
-- `kit/plugins/` is missing.
-- `implementations/antigravity/` is missing.
-- `implementations/windsurf/README.md` is missing.
-
-### Confirmed existing surfaces
-
-- `kit/core/mcp.json` exists.
-- `kit/core/agents.json` exists.
-- `kit/core/routing.json` exists.
-- `kit/schema/` exists with 9 JSON schemas.
-- `implementations/cursor/README.md` exists.
-- `companies/fullstack-forge/` exists, but no additional company templates were found.
+- `kit/core/skills/resume.md` missing — listed as a key autonomy skill in README but no dedicated file exists.
+- `kit/core/agents.json` has no `tools` allowlist per agent tier.
+- `kit/core/token-optimization.json` has no `budgets` block for per-session / per-tier caps.
+- `implementations/antigravity/` missing.
+- `implementations/windsurf/README.md` missing.
+- `kit/plugins/` missing (design phase only — not queued for near-term).
 
 ---
 
 ## Now
 
-### 1. Stabilize post-release backlog governance
+### 1. Ship `resume` skill (close README gap)
 
 **Why now**
 
-- `v0.11.0` is already published, so the remaining risk is backlog/process drift rather than release execution.
-- The repo now depends on `backlog.json` as an operational control surface for follow-on work.
-
-**Evidence**
-
-- GitHub latest release → `v0.11.0`
-- `backlog.json` still carries multiple governance and parity items as the active next work
-- Human-readable backlog context was missing before this document
+- `README.md` promotes `resume` as a first-class autonomy skill but the file does not exist.
+- Functionality is split across `self-heal.md` (recovery) and `checkpoint.md` (WIP stash).
 
 **First action**
 
-- Keep `backlog.json` and the human-readable backlog in sync:
-  1. reconcile shipped work to `done`
-  2. add drift detection and recurring triage
-  3. prioritize the next governance lanes for shipment
+- Create `kit/core/skills/resume.md` consolidating the two flows; update `loop.md` to delegate.
 
-### 2. Formalize JSON schemas for forge-kit core config
+### 2. Agent tool-access allowlist
 
 **Why now**
 
-- The repo already treats `agents.json`, `routing.json`, and `mcp.json` as structured contracts.
-- Missing schemas are the clearest DX + governance gap after release readiness.
-
-**Evidence**
-
-- `backlog.json` → `json-schemas` is `high` + `ready`
-- `kit/schema/` is currently missing
-- Existing config files already reference schema paths (`agents.json`, `routing.json`)
+- `backlog.json → agent-tool-access` is the only open `high+ready` governance item.
+- Prevents expensive opus agents from doing cheap grep work.
 
 **First action**
 
-- Define the minimal schema set and validation contract for:
-  - `agents.json`
-  - `routing.json`
-  - `mcp.json`
-  - `autopilot.json`
-  - `loop.json`
-  - `token-optimization.json`
-  - `hooks.json`
+- Add `tools: []` field per agent in `kit/core/agents.json`, update schema + governance tests.
 
-### 3. Close the highest-value adapter parity gaps
+### 3. Cost budgets
 
 **Why now**
 
-- The toolkit promise is cross-tool portability; parity gaps undermine the headline value proposition.
-- This work is already explicitly queued and tightly coupled to the installer story.
-
-**Evidence**
-
-- `backlog.json` → `adapter-parity-close` is `high` + `ready`
-- README and `kit/` position forge-kit as multi-tool, but parity work remains open
+- `backlog.json → cost-tracking` is `high+ready`.
+- Session + per-agent caps are needed to land autonomous loops safely.
 
 **First action**
 
-- Re-run or reconstruct a parity matrix and convert it into adapter-specific subtasks.
+- Extend `kit/core/token-optimization.json` with `budgets` block; refresh schema; extend `cost.md` docs.
 
 ---
 
 ## Next
 
-### 4. Fill missing implementation docs/adapters
+### 4. Release v0.17.0
 
-**Why next**
+Bundles `resume` skill, agent tool allowlist, cost budgets, and the state reconciliation in this PR.
 
-- These are concrete, bounded gaps that improve trust and adoption after the release and core schema work.
+### 5. Antigravity implementation doc
 
-**Evidence**
+Create `implementations/antigravity/README.md` mirroring Cursor/Codex structure.
 
-- `implementations/antigravity/` missing
-- `implementations/windsurf/README.md` missing
-- `implementations/cursor/README.md` already present
+### 6. Windsurf implementation doc + Cursor/Windsurf skill-format parity
 
-**First action**
-
-- Define a minimum implementation-doc contract and apply it to Antigravity + Windsurf.
-
-### 5. Expand company templates beyond `fullstack-forge`
-
-**Why next**
-
-- Template breadth is an adoption multiplier, but it depends on the core forge-kit surface stabilizing first.
-
-**Evidence**
-
-- `backlog.json` → `company-templates` exists
-- Only `companies/fullstack-forge/` is currently present
-
-**First action**
-
-- Pick the first two templates with the highest adoption leverage:
-  - `solopreneur`
-  - `startup-mvp`
-
-### 6. Stabilize backlog governance itself
-
-**Why next**
-
-- There are no open GitHub issues/PRs, so backlog visibility currently lives inside the repo.
-- Without a clear human-readable map, backlog.json alone is easy to ignore.
-
-**Evidence**
-
-- `gh pr list` → `[]`
-- `gh issue list` → `[]`
-- `backlog.json` exists, but there was no canonical markdown backlog before this map
-
-**First action**
-
-- Decide whether `backlog.json` remains the source of truth with `BACKLOG.md` as a human-readable projection.
+Create `implementations/windsurf/README.md`; document `.mdc` vs `.windsurfrules` mapping from `kit/core/skills/*.md`.
 
 ---
 
 ## Later
 
-### 7. Add schedule / heartbeat automation
+### 7. Plugin system design
 
 **Why later**
 
-- Important for autonomous workflows, but not a release blocker.
-- Best done after the core config/schema story is stable.
-
-**Evidence**
-
-- `backlog.json` → `heartbeat-schedule`
-- `kit/core/schedules.json` is missing
-
-**First action**
-
-- Define 3 concrete schedule use cases before inventing schema shape.
-
-### 8. Design the plugin system
-
-**Why later**
-
-- It is a broad architecture surface and should not outrun parity + core config maturity.
-
-**Evidence**
-
-- `backlog.json` → `plugin-system`
-- `kit/plugins/` is missing
+- Broad architecture surface; depends on parity + core config maturity being stable.
+- `backlog.json → plugin-system` is `low+backlog`, gated on `hooks-manifest` (now done).
 
 **First action**
 
 - Write a short architecture note clarifying plugin boundaries: skills, hooks, MCP config, providers.
 
-### 9. Align the repo backlog with the broader forge-kit roadmap
+### 8. Company template breadth
 
-**Why later**
-
-- `.claude/plans/universal-toolkit-installer.md` suggests a larger initiative than the current backlog.json expresses.
-- This should become an epic map once the release line is stable.
-
-**Evidence**
-
-- `.claude/plans/universal-toolkit-installer.md`
-
-**First action**
-
-- Extract roadmap milestones from that plan and link them to backlog epics.
+Expand beyond `companies/fullstack-forge` to cover `solopreneur` and `startup-mvp` adoption paths once core surface is stable.
 
 ---
 
 ## Cleanup / De-risking
 
-### A. Separate “missing by design” from “missing by omission”
+### A. Drift detection
 
-For each missing path, add one disposition:
+Weekly GitHub Action `backlog-triage` runs `npm run backlog:check`. Any drift between `backlog.json` and shipped artifacts must be reconciled in the same cycle.
 
-- `required-now`
-- `planned-next`
-- `deferred`
-- `intentionally-out-of-scope`
+### B. Release-gate guard
 
-### B. Make release state impossible to drift silently
-
-Add a release gate that fails if:
+Release pipeline already fails if:
 
 - branch name implies a higher version than `package.json`
 - `CHANGELOG.md` unreleased content exists for a tagged release branch
@@ -227,23 +130,22 @@ Add a release gate that fails if:
 
 ### C. Keep local install noise out of planning
 
-If your checkout contains local workspace noise such as `node_modules/`, keep planning and backlog work in a clean worktree to avoid false backlog signals.
+Keep planning and backlog work in a clean worktree to avoid `node_modules/` noise.
 
 ---
 
 ## Recommended execution order
 
-1. Ship `v0.11.0`
-2. Add JSON schemas + validation enforcement
-3. Close adapter parity gaps
-4. Fill Antigravity/Windsurf implementation docs
-5. Expand company templates
-6. Add schedule layer
-7. Design plugin system
-8. Fold universal installer roadmap into long-term epics
+1. Land `resume` skill
+2. Agent tool allowlist
+3. Cost budgets
+4. Cut `v0.17.0`
+5. Antigravity + Windsurf implementation docs
+6. Plugin system design note
+7. Additional company templates
 
 ---
 
 ## Immediate recommended next task
 
-**Ship the next post-release governance lane** with explicit checklist + verification gates.
+Create `kit/core/skills/resume.md` and update `loop.md` delegation — this closes the advertised-but-missing autonomy skill in the README.
