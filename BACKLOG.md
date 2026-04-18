@@ -33,8 +33,6 @@ _Last updated: 2026-04-18_
 
 ### Confirmed remaining gaps
 
-- `implementations/antigravity/` missing.
-- `implementations/windsurf/README.md` missing.
 - `kit/plugins/` missing (design phase only — not queued for near-term).
 - Additional company templates beyond `fullstack-forge` (deferred until core parity stabilizes).
 
@@ -57,19 +55,13 @@ _Last updated: 2026-04-18_
 
 ## Next
 
-### 2. Antigravity implementation doc
-
-Create `implementations/antigravity/README.md` mirroring Cursor/Codex structure.
-
-### 3. Windsurf implementation doc + Cursor/Windsurf skill-format parity
-
-Create `implementations/windsurf/README.md`; document `.mdc` vs `.windsurfrules` mapping from `kit/core/skills/*.md`.
+_(none — all Now/Next items land in v0.17.0)_
 
 ---
 
 ## Later
 
-### 4. Plugin system design
+### 2. Plugin system design
 
 **Why later**
 
@@ -80,7 +72,7 @@ Create `implementations/windsurf/README.md`; document `.mdc` vs `.windsurfrules`
 
 - Write a short architecture note clarifying plugin boundaries: skills, hooks, MCP config, providers.
 
-### 5. Company template breadth
+### 3. Company template breadth
 
 Expand beyond `companies/fullstack-forge` to cover `solopreneur` and `startup-mvp` adoption paths once core surface is stable.
 
@@ -108,10 +100,9 @@ Keep planning and backlog work in a clean worktree to avoid `node_modules/` nois
 
 ## Recommended execution order
 
-1. Cut `v0.17.0`
-2. Antigravity + Windsurf implementation docs
-3. Plugin system design note
-4. Additional company templates
+1. Cut `v0.17.0` (ships resume skill, tier governance, state reconciliation)
+2. Plugin system design note
+3. Additional company templates
 
 ---
 
