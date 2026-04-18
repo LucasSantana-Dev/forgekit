@@ -9,62 +9,67 @@
       "title": "Portable hook manifest (kit/core/hooks.json)",
       "description": "Create a tool-agnostic hook definition format that adapters translate into each tool's native hook system. Covers PreToolUse, PostToolUse, SessionStart, SessionEnd. Inspired by claw-code's hook execution pipeline.\n\nScope: kit/core/hooks.json (new), kit/adapters/*.sh (update to install hooks)\nTest: Add validateKit() checks for hook schema validity.",
       "priority": "high",
-      "status": "ready",
+      "status": "done",
       "tags": [
         "governance",
         "hooks",
         "cross-tool"
       ],
-      "dependsOn": null
+      "dependsOn": null,
+      "completedAt": 1776672000000
     },
     {
       "id": "agent-tool-access",
       "title": "Per-agent tool access control in agents.json",
       "description": "Define which tools each agent tier can use. Prevents expensive opus agents from doing cheap grep work. Adds a 'tools' allowlist per agent in agents.json.\n\nScope: kit/core/agents.json (update)\nTest: Validate tool references exist in a tool registry.",
       "priority": "high",
-      "status": "ready",
+      "status": "done",
       "tags": [
         "governance",
         "routing",
         "cost-control"
       ],
-      "dependsOn": null
+      "dependsOn": null,
+      "completedAt": 1776672000000
     },
     {
       "id": "cost-tracking",
       "title": "Cost tracking config and session budget limits",
       "description": "Add cost awareness to token-optimization.json: per-session budget caps, per-agent cost limits, cost report format. Inspired by claw-code's cost_tracker.py and costHook.py.\n\nScope: kit/core/token-optimization.json (update), kit/core/skills/cost.md (new skill)\nTest: Validate cost config structure.",
       "priority": "high",
-      "status": "ready",
+      "status": "done",
       "tags": [
         "cost-control",
         "token-optimization"
       ],
-      "dependsOn": null
+      "dependsOn": null,
+      "completedAt": 1776672000000
     },
     {
       "id": "dispatch-skill",
       "title": "Create dispatch skill for spawning subtasks",
       "description": "Skill for breaking work into parallel subtasks, assigning to worker agents, and collecting results. Maps to claw-code's Task*/Team* tool pattern but as a portable skill.\n\nScope: kit/core/skills/dispatch.md (new)\nTest: Validate skill frontmatter.",
       "priority": "high",
-      "status": "ready",
+      "status": "done",
       "tags": [
         "orchestration",
         "skills"
       ],
-      "dependsOn": null
+      "dependsOn": null,
+      "completedAt": 1776672000000
     },
     {
       "id": "schedule-skill",
       "title": "Create schedule skill for recurring automated runs",
       "description": "Skill for defining recurring agent tasks (cron-like). Covers CI monitoring, dependency updates, security scans on schedule. Inspired by claw-code's ScheduleCronTool.\n\nScope: kit/core/skills/schedule.md (new)\nTest: Validate skill frontmatter.",
       "priority": "medium",
-      "status": "ready",
+      "status": "done",
       "tags": [
         "automation",
         "skills"
       ],
-      "dependsOn": null
+      "dependsOn": null,
+      "completedAt": 1776672000000
     },
     {
       "id": "merge-pr-24",
@@ -96,36 +101,39 @@
       "title": "Expand kit/core/mcp.json with recommended MCP servers per tool",
       "description": "Current mcp.json is minimal. Add recommended servers (filesystem, git, fetch, context7, sequential-thinking) with per-tool enable/disable guidance.\n\nScope: kit/core/mcp.json (update), adapters (update MCP merge logic)",
       "priority": "medium",
-      "status": "backlog",
+      "status": "done",
       "tags": [
         "mcp",
         "cross-tool"
       ],
-      "dependsOn": null
+      "dependsOn": null,
+      "completedAt": 1776672000000
     },
     {
       "id": "memory-skill",
       "title": "Create memory skill for cross-session persistence",
       "description": "Skill for syncing decisions, preferences, and project state to persistent memory. Covers what to remember, where to store it, and how to recall it.\n\nScope: kit/core/skills/memory.md (new)",
       "priority": "medium",
-      "status": "backlog",
+      "status": "done",
       "tags": [
         "memory",
         "skills"
       ],
-      "dependsOn": null
+      "dependsOn": null,
+      "completedAt": 1776672000000
     },
     {
       "id": "parity-audit-script",
       "title": "Create parity audit script comparing kit/core capabilities across tools",
       "description": "Inspired by claw-code's PARITY.md \u2014 a script that audits which features each tool adapter actually supports vs what kit/core defines. Produces a gap report.\n\nScope: scripts/parity-audit.js (new), test (new)",
       "priority": "medium",
-      "status": "backlog",
+      "status": "done",
       "tags": [
         "governance",
         "quality"
       ],
-      "dependsOn": null
+      "dependsOn": null,
+      "completedAt": 1776672000000
     },
     {
       "id": "json-schemas",

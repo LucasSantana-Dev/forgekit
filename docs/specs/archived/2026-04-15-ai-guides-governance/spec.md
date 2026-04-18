@@ -1,9 +1,10 @@
 ---
-status: proposed
+status: shipped
 created: 2026-04-15
 owner: lucassantana
-pr: 
+pr: 61
 tags: docs,guides
+shipped: 2026-04-18
 ---
 
 # ai-guides-governance

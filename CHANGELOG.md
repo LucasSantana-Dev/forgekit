@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.17.0] - 2026-04-18
+
+### Added
+
+- **`resume` skill** (`kit/core/skills/resume.md`) — first-class session recovery that detects state from handoff files, `.agents/plans/*.json`, git, and open PRs, then re-enters the loop at the last-incomplete phase without repeating work. Closes the README gap where `resume` was listed but had no dedicated file.
+- **`SKILL.md` adoption pattern** (#80) — vendor-neutral skill discovery pattern that lets multiple AI tools find the same skill file without duplicating content.
+- **`dev-assets-sync` workspace backup skill** (#81) — on-demand rsync of Claude/Codex configs, memories, standards, hooks, skills-index, and per-project dev files to a private `dev-assets` repo.
+- **Tier-based tool governance test** — new CI invariant that haiku agents cannot hold write-access tools and only opus agents can hold delegate-access tools (Agent spawn).
+
+### Changed
+
+- **`loop` skill `Resume` section** now delegates to the new `resume` skill instead of carrying inline recovery steps.
+- **BACKLOG.md + `docs/roadmap.md` reconciled** — 7 AI-guides specs (PR #61) promoted from `proposed` to `archived/shipped`; `backlog.json` entries for `hooks-manifest`, `dispatch-skill`, `schedule-skill`, `memory-skill`, `parity-audit-script`, `mcp-tool-registry`, `agent-tool-access`, and `cost-tracking` marked `done` to match shipped artifacts in-repo.
+- **BACKLOG.md snapshot header** refreshed from stale `v0.11.0` (2026-04-03) to `v0.16.0` + current remaining gaps.
+
 ## [0.16.0] - 2026-04-16
 
 ### Added

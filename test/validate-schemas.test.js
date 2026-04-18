@@ -195,6 +195,38 @@ describe("validateKit", () => {
     }
   });
 
+  test("agent tool access respects tier governance rules", () => {
+    const agents = JSON.parse(
+      fs.readFileSync(path.join(rootDir, "kit/core/agents.json"), "utf8"),
+    );
+    const registry = agents.toolRegistry;
+    const writeTools = Object.entries(registry)
+      .filter(([, m]) => m.access === "write")
+      .map(([t]) => t);
+    const delegateTools = Object.entries(registry)
+      .filter(([, m]) => m.access === "delegate")
+      .map(([t]) => t);
+
+    for (const [name, agent] of Object.entries(agents.agents)) {
+      if (agent.tier === "haiku") {
+        const writesHeld = agent.tools.filter((t) => writeTools.includes(t));
+        expect({ agent: name, writesHeld }).toEqual({
+          agent: name,
+          writesHeld: [],
+        });
+      }
+      if (agent.tier !== "opus") {
+        const delegatesHeld = agent.tools.filter((t) =>
+          delegateTools.includes(t),
+        );
+        expect({ agent: name, delegatesHeld }).toEqual({
+          agent: name,
+          delegatesHeld: [],
+        });
+      }
+    }
+  });
+
   test("agents include specialty roles with org chart", () => {
     const agents = JSON.parse(
       fs.readFileSync(path.join(rootDir, "kit/core/agents.json"), "utf8"),
