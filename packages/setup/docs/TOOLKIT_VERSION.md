@@ -4,7 +4,7 @@
 
 The `ai-dev-toolkit-setup` repository bootstraps machines with system packages, shell helpers, and tmux workflows. It consumes canonical content from the companion `ai-dev-toolkit` repository at a pinned semantic version tag.
 
-- **Pinned via**: `TOOLKIT_VERSION` file (currently: v0.14.0)
+- **Pinned via**: `TOOLKIT_VERSION` file (currently: v0.17.0)
 - **Canonical source**: [LucasSantana-Dev/ai-dev-toolkit](https://github.com/LucasSantana-Dev/ai-dev-toolkit)
 - **Why a pin?**: Ensures reproducible, versioned bootstraps. New toolkit features only become available here after a release and pin bump.
 

@@ -167,7 +167,7 @@ release-tag-github --repo /path/to/repo --tag v1.2.3
 
 When using `--changelog`, the target repository must already have a `CHANGELOG.md` file with a `## [Unreleased]` section.
 
-Note: this repo is pinned to `TOOLKIT_VERSION=0.14.0`. Newly merged canonical helper capabilities become available after an `ai-dev-toolkit` release tag and an explicit pin bump in this repo.
+Note: this repo is pinned to `TOOLKIT_VERSION=0.17.0`. Newly merged canonical helper capabilities become available after an `ai-dev-toolkit` release tag and an explicit pin bump in this repo.
 
 You can check local pin drift with `bash ./scripts/doctor.sh`. If it reports `toolkit pin drift`, run `bash scripts/setup-ai-tools.sh .` to re-sync your environment with this repo's `TOOLKIT_VERSION`.
 
