@@ -19,11 +19,11 @@ Per file, by extension:
 
 | Source | Tool | Flags | Output |
 |---|---|---|---|
-| `*.png` | `oxipng` | `-o max --strip safe --alpha` | in-place (lossless) |
-| `*.png` | `cwebp` | `-q 85 -m 6 -mt` | `<name>.webp` (new) |
+| `*.png` | `oxipng` | `-o max --strip safe` | in-place (lossless, reverts if output grows) |
+| `*.png` | `cwebp` | `-q 85 -m 6 -mt` | `<name>.webp` (kept only if smaller than source) |
 | `*.svg` | `svgo` | `--multipass` | in-place |
-| `*.jpg` / `*.jpeg` | `magick` | `-strip -interlace Plane -sampling-factor 4:2:0 -quality 85` | in-place |
-| `*.jpg` / `*.jpeg` | `cwebp` | `-q 85 -m 6 -mt` | `<name>.webp` (new) |
+| `*.jpg` / `*.jpeg` | `magick` | `-strip -interlace Plane -sampling-factor 4:2:0 -quality 85` | in-place (kept only if smaller) |
+| `*.jpg` / `*.jpeg` | `cwebp` | `-q 85 -m 6 -mt` | `<name>.webp` (kept only if smaller than source) |
 | `*.webp`, `*.gif`, `*.pbm` | — | kept as-is | — |
 | `.DS_Store` | `rm` | — | deleted |
 
