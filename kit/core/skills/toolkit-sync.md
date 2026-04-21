@@ -15,7 +15,7 @@ Update the pinned ai-dev-toolkit version in a consumer repo and verify the fetch
 ## Steps
 
 1. **Check current pin** — read `TOOLKIT_VERSION` file
-2. **Find latest release** — `gh release list -R Forge-Space/ai-dev-toolkit -L 1`
+2. **Find latest release** — `gh release list -R LucasSantana-Dev/ai-dev-toolkit -L 1`
 3. **Update pin** — write new version to `TOOLKIT_VERSION`
 4. **Test fetch** — run the setup script that downloads the toolkit tarball
 5. **Verify** — run `doctor.sh` or equivalent to confirm the new version stamp

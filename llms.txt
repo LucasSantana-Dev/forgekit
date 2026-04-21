@@ -11,45 +11,45 @@ Key capabilities:
 
 ## Documentation
 
-- [README](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/README.md): Quick start, forge-kit usage, agent system overview, quality checks
-- [CHANGELOG](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/CHANGELOG.md): Release history and version details
-- [CONTRIBUTING](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/CONTRIBUTING.md): How to contribute patterns, implementations, and fixes
+- [README](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/README.md): Quick start, forge-kit usage, agent system overview, quality checks
+- [CHANGELOG](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/CHANGELOG.md): Release history and version details
+- [CONTRIBUTING](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/CONTRIBUTING.md): How to contribute patterns, implementations, and fixes
 
 ## Patterns
 
-- [Context Building](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/patterns/context-building.md): Structure project knowledge so agents find it instead of guessing
-- [Task Orchestration](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/patterns/task-orchestration.md): Multi-step autonomous execution with checkpoints
-- [Code Review](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/patterns/code-review.md): AI-assisted review for bugs, security, and logic defects
-- [Testing with AI](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/patterns/testing.md): Test generation, TDD workflows, coverage analysis
-- [Multi-Model Routing](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/patterns/multi-model-routing.md): Route tasks to the right model tier by complexity
-- [Memory Systems](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/patterns/memory-systems.md): Cross-session persistence for decisions and preferences
-- [Session Management](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/patterns/session-management.md): Parallel session handling and context recovery
-- [Spec Driven Development](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/patterns/spec-driven-development.md): Stable contracts before implementation
-- [Agent Gotchas](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/patterns/agent-gotchas.md): Common AI workflow failure modes and fixes
+- [Context Building](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/patterns/context-building.md): Structure project knowledge so agents find it instead of guessing
+- [Task Orchestration](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/patterns/task-orchestration.md): Multi-step autonomous execution with checkpoints
+- [Code Review](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/patterns/code-review.md): AI-assisted review for bugs, security, and logic defects
+- [Testing with AI](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/patterns/testing.md): Test generation, TDD workflows, coverage analysis
+- [Multi-Model Routing](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/patterns/multi-model-routing.md): Route tasks to the right model tier by complexity
+- [Memory Systems](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/patterns/memory-systems.md): Cross-session persistence for decisions and preferences
+- [Session Management](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/patterns/session-management.md): Parallel session handling and context recovery
+- [Spec Driven Development](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/patterns/spec-driven-development.md): Stable contracts before implementation
+- [Agent Gotchas](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/patterns/agent-gotchas.md): Common AI workflow failure modes and fixes
 
 ## Core Configs
 
-- [Agents](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/kit/core/agents.json): 12 specialty agents with org chart, fallback chains, tool access
-- [Routing](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/kit/core/routing.json): Complexity classifier, tier escalation, provider model maps
-- [Loop](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/kit/core/loop.json): Autonomous dev cycle definition with governance gates
-- [Autopilot](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/kit/core/autopilot.json): Autonomy levels, guardrails, durable execution
-- [Hooks](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/kit/core/hooks.json): PreToolUse, PostToolUse, Session, Commit, Push hooks
-- [Token Optimization](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/kit/core/token-optimization.json): Context compaction presets and cost tracking
-- [MCP Servers](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/kit/core/mcp.json): 10 recommended MCP servers with profiles and agent mapping
-- [Providers](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/kit/core/providers.json): Multi-provider model registry
+- [Agents](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/kit/core/agents.json): 12 specialty agents with org chart, fallback chains, tool access
+- [Routing](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/kit/core/routing.json): Complexity classifier, tier escalation, provider model maps
+- [Loop](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/kit/core/loop.json): Autonomous dev cycle definition with governance gates
+- [Autopilot](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/kit/core/autopilot.json): Autonomy levels, guardrails, durable execution
+- [Hooks](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/kit/core/hooks.json): PreToolUse, PostToolUse, Session, Commit, Push hooks
+- [Token Optimization](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/kit/core/token-optimization.json): Context compaction presets and cost tracking
+- [MCP Servers](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/kit/core/mcp.json): 10 recommended MCP servers with profiles and agent mapping
+- [Providers](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/kit/core/providers.json): Multi-provider model registry
 
 ## Reference Implementations
 
-- [Claude Code](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/implementations/claude-code/README.md): Setup guide for Claude Code
-- [Codex CLI](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/implementations/codex/README.md): Setup guide for Codex
-- [OpenCode](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/implementations/opencode/README.md): Setup guide for OpenCode with oh-my-openagent
-- [Cursor](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/implementations/cursor/README.md): Setup guide for Cursor
-- [Windsurf](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/implementations/windsurf/README.md): Setup guide for Windsurf
-- [Antigravity](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/implementations/antigravity/README.md): Setup guide for Antigravity
+- [Claude Code](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/implementations/claude-code/README.md): Setup guide for Claude Code
+- [Codex CLI](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/implementations/codex/README.md): Setup guide for Codex
+- [OpenCode](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/implementations/opencode/README.md): Setup guide for OpenCode with oh-my-openagent
+- [Cursor](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/implementations/cursor/README.md): Setup guide for Cursor
+- [Windsurf](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/implementations/windsurf/README.md): Setup guide for Windsurf
+- [Antigravity](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/implementations/antigravity/README.md): Setup guide for Antigravity
 
 ## Optional
 
-- [Tools README](https://github.com/Forge-Space/ai-dev-toolkit/blob/main/tools/README.md): Curated productivity stack, install scripts, plugin recommendations
-- [Best Practices](https://github.com/Forge-Space/ai-dev-toolkit/tree/main/best-practices): Security, workflow, and context management standards
-- [Companies](https://github.com/Forge-Space/ai-dev-toolkit/tree/main/companies): Pre-built multi-agent organizations
-- [Examples](https://github.com/Forge-Space/ai-dev-toolkit/tree/main/examples): Starter assets for backlog and memory structure
+- [Tools README](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/tools/README.md): Curated productivity stack, install scripts, plugin recommendations
+- [Best Practices](https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/best-practices): Security, workflow, and context management standards
+- [Companies](https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/companies): Pre-built multi-agent organizations
+- [Examples](https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/examples): Starter assets for backlog and memory structure

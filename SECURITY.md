@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-Report security issues to [security@forgespace.co](mailto:security@forgespace.co). Do not open a public issue.
+Report security issues to security@LucasSantana-Dev or open a private security advisory on GitHub. Do not open a public issue.
 
 ## Scope
 

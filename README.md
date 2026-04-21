@@ -3,7 +3,7 @@
 # AI Dev Toolkit
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Latest Release](https://img.shields.io/github/v/release/Forge-Space/ai-dev-toolkit)](https://github.com/Forge-Space/ai-dev-toolkit/releases)
+[![Latest Release](https://img.shields.io/github/v/release/LucasSantana-Dev/ai-dev-toolkit)](https://github.com/LucasSantana-Dev/ai-dev-toolkit/releases)
 
 Reusable patterns, drop-in rules, portable skills, and cross-tool setup automation so AI coding agents produce code aligned with your project from the first session.
 
@@ -17,7 +17,7 @@ Copy one rule file into your project. That single file gives your AI agent your 
 
 ```bash
 # Clone the toolkit
-git clone https://github.com/Forge-Space/ai-dev-toolkit.git
+git clone https://github.com/LucasSantana-Dev/ai-dev-toolkit.git
 cd ai-dev-toolkit
 
 # Copy the rule file that matches your tool
