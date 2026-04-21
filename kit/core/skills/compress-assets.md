@@ -1,6 +1,12 @@
 ---
 name: compress-assets
 description: Losslessly compress PNG and SVG assets in place and generate .webp siblings for every raster image. Use when the user asks to "compress assets", "optimize images", "shrink the assets folder", or "convert to webp". Runs a deterministic pipeline via oxipng + svgo + cwebp + ImageMagick.
+triggers:
+  - "compress assets"
+  - "optimize images"
+  - "shrink the assets folder"
+  - "convert to webp"
+  - "optimize image sizes"
 ---
 
 # compress-assets
