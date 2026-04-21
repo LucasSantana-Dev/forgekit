@@ -63,10 +63,10 @@ for repo in "${repos[@]}"; do
 
   # Check dependencies are released
   if [ -f package.json ]; then
-    npm outdated --depth=0 | grep -q '@forgespace'
+    npm outdated --depth=0 | grep -q '@lucassantana-dev'
     if [ $? -eq 0 ]; then
-      echo "WARNING: $repo uses outdated @forgespace dependencies"
-      npm outdated --depth=0 | grep '@forgespace'
+      echo "WARNING: $repo uses outdated @lucassantana-dev dependencies"
+      npm outdated --depth=0 | grep '@lucassantana-dev'
     fi
   fi
 done
@@ -186,7 +186,7 @@ npm publish
 
 # 3. Update consumer dependency
 cd ~/generator
-npm install @forgespace/patterns@^1.5.0
+npm install @lucassantana-dev/patterns@^1.5.0
 git add package.json package-lock.json
 git commit -m "chore: bump forge-patterns to 1.5.0"
 git push origin feature/use-new-api
@@ -283,11 +283,11 @@ cd ~/forge-patterns
 npm version minor
 npm publish
 cd ~/generator
-npm install @forgespace/patterns@latest
+npm install @lucassantana-dev/patterns@latest
 npm version minor
 npm publish
 cd ~/app
-npm install @forgespace/generator@latest
+npm install @lucassantana-dev/generator@latest
 npm version minor
 npm publish
 # 15 minutes, easy to make mistakes
@@ -301,9 +301,9 @@ npm publish
 set -e  # Exit on error
 
 repos=(
-  "forge-patterns:@forgespace/patterns"
-  "generator:@forgespace/generator"
-  "app:@forgespace/app"
+  "forge-patterns:@lucassantana-dev/patterns"
+  "generator:@lucassantana-dev/generator"
+  "app:@lucassantana-dev/app"
 )
 
 for repo_spec in "${repos[@]}"; do
@@ -316,9 +316,9 @@ for repo_spec in "${repos[@]}"; do
   # Update dependencies from previous repos in chain
   if [ -f package.json ] && [ "$repo" != "forge-patterns" ]; then
     echo "⬆️  Updating dependencies..."
-    npm update --save @forgespace/*
+    npm update --save @lucassantana-dev/*
     git add package.json package-lock.json
-    git diff --staged --quiet || git commit -m "chore: update @forgespace dependencies"
+    git diff --staged --quiet || git commit -m "chore: update @lucassantana-dev dependencies"
   fi
 
   # Version bump (prompt for type)
@@ -354,7 +354,7 @@ cd ~/forge-patterns
 npm link
 
 cd ~/generator
-npm link @forgespace/patterns
+npm link @lucassantana-dev/patterns
 ```
 
 **Step 2: Run consumer tests**
@@ -380,7 +380,7 @@ npm link
 for consumer in "${consumers[@]}"; do
   echo "Testing $consumer against local $library..."
   cd ~/"$consumer" || exit
-  npm link "@forgespace/${library}"
+  npm link "@lucassantana-dev/${library}"
   npm test
 
   if [ $? -ne 0 ]; then
@@ -463,11 +463,11 @@ Multi-repo (public libraries)
 # forge-patterns: add new API, commit, DON'T release
 
 # generator: use new API
-import { newAPI } from '@forgespace/patterns';
+import { newAPI } from '@lucassantana-dev/patterns';
 # Works locally (linked), breaks in CI (npm install gets old version)
 
 # CI fails:
-# ERROR: Module '@forgespace/patterns' has no exported member 'newAPI'
+# ERROR: Module '@lucassantana-dev/patterns' has no exported member 'newAPI'
 ```
 
 **Why bad:**
@@ -485,8 +485,8 @@ npm publish
 
 # 2. Update consumer dependency
 cd ~/generator
-npm install @forgespace/patterns@^1.5.0
-import { newAPI } from '@forgespace/patterns';
+npm install @lucassantana-dev/patterns@^1.5.0
+import { newAPI } from '@lucassantana-dev/patterns';
 git commit -m "feat: use new API"
 npm version minor
 npm publish
@@ -516,11 +516,11 @@ npm link
 
 # Test against all consumers
 cd ~/generator
-npm link @forgespace/patterns
+npm link @lucassantana-dev/patterns
 npm test  # Verify tests still pass
 
 cd ~/app
-npm link @forgespace/patterns
+npm link @lucassantana-dev/patterns
 npm test  # Verify tests still pass
 
 # If all pass: safe to release
@@ -572,9 +572,9 @@ generator: v0.8.0 (uses patterns@^1.0.0)
 # Regular dependency updates
 cd ~/generator
 npm outdated
-# @forgespace/patterns: 1.9.0 → 2.3.1
+# @lucassantana-dev/patterns: 1.9.0 → 2.3.1
 
-npm update @forgespace/patterns
+npm update @lucassantana-dev/patterns
 npm test  # Verify update doesn't break
 git commit -m "chore: update forge-patterns to 2.3.1"
 
@@ -602,11 +602,11 @@ v0.8.0: Improvements and bug fixes
 ```
 generator CHANGELOG:
 v0.8.0:
-- feat: Use new assembleContext API from @forgespace/patterns@1.5.0
+- feat: Use new assembleContext API from @lucassantana-dev/patterns@1.5.0
   - Enables metadata extraction
   - See forge-patterns CHANGELOG for API details
   - Migration: update all assembleContext calls to destructure {context, metadata}
-- chore: Update @forgespace/patterns 1.4.0 → 1.5.0
+- chore: Update @lucassantana-dev/patterns 1.4.0 → 1.5.0
 ```
 
 ### 6. Breaking Changes Without Coordination
@@ -670,7 +670,7 @@ generator v0.8.0 release notes:
 **Fix:**
 ```
 generator v0.8.0 release notes:
-"Updated to use new context assembler API from @forgespace/patterns@1.5.0
+"Updated to use new context assembler API from @lucassantana-dev/patterns@1.5.0
 
 See forge-patterns v1.5.0 release notes for API details:
 https://github.com/your-org/shared-lib/releases/tag/v1.5.0
@@ -722,7 +722,7 @@ git checkout -b feature/use-metadata
 
 # Link local forge-patterns for development
 cd ~/forge-patterns && npm link
-cd ~/generator && npm link @forgespace/patterns
+cd ~/generator && npm link @lucassantana-dev/patterns
 
 # Implement using new types
 git commit -m "feat: extract component metadata"
@@ -738,7 +738,7 @@ git checkout -b feature/display-metadata
 # Link local generator and forge-patterns
 cd ~/forge-patterns && npm link
 cd ~/generator && npm link
-cd ~/app && npm link @forgespace/patterns && npm link @forgespace/generator
+cd ~/app && npm link @lucassantana-dev/patterns && npm link @lucassantana-dev/generator
 
 # Implement UI
 git commit -m "feat: display component metadata"
@@ -769,8 +769,8 @@ npm publish
 
 # 2. Update generator dependency, merge, release
 cd ~/generator
-npm unlink @forgespace/patterns
-npm install @forgespace/patterns@^1.5.0
+npm unlink @lucassantana-dev/patterns
+npm install @lucassantana-dev/patterns@^1.5.0
 git add package.json package-lock.json
 git commit -m "chore: bump forge-patterns to 1.5.0"
 git push origin feature/use-metadata
@@ -781,8 +781,8 @@ npm publish
 
 # 3. Update app dependencies, merge, release
 cd ~/app
-npm unlink @forgespace/patterns @forgespace/generator
-npm install @forgespace/patterns@^1.5.0 @forgespace/generator@^0.8.0
+npm unlink @lucassantana-dev/patterns @lucassantana-dev/generator
+npm install @lucassantana-dev/patterns@^1.5.0 @lucassantana-dev/generator@^0.8.0
 git add package.json package-lock.json
 git commit -m "chore: bump dependencies"
 git push origin feature/display-metadata
@@ -820,7 +820,7 @@ npm publish
 ```bash
 # generator
 cd ~/generator
-npm install @forgespace/patterns@^1.5.1
+npm install @lucassantana-dev/patterns@^1.5.1
 npm test  # Verify fix works
 git commit -m "fix: update patterns to 1.5.1 (critical bug fix)"
 git push origin main
@@ -829,7 +829,7 @@ npm publish
 
 # app
 cd ~/app
-npm install @forgespace/patterns@^1.5.1 @forgespace/generator@^0.8.1
+npm install @lucassantana-dev/patterns@^1.5.1 @lucassantana-dev/generator@^0.8.1
 npm test
 git commit -m "fix: update dependencies (critical bug fixes)"
 git push origin main

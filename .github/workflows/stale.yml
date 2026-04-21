@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   stale:
-    uses: Forge-Space/github-org-workflows/.github/workflows/reusable-stale.yml@main
+    uses: LucasSantana-Dev/github-org-workflows/.github/workflows/reusable-stale.yml@main
     with:
       days-before-stale: 30
       days-before-close: 14

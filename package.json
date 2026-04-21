@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Forge-Space/ai-dev-toolkit"
+    "url": "https://github.com/LucasSantana-Dev/ai-dev-toolkit"
   },
   "keywords": [
     "ai",
@@ -15,7 +15,7 @@
     "patterns",
     "rules",
     "companies",
-    "forge-space"
+    "ai-dev-toolkit"
   ],
   "engines": {
     "node": ">=22"
