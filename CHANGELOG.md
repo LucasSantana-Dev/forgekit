@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+- feat(skills): add sync-ai-tools and warp-ai-setup for cross-editor parity
+
 ## [0.17.0] - 2026-04-18
 
 ### Added
