@@ -2,7 +2,7 @@
   "version": 1,
   "paused": false,
   "project": "ai-dev-toolkit",
-  "repository": "https://github.com/Forge-Space/ai-dev-toolkit",
+  "repository": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
   "tasks": [
     {
       "id": "hooks-manifest",
@@ -74,7 +74,7 @@
     {
       "id": "merge-pr-24",
       "title": "Review and merge PR #24 (autonomous loop + skills)",
-      "description": "Wait for CI, address any review comments, merge the feature/oh-my-compat-adapters branch into main.\n\nURL: https://github.com/Forge-Space/ai-dev-toolkit/pull/24",
+      "description": "Wait for CI, address any review comments, merge the feature/oh-my-compat-adapters branch into main.\n\nURL: https://github.com/LucasSantana-Dev/ai-dev-toolkit/pull/24",
       "priority": "critical",
       "status": "done",
       "tags": [

@@ -326,7 +326,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `test/validate-schemas.test.js` — jest test suite (75% coverage target)
 - `jest.config.js` — jest ESM configuration
 - `SECURITY.md` — security policy and reporting guide
-- `CODEOWNERS` — code ownership for forge-space integration
+- `CODEOWNERS` — code ownership definitions
 - `.github/workflows/secret-scan.yml` — TruffleHog secret scanning
 - `.github/workflows/semgrep.yml` — SAST scanning for scripts/
 - `.github/workflows/stale.yml` — stale issue/PR management

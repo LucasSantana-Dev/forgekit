@@ -1,14 +1,14 @@
 # Patterns and rules
-/patterns/    @Forge-Space/core
-/rules/       @Forge-Space/core
-/best-practices/ @Forge-Space/core
+/patterns/    @LucasSantana-Dev/maintainers
+/rules/       @LucasSantana-Dev/maintainers
+/best-practices/ @LucasSantana-Dev/maintainers
 
 # Agent companies
-/companies/   @Forge-Space/core
+/companies/   @LucasSantana-Dev/maintainers
 
 # Tools and scripts
-/tools/       @Forge-Space/core
-/scripts/     @Forge-Space/core
+/tools/       @LucasSantana-Dev/maintainers
+/scripts/     @LucasSantana-Dev/maintainers
 
 # CI/CD
-/.github/     @Forge-Space/core
+/.github/     @LucasSantana-Dev/maintainers
