@@ -1,0 +1,465 @@
+{
+  "version": 1,
+  "generatedAt": "2026-04-21T22:11:18.314Z",
+  "entries": [
+    {
+      "kind": "collection",
+      "id": "claude-code-power-user",
+      "name": "Claude Code Power User",
+      "description": "Opinionated bundle for Claude Code users — prompting discipline, known agent gotchas, worktree workflow, plus the two MCP servers you'll reach for most often.",
+      "tags": [
+        "claude",
+        "claude-code",
+        "starter"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "collection",
+      "id": "discord-bot-dev",
+      "name": "Discord Bot Development",
+      "description": "Opinionated bundle for building a TypeScript Discord bot (e.g. Lucky). Pairs prompting/testing skills with the servers you'll reach for — GitHub for PRs, Redis for state inspection, Sentry for production triage.",
+      "tags": [
+        "discord",
+        "typescript",
+        "bot"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
+      "id": "agent-observability",
+      "name": "Agent Observability",
+      "description": "AI coding agents produce outputs that look correct but fail in subtle ways: - Hallucinated function names that pass review but fail at runtime - Tool call sequences that work once but regress under different inputs - Prompt changes that improve one case but silently degrade another",
+      "tags": [
+        "skill-md",
+        "claude",
+        "prompting",
+        "testing",
+        "security",
+        "agents"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
+      "id": "ai-observability",
+      "name": "AI Observability in Production",
+      "description": "Production AI systems require deep observability into model performance, cost, and data quality. This pattern covers instrumentation, alerting, and data quality monitoring for LLM-powered applications.",
+      "tags": [
+        "skill-md",
+        "claude",
+        "prompting",
+        "testing"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
+      "id": "benchmark-reality-gap",
+      "name": "Benchmark Reality Gap",
+      "description": "SWE-bench and similar curated benchmarks overestimate agent capability by 50%+ in real-world deployment. The gap emerges from benchmark framing: clean task descriptions with sufficient context don't resemble actual user queries, which are ambiguous, under-specified, and embedded in noisy ticket systems. Closing the gap requires domain-specific evaluation sets grounded in real user behavior.",
+      "tags": [
+        "skill-md",
+        "prompting",
+        "testing",
+        "security",
+        "git",
+        "agents"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
+      "id": "cost-aware-routing",
+      "name": "Cost-Aware Routing",
+      "description": "Model choice is now a cost/quality tradeoff, not a binary \"do I need reasoning\" decision. This pattern extends patterns/multi-model-routing.md with explicit economics: token pricing, caching strategy, and output-format optimization that recovers 40-60% of spend.",
+      "tags": [
+        "skill-md",
+        "claude",
+        "prompting",
+        "testing",
+        "security"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
+      "id": "llm-evaluation",
+      "name": "LLM Evaluation Patterns",
+      "description": "Measure before you ship. Intuition about model quality is unreliable — score it systematically. This guide covers evaluation frameworks, golden datasets, regression testing, and production monitoring for LLM-powered features.",
+      "tags": [
+        "skill-md",
+        "claude",
+        "prompting",
+        "testing",
+        "security"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
+      "id": "mcp-tool-lazy-loading",
+      "name": "MCP Tool Lazy Loading",
+      "description": "How Claude Code lazily resolves MCP tool schemas via ToolSearch, and how that changes which tools you can call at any moment.",
+      "tags": [
+        "mcp",
+        "claude-code",
+        "tooling",
+        "reference"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
+      "id": "multi-model-routing",
+      "name": "Multi-Model Routing",
+      "description": "Using a frontier model for every task wastes money and time. Using a weak model for hard tasks wastes your time fixing its output. The optimal strategy routes tasks to the right capability tier.",
+      "tags": [
+        "skill-md",
+        "claude",
+        "testing",
+        "agents"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
+      "id": "opentelemetry-genai",
+      "name": "OpenTelemetry GenAI Semantic Conventions",
+      "description": "Vendor lock-in to observability layers has cost you money. Decoupling telemetry collection from analysis backends lets you migrate from Datadog to Grafana without rewriting instrumentation. OpenTelemetry GenAI Semantic Conventions (GA March 2026) is the standard way forward.",
+      "tags": [
+        "skill-md",
+        "claude",
+        "prompting",
+        "agents"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
+      "id": "rag-architecture",
+      "name": "RAG Architecture Patterns",
+      "description": "Retrieval-Augmented Generation (RAG) connects LLMs to external knowledge. This guide covers production-ready patterns for building, debugging, and scaling RAG pipelines.",
+      "tags": [
+        "skill-md",
+        "prompting",
+        "agents",
+        "rag"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
+      "id": "reasoning-model-prompting",
+      "name": "Reasoning-Model Prompting",
+      "description": "Reasoning models (Claude Opus 4 with extended thinking, o3/o3-mini) operate at a different cost and latency boundary than standard models. They trade 2-10x latency and 3-5x token cost for dramatically higher first-pass quality on hard problems. This requires a different prompting discipline: less scaffolding, more constraints, explicit reasoning budgets.",
+      "tags": [
+        "skill-md",
+        "claude",
+        "prompting",
+        "testing",
+        "security"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
+      "id": "streaming-orchestration",
+      "name": "Streaming Orchestration",
+      "description": "You send a prompt and wait. You don't know if the agent is stuck, hallucinating, or burning through tokens on the wrong task. When something goes wrong, you can't tell where. Budget overruns happen silently.",
+      "tags": [
+        "skill-md",
+        "claude",
+        "mcp",
+        "prompting",
+        "testing",
+        "agents"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "server",
+      "id": "context7",
+      "name": "Context7",
+      "description": "Fetches current documentation for libraries, frameworks, SDKs, and APIs. Prefer over web search for library docs — training data rots fast.",
+      "tags": [
+        "docs",
+        "reference",
+        "library",
+        "research"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "server",
+      "id": "docker",
+      "name": "Docker",
+      "description": "Inspect containers, fetch logs, run one-off containers, deploy compose stacks. Useful for homelab / local-stack debugging from the editor.",
+      "tags": [
+        "docker",
+        "infra",
+        "containers",
+        "homelab"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "server",
+      "id": "github",
+      "name": "GitHub",
+      "description": "Access GitHub PRs, issues, reviews, CI checks, commits, branches, and releases via MCP. Preferred over raw `gh` for structured reads.",
+      "tags": [
+        "github",
+        "pr",
+        "issues",
+        "ci",
+        "vcs"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "server",
+      "id": "kubernetes",
+      "name": "Kubernetes",
+      "description": "Read + edit live cluster state — pods, nodes, events, logs, resources. Use only against clusters you expect the model to touch.",
+      "tags": [
+        "kubernetes",
+        "infra",
+        "homelab",
+        "ops"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "server",
+      "id": "linear",
+      "name": "Linear",
+      "description": "Read + write Linear issues, projects, cycles, comments, and documents. Useful for triaging backlogs and drafting tickets from code context.",
+      "tags": [
+        "project-mgmt",
+        "issues",
+        "linear"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "server",
+      "id": "memory",
+      "name": "Memory (Knowledge Graph)",
+      "description": "Official reference knowledge-graph memory server — entities, relations, observations persisted across sessions. Good default for project memory.",
+      "tags": [
+        "memory",
+        "knowledge-graph",
+        "persistence"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "server",
+      "id": "playwright",
+      "name": "Playwright",
+      "description": "Browser automation via Playwright — navigate, click, fill forms, take screenshots, inspect console/network. Use for UI testing and scraping.",
+      "tags": [
+        "browser",
+        "automation",
+        "testing",
+        "scraping"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "server",
+      "id": "redis",
+      "name": "Redis",
+      "description": "Get / set / list / delete keys in a Redis instance. Useful for inspecting queue state, caches, and ad-hoc debugging.",
+      "tags": [
+        "database",
+        "cache",
+        "queue",
+        "debugging"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "server",
+      "id": "sentry",
+      "name": "Sentry",
+      "description": "Query Sentry issues, events, and releases from an MCP client. Useful for triaging production errors inline.",
+      "tags": [
+        "observability",
+        "errors",
+        "triage"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "server",
+      "id": "serena",
+      "name": "Serena",
+      "description": "Semantic code navigation — symbol search, referencing-symbols, symbol-body read/rewrite. Cheaper than full-file reads on large codebases.",
+      "tags": [
+        "code-nav",
+        "lsp",
+        "refactor",
+        "ide"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "agent-gotchas",
+      "name": "AI Agent Gotchas",
+      "description": "AI coding agents fail in consistent, predictable ways. They fabricate npm packages that don't exist. They catch errors and continue silently. They add features you never asked for. They lose context mid-session and forget what they were doing.",
+      "tags": [
+        "skill-md",
+        "claude",
+        "prompting",
+        "testing",
+        "security",
+        "git",
+        "agents"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "code-review",
+      "name": "AI-Assisted Code Review",
+      "description": "Code review is time-consuming and inconsistent. Reviewers miss security issues, overlook edge cases, or focus on style over substance. Meanwhile, AI agents catch these mechanical issues instantly but can't judge business logic correctness, UX decisions, or architectural fit.",
+      "tags": [
+        "skill-md",
+        "testing",
+        "security",
+        "git",
+        "agents"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "context-building",
+      "name": "Context Building",
+      "description": "AI agents are only as good as the context they receive. A powerful model with zero project context produces generic code. A mediocre model with excellent context produces code that fits your project perfectly.",
+      "tags": [
+        "skill-md",
+        "claude",
+        "testing",
+        "git",
+        "agents"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "git-worktrees",
+      "name": "Git Worktrees for Concurrent AI Agent Work",
+      "description": "Multiple AI agent sessions working on the same repository cause chaos. Session A is on branch feature/auth. Session B switches to main to check something. Session A's next tool call fails because the branch disappeared. Or worse: Session B force-pushes over Session A's work.",
+      "tags": [
+        "skill-md",
+        "claude",
+        "prompting",
+        "testing",
+        "git",
+        "agents"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "prompt-injection-defense",
+      "name": "Prompt Injection Defense: Layered Strategies",
+      "description": "Prompt injection is not a theoretical attack. By Q1 2026, the benchmark is real: CaMeL achieves 67% injection block rate on AgentDojo. NIST AI RMF frames it as agent hijacking. Defense is not a single gate; it's depth.",
+      "tags": [
+        "skill-md",
+        "claude",
+        "prompting",
+        "security",
+        "agents"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "prompting-discipline",
+      "name": "Prompting Discipline",
+      "description": "How you ask the model matters more than which model you ask. Two disciplines stop most AI coding failures before they start.",
+      "tags": [
+        "skill-md",
+        "prompting",
+        "testing",
+        "agents"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "skill-md-adoption",
+      "name": "SKILL.md Adoption: Vendor-Neutral Skill Discovery",
+      "description": "SKILL.md is an open specification released by Anthropic in 2025 that standardizes how tools discover and auto-invoke procedural knowledge (skills, patterns, guides, rules). Instead of each tool (Claude, Cursor, VSCode, CLI) maintaining isolated skill registries, SKILL.md enables a single skill to be published once and auto-invoked across any tool that speaks the spec.",
+      "tags": [
+        "skill-md",
+        "claude",
+        "prompting",
+        "testing",
+        "security",
+        "git"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "spec-driven-development",
+      "name": "Spec Driven Development",
+      "description": "AI agents are fast at writing code but have no memory of your intent. You describe a feature in a prompt, the agent builds it, and three sessions later a different agent (or you) changes it in a way that drifts from the original requirement. The spec lives only in your head.",
+      "tags": [
+        "skill-md",
+        "claude",
+        "prompting",
+        "testing",
+        "security",
+        "agents"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "task-orchestration",
+      "name": "Task Orchestration",
+      "description": "You have 5 projects, each with a session. You open each one, paste \"continue with next priorities\", wait, switch, repeat. You're acting as a human cron job.",
+      "tags": [
+        "skill-md",
+        "claude",
+        "prompting",
+        "testing",
+        "security",
+        "git",
+        "agents"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "testing",
+      "name": "AI-Assisted Test Generation",
+      "description": "Test generation is repetitive but critical. Developers skip tests because writing edge cases is tedious. AI agents can generate tests quickly but often produce brittle, unrealistic tests that provide false confidence. Tests that mock internals, use fake data like \"foo@example.com\", or test implementation details break on every refactor.",
+      "tags": [
+        "skill-md",
+        "prompting",
+        "testing",
+        "agents"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    }
+  ]
+}

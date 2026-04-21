@@ -22,6 +22,6 @@ yarn-debug.log*
 .idea/
 .DS_Store
 
-# generated
-catalog/index.json
+# catalog/index.json is committed so CI can drift-check; regenerate with
+# `pnpm run index` after any catalog change.
 coverage/

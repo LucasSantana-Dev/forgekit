@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  lint-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Validate catalog
+        run: pnpm run validate
+      - name: Regenerate index and check for drift
+        run: |
+          pnpm run index
+          if ! git diff --quiet catalog/index.json; then
+            echo "::error::catalog/index.json is stale. Run 'pnpm run index' and commit."
+            git diff --stat
+            exit 1
+          fi
+      - name: Typecheck CLI
+        run: pnpm --filter adtl run typecheck
+      - name: Build CLI
+        run: pnpm --filter adtl run build
+      - name: Build site
+        run: pnpm --filter web run build
+        env:
+          NODE_ENV: production
