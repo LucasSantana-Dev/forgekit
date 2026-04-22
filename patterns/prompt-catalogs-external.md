@@ -12,7 +12,9 @@ need.
 
 ---
 
-## Primary source: f/prompts.chat (formerly awesome-chatgpt-prompts)
+## Primary sources
+
+### f/prompts.chat (formerly awesome-chatgpt-prompts)
 
 - Repo: [`f/prompts.chat`](https://github.com/f/prompts.chat) — pinned at
   [`a4632f1a`](https://github.com/f/prompts.chat/tree/a4632f1a55bab49a298571efee170366a88e986d) for this index.
@@ -48,6 +50,41 @@ or on [prompts.chat](https://prompts.chat) to grab the current body.
 | Code Translator — Idiomatic, Version-Aware & Production-Ready         | port a block between languages with attention to idiom, not just syntax.           |
 | White-Box Web Application Security Audit                              | a structured checklist pass over your own code (not a pentest of strangers).       |
 | Prompt Generator / Prompt Optimizer                                   | turn a vague intent into a repeatable, well-structured prompt.                     |
+
+### dair-ai/Prompt-Engineering-Guide
+
+Complementary to `f/prompts.chat`: less a prompt catalog, more a
+structured reference on **techniques** (few-shot, chain-of-thought, ReAct,
+tree-of-thoughts, self-consistency, self-refine, …) with worked examples.
+Reach for this when you don't yet know *which* prompt shape fits your
+problem — it explains the shapes.
+
+- Repo: [`dair-ai/Prompt-Engineering-Guide`](https://github.com/dair-ai/Prompt-Engineering-Guide)
+  — pinned at [`57673726`](https://github.com/dair-ai/Prompt-Engineering-Guide/tree/57673726396dd94acb23bdb1e67f27c78ee85a8e)
+  for this index.
+- License: [MIT](https://github.com/dair-ai/Prompt-Engineering-Guide/blob/57673726/LICENSE.md).
+- Shape: long-form markdown guides + Jupyter notebooks + a Next.js docs site.
+  The **`guides/`** directory is the most reusable part — each file is a
+  self-contained essay on a technique.
+- Web site: [promptingguide.ai](https://www.promptingguide.ai) — same content, searchable.
+
+Useful entry points inside `guides/`:
+
+| Guide                                                                                                                                     | Useful when you need…                                                        |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| [`prompts-basic-usage.md`](https://github.com/dair-ai/Prompt-Engineering-Guide/blob/57673726/guides/prompts-basic-usage.md)               | a shared baseline vocabulary before a prompting discussion with someone new. |
+| [`prompts-advanced-usage.md`](https://github.com/dair-ai/Prompt-Engineering-Guide/blob/57673726/guides/prompts-advanced-usage.md)         | few-shot / CoT / ReAct / self-consistency / self-refine patterns.            |
+| [`prompts-adversarial.md`](https://github.com/dair-ai/Prompt-Engineering-Guide/blob/57673726/guides/prompts-adversarial.md)               | to guard against prompt injection / jailbreaks in tool-calling LLMs.         |
+| [`prompts-reliability.md`](https://github.com/dair-ai/Prompt-Engineering-Guide/blob/57673726/guides/prompts-reliability.md)               | techniques for grounding and hallucination reduction.                        |
+| [`prompts-applications.md`](https://github.com/dair-ai/Prompt-Engineering-Guide/blob/57673726/guides/prompts-applications.md)             | concrete applied examples (code gen, data extraction, math).                 |
+
+When to reach for which source:
+- Need a *drop-in prompt* for a known persona/task → **f/prompts.chat**.
+- Need to understand *why* a prompt shape works / compare options →
+  **dair-ai/Prompt-Engineering-Guide**.
+- Both at once (e.g., "I want a good CoT-flavored code reviewer") → read
+  the DAIR-AI CoT section, then grab the Code Reviewer from prompts.chat
+  and fold in the CoT scaffold.
 
 ---
 
@@ -91,8 +128,11 @@ Three sensible options, in order of recommended:
 
 ## Attribution
 
-Prompts cited by name only; their bodies live upstream in
-[`f/prompts.chat`](https://github.com/f/prompts.chat)
-(CC0 1.0 for prompt content, MIT for platform code).
-This pattern doc is © the ai-dev-toolkit authors, MIT-licensed with the
-toolkit.
+- Prompts cited by name only; their bodies live upstream in
+  [`f/prompts.chat`](https://github.com/f/prompts.chat)
+  (CC0 1.0 for prompt content, MIT for platform code).
+- Technique-guide links point to
+  [`dair-ai/Prompt-Engineering-Guide`](https://github.com/dair-ai/Prompt-Engineering-Guide)
+  (MIT); no content reproduced here.
+- This pattern doc is © the ai-dev-toolkit authors, MIT-licensed with
+  the toolkit.
