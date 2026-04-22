@@ -1,14 +1,13 @@
 ---
 id: debugger
 name: Debugger
-description: >-
-  Root-cause analysis, regression isolation, stack trace analysis,
-  build/compilation error resolution
+description: Root-cause analysis, regression isolation, stack trace analysis, build/compilation
+  error resolution
 version: 0.1.0
 tags:
-  - agent
-  - claude-code
-  - debugging
+- agent
+- claude-code
+- debugging
 model: claude-sonnet-4-6
 level: 3
 source:
@@ -16,6 +15,11 @@ source:
   path: dev-assets/global/claude/agents/debugger.md
 license: MIT
 author: Lucas Santana
+translations:
+  pt-BR:
+    name: Debugger
+    description: Análise de causa raiz, isolamento de regressão, análise de stack
+      traces, resolução de erros de build/compilação.
 ---
 <Agent_Prompt>
   <Role>

@@ -1,19 +1,25 @@
 id: serena
 name: Serena
-description: Semantic code navigation — symbol search, referencing-symbols, symbol-body read/rewrite. Cheaper than full-file reads on large codebases.
+description: Semantic code navigation — symbol search, referencing-symbols, symbol-body
+  read/rewrite. Cheaper than full-file reads on large codebases.
 transport: stdio
 command: uvx
 args:
-  - --from
-  - git+https://github.com/oraios/serena
-  - serena
-  - start-mcp-server
-  - --context
-  - ide-assistant
+- --from
+- git+https://github.com/oraios/serena
+- serena
+- start-mcp-server
+- --context
+- ide-assistant
 tags:
-  - code-nav
-  - lsp
-  - refactor
-  - ide
+- code-nav
+- lsp
+- refactor
+- ide
 homepage: https://github.com/oraios/serena
 license: MIT
+translations:
+  pt-BR:
+    name: Serena
+    description: Navegação semântica de código — busca de símbolos, referências, leitura/escrita
+      de corpo de símbolo. Baseia-se em Language Server Protocol.

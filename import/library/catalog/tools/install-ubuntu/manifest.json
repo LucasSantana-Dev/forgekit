@@ -22,5 +22,11 @@
   },
   "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/tools/install-ubuntu.sh",
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Install Ubuntu",
+      "description": "Instala toolchain de CLI em Ubuntu via apt. Atualiza cache, instala pacotes base. Idempotente."
+    }
+  }
 }

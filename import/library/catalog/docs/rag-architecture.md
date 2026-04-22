@@ -1,18 +1,23 @@
 ---
 id: rag-architecture
 title: RAG Architecture Patterns
-description: >-
-  Retrieval-Augmented Generation (RAG) connects LLMs to external knowledge. This
-  guide covers production-ready patterns for building, debugging, and scaling
+description: Retrieval-Augmented Generation (RAG) connects LLMs to external knowledge.
+  This guide covers production-ready patterns for building, debugging, and scaling
   RAG pipelines.
 tags:
-  - skill-md
-  - prompting
-  - agents
-  - rag
+- skill-md
+- prompting
+- agents
+- rag
 source:
   path: ai-dev-toolkit/patterns/rag-architecture.md
   license: MIT
+translations:
+  pt-BR:
+    title: Padrões de Arquitetura RAG
+    description: Retrieval-Augmented Generation (RAG) conecta LLMs a conhecimento
+      externo. Este guia cobre os padrões arquiteturais — chunking, embeddings, reranking,
+      hybrid search.
 ---
 Retrieval-Augmented Generation (RAG) connects LLMs to external knowledge. This guide covers production-ready patterns for building, debugging, and scaling RAG pipelines.
 

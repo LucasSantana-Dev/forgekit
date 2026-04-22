@@ -1,21 +1,25 @@
 ---
 id: reasoning-model-prompting
 title: Reasoning-Model Prompting
-description: >-
-  Reasoning models (Claude Opus 4 with extended thinking, o3/o3-mini) operate at
-  a different cost and latency boundary than standard models. They trade 2-10x
-  latency and 3-5x token cost for dramatically higher first-pass quality on hard
-  problems. This requires a different prompting discipline: less scaffolding,
-  more constraints, explicit reasoning budgets.
+description: 'Reasoning models (Claude Opus 4 with extended thinking, o3/o3-mini)
+  operate at a different cost and latency boundary than standard models. They trade
+  2-10x latency and 3-5x token cost for dramatically higher first-pass quality on
+  hard problems. This requires a different prompting discipline: less scaffolding,
+  more constraints, explicit reasoning budgets.'
 tags:
-  - skill-md
-  - claude
-  - prompting
-  - testing
-  - security
+- skill-md
+- claude
+- prompting
+- testing
+- security
 source:
   path: ai-dev-toolkit/patterns/reasoning-model-prompting.md
   license: MIT
+translations:
+  pt-BR:
+    title: Prompting de Modelos de Reasoning
+    description: Modelos de reasoning (Claude Opus 4 com extended thinking, o3/o3-mini)
+      operam em um regime diferente. Este guia detalha o que muda no prompt engineering.
 ---
 > Extended-thinking models have different token economics and cognitive patterns. Let them think.
 

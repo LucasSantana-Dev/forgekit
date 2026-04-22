@@ -1,20 +1,23 @@
 ---
 id: best-security
 title: Security Practices for AI-Assisted Development
-description: >-
-  ### Never in shell config Move API keys from ~/.bashrc/config.fish to a
-  separate file: ``bash # ~/.config/fish/conf.d/secrets.fish (chmod 600) set -gx
-  API_KEY "your-key" ``
+description: '### Never in shell config Move API keys from ~/.bashrc/config.fish to
+  a separate file: ``bash # ~/.config/fish/conf.d/secrets.fish (chmod 600) set -gx
+  API_KEY "your-key" ``'
 tags:
-  - best-practice
-  - ai-dev-toolkit
-  - security
-  - token-optimization
+- best-practice
+- ai-dev-toolkit
+- security
+- token-optimization
 source:
   path: ai-dev-toolkit/best-practices/security.md
-  upstream: >-
-    https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/best-practices/security.md
+  upstream: https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/best-practices/security.md
   license: MIT
+translations:
+  pt-BR:
+    title: Práticas de Segurança para Desenvolvimento Assistido por IA
+    description: Nunca na config do shell. Mova API keys de ~/.bashrc/config.fish
+      para um cofre separado. Padrões de segurança para fluxos com IA.
 ---
 # Security Practices for AI-Assisted Development
 

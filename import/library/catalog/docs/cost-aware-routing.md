@@ -1,20 +1,25 @@
 ---
 id: cost-aware-routing
 title: Cost-Aware Routing
-description: >-
-  Model choice is now a cost/quality tradeoff, not a binary "do I need
-  reasoning" decision. This pattern extends patterns/multi-model-routing.md with
-  explicit economics: token pricing, caching strategy, and output-format
-  optimization that recovers 40-60% of spend.
+description: 'Model choice is now a cost/quality tradeoff, not a binary "do I need
+  reasoning" decision. This pattern extends patterns/multi-model-routing.md with explicit
+  economics: token pricing, caching strategy, and output-format optimization that
+  recovers 40-60% of spend.'
 tags:
-  - skill-md
-  - claude
-  - prompting
-  - testing
-  - security
+- skill-md
+- claude
+- prompting
+- testing
+- security
 source:
   path: ai-dev-toolkit/patterns/cost-aware-routing.md
   license: MIT
+translations:
+  pt-BR:
+    title: Roteamento Sensível a Custo
+    description: Escolha de modelo é agora um trade-off custo/qualidade, não um binário
+      "preciso de reasoning". Este guia cobre como rotear requests entre modelos de
+      forma eficiente.
 ---
 > Token spend is a first-class observability signal. Treat cost as you would latency or error rate.
 

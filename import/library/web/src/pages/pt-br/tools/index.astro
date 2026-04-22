@@ -1,0 +1,43 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Card from "../../../components/Card.astro";
+import SearchFilter from "../../../components/SearchFilter.astro";
+import { getTools } from "../../../lib/catalog.ts";
+import { localizeEntries, t, localizedUrl, type Locale } from "../../../lib/i18n.ts";
+
+const locale: Locale = "pt-br";
+const tools = localizeEntries(await getTools(), locale);
+const base = import.meta.env.BASE_URL;
+const url = (p: string) => localizedUrl(base, p, locale);
+
+const tagSet = new Set<string>();
+for (const tool of tools) for (const tag of tool.tags) tagSet.add(tag);
+const tags = [...tagSet].sort();
+---
+<Base
+  title={t("list.tools.title", locale)}
+  description={t("list.tools.description", locale, { count: tools.length })}
+  locale={locale}
+>
+  <h1>{t("list.tools.title", locale)}</h1>
+  <p class="lead-muted">
+    Scripts e CLIs independentes — otimização de tokens, RAG, compressão, operações MCP, diagnóstico.
+    Instale com <code>npx @lucassantana/adtl install &lt;id&gt;</code> → vai para
+    <code>~/.local/bin/&lt;id&gt;</code>.
+  </p>
+  <SearchFilter placeholder={`${t("search.placeholder", locale)} (${tools.length})`} tags={tags} />
+  <div class="grid">
+    {tools.map((tool) => (
+      <Card
+        kind="tool"
+        id={tool.id}
+        name={tool.name}
+        description={tool.description}
+        tags={tool.tags}
+        href={url(`tools/${tool.id}/`)}
+        extraTag={`${tool.category} · ${tool.runtime}`}
+      />
+    ))}
+  </div>
+  <div id="empty-state" class="empty" style="display: none;">{t("search.noResults", locale)}</div>
+</Base>

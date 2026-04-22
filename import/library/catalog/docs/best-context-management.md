@@ -1,22 +1,25 @@
 ---
 id: best-context-management
 title: Context Management for AI Coding
-description: >-
-  ### Progressive Loading Don't read entire files upfront. Build context
-  incrementally: 1. Start with project structure (glob, ls) 2. Read specific
-  functions (grep for signatures, then read targeted lines) 3. Load full files
-  only when editing them
+description: '### Progressive Loading Don''t read entire files upfront. Build context
+  incrementally: 1. Start with project structure (glob, ls) 2. Read specific functions
+  (grep for signatures, then read targeted lines) 3. Load full files only when editing
+  them'
 tags:
-  - best-practice
-  - ai-dev-toolkit
-  - security
-  - token-optimization
-  - workflow
+- best-practice
+- ai-dev-toolkit
+- security
+- token-optimization
+- workflow
 source:
   path: ai-dev-toolkit/best-practices/context-management.md
-  upstream: >-
-    https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/best-practices/context-management.md
+  upstream: https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/best-practices/context-management.md
   license: MIT
+translations:
+  pt-BR:
+    title: Gerenciamento de Contexto para Codificação com IA
+    description: Carregamento progressivo. Não leia arquivos inteiros antecipadamente.
+      Construa contexto incrementalmente — menos ruído, melhores decisões, menor custo.
 ---
 # Context Management for AI Coding
 

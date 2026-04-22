@@ -1,0 +1,42 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Card from "../../../components/Card.astro";
+import SearchFilter from "../../../components/SearchFilter.astro";
+import { getServers } from "../../../lib/catalog.ts";
+import { localizeEntries, t, localizedUrl, type Locale } from "../../../lib/i18n.ts";
+
+const locale: Locale = "pt-br";
+const servers = localizeEntries(await getServers(), locale);
+const base = import.meta.env.BASE_URL;
+const url = (p: string) => localizedUrl(base, p, locale);
+
+const tagSet = new Set<string>();
+for (const s of servers) for (const tag of s.tags) tagSet.add(tag);
+const tags = [...tagSet].sort();
+---
+<Base
+  title={t("list.servers.title", locale)}
+  description={t("list.servers.description", locale, { count: servers.length })}
+  locale={locale}
+>
+  <h1>{t("list.servers.title", locale)}</h1>
+  <p class="lead-muted">
+    Servidores MCP registrados no seu gateway local <code>mcp-context-forge</code>. Registre com
+    <code>npx @lucassantana/adtl add-server &lt;id&gt;</code>.
+  </p>
+  <SearchFilter placeholder={`${t("search.placeholder", locale)} (${servers.length})`} tags={tags} />
+  <div class="grid">
+    {servers.map((s) => (
+      <Card
+        kind="server"
+        id={s.id}
+        name={s.name}
+        description={s.description}
+        tags={s.tags}
+        href={url(`servers/${s.id}/`)}
+        extraTag={s.transport}
+      />
+    ))}
+  </div>
+  <div id="empty-state" class="empty" style="display: none;">{t("search.noResults", locale)}</div>
+</Base>

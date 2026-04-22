@@ -1,23 +1,27 @@
 ---
 id: adt-database-reviewer
 name: database-reviewer
-description: >-
-  Database Reviewer — schema design, migrations, indexes, constraints,
+description: Database Reviewer — schema design, migrations, indexes, constraints,
   transaction boundaries
 version: 0.1.0
 tags:
-  - agent
-  - claude-code
-  - ai-dev-toolkit
-  - review
-  - architecture
-  - database
+- agent
+- claude-code
+- ai-dev-toolkit
+- review
+- architecture
+- database
 source:
   type: git
   path: ai-dev-toolkit/kit/core/agents/database-reviewer
-  repo: 'https://github.com/LucasSantana-Dev/ai-dev-toolkit'
+  repo: https://github.com/LucasSantana-Dev/ai-dev-toolkit
 license: MIT
 author: Lucas Santana
+translations:
+  pt-BR:
+    name: database-reviewer
+    description: Revisor de banco de dados — design de schema, migrations, índices,
+      constraints, transações. Pega bugs de performance e corrupção em review.
 ---
 # Database Reviewer Agent
 

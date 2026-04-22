@@ -1,25 +1,29 @@
 ---
 id: critic
 name: Critic
-description: >-
-  Work plan and code review expert — thorough, structured, multi-perspective
+description: Work plan and code review expert — thorough, structured, multi-perspective
   (Opus)
 version: 0.1.0
 tags:
-  - agent
-  - claude-code
-  - review
-  - planning
+- agent
+- claude-code
+- review
+- planning
 model: claude-opus-4-6
 level: 3
 disallowed_tools:
-  - Write
-  - Edit
+- Write
+- Edit
 source:
   type: local
   path: dev-assets/global/claude/agents/critic.md
 license: MIT
 author: Lucas Santana
+translations:
+  pt-BR:
+    name: Crítico
+    description: Especialista em revisão de planos e código — minucioso, estruturado,
+      multi-perspectiva (Opus).
 ---
 <Agent_Prompt>
   <Role>

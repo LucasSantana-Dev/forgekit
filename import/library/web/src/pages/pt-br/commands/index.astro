@@ -1,0 +1,49 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Card from "../../../components/Card.astro";
+import SearchFilter from "../../../components/SearchFilter.astro";
+import { getCommands } from "../../../lib/catalog.ts";
+import { localizeEntries, t, localizedUrl, type Locale } from "../../../lib/i18n.ts";
+
+const locale: Locale = "pt-br";
+const commands = localizeEntries(await getCommands(), locale);
+const base = import.meta.env.BASE_URL;
+const url = (p: string) => localizedUrl(base, p, locale);
+
+const tagSet = new Set<string>();
+for (const c of commands) for (const tag of c.tags) tagSet.add(tag);
+const tags = [...tagSet].sort();
+---
+<Base
+  title={t("list.commands.title", locale)}
+  description={t("list.commands.description", locale, { count: commands.length })}
+  locale={locale}
+>
+  <h1>{t("list.commands.title", locale)}</h1>
+  <p class="lead-muted">
+    Comandos de barra do Claude Code. Instale com
+    <code>npx @lucassantana/adtl install &lt;id&gt;</code> → vai para
+    <code>~/.claude/commands/&lt;id&gt;.md</code>.
+  </p>
+  {commands.length === 0 ? (
+    <div class="empty">Sem comandos no catálogo ainda. Contribua via <code>docs/ADD_A_COMMAND.md</code>.</div>
+  ) : (
+    <>
+      <SearchFilter placeholder={`${t("search.placeholder", locale)} (${commands.length})`} tags={tags} />
+      <div class="grid">
+        {commands.map((c) => (
+          <Card
+            kind="command"
+            id={c.id}
+            name={c.name}
+            description={c.description}
+            tags={c.tags}
+            href={url(`commands/${c.id}/`)}
+            extraTag={c.category}
+          />
+        ))}
+      </div>
+      <div id="empty-state" class="empty" style="display: none;">{t("search.noResults", locale)}</div>
+    </>
+  )}
+</Base>

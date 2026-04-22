@@ -22,6 +22,7 @@ export interface Skill {
   homepage?: string;
   license?: string;
   body: string;
+  translations?: { "pt-BR"?: { name?: string; description?: string } };
 }
 
 export interface Server {
@@ -36,6 +37,7 @@ export interface Server {
   tags: string[];
   homepage?: string;
   license?: string;
+  translations?: { "pt-BR"?: { name?: string; description?: string } };
 }
 
 export interface Collection {
@@ -44,6 +46,7 @@ export interface Collection {
   description: string;
   items: Array<{ kind: "skill" | "server" | "doc"; id: string }>;
   tags?: string[];
+  translations?: { "pt-BR"?: { name?: string; description?: string } };
 }
 
 export interface Doc {
@@ -53,6 +56,7 @@ export interface Doc {
   tags: string[];
   body: string;
   source?: { path?: string; upstream?: string; license?: string };
+  translations?: { "pt-BR"?: { title?: string; description?: string } };
 }
 
 async function listFiles(dir: string, ext: string): Promise<string[]> {
@@ -129,6 +133,7 @@ export interface Agent {
   homepage?: string;
   license?: string;
   body: string;
+  translations?: { "pt-BR"?: { name?: string; description?: string } };
 }
 
 export async function getAgents(): Promise<Agent[]> {
@@ -156,6 +161,7 @@ export interface Hook {
   license?: string;
   author?: string;
   script: string;
+  translations?: { "pt-BR"?: { name?: string; description?: string } };
 }
 
 export async function getHooks(): Promise<Hook[]> {
@@ -187,6 +193,7 @@ export interface Command {
   license?: string;
   author?: string;
   body: string;
+  translations?: { "pt-BR"?: { name?: string; description?: string } };
 }
 
 export async function getCommands(): Promise<Command[]> {
@@ -217,6 +224,7 @@ export interface Tool {
   license?: string;
   author?: string;
   script: string;
+  translations?: { "pt-BR"?: { name?: string; description?: string } };
 }
 
 export async function getTools(): Promise<Tool[]> {

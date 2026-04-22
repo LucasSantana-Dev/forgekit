@@ -1,21 +1,26 @@
 ---
 id: agent-observability
 title: Agent Observability
-description: >-
-  AI coding agents produce outputs that look correct but fail in subtle ways: -
-  Hallucinated function names that pass review but fail at runtime - Tool call
-  sequences that work once but regress under different inputs - Prompt changes
-  that improve one case but silently degrade another
+description: 'AI coding agents produce outputs that look correct but fail in subtle
+  ways: - Hallucinated function names that pass review but fail at runtime - Tool
+  call sequences that work once but regress under different inputs - Prompt changes
+  that improve one case but silently degrade another'
 tags:
-  - skill-md
-  - claude
-  - prompting
-  - testing
-  - security
-  - agents
+- skill-md
+- claude
+- prompting
+- testing
+- security
+- agents
 source:
   path: ai-dev-toolkit/patterns/agent-observability.md
   license: MIT
+translations:
+  pt-BR:
+    title: Observabilidade de Agentes
+    description: 'Agentes de codificação com IA produzem saídas que parecem corretas
+      mas falham de formas sutis: alucinações, raciocínio incompleto, incoerência
+      entre ferramentas. Observabilidade é a contramedida.'
 ---
 > If you can't see what your agent did, you can't fix what it does wrong.
 

@@ -1,26 +1,31 @@
 ---
 id: code-reviewer
 name: Code Reviewer
-description: >-
-  Expert code review specialist with severity-rated feedback, logic defect
+description: Expert code review specialist with severity-rated feedback, logic defect
   detection, SOLID principle checks, style, performance, and quality strategy
 version: 0.1.0
 tags:
-  - agent
-  - claude-code
-  - review
-  - planning
-  - verification
+- agent
+- claude-code
+- review
+- planning
+- verification
 model: claude-opus-4-6
 level: 3
 disallowed_tools:
-  - Write
-  - Edit
+- Write
+- Edit
 source:
   type: local
   path: dev-assets/global/claude/agents/code-reviewer.md
 license: MIT
 author: Lucas Santana
+translations:
+  pt-BR:
+    name: Revisor de Código
+    description: Especialista em revisão de código com feedback classificado por severidade,
+      detecção de defeitos lógicos, checagens SOLID, estilo, performance e estratégia
+      de qualidade.
 ---
 <Agent_Prompt>
   <Role>

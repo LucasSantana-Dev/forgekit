@@ -1,18 +1,26 @@
 ---
+import type { Locale } from "../lib/i18n";
+import { resolveLocale, t } from "../lib/i18n";
+import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+
 interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  locale?: Locale;
 }
 const {
   title,
   description = "Curated library of Skills, MCP servers, and Claude Code sub-agents for AI-assisted development.",
+  locale = resolveLocale(Astro.url.pathname),
 } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const site = Astro.site?.toString().replace(/\/$/, "") ?? "";
+const localeBase = locale === "en" ? base : `${base}pt-br/`;
+const htmlLang = locale === "pt-br" ? "pt-BR" : "en";
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -468,21 +476,22 @@ const site = Astro.site?.toString().replace(/\/$/, "") ?? "";
   <body>
     <header class="site">
       <div class="header-inner">
-        <a class="brand" href={base}>
+        <a class="brand" href={localeBase}>
           <span class="brand-mark">a</span>
-          <span class="name">adtl library</span>
+          <span class="name">{t("nav.brand", locale)}</span>
         </a>
         <nav class="primary">
-          <a href={`${base}skills/`}>Skills</a>
-          <a href={`${base}agents/`}>Agents</a>
-          <a href={`${base}servers/`}>Servers</a>
-          <a href={`${base}tools/`}>Tools</a>
-          <a href={`${base}hooks/`}>Hooks</a>
-          <a href={`${base}commands/`}>Commands</a>
-          <a href={`${base}docs/`}>Docs</a>
-          <a class="github" href="https://github.com/LucasSantana-Dev/ai-dev-toolkit-library" aria-label="GitHub">
-            GitHub ↗
+          <a href={`${localeBase}skills/`}>{t("nav.skills", locale)}</a>
+          <a href={`${localeBase}agents/`}>{t("nav.agents", locale)}</a>
+          <a href={`${localeBase}servers/`}>{t("nav.servers", locale)}</a>
+          <a href={`${localeBase}tools/`}>{t("nav.tools", locale)}</a>
+          <a href={`${localeBase}hooks/`}>{t("nav.hooks", locale)}</a>
+          <a href={`${localeBase}commands/`}>{t("nav.commands", locale)}</a>
+          <a href={`${localeBase}docs/`}>{t("nav.docs", locale)}</a>
+          <a class="github" href="https://github.com/LucasSantana-Dev/ai-dev-toolkit-library" aria-label={t("nav.github", locale)}>
+            {t("nav.github", locale)} ↗
           </a>
+          <LanguageSwitcher locale={locale} />
         </nav>
       </div>
     </header>
@@ -490,10 +499,10 @@ const site = Astro.site?.toString().replace(/\/$/, "") ?? "";
       <slot />
     </main>
     <footer class="site">
-      <a href="https://github.com/LucasSantana-Dev/ai-dev-toolkit-library">Source</a>
-      · MIT
-      · Built with <a href="https://astro.build">Astro</a>,
-      runs on <a href="https://pages.cloudflare.com">Cloudflare Pages</a>
+      <a href="https://github.com/LucasSantana-Dev/ai-dev-toolkit-library">{t("footer.source", locale)}</a>
+      · {t("footer.license", locale)}
+      · {t("footer.builtWith", locale)} <a href="https://astro.build">Astro</a>,
+      {t("footer.runsOn", locale)} <a href="https://pages.cloudflare.com">Cloudflare Pages</a>
     </footer>
 
     <script is:inline>

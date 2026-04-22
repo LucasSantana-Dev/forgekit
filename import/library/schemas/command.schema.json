@@ -4,22 +4,39 @@
   "title": "Command",
   "description": "A Claude Code slash command (markdown body with YAML frontmatter), installed into ~/.claude/commands/<id>.md.",
   "type": "object",
-  "required": ["id", "name", "description", "version", "tags"],
+  "required": [
+    "id",
+    "name",
+    "description",
+    "version",
+    "tags"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
       "type": "string",
       "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
     },
-    "name": { "type": "string", "minLength": 1, "maxLength": 120 },
-    "description": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
     "version": {
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
     },
     "tags": {
       "type": "array",
-      "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      },
       "minItems": 1,
       "maxItems": 16,
       "uniqueItems": true
@@ -38,15 +55,63 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "type": { "enum": ["git", "local", "vendored"] },
-        "repo": { "type": "string", "format": "uri" },
-        "ref": { "type": "string" },
-        "path": { "type": "string" }
+        "type": {
+          "enum": [
+            "git",
+            "local",
+            "vendored"
+          ]
+        },
+        "repo": {
+          "type": "string",
+          "format": "uri"
+        },
+        "ref": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        }
       }
     },
-    "homepage": { "type": "string", "format": "uri" },
-    "license": { "type": "string", "maxLength": 64 },
-    "author": { "type": "string", "maxLength": 128 },
-    "deprecated": { "type": "boolean", "default": false }
+    "homepage": {
+      "type": "string",
+      "format": "uri"
+    },
+    "license": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "author": {
+      "type": "string",
+      "maxLength": 128
+    },
+    "deprecated": {
+      "type": "boolean",
+      "default": false
+    },
+    "translations": {
+      "type": "object",
+      "description": "Optional locale-specific overrides for user-visible fields. Keys are BCP-47 language tags.",
+      "additionalProperties": false,
+      "properties": {
+        "pt-BR": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            }
+          }
+        }
+      }
+    }
   }
 }

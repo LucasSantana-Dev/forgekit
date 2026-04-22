@@ -22,5 +22,11 @@
   },
   "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/tools/toggle-mcp.py",
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Toggle MCP",
+      "description": "Liga/desliga servidores MCP individuais em settings.json. Útil para depurar interações entre MCPs."
+    }
+  }
 }

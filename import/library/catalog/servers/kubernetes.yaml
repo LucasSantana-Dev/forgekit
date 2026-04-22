@@ -1,19 +1,26 @@
 id: kubernetes
 name: Kubernetes
-description: Read + edit live cluster state — pods, nodes, events, logs, resources. Use only against clusters you expect the model to touch.
+description: Read + edit live cluster state — pods, nodes, events, logs, resources.
+  Use only against clusters you expect the model to touch.
 transport: stdio
 command: npx
 args:
-  - -y
-  - mcp-server-kubernetes
+- -y
+- mcp-server-kubernetes
 env:
-  - name: KUBECONFIG
-    description: Path to kubeconfig. Defaults to ~/.kube/config.
-    required: false
+- name: KUBECONFIG
+  description: Path to kubeconfig. Defaults to ~/.kube/config.
+  required: false
 tags:
-  - kubernetes
-  - infra
-  - homelab
-  - ops
+- kubernetes
+- infra
+- homelab
+- ops
 homepage: https://github.com/Flux159/mcp-server-kubernetes
 license: MIT
+translations:
+  pt-BR:
+    name: Kubernetes
+    description: Leia + edite o estado do cluster ao vivo — pods, nodes, events, logs,
+      recursos. Use apenas em clusters de dev/homelab, não em produção sem revisão
+      humana.

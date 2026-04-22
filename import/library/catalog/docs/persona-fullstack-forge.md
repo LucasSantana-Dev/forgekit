@@ -1,24 +1,27 @@
 ---
 id: persona-fullstack-forge
 title: Fullstack Forge persona
-description: >-
-  --- name: Fullstack Forge description: A full-service software development
-  consultancy with 66 specialized skills covering 12 programming languages, 7
-  backend frameworks, frontend/mobile, infrastructure, security, data science,
-  and DevOps slug: fullstack-forge schema: agentcompanies/v1 version: 1.0.0
-  license: MIT authors: - name: Jeffallan goals: - Deliver expert-level software
-  development across the full technology stack - Match every project to the
-  right specialist with dee
+description: '--- name: Fullstack Forge description: A full-service software development
+  consultancy with 66 specialized skills covering 12 programming languages, 7 backend
+  frameworks, frontend/mobile, infrastructure, security, data science, and DevOps
+  slug: fullstack-forge schema: agentcompanies/v1 version: 1.0.0 license: MIT authors:
+  - name: Jeffallan goals: - Deliver expert-level software development across the
+  full technology stack - Match every project to the right specialist with dee'
 tags:
-  - persona
-  - persona-fullstack-forge
-  - ai-dev-toolkit
-  - workflow
+- persona
+- persona-fullstack-forge
+- ai-dev-toolkit
+- workflow
 source:
   path: ai-dev-toolkit/companies/fullstack-forge
-  upstream: >-
-    https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/companies/fullstack-forge
+  upstream: https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/companies/fullstack-forge
   license: MIT
+translations:
+  pt-BR:
+    title: Persona Fullstack Forge
+    description: Template de empresa tipo Fullstack Forge — consultoria de desenvolvimento
+      de software full-service. Equipes diversas, projetos longos, entregáveis de
+      alta qualidade.
 ---
 ## COMPANY
 

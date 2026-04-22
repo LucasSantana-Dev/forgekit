@@ -22,5 +22,11 @@
   },
   "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/tools/setup-ai-workflow-macos.sh",
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Setup AI Workflow macOS",
+      "description": "Script de bootstrap one-shot para o workflow AI-assisted em macOS — Claude Code, skills padrão, hooks, config global."
+    }
+  }
 }

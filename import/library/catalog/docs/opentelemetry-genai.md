@@ -1,19 +1,24 @@
 ---
 id: opentelemetry-genai
 title: OpenTelemetry GenAI Semantic Conventions
-description: >-
-  Vendor lock-in to observability layers has cost you money. Decoupling
-  telemetry collection from analysis backends lets you migrate from Datadog to
-  Grafana without rewriting instrumentation. OpenTelemetry GenAI Semantic
-  Conventions (GA March 2026) is the standard way forward.
+description: Vendor lock-in to observability layers has cost you money. Decoupling
+  telemetry collection from analysis backends lets you migrate from Datadog to Grafana
+  without rewriting instrumentation. OpenTelemetry GenAI Semantic Conventions (GA
+  March 2026) is the standard way forward.
 tags:
-  - skill-md
-  - claude
-  - prompting
-  - agents
+- skill-md
+- claude
+- prompting
+- agents
 source:
   path: ai-dev-toolkit/patterns/opentelemetry-genai.md
   license: MIT
+translations:
+  pt-BR:
+    title: Convenções Semânticas OpenTelemetry GenAI
+    description: Lock-in em vendors de observabilidade custou dinheiro. Desacoplar
+      telemetria via OpenTelemetry GenAI conventions — padrões portáveis para observabilidade
+      de LLM.
 ---
 Vendor lock-in to observability layers has cost you money. Decoupling telemetry collection from analysis backends lets you migrate from Datadog to Grafana without rewriting instrumentation. OpenTelemetry GenAI Semantic Conventions (GA March 2026) is the standard way forward.
 

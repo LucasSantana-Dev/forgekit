@@ -4,9 +4,9 @@ name: Planner
 description: Strategic planning consultant with interview workflow (Opus)
 version: 0.1.0
 tags:
-  - agent
-  - claude-code
-  - planning
+- agent
+- claude-code
+- planning
 model: claude-opus-4-6
 level: 4
 source:
@@ -14,6 +14,11 @@ source:
   path: dev-assets/global/claude/agents/planner.md
 license: MIT
 author: Lucas Santana
+translations:
+  pt-BR:
+    name: Planejador
+    description: Consultor estratégico de planejamento com workflow de entrevista
+      (Opus). Use antes de iniciar trabalho multi-PR ou ambíguo.
 ---
 <Agent_Prompt>
   <Role>

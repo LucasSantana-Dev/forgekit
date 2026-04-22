@@ -1,20 +1,24 @@
 ---
 id: streaming-orchestration
 title: Streaming Orchestration
-description: >-
-  You send a prompt and wait. You don't know if the agent is stuck,
-  hallucinating, or burning through tokens on the wrong task. When something
-  goes wrong, you can't tell where. Budget overruns happen silently.
+description: You send a prompt and wait. You don't know if the agent is stuck, hallucinating,
+  or burning through tokens on the wrong task. When something goes wrong, you can't
+  tell where. Budget overruns happen silently.
 tags:
-  - skill-md
-  - claude
-  - mcp
-  - prompting
-  - testing
-  - agents
+- skill-md
+- claude
+- mcp
+- prompting
+- testing
+- agents
 source:
   path: ai-dev-toolkit/patterns/streaming-orchestration.md
   license: MIT
+translations:
+  pt-BR:
+    title: Orquestração de Streaming
+    description: Você envia um prompt e espera. Não sabe se o agente travou, alucinou
+      ou está progredindo. Streaming de progresso conserta isso.
 ---
 > Event-driven turn loops let you observe and control agent execution in real time.
 

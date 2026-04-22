@@ -22,5 +22,11 @@
   },
   "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/tools/mcp-health.py",
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "MCP Health",
+      "description": "Checagem de saúde para servidores MCP configurados — valida conectividade, autenticação e schema de ferramentas."
+    }
+  }
 }

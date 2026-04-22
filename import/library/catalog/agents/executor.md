@@ -4,9 +4,9 @@ name: Executor
 description: Focused task executor for implementation work (Sonnet)
 version: 0.1.0
 tags:
-  - agent
-  - claude-code
-  - execution
+- agent
+- claude-code
+- execution
 model: claude-sonnet-4-6
 level: 2
 source:
@@ -14,6 +14,11 @@ source:
   path: dev-assets/global/claude/agents/executor.md
 license: MIT
 author: Lucas Santana
+translations:
+  pt-BR:
+    name: Executor
+    description: Executor focado de tarefas para trabalho de implementação (Sonnet).
+      Use para mudanças bem-escopadas que seguem um plano aprovado.
 ---
 <Agent_Prompt>
   <Role>

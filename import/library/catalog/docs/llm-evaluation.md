@@ -1,19 +1,23 @@
 ---
 id: llm-evaluation
 title: LLM Evaluation Patterns
-description: >-
-  Measure before you ship. Intuition about model quality is unreliable — score
-  it systematically. This guide covers evaluation frameworks, golden datasets,
+description: Measure before you ship. Intuition about model quality is unreliable
+  — score it systematically. This guide covers evaluation frameworks, golden datasets,
   regression testing, and production monitoring for LLM-powered features.
 tags:
-  - skill-md
-  - claude
-  - prompting
-  - testing
-  - security
+- skill-md
+- claude
+- prompting
+- testing
+- security
 source:
   path: ai-dev-toolkit/patterns/llm-evaluation.md
   license: MIT
+translations:
+  pt-BR:
+    title: Padrões de Avaliação de LLMs
+    description: Meça antes de enviar. Intuição sobre qualidade de modelo é não-confiável
+      — pontue em datasets offline antes de rollout.
 ---
 Measure before you ship. Intuition about model quality is unreliable — score it systematically. This guide covers evaluation frameworks, golden datasets, regression testing, and production monitoring for LLM-powered features.
 

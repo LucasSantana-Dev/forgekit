@@ -1,23 +1,26 @@
 ---
 id: benchmark-reality-gap
 title: Benchmark Reality Gap
-description: >-
-  SWE-bench and similar curated benchmarks overestimate agent capability by 50%+
-  in real-world deployment. The gap emerges from benchmark framing: clean task
-  descriptions with sufficient context don't resemble actual user queries, which
-  are ambiguous, under-specified, and embedded in noisy ticket systems. Closing
-  the gap requires domain-specific evaluation sets grounded in real user
-  behavior.
+description: 'SWE-bench and similar curated benchmarks overestimate agent capability
+  by 50%+ in real-world deployment. The gap emerges from benchmark framing: clean
+  task descriptions with sufficient context don''t resemble actual user queries, which
+  are ambiguous, under-specified, and embedded in noisy ticket systems. Closing the
+  gap requires domain-specific evaluation sets grounded in real user behavior.'
 tags:
-  - skill-md
-  - prompting
-  - testing
-  - security
-  - git
-  - agents
+- skill-md
+- prompting
+- testing
+- security
+- git
+- agents
 source:
   path: ai-dev-toolkit/patterns/benchmark-reality-gap.md
   license: MIT
+translations:
+  pt-BR:
+    title: Benchmark vs. Realidade
+    description: SWE-bench e benchmarks similares superestimam capacidade de agentes
+      em 50%+ em cenários reais. Este doc detalha o gap e como calibrar expectativas.
 ---
 SWE-bench and similar curated benchmarks overestimate agent capability by 50%+ in real-world deployment. The gap emerges from benchmark framing: clean task descriptions with sufficient context don't resemble actual user queries, which are ambiguous, under-specified, and embedded in noisy ticket systems. Closing the gap requires domain-specific evaluation sets grounded in real user behavior.
 

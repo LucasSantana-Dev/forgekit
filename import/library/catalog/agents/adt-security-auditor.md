@@ -1,22 +1,27 @@
 ---
 id: adt-security-auditor
 name: security-auditor
-description: >-
-  Security Auditor — OWASP checks, dependency scanning, secrets detection,
+description: Security Auditor — OWASP checks, dependency scanning, secrets detection,
   threat paths
 version: 0.1.0
 tags:
-  - agent
-  - claude-code
-  - ai-dev-toolkit
-  - verification
-  - security
+- agent
+- claude-code
+- ai-dev-toolkit
+- verification
+- security
 source:
   type: git
   path: ai-dev-toolkit/kit/core/agents/security-auditor
-  repo: 'https://github.com/LucasSantana-Dev/ai-dev-toolkit'
+  repo: https://github.com/LucasSantana-Dev/ai-dev-toolkit
 license: MIT
 author: Lucas Santana
+translations:
+  pt-BR:
+    name: security-auditor
+    description: Auditor de segurança — checks OWASP, scanning de dependências, detecção
+      de secrets, modelagem de ameaças. Use em revisões de segurança e triagem de
+      CVEs.
 ---
 # Security Auditor Agent
 

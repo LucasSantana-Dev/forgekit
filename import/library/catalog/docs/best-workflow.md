@@ -3,15 +3,19 @@ id: best-workflow
 title: AI-Assisted Development Workflow
 description: '`` feature/my-feature → PR to main → automated deploy ``'
 tags:
-  - best-practice
-  - ai-dev-toolkit
-  - security
-  - workflow
+- best-practice
+- ai-dev-toolkit
+- security
+- workflow
 source:
   path: ai-dev-toolkit/best-practices/workflow.md
-  upstream: >-
-    https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/best-practices/workflow.md
+  upstream: https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/best-practices/workflow.md
   license: MIT
+translations:
+  pt-BR:
+    title: Fluxo de Desenvolvimento Assistido por IA
+    description: feature/my-feature → PR para main → deploy automatizado. Fluxo operacional
+      para times que enviam mudanças com ajuda de IA.
 ---
 # AI-Assisted Development Workflow
 

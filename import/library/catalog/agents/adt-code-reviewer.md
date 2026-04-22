@@ -1,24 +1,29 @@
 ---
 id: adt-code-reviewer
 name: code-reviewer
-description: >-
-  Code Reviewer — systematically identifies bugs, security issues, test coverage
-  gaps, and style violations
+description: Code Reviewer — systematically identifies bugs, security issues, test
+  coverage gaps, and style violations
 version: 0.1.0
 tags:
-  - agent
-  - claude-code
-  - ai-dev-toolkit
-  - review
-  - testing
-  - security
-  - reasoning
+- agent
+- claude-code
+- ai-dev-toolkit
+- review
+- testing
+- security
+- reasoning
 source:
   type: git
   path: ai-dev-toolkit/kit/core/agents/code-reviewer
-  repo: 'https://github.com/LucasSantana-Dev/ai-dev-toolkit'
+  repo: https://github.com/LucasSantana-Dev/ai-dev-toolkit
 license: MIT
 author: Lucas Santana
+translations:
+  pt-BR:
+    name: code-reviewer
+    description: Revisor de código — identifica sistematicamente bugs, questões de
+      segurança, lacunas de cobertura de teste e violações de estilo. Use em diffs
+      antes de merge.
 ---
 # Code Reviewer Agent
 

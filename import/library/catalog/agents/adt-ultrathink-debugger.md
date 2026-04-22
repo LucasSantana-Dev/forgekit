@@ -1,20 +1,25 @@
 ---
 id: adt-ultrathink-debugger
 name: ultrathink-debugger
-description: 'Ultrathink Debugger — deep reasoning for gnarly bugs, 3+ level traces'
+description: Ultrathink Debugger — deep reasoning for gnarly bugs, 3+ level traces
 version: 0.1.0
 tags:
-  - agent
-  - claude-code
-  - ai-dev-toolkit
-  - debugging
-  - reasoning
+- agent
+- claude-code
+- ai-dev-toolkit
+- debugging
+- reasoning
 source:
   type: git
   path: ai-dev-toolkit/kit/core/agents/ultrathink-debugger
-  repo: 'https://github.com/LucasSantana-Dev/ai-dev-toolkit'
+  repo: https://github.com/LucasSantana-Dev/ai-dev-toolkit
 license: MIT
 author: Lucas Santana
+translations:
+  pt-BR:
+    name: ultrathink-debugger
+    description: Debugger ultrathink — raciocínio profundo para bugs complexos com
+      traces de 3+ níveis. Use quando o debugger sistemático não encontra a raiz.
 ---
 # Ultrathink Debugger Agent
 

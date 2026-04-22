@@ -12,8 +12,11 @@ import {
   getCommands,
   getTools,
 } from "../lib/catalog.ts";
+import { localizeEntries, t, localizedUrl, type Locale } from "../lib/i18n.ts";
 
-const [skills, servers, collections, docs, agents, hooks, commands, tools] = await Promise.all([
+const locale: Locale = "en";
+
+const [skillsRaw, serversRaw, collectionsRaw, docsRaw, agentsRaw, hooksRaw, commandsRaw, toolsRaw] = await Promise.all([
   getSkills(),
   getServers(),
   getCollections(),
@@ -23,7 +26,18 @@ const [skills, servers, collections, docs, agents, hooks, commands, tools] = awa
   getCommands(),
   getTools(),
 ]);
+
+const skills = localizeEntries(skillsRaw, locale);
+const servers = localizeEntries(serversRaw, locale);
+const collections = localizeEntries(collectionsRaw, locale);
+const docs = localizeEntries(docsRaw, locale);
+const agents = localizeEntries(agentsRaw, locale);
+const hooks = localizeEntries(hooksRaw, locale);
+const commands = localizeEntries(commandsRaw, locale);
+const tools = localizeEntries(toolsRaw, locale);
+
 const base = import.meta.env.BASE_URL;
+const url = (p: string) => localizedUrl(base, p, locale);
 
 const featuredSkills = skills.slice(0, 3);
 const featuredAgents = agents.slice(0, 3);
@@ -35,44 +49,40 @@ const total = skills.length + agents.length + servers.length + hooks.length + co
 
 const tagCount = new Map<string, number>();
 for (const e of [...skills, ...servers, ...agents, ...hooks, ...tools]) {
-  for (const t of e.tags ?? []) tagCount.set(t, (tagCount.get(t) ?? 0) + 1);
+  for (const tag of e.tags ?? []) tagCount.set(tag, (tagCount.get(tag) ?? 0) + 1);
 }
 const popularTags = [...tagCount.entries()]
   .sort((a, b) => b[1] - a[1])
   .slice(0, 12)
-  .map(([t]) => t);
+  .map(([tag]) => tag);
 ---
-<Base title="Library">
+<Base title={t("home.title", locale)} locale={locale}>
   <section class="hero">
     <div class="hero-content">
-      <h1>The AI-dev toolkit library</h1>
-      <p class="lede">
-        Curated skills, sub-agents, MCP servers, hooks, commands, and tools for AI-assisted dev.
-        Free, self-hosted, inspired by <a href="https://skills.sh">skills.sh</a> and
-        <a href="https://app.mcpmarket.com">mcpmarket.com</a>.
-      </p>
+      <h1>{t("home.headline", locale)}</h1>
+      <p class="lede">{t("home.lede", locale)}</p>
       <div class="hero-cta">
-        <a class="btn btn-primary" href={`${base}skills/`}>Browse {total} entries</a>
-        <a class="btn" href="https://github.com/LucasSantana-Dev/ai-dev-toolkit-library/blob/main/docs/QUICKSTART.md">Quickstart ↗</a>
+        <a class="btn btn-primary" href={url("skills/")}>{t("home.ctaBrowse", locale, { count: total })}</a>
+        <a class="btn" href="https://github.com/LucasSantana-Dev/ai-dev-toolkit-library/blob/main/docs/QUICKSTART.md">{t("home.ctaQuickstart", locale)} ↗</a>
       </div>
       <div style="max-width: 560px; margin: 2rem auto 0;">
-        <InstallBlock command="npx @lucassantana/adtl setup --all" label="copy install" />
+        <InstallBlock command="npx @lucassantana/adtl setup --all" label={t("installCopy.label", locale)} />
       </div>
     </div>
   </section>
 
   <div class="stats">
-    <div class="stat"><span class="stat-value">{skills.length}</span><span class="stat-label">Skills</span></div>
-    <div class="stat"><span class="stat-value">{agents.length}</span><span class="stat-label">Agents</span></div>
-    <div class="stat"><span class="stat-value">{servers.length}</span><span class="stat-label">Servers</span></div>
-    <div class="stat"><span class="stat-value">{tools.length}</span><span class="stat-label">Tools</span></div>
-    <div class="stat"><span class="stat-value">{hooks.length}</span><span class="stat-label">Hooks</span></div>
-    <div class="stat"><span class="stat-value">{commands.length}</span><span class="stat-label">Commands</span></div>
-    <div class="stat"><span class="stat-value">{docs.length}</span><span class="stat-label">Docs</span></div>
+    <div class="stat"><span class="stat-value">{skills.length}</span><span class="stat-label">{t("home.stat.skills", locale)}</span></div>
+    <div class="stat"><span class="stat-value">{agents.length}</span><span class="stat-label">{t("home.stat.agents", locale)}</span></div>
+    <div class="stat"><span class="stat-value">{servers.length}</span><span class="stat-label">{t("home.stat.servers", locale)}</span></div>
+    <div class="stat"><span class="stat-value">{tools.length}</span><span class="stat-label">{t("home.stat.tools", locale)}</span></div>
+    <div class="stat"><span class="stat-value">{hooks.length}</span><span class="stat-label">{t("home.stat.hooks", locale)}</span></div>
+    <div class="stat"><span class="stat-value">{commands.length}</span><span class="stat-label">{t("home.stat.commands", locale)}</span></div>
+    <div class="stat"><span class="stat-value">{docs.length}</span><span class="stat-label">{t("home.stat.docs", locale)}</span></div>
   </div>
 
-  <h2>Featured collections</h2>
-  <p class="lead-muted">Opinionated bundles — one-click starting points.</p>
+  <h2>{t("home.section.collections", locale)}</h2>
+  <p class="lead-muted">{t("home.section.collectionsLede", locale)}</p>
   <div class="grid">
     {collections.map((c) => (
       <Card
@@ -81,57 +91,57 @@ const popularTags = [...tagCount.entries()]
         name={c.name}
         description={c.description}
         tags={c.tags ?? []}
-        href={`${base}collections/${c.id}/`}
+        href={url(`collections/${c.id}/`)}
         extraTag={`${c.items.length} items`}
       />
     ))}
   </div>
 
-  <h2>Popular skills</h2>
+  <h2>{t("home.section.skills", locale)}</h2>
   <div class="grid">
     {featuredSkills.map((s) => (
-      <Card kind="skill" id={s.id} name={s.name} description={s.description} tags={s.tags} href={`${base}skills/${s.id}/`} />
+      <Card kind="skill" id={s.id} name={s.name} description={s.description} tags={s.tags} href={url(`skills/${s.id}/`)} />
     ))}
   </div>
-  <p style="margin-top: 1rem;"><a href={`${base}skills/`}>All {skills.length} skills →</a></p>
+  <p style="margin-top: 1rem;"><a href={url("skills/")}>{t("home.allOf", locale, { count: skills.length, kind: t("nav.skills", locale).toLowerCase() })}</a></p>
 
-  <h2>Sub-agents</h2>
+  <h2>{t("home.section.agents", locale)}</h2>
   <div class="grid">
     {featuredAgents.map((a) => (
-      <Card kind="agent" id={a.id} name={a.name} description={a.description} tags={a.tags} href={`${base}agents/${a.id}/`} extraTag={a.model} />
+      <Card kind="agent" id={a.id} name={a.name} description={a.description} tags={a.tags} href={url(`agents/${a.id}/`)} extraTag={a.model} />
     ))}
   </div>
-  <p style="margin-top: 1rem;"><a href={`${base}agents/`}>All {agents.length} agents →</a></p>
+  <p style="margin-top: 1rem;"><a href={url("agents/")}>{t("home.allOf", locale, { count: agents.length, kind: t("nav.agents", locale).toLowerCase() })}</a></p>
 
-  <h2>MCP servers</h2>
+  <h2>{t("home.section.servers", locale)}</h2>
   <div class="grid">
     {featuredServers.map((s) => (
-      <Card kind="server" id={s.id} name={s.name} description={s.description} tags={s.tags} href={`${base}servers/${s.id}/`} extraTag={s.transport} />
+      <Card kind="server" id={s.id} name={s.name} description={s.description} tags={s.tags} href={url(`servers/${s.id}/`)} extraTag={s.transport} />
     ))}
   </div>
-  <p style="margin-top: 1rem;"><a href={`${base}servers/`}>All {servers.length} servers →</a></p>
+  <p style="margin-top: 1rem;"><a href={url("servers/")}>{t("home.allOf", locale, { count: servers.length, kind: t("nav.servers", locale).toLowerCase() })}</a></p>
 
-  <h2>Tools</h2>
-  <p class="lead-muted">Token optimization, RAG, compression, MCP ops, diagnostics.</p>
+  <h2>{t("home.section.tools", locale)}</h2>
+  <p class="lead-muted">{t("home.section.toolsLede", locale)}</p>
   <div class="grid">
-    {featuredTools.map((t) => (
-      <Card kind="tool" id={t.id} name={t.name} description={t.description} tags={t.tags} href={`${base}tools/${t.id}/`} extraTag={`${t.category} · ${t.runtime}`} />
+    {featuredTools.map((tool) => (
+      <Card kind="tool" id={tool.id} name={tool.name} description={tool.description} tags={tool.tags} href={url(`tools/${tool.id}/`)} extraTag={`${tool.category} · ${tool.runtime}`} />
     ))}
   </div>
-  <p style="margin-top: 1rem;"><a href={`${base}tools/`}>All {tools.length} tools →</a></p>
+  <p style="margin-top: 1rem;"><a href={url("tools/")}>{t("home.allOf", locale, { count: tools.length, kind: t("nav.tools", locale).toLowerCase() })}</a></p>
 
-  <h2>Hooks</h2>
+  <h2>{t("home.section.hooks", locale)}</h2>
   <div class="grid">
     {featuredHooks.map((h) => (
-      <Card kind="hook" id={h.id} name={h.name} description={h.description} tags={h.tags} href={`${base}hooks/${h.id}/`} extraTag={h.event} />
+      <Card kind="hook" id={h.id} name={h.name} description={h.description} tags={h.tags} href={url(`hooks/${h.id}/`)} extraTag={h.event} />
     ))}
   </div>
-  <p style="margin-top: 1rem;"><a href={`${base}hooks/`}>All {hooks.length} hooks →</a></p>
+  <p style="margin-top: 1rem;"><a href={url("hooks/")}>{t("home.allOf", locale, { count: hooks.length, kind: t("nav.hooks", locale).toLowerCase() })}</a></p>
 
-  <h2>Browse by tag</h2>
+  <h2>{t("home.section.tags", locale)}</h2>
   <div class="chips">
-    {popularTags.map((t) => (
-      <a href={`${base}search/?tag=${encodeURIComponent(t)}`} class="chip">#{t}</a>
+    {popularTags.map((tag) => (
+      <a href={url(`search/?tag=${encodeURIComponent(tag)}`)} class="chip">#{tag}</a>
     ))}
   </div>
 </Base>

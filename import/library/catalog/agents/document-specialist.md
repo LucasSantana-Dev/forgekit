@@ -4,19 +4,24 @@ name: Document Specialist
 description: External Documentation & Reference Specialist
 version: 0.1.0
 tags:
-  - agent
-  - claude-code
-  - docs
+- agent
+- claude-code
+- docs
 model: claude-sonnet-4-6
 level: 2
 disallowed_tools:
-  - Write
-  - Edit
+- Write
+- Edit
 source:
   type: local
   path: dev-assets/global/claude/agents/document-specialist.md
 license: MIT
 author: Lucas Santana
+translations:
+  pt-BR:
+    name: Especialista em Documentação
+    description: Especialista em documentação externa e referências — consulta docs
+      oficiais e sintetiza em respostas direcionadas.
 ---
 <Agent_Prompt>
 <Role>

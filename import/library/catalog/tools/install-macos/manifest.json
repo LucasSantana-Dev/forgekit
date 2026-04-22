@@ -22,5 +22,11 @@
   },
   "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/tools/install-macos.sh",
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Install macOS",
+      "description": "Instala toolchain de CLI (Homebrew + ferramentas centrais) em macOS. Idempotente — pule pacotes já instalados."
+    }
+  }
 }

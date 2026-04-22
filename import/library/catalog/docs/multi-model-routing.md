@@ -1,18 +1,22 @@
 ---
 id: multi-model-routing
 title: Multi-Model Routing
-description: >-
-  Using a frontier model for every task wastes money and time. Using a weak
-  model for hard tasks wastes your time fixing its output. The optimal strategy
+description: Using a frontier model for every task wastes money and time. Using a
+  weak model for hard tasks wastes your time fixing its output. The optimal strategy
   routes tasks to the right capability tier.
 tags:
-  - skill-md
-  - claude
-  - testing
-  - agents
+- skill-md
+- claude
+- testing
+- agents
 source:
   path: ai-dev-toolkit/patterns/multi-model-routing.md
   license: MIT
+translations:
+  pt-BR:
+    title: Roteamento Multi-Modelo
+    description: Usar um modelo frontier para toda tarefa desperdiça dinheiro e tempo.
+      Usar um modelo fraco para tudo degrada qualidade. Rode o request ao modelo certo.
 ---
 > Use the cheapest model that can do the job. Escalate only when needed.
 

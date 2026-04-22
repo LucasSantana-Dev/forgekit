@@ -1,18 +1,23 @@
 ---
 id: ai-observability
 title: AI Observability in Production
-description: >-
-  Production AI systems require deep observability into model performance, cost,
-  and data quality. This pattern covers instrumentation, alerting, and data
+description: Production AI systems require deep observability into model performance,
+  cost, and data quality. This pattern covers instrumentation, alerting, and data
   quality monitoring for LLM-powered applications.
 tags:
-  - skill-md
-  - claude
-  - prompting
-  - testing
+- skill-md
+- claude
+- prompting
+- testing
 source:
   path: ai-dev-toolkit/patterns/ai-observability.md
   license: MIT
+translations:
+  pt-BR:
+    title: Observabilidade de IA em Produção
+    description: Sistemas de IA em produção exigem observabilidade profunda sobre
+      performance de modelo, custo e consistência de saída. Aborda latência, taxa
+      de erro, deriva de modelo e padrões de observabilidade.
 ---
 Production AI systems require deep observability into model performance, cost, and data quality. This pattern covers instrumentation, alerting, and data quality monitoring for LLM-powered applications.
 

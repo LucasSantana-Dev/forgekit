@@ -1,0 +1,154 @@
+---
+import type { Locale } from "../lib/i18n";
+import { t } from "../lib/i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const activeLabel = t(`language.${locale}`, locale);
+---
+<div class="lang" data-active-locale={locale}>
+  <button
+    type="button"
+    class="lang-toggle"
+    aria-haspopup="menu"
+    aria-expanded="false"
+    aria-label={`${t("language.label", locale)}: ${activeLabel}`}
+    title={t("language.label", locale)}
+  >
+    <span aria-hidden="true">🌐</span>
+    <span>{activeLabel}</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button>
+  <div class="lang-menu" role="menu">
+    <button type="button" role="menuitemradio" aria-checked={locale === "en"} data-locale="en">
+      English
+    </button>
+    <button type="button" role="menuitemradio" aria-checked={locale === "pt-br"} data-locale="pt-br">
+      Português (Brasil)
+    </button>
+  </div>
+</div>
+
+<style>
+  .lang {
+    position: relative;
+    display: inline-flex;
+  }
+  .lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg-elev);
+    color: var(--fg-muted);
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: border-color 120ms, color 120ms, background 120ms;
+  }
+  .lang-toggle:hover,
+  .lang[data-open="true"] .lang-toggle {
+    border-color: var(--border-strong);
+    background: var(--bg-hover);
+    color: var(--fg);
+  }
+  .lang-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .caret {
+    font-size: 0.7rem;
+    color: var(--fg-subtle);
+  }
+  .lang-menu {
+    position: absolute;
+    top: calc(100% + 0.4rem);
+    right: 0;
+    min-width: 180px;
+    padding: 0.3rem;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    background: var(--bg-elev);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.4);
+    display: none;
+    z-index: 50;
+  }
+  .lang[data-open="true"] .lang-menu {
+    display: block;
+  }
+  .lang-menu button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.45rem 0.65rem;
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--fg);
+    font: inherit;
+    font-size: 0.85rem;
+    text-align: left;
+    cursor: pointer;
+  }
+  .lang-menu button:hover {
+    background: var(--bg-hover);
+  }
+  .lang-menu button[aria-checked="true"]::after {
+    content: "✓";
+    color: var(--accent);
+    margin-left: 0.5rem;
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.currentScript?.previousElementSibling;
+    if (!root) return;
+    const wrapper = root.matches?.(".lang") ? root : root.querySelector?.(".lang");
+    if (!wrapper) return;
+    const toggle = wrapper.querySelector(".lang-toggle");
+    const items = wrapper.querySelectorAll("[data-locale]");
+
+    function close() {
+      wrapper.dataset.open = "false";
+      toggle?.setAttribute("aria-expanded", "false");
+    }
+    function open() {
+      wrapper.dataset.open = "true";
+      toggle?.setAttribute("aria-expanded", "true");
+    }
+
+    toggle?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      wrapper.dataset.open === "true" ? close() : open();
+    });
+    document.addEventListener("click", (e) => {
+      if (!wrapper.contains(e.target)) close();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+    });
+
+    items.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-locale");
+        if (!target) return;
+        const path = window.location.pathname;
+        const stripped = path.replace(/^\/pt-br(\/|$)/, "/");
+        const next =
+          target === "en"
+            ? stripped
+            : "/pt-br" + (stripped === "/" ? "/" : stripped);
+        if (next !== path) {
+          window.location.href = next + window.location.search + window.location.hash;
+        }
+      });
+    });
+  })();
+</script>

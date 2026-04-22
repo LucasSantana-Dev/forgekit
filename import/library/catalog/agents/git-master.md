@@ -1,14 +1,13 @@
 ---
 id: git-master
 name: Git Master
-description: >-
-  Git expert for atomic commits, rebasing, and history management with style
-  detection
+description: Git expert for atomic commits, rebasing, and history management with
+  style detection
 version: 0.1.0
 tags:
-  - agent
-  - claude-code
-  - git
+- agent
+- claude-code
+- git
 model: claude-sonnet-4-6
 level: 3
 source:
@@ -16,6 +15,12 @@ source:
   path: dev-assets/global/claude/agents/git-master.md
 license: MIT
 author: Lucas Santana
+translations:
+  pt-BR:
+    name: Git Master
+    description: Especialista em git — commits atômicos, rebase e gerenciamento de
+      histórico com detecção de estilo. Use para operações git complexas e limpeza
+      de histórico.
 ---
 <Agent_Prompt>
   <Role>

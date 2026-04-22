@@ -1,18 +1,26 @@
 id: linear
 name: Linear
-description: Read + write Linear issues, projects, cycles, comments, and documents. Uses a local stdio wrapper against Linear's GraphQL API — your API key never leaves your machine.
+description: Read + write Linear issues, projects, cycles, comments, and documents.
+  Uses a local stdio wrapper against Linear's GraphQL API — your API key never leaves
+  your machine.
 transport: stdio
 command: npx
 args:
-  - -y
-  - "@tacticlaunch/mcp-linear"
+- -y
+- '@tacticlaunch/mcp-linear'
 env:
-  - name: LINEAR_API_KEY
-    description: Linear personal API key (Settings → Account → API → Personal API keys). Stays local.
-    required: true
+- name: LINEAR_API_KEY
+  description: Linear personal API key (Settings → Account → API → Personal API keys).
+    Stays local.
+  required: true
 tags:
-  - project-mgmt
-  - issues
-  - linear
+- project-mgmt
+- issues
+- linear
 homepage: https://github.com/tacticlaunch/mcp-linear
 license: MIT
+translations:
+  pt-BR:
+    name: Linear
+    description: Leia + escreva issues, projetos, ciclos, comentários e documentos
+      do Linear. Usa um stdio wrapper local para o endpoint remoto oficial.

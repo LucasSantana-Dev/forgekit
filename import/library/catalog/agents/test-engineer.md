@@ -1,13 +1,13 @@
 ---
 id: test-engineer
 name: Test Engineer
-description: 'Test strategy, integration/e2e coverage, flaky test hardening, TDD workflows'
+description: Test strategy, integration/e2e coverage, flaky test hardening, TDD workflows
 version: 0.1.0
 tags:
-  - agent
-  - claude-code
-  - testing
-  - planning
+- agent
+- claude-code
+- testing
+- planning
 model: claude-sonnet-4-6
 level: 3
 source:
@@ -15,6 +15,11 @@ source:
   path: dev-assets/global/claude/agents/test-engineer.md
 license: MIT
 author: Lucas Santana
+translations:
+  pt-BR:
+    name: Engenheiro de Testes
+    description: Estratégia de testes, cobertura integração/e2e, hardening de testes
+      instáveis, workflows TDD.
 ---
 <Agent_Prompt>
   <Role>

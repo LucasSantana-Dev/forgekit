@@ -22,5 +22,11 @@
   },
   "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/tools/capture-training.py",
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Capture Training",
+      "description": "Script Python para capturar dados de treinamento de sessões do Claude Code — pares prompt/resposta para fine-tuning ou avaliação."
+    }
+  }
 }

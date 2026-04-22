@@ -1,15 +1,22 @@
 ---
 id: mcp-tool-lazy-loading
 title: MCP Tool Lazy Loading
-description: How Claude Code lazily resolves MCP tool schemas via ToolSearch, and how that changes which tools you can call at any moment.
+description: How Claude Code lazily resolves MCP tool schemas via ToolSearch, and
+  how that changes which tools you can call at any moment.
 tags:
-  - mcp
-  - claude-code
-  - tooling
-  - reference
+- mcp
+- claude-code
+- tooling
+- reference
 source:
   path: ai-dev-toolkit/patterns/mcp-tool-lazy-loading.md
   license: MIT
+translations:
+  pt-BR:
+    title: Carregamento Preguiçoso de Ferramentas MCP
+    description: Como o Claude Code resolve preguiçosamente schemas de ferramentas
+      MCP via ToolSearch, e como isso muda o design de servidores MCP para baixo consumo
+      de contexto.
 ---
 
 # MCP Tool Lazy Loading

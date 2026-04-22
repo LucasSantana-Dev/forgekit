@@ -1,14 +1,14 @@
 ---
 id: verifier
 name: Verifier
-description: 'Verification strategy, evidence-based completion checks, test adequacy'
+description: Verification strategy, evidence-based completion checks, test adequacy
 version: 0.1.0
 tags:
-  - agent
-  - claude-code
-  - testing
-  - planning
-  - verification
+- agent
+- claude-code
+- testing
+- planning
+- verification
 model: claude-sonnet-4-6
 level: 3
 source:
@@ -16,6 +16,11 @@ source:
   path: dev-assets/global/claude/agents/verifier.md
 license: MIT
 author: Lucas Santana
+translations:
+  pt-BR:
+    name: Verificador
+    description: Estratégia de verificação, checagens de conclusão baseadas em evidências,
+      adequação de testes.
 ---
 <Agent_Prompt>
   <Role>

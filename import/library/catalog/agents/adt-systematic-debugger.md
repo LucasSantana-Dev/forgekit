@@ -1,21 +1,27 @@
 ---
 id: adt-systematic-debugger
 name: systematic-debugger
-description: 'Systematic Debugger — evidence-driven root cause analysis, hypothesis testing'
+description: Systematic Debugger — evidence-driven root cause analysis, hypothesis
+  testing
 version: 0.1.0
 tags:
-  - agent
-  - claude-code
-  - ai-dev-toolkit
-  - testing
-  - debugging
-  - reasoning
+- agent
+- claude-code
+- ai-dev-toolkit
+- testing
+- debugging
+- reasoning
 source:
   type: git
   path: ai-dev-toolkit/kit/core/agents/systematic-debugger
-  repo: 'https://github.com/LucasSantana-Dev/ai-dev-toolkit'
+  repo: https://github.com/LucasSantana-Dev/ai-dev-toolkit
 license: MIT
 author: Lucas Santana
+translations:
+  pt-BR:
+    name: systematic-debugger
+    description: Debugger sistemático — análise de causa raiz baseada em evidências,
+      teste de hipóteses. Use para bugs não-triviais onde o sintoma não aponta a causa.
 ---
 # Systematic Debugger Agent
 

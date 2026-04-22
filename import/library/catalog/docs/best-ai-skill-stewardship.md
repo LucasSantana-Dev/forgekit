@@ -1,19 +1,22 @@
 ---
 id: best-ai-skill-stewardship
 title: AI Skill Stewardship
-description: >-
-  Coding agents amplify what you already are. They don't substitute for what you
-  aren't.
+description: Coding agents amplify what you already are. They don't substitute for
+  what you aren't.
 tags:
-  - best-practice
-  - ai-dev-toolkit
-  - security
-  - skill-md
+- best-practice
+- ai-dev-toolkit
+- security
+- skill-md
 source:
   path: ai-dev-toolkit/best-practices/ai-skill-stewardship.md
-  upstream: >-
-    https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/best-practices/ai-skill-stewardship.md
+  upstream: https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/best-practices/ai-skill-stewardship.md
   license: MIT
+translations:
+  pt-BR:
+    title: Administração de Skills de IA
+    description: Agentes de codificação amplificam quem você já é. Não substituem
+      o que você não é. Disciplina de habilidades permanece essencial — esta é a prática.
 ---
 # AI Skill Stewardship
 
