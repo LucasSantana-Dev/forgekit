@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "providers.schema.json",
+  "type": "object",
+  "required": ["$schema", "version", "providers", "default_provider"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string" },
+    "providers": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "base_url", "models"],
+        "properties": {
+          "name": { "type": "string" },
+          "env_key": { "type": "string" },
+          "base_url": { "type": "string" },
+          "models": { "type": "object", "minProperties": 1 }
+        },
+        "additionalProperties": true
+      }
+    },
+    "default_provider": { "type": "string" },
+    "fallback_chain": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

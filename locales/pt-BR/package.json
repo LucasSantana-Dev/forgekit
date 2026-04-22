@@ -1,0 +1,44 @@
+{
+  "name": "ai-dev-toolkit",
+  "version": "0.17.0",
+  "description": "Reusable patterns, rules, and agent companies for AI-assisted development",
+  "type": "module",
+  "private": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Forge-Space/ai-dev-toolkit"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "patterns",
+    "rules",
+    "companies",
+    "ai-dev-toolkit"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "validate": "npm run validate:shell && npm run validate:schema",
+    "validate:shell": "shellcheck tools/*.sh",
+    "validate:schema": "node scripts/validate-schemas.js",
+    "backlog:check": "node scripts/reconcile-backlog-state.mjs --check",
+    "backlog:reconcile": "node scripts/reconcile-backlog-state.mjs --write",
+    "backlog:reconcile:dry": "node scripts/reconcile-backlog-state.mjs",
+    "typecheck:plugin": "npx --yes -p typescript@5.9.3 tsc -p tsconfig.plugin.json",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test:coverage": "node --experimental-vm-modules node_modules/.bin/jest --coverage",
+    "lint": "eslint scripts/ test/",
+    "format": "prettier --write \"**/*.{md,json,yml,yaml}\" --ignore-path .prettierignore",
+    "format:check": "prettier --check \"**/*.{md,json,yml,yaml}\" --ignore-path .prettierignore"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10",
+    "jest": "^30",
+    "prettier": "^3",
+    "yaml": "^2"
+  }
+}

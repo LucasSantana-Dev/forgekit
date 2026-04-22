@@ -1,0 +1,90 @@
+{
+  // oh-my-openagent reference config for Forge Space projects
+  // Docs: https://github.com/code-yeongyu/oh-my-openagent
+  // Place at: ~/.config/opencode/oh-my-opencode.jsonc
+  // Project override: .opencode/oh-my-opencode.jsonc
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
+
+  // --- Agent model assignments ---
+  // Sisyphus gets prompt_append to inject your AGENTS.md rules into every session
+  "agents": {
+    // Opus max: only Sisyphus — orchestrator, generates full plans, drives long tasks
+    // fallback_models: graceful degradation if Opus max quota is hit
+    "sisyphus": {
+      "model": "anthropic/claude-opus-4-6",
+      "variant": "max",
+      "prompt_append": "file://~/.config/opencode/AGENTS.md",
+      "fallback_models": ["anthropic/claude-opus-4-6", "anthropic/claude-sonnet-4-6"]
+    },
+    // Opus (no max): deep reasoning needed, not long output
+    "hephaestus": {
+      "model": "anthropic/claude-opus-4-6"
+    },
+    // Sonnet: structured/focused work — no heavy reasoning required
+    "prometheus": { "model": "anthropic/claude-sonnet-4-6" },
+    "oracle": { "model": "anthropic/claude-sonnet-4-6" },
+    "metis": { "model": "anthropic/claude-sonnet-4-6" },
+    "momus": { "model": "anthropic/claude-sonnet-4-6" },
+    "multimodal-looker": { "model": "anthropic/claude-sonnet-4-6" },
+    "atlas": { "model": "anthropic/claude-sonnet-4-6" },
+    "sisyphus-junior": { "model": "anthropic/claude-sonnet-4-6" },
+    // Haiku: search, lookup, grep — cap output, no verbose responses needed
+    "librarian": {
+      "model": "anthropic/claude-haiku-4-5",
+      "textVerbosity": "low",
+      "maxTokens": 2000
+    },
+    "explore": {
+      "model": "anthropic/claude-haiku-4-5",
+      "textVerbosity": "low",
+      "maxTokens": 2000
+    }
+  },
+
+  // --- Category routing ---
+  // Sisyphus reads `description` when calling task() to pick the right category.
+  // Routing heuristic: lines<20 → quick, 20-200 → unspecified-low, >200/cross-repo → ultrabrain
+  // Expected distribution: ~60% quick/low, ~30% unspecified-high, ~10% ultrabrain/deep
+  "categories": {
+    "quick": {
+      "model": "anthropic/claude-haiku-4-5",
+      "description": "Trivial changes: <20 lines, single file, typo fixes, config edits, dependency version bumps, variable renames",
+      "textVerbosity": "low",
+      "maxTokens": 2000
+    },
+    "unspecified-low": {
+      "model": "anthropic/claude-sonnet-4-6",
+      "description": "Standard implementation: 20-200 lines changed, multi-file coordination, bug fixes, test writing, code review"
+    },
+    "unspecified-high": {
+      "model": "anthropic/claude-sonnet-4-6",
+      "variant": "max",
+      "description": "High-effort standard work: complex implementation needing deep context but not architecture-level reasoning"
+    },
+    "ultrabrain": {
+      "model": "anthropic/claude-opus-4-6",
+      "variant": "max",
+      "description": "Architecture: >200 lines, cross-repo impact, ambiguous requirements, multi-system design, migration planning"
+    },
+    "deep": {
+      "model": "anthropic/claude-opus-4-6",
+      "variant": "max",
+      "description": "Autonomous research: root cause analysis, pattern investigation across many files, thorough dependency tracing"
+    },
+    "visual-engineering": {
+      "model": "google/gemini-3.1-pro-preview",
+      "variant": "high",
+      "description": "Frontend/UI/UX: React components, CSS/Tailwind, animations, design systems, visual inspection, screenshot review"
+    },
+    "writing": {
+      "model": "anthropic/claude-sonnet-4-6",
+      "description": "Documentation: CHANGELOG, README, inline docs, technical writing, PR descriptions, commit messages",
+      "maxTokens": 4000
+    },
+    "artistry": {
+      "model": "google/gemini-3.1-pro-preview",
+      "variant": "high",
+      "description": "Creative approaches: unconventional solutions, refactoring with flair, when standard approaches have failed"
+    }
+  }
+}

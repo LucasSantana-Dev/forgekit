@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Opencode-DCP/opencode-dynamic-context-pruning/master/dcp.schema.json",
+  "pruning": {
+    "enabled": true,
+    "threshold": 0.65,
+    "strategy": "aggressive",
+    "preserveRecent": 5,
+    "preserveToolResults": 2,
+    "compressErrors": true,
+    "deduplicateOutputs": true
+  }
+}

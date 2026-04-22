@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Test coverage
+coverage/
+
+# Logs
+npm-debug.log*
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build and dist
+dist/
+build/
+
+# Cache
+.cache/
+.eslintcache

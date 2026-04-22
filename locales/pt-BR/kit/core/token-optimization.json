@@ -1,0 +1,85 @@
+{
+  "$schema": "../schema/token-optimization.schema.json",
+  "version": "1.0.0",
+  "presets": {
+    "standard": {
+      "description": "Balanced context management for typical sessions",
+      "compactionThreshold": 0.7,
+      "compactionStrategy": "prune-stale",
+      "preserveActiveState": true,
+      "maxSessionMessages": 200,
+      "toolOutputTruncation": 2000,
+      "rtk": {
+        "enabled": false,
+        "note": "Install RTK separately: brew install rtk && rtk init -g"
+      }
+    },
+    "aggressive": {
+      "description": "Maximum token savings for long autonomous runs",
+      "compactionThreshold": 0.55,
+      "compactionStrategy": "aggressive-prune",
+      "preserveActiveState": true,
+      "maxSessionMessages": 100,
+      "toolOutputTruncation": 1000,
+      "pruneCompletedTodos": true,
+      "pruneOldSearchResults": true,
+      "rtk": { "enabled": true }
+    },
+    "minimal": {
+      "description": "Light-touch optimization for short sessions",
+      "compactionThreshold": 0.85,
+      "compactionStrategy": "prune-stale",
+      "preserveActiveState": true,
+      "maxSessionMessages": 500,
+      "toolOutputTruncation": 5000,
+      "rtk": { "enabled": false }
+    }
+  },
+  "cost": {
+    "tracking": {
+      "perSession": true,
+      "perAgent": true,
+      "perPhase": true,
+      "reportFormat": "inline"
+    },
+    "budgets": {
+      "sessionMax": {
+        "value": null,
+        "unit": "USD",
+        "note": "null = unlimited, set a number to cap"
+      },
+      "agentMax": {
+        "orchestrator": null,
+        "architect": null,
+        "worker": null,
+        "reviewer": null,
+        "researcher": null,
+        "explorer": null
+      },
+      "onBudgetExceeded": "warn-and-continue"
+    },
+    "reportTemplate": "Cost: ${{total}} ({{input_tokens}} in / {{output_tokens}} out) | Session: ${{session_total}}"
+  },
+  "rules": {
+    "alwaysPreserve": [
+      "current branch and git state",
+      "active task description and plan",
+      "files currently being edited",
+      "key decisions made this session",
+      "unresolved errors or blockers"
+    ],
+    "safeToRemove": [
+      "completed todo items",
+      "old grep/search results",
+      "resolved discussion threads",
+      "tool outputs from completed phases",
+      "file reads not referenced in active work"
+    ],
+    "compactionTriggers": [
+      "context usage exceeds threshold",
+      "switching between unrelated tasks",
+      "completing a major phase",
+      "response quality noticeably degrades"
+    ]
+  }
+}

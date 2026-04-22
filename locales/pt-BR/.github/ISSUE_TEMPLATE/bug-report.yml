@@ -1,0 +1,119 @@
+name: Bug Report
+description: Report a problem with the AI Dev Toolkit
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug! Please provide as much detail as possible.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear description of what went wrong
+      placeholder: |
+        Example: The install-macos.sh script fails when trying to install eza because...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce this issue?
+      placeholder: |
+        1. Run `./tools/install-macos.sh`
+        2. Wait for brew installation
+        3. Script fails at eza installation with error...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should have happened?
+      placeholder: |
+        The script should successfully install all tools and print a summary.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened?
+      placeholder: |
+        The script exits with error code 1 and prints: "Error: eza not found in tap"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      description: Which platform are you using?
+      options:
+        - macOS
+        - Ubuntu/Debian
+        - Windows
+        - Other Linux
+        - WSL2
+        - Other (please specify in additional context)
+    validations:
+      required: true
+
+  - type: input
+    id: os-version
+    attributes:
+      label: OS Version
+      description: Specific OS version (e.g., macOS 14.2, Ubuntu 22.04, Windows 11)
+      placeholder: "macOS 14.2"
+
+  - type: dropdown
+    id: shell
+    attributes:
+      label: Shell
+      description: Which shell are you using?
+      options:
+        - bash
+        - zsh
+        - fish
+        - PowerShell
+        - Other (please specify in additional context)
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment Details
+      description: Any relevant environment details (optional)
+      placeholder: |
+        - Homebrew version: 4.2.0
+        - Python version: 3.11
+        - Node version: 20.10
+        - Existing tools installed: ...
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error Logs
+      description: Full error output or logs (optional but helpful)
+      placeholder: |
+        Paste full error output here...
+      render: shell
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Workaround
+      description: Did you find a workaround? (optional)
+      placeholder: |
+        I was able to fix this by manually running: brew install eza
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other information that might be relevant

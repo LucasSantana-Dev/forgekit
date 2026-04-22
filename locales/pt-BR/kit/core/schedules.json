@@ -1,0 +1,84 @@
+{
+  "$schema": "../schema/schedules.schema.json",
+  "version": "1.0.0",
+  "defaults": {
+    "enabled": true,
+    "timezone": "UTC",
+    "maxConcurrentRoutines": 3,
+    "retryPolicy": {
+      "maxAttempts": 2,
+      "backoffSeconds": [60, 300],
+      "onFailure": "log-and-continue"
+    },
+    "notify": "on-failure"
+  },
+  "triggers": {
+    "on-pr": "Run when a pull request is created or updated",
+    "on-push": "Run on every push to a tracked branch",
+    "on-session-start": "Run when an agent session starts",
+    "on-session-end": "Run when an agent session ends",
+    "daily": "Run once per day at the configured time",
+    "weekly": "Run once per week on the configured day/time"
+  },
+  "routines": [
+    {
+      "id": "ci-watch-pr",
+      "name": "Watch PR checks",
+      "trigger": "on-pr",
+      "agent": "devops",
+      "skill": "verify",
+      "scope": "current pull request",
+      "description": "Monitor required CI checks and report failures early",
+      "notify": "always"
+    },
+    {
+      "id": "daily-security-scan",
+      "name": "Daily security scan",
+      "trigger": "daily",
+      "schedule": "0 9 * * *",
+      "agent": "security",
+      "skill": "secure",
+      "scope": "repository root",
+      "description": "Scan dependencies, secrets, and risky config changes every day",
+      "notify": "on-failure"
+    },
+    {
+      "id": "weekly-backlog-grooming",
+      "name": "Weekly backlog grooming",
+      "trigger": "weekly",
+      "schedule": "0 10 * * 1",
+      "agent": "orchestrator",
+      "skill": "plan",
+      "scope": "backlog.json",
+      "description": "Review the backlog, close completed items, and reprioritize the next tasks",
+      "notify": "always"
+    },
+    {
+      "id": "session-memory-sync",
+      "name": "Session memory sync",
+      "trigger": "on-session-end",
+      "agent": "writer",
+      "skill": "memory",
+      "scope": ".agents/memory/",
+      "description": "Persist decisions, blockers, and durable preferences when a session ends",
+      "notify": "never"
+    },
+    {
+      "id": "dependency-health-check",
+      "name": "Dependency health check",
+      "trigger": "weekly",
+      "schedule": "0 14 * * 3",
+      "agent": "devops",
+      "skill": "schedule",
+      "scope": "package.json and lockfiles",
+      "description": "Review dependency freshness and surface upgrade opportunities without auto-updating",
+      "notify": "on-failure"
+    }
+  ],
+  "agentMapping": {
+    "devops": ["ci-watch-pr", "dependency-health-check"],
+    "security": ["daily-security-scan"],
+    "orchestrator": ["weekly-backlog-grooming"],
+    "writer": ["session-memory-sync"]
+  }
+}
