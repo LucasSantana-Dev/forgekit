@@ -1,0 +1,26 @@
+{
+  "id": "eng-api-test-suite-builder",
+  "name": "Eng Api Test Suite Builder",
+  "description": "Use when the user asks to generate API tests, create integration test suites, test REST endpoints, or build contract tests.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "engineering",
+    "mcp",
+    "testing",
+    "api"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/alirezarezvani/claude-skills",
+    "ref": "main",
+    "path": "engineering/api-test-suite-builder/SKILL.md"
+  },
+  "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/api-test-suite-builder",
+  "license": "MIT",
+  "author": "alirezarezvani"
+}

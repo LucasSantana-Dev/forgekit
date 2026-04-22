@@ -32,6 +32,8 @@
       "items": {
         "enum": [
           "claude-code",
+          "claude-api",
+          "claude-ai",
           "codex",
           "cursor",
           "windsurf",

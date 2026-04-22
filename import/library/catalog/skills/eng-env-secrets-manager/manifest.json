@@ -1,0 +1,24 @@
+{
+  "id": "eng-env-secrets-manager",
+  "name": "Eng Env Secrets Manager",
+  "description": "Env & Secrets Manager",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "engineering",
+    "security"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/alirezarezvani/claude-skills",
+    "ref": "main",
+    "path": "engineering/env-secrets-manager/SKILL.md"
+  },
+  "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/env-secrets-manager",
+  "license": "MIT",
+  "author": "alirezarezvani"
+}

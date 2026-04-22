@@ -7,7 +7,8 @@
     "validate": "tsx validate-catalog.ts",
     "index": "tsx generate-index.ts",
     "import:patterns": "tsx import-patterns.ts",
-    "import:agents": "tsx import-agents.ts"
+    "import:agents": "tsx import-agents.ts",
+    "import:upstream-skills": "tsx import-upstream-skills.ts"
   },
   "dependencies": {
     "ajv": "^8.17.1",

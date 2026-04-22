@@ -1,0 +1,26 @@
+{
+  "id": "systematic-debugging",
+  "name": "Systematic Debugging",
+  "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "superpowers",
+    "testing",
+    "debugging",
+    "git"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/obra/superpowers",
+    "ref": "main",
+    "path": "skills/systematic-debugging/SKILL.md"
+  },
+  "homepage": "https://github.com/obra/superpowers/tree/main/skills/systematic-debugging",
+  "license": "MIT",
+  "author": "obra"
+}

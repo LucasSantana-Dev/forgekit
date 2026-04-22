@@ -1,0 +1,25 @@
+{
+  "id": "receiving-code-review",
+  "name": "Receiving Code Review",
+  "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "superpowers",
+    "database",
+    "deploy"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/obra/superpowers",
+    "ref": "main",
+    "path": "skills/receiving-code-review/SKILL.md"
+  },
+  "homepage": "https://github.com/obra/superpowers/tree/main/skills/receiving-code-review",
+  "license": "MIT",
+  "author": "obra"
+}

@@ -461,6 +461,73 @@
     },
     {
       "kind": "skill",
+      "id": "algorithmic-art",
+      "name": "Algorithmic Art",
+      "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "design"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "brainstorming",
+      "name": "Brainstorming",
+      "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
+      "tags": [
+        "skill-md",
+        "community",
+        "superpowers",
+        "design"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "brand-guidelines",
+      "name": "Brand Guidelines",
+      "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "design"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "canvas-design",
+      "name": "Canvas Design",
+      "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "documents",
+        "design"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "claude-api",
+      "name": "Claude Api",
+      "description": "Build, debug, and optimize Claude API / Anthropic SDK apps. Apps built with this skill should include prompt caching. Also handles migrating existing Claude API code between Claude model versions (4.5 → 4.6, 4.6 → 4.7, retired-model replacements). TRIGGER when: code imports `anthropic`/`@anthropic-ai/sdk`; user asks for the Claude API, Anthropic SDK, or Managed Agents; user adds/modifies/tunes a Claude feature (caching, thinking, compaction, tool use, batch, files, citations, memory) or model (O",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "api"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
       "id": "code-review",
       "name": "AI-Assisted Code Review",
       "description": "Code review is time-consuming and inconsistent. Reviewers miss security issues, overlook edge cases, or focus on style over substance. Meanwhile, AI agents catch these mechanical issues instantly but can't judge business logic correctness, UX decisions, or architectural fit.",
@@ -491,6 +558,271 @@
     },
     {
       "kind": "skill",
+      "id": "dispatching-parallel-agents",
+      "name": "Dispatching Parallel Agents",
+      "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies",
+      "tags": [
+        "skill-md",
+        "community",
+        "superpowers",
+        "deploy"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "doc-coauthoring",
+      "name": "Doc Coauthoring",
+      "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "documents"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "docx",
+      "name": "Docx",
+      "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx files, inserting or replacing images in documents, performing find-and-replace in Word files, working with tracked changes or comments, ",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "documents",
+        "design",
+        "comms"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "eng-api-design-reviewer",
+      "name": "Eng Api Design Reviewer",
+      "description": "API Design Reviewer",
+      "tags": [
+        "skill-md",
+        "community",
+        "engineering",
+        "design",
+        "api"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "eng-api-test-suite-builder",
+      "name": "Eng Api Test Suite Builder",
+      "description": "Use when the user asks to generate API tests, create integration test suites, test REST endpoints, or build contract tests.",
+      "tags": [
+        "skill-md",
+        "community",
+        "engineering",
+        "mcp",
+        "testing",
+        "api"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "eng-ci-cd-pipeline-builder",
+      "name": "Eng CI CD Pipeline Builder",
+      "description": "CI/CD Pipeline Builder",
+      "tags": [
+        "skill-md",
+        "community",
+        "engineering",
+        "mcp",
+        "deploy"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "eng-code-tour",
+      "name": "Eng Code Tour",
+      "description": "Use when the user asks to create a CodeTour .tour file — persona-targeted, step-by-step walkthroughs that link to real files and line numbers. Trigger for: create a tour, onboarding tour, architecture tour, PR review tour, explain how X works, vibe check, RCA tour, contributor guide, or any structured code walkthrough request.",
+      "tags": [
+        "skill-md",
+        "community",
+        "engineering",
+        "git",
+        "planning"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "eng-codebase-onboarding",
+      "name": "Eng Codebase Onboarding",
+      "description": "Codebase Onboarding",
+      "tags": [
+        "skill-md",
+        "community",
+        "engineering"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "eng-database-designer",
+      "name": "Eng Database Designer",
+      "description": "Use when the user asks to design database schemas, plan data migrations, optimize queries, choose between SQL and NoSQL, or model data relationships.",
+      "tags": [
+        "skill-md",
+        "community",
+        "engineering",
+        "design",
+        "planning",
+        "database",
+        "deploy"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "eng-dependency-auditor",
+      "name": "Eng Dependency Auditor",
+      "description": "Dependency Auditor",
+      "tags": [
+        "skill-md",
+        "community",
+        "engineering",
+        "security"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "eng-docker-development",
+      "name": "Eng Docker Development",
+      "description": "Docker and container development agent skill and plugin for Dockerfile optimization, docker-compose orchestration, multi-stage builds, and container security hardening. Use when: user wants to optimize a Dockerfile, create or improve docker-compose configurations, implement multi-stage builds, audit container security, reduce image size, or follow container best practices. Covers build performance, layer caching, secret management, and production-ready container patterns.",
+      "tags": [
+        "skill-md",
+        "community",
+        "engineering",
+        "design",
+        "git",
+        "security",
+        "infra"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "eng-env-secrets-manager",
+      "name": "Eng Env Secrets Manager",
+      "description": "Env & Secrets Manager",
+      "tags": [
+        "skill-md",
+        "community",
+        "engineering",
+        "security"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "eng-focused-fix",
+      "name": "Eng Focused Fix",
+      "description": "Use when the user asks to fix, debug, or make a specific feature/module/area work end-to-end. Triggers: 'make X work', 'fix the Y feature', 'the Z module is broken', 'focus on [area]'. Not for quick single-bug fixes — this is for systematic deep-dive repair across all files and dependencies.",
+      "tags": [
+        "skill-md",
+        "community",
+        "engineering",
+        "debugging",
+        "deploy"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "eng-git-worktree-manager",
+      "name": "Eng Git Worktree Manager",
+      "description": "Git Worktree Manager",
+      "tags": [
+        "skill-md",
+        "community",
+        "engineering",
+        "git"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "eng-mcp-server-builder",
+      "name": "Eng Mcp Server Builder",
+      "description": "MCP Server Builder",
+      "tags": [
+        "skill-md",
+        "community",
+        "engineering",
+        "mcp"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "executing-plans",
+      "name": "Executing Plans",
+      "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints",
+      "tags": [
+        "skill-md",
+        "community",
+        "superpowers",
+        "planning"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "finishing-a-development-branch",
+      "name": "Finishing A Development Branch",
+      "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
+      "tags": [
+        "skill-md",
+        "community",
+        "superpowers",
+        "testing",
+        "git",
+        "deploy"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "frontend-design",
+      "name": "Frontend Design",
+      "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "webapp",
+        "design"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
       "id": "git-worktrees",
       "name": "Git Worktrees for Concurrent AI Agent Work",
       "description": "Multiple AI agent sessions working on the same repository cause chaos. Session A is on branch feature/auth. Session B switches to main to check something. Session A's next tool call fails because the branch disappeared. Or worse: Session B force-pushes over Session A's work.",
@@ -501,6 +833,62 @@
         "testing",
         "git",
         "agents"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "internal-comms",
+      "name": "Internal Comms",
+      "description": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "comms"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "mcp-builder",
+      "name": "Mcp Builder",
+      "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "mcp",
+        "design",
+        "api"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "pdf",
+      "name": "Pdf",
+      "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "documents",
+        "design"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "pptx",
+      "name": "Pptx",
+      "description": "Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates, layouts, speaker notes, or comments. Trigger whenever the user mentions \"deck,\" \"slid",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "documents",
+        "comms"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -536,6 +924,47 @@
     },
     {
       "kind": "skill",
+      "id": "receiving-code-review",
+      "name": "Receiving Code Review",
+      "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
+      "tags": [
+        "skill-md",
+        "community",
+        "superpowers",
+        "database",
+        "deploy"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "requesting-code-review",
+      "name": "Requesting Code Review",
+      "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
+      "tags": [
+        "skill-md",
+        "community",
+        "superpowers"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "skill-creator",
+      "name": "Skill Creator",
+      "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "testing"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
       "id": "skill-md-adoption",
       "name": "SKILL.md Adoption: Vendor-Neutral Skill Discovery",
       "description": "SKILL.md is an open specification released by Anthropic in 2025 that standardizes how tools discover and auto-invoke procedural knowledge (skills, patterns, guides, rules). Instead of each tool (Claude, Cursor, VSCode, CLI) maintaining isolated skill registries, SKILL.md enables a single skill to be published once and auto-invoked across any tool that speaks the spec.",
@@ -552,6 +981,20 @@
     },
     {
       "kind": "skill",
+      "id": "slack-gif-creator",
+      "name": "Slack Gif Creator",
+      "description": "Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users request animated GIFs for Slack like \"make me a GIF of X doing Y for Slack.\"",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "design",
+        "comms"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
       "id": "spec-driven-development",
       "name": "Spec Driven Development",
       "description": "AI agents are fast at writing code but have no memory of your intent. You describe a feature in a prompt, the agent builds it, and three sessions later a different agent (or you) changes it in a way that drifts from the original requirement. The spec lives only in your head.",
@@ -562,6 +1005,36 @@
         "testing",
         "security",
         "agents"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "subagent-driven-development",
+      "name": "Subagent Driven Development",
+      "description": "Use when executing implementation plans with independent tasks in the current session",
+      "tags": [
+        "skill-md",
+        "community",
+        "superpowers",
+        "planning"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "systematic-debugging",
+      "name": "Systematic Debugging",
+      "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes",
+      "tags": [
+        "skill-md",
+        "community",
+        "superpowers",
+        "testing",
+        "debugging",
+        "git"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -585,6 +1058,20 @@
     },
     {
       "kind": "skill",
+      "id": "test-driven-development",
+      "name": "Test Driven Development",
+      "description": "Use when implementing any feature or bugfix, before writing implementation code",
+      "tags": [
+        "skill-md",
+        "community",
+        "superpowers",
+        "testing"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
       "id": "testing",
       "name": "AI-Assisted Test Generation",
       "description": "Test generation is repetitive but critical. Developers skip tests because writing edge cases is tedious. AI agents can generate tests quickly but often produce brittle, unrealistic tests that provide false confidence. Tests that mock internals, use fake data like \"foo@example.com\", or test implementation details break on every refactor.",
@@ -593,6 +1080,136 @@
         "prompting",
         "testing",
         "agents"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "theme-factory",
+      "name": "Theme Factory",
+      "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "design"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "using-git-worktrees",
+      "name": "Using Git Worktrees",
+      "description": "Use when starting feature work that needs isolation from current workspace or before executing implementation plans - creates isolated git worktrees with smart directory selection and safety verification",
+      "tags": [
+        "skill-md",
+        "community",
+        "superpowers",
+        "design",
+        "git",
+        "planning"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "using-superpowers",
+      "name": "Using Superpowers",
+      "description": "Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions",
+      "tags": [
+        "skill-md",
+        "community",
+        "superpowers",
+        "design"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "verification-before-completion",
+      "name": "Verification Before Completion",
+      "description": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always",
+      "tags": [
+        "skill-md",
+        "community",
+        "superpowers",
+        "comms",
+        "git"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "web-artifacts-builder",
+      "name": "Web Artifacts Builder",
+      "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "mcp",
+        "webapp",
+        "design"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "webapp-testing",
+      "name": "Webapp Testing",
+      "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "webapp",
+        "testing"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "writing-plans",
+      "name": "Writing Plans",
+      "description": "Use when you have a spec or requirements for a multi-step task, before touching code",
+      "tags": [
+        "skill-md",
+        "community",
+        "superpowers",
+        "planning"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "writing-skills",
+      "name": "Writing Skills",
+      "description": "Use when creating new skills, editing existing skills, or verifying skills work before deployment",
+      "tags": [
+        "skill-md",
+        "community",
+        "superpowers",
+        "deploy"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "xlsx",
+      "name": "Xlsx",
+      "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \"the xlsx in my",
+      "tags": [
+        "skill-md",
+        "anthropic-official",
+        "documents",
+        "design",
+        "api"
       ],
       "version": "0.1.0",
       "deprecated": false

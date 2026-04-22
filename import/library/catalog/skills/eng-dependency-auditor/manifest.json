@@ -1,0 +1,24 @@
+{
+  "id": "eng-dependency-auditor",
+  "name": "Eng Dependency Auditor",
+  "description": "Dependency Auditor",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "engineering",
+    "security"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/alirezarezvani/claude-skills",
+    "ref": "main",
+    "path": "engineering/dependency-auditor/SKILL.md"
+  },
+  "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/dependency-auditor",
+  "license": "MIT",
+  "author": "alirezarezvani"
+}

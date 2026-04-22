@@ -1,0 +1,24 @@
+{
+  "id": "skill-creator",
+  "name": "Skill Creator",
+  "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "anthropic-official",
+    "testing"
+  ],
+  "editors": [
+    "claude-code",
+    "claude-api"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/anthropics/skills",
+    "ref": "main",
+    "path": "skills/skill-creator/SKILL.md"
+  },
+  "homepage": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
+  "license": "MIT",
+  "author": "Anthropic"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "dispatching-parallel-agents",
+  "name": "Dispatching Parallel Agents",
+  "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "superpowers",
+    "deploy"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/obra/superpowers",
+    "ref": "main",
+    "path": "skills/dispatching-parallel-agents/SKILL.md"
+  },
+  "homepage": "https://github.com/obra/superpowers/tree/main/skills/dispatching-parallel-agents",
+  "license": "MIT",
+  "author": "obra"
+}

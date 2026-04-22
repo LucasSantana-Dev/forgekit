@@ -1,0 +1,24 @@
+{
+  "id": "brand-guidelines",
+  "name": "Brand Guidelines",
+  "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "anthropic-official",
+    "design"
+  ],
+  "editors": [
+    "claude-code",
+    "claude-api"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/anthropics/skills",
+    "ref": "main",
+    "path": "skills/brand-guidelines/SKILL.md"
+  },
+  "homepage": "https://github.com/anthropics/skills/tree/main/skills/brand-guidelines",
+  "license": "MIT",
+  "author": "Anthropic"
+}

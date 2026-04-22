@@ -1,0 +1,23 @@
+{
+  "id": "requesting-code-review",
+  "name": "Requesting Code Review",
+  "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "superpowers"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/obra/superpowers",
+    "ref": "main",
+    "path": "skills/requesting-code-review/SKILL.md"
+  },
+  "homepage": "https://github.com/obra/superpowers/tree/main/skills/requesting-code-review",
+  "license": "MIT",
+  "author": "obra"
+}
