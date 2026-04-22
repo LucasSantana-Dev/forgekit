@@ -65,7 +65,7 @@ The skill lands in `~/.claude/skills/prompting-discipline/` and Claude Code pick
 
 ## 5. Browse the catalog
 
-Open the [catalog site](https://lucassantana-dev.github.io/ai-dev-toolkit-library) or run `npx @lucassantana/adtl list`.
+Open the [catalog site](https://library.lucassantana.tech) or run `npx @lucassantana/adtl list`.
 
 ## Troubleshooting
 

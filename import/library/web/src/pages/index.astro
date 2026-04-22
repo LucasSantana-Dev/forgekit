@@ -1,5 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
+import Card from "../components/Card.astro";
+import InstallBlock from "../components/InstallBlock.astro";
 import { getSkills, getServers, getCollections, getDocs, getAgents } from "../lib/catalog.ts";
 
 const [skills, servers, collections, docs, agents] = await Promise.all([
@@ -10,46 +12,115 @@ const [skills, servers, collections, docs, agents] = await Promise.all([
   getAgents(),
 ]);
 const base = import.meta.env.BASE_URL;
+
+// Featured: top 3 skills by tag diversity, plus the 2 collections
+const featuredSkills = skills.slice(0, 3);
+const featuredAgents = agents.slice(0, 3);
+const featuredServers = servers.slice(0, 3);
+
+// Popular tags — top 8 by frequency across all kinds
+const tagCount = new Map<string, number>();
+for (const e of [...skills, ...servers, ...agents]) {
+  for (const t of e.tags ?? []) tagCount.set(t, (tagCount.get(t) ?? 0) + 1);
+}
+const popularTags = [...tagCount.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 10)
+  .map(([t]) => t);
 ---
 <Base title="Library">
-  <h1>ai-dev-toolkit-library</h1>
-  <p style="color: var(--muted); max-width: 640px;">
-    A curated catalog of <strong>Skills</strong> and <strong>MCP servers</strong> for AI-assisted
-    development. Fronted by a single local <code>mcp-context-forge</code> gateway. Free, inspired by
-    <a href="https://skills.sh">skills.sh</a> and <a href="https://app.mcpmarket.com">mcpmarket.com</a>.
-  </p>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Skills, servers, and sub-agents for AI-assisted dev</h1>
+      <p class="lede">
+        A curated catalog, one local MCP gateway. Inspired by <a href="https://skills.sh">skills.sh</a> and
+        <a href="https://app.mcpmarket.com">mcpmarket.com</a> — free, open-source, self-hosted.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href={`${base}skills/`}>Browse {skills.length + agents.length} skills & agents</a>
+        <a class="btn" href="https://github.com/LucasSantana-Dev/ai-dev-toolkit-library/blob/main/docs/QUICKSTART.md">Quickstart ↗</a>
+      </div>
+      <div style="max-width: 520px; margin: 2rem auto 0;">
+        <InstallBlock command="npx @lucassantana/adtl setup-claude" label="copy install" />
+      </div>
+    </div>
+  </section>
 
-  <h2>Quickstart</h2>
-  <pre><code>git clone https://github.com/LucasSantana-Dev/ai-dev-toolkit-library
-cd ai-dev-toolkit-library/gateway
-# create gateway/.env per README
-docker compose up -d
-python seeds/seed.py
+  <div class="stats">
+    <div class="stat"><span class="stat-value">{skills.length}</span><span class="stat-label">Skills</span></div>
+    <div class="stat"><span class="stat-value">{agents.length}</span><span class="stat-label">Agents</span></div>
+    <div class="stat"><span class="stat-value">{servers.length}</span><span class="stat-label">Servers</span></div>
+    <div class="stat"><span class="stat-value">{collections.length}</span><span class="stat-label">Collections</span></div>
+    <div class="stat"><span class="stat-value">{docs.length}</span><span class="stat-label">Docs</span></div>
+  </div>
 
-npx @lucassantana/adtl setup-claude
-npx @lucassantana/adtl install &lt;skill-id&gt;</code></pre>
-
-  <h2>Browse</h2>
+  <h2>Featured collections</h2>
+  <p class="lead-muted">Opinionated bundles — one-click starting points.</p>
   <div class="grid">
-    <a class="card" href={`${base}skills/`}>
-      <h3>{skills.length} Skills</h3>
-      <p>Actionable procedures installable into <code>~/.claude/skills/</code>.</p>
-    </a>
-    <a class="card" href={`${base}servers/`}>
-      <h3>{servers.length} Servers</h3>
-      <p>MCP servers you can register with your local gateway in one command.</p>
-    </a>
-    <a class="card" href={`${base}agents/`}>
-      <h3>{agents.length} Agents</h3>
-      <p>Claude Code sub-agents — architects, reviewers, debuggers, planners. Install to <code>~/.claude/agents/</code>.</p>
-    </a>
-    <a class="card" href={`${base}collections/`}>
-      <h3>{collections.length} Collections</h3>
-      <p>Opinionated bundles — starting points for specific workflows.</p>
-    </a>
-    <a class="card" href={`${base}docs/`}>
-      <h3>{docs.length} Reference docs</h3>
-      <p>Reading material — RAG, observability, cost routing, evaluation, and more.</p>
-    </a>
+    {collections.map((c) => (
+      <Card
+        kind="collection"
+        id={c.id}
+        name={c.name}
+        description={c.description}
+        tags={c.tags ?? []}
+        href={`${base}collections/${c.id}/`}
+        extraTag={`${c.items.length} items`}
+      />
+    ))}
+  </div>
+
+  <h2>Popular skills</h2>
+  <div class="grid">
+    {featuredSkills.map((s) => (
+      <Card
+        kind="skill"
+        id={s.id}
+        name={s.name}
+        description={s.description}
+        tags={s.tags}
+        href={`${base}skills/${s.id}/`}
+      />
+    ))}
+  </div>
+  <p style="margin-top: 1rem;"><a href={`${base}skills/`}>All {skills.length} skills →</a></p>
+
+  <h2>Sub-agents</h2>
+  <div class="grid">
+    {featuredAgents.map((a) => (
+      <Card
+        kind="agent"
+        id={a.id}
+        name={a.name}
+        description={a.description}
+        tags={a.tags}
+        href={`${base}agents/${a.id}/`}
+        extraTag={a.model}
+      />
+    ))}
+  </div>
+  <p style="margin-top: 1rem;"><a href={`${base}agents/`}>All {agents.length} agents →</a></p>
+
+  <h2>MCP servers</h2>
+  <div class="grid">
+    {featuredServers.map((s) => (
+      <Card
+        kind="server"
+        id={s.id}
+        name={s.name}
+        description={s.description}
+        tags={s.tags}
+        href={`${base}servers/${s.id}/`}
+        extraTag={s.transport}
+      />
+    ))}
+  </div>
+  <p style="margin-top: 1rem;"><a href={`${base}servers/`}>All {servers.length} servers →</a></p>
+
+  <h2>Browse by tag</h2>
+  <div class="chips">
+    {popularTags.map((t) => (
+      <a href={`${base}search/?tag=${encodeURIComponent(t)}`} class="chip">#{t}</a>
+    ))}
   </div>
 </Base>

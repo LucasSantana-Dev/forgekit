@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import { getCollections } from "../../lib/catalog.ts";
+import { kindIcon, type Kind } from "../../lib/ui.ts";
 
 export async function getStaticPaths() {
   const collections = await getCollections();
@@ -10,25 +11,40 @@ const { collection } = Astro.props;
 const base = import.meta.env.BASE_URL;
 
 function kindHref(item: { kind: string; id: string }) {
-  const dir = item.kind === "skill" ? "skills" : item.kind === "server" ? "servers" : "docs";
+  const dir =
+    item.kind === "skill"
+      ? "skills"
+      : item.kind === "server"
+      ? "servers"
+      : item.kind === "agent"
+      ? "agents"
+      : "docs";
   return `${base}${dir}/${item.id}/`;
-}
-function kindClass(kind: string) {
-  return `kind kind-${kind}`;
 }
 ---
 <Base title={collection.name} description={collection.description}>
-  <p><a href="../">← all collections</a></p>
-  <span class="kind kind-collection">collection</span>
-  <h1 style="display: inline;">{collection.name}</h1>
-  <p style="color: var(--muted);">{collection.description}</p>
+  <p style="margin-bottom: 1.5rem;"><a href="../">← all collections</a></p>
+  <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+    <span style="font-size: 1.6rem;">📦</span>
+    <h1 style="margin: 0;">{collection.name}</h1>
+    <span class="kind kind-collection">collection</span>
+  </div>
+  <p class="lead-muted" style="margin-bottom: 1rem;">{collection.description}</p>
+  {collection.tags && collection.tags.length > 0 && (
+    <div class="tags" style="margin-bottom: 1.5rem;">
+      {collection.tags.map((t) => <span class="tag">{t}</span>)}
+    </div>
+  )}
 
-  <h2>Items</h2>
+  <h2>Items ({collection.items.length})</h2>
   <div class="grid">
     {collection.items.map((item) => (
       <a class="card" href={kindHref(item)}>
-        <span class={kindClass(item.kind)}>{item.kind}</span>
-        <h3 style="display: inline;">{item.id}</h3>
+        <div class="row-head">
+          <span class="icon">{kindIcon(item.kind as Kind)}</span>
+          <h3>{item.id}</h3>
+          <span class={`kind kind-${item.kind}`}>{item.kind}</span>
+        </div>
       </a>
     ))}
   </div>

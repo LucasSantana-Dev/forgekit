@@ -2,141 +2,511 @@
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
 }
-const { title, description = "Curated library of Skills + MCP servers for AI-assisted development." } = Astro.props;
+const {
+  title,
+  description = "Curated library of Skills, MCP servers, and Claude Code sub-agents for AI-assisted development.",
+} = Astro.props;
 const base = import.meta.env.BASE_URL;
+const site = Astro.site?.toString().replace(/\/$/, "") ?? "";
 ---
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} · ai-dev-toolkit-library</title>
+    <title>{title} · adtl</title>
     <meta name="description" content={description} />
+    <meta property="og:title" content={`${title} · ai-dev-toolkit-library`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <style is:global>
       :root {
-        --bg: #0b0d10;
+        --bg: #07090c;
+        --bg-elev: #0d1117;
+        --bg-hover: #151b22;
         --fg: #e7ecef;
-        --muted: #8996a1;
-        --accent: #6ab0ff;
-        --border: #1f262d;
-        --code-bg: #14181d;
-        --chip-bg: #172028;
+        --fg-muted: #8996a1;
+        --fg-subtle: #626b75;
+        --border: #1e252d;
+        --border-strong: #2d3742;
+        --accent: #7dc4ff;
+        --accent-hot: #9dd3ff;
+        --code-bg: #0a0e13;
+        --chip-bg: #141c24;
         --chip-fg: #a9c6e6;
+
+        --kind-skill: #7dc4ff;
+        --kind-server: #c091ff;
+        --kind-agent: #ff8cc8;
+        --kind-collection: #f0c169;
+        --kind-doc: #75d8a8;
+
+        --radius: 10px;
+        --radius-sm: 6px;
+        --shadow-card: 0 1px 2px rgba(0,0,0,.15), 0 1px 0 rgba(255,255,255,.02) inset;
+
+        font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-feature-settings: "cv11", "ss01", "ss03";
       }
       * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0;
         background: var(--bg);
         color: var(--fg);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         line-height: 1.55;
+        font-size: 15px;
+        -webkit-font-smoothing: antialiased;
       }
       a { color: var(--accent); text-decoration: none; }
-      a:hover { text-decoration: underline; }
-      header {
+      a:hover { color: var(--accent-hot); }
+
+      /* Header */
+      header.site {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: saturate(160%) blur(16px);
+        background: rgba(7, 9, 12, 0.72);
         border-bottom: 1px solid var(--border);
-        padding: 1.25rem 2rem;
+      }
+      .header-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0.85rem 1.5rem;
         display: flex;
         align-items: center;
-        gap: 2rem;
+        gap: 1.5rem;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        color: var(--fg);
+        font-weight: 600;
+        font-size: 0.95rem;
+        letter-spacing: -0.01em;
+      }
+      .brand:hover { color: var(--fg); }
+      .brand-mark {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #7dc4ff, #c091ff 55%, #ff8cc8);
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.04);
+        display: grid; place-items: center;
+        color: #07090c;
+        font-weight: 800;
+        font-size: 0.75rem;
+      }
+      nav.primary {
+        display: flex;
+        gap: 0.25rem;
+        margin-left: auto;
         flex-wrap: wrap;
       }
-      header a.brand { font-weight: 700; color: var(--fg); font-size: 1.05rem; }
-      header nav { display: flex; gap: 1.5rem; font-size: 0.95rem; }
-      main { max-width: 1120px; margin: 0 auto; padding: 2rem; }
-      h1, h2, h3 { color: var(--fg); }
-      h1 { font-size: 1.9rem; margin: 0 0 0.5rem; }
-      h2 { font-size: 1.35rem; margin: 2rem 0 0.75rem; }
+      nav.primary a {
+        color: var(--fg-muted);
+        padding: 0.45rem 0.8rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.9rem;
+        transition: background 0.12s, color 0.12s;
+      }
+      nav.primary a:hover { color: var(--fg); background: var(--bg-hover); }
+      nav.primary a.github {
+        color: var(--fg-muted);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      /* Main */
+      main { max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+      h1, h2, h3, h4 { color: var(--fg); letter-spacing: -0.02em; }
+      h1 { font-size: 2rem; margin: 0 0 0.5rem; font-weight: 700; }
+      h2 { font-size: 1.35rem; margin: 2.5rem 0 1rem; font-weight: 600; }
+      h3 { font-size: 1.02rem; margin: 0 0 0.3rem; font-weight: 600; }
+      p { color: var(--fg-muted); margin: 0.5rem 0; }
+
+      /* Hero */
+      .hero {
+        padding: 4rem 0 3rem;
+        text-align: center;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 3rem;
+        position: relative;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 20% 0%, rgba(125,196,255,0.08), transparent 50%),
+          radial-gradient(circle at 80% 0%, rgba(255,140,200,0.06), transparent 50%);
+        pointer-events: none;
+      }
+      .hero-content { position: relative; max-width: 760px; margin: 0 auto; padding: 0 1rem; }
+      .hero h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        background: linear-gradient(120deg, #fff, #a9c6e6 60%, #ff8cc8);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p.lede {
+        color: var(--fg-muted);
+        font-size: 1.1rem;
+        margin: 0 auto 2rem;
+        max-width: 600px;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 0.5rem;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.65rem 1.1rem;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-strong);
+        background: var(--bg-elev);
+        color: var(--fg);
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.12s, border-color 0.12s, transform 0.05s;
+      }
+      .btn:hover { background: var(--bg-hover); border-color: #3b4a5b; color: var(--fg); }
+      .btn:active { transform: translateY(1px); }
+      .btn-primary {
+        background: linear-gradient(180deg, #8fd1ff 0%, #6ab0ff 100%);
+        border-color: #6ab0ff;
+        color: #051018;
+        font-weight: 600;
+      }
+      .btn-primary:hover { background: linear-gradient(180deg, #a0d9ff, #7dbcff); color: #051018; }
+
+      /* Search */
+      .search-wrap {
+        margin: 2rem auto 0;
+        max-width: 560px;
+        position: relative;
+      }
+      .search-wrap input {
+        width: 100%;
+        padding: 0.85rem 1rem 0.85rem 2.6rem;
+        border-radius: var(--radius);
+        border: 1px solid var(--border-strong);
+        background: var(--bg-elev);
+        color: var(--fg);
+        font-size: 0.95rem;
+        font-family: inherit;
+        transition: border-color 0.12s, box-shadow 0.12s;
+      }
+      .search-wrap input:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(125,196,255,0.12);
+      }
+      .search-wrap .search-icon {
+        position: absolute;
+        left: 0.9rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--fg-subtle);
+        pointer-events: none;
+      }
+
+      /* Stats strip */
+      .stats {
+        display: flex;
+        justify-content: center;
+        gap: 2.5rem;
+        flex-wrap: wrap;
+        padding: 1.5rem 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        margin: 3rem 0;
+      }
+      .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+      }
+      .stat-value {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--fg);
+        letter-spacing: -0.02em;
+      }
+      .stat-label {
+        font-size: 0.78rem;
+        color: var(--fg-subtle);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 500;
+      }
+
+      /* Filter chips */
+      .chips {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin: 1rem 0 1.5rem;
+      }
+      .chip {
+        padding: 0.4rem 0.9rem;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--bg-elev);
+        color: var(--fg-muted);
+        font-size: 0.82rem;
+        cursor: pointer;
+        transition: all 0.12s;
+        user-select: none;
+      }
+      .chip:hover { color: var(--fg); border-color: var(--border-strong); }
+      .chip.active {
+        background: var(--bg-hover);
+        border-color: var(--accent);
+        color: var(--fg);
+      }
+
+      /* Grid + cards */
       .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 0.85rem;
       }
       .card {
+        display: block;
         border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 1rem 1.1rem;
-        background: #0f1216;
-        transition: border-color 0.15s;
+        border-radius: var(--radius);
+        padding: 1.1rem 1.15rem;
+        background: var(--bg-elev);
+        box-shadow: var(--shadow-card);
+        transition: border-color 0.15s, transform 0.05s, background 0.15s;
+        position: relative;
+        overflow: hidden;
       }
-      .card:hover { border-color: #2d3a46; }
-      .card h3 { margin: 0 0 0.3rem; font-size: 1.05rem; }
-      .card p { margin: 0.3rem 0 0.6rem; color: var(--muted); font-size: 0.92rem; }
-      .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
+      .card:hover {
+        border-color: var(--border-strong);
+        background: var(--bg-hover);
+      }
+      .card:active { transform: translateY(1px); }
+      .card .row-head {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.3rem;
+      }
+      .card .icon {
+        font-size: 1.2rem;
+        line-height: 1;
+      }
+      .card h3 {
+        color: var(--fg);
+        font-size: 1.02rem;
+        margin: 0;
+        flex: 1;
+      }
+      .card p {
+        color: var(--fg-muted);
+        font-size: 0.9rem;
+        margin: 0.3rem 0 0.7rem;
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin-top: 0.45rem;
+      }
       .tag {
-        font-size: 0.75rem;
+        font-size: 0.72rem;
         padding: 2px 8px;
         border-radius: 999px;
         background: var(--chip-bg);
         color: var(--chip-fg);
+        font-weight: 500;
       }
+
+      /* Kind badge (pill) */
+      .kind {
+        display: inline-block;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 2px 7px;
+        border-radius: 4px;
+        font-weight: 600;
+      }
+      .kind-skill      { background: rgba(125,196,255,0.12); color: var(--kind-skill); }
+      .kind-server     { background: rgba(192,145,255,0.12); color: var(--kind-server); }
+      .kind-agent      { background: rgba(255,140,200,0.12); color: var(--kind-agent); }
+      .kind-collection { background: rgba(240,193,105,0.12); color: var(--kind-collection); }
+      .kind-doc        { background: rgba(117,216,168,0.12); color: var(--kind-doc); }
+
+      /* Code blocks */
       pre, code {
-        font-family: "SF Mono", Menlo, Consolas, monospace;
-        font-size: 0.88rem;
+        font-family: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+        font-size: 0.85rem;
       }
       pre {
         background: var(--code-bg);
         border: 1px solid var(--border);
-        border-radius: 6px;
-        padding: 0.9rem 1.1rem;
+        border-radius: var(--radius);
+        padding: 1rem 1.2rem;
         overflow-x: auto;
+        line-height: 1.6;
       }
-      code { background: var(--code-bg); padding: 2px 5px; border-radius: 4px; }
-      pre code { background: transparent; padding: 0; }
-      .kind {
-        display: inline-block;
-        font-size: 0.7rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        padding: 2px 8px;
-        border-radius: 4px;
-        margin-right: 0.5rem;
-      }
-      .kind-skill { background: #0e2638; color: #6ab0ff; }
-      .kind-server { background: #2a1639; color: #c091ff; }
-      .kind-collection { background: #3a2d14; color: #f0c169; }
-      .kind-doc { background: #133124; color: #75d8a8; }
-      .kind-agent { background: #311c30; color: #f078b9; }
+      code { background: var(--code-bg); padding: 2px 6px; border-radius: 4px; font-size: 0.85em; }
+      pre code { background: transparent; padding: 0; font-size: inherit; }
+
+      /* Install command box — copyable */
       .install {
-        display: block;
-        margin-top: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-top: 0.85rem;
+        padding: 0.7rem 0.85rem;
         background: var(--code-bg);
         border: 1px solid var(--border);
-        border-radius: 6px;
-        padding: 0.6rem 0.85rem;
-        font-family: "SF Mono", Menlo, Consolas, monospace;
-        font-size: 0.85rem;
+        border-radius: var(--radius-sm);
+        font-family: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+        font-size: 0.82rem;
         color: var(--fg);
       }
-      footer {
-        border-top: 1px solid var(--border);
-        margin-top: 4rem;
-        padding: 1.5rem 2rem;
-        color: var(--muted);
-        font-size: 0.85rem;
+      .install .cmd { flex: 1; overflow-x: auto; white-space: nowrap; }
+      .install button.copy {
+        border: 1px solid var(--border);
+        background: var(--bg-elev);
+        color: var(--fg-muted);
+        padding: 0.25rem 0.6rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.75rem;
+        font-family: inherit;
+        transition: all 0.12s;
+      }
+      .install button.copy:hover { color: var(--fg); border-color: var(--border-strong); }
+      .install button.copy.copied { color: #75d8a8; border-color: #75d8a8; }
+
+      /* Markdown body */
+      .markdown h1, .markdown h2, .markdown h3 { margin-top: 2rem; }
+      .markdown h1:first-child { margin-top: 0; }
+      .markdown p { color: var(--fg); }
+      .markdown ul, .markdown ol { color: var(--fg); padding-left: 1.5rem; }
+      .markdown li { margin: 0.25rem 0; }
+      .markdown blockquote {
+        border-left: 3px solid var(--accent);
+        margin: 1rem 0;
+        padding: 0.4rem 0 0.4rem 1rem;
+        color: var(--fg-muted);
+      }
+      .markdown table {
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .markdown th, .markdown td {
+        border: 1px solid var(--border);
+        padding: 0.4rem 0.75rem;
+      }
+      .markdown th { background: var(--bg-elev); text-align: left; font-weight: 600; }
+
+      /* Empty state */
+      .empty {
         text-align: center;
+        padding: 3rem 1rem;
+        color: var(--fg-subtle);
+      }
+
+      /* Footer */
+      footer.site {
+        border-top: 1px solid var(--border);
+        padding: 2rem 1.5rem;
+        color: var(--fg-subtle);
+        font-size: 0.82rem;
+        text-align: center;
+      }
+      footer.site a { color: var(--fg-muted); }
+
+      /* Utilities */
+      .lead-muted { color: var(--fg-muted); max-width: 640px; }
+      .mt-4 { margin-top: 2rem; }
+
+      @media (max-width: 640px) {
+        .header-inner { padding: 0.75rem 1rem; gap: 0.75rem; }
+        .brand span.name { display: none; }
+        main { padding: 1.5rem 1rem 3rem; }
+        .hero { padding: 3rem 0 2rem; }
+        .stats { gap: 1.25rem; }
       }
     </style>
   </head>
   <body>
-    <header>
-      <a class="brand" href={base}>ai-dev-toolkit-library</a>
-      <nav>
-        <a href={`${base}skills/`}>Skills</a>
-        <a href={`${base}servers/`}>Servers</a>
-        <a href={`${base}agents/`}>Agents</a>
-        <a href={`${base}collections/`}>Collections</a>
-        <a href={`${base}docs/`}>Docs</a>
-        <a href="https://github.com/LucasSantana-Dev/ai-dev-toolkit-library">GitHub</a>
-      </nav>
+    <header class="site">
+      <div class="header-inner">
+        <a class="brand" href={base}>
+          <span class="brand-mark">a</span>
+          <span class="name">adtl library</span>
+        </a>
+        <nav class="primary">
+          <a href={`${base}skills/`}>Skills</a>
+          <a href={`${base}servers/`}>Servers</a>
+          <a href={`${base}agents/`}>Agents</a>
+          <a href={`${base}collections/`}>Collections</a>
+          <a href={`${base}docs/`}>Docs</a>
+          <a class="github" href="https://github.com/LucasSantana-Dev/ai-dev-toolkit-library" aria-label="GitHub">
+            GitHub ↗
+          </a>
+        </nav>
+      </div>
     </header>
     <main>
       <slot />
     </main>
-    <footer>
-      Built with Astro · <a href="https://github.com/LucasSantana-Dev/ai-dev-toolkit-library">source</a>
+    <footer class="site">
+      <a href="https://github.com/LucasSantana-Dev/ai-dev-toolkit-library">Source</a>
+      · MIT
+      · Built with <a href="https://astro.build">Astro</a>,
+      runs on <a href="https://pages.cloudflare.com">Cloudflare Pages</a>
     </footer>
+
+    <script is:inline>
+      // Copy-to-clipboard for .install buttons
+      document.addEventListener("click", (e) => {
+        const btn = (e.target instanceof Element ? e.target.closest("button.copy") : null);
+        if (!btn) return;
+        const text = btn.dataset.copy || btn.previousElementSibling?.textContent || "";
+        navigator.clipboard.writeText(text.trim()).then(() => {
+          const original = btn.textContent;
+          btn.textContent = "✓ copied";
+          btn.classList.add("copied");
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.classList.remove("copied");
+          }, 1500);
+        });
+      });
+    </script>
   </body>
 </html>

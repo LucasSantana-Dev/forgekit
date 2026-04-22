@@ -1,41 +1,48 @@
 ---
 import Base from "../../layouts/Base.astro";
+import InstallBlock from "../../components/InstallBlock.astro";
 import { getAgents } from "../../lib/catalog.ts";
+import { installCommand, renderMarkdown } from "../../lib/ui.ts";
 
 export async function getStaticPaths() {
   const agents = await getAgents();
   return agents.map((a) => ({ params: { id: a.id }, props: { agent: a } }));
 }
 const { agent } = Astro.props;
+const rendered = renderMarkdown(agent.body);
+const cmd = installCommand("agent", agent.id)!;
 ---
 <Base title={agent.name} description={agent.description}>
-  <p><a href="../">← all agents</a></p>
-  <span class="kind kind-agent">agent</span>
-  <h1 style="display: inline;">{agent.name}</h1>
-  <p style="color: var(--muted);">{agent.description}</p>
-  <div class="tags" style="margin: 0.75rem 0 1.25rem;">
-    {agent.model && <span class="tag">model: {agent.model}</span>}
-    {agent.level !== undefined && <span class="tag">level: {agent.level}</span>}
+  <p style="margin-bottom: 1.5rem;"><a href="../">← all agents</a></p>
+  <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+    <span style="font-size: 1.6rem;">🤖</span>
+    <h1 style="margin: 0;">{agent.name}</h1>
+    <span class="kind kind-agent">agent</span>
+  </div>
+  <p class="lead-muted" style="margin-bottom: 1rem;">{agent.description}</p>
+  <div class="tags" style="margin-bottom: 1.25rem;">
+    {agent.model && <span class="tag">{agent.model}</span>}
+    {agent.level !== undefined && <span class="tag">level {agent.level}</span>}
     {agent.tags.map((t) => <span class="tag">{t}</span>)}
   </div>
 
-  <code class="install">npx @lucassantana/adtl install {agent.id}</code>
+  <InstallBlock command={cmd} />
 
   {agent.disallowed_tools && agent.disallowed_tools.length > 0 && (
     <>
       <h2>Disallowed tools</h2>
-      <p style="color: var(--muted);">This agent cannot call:</p>
-      <ul>
+      <p class="lead-muted">This agent cannot call:</p>
+      <ul class="markdown">
         {agent.disallowed_tools.map((t) => <li><code>{t}</code></li>)}
       </ul>
     </>
   )}
 
   <h2>System prompt</h2>
-  <pre><code>{agent.body}</code></pre>
+  <article class="markdown" set:html={rendered} />
 
   {agent.source?.path && (
-    <p style="color: var(--muted); font-size: 0.85rem; margin-top: 1.5rem;">
+    <p style="color: var(--fg-subtle); font-size: 0.82rem; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem;">
       Source: <code>{agent.source.path}</code>
       {agent.license && <> · {agent.license}</>}
     </p>

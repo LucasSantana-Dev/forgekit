@@ -1,0 +1,54 @@
+---
+import Base from "../../layouts/Base.astro";
+import Card from "../../components/Card.astro";
+import SearchFilter from "../../components/SearchFilter.astro";
+import { getSkills, getServers, getAgents, getDocs } from "../../lib/catalog.ts";
+
+const [skills, servers, agents, docs] = await Promise.all([
+  getSkills(),
+  getServers(),
+  getAgents(),
+  getDocs(),
+]);
+const base = import.meta.env.BASE_URL;
+
+const tagSet = new Set<string>();
+for (const e of [...skills, ...servers, ...agents, ...docs]) {
+  for (const t of e.tags ?? []) tagSet.add(t);
+}
+const tags = [...tagSet].sort();
+---
+<Base title="Search" description="Search the whole library.">
+  <h1>Search</h1>
+  <p class="lead-muted">Everything in the library — skills, servers, agents, docs.</p>
+  <SearchFilter placeholder="Search everything…" tags={tags} />
+  <div class="grid">
+    {skills.map((s) => (
+      <Card kind="skill" id={s.id} name={s.name} description={s.description} tags={s.tags} href={`${base}skills/${s.id}/`} />
+    ))}
+    {agents.map((a) => (
+      <Card kind="agent" id={a.id} name={a.name} description={a.description} tags={a.tags} href={`${base}agents/${a.id}/`} extraTag={a.model} />
+    ))}
+    {servers.map((s) => (
+      <Card kind="server" id={s.id} name={s.name} description={s.description} tags={s.tags} href={`${base}servers/${s.id}/`} extraTag={s.transport} />
+    ))}
+    {docs.map((d) => (
+      <Card kind="doc" id={d.id} name={d.title} description={d.description} tags={d.tags} href={`${base}docs/${d.id}/`} />
+    ))}
+  </div>
+  <div id="empty-state" class="empty" style="display: none;">No matches.</div>
+
+  <script is:inline>
+    // If ?tag=foo is in the URL, apply it on load.
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const tag = params.get("tag");
+      if (!tag) return;
+      // Wait a tick for SearchFilter's script to wire chips.
+      setTimeout(() => {
+        const chip = document.querySelector(`.chip[data-tag="${tag}"]`);
+        if (chip) chip.click();
+      }, 0);
+    })();
+  </script>
+</Base>

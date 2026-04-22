@@ -25,7 +25,7 @@ own gateway locally — the catalog is shared, the runtime is not.
 - **`scripts/`** — validators + importers
 
 [mcp-context-forge]: https://github.com/IBM/mcp-context-forge
-[published on GH Pages]: https://lucassantana-dev.github.io/ai-dev-toolkit-library
+[published on GH Pages]: https://library.lucassantana.tech
 
 ---
 
@@ -44,7 +44,7 @@ python seeds/seed.py
 npx @lucassantana/adtl setup-claude
 
 # 3. Browse the catalog
-open https://lucassantana-dev.github.io/ai-dev-toolkit-library
+open https://library.lucassantana.tech
 
 # 4. Install a skill / register a server
 npx @lucassantana/adtl install <slug>

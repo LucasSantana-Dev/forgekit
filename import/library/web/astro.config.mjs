@@ -1,11 +1,15 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 
-const isProd = process.env.NODE_ENV === "production";
+// Deploy target is Cloudflare Pages at library.lucassantana.tech — the site
+// lives at the root of the domain, so no base prefix. Override with
+// ASTRO_BASE=/ai-dev-toolkit-library for GH Pages fallback.
+const base = process.env.ASTRO_BASE ?? "/";
+const site = process.env.ASTRO_SITE ?? "https://library.lucassantana.tech";
 
 export default defineConfig({
-  site: "https://lucassantana-dev.github.io",
-  base: isProd ? "/ai-dev-toolkit-library" : "/",
+  site,
+  base,
   trailingSlash: "ignore",
   build: {
     format: "directory",

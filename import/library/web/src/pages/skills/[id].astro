@@ -1,29 +1,37 @@
 ---
 import Base from "../../layouts/Base.astro";
+import InstallBlock from "../../components/InstallBlock.astro";
 import { getSkills } from "../../lib/catalog.ts";
+import { installCommand, renderMarkdown } from "../../lib/ui.ts";
 
 export async function getStaticPaths() {
   const skills = await getSkills();
   return skills.map((s) => ({ params: { id: s.id }, props: { skill: s } }));
 }
 const { skill } = Astro.props;
+const rendered = renderMarkdown(skill.body);
+const cmd = installCommand("skill", skill.id)!;
 ---
 <Base title={skill.name} description={skill.description}>
-  <p><a href="../">← all skills</a></p>
-  <span class="kind kind-skill">skill</span>
-  <h1 style="display: inline;">{skill.name}</h1>
-  <p style="color: var(--muted);">{skill.description}</p>
-  <div class="tags" style="margin: 0.75rem 0 1.25rem;">
+  <p style="margin-bottom: 1.5rem;"><a href="../">← all skills</a></p>
+  <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+    <span style="font-size: 1.6rem;">🎯</span>
+    <h1 style="margin: 0;">{skill.name}</h1>
+    <span class="kind kind-skill">skill</span>
+  </div>
+  <p class="lead-muted" style="margin-bottom: 1rem;">{skill.description}</p>
+  <div class="tags" style="margin-bottom: 1.25rem;">
+    {skill.version && <span class="tag">v{skill.version}</span>}
+    {skill.editors?.map((e) => <span class="tag">{e}</span>)}
     {skill.tags.map((t) => <span class="tag">{t}</span>)}
   </div>
 
-  <code class="install">npx @lucassantana/adtl install {skill.id}</code>
+  <InstallBlock command={cmd} />
 
-  <h2>SKILL.md</h2>
-  <pre><code>{skill.body}</code></pre>
+  <article class="markdown mt-4" set:html={rendered} />
 
   {skill.source?.path && (
-    <p style="color: var(--muted); font-size: 0.85rem; margin-top: 1.5rem;">
+    <p style="color: var(--fg-subtle); font-size: 0.82rem; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem;">
       Source: <code>{skill.source.path}</code>
       {skill.license && <> · {skill.license}</>}
     </p>

@@ -1,6 +1,8 @@
 ---
 import Base from "../../layouts/Base.astro";
+import InstallBlock from "../../components/InstallBlock.astro";
 import { getServers } from "../../lib/catalog.ts";
+import { installCommand } from "../../lib/ui.ts";
 
 export async function getStaticPaths() {
   const servers = await getServers();
@@ -8,30 +10,34 @@ export async function getStaticPaths() {
 }
 const { server } = Astro.props;
 
-const cmd =
+const cmd = installCommand("server", server.id)!;
+const runCmd =
   server.transport === "stdio"
     ? `${server.command ?? ""} ${(server.args ?? []).join(" ")}`.trim()
     : server.url ?? "";
 ---
 <Base title={server.name} description={server.description}>
-  <p><a href="../">← all servers</a></p>
-  <span class="kind kind-server">server</span>
-  <h1 style="display: inline;">{server.name}</h1>
-  <p style="color: var(--muted);">{server.description}</p>
-  <div class="tags" style="margin: 0.75rem 0 1.25rem;">
+  <p style="margin-bottom: 1.5rem;"><a href="../">← all servers</a></p>
+  <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+    <span style="font-size: 1.6rem;">🔌</span>
+    <h1 style="margin: 0;">{server.name}</h1>
+    <span class="kind kind-server">server</span>
+  </div>
+  <p class="lead-muted" style="margin-bottom: 1rem;">{server.description}</p>
+  <div class="tags" style="margin-bottom: 1.25rem;">
     <span class="tag">transport: {server.transport}</span>
     {server.tags.map((t) => <span class="tag">{t}</span>)}
   </div>
 
-  <code class="install">npx @lucassantana/adtl add-server {server.id}</code>
+  <InstallBlock command={cmd} />
 
-  <h2>Command</h2>
-  <pre><code>{cmd}</code></pre>
+  <h2>How it runs</h2>
+  <pre><code>{runCmd}</code></pre>
 
   {server.env && server.env.length > 0 && (
     <>
       <h2>Environment variables</h2>
-      <ul>
+      <ul class="markdown">
         {server.env.map((e) => (
           <li>
             <code>{e.name}</code>
@@ -43,7 +49,7 @@ const cmd =
     </>
   )}
 
-  <p style="color: var(--muted); font-size: 0.85rem; margin-top: 1.5rem;">
+  <p style="color: var(--fg-subtle); font-size: 0.82rem; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem;">
     {server.homepage && <>Homepage: <a href={server.homepage}>{server.homepage}</a></>}
     {server.license && <> · {server.license}</>}
   </p>

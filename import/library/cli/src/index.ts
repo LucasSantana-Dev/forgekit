@@ -23,7 +23,7 @@ Commands:
 
   ${kleur.cyan("--version")} / ${kleur.cyan("--help")}
 
-Docs: https://lucassantana-dev.github.io/ai-dev-toolkit-library
+Docs: https://library.lucassantana.tech
 Repo: https://github.com/LucasSantana-Dev/ai-dev-toolkit-library
 `;
 
