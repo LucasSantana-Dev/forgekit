@@ -1,0 +1,22 @@
+{
+  "id": "block-destructive",
+  "name": "Block Destructive",
+  "description": "Block destructive commands hook for Claude Code Prevents dangerous operations that could cause data loss",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code"
+  ],
+  "event": "any",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/block-destructive.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/security/block-destructive.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

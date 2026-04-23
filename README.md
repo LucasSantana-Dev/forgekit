@@ -1,15 +1,35 @@
 [English](README.md) | [Português](README.pt-BR.md)
 
-# AI Dev Toolkit
+# Forge Kit
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Latest Release](https://img.shields.io/github/v/release/LucasSantana-Dev/ai-dev-toolkit)](https://github.com/LucasSantana-Dev/ai-dev-toolkit/releases)
 
-Reusable patterns, drop-in rules, portable skills, and cross-tool setup automation so AI coding agents produce code aligned with your project from the first session.
+Forge Kit is the unified home for the former `ai-dev-toolkit`, `ai-dev-toolkit-setup`,
+`ai-dev-toolkit-pt-br`, and `ai-dev-toolkit-library` projects.
+
+It combines reusable agent rules, portable skills, setup automation, a catalog,
+a CLI, and a bilingual web app so AI coding agents start with project conventions,
+workflow guardrails, and installable tooling from the first session.
+
+## Monorepo layout
+
+```text
+.
+├── apps/web              # Astro catalog web app
+├── infra/gateway         # Local MCP gateway stack
+├── locales/pt-BR         # Portuguese toolkit content
+├── packages/catalog      # Catalog data, schemas, importers, validation
+├── packages/cli          # forge-kit CLI, with legacy adtl alias
+└── packages/setup        # Machine bootstrap layer
+```
 
 ## First-time install?
 
-Most users should start with **[ai-dev-toolkit-setup](https://github.com/LucasSantana-Dev/ai-dev-toolkit-setup)** — the machine bootstrap layer that consumes this toolkit at a pinned version. It detects your installed tools, applies pre-built configurations, and installs the entire skill and rule set in one command. See the setup repository for platform-specific installation instructions.
+Most users should start with [`packages/setup`](packages/setup/README.md) — the
+machine bootstrap layer that consumes this toolkit at a pinned version. It
+detects your installed tools, applies pre-built configurations, and installs the
+entire skill and rule set in one command.
 
 ## How do I start using this?
 
@@ -21,11 +41,11 @@ git clone https://github.com/LucasSantana-Dev/ai-dev-toolkit.git
 cd ai-dev-toolkit
 
 # Copy the rule file that matches your tool
-cp rules/CLAUDE.md    ~/my-project/CLAUDE.md       # Claude Code / OpenCode
-cp rules/AGENTS.md    ~/my-project/AGENTS.md       # Codex CLI
-cp rules/.cursorrules ~/my-project/.cursorrules     # Cursor
-cp rules/.windsurfrules ~/my-project/.windsurfrules # Windsurf
-cp rules/COPILOT.md   ~/my-project/COPILOT.md      # GitHub Copilot
+cp packages/core/rules/CLAUDE.md    ~/my-project/CLAUDE.md       # Claude Code / OpenCode
+cp packages/core/rules/AGENTS.md    ~/my-project/AGENTS.md       # Codex CLI
+cp packages/core/rules/.cursorrules ~/my-project/.cursorrules     # Cursor
+cp packages/core/rules/.windsurfrules ~/my-project/.windsurfrules # Windsurf
+cp packages/core/rules/COPILOT.md   ~/my-project/COPILOT.md      # GitHub Copilot
 ```
 
 Open your AI tool in `~/my-project/`. The agent now follows your rules automatically.
@@ -36,10 +56,10 @@ Open your AI tool in `~/my-project/`. The agent now follows your rules automatic
 
 ```bash
 # Auto-detect installed tools and apply standard profile
-FORGE_KIT_DIR=./kit sh kit/install.sh --profile standard
+FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --profile standard
 
 # Target specific tools with a specific profile
-FORGE_KIT_DIR=./kit sh kit/install.sh \
+FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh \
   --tools claude-code,codex,opencode \
   --profile standard
 ```
@@ -48,13 +68,13 @@ Preview what will change before committing:
 
 ```bash
 # Dry run — shows exactly what would be created, updated, or skipped
-FORGE_KIT_DIR=./kit sh kit/install.sh --tools all --profile standard --dry-run
+FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --tools all --profile standard --dry-run
 
 # Show what forge-kit has installed
-FORGE_KIT_DIR=./kit sh kit/install.sh --status
+FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --status
 
 # Remove all forge-kit managed files
-FORGE_KIT_DIR=./kit sh kit/install.sh --uninstall
+FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --uninstall
 ```
 
 ### How do I use the interactive setup wizard?
@@ -63,7 +83,7 @@ The wizard walks you through provider selection, fallback chains, token optimiza
 
 ```bash
 # Run the interactive setup wizard
-sh kit/setup.sh
+sh packages/core/kit/setup.sh
 # Follow prompts to select provider, fallback, optimization preset, and profile
 # Output: .forge-setup.json with resolved model maps and agent assignments
 ```
@@ -82,35 +102,35 @@ It prompts for:
 
 | Pattern                                                        | When you need it                                     |
 | -------------------------------------------------------------- | ---------------------------------------------------- |
-| [Context Building](patterns/context-building.md)               | Agents guess instead of finding project knowledge    |
-| [Task Orchestration](patterns/task-orchestration.md)           | Multi-step work needs less supervision               |
-| [Code Review](patterns/code-review.md)                         | Catching bugs, logic defects, and security issues    |
-| [Testing with AI](patterns/testing.md)                         | Higher-value test generation and TDD workflows       |
-| [Multi-Model Routing](patterns/multi-model-routing.md)         | Reducing cost by routing cheap tasks to cheap models |
-| [Memory Systems](patterns/memory-systems.md)                   | Decisions persisting across sessions                 |
-| [Session Management](patterns/session-management.md)           | Parallel sessions conflicting or losing context      |
-| [Prompt Engineering](patterns/prompt-engineering.md)           | Inconsistent or imprecise agent responses            |
-| [Git Worktrees](patterns/git-worktrees.md)                     | Isolating concurrent tasks on separate branches      |
-| [Agent Observability](patterns/agent-observability.md)         | Tracing and regression-testing agent behavior        |
-| [OpenTelemetry GenAI](patterns/opentelemetry-genai.md)         | Vendor-neutral LLM instrumentation and telemetry     |
-| [Multi-Repo Workflows](patterns/multi-repo.md)                 | Cross-repository coordination                        |
-| [Permission Boundaries](patterns/permission-boundaries.md)     | Minimum-privilege tool access                        |
-| [Prompt Injection Defense](patterns/prompt-injection-defense.md) | Layered defenses against direct and indirect attacks |
-| [Streaming Orchestration](patterns/streaming-orchestration.md) | Event-driven turn loops and token budgeting          |
-| [Tool Registry Patterns](patterns/tool-registry-patterns.md)   | Decoupling tool metadata from implementation         |
-| [Spec Driven Development](patterns/spec-driven-development.md) | Agents need a stable contract before building        |
-| [MCP Tool Lazy-Loading](patterns/mcp-tool-lazy-loading.md)     | Reducing context bloat from 50+ tool schemas         |
-| [Agent Evals as CI](patterns/agent-evals-ci.md)               | Threshold-based PR gates for agent reliability       |
-| [Benchmark Reality Gap](patterns/benchmark-reality-gap.md)     | Agent eval accuracy when curated benchmarks overestimate |
-| [SKILL.md Adoption](patterns/skill-md-adoption.md)            | Vendor-neutral skill discovery and cross-tool auto-invocation |
+| [Context Building](packages/core/patterns/context-building.md)               | Agents guess instead of finding project knowledge    |
+| [Task Orchestration](packages/core/patterns/task-orchestration.md)           | Multi-step work needs less supervision               |
+| [Code Review](packages/core/patterns/code-review.md)                         | Catching bugs, logic defects, and security issues    |
+| [Testing with AI](packages/core/patterns/testing.md)                         | Higher-value test generation and TDD workflows       |
+| [Multi-Model Routing](packages/core/patterns/multi-model-routing.md)         | Reducing cost by routing cheap tasks to cheap models |
+| [Memory Systems](packages/core/patterns/memory-systems.md)                   | Decisions persisting across sessions                 |
+| [Session Management](packages/core/patterns/session-management.md)           | Parallel sessions conflicting or losing context      |
+| [Prompt Engineering](packages/core/patterns/prompt-engineering.md)           | Inconsistent or imprecise agent responses            |
+| [Git Worktrees](packages/core/patterns/git-worktrees.md)                     | Isolating concurrent tasks on separate branches      |
+| [Agent Observability](packages/core/patterns/agent-observability.md)         | Tracing and regression-testing agent behavior        |
+| [OpenTelemetry GenAI](packages/core/patterns/opentelemetry-genai.md)         | Vendor-neutral LLM instrumentation and telemetry     |
+| [Multi-Repo Workflows](packages/core/patterns/multi-repo.md)                 | Cross-repository coordination                        |
+| [Permission Boundaries](packages/core/patterns/permission-boundaries.md)     | Minimum-privilege tool access                        |
+| [Prompt Injection Defense](packages/core/patterns/prompt-injection-defense.md) | Layered defenses against direct and indirect attacks |
+| [Streaming Orchestration](packages/core/patterns/streaming-orchestration.md) | Event-driven turn loops and token budgeting          |
+| [Tool Registry Patterns](packages/core/patterns/tool-registry-patterns.md)   | Decoupling tool metadata from implementation         |
+| [Spec Driven Development](packages/core/patterns/spec-driven-development.md) | Agents need a stable contract before building        |
+| [MCP Tool Lazy-Loading](packages/core/patterns/mcp-tool-lazy-loading.md)     | Reducing context bloat from 50+ tool schemas         |
+| [Agent Evals as CI](packages/core/patterns/agent-evals-ci.md)               | Threshold-based PR gates for agent reliability       |
+| [Benchmark Reality Gap](packages/core/patterns/benchmark-reality-gap.md)     | Agent eval accuracy when curated benchmarks overestimate |
+| [SKILL.md Adoption](packages/core/patterns/skill-md-adoption.md)            | Vendor-neutral skill discovery and cross-tool auto-invocation |
 
 ## What skills are included?
 
 29 portable skills installed to every tool via `forge-kit`:
 
 ```bash
-# Skills live in kit/core/skills/ and get copied to each tool's skill directory
-ls kit/core/skills/
+# Skills live in packages/core/kit/core/skills/ and get copied to each tool's skill directory
+ls packages/core/kit/core/skills/
 
 # Output:
 # context.md   cost.md      debug.md     dispatch.md  fallback.md
@@ -187,7 +207,7 @@ PLAN → IMPLEMENT → VERIFY → REVIEW → SECURE → COMMIT
 QUALITY GATES → PUSH → PR
 ```
 
-Configuration in `kit/core/autopilot.json`:
+Configuration in `packages/core/kit/core/autopilot.json`:
 
 ```json
 {
@@ -218,7 +238,7 @@ npm install
 # Run the full validation suite
 npm test                 # 16 governance tests
 npm run lint             # ESLint on scripts and tests
-npm run validate         # Company schema + kit/core config validation
+npm run validate         # Company schema + packages/core/kit/core config validation
 npm run validate:schema  # Schema validation only
 
 # Run the parity audit — shows cross-tool feature gaps
@@ -228,8 +248,8 @@ node scripts/parity-audit.js
 ## How do I preflight a release before mutating a repo?
 
 ```bash
-python3 tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog
-python3 tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog --github-release
+python3 packages/core/tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog
+python3 packages/core/tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog --github-release
 ```
 
 The preflight checks git cleanliness, git identity, target tag availability, version source detection, notes-file destination, changelog readiness, and optional `gh` readiness before any release mutation.
@@ -244,32 +264,32 @@ Skills: 19 | Configs: 8 | Gaps: 0
 ## What does the repository contain?
 
 ```text
-patterns/            15 tool-agnostic workflow playbooks
-rules/               Drop-in rule templates (Claude, Codex, Cursor, Windsurf, Copilot)
-kit/
-  kit/install.sh     Entry point for forge-kit
-  kit/setup.sh       Interactive setup wizard
-  kit/core/          8 engine configs + 29 portable skills
-  kit/adapters/      Per-tool adapters (6 tools)
-  kit/profiles/      Install profiles (standard, minimal, research, durable)
-implementations/     Reference setups for Claude Code, Codex, OpenCode, Cursor, Windsurf, Antigravity
-companies/           Pre-built multi-agent organizations
-tools/               Setup scripts + curated productivity stack
-best-practices/      Security, workflow, context management standards
-examples/            Starter assets (backlog, memory structure)
+packages/core/patterns/            15 tool-agnostic workflow playbooks
+packages/core/rules/               Drop-in rule templates (Claude, Codex, Cursor, Windsurf, Copilot)
+packages/core/kit/
+  packages/core/kit/install.sh     Entry point for forge-kit
+  packages/core/kit/setup.sh       Interactive setup wizard
+  packages/core/kit/core/          8 engine configs + 29 portable skills
+  packages/core/kit/adapters/      Per-tool adapters (6 tools)
+  packages/core/kit/profiles/      Install profiles (standard, minimal, research, durable)
+packages/core/implementations/     Reference setups for Claude Code, Codex, OpenCode, Cursor, Windsurf, Antigravity
+packages/core/companies/           Pre-built multi-agent organizations
+packages/core/tools/               Setup scripts + curated productivity stack
+packages/core/best-practices/      Security, workflow, context management standards
+packages/core/examples/            Starter assets (backlog, memory structure)
 ```
 
 ## How do I adopt this incrementally?
 
 | Day | Focus                            | Resource                                                                                                                         |
 | --- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Drop in a rule file              | [`rules/`](rules/)                                                                                                               |
-| 2   | Ground agents in project context | [`patterns/context-building.md`](patterns/context-building.md)                                                                   |
-| 3   | Improve execution reliability    | [`patterns/task-orchestration.md`](patterns/task-orchestration.md)                                                               |
-| 4   | Review and test quality          | [`patterns/code-review.md`](patterns/code-review.md), [`patterns/testing.md`](patterns/testing.md)                               |
-| 5   | Add memory and observability     | [`patterns/memory-systems.md`](patterns/memory-systems.md), [`patterns/agent-observability.md`](patterns/agent-observability.md) |
-| 6   | Spec-driven contracts            | [`patterns/spec-driven-development.md`](patterns/spec-driven-development.md)                                                     |
-| 7   | Full team setup with forge-kit   | [`kit/`](kit/) + [`implementations/`](implementations/)                                                                          |
+| 1   | Drop in a rule file              | [`packages/core/rules/`](packages/core/rules/)                                                                                                               |
+| 2   | Ground agents in project context | [`packages/core/patterns/context-building.md`](packages/core/patterns/context-building.md)                                                                   |
+| 3   | Improve execution reliability    | [`packages/core/patterns/task-orchestration.md`](packages/core/patterns/task-orchestration.md)                                                               |
+| 4   | Review and test quality          | [`packages/core/patterns/code-review.md`](packages/core/patterns/code-review.md), [`packages/core/patterns/testing.md`](packages/core/patterns/testing.md)                               |
+| 5   | Add memory and observability     | [`packages/core/patterns/memory-systems.md`](packages/core/patterns/memory-systems.md), [`packages/core/patterns/agent-observability.md`](packages/core/patterns/agent-observability.md) |
+| 6   | Spec-driven contracts            | [`packages/core/patterns/spec-driven-development.md`](packages/core/patterns/spec-driven-development.md)                                                     |
+| 7   | Full team setup with forge-kit   | [`packages/core/kit/`](packages/core/kit/) + [`packages/core/implementations/`](packages/core/implementations/)                                                                          |
 
 Need the current prioritized repository work instead of the general adoption guide? See [`BACKLOG.md`](BACKLOG.md).
 

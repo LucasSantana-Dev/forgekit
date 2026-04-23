@@ -1,0 +1,33 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getDocs } from "../../lib/catalog.ts";
+import { renderMarkdown } from "../../lib/ui.ts";
+
+export async function getStaticPaths() {
+  const docs = await getDocs();
+  return docs.map((d) => ({ params: { id: d.id }, props: { doc: d } }));
+}
+const { doc } = Astro.props;
+const rendered = renderMarkdown(doc.body);
+---
+<Base title={doc.title} description={doc.description}>
+  <p style="margin-bottom: 1.5rem;"><a href="../">← all docs</a></p>
+  <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+    <span style="font-size: 1.6rem;">📖</span>
+    <h1 style="margin: 0;">{doc.title}</h1>
+    <span class="kind kind-doc">doc</span>
+  </div>
+  <p class="lead-muted" style="margin-bottom: 1rem;">{doc.description}</p>
+  <div class="tags" style="margin-bottom: 1.5rem;">
+    {doc.tags.map((t) => <span class="tag">{t}</span>)}
+  </div>
+
+  <article class="markdown" set:html={rendered} />
+
+  {doc.source?.path && (
+    <p style="color: var(--fg-subtle); font-size: 0.82rem; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+      Source: <code>{doc.source.path}</code>
+      {doc.source.license && <> · {doc.source.license}</>}
+    </p>
+  )}
+</Base>

@@ -1,0 +1,24 @@
+{
+  "id": "eng-git-worktree-manager",
+  "name": "Eng Git Worktree Manager",
+  "description": "Git Worktree Manager",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "engineering",
+    "git"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/alirezarezvani/claude-skills",
+    "ref": "main",
+    "path": "engineering/git-worktree-manager/SKILL.md"
+  },
+  "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/git-worktree-manager",
+  "license": "MIT",
+  "author": "alirezarezvani"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "secret-detection",
+  "name": "Secret Detection",
+  "description": "Secret detection hook for UIForge MCP Scans for hardcoded secrets and sensitive data",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code",
+    "security"
+  ],
+  "event": "any",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/secret-detection.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/security/secret-detection.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

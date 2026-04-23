@@ -1,0 +1,108 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  // Change model to your preferred default
+  "model": "anthropic/claude-sonnet-4-6",
+  "agent": {
+    "primary": {
+      "description": "Primary coding agent — full-stack implementation",
+      "model": "anthropic/claude-sonnet-4-6",
+      "tools": {
+        "bash": true,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "webfetch": true,
+        "task": true,
+        "todowrite": true,
+        "todoread": true
+      }
+    },
+    "architect": {
+      "description": "Architecture agent — complex design, API design, data modeling",
+      "model": "anthropic/claude-opus-4-6",
+      "tools": {
+        "bash": true,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "webfetch": true,
+        "task": true,
+        "todowrite": true,
+        "todoread": true
+      }
+    },
+    "fast": {
+      "description": "Fast agent — linting, formatting, simple edits, quick lookups",
+      "model": "anthropic/claude-haiku-4-5",
+      "tools": {
+        "bash": true,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "list": true,
+        "glob": true,
+        "grep": true
+      }
+    }
+  },
+  "command": {
+    "resume": {
+      "description": "Resume session — load git state, suggest next task",
+      "template": "Check git status and recent log. Read AGENTS.md or CLAUDE.md. Summarize current state and suggest the highest-value next action.",
+      "subtask": false
+    },
+    "verify": {
+      "description": "Run full verification — lint, type-check, test, build",
+      "template": "Run the project's lint, type-check, test, and build commands in sequence. Report any failures with exact command and error. Do not fix — just report.",
+      "subtask": false
+    },
+    "ship": {
+      "description": "Ship current work — commit, push, create PR",
+      "template": "Stage all changes, create a conventional commit, push to remote, and create a PR with a summary of changes.",
+      "subtask": false
+    },
+    "commit": {
+      "description": "Create a conventional commit",
+      "template": "Review staged changes with git diff --cached. Create a conventional commit (feat/fix/refactor/chore/docs/ci/test). Keep it concise. Do not push.",
+      "subtask": false
+    },
+    "test": {
+      "description": "Run tests and report results",
+      "template": "Detect the test runner. Run tests. Report: total, passed, failed, skipped. If failures, show error messages. Do not fix.",
+      "subtask": false
+    },
+    "clean": {
+      "description": "Clean build artifacts and caches",
+      "template": "Remove: node_modules/.cache, dist, .next, .turbo, coverage, __pycache__. Report space freed.",
+      "subtask": true
+    },
+    "validate": {
+      "description": "Validate repo health",
+      "template": "Run: 1) lint, 2) type-check, 3) test, 4) security scan. Report a pass/fail scorecard.",
+      "subtask": false
+    }
+  },
+  "plugin": [
+    "@tarquinen/opencode-dcp@latest",
+    "opencode-devcontainers",
+    "opencode-worktree",
+    "opencode-mem",
+    "openrtk"
+  ],
+  "watcher": {
+    "ignore": [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/.next/**",
+      "**/.turbo/**",
+      "**/coverage/**",
+      "**/__pycache__/**"
+    ]
+  }
+}

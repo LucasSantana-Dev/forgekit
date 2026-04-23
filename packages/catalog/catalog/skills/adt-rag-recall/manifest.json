@@ -1,0 +1,26 @@
+{
+  "id": "adt-rag-recall",
+  "name": "Adt Rag Recall",
+  "description": "Semantic-search personal knowledge (memory, plans, handoffs, skills, Codex rules) via the local RAG index at ~/.claude/rag-index/. Use when a query is fuzzy or cross-file (\"how did we fix X\", \"what did we decide about Y\", \"which skill handles Z\"). Complements grep (exact) and Serena (code symbols). If the user asks a recall question that doesn't map to a specific known file, reach here first.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "rag",
+    "planning",
+    "deploy",
+    "memory"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/rag/skills/recall/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/rag/skills/recall"
+}

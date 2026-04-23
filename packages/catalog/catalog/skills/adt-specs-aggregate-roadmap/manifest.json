@@ -1,0 +1,27 @@
+{
+  "id": "adt-specs-aggregate-roadmap",
+  "name": "Adt Specs Aggregate Roadmap",
+  "description": "Regenerate the cross-repo roadmap aggregate in your Claude memory directory by walking every curated repo's `docs/specs/**` frontmatter. Run at session start for cross-repo orientation or after any `spec-new`/`spec-ship` in any repo.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "specs",
+    "spec-driven",
+    "design",
+    "deploy",
+    "memory"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/specs/skills/aggregate-roadmap/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/specs/skills/aggregate-roadmap"
+}

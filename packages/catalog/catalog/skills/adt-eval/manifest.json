@@ -1,0 +1,26 @@
+{
+  "id": "adt-eval",
+  "name": "Adt Eval",
+  "description": "Evaluate LLM outputs systematically — benchmarks, automated metrics, human preference, and regression tracking",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "git",
+    "observability",
+    "evaluation"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/eval.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/eval.md"
+}

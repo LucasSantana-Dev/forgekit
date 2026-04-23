@@ -1,0 +1,28 @@
+{
+  "id": "adt-loop",
+  "name": "Adt Loop",
+  "description": "Autonomous development cycle — plan, implement, test, review, fix, commit, and PR without stopping",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "testing",
+    "comms",
+    "git",
+    "planning",
+    "orchestration"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/loop.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/loop.md"
+}

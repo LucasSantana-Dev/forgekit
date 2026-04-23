@@ -1,0 +1,26 @@
+{
+  "id": "using-git-worktrees",
+  "name": "Using Git Worktrees",
+  "description": "Use when starting feature work that needs isolation from current workspace or before executing implementation plans - creates isolated git worktrees with smart directory selection and safety verification",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "superpowers",
+    "design",
+    "git",
+    "planning"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/obra/superpowers",
+    "ref": "main",
+    "path": "skills/using-git-worktrees/SKILL.md"
+  },
+  "homepage": "https://github.com/obra/superpowers/tree/main/skills/using-git-worktrees",
+  "license": "MIT",
+  "author": "obra"
+}

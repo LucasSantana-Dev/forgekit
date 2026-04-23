@@ -1,0 +1,23 @@
+{
+  "id": "code-review",
+  "name": "AI-Assisted Code Review",
+  "description": "Code review is time-consuming and inconsistent. Reviewers miss security issues, overlook edge cases, or focus on style over substance. Meanwhile, AI agents catch these mechanical issues instantly but can't judge business logic correctness, UX decisions, or architectural fit.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "testing",
+    "security",
+    "git",
+    "agents"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/core/patterns/code-review.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

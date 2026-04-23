@@ -1,0 +1,77 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Card from "../../../components/Card.astro";
+import SearchFilter from "../../../components/SearchFilter.astro";
+import {
+  getSkills,
+  getServers,
+  getAgents,
+  getDocs,
+  getHooks,
+  getCommands,
+  getTools,
+} from "../../../lib/catalog.ts";
+import { localizeEntries, t, localizedUrl, type Locale } from "../../../lib/i18n.ts";
+
+const locale: Locale = "pt-br";
+const [skillsRaw, serversRaw, agentsRaw, docsRaw, hooksRaw, commandsRaw, toolsRaw] = await Promise.all([
+  getSkills(), getServers(), getAgents(), getDocs(), getHooks(), getCommands(), getTools(),
+]);
+const skills = localizeEntries(skillsRaw, locale);
+const servers = localizeEntries(serversRaw, locale);
+const agents = localizeEntries(agentsRaw, locale);
+const docs = localizeEntries(docsRaw, locale);
+const hooks = localizeEntries(hooksRaw, locale);
+const commands = localizeEntries(commandsRaw, locale);
+const tools = localizeEntries(toolsRaw, locale);
+
+const base = import.meta.env.BASE_URL;
+const url = (p: string) => localizedUrl(base, p, locale);
+
+const tagSet = new Set<string>();
+for (const e of [...skills, ...servers, ...agents, ...docs, ...hooks, ...commands, ...tools]) {
+  for (const tag of e.tags ?? []) tagSet.add(tag);
+}
+const tags = [...tagSet].sort();
+---
+<Base title={t("search.title", locale)} description={t("search.heading", locale)} locale={locale}>
+  <h1>{t("search.heading", locale)}</h1>
+  <p class="lead-muted">Tudo na biblioteca — skills, servidores, agentes, ferramentas, hooks, comandos, docs.</p>
+  <SearchFilter placeholder={t("search.placeholder", locale)} tags={tags} />
+  <div class="grid">
+    {skills.map((s) => (
+      <Card kind="skill" id={s.id} name={s.name} description={s.description} tags={s.tags} href={url(`skills/${s.id}/`)} />
+    ))}
+    {agents.map((a) => (
+      <Card kind="agent" id={a.id} name={a.name} description={a.description} tags={a.tags} href={url(`agents/${a.id}/`)} extraTag={a.model} />
+    ))}
+    {servers.map((s) => (
+      <Card kind="server" id={s.id} name={s.name} description={s.description} tags={s.tags} href={url(`servers/${s.id}/`)} extraTag={s.transport} />
+    ))}
+    {tools.map((tool) => (
+      <Card kind="tool" id={tool.id} name={tool.name} description={tool.description} tags={tool.tags} href={url(`tools/${tool.id}/`)} extraTag={`${tool.category} · ${tool.runtime}`} />
+    ))}
+    {hooks.map((h) => (
+      <Card kind="hook" id={h.id} name={h.name} description={h.description} tags={h.tags} href={url(`hooks/${h.id}/`)} extraTag={h.event} />
+    ))}
+    {commands.map((c) => (
+      <Card kind="command" id={c.id} name={c.name} description={c.description} tags={c.tags} href={url(`commands/${c.id}/`)} extraTag={c.category} />
+    ))}
+    {docs.map((d) => (
+      <Card kind="doc" id={d.id} name={d.title} description={d.description} tags={d.tags} href={url(`docs/${d.id}/`)} />
+    ))}
+  </div>
+  <div id="empty-state" class="empty" style="display: none;">{t("search.noResults", locale)}</div>
+
+  <script is:inline>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const tag = params.get("tag");
+      if (!tag) return;
+      setTimeout(() => {
+        const chip = document.querySelector(`.chip[data-tag="${tag}"]`);
+        if (chip) chip.click();
+      }, 0);
+    })();
+  </script>
+</Base>

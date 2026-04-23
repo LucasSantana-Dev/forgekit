@@ -1,0 +1,25 @@
+---
+import Base from "../../layouts/Base.astro";
+import Card from "../../components/Card.astro";
+import { getCollections } from "../../lib/catalog.ts";
+
+const collections = await getCollections();
+const base = import.meta.env.BASE_URL;
+---
+<Base title="Collections" description={`${collections.length} opinionated bundles.`}>
+  <h1>Collections</h1>
+  <p class="lead-muted">Opinionated bundles for specific workflows.</p>
+  <div class="grid" style="margin-top: 1.5rem;">
+    {collections.map((c) => (
+      <Card
+        kind="collection"
+        id={c.id}
+        name={c.name}
+        description={c.description}
+        tags={c.tags ?? []}
+        href={`${base}collections/${c.id}/`}
+        extraTag={`${c.items.length} items`}
+      />
+    ))}
+  </div>
+</Base>

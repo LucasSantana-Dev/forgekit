@@ -1,0 +1,36 @@
+---
+import Base from "../../layouts/Base.astro";
+import Card from "../../components/Card.astro";
+import SearchFilter from "../../components/SearchFilter.astro";
+import { getHooks } from "../../lib/catalog.ts";
+
+const hooks = await getHooks();
+const base = import.meta.env.BASE_URL;
+
+const tagSet = new Set<string>();
+for (const h of hooks) for (const t of h.tags) tagSet.add(t);
+const tags = [...tagSet].sort();
+---
+<Base title="Hooks" description={`${hooks.length} Claude Code hooks.`}>
+  <h1>Hooks</h1>
+  <p class="lead-muted">
+    Claude Code hooks — shell scripts that fire on tool events. Install with
+    <code>npx forge-kit install &lt;id&gt;</code> → lands in
+    <code>~/.claude/hooks/&lt;id&gt;.sh</code>.
+  </p>
+  <SearchFilter placeholder={`Search ${hooks.length} hooks…`} tags={tags} />
+  <div class="grid">
+    {hooks.map((h) => (
+      <Card
+        kind="hook"
+        id={h.id}
+        name={h.name}
+        description={h.description}
+        tags={h.tags}
+        href={`${base}hooks/${h.id}/`}
+        extraTag={h.event}
+      />
+    ))}
+  </div>
+  <div id="empty-state" class="empty" style="display: none;">No hooks match your filters.</div>
+</Base>

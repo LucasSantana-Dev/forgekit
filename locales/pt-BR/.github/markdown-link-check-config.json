@@ -1,0 +1,42 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^http://localhost"
+    },
+    {
+      "pattern": "^https://localhost"
+    },
+    {
+      "pattern": "^mailto:"
+    },
+    {
+      "pattern": "https://github\\.com/.*/commit/"
+    },
+    {
+      "pattern": "https://github\\.com/.*/actions/"
+    },
+    {
+      "pattern": "https://github\\.com/your-org/"
+    },
+    {
+      "pattern": "https://app\\.supabase\\.com/"
+    },
+    {
+      "pattern": "https://vercel\\.com/"
+    }
+  ],
+  "replacementPatterns": [],
+  "httpHeaders": [
+    {
+      "urls": ["https://github.com"],
+      "headers": {
+        "Accept-Encoding": "zstd, br, gzip, deflate"
+      }
+    }
+  ],
+  "timeout": "20s",
+  "retryOn429": true,
+  "retryCount": 3,
+  "fallbackRetryDelay": "30s",
+  "aliveStatusCodes": [200, 206]
+}

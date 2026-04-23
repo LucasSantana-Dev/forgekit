@@ -1,0 +1,22 @@
+{
+  "id": "session-start-optimization",
+  "name": "Session Start Optimization",
+  "description": "Session Start Context Optimization Hook Optimizes context when starting a new session",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code"
+  ],
+  "event": "SessionStart",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/session-start-optimization.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/productivity/session-start-optimization.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

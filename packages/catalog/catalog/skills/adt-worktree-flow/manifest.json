@@ -1,0 +1,25 @@
+{
+  "id": "adt-worktree-flow",
+  "name": "Adt Worktree Flow",
+  "description": "Decide when and how to use git worktrees for isolated parallel work",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "git",
+    "deploy"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/worktree-flow.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/worktree-flow.md"
+}

@@ -11,7 +11,7 @@ import fs from "fs";
 import os from "os";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const companiesDir = path.join(__dirname, "../companies");
+const companiesDir = path.join(__dirname, "../packages/core/companies");
 
 describe("validateCompany", () => {
   test("fullstack-forge passes all validations", () => {
@@ -77,7 +77,7 @@ describe("validateCompany", () => {
 });
 
 describe("validateAll", () => {
-  test("companies/ directory passes full validation", () => {
+  test("packages/core/companies directory passes full validation", () => {
     expect(() => validateAll(companiesDir)).not.toThrow();
   });
 });
@@ -85,22 +85,22 @@ describe("validateAll", () => {
 const rootDir = path.join(__dirname, "..");
 
 describe("validateKit", () => {
-  test("kit/core configs and skills pass all validations", () => {
+  test("packages/core/kit/core configs and skills pass all validations", () => {
     const errors = validateKit(rootDir);
     expect(errors).toEqual([]);
   });
 
   test("all core JSON configs parse successfully", () => {
     const configs = [
-      "kit/core/agents.json",
-      "kit/core/routing.json",
-      "kit/core/providers.json",
-      "kit/core/autopilot.json",
-      "kit/core/token-optimization.json",
-      "kit/core/loop.json",
-      "kit/core/hooks.json",
-      "kit/core/mcp.json",
-      "kit/core/schedules.json",
+      "packages/core/kit/core/agents.json",
+      "packages/core/kit/core/routing.json",
+      "packages/core/kit/core/providers.json",
+      "packages/core/kit/core/autopilot.json",
+      "packages/core/kit/core/token-optimization.json",
+      "packages/core/kit/core/loop.json",
+      "packages/core/kit/core/hooks.json",
+      "packages/core/kit/core/mcp.json",
+      "packages/core/kit/core/schedules.json",
     ];
 
     for (const cfg of configs) {
@@ -111,15 +111,15 @@ describe("validateKit", () => {
 
   test("every core config declares a schema and that schema file exists", () => {
     const configs = [
-      "kit/core/agents.json",
-      "kit/core/routing.json",
-      "kit/core/providers.json",
-      "kit/core/autopilot.json",
-      "kit/core/token-optimization.json",
-      "kit/core/loop.json",
-      "kit/core/hooks.json",
-      "kit/core/mcp.json",
-      "kit/core/schedules.json",
+      "packages/core/kit/core/agents.json",
+      "packages/core/kit/core/routing.json",
+      "packages/core/kit/core/providers.json",
+      "packages/core/kit/core/autopilot.json",
+      "packages/core/kit/core/token-optimization.json",
+      "packages/core/kit/core/loop.json",
+      "packages/core/kit/core/hooks.json",
+      "packages/core/kit/core/mcp.json",
+      "packages/core/kit/core/schedules.json",
     ];
 
     for (const cfg of configs) {
@@ -133,11 +133,11 @@ describe("validateKit", () => {
 
   test("validateKit catches schema violations for malformed core config", () => {
     const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "test-kit-schema-"));
-    fs.mkdirSync(path.join(tmpDir, "kit/core"), { recursive: true });
-    fs.mkdirSync(path.join(tmpDir, "kit/schema"), { recursive: true });
+    fs.mkdirSync(path.join(tmpDir, "packages/core/kit/core"), { recursive: true });
+    fs.mkdirSync(path.join(tmpDir, "packages/core/kit/schema"), { recursive: true });
 
-    const schemaSrc = path.join(rootDir, "kit/schema/providers.schema.json");
-    const schemaDst = path.join(tmpDir, "kit/schema/providers.schema.json");
+    const schemaSrc = path.join(rootDir, "packages/core/kit/schema/providers.schema.json");
+    const schemaDst = path.join(tmpDir, "packages/core/kit/schema/providers.schema.json");
     fs.copyFileSync(schemaSrc, schemaDst);
 
     const badProviders = {
@@ -155,7 +155,7 @@ describe("validateKit", () => {
     };
 
     fs.writeFileSync(
-      path.join(tmpDir, "kit/core/providers.json"),
+      path.join(tmpDir, "packages/core/kit/core/providers.json"),
       JSON.stringify(badProviders, null, 2) + "\n",
     );
 
@@ -173,7 +173,7 @@ describe("validateKit", () => {
 
   test("every agent references a valid tier", () => {
     const agents = JSON.parse(
-      fs.readFileSync(path.join(rootDir, "kit/core/agents.json"), "utf8"),
+      fs.readFileSync(path.join(rootDir, "packages/core/kit/core/agents.json"), "utf8"),
     );
     for (const [, agent] of Object.entries(agents.agents)) {
       expect(["haiku", "sonnet", "opus"]).toContain(agent.tier);
@@ -182,7 +182,7 @@ describe("validateKit", () => {
 
   test("every agent tool resolves through the canonical tool registry", () => {
     const agents = JSON.parse(
-      fs.readFileSync(path.join(rootDir, "kit/core/agents.json"), "utf8"),
+      fs.readFileSync(path.join(rootDir, "packages/core/kit/core/agents.json"), "utf8"),
     );
     const registry = agents.toolRegistry;
     expect(registry).toBeDefined();
@@ -197,7 +197,7 @@ describe("validateKit", () => {
 
   test("agent tool access respects tier governance rules", () => {
     const agents = JSON.parse(
-      fs.readFileSync(path.join(rootDir, "kit/core/agents.json"), "utf8"),
+      fs.readFileSync(path.join(rootDir, "packages/core/kit/core/agents.json"), "utf8"),
     );
     const registry = agents.toolRegistry;
     const writeTools = Object.entries(registry)
@@ -229,7 +229,7 @@ describe("validateKit", () => {
 
   test("agents include specialty roles with org chart", () => {
     const agents = JSON.parse(
-      fs.readFileSync(path.join(rootDir, "kit/core/agents.json"), "utf8"),
+      fs.readFileSync(path.join(rootDir, "packages/core/kit/core/agents.json"), "utf8"),
     );
     const names = Object.keys(agents.agents);
     expect(names.length).toBeGreaterThanOrEqual(10);
@@ -248,7 +248,7 @@ describe("validateKit", () => {
 
   test("every agent has title, tools, and valid reportsTo", () => {
     const agents = JSON.parse(
-      fs.readFileSync(path.join(rootDir, "kit/core/agents.json"), "utf8"),
+      fs.readFileSync(path.join(rootDir, "packages/core/kit/core/agents.json"), "utf8"),
     );
     for (const [, agent] of Object.entries(agents.agents)) {
       expect(agent.title).toBeDefined();
@@ -260,7 +260,7 @@ describe("validateKit", () => {
 
   test("hooks.json has rules and tool mapping", () => {
     const hooks = JSON.parse(
-      fs.readFileSync(path.join(rootDir, "kit/core/hooks.json"), "utf8"),
+      fs.readFileSync(path.join(rootDir, "packages/core/kit/core/hooks.json"), "utf8"),
     );
     expect(hooks.hooks).toBeDefined();
     expect(Object.keys(hooks.hooks).length).toBeGreaterThanOrEqual(4);
@@ -276,7 +276,7 @@ describe("validateKit", () => {
   test("token-optimization has cost tracking config", () => {
     const cfg = JSON.parse(
       fs.readFileSync(
-        path.join(rootDir, "kit/core/token-optimization.json"),
+        path.join(rootDir, "packages/core/kit/core/token-optimization.json"),
         "utf8",
       ),
     );
@@ -301,7 +301,7 @@ describe("validateKit", () => {
   });
 
   test("every skill has name, description, and triggers", () => {
-    const skillsDir = path.join(rootDir, "kit/core/skills");
+    const skillsDir = path.join(rootDir, "packages/core/kit/core/skills");
     const skills = fs.readdirSync(skillsDir).filter((f) => f.endsWith(".md"));
     expect(skills.length).toBeGreaterThanOrEqual(16);
     for (const skill of skills) {
@@ -315,7 +315,7 @@ describe("validateKit", () => {
 
   test("loop.json has governance section", () => {
     const loop = JSON.parse(
-      fs.readFileSync(path.join(rootDir, "kit/core/loop.json"), "utf8"),
+      fs.readFileSync(path.join(rootDir, "packages/core/kit/core/loop.json"), "utf8"),
     );
     expect(loop.loop.governance).toBeDefined();
     expect(loop.loop.governance.requiredBeforeCommit).toBeDefined();
@@ -324,7 +324,7 @@ describe("validateKit", () => {
 
   test("schedules.json has defaults, triggers, and mapped routines", () => {
     const schedules = JSON.parse(
-      fs.readFileSync(path.join(rootDir, "kit/core/schedules.json"), "utf8"),
+      fs.readFileSync(path.join(rootDir, "packages/core/kit/core/schedules.json"), "utf8"),
     );
 
     expect(schedules.defaults).toBeDefined();

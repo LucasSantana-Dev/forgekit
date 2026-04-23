@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "paused": false,
+  "tasks": [
+    {
+      "id": "task-auth-flow",
+      "title": "Implement OAuth2 authentication with GitHub",
+      "description": "Add OAuth2 authentication with GitHub provider. Create session management middleware and protect API routes.\n\nScope: src/auth/, src/middleware/auth.ts\nTest: Add integration tests for the full login → session → logout flow.",
+      "directory": "/Users/dev/project",
+      "priority": "high",
+      "status": "in_progress",
+      "tags": ["authentication", "security", "backend"],
+      "dependsOn": null,
+      "sessionID": "ses_abc123",
+      "dispatchedAt": 1710504600000,
+      "createdAt": 1710500000000,
+      "updatedAt": 1710504600000
+    },
+    {
+      "id": "task-rate-limit",
+      "title": "Add API rate limiting with Redis backend",
+      "description": "Implement token bucket rate limiting on all API routes. Use the Redis client at @lib/redis.ts.\n\nConstraints: 100 req/min for authenticated users, 20 req/min for anonymous.\nTest: Verify rate limit headers (X-RateLimit-*) and 429 responses.",
+      "directory": "/Users/dev/project",
+      "priority": "high",
+      "status": "ready",
+      "tags": ["api", "security", "performance"],
+      "dependsOn": "task-auth-flow",
+      "createdAt": 1710500000000,
+      "updatedAt": 1710500000000
+    },
+    {
+      "id": "task-dashboard-filters",
+      "title": "Fix date range filter across month boundaries",
+      "description": "Date range filter returns incorrect results when crossing month boundaries. Users report missing data from the last day of previous month.\n\nRoot cause: `getMonthRange()` in @lib/date-utils.ts uses exclusive end dates but the query uses `<=`.\nFix: Change query to use `<` with next-day boundary, OR change getMonthRange to inclusive.\nTest: Existing test in date-utils.test.ts covers happy path but not month crossings.",
+      "directory": "/Users/dev/project",
+      "priority": "critical",
+      "status": "blocked",
+      "tags": ["bug", "frontend", "filters"],
+      "dependsOn": null,
+      "createdAt": 1710500000000,
+      "updatedAt": 1710500000000
+    },
+    {
+      "id": "task-dep-update",
+      "title": "Quarterly dependency update",
+      "description": "Update React 19, TypeScript 5.5, Next.js 15. Review breaking changes and fix any type errors.",
+      "directory": "/Users/dev/project",
+      "priority": "medium",
+      "status": "done",
+      "tags": ["maintenance", "dependencies"],
+      "dependsOn": null,
+      "completedAt": 1710400000000,
+      "createdAt": 1710300000000,
+      "updatedAt": 1710400000000
+    },
+    {
+      "id": "task-csv-export",
+      "title": "Add CSV export for dashboard data",
+      "description": "Users should be able to export filtered dashboard data as CSV. Add an export button to the toolbar that triggers a client-side download.\n\nConstraints: Client-side generation (no server endpoint), use existing filter state, max 10k rows.\nScope: src/components/Dashboard/ExportButton.tsx (new), src/lib/csv.ts (new)",
+      "directory": "/Users/dev/project",
+      "priority": "low",
+      "status": "backlog",
+      "tags": ["feature-request", "export"],
+      "dependsOn": "task-dashboard-filters",
+      "createdAt": 1710200000000,
+      "updatedAt": 1710200000000
+    }
+  ]
+}

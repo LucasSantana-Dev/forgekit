@@ -1,0 +1,25 @@
+{
+  "id": "adt-schedule",
+  "name": "Adt Schedule",
+  "description": "Define and manage recurring automated agent runs — CI monitoring, dep updates, security scans",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "security",
+    "deploy"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/schedule.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/schedule.md"
+}

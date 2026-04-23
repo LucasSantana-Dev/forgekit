@@ -1,0 +1,40 @@
+---
+import Base from "../../layouts/Base.astro";
+import InstallBlock from "../../components/InstallBlock.astro";
+import { getHooks } from "../../lib/catalog.ts";
+import { installCommand } from "../../lib/ui.ts";
+
+export async function getStaticPaths() {
+  const hooks = await getHooks();
+  return hooks.map((h) => ({ params: { id: h.id }, props: { hook: h } }));
+}
+const { hook } = Astro.props;
+const cmd = installCommand("hook", hook.id)!;
+---
+<Base title={hook.name} description={hook.description}>
+  <p style="margin-bottom: 1.5rem;"><a href="../">← all hooks</a></p>
+  <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+    <span style="font-size: 1.6rem;">🪝</span>
+    <h1 style="margin: 0;">{hook.name}</h1>
+    <span class="kind kind-hook">hook</span>
+  </div>
+  <p class="lead-muted" style="margin-bottom: 1rem;">{hook.description}</p>
+  <div class="tags" style="margin-bottom: 1.25rem;">
+    <span class="tag">event: {hook.event}</span>
+    <span class="tag">runtime: {hook.runtime}</span>
+    {hook.matcher && <span class="tag">matcher: {hook.matcher}</span>}
+    {hook.tags.map((t) => <span class="tag">{t}</span>)}
+  </div>
+
+  <InstallBlock command={cmd} />
+
+  <h2>Script</h2>
+  <pre><code>{hook.script}</code></pre>
+
+  {hook.source?.path && (
+    <p style="color: var(--fg-subtle); font-size: 0.82rem; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+      Source: <code>{hook.source.path}</code>
+      {hook.license && <> · {hook.license}</>}
+    </p>
+  )}
+</Base>

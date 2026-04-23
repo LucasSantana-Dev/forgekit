@@ -1,15 +1,32 @@
 [English](README.md) | [Português](README.pt-BR.md)
 
-# AI Dev Toolkit
+# Forge Kit
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Latest Release](https://img.shields.io/github/v/release/Forge-Space/ai-dev-toolkit)](https://github.com/Forge-Space/ai-dev-toolkit/releases)
+[![Latest Release](https://img.shields.io/github/v/release/LucasSantana-Dev/ai-dev-toolkit)](https://github.com/LucasSantana-Dev/ai-dev-toolkit/releases)
 
-Patterns reutilizáveis, regras prontas para usar, skills portáveis e automação de setup multiplataforma para que agentes AI de codificação produzam código alinhado com seu projeto desde a primeira sessão.
+Forge Kit é a casa unificada dos antigos projetos `ai-dev-toolkit`,
+`ai-dev-toolkit-setup`, `ai-dev-toolkit-pt-br` e `ai-dev-toolkit-library`.
+
+Ele reúne regras para agentes, skills portáveis, automação de setup, catálogo,
+CLI e web app bilíngue para que agentes AI de codificação comecem com
+convenções, fluxo de trabalho e guardrails desde a primeira sessão.
+
+## Layout do monorepo
+
+```text
+.
+├── apps/web              # Web app Astro do catálogo
+├── infra/gateway         # Stack local de gateway MCP
+├── locales/pt-BR         # Conteúdo em português
+├── packages/catalog      # Catálogo, schemas, importadores e validação
+├── packages/cli          # CLI forge-kit, com alias legado adtl
+└── packages/setup        # Camada de bootstrap de máquina
+```
 
 ## Primeira instalação?
 
-A maioria dos usuários deve começar com **[ai-dev-toolkit-setup](https://github.com/LucasSantana-Dev/ai-dev-toolkit-setup)** — a camada de bootstrap de máquina que consome este toolkit em uma versão fixada. Ela detecta suas ferramentas instaladas, aplica configurações pré-construídas e instala todo o conjunto de skills e regras em um comando. Veja o repositório de setup para instruções de instalação específicas da plataforma.
+A maioria dos usuários deve começar com [`packages/setup`](packages/setup/README.pt-BR.md) — a camada de bootstrap de máquina que consome este toolkit em uma versão fixada. Ela detecta suas ferramentas instaladas, aplica configurações pré-construídas e instala todo o conjunto de skills e regras em um comando.
 
 ## Como começar?
 
@@ -17,15 +34,15 @@ Copie um arquivo de rule para seu projeto. Esse arquivo único oferece a seu age
 
 ```bash
 # Clone the toolkit
-git clone https://github.com/Forge-Space/ai-dev-toolkit.git
+git clone https://github.com/LucasSantana-Dev/ai-dev-toolkit.git
 cd ai-dev-toolkit
 
 # Copy the rule file that matches your tool
-cp rules/CLAUDE.md    ~/my-project/CLAUDE.md       # Claude Code / OpenCode
-cp rules/AGENTS.md    ~/my-project/AGENTS.md       # Codex CLI
-cp rules/.cursorrules ~/my-project/.cursorrules     # Cursor
-cp rules/.windsurfrules ~/my-project/.windsurfrules # Windsurf
-cp rules/COPILOT.md   ~/my-project/COPILOT.md      # GitHub Copilot
+cp packages/core/rules/CLAUDE.md    ~/my-project/CLAUDE.md       # Claude Code / OpenCode
+cp packages/core/rules/AGENTS.md    ~/my-project/AGENTS.md       # Codex CLI
+cp packages/core/rules/.cursorrules ~/my-project/.cursorrules     # Cursor
+cp packages/core/rules/.windsurfrules ~/my-project/.windsurfrules # Windsurf
+cp packages/core/rules/COPILOT.md   ~/my-project/COPILOT.md      # GitHub Copilot
 ```
 
 Abra sua ferramenta AI em `~/my-project/`. O agente agora segue suas regras automaticamente.
@@ -36,10 +53,10 @@ Abra sua ferramenta AI em `~/my-project/`. O agente agora segue suas regras auto
 
 ```bash
 # Auto-detect installed tools and apply standard profile
-FORGE_KIT_DIR=./kit sh kit/install.sh --profile standard
+FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --profile standard
 
 # Target specific tools with a specific profile
-FORGE_KIT_DIR=./kit sh kit/install.sh \
+FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh \
   --tools claude-code,codex,opencode \
   --profile standard
 ```
@@ -48,13 +65,13 @@ Visualize o que será alterado antes de confirmar:
 
 ```bash
 # Dry run — shows exactly what would be created, updated, or skipped
-FORGE_KIT_DIR=./kit sh kit/install.sh --tools all --profile standard --dry-run
+FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --tools all --profile standard --dry-run
 
 # Show what forge-kit has installed
-FORGE_KIT_DIR=./kit sh kit/install.sh --status
+FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --status
 
 # Remove all forge-kit managed files
-FORGE_KIT_DIR=./kit sh kit/install.sh --uninstall
+FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --uninstall
 ```
 
 ### Como usar o assistente interativo de setup?
@@ -63,7 +80,7 @@ O assistente guia você através da seleção de provider, cadeias de fallback, 
 
 ```bash
 # Run the interactive setup wizard
-sh kit/setup.sh
+sh packages/core/kit/setup.sh
 # Follow prompts to select provider, fallback, optimization preset, and profile
 # Output: .forge-setup.json with resolved model maps and agent assignments
 ```
@@ -82,29 +99,29 @@ Ele solicita:
 
 | Pattern                                                        | Quando você precisa dele                                    |
 | -------------------------------------------------------------- | ----------------------------------------------------------- |
-| [Context Building](patterns/context-building.md)               | Agentes adivinham em vez de encontrar conhecimento do projeto    |
-| [Task Orchestration](patterns/task-orchestration.md)           | Trabalho multi-passo precisa de menos supervisão               |
-| [Code Review](patterns/code-review.md)                         | Capturando bugs, defetos de lógica e problemas de segurança    |
-| [Testing with AI](patterns/testing.md)                         | Geração de teste de maior valor e fluxos TDD                   |
-| [Multi-Model Routing](patterns/multi-model-routing.md)         | Reduzindo custo roteando tarefas baratas para modelos baratos   |
-| [Memory Systems](patterns/memory-systems.md)                   | Decisões persistindo entre sessões                             |
-| [Session Management](patterns/session-management.md)           | Sessões paralelas conflitando ou perdendo contexto             |
-| [Prompt Engineering](patterns/prompt-engineering.md)           | Respostas de agente inconsistentes ou imprecisas              |
-| [Git Worktrees](patterns/git-worktrees.md)                     | Isolando tarefas simultâneas em branches separadas             |
-| [Agent Observability](patterns/agent-observability.md)         | Rastreamento e teste de regressão de comportamento de agente  |
-| [Multi-Repo Workflows](patterns/multi-repo.md)                 | Coordenação entre repositórios                                |
-| [Permission Boundaries](patterns/permission-boundaries.md)     | Acesso de ferramenta de privilégio mínimo                     |
-| [Streaming Orchestration](patterns/streaming-orchestration.md) | Loops de turno orientado por evento e orçamento de token     |
-| [Tool Registry Patterns](patterns/tool-registry-patterns.md)   | Desacoplando metadados de ferramenta de implementação         |
-| [Spec Driven Development](patterns/spec-driven-development.md) | Agentes precisam de um contrato estável antes de construir     |
+| [Context Building](packages/core/patterns/context-building.md)               | Agentes adivinham em vez de encontrar conhecimento do projeto    |
+| [Task Orchestration](packages/core/patterns/task-orchestration.md)           | Trabalho multi-passo precisa de menos supervisão               |
+| [Code Review](packages/core/patterns/code-review.md)                         | Capturando bugs, defetos de lógica e problemas de segurança    |
+| [Testing with AI](packages/core/patterns/testing.md)                         | Geração de teste de maior valor e fluxos TDD                   |
+| [Multi-Model Routing](packages/core/patterns/multi-model-routing.md)         | Reduzindo custo roteando tarefas baratas para modelos baratos   |
+| [Memory Systems](packages/core/patterns/memory-systems.md)                   | Decisões persistindo entre sessões                             |
+| [Session Management](packages/core/patterns/session-management.md)           | Sessões paralelas conflitando ou perdendo contexto             |
+| [Prompt Engineering](packages/core/patterns/prompt-engineering.md)           | Respostas de agente inconsistentes ou imprecisas              |
+| [Git Worktrees](packages/core/patterns/git-worktrees.md)                     | Isolando tarefas simultâneas em branches separadas             |
+| [Agent Observability](packages/core/patterns/agent-observability.md)         | Rastreamento e teste de regressão de comportamento de agente  |
+| [Multi-Repo Workflows](packages/core/patterns/multi-repo.md)                 | Coordenação entre repositórios                                |
+| [Permission Boundaries](packages/core/patterns/permission-boundaries.md)     | Acesso de ferramenta de privilégio mínimo                     |
+| [Streaming Orchestration](packages/core/patterns/streaming-orchestration.md) | Loops de turno orientado por evento e orçamento de token     |
+| [Tool Registry Patterns](packages/core/patterns/tool-registry-patterns.md)   | Desacoplando metadados de ferramenta de implementação         |
+| [Spec Driven Development](packages/core/patterns/spec-driven-development.md) | Agentes precisam de um contrato estável antes de construir     |
 
 ## Que skills estão incluídas?
 
 29 skills portáveis instaladas em cada ferramenta via `forge-kit`:
 
 ```bash
-# Skills live in kit/core/skills/ and get copied to each tool's skill directory
-ls kit/core/skills/
+# Skills live in packages/core/kit/core/skills/ and get copied to each tool's skill directory
+ls packages/core/kit/core/skills/
 
 # Output:
 # context.md   cost.md      debug.md     dispatch.md  fallback.md
@@ -181,7 +198,7 @@ PLAN → IMPLEMENT → VERIFY → REVIEW → SECURE → COMMIT
 QUALITY GATES → PUSH → PR
 ```
 
-Configuração em `kit/core/autopilot.json`:
+Configuração em `packages/core/kit/core/autopilot.json`:
 
 ```json
 {
@@ -212,7 +229,7 @@ npm install
 # Run the full validation suite
 npm test                 # 16 governance tests
 npm run lint             # ESLint on scripts and tests
-npm run validate         # Company schema + kit/core config validation
+npm run validate         # Company schema + packages/core/kit/core config validation
 npm run validate:schema  # Schema validation only
 
 # Run the parity audit — shows cross-tool feature gaps
@@ -222,8 +239,8 @@ node scripts/parity-audit.js
 ## Como validar um release antes de mutar um repo?
 
 ```bash
-python3 tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog
-python3 tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog --github-release
+python3 packages/core/tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog
+python3 packages/core/tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog --github-release
 ```
 
 Os checks de preflight verificam limpeza de git, identidade de git, disponibilidade de tag de destino, detecção de fonte de versão, destino de arquivo de notas, prontidão de changelog e prontidão opcional de `gh` antes de qualquer mutação de release.
@@ -238,32 +255,32 @@ Skills: 19 | Configs: 8 | Gaps: 0
 ## O que o repositório contém?
 
 ```text
-patterns/            15 tool-agnostic workflow playbooks
-rules/               Drop-in rule templates (Claude, Codex, Cursor, Windsurf, Copilot)
-kit/
-  kit/install.sh     Entry point for forge-kit
-  kit/setup.sh       Interactive setup wizard
-  kit/core/          8 engine configs + 29 portable skills
-  kit/adapters/      Per-tool adapters (6 tools)
-  kit/profiles/      Install profiles (standard, minimal, research, durable)
-implementations/     Reference setups for Claude Code, Codex, OpenCode, Cursor, Windsurf, Antigravity
-companies/           Pre-built multi-agent organizations
-tools/               Setup scripts + curated productivity stack
-best-practices/      Security, workflow, context management standards
-examples/            Starter assets (backlog, memory structure)
+packages/core/patterns/            15 tool-agnostic workflow playbooks
+packages/core/rules/               Drop-in rule templates (Claude, Codex, Cursor, Windsurf, Copilot)
+packages/core/kit/
+  packages/core/kit/install.sh     Entry point for forge-kit
+  packages/core/kit/setup.sh       Interactive setup wizard
+  packages/core/kit/core/          8 engine configs + 29 portable skills
+  packages/core/kit/adapters/      Per-tool adapters (6 tools)
+  packages/core/kit/profiles/      Install profiles (standard, minimal, research, durable)
+packages/core/implementations/     Reference setups for Claude Code, Codex, OpenCode, Cursor, Windsurf, Antigravity
+packages/core/companies/           Pre-built multi-agent organizations
+packages/core/tools/               Setup scripts + curated productivity stack
+packages/core/best-practices/      Security, workflow, context management standards
+packages/core/examples/            Starter assets (backlog, memory structure)
 ```
 
 ## Como adotar incrementalmente?
 
 | Dia | Foco                                          | Recurso                                                                                                                         |
 | --- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Copiar um arquivo de rule                     | [`rules/`](rules/)                                                                                                              |
-| 2   | Fundamentar agentes em contexto do projeto    | [`patterns/context-building.md`](patterns/context-building.md)                                                                   |
-| 3   | Melhorar confiabilidade de execução           | [`patterns/task-orchestration.md`](patterns/task-orchestration.md)                                                               |
-| 4   | Revisar e testar qualidade                    | [`patterns/code-review.md`](patterns/code-review.md), [`patterns/testing.md`](patterns/testing.md)                               |
-| 5   | Adicionar memória e observabilidade           | [`patterns/memory-systems.md`](patterns/memory-systems.md), [`patterns/agent-observability.md`](patterns/agent-observability.md) |
-| 6   | Contratos orientados por spec                 | [`patterns/spec-driven-development.md`](patterns/spec-driven-development.md)                                                     |
-| 7   | Setup completo de time com forge-kit          | [`kit/`](kit/) + [`implementations/`](implementations/)                                                                          |
+| 1   | Copiar um arquivo de rule                     | [`packages/core/rules/`](packages/core/rules/)                                                                                                              |
+| 2   | Fundamentar agentes em contexto do projeto    | [`packages/core/patterns/context-building.md`](packages/core/patterns/context-building.md)                                                                   |
+| 3   | Melhorar confiabilidade de execução           | [`packages/core/patterns/task-orchestration.md`](packages/core/patterns/task-orchestration.md)                                                               |
+| 4   | Revisar e testar qualidade                    | [`packages/core/patterns/code-review.md`](packages/core/patterns/code-review.md), [`packages/core/patterns/testing.md`](packages/core/patterns/testing.md)                               |
+| 5   | Adicionar memória e observabilidade           | [`packages/core/patterns/memory-systems.md`](packages/core/patterns/memory-systems.md), [`packages/core/patterns/agent-observability.md`](packages/core/patterns/agent-observability.md) |
+| 6   | Contratos orientados por spec                 | [`packages/core/patterns/spec-driven-development.md`](packages/core/patterns/spec-driven-development.md)                                                     |
+| 7   | Setup completo de time com forge-kit          | [`packages/core/kit/`](packages/core/kit/) + [`packages/core/implementations/`](packages/core/implementations/)                                                                          |
 
 Precisa do trabalho atual priorizado do repositório em vez do guia geral de adoção? Veja [`BACKLOG.md`](BACKLOG.md).
 

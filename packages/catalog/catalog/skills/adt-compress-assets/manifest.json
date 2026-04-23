@@ -1,0 +1,26 @@
+{
+  "id": "adt-compress-assets",
+  "name": "Adt Compress Assets",
+  "description": "Losslessly compress PNG and SVG assets in place and generate .webp siblings for every raster image. Use when the user asks to \"compress assets\", \"optimize images\", \"shrink the assets folder\", or \"convert to webp\". Runs a deterministic pipeline via oxipng + svgo + cwebp + ImageMagick.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "design",
+    "git",
+    "token-optimization"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/compress-assets.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/compress-assets.md"
+}

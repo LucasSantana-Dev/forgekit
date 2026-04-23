@@ -1,0 +1,25 @@
+{
+  "id": "agent-gotchas",
+  "name": "AI Agent Gotchas",
+  "description": "AI coding agents fail in consistent, predictable ways. They fabricate npm packages that don't exist. They catch errors and continue silently. They add features you never asked for. They lose context mid-session and forget what they were doing.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "claude",
+    "prompting",
+    "testing",
+    "security",
+    "git",
+    "agents"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/core/patterns/agent-gotchas.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

@@ -1,0 +1,43 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Card from "../../../components/Card.astro";
+import SearchFilter from "../../../components/SearchFilter.astro";
+import { getHooks } from "../../../lib/catalog.ts";
+import { localizeEntries, t, localizedUrl, type Locale } from "../../../lib/i18n.ts";
+
+const locale: Locale = "pt-br";
+const hooks = localizeEntries(await getHooks(), locale);
+const base = import.meta.env.BASE_URL;
+const url = (p: string) => localizedUrl(base, p, locale);
+
+const tagSet = new Set<string>();
+for (const h of hooks) for (const tag of h.tags) tagSet.add(tag);
+const tags = [...tagSet].sort();
+---
+<Base
+  title={t("list.hooks.title", locale)}
+  description={t("list.hooks.description", locale, { count: hooks.length })}
+  locale={locale}
+>
+  <h1>{t("list.hooks.title", locale)}</h1>
+  <p class="lead-muted">
+    Hooks do Claude Code — scripts que disparam em eventos de ferramenta. Instale com
+    <code>npx forge-kit install &lt;id&gt;</code> → vai para
+    <code>~/.claude/hooks/&lt;id&gt;.sh</code>.
+  </p>
+  <SearchFilter placeholder={`${t("search.placeholder", locale)} (${hooks.length})`} tags={tags} />
+  <div class="grid">
+    {hooks.map((h) => (
+      <Card
+        kind="hook"
+        id={h.id}
+        name={h.name}
+        description={h.description}
+        tags={h.tags}
+        href={url(`hooks/${h.id}/`)}
+        extraTag={h.event}
+      />
+    ))}
+  </div>
+  <div id="empty-state" class="empty" style="display: none;">{t("search.noResults", locale)}</div>
+</Base>

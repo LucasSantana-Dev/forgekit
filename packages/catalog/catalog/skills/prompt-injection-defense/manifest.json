@@ -1,0 +1,23 @@
+{
+  "id": "prompt-injection-defense",
+  "name": "Prompt Injection Defense: Layered Strategies",
+  "description": "Prompt injection is not a theoretical attack. By Q1 2026, the benchmark is real: CaMeL achieves 67% injection block rate on AgentDojo. NIST AI RMF frames it as agent hijacking. Defense is not a single gate; it's depth.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "claude",
+    "prompting",
+    "security",
+    "agents"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/core/patterns/prompt-injection-defense.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

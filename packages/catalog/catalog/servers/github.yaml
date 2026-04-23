@@ -1,0 +1,30 @@
+id: github
+name: GitHub
+description: Access GitHub PRs, issues, reviews, CI checks, commits, branches, and
+  releases via MCP. Preferred over raw `gh` for structured reads.
+transport: stdio
+command: docker
+args:
+- run
+- -i
+- --rm
+- -e
+- GITHUB_PERSONAL_ACCESS_TOKEN
+- ghcr.io/github/github-mcp-server
+env:
+- name: GITHUB_PERSONAL_ACCESS_TOKEN
+  description: A fine-scoped personal access token (contents, pull-requests, issues).
+  required: true
+tags:
+- github
+- pr
+- issues
+- ci
+- vcs
+homepage: https://github.com/github/github-mcp-server
+license: MIT
+translations:
+  pt-BR:
+    name: GitHub
+    description: Acesse PRs, issues, reviews, checks de CI, commits, branches e releases
+      do GitHub via MCP. Útil para fluxos agênticos de triagem de PR / babysitting.

@@ -25,7 +25,7 @@ const ADAPTERS = [
 ];
 
 function auditAdapter(name) {
-  const adapterPath = path.join(rootDir, "kit", "adapters", `${name}.sh`);
+  const adapterPath = path.join(rootDir, "packages", "core", "kit", "adapters", `${name}.sh`);
   if (!fs.existsSync(adapterPath)) return null;
 
   const content = fs.readFileSync(adapterPath, "utf8");
@@ -39,7 +39,7 @@ function auditAdapter(name) {
 }
 
 function auditSkills() {
-  const skillsDir = path.join(rootDir, "kit", "core", "skills");
+  const skillsDir = path.join(rootDir, "packages", "core", "kit", "core", "skills");
   if (!fs.existsSync(skillsDir)) return [];
   return fs
     .readdirSync(skillsDir)
@@ -48,7 +48,7 @@ function auditSkills() {
 }
 
 function auditConfigs() {
-  const coreDir = path.join(rootDir, "kit", "core");
+  const coreDir = path.join(rootDir, "packages", "core", "kit", "core");
   if (!fs.existsSync(coreDir)) return [];
   return fs.readdirSync(coreDir).filter((f) => f.endsWith(".json"));
 }
@@ -113,7 +113,7 @@ const QUALITY_CHECKS = [
     id: "agents-have-fallback",
     label: "All agents have fallback chains",
     check: (root) => {
-      const p = path.join(root, "kit/core/agents.json");
+      const p = path.join(root, "packages/core/kit/core/agents.json");
       if (!fs.existsSync(p)) return false;
       const d = JSON.parse(fs.readFileSync(p, "utf8"));
       return Object.values(d.agents).every(
@@ -125,7 +125,7 @@ const QUALITY_CHECKS = [
     id: "agents-have-tools",
     label: "All agents have tool access lists",
     check: (root) => {
-      const p = path.join(root, "kit/core/agents.json");
+      const p = path.join(root, "packages/core/kit/core/agents.json");
       if (!fs.existsSync(p)) return false;
       const d = JSON.parse(fs.readFileSync(p, "utf8"));
       return Object.values(d.agents).every((a) => a.tools?.length > 0);
@@ -135,7 +135,7 @@ const QUALITY_CHECKS = [
     id: "agent-tools-resolve",
     label: "Agent tools resolve via tool registry",
     check: (root) => {
-      const p = path.join(root, "kit/core/agents.json");
+      const p = path.join(root, "packages/core/kit/core/agents.json");
       if (!fs.existsSync(p)) return false;
       const d = JSON.parse(fs.readFileSync(p, "utf8"));
       const registry = new Set(Object.keys(d.toolRegistry || {}));
@@ -149,7 +149,7 @@ const QUALITY_CHECKS = [
     id: "routing-has-classifier",
     label: "Routing has complexity classifier",
     check: (root) => {
-      const p = path.join(root, "kit/core/routing.json");
+      const p = path.join(root, "packages/core/kit/core/routing.json");
       if (!fs.existsSync(p)) return false;
       const d = JSON.parse(fs.readFileSync(p, "utf8"));
       return !!d.classifier;
@@ -159,7 +159,7 @@ const QUALITY_CHECKS = [
     id: "loop-has-governance",
     label: "Loop has governance gates",
     check: (root) => {
-      const p = path.join(root, "kit/core/loop.json");
+      const p = path.join(root, "packages/core/kit/core/loop.json");
       if (!fs.existsSync(p)) return false;
       const d = JSON.parse(fs.readFileSync(p, "utf8"));
       return !!d.loop?.governance;
@@ -169,7 +169,7 @@ const QUALITY_CHECKS = [
     id: "hooks-have-profiles",
     label: "Hooks have runtime profiles",
     check: (root) => {
-      const p = path.join(root, "kit/core/hooks.json");
+      const p = path.join(root, "packages/core/kit/core/hooks.json");
       if (!fs.existsSync(p)) return false;
       const d = JSON.parse(fs.readFileSync(p, "utf8"));
       return !!d.runtimeControls?.profiles;
@@ -179,7 +179,7 @@ const QUALITY_CHECKS = [
     id: "autopilot-default-autonomous",
     label: "Autopilot defaults to autonomous",
     check: (root) => {
-      const p = path.join(root, "kit/core/autopilot.json");
+      const p = path.join(root, "packages/core/kit/core/autopilot.json");
       if (!fs.existsSync(p)) return false;
       const d = JSON.parse(fs.readFileSync(p, "utf8"));
       return d.defaultLevel === "autonomous";
@@ -189,7 +189,7 @@ const QUALITY_CHECKS = [
     id: "cost-tracking-enabled",
     label: "Cost tracking configured",
     check: (root) => {
-      const p = path.join(root, "kit/core/token-optimization.json");
+      const p = path.join(root, "packages/core/kit/core/token-optimization.json");
       if (!fs.existsSync(p)) return false;
       const d = JSON.parse(fs.readFileSync(p, "utf8"));
       return !!d.cost?.tracking;
@@ -199,7 +199,7 @@ const QUALITY_CHECKS = [
     id: "skills-count-gte-15",
     label: "15+ portable skills",
     check: (root) => {
-      const d = path.join(root, "kit/core/skills");
+      const d = path.join(root, "packages/core/kit/core/skills");
       if (!fs.existsSync(d)) return false;
       return fs.readdirSync(d).filter((f) => f.endsWith(".md")).length >= 15;
     },
@@ -208,7 +208,7 @@ const QUALITY_CHECKS = [
     id: "mcp-profiles-defined",
     label: "MCP server profiles defined",
     check: (root) => {
-      const p = path.join(root, "kit/core/mcp.json");
+      const p = path.join(root, "packages/core/kit/core/mcp.json");
       if (!fs.existsSync(p)) return false;
       const d = JSON.parse(fs.readFileSync(p, "utf8"));
       return !!d.profiles && Object.keys(d.profiles).length >= 2;
@@ -218,7 +218,7 @@ const QUALITY_CHECKS = [
     id: "org-chart-defined",
     label: "Agent org chart defined",
     check: (root) => {
-      const p = path.join(root, "kit/core/agents.json");
+      const p = path.join(root, "packages/core/kit/core/agents.json");
       if (!fs.existsSync(p)) return false;
       const d = JSON.parse(fs.readFileSync(p, "utf8"));
       return !!d.orgChart && Object.keys(d.orgChart).length > 0;

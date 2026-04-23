@@ -1,0 +1,42 @@
+---
+import Base from "../../layouts/Base.astro";
+import Card from "../../components/Card.astro";
+import SearchFilter from "../../components/SearchFilter.astro";
+import { getCommands } from "../../lib/catalog.ts";
+
+const commands = await getCommands();
+const base = import.meta.env.BASE_URL;
+
+const tagSet = new Set<string>();
+for (const c of commands) for (const t of c.tags) tagSet.add(t);
+const tags = [...tagSet].sort();
+---
+<Base title="Commands" description={`${commands.length} Claude Code slash commands.`}>
+  <h1>Commands</h1>
+  <p class="lead-muted">
+    Claude Code slash commands. Install with
+    <code>npx forge-kit install &lt;id&gt;</code> → lands in
+    <code>~/.claude/commands/&lt;id&gt;.md</code>.
+  </p>
+  {commands.length === 0 ? (
+    <div class="empty">No commands in the catalog yet. Contribute via <code>docs/ADD_A_COMMAND.md</code>.</div>
+  ) : (
+    <>
+      <SearchFilter placeholder={`Search ${commands.length} commands…`} tags={tags} />
+      <div class="grid">
+        {commands.map((c) => (
+          <Card
+            kind="command"
+            id={c.id}
+            name={c.name}
+            description={c.description}
+            tags={c.tags}
+            href={`${base}commands/${c.id}/`}
+            extraTag={c.category}
+          />
+        ))}
+      </div>
+      <div id="empty-state" class="empty" style="display: none;">No commands match your filters.</div>
+    </>
+  )}
+</Base>

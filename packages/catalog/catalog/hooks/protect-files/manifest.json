@@ -1,0 +1,23 @@
+{
+  "id": "protect-files",
+  "name": "Protect Files",
+  "description": "Claude Code hook: protect-files",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code",
+    "security"
+  ],
+  "event": "any",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/protect-files.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/protect-files.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

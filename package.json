@@ -1,10 +1,11 @@
 {
-  "name": "ai-dev-toolkit",
+  "name": "forge-kit-monorepo",
   "version": "0.17.0",
-  "description": "Reusable patterns, rules, and agent companies for AI-assisted development",
+  "description": "Forge Kit monorepo for AI development rules, skills, setup, catalog, CLI, and web app",
   "type": "module",
-  "private": false,
+  "private": true,
   "license": "MIT",
+  "packageManager": "pnpm@9.12.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/LucasSantana-Dev/ai-dev-toolkit"
@@ -15,22 +16,31 @@
     "patterns",
     "rules",
     "companies",
-    "ai-dev-toolkit"
+    "ai-dev-toolkit",
+    "forge-kit"
   ],
   "engines": {
     "node": ">=22"
   },
   "scripts": {
     "validate": "npm run validate:shell && npm run validate:schema",
-    "validate:shell": "shellcheck tools/*.sh",
+    "validate:shell": "shellcheck -e SC2016 packages/core/tools/*.sh",
     "validate:schema": "node scripts/validate-schemas.js",
     "backlog:check": "node scripts/reconcile-backlog-state.mjs --check",
     "backlog:reconcile": "node scripts/reconcile-backlog-state.mjs --write",
     "backlog:reconcile:dry": "node scripts/reconcile-backlog-state.mjs",
-    "typecheck:plugin": "npx --yes -p typescript@5.9.3 tsc -p tsconfig.plugin.json",
-    "test": "node --experimental-vm-modules node_modules/.bin/jest",
-    "test:coverage": "node --experimental-vm-modules node_modules/.bin/jest --coverage",
+    "typecheck:plugin": "tsc -p tsconfig.plugin.json",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
     "lint": "eslint scripts/ test/",
+    "catalog:validate": "pnpm --filter @forge-kit/catalog-scripts run validate",
+    "catalog:index": "pnpm --filter @forge-kit/catalog-scripts run index",
+    "cli:build": "pnpm --filter forge-kit run build",
+    "cli:typecheck": "pnpm --filter forge-kit run typecheck",
+    "web:dev": "pnpm --filter @forge-kit/web run dev",
+    "web:build": "pnpm --filter @forge-kit/web run build",
+    "setup:check": "bash packages/setup/scripts/ci-check.sh",
+    "workspace:validate": "npm run validate && npm run lint && npm run test && pnpm run catalog:validate && pnpm run cli:typecheck && pnpm run web:build",
     "format": "prettier --write \"**/*.{md,json,yml,yaml}\" --ignore-path .prettierignore",
     "format:check": "prettier --check \"**/*.{md,json,yml,yaml}\" --ignore-path .prettierignore"
   },
@@ -39,6 +49,7 @@
     "eslint": "^10",
     "jest": "^30",
     "prettier": "^3",
+    "typescript": "^5.9.3",
     "yaml": "^2"
   }
 }

@@ -1,0 +1,36 @@
+---
+import Base from "../../layouts/Base.astro";
+import Card from "../../components/Card.astro";
+import SearchFilter from "../../components/SearchFilter.astro";
+import { getTools } from "../../lib/catalog.ts";
+
+const tools = await getTools();
+const base = import.meta.env.BASE_URL;
+
+const tagSet = new Set<string>();
+for (const t of tools) for (const tag of t.tags) tagSet.add(tag);
+const tags = [...tagSet].sort();
+---
+<Base title="Tools" description={`${tools.length} standalone scripts and CLIs.`}>
+  <h1>Tools</h1>
+  <p class="lead-muted">
+    Standalone scripts and CLIs — token optimization, RAG, compression, MCP ops, diagnostics.
+    Install with <code>npx forge-kit install &lt;id&gt;</code> → lands in
+    <code>~/.local/bin/&lt;id&gt;</code>.
+  </p>
+  <SearchFilter placeholder={`Search ${tools.length} tools…`} tags={tags} />
+  <div class="grid">
+    {tools.map((t) => (
+      <Card
+        kind="tool"
+        id={t.id}
+        name={t.name}
+        description={t.description}
+        tags={t.tags}
+        href={`${base}tools/${t.id}/`}
+        extraTag={`${t.category} · ${t.runtime}`}
+      />
+    ))}
+  </div>
+  <div id="empty-state" class="empty" style="display: none;">No tools match your filters.</div>
+</Base>

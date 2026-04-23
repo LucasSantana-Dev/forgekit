@@ -1,0 +1,29 @@
+{
+  "name": "@forge-kit/catalog-scripts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "tsx validate-catalog.ts",
+    "index": "tsx generate-index.ts",
+    "import:patterns": "tsx import-patterns.ts",
+    "import:agents": "tsx import-agents.ts",
+    "import:upstream-skills": "tsx import-upstream-skills.ts",
+    "import:adt-docs": "tsx import-adt-docs.ts",
+    "import:tools": "tsx import-tools.ts",
+    "import:hooks": "tsx import-hooks.ts",
+    "import:all": "tsx import-upstream-skills.ts && tsx import-agents.ts && tsx import-adt-docs.ts && tsx import-tools.ts && tsx import-hooks.ts"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "js-yaml": "^4.1.0",
+    "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.9.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}

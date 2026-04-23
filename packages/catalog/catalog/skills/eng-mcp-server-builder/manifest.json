@@ -1,0 +1,24 @@
+{
+  "id": "eng-mcp-server-builder",
+  "name": "Eng Mcp Server Builder",
+  "description": "MCP Server Builder",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "engineering",
+    "mcp"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/alirezarezvani/claude-skills",
+    "ref": "main",
+    "path": "engineering/mcp-server-builder/SKILL.md"
+  },
+  "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/mcp-server-builder",
+  "license": "MIT",
+  "author": "alirezarezvani"
+}

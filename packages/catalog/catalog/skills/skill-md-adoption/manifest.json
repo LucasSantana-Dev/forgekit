@@ -1,0 +1,24 @@
+{
+  "id": "skill-md-adoption",
+  "name": "SKILL.md Adoption: Vendor-Neutral Skill Discovery",
+  "description": "SKILL.md is an open specification released by Anthropic in 2025 that standardizes how tools discover and auto-invoke procedural knowledge (skills, patterns, guides, rules). Instead of each tool (Claude, Cursor, VSCode, CLI) maintaining isolated skill registries, SKILL.md enables a single skill to be published once and auto-invoked across any tool that speaks the spec.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "claude",
+    "prompting",
+    "testing",
+    "security",
+    "git"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/core/patterns/skill-md-adoption.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

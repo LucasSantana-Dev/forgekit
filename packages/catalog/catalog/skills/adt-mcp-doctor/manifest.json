@@ -1,0 +1,28 @@
+{
+  "id": "adt-mcp-doctor",
+  "name": "Adt Mcp Doctor",
+  "description": "Diagnose and repair failing MCP servers. Captures real launch tracebacks, identifies stale tool/config references, prunes the bad entries, and reconnects. Use when `claude mcp list` shows `Failed to connect`, after upgrading an MCP server (Serena, @modelcontextprotocol/server-*, or vendor MCPs), or when an MCP that worked yesterday silently stopped responding.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "mcp",
+    "debugging",
+    "git",
+    "token-optimization",
+    "observability"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/mcp-doctor.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/mcp-doctor.md"
+}

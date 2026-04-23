@@ -1,0 +1,23 @@
+{
+  "id": "validate-command",
+  "name": "Validate Command",
+  "description": "Claude Code hook: validate-command",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code",
+    "validation"
+  ],
+  "event": "PreToolUse",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/validate-command.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/validate-command.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

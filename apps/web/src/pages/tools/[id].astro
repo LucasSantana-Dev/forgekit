@@ -1,0 +1,55 @@
+---
+import Base from "../../layouts/Base.astro";
+import InstallBlock from "../../components/InstallBlock.astro";
+import { getTools } from "../../lib/catalog.ts";
+import { installCommand } from "../../lib/ui.ts";
+
+export async function getStaticPaths() {
+  const tools = await getTools();
+  return tools.map((t) => ({ params: { id: t.id }, props: { tool: t } }));
+}
+const { tool } = Astro.props;
+const cmd = installCommand("tool", tool.id)!;
+---
+<Base title={tool.name} description={tool.description}>
+  <p style="margin-bottom: 1.5rem;"><a href="../">← all tools</a></p>
+  <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+    <span style="font-size: 1.6rem;">🛠</span>
+    <h1 style="margin: 0;">{tool.name}</h1>
+    <span class="kind kind-tool">tool</span>
+  </div>
+  <p class="lead-muted" style="margin-bottom: 1rem;">{tool.description}</p>
+  <div class="tags" style="margin-bottom: 1.25rem;">
+    <span class="tag">runtime: {tool.runtime}</span>
+    <span class="tag">category: {tool.category}</span>
+    {tool.tags.map((t) => <span class="tag">{t}</span>)}
+  </div>
+
+  <InstallBlock command={cmd} />
+
+  {tool.usage && (
+    <>
+      <h2>Usage</h2>
+      <pre><code>{tool.usage}</code></pre>
+    </>
+  )}
+
+  {tool.install?.dependencies && tool.install.dependencies.length > 0 && (
+    <>
+      <h2>Dependencies</h2>
+      <ul class="markdown">
+        {tool.install.dependencies.map((d) => <li><code>{d}</code></li>)}
+      </ul>
+    </>
+  )}
+
+  <h2>Script</h2>
+  <pre><code>{tool.script}</code></pre>
+
+  {tool.source?.path && (
+    <p style="color: var(--fg-subtle); font-size: 0.82rem; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+      Source: <code>{tool.source.path}</code>
+      {tool.license && <> · {tool.license}</>}
+    </p>
+  )}
+</Base>

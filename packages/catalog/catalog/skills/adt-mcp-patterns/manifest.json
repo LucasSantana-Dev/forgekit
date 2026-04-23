@@ -1,0 +1,27 @@
+{
+  "id": "adt-mcp-patterns",
+  "name": "Adt Mcp Patterns",
+  "description": "Build robust, secure MCP servers — tool schemas, stateful interactions, async patterns, error handling, and testing",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "mcp",
+    "testing",
+    "debugging",
+    "database"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/mcp-patterns.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/mcp-patterns.md"
+}

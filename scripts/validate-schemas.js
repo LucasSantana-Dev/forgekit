@@ -99,7 +99,7 @@ export function validateCompany(companyDir) {
   return errors;
 }
 
-export function validateAll(companiesDir = "./companies") {
+export function validateAll(companiesDir = "./packages/core/companies") {
   const companies = fs
     .readdirSync(companiesDir)
     .filter((d) => fs.statSync(path.join(companiesDir, d)).isDirectory());
@@ -134,14 +134,14 @@ export function validateAll(companiesDir = "./companies") {
 const REQUIRED_SKILL_FIELDS = ["name", "description", "triggers"];
 
 const REQUIRED_KIT_CONFIGS = [
-  "kit/core/agents.json",
-  "kit/core/routing.json",
-  "kit/core/providers.json",
-  "kit/core/autopilot.json",
-  "kit/core/token-optimization.json",
-  "kit/core/loop.json",
-  "kit/core/hooks.json",
-  "kit/core/mcp.json",
+  "packages/core/kit/core/agents.json",
+  "packages/core/kit/core/routing.json",
+  "packages/core/kit/core/providers.json",
+  "packages/core/kit/core/autopilot.json",
+  "packages/core/kit/core/token-optimization.json",
+  "packages/core/kit/core/loop.json",
+  "packages/core/kit/core/hooks.json",
+  "packages/core/kit/core/mcp.json",
 ];
 
 const VALID_TIERS = ["haiku", "sonnet", "opus"];
@@ -188,7 +188,7 @@ export function validateKit(rootDir = ".") {
     errors.push(...validateJsonSchema(rootDir, configPath));
   }
 
-  const agentsPath = path.join(rootDir, "kit/core/agents.json");
+  const agentsPath = path.join(rootDir, "packages/core/kit/core/agents.json");
   if (fs.existsSync(agentsPath)) {
     const agents = JSON.parse(fs.readFileSync(agentsPath, "utf8"));
     const toolRegistry = agents.toolRegistry || {};
@@ -240,7 +240,7 @@ export function validateKit(rootDir = ".") {
     }
   }
 
-  const hooksPath = path.join(rootDir, "kit/core/hooks.json");
+  const hooksPath = path.join(rootDir, "packages/core/kit/core/hooks.json");
   if (fs.existsSync(hooksPath)) {
     const hooks = JSON.parse(fs.readFileSync(hooksPath, "utf8"));
     const hookTypes = Object.keys(hooks.hooks || {});
@@ -257,7 +257,7 @@ export function validateKit(rootDir = ".") {
     if (!hooks.toolMapping) errors.push("Hooks missing toolMapping section");
   }
 
-  const routingPath = path.join(rootDir, "kit/core/routing.json");
+  const routingPath = path.join(rootDir, "packages/core/kit/core/routing.json");
   if (fs.existsSync(routingPath)) {
     const routing = JSON.parse(fs.readFileSync(routingPath, "utf8"));
     for (const [cat, def] of Object.entries(routing.categories || {})) {
@@ -267,7 +267,7 @@ export function validateKit(rootDir = ".") {
     }
   }
 
-  const skillsDir = path.join(rootDir, "kit/core/skills");
+  const skillsDir = path.join(rootDir, "packages/core/kit/core/skills");
   if (fs.existsSync(skillsDir)) {
     const skills = fs.readdirSync(skillsDir).filter((f) => f.endsWith(".md"));
     if (skills.length === 0) errors.push("No core skills found");
@@ -288,7 +288,7 @@ export function validateKit(rootDir = ".") {
 }
 
 if (process.argv[1] === __filename) {
-  validateAll(path.join(path.dirname(__filename), "..", "companies"));
+  validateAll(path.join(path.dirname(__filename), "..", "packages", "core", "companies"));
 
   const kitErrors = validateKit(path.join(path.dirname(__filename), ".."));
   for (const e of kitErrors) {

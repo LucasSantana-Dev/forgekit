@@ -1,0 +1,23 @@
+{
+  "id": "adt-route",
+  "name": "Adt Route",
+  "description": "Route a task to the most fitting skill or agent. Parses user intent, checks installed-skill inventory, and picks the best match (single skill or chain).",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/route.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/route.md"
+}

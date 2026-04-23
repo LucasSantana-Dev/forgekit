@@ -1,0 +1,23 @@
+{
+  "id": "adt-bilingual-readme-sync",
+  "name": "Adt Bilingual Readme Sync",
+  "description": "Keep EN/PT README.md pairs in parity across a repo (and across twin repos like ai-dev-toolkit + ai-dev-toolkit-pt-br).",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/bilingual-readme-sync.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/bilingual-readme-sync.md"
+}

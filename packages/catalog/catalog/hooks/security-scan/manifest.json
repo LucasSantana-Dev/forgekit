@@ -1,0 +1,23 @@
+{
+  "id": "security-scan",
+  "name": "Security Scan",
+  "description": "Security scanning hook for UIForge MCP Runs comprehensive security checks on code changes",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code",
+    "security"
+  ],
+  "event": "any",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/security-scan.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/quality/security-scan.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

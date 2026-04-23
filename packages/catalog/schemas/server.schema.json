@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lucassantana-dev.github.io/ai-dev-toolkit/packages/catalog/schemas/server.schema.json",
+  "title": "MCP Server",
+  "description": "An MCP server entry registered into the local mcp-context-forge gateway.",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "description",
+    "transport",
+    "tags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "transport": {
+      "enum": [
+        "stdio",
+        "sse",
+        "http",
+        "streamable-http"
+      ]
+    },
+    "command": {
+      "type": "string",
+      "description": "For stdio transport: executable (e.g. 'npx', 'uvx', 'docker')."
+    },
+    "args": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "For sse/http transports: upstream URL."
+    },
+    "image": {
+      "type": "string",
+      "description": "For dockerized servers: OCI image reference."
+    },
+    "env": {
+      "type": "array",
+      "description": "Environment variables passed to the server. Use the `required` flag to signal user setup.",
+      "items": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[A-Z_][A-Z0-9_]*$"
+          },
+          "description": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean",
+            "default": false
+          },
+          "default": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      },
+      "minItems": 1,
+      "maxItems": 16,
+      "uniqueItems": true
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri"
+    },
+    "license": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "deprecated": {
+      "type": "boolean",
+      "default": false
+    },
+    "translations": {
+      "type": "object",
+      "description": "Optional locale-specific overrides for user-visible fields. Keys are BCP-47 language tags.",
+      "additionalProperties": false,
+      "properties": {
+        "pt-BR": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            }
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "transport": {
+            "const": "stdio"
+          }
+        },
+        "required": [
+          "transport"
+        ]
+      },
+      "then": {
+        "required": [
+          "command"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "transport": {
+            "enum": [
+              "sse",
+              "http",
+              "streamable-http"
+            ]
+          }
+        },
+        "required": [
+          "transport"
+        ]
+      },
+      "then": {
+        "required": [
+          "url"
+        ]
+      }
+    }
+  ]
+}

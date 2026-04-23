@@ -1,0 +1,31 @@
+---
+import Base from "../../layouts/Base.astro";
+import InstallBlock from "../../components/InstallBlock.astro";
+import { getCommands } from "../../lib/catalog.ts";
+import { installCommand, renderMarkdown } from "../../lib/ui.ts";
+
+export async function getStaticPaths() {
+  const commands = await getCommands();
+  return commands.map((c) => ({ params: { id: c.id }, props: { command: c } }));
+}
+const { command } = Astro.props;
+const rendered = renderMarkdown(command.body);
+const cmd = installCommand("command", command.id)!;
+---
+<Base title={command.name} description={command.description}>
+  <p style="margin-bottom: 1.5rem;"><a href="../">← all commands</a></p>
+  <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+    <span style="font-size: 1.6rem;">⚡</span>
+    <h1 style="margin: 0;">{command.name}</h1>
+    <span class="kind kind-command">command</span>
+  </div>
+  <p class="lead-muted" style="margin-bottom: 1rem;">{command.description}</p>
+  <div class="tags" style="margin-bottom: 1.25rem;">
+    {command.category && <span class="tag">{command.category}</span>}
+    {command.tags.map((t) => <span class="tag">{t}</span>)}
+  </div>
+
+  <InstallBlock command={cmd} />
+
+  <article class="markdown mt-4" set:html={rendered} />
+</Base>

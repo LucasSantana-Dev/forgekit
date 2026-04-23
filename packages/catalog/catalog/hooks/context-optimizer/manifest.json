@@ -1,0 +1,23 @@
+{
+  "id": "context-optimizer",
+  "name": "Context Optimizer",
+  "description": "Claude Code Hook: Context Optimizer Intelligent context optimization for token efficiency and performance",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code",
+    "token-optimization"
+  ],
+  "event": "any",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/context-optimizer.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/context-optimizer.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

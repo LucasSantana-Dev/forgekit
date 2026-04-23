@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lucassantana-dev.github.io/ai-dev-toolkit/packages/catalog/schemas/hook.schema.json",
+  "title": "Hook",
+  "description": "A Claude Code hook — shell script installed to ~/.claude/hooks/<id>.sh and wired via settings.json.",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "description",
+    "version",
+    "tags",
+    "event"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      },
+      "minItems": 1,
+      "maxItems": 16,
+      "uniqueItems": true
+    },
+    "event": {
+      "enum": [
+        "PreToolUse",
+        "PostToolUse",
+        "UserPromptSubmit",
+        "Stop",
+        "SubagentStop",
+        "Notification",
+        "PreCompact",
+        "PostCompact",
+        "SessionStart",
+        "SessionEnd",
+        "any"
+      ],
+      "description": "Claude Code hook event this script is designed for. 'any' = generic helper script."
+    },
+    "matcher": {
+      "type": "string",
+      "description": "Optional matcher for tool-scoped hooks (e.g. 'Bash', 'Write|Edit').",
+      "maxLength": 200
+    },
+    "runtime": {
+      "enum": [
+        "bash",
+        "zsh",
+        "sh",
+        "python"
+      ],
+      "default": "bash"
+    },
+    "install": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "copy_to": {
+          "type": "string",
+          "description": "Destination path (supports ~). Defaults to ~/.claude/hooks/<id>.sh."
+        },
+        "chmod_exec": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "git",
+            "local",
+            "vendored"
+          ]
+        },
+        "repo": {
+          "type": "string",
+          "format": "uri"
+        },
+        "ref": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        }
+      }
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri"
+    },
+    "license": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "author": {
+      "type": "string",
+      "maxLength": 128
+    },
+    "deprecated": {
+      "type": "boolean",
+      "default": false
+    },
+    "translations": {
+      "type": "object",
+      "description": "Optional locale-specific overrides for user-visible fields. Keys are BCP-47 language tags.",
+      "additionalProperties": false,
+      "properties": {
+        "pt-BR": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            }
+          }
+        }
+      }
+    }
+  }
+}

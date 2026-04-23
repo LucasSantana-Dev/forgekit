@@ -1,0 +1,22 @@
+{
+  "id": "rtk-rewrite",
+  "name": "Rtk Rewrite",
+  "description": "rtk-hook-version: 3 RTK Claude Code hook — rewrites commands to use rtk for token savings. Requires: rtk >= 0.23.0, jq This is a thin delegating hook: all rewrite logic lives in `rtk rewrite`, which is the single source of truth (src/discover/registry.rs). To add or change rewrite rules, edit the Rust registry — not this file. Exit code protocol for `rtk rewrite`: 0 + stdout Rewrite found, no deny/ask rule matched → auto-allow 1 No RTK equivalent → pass through unchanged 2 De",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code"
+  ],
+  "event": "any",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/rtk-rewrite.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/rtk-rewrite.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

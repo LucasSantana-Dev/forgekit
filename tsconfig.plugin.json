@@ -11,7 +11,7 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "implementations/opencode/plugin/*.ts",
-    "implementations/opencode/plugin/types/**/*.d.ts"
+    "packages/core/implementations/opencode/plugin/*.ts",
+    "packages/core/implementations/opencode/plugin/types/**/*.d.ts"
   ]
 }

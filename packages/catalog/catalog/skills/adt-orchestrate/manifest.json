@@ -1,0 +1,25 @@
+{
+  "id": "adt-orchestrate",
+  "name": "Adt Orchestrate",
+  "description": "Coordinate multiple subagents/worktrees for parallel workstreams. Decomposes larger tasks into independent sub-tasks, dispatches each to a dedicated agent.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "git",
+    "orchestration"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/orchestrate.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/orchestrate.md"
+}

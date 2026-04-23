@@ -1,0 +1,27 @@
+{
+  "id": "adt-context-hygiene",
+  "name": "Adt Context Hygiene",
+  "description": "Keep sessions focused and efficient — prune stale outputs, preserve active state, recommend compaction",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "comms",
+    "git",
+    "deploy",
+    "token-optimization"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/context-hygiene.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/context-hygiene.md"
+}

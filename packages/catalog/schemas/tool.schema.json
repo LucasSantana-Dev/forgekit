@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lucassantana-dev.github.io/ai-dev-toolkit/packages/catalog/schemas/tool.schema.json",
+  "title": "Tool",
+  "description": "A standalone CLI or script — not agent-bound. Installs to ~/.local/bin/<id> or is used via the documented install command.",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "description",
+    "version",
+    "tags",
+    "runtime"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      },
+      "minItems": 1,
+      "maxItems": 16,
+      "uniqueItems": true
+    },
+    "runtime": {
+      "enum": [
+        "bash",
+        "zsh",
+        "sh",
+        "python",
+        "node",
+        "go",
+        "rust",
+        "other"
+      ],
+      "description": "Primary runtime needed to execute the tool."
+    },
+    "category": {
+      "enum": [
+        "token-optimization",
+        "rag",
+        "compression",
+        "observability",
+        "benchmarking",
+        "mcp-ops",
+        "setup",
+        "release",
+        "diagnostics",
+        "training",
+        "general"
+      ],
+      "default": "general"
+    },
+    "install": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "copy_to": {
+          "type": "string",
+          "description": "Destination path (supports ~). Defaults to ~/.local/bin/<id>."
+        },
+        "chmod_exec": {
+          "type": "boolean",
+          "default": true
+        },
+        "dependencies": {
+          "type": "array",
+          "description": "Runtime dependencies the user must have installed (e.g. 'python>=3.11').",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 10
+        }
+      }
+    },
+    "usage": {
+      "type": "string",
+      "description": "One-line invocation example, e.g. 'adt-mcp-health --all'.",
+      "maxLength": 400
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "git",
+            "local",
+            "vendored"
+          ]
+        },
+        "repo": {
+          "type": "string",
+          "format": "uri"
+        },
+        "ref": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        }
+      }
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri"
+    },
+    "license": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "author": {
+      "type": "string",
+      "maxLength": 128
+    },
+    "deprecated": {
+      "type": "boolean",
+      "default": false
+    },
+    "translations": {
+      "type": "object",
+      "description": "Optional locale-specific overrides for user-visible fields. Keys are BCP-47 language tags.",
+      "additionalProperties": false,
+      "properties": {
+        "pt-BR": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            }
+          }
+        }
+      }
+    }
+  }
+}

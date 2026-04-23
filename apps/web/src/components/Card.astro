@@ -1,0 +1,36 @@
+---
+import { kindIcon, type Kind } from "../lib/ui.ts";
+
+interface Props {
+  kind: Kind;
+  id: string;
+  name: string;
+  description: string;
+  tags?: string[];
+  href: string;
+  extraTag?: string;
+}
+const { kind, id, name, description, tags = [], href, extraTag } = Astro.props;
+const icon = kindIcon(kind);
+const haystack = [id, name, description, ...tags].join(" ").toLowerCase();
+---
+<a
+  class="card"
+  href={href}
+  data-kind={kind}
+  data-tags={tags.join(",")}
+  data-search={haystack}
+>
+  <div class="row-head">
+    <span class="icon">{icon}</span>
+    <h3>{name}</h3>
+    <span class={`kind kind-${kind}`}>{kind}</span>
+  </div>
+  <p>{description}</p>
+  {(extraTag || tags.length > 0) && (
+    <div class="tags">
+      {extraTag && <span class="tag">{extraTag}</span>}
+      {tags.slice(0, 5).map((t) => <span class="tag">{t}</span>)}
+    </div>
+  )}
+</a>

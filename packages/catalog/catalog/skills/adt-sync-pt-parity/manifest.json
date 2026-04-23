@@ -1,0 +1,24 @@
+{
+  "id": "adt-sync-pt-parity",
+  "name": "Adt Sync PT Parity",
+  "description": "Sync files (skills/patterns/agents/specs) from EN canonical repo to PT mirror, inserting \"Tradução pendente\" blockquote after YAML frontmatter, then open PR.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "git"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/sync-pt-parity.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/sync-pt-parity.md"
+}

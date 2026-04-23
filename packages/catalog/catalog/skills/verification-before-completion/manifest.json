@@ -1,0 +1,25 @@
+{
+  "id": "verification-before-completion",
+  "name": "Verification Before Completion",
+  "description": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "superpowers",
+    "comms",
+    "git"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/obra/superpowers",
+    "ref": "main",
+    "path": "skills/verification-before-completion/SKILL.md"
+  },
+  "homepage": "https://github.com/obra/superpowers/tree/main/skills/verification-before-completion",
+  "license": "MIT",
+  "author": "obra"
+}

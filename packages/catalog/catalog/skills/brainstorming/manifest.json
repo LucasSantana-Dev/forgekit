@@ -1,0 +1,24 @@
+{
+  "id": "brainstorming",
+  "name": "Brainstorming",
+  "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "superpowers",
+    "design"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/obra/superpowers",
+    "ref": "main",
+    "path": "skills/brainstorming/SKILL.md"
+  },
+  "homepage": "https://github.com/obra/superpowers/tree/main/skills/brainstorming",
+  "license": "MIT",
+  "author": "obra"
+}

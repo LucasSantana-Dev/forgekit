@@ -1,0 +1,22 @@
+{
+  "id": "message-counter",
+  "name": "Message Counter",
+  "description": "message-counter.sh — UserPromptSubmit hook Tracks message count per session. Auto-generates per-project handoff at limit threshold. Cost: 0 tokens on normal messages. Only prints at thresholds 15, 20, 25, 30+.",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code"
+  ],
+  "event": "any",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/message-counter.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/message-counter.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

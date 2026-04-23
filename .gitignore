@@ -2,6 +2,8 @@
 node_modules/
 package-lock.json
 yarn.lock
+__pycache__/
+*.pyc
 
 # Test coverage
 coverage/
@@ -26,3 +28,4 @@ build/
 # Cache
 .cache/
 .eslintcache
+.astro/

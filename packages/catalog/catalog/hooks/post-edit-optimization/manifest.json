@@ -1,0 +1,22 @@
+{
+  "id": "post-edit-optimization",
+  "name": "Post Edit Optimization",
+  "description": "Post-Edit Token Optimization Hook Optimizes context and token usage after file edits",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code"
+  ],
+  "event": "any",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/post-edit-optimization.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/productivity/post-edit-optimization.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

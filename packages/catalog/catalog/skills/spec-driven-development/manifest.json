@@ -1,0 +1,24 @@
+{
+  "id": "spec-driven-development",
+  "name": "Spec Driven Development",
+  "description": "AI agents are fast at writing code but have no memory of your intent. You describe a feature in a prompt, the agent builds it, and three sessions later a different agent (or you) changes it in a way that drifts from the original requirement. The spec lives only in your head.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "claude",
+    "prompting",
+    "testing",
+    "security",
+    "agents"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/core/patterns/spec-driven-development.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

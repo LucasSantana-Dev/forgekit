@@ -1,5 +1,5 @@
 ---
-status: proposed
+status: active
 created: 2026-04-22
 owner: lucassantana
 pr:
@@ -33,9 +33,8 @@ Current evidence gathered on 2026-04-22:
   host for the migration PR sequence.
 - `ai-dev-toolkit-setup` is clean locally, has `TOOLKIT_VERSION=0.17.0`, and is
   already coupled to toolkit releases.
-- `ai-dev-toolkit-library` is already a pnpm workspace (`cli`, `web`, `scripts`)
-  and has uncommitted local i18n/schema/web work. Do not rewrite that checkout
-  until those changes are either shipped or intentionally incorporated.
+- `ai-dev-toolkit-library` is already a pnpm workspace (`cli`, `web`, `scripts`).
+  Its i18n/schema/web work is merged on its `main` branch and is safe to import.
 - `ai-dev-toolkit-pt-br` is clean locally and duplicates the toolkit package
   structure with Portuguese content.
 
@@ -86,7 +85,7 @@ forge-kit/
 │   ├── catalog/           # current ai-dev-toolkit-library/catalog + schemas
 │   └── cli/               # current ai-dev-toolkit-library/cli
 ├── apps/
-│   └── library-web/       # current ai-dev-toolkit-library/web
+│   └── web/               # current ai-dev-toolkit-library/web
 ├── infra/
 │   └── gateway/           # current ai-dev-toolkit-library/gateway
 ├── locales/

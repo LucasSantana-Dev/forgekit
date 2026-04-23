@@ -1,0 +1,32 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Card from "../../../components/Card.astro";
+import { getCollections } from "../../../lib/catalog.ts";
+import { localizeEntries, t, localizedUrl, type Locale } from "../../../lib/i18n.ts";
+
+const locale: Locale = "pt-br";
+const collections = localizeEntries(await getCollections(), locale);
+const base = import.meta.env.BASE_URL;
+const url = (p: string) => localizedUrl(base, p, locale);
+---
+<Base
+  title={t("list.collections.title", locale)}
+  description={t("list.collections.description", locale, { count: collections.length })}
+  locale={locale}
+>
+  <h1>{t("list.collections.title", locale)}</h1>
+  <p class="lead-muted">Bundles curados para fluxos de trabalho específicos.</p>
+  <div class="grid" style="margin-top: 1.5rem;">
+    {collections.map((c) => (
+      <Card
+        kind="collection"
+        id={c.id}
+        name={c.name}
+        description={c.description}
+        tags={c.tags ?? []}
+        href={url(`collections/${c.id}/`)}
+        extraTag={`${c.items.length} itens`}
+      />
+    ))}
+  </div>
+</Base>

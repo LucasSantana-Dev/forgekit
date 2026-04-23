@@ -1,0 +1,32 @@
+{
+  "id": "capture-training",
+  "name": "Capture Training",
+  "description": "Script: capture-training.py",
+  "version": "0.1.0",
+  "tags": [
+    "tool",
+    "ai-dev-toolkit",
+    "training"
+  ],
+  "runtime": "python",
+  "category": "training",
+  "install": {
+    "copy_to": "~/.local/bin/capture-training",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/tools/capture-training.py"
+  },
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/packages/core/tools/capture-training.py",
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Capture Training",
+      "description": "Script Python para capturar dados de treinamento de sessões do Claude Code — pares prompt/resposta para fine-tuning ou avaliação."
+    }
+  }
+}

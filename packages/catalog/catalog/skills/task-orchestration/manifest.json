@@ -1,0 +1,25 @@
+{
+  "id": "task-orchestration",
+  "name": "Task Orchestration",
+  "description": "You have 5 projects, each with a session. You open each one, paste \"continue with next priorities\", wait, switch, repeat. You're acting as a human cron job.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "claude",
+    "prompting",
+    "testing",
+    "security",
+    "git",
+    "agents"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/core/patterns/task-orchestration.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

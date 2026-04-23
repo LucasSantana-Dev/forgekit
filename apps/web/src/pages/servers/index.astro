@@ -1,0 +1,35 @@
+---
+import Base from "../../layouts/Base.astro";
+import Card from "../../components/Card.astro";
+import SearchFilter from "../../components/SearchFilter.astro";
+import { getServers } from "../../lib/catalog.ts";
+
+const servers = await getServers();
+const base = import.meta.env.BASE_URL;
+
+const tagSet = new Set<string>();
+for (const s of servers) for (const t of s.tags) tagSet.add(t);
+const tags = [...tagSet].sort();
+---
+<Base title="Servers" description={`${servers.length} MCP servers for your local gateway.`}>
+  <h1>Servers</h1>
+  <p class="lead-muted">
+    MCP servers registered with your local <code>mcp-context-forge</code> gateway. Register with
+    <code>npx forge-kit add-server &lt;id&gt;</code>.
+  </p>
+  <SearchFilter placeholder={`Search ${servers.length} servers…`} tags={tags} />
+  <div class="grid">
+    {servers.map((s) => (
+      <Card
+        kind="server"
+        id={s.id}
+        name={s.name}
+        description={s.description}
+        tags={s.tags}
+        href={`${base}servers/${s.id}/`}
+        extraTag={s.transport}
+      />
+    ))}
+  </div>
+  <div id="empty-state" class="empty" style="display: none;">No servers match your filters.</div>
+</Base>

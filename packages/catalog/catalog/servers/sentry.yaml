@@ -1,0 +1,25 @@
+id: sentry
+name: Sentry
+description: Query Sentry issues, events, and releases from an MCP client. Useful
+  for triaging production errors inline.
+transport: stdio
+command: npx
+args:
+- -y
+- '@sentry/mcp-server'
+env:
+- name: SENTRY_AUTH_TOKEN
+  description: Sentry user auth token with `event:read`, `project:read`, `org:read`
+    scopes.
+  required: true
+tags:
+- observability
+- errors
+- triage
+homepage: https://github.com/getsentry/sentry-mcp
+license: MIT
+translations:
+  pt-BR:
+    name: Sentry
+    description: Consulte issues, eventos e releases do Sentry via cliente MCP. Útil
+      para triagem de erros de produção a partir do editor.

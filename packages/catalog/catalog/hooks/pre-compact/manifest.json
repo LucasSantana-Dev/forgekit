@@ -1,0 +1,23 @@
+{
+  "id": "pre-compact",
+  "name": "Pre Compact",
+  "description": "Pre-Compact Snapshot",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code",
+    "token-optimization"
+  ],
+  "event": "PreCompact",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/pre-compact.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/pre-compact.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

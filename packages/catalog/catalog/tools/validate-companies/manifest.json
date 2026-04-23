@@ -1,0 +1,32 @@
+{
+  "id": "validate-companies",
+  "name": "Validate Companies",
+  "description": "Script: validate-companies.sh",
+  "version": "0.1.0",
+  "tags": [
+    "tool",
+    "ai-dev-toolkit",
+    "diagnostics"
+  ],
+  "runtime": "bash",
+  "category": "diagnostics",
+  "install": {
+    "copy_to": "~/.local/bin/validate-companies",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/tools/validate-companies.sh"
+  },
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/packages/core/tools/validate-companies.sh",
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Validate Companies",
+      "description": "Valida entradas em uma lista de empresas contra um schema JSON. Usado para sincronizar dados em múltiplos repos."
+    }
+  }
+}

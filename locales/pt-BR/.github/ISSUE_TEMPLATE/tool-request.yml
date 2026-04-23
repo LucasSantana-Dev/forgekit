@@ -1,0 +1,125 @@
+name: Tool Request
+description: Request a new CLI tool to be added to the toolkit
+title: "[TOOL] "
+labels: ["tool-request", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Request a new productivity tool for the AI Dev Toolkit installation scripts.
+
+  - type: input
+    id: tool-name
+    attributes:
+      label: Tool Name
+      description: The name of the tool
+      placeholder: "e.g., lazydocker, gh, helix"
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Tool URL
+      description: Link to the tool's homepage or GitHub repository
+      placeholder: "https://github.com/..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What does this tool do?
+      description: Brief description of the tool's purpose
+      placeholder: |
+        Example: Terminal UI for Docker management - provides interactive interface for containers, images, volumes, and networks.
+    validations:
+      required: true
+
+  - type: textarea
+    id: replaces
+    attributes:
+      label: What does it replace?
+      description: What manual workflow or existing tool does this improve upon?
+      placeholder: |
+        Example: Replaces manual `docker ps`, `docker logs`, `docker exec` commands with an interactive TUI.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: platforms
+    attributes:
+      label: Platform Support
+      description: Which platforms does this tool support?
+      options:
+        - label: macOS (Homebrew)
+        - label: Ubuntu/Debian (apt or binary install)
+        - label: Windows (winget or scoop)
+
+  - type: input
+    id: install-macos
+    attributes:
+      label: macOS Installation
+      description: How to install on macOS (if supported)
+      placeholder: "brew install tool-name"
+
+  - type: input
+    id: install-ubuntu
+    attributes:
+      label: Ubuntu Installation
+      description: How to install on Ubuntu (if supported)
+      placeholder: "sudo apt install tool-name OR curl -Lo /tmp/tool && sudo install /tmp/tool /usr/local/bin"
+
+  - type: input
+    id: install-windows
+    attributes:
+      label: Windows Installation
+      description: How to install on Windows (if supported)
+      placeholder: "winget install Tool.Name OR scoop install tool-name"
+
+  - type: textarea
+    id: shell-integration
+    attributes:
+      label: Shell Integration
+      description: Does this tool require shell integration or configuration? (optional)
+      placeholder: |
+        Example:
+        # Add to ~/.zshrc
+        eval "$(tool init zsh)"
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Recommended Configuration
+      description: Any recommended configuration or setup steps (optional)
+      placeholder: |
+        Example:
+        # Configure default settings
+        tool config set theme dark
+        tool config set editor vim
+
+  - type: textarea
+    id: related-tools
+    attributes:
+      label: Related Tools
+      description: Are there complementary tools already in the toolkit? (optional)
+      placeholder: |
+        Works well with:
+        - lazygit (for Git)
+        - btop (for system monitoring)
+
+  - type: checkboxes
+    id: license
+    attributes:
+      label: License
+      description: Tool licensing
+      options:
+        - label: Open source (MIT, Apache, GPL, etc.)
+        - label: Free for personal use
+        - label: Commercial/paid (explain in additional context)
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other information about this tool

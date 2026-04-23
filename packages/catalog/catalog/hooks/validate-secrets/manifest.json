@@ -1,0 +1,24 @@
+{
+  "id": "validate-secrets",
+  "name": "Validate Secrets",
+  "description": "Validate secrets and enforce zero-secrets policy Ensures no secrets are committed or processed",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code",
+    "security",
+    "validation"
+  ],
+  "event": "any",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/validate-secrets.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/security/validate-secrets.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

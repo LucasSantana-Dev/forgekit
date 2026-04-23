@@ -1,0 +1,31 @@
+---
+import Base from "../../layouts/Base.astro";
+import Card from "../../components/Card.astro";
+import SearchFilter from "../../components/SearchFilter.astro";
+import { getDocs } from "../../lib/catalog.ts";
+
+const docs = await getDocs();
+const base = import.meta.env.BASE_URL;
+
+const tagSet = new Set<string>();
+for (const d of docs) for (const t of d.tags) tagSet.add(t);
+const tags = [...tagSet].sort();
+---
+<Base title="Docs" description={`${docs.length} reference docs.`}>
+  <h1>Docs</h1>
+  <p class="lead-muted">Reference material. Read-only — no install verb.</p>
+  <SearchFilter placeholder={`Search ${docs.length} docs…`} tags={tags} />
+  <div class="grid">
+    {docs.map((d) => (
+      <Card
+        kind="doc"
+        id={d.id}
+        name={d.title}
+        description={d.description}
+        tags={d.tags}
+        href={`${base}docs/${d.id}/`}
+      />
+    ))}
+  </div>
+  <div id="empty-state" class="empty" style="display: none;">No docs match your filters.</div>
+</Base>

@@ -1,0 +1,22 @@
+{
+  "id": "prompting-discipline",
+  "name": "Prompting Discipline",
+  "description": "How you ask the model matters more than which model you ask. Two disciplines stop most AI coding failures before they start.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "prompting",
+    "testing",
+    "agents"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/core/patterns/prompting-discipline.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

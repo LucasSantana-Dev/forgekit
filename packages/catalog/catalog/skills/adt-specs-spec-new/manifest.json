@@ -1,0 +1,28 @@
+{
+  "id": "adt-specs-spec-new",
+  "name": "Adt Specs Spec New",
+  "description": "Create a committed per-feature spec under `docs/specs/YYYY-MM-DD-<slug>/{spec,tasks}.md` with frontmatter (status, created, owner, pr, tags). Promotes an ephemeral `.claude/plans/<name>.md` into a persistent, searchable artifact. Use when starting a feature that's larger than a one-shot PR.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "specs",
+    "spec-driven",
+    "design",
+    "comms",
+    "git",
+    "planning"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/specs/skills/spec-new/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/specs/skills/spec-new"
+}

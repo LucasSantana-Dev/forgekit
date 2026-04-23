@@ -20,4 +20,4 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Run Semgrep
-        run: semgrep scan --config auto scripts/ tools/
+        run: semgrep scan --config auto scripts/ packages/core/tools/ packages/cli packages/catalog/scripts apps/web infra/gateway packages/setup/scripts

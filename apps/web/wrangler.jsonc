@@ -1,0 +1,26 @@
+// Cloudflare Workers static-asset deploy config.
+//
+// This project is an Astro static site. The Cloudflare "Workers with
+// static assets" flow (newer replacement for Pages) serves the built
+// output from dist/ via this config.
+//
+// CF build commands (configured in the dashboard, not here):
+//   Build:   pnpm install --frozen-lockfile && pnpm --filter @forge-kit/web run build
+//   Deploy:  npx wrangler deploy
+//
+// Docs: https://developers.cloudflare.com/workers/static-assets/
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Keep the existing Worker binding until the Cloudflare app rename is scheduled.
+  "name": "ai-dev-toolkit-library",
+  "compatibility_date": "2025-04-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  "workers_dev": true,
+  "observability": {
+    "enabled": false
+  }
+}

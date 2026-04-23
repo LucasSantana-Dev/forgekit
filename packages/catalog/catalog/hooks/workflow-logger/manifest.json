@@ -1,0 +1,22 @@
+{
+  "id": "workflow-logger",
+  "name": "Workflow Logger",
+  "description": "Workflow logging hook for Claude Code Tracks workflow events and productivity metrics",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code"
+  ],
+  "event": "any",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/workflow-logger.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/productivity/workflow-logger.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

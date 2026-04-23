@@ -1,0 +1,16 @@
+name: Stale
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    uses: LucasSantana-Dev/github-org-workflows/.github/workflows/reusable-stale.yml@main
+    with:
+      days-before-stale: 30
+      days-before-close: 14

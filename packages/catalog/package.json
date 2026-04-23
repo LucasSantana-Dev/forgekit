@@ -1,0 +1,25 @@
+{
+  "name": "@forge-kit/catalog",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Forge Kit catalog of skills, agents, hooks, commands, tools, docs, and MCP servers.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LucasSantana-Dev/ai-dev-toolkit.git",
+    "directory": "packages/catalog"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "validate": "pnpm --filter @forge-kit/catalog-scripts run validate",
+    "index": "pnpm --filter @forge-kit/catalog-scripts run index",
+    "import:patterns": "pnpm --filter @forge-kit/catalog-scripts run import:patterns",
+    "import:dev-assets": "pnpm --filter @forge-kit/catalog-scripts run import:dev-assets",
+    "cli": "pnpm --filter forge-kit run start",
+    "web:dev": "pnpm --filter @forge-kit/web run dev",
+    "web:build": "pnpm --filter @forge-kit/web run build"
+  },
+  "engines": {
+    "node": ">=20.11.0"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "eng-api-design-reviewer",
+  "name": "Eng Api Design Reviewer",
+  "description": "API Design Reviewer",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "engineering",
+    "design",
+    "api"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/alirezarezvani/claude-skills",
+    "ref": "main",
+    "path": "engineering/api-design-reviewer/SKILL.md"
+  },
+  "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/api-design-reviewer",
+  "license": "MIT",
+  "author": "alirezarezvani"
+}

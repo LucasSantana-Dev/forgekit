@@ -1,0 +1,29 @@
+id: discord-bot-dev
+name: Discord Bot Development
+description: Opinionated bundle for building a TypeScript Discord bot (e.g. Lucky).
+  Pairs prompting/testing skills with the servers you'll reach for — GitHub for PRs,
+  Redis for state inspection, Sentry for production triage.
+tags:
+- discord
+- typescript
+- bot
+items:
+- kind: skill
+  id: testing
+- kind: skill
+  id: code-review
+- kind: skill
+  id: agent-gotchas
+- kind: server
+  id: github
+- kind: server
+  id: redis
+- kind: server
+  id: sentry
+- kind: server
+  id: context7
+translations:
+  pt-BR:
+    name: Desenvolvimento de Bot Discord
+    description: 'Bundle curado para criar um bot Discord em TypeScript (ex.: Lucky).
+      Combina skills de prompt/engenharia com docs de bot Discord e MCPs essenciais.'

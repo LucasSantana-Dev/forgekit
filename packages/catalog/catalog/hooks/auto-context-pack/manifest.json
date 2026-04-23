@@ -1,0 +1,23 @@
+{
+  "id": "auto-context-pack",
+  "name": "Auto Context Pack",
+  "description": "Claude Code hook: auto-context-pack",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code",
+    "token-optimization"
+  ],
+  "event": "UserPromptSubmit",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/auto-context-pack.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/auto-context-pack.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

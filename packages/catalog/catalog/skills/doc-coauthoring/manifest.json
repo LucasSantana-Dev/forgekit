@@ -1,0 +1,24 @@
+{
+  "id": "doc-coauthoring",
+  "name": "Doc Coauthoring",
+  "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "anthropic-official",
+    "documents"
+  ],
+  "editors": [
+    "claude-code",
+    "claude-api"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/anthropics/skills",
+    "ref": "main",
+    "path": "skills/doc-coauthoring/SKILL.md"
+  },
+  "homepage": "https://github.com/anthropics/skills/tree/main/skills/doc-coauthoring",
+  "license": "MIT",
+  "author": "Anthropic"
+}

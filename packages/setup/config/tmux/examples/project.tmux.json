@@ -1,0 +1,22 @@
+{
+  "windows": [
+    {
+      "name": "editor",
+      "path": ".",
+      "panes": [
+        { "command": "clear" },
+        { "command": "git status --short --branch || true", "split": "h" }
+      ]
+    },
+    {
+      "name": "dev",
+      "path": ".",
+      "command": "npm run dev"
+    },
+    {
+      "name": "test",
+      "path": ".",
+      "command": "npm test"
+    }
+  ]
+}

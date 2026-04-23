@@ -1,0 +1,24 @@
+{
+  "id": "claude-api",
+  "name": "Claude Api",
+  "description": "Build, debug, and optimize Claude API / Anthropic SDK apps. Apps built with this skill should include prompt caching. Also handles migrating existing Claude API code between Claude model versions (4.5 → 4.6, 4.6 → 4.7, retired-model replacements). TRIGGER when: code imports `anthropic`/`@anthropic-ai/sdk`; user asks for the Claude API, Anthropic SDK, or Managed Agents; user adds/modifies/tunes a Claude feature (caching, thinking, compaction, tool use, batch, files, citations, memory) or model (O",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "anthropic-official",
+    "api"
+  ],
+  "editors": [
+    "claude-code",
+    "claude-api"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/anthropics/skills",
+    "ref": "main",
+    "path": "skills/claude-api/SKILL.md"
+  },
+  "homepage": "https://github.com/anthropics/skills/tree/main/skills/claude-api",
+  "license": "MIT",
+  "author": "Anthropic"
+}

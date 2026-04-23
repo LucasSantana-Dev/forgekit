@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "schedules.schema.json",
+  "type": "object",
+  "required": [
+    "$schema",
+    "version",
+    "defaults",
+    "triggers",
+    "routines",
+    "agentMapping"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string" },
+    "defaults": {
+      "type": "object",
+      "required": [
+        "enabled",
+        "timezone",
+        "maxConcurrentRoutines",
+        "retryPolicy",
+        "notify"
+      ],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "timezone": { "type": "string" },
+        "maxConcurrentRoutines": { "type": "integer", "minimum": 1 },
+        "retryPolicy": {
+          "type": "object",
+          "required": ["maxAttempts", "backoffSeconds", "onFailure"],
+          "properties": {
+            "maxAttempts": { "type": "integer", "minimum": 1 },
+            "backoffSeconds": {
+              "type": "array",
+              "items": { "type": "integer", "minimum": 0 }
+            },
+            "onFailure": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "notify": {
+          "type": "string",
+          "enum": ["never", "on-failure", "always"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "triggers": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "type": "string" }
+    },
+    "routines": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "trigger",
+          "agent",
+          "skill",
+          "scope",
+          "description",
+          "notify"
+        ],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "trigger": {
+            "type": "string",
+            "enum": [
+              "on-pr",
+              "on-push",
+              "on-session-start",
+              "on-session-end",
+              "daily",
+              "weekly"
+            ]
+          },
+          "schedule": { "type": "string" },
+          "agent": { "type": "string", "minLength": 1 },
+          "skill": { "type": "string", "minLength": 1 },
+          "scope": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "minLength": 1 },
+          "notify": {
+            "type": "string",
+            "enum": ["never", "on-failure", "always"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "agentMapping": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

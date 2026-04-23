@@ -1,0 +1,23 @@
+{
+  "id": "validate-handoff",
+  "name": "Validate Handoff",
+  "description": "Claude Code hook: validate-handoff",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code",
+    "validation"
+  ],
+  "event": "any",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/validate-handoff.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/validate-handoff.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

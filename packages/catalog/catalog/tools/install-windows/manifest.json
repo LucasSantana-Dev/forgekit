@@ -1,0 +1,32 @@
+{
+  "id": "install-windows",
+  "name": "Install Windows",
+  "description": "Requires -RunAsAdministrator > Check for winget",
+  "version": "0.1.0",
+  "tags": [
+    "tool",
+    "ai-dev-toolkit",
+    "setup"
+  ],
+  "runtime": "other",
+  "category": "setup",
+  "install": {
+    "copy_to": "~/.local/bin/install-windows",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/tools/install-windows.ps1"
+  },
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/packages/core/tools/install-windows.ps1",
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Install Windows",
+      "description": "Instala toolchain de CLI em Windows via winget. Requer PowerShell administrador."
+    }
+  }
+}

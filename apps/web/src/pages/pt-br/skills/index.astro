@@ -1,0 +1,41 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Card from "../../../components/Card.astro";
+import SearchFilter from "../../../components/SearchFilter.astro";
+import { getSkills } from "../../../lib/catalog.ts";
+import { localizeEntries, t, localizedUrl, type Locale } from "../../../lib/i18n.ts";
+
+const locale: Locale = "pt-br";
+const skills = localizeEntries(await getSkills(), locale);
+const base = import.meta.env.BASE_URL;
+const url = (p: string) => localizedUrl(base, p, locale);
+
+const tagSet = new Set<string>();
+for (const s of skills) for (const tag of s.tags) tagSet.add(tag);
+const tags = [...tagSet].sort();
+---
+<Base
+  title={t("list.skills.title", locale)}
+  description={t("list.skills.description", locale, { count: skills.length })}
+  locale={locale}
+>
+  <h1>{t("list.skills.title", locale)}</h1>
+  <p class="lead-muted">
+    Procedimentos acionáveis. Instale com <code>npx forge-kit install &lt;id&gt;</code>.
+    Vai para <code>~/.claude/skills/&lt;id&gt;/</code>.
+  </p>
+  <SearchFilter placeholder={`${t("search.placeholder", locale)} (${skills.length})`} tags={tags} />
+  <div class="grid">
+    {skills.map((s) => (
+      <Card
+        kind="skill"
+        id={s.id}
+        name={s.name}
+        description={s.description}
+        tags={s.tags}
+        href={url(`skills/${s.id}/`)}
+      />
+    ))}
+  </div>
+  <div id="empty-state" class="empty" style="display: none;">{t("search.noResults", locale)}</div>
+</Base>

@@ -1,0 +1,51 @@
+# ~/.codex/config.toml
+# Minimal starter config for AI Dev Toolkit — adapt before copying to ~/.codex/config.toml
+
+# Model configuration
+model = "gpt-5.4"
+model_reasoning_effort = "medium"  # low, medium, high, xhigh
+# Use the current coding-capable default from official OpenAI docs.
+# Keep model names in local config, not in team process docs.
+
+# Approval policy
+# untrusted   — approve every action (maximum control)
+# on-request  — approve when Codex is unsure (recommended for dev)
+# on-failure  — only interrupt on errors
+# never       — full-auto, no interruptions (CI/containers only)
+approval_policy = "on-request"
+
+# Sandbox mode
+# read-only          — documented conservative baseline
+# workspace-write    — recommended active-dev mode
+# danger-full-access — unrestricted (only in containers)
+sandbox_mode = "workspace-write"
+
+# Web search policy
+# Use "disabled" for local-first work or "cached" when web retrieval is useful.
+web_search = "disabled"
+
+# History
+[history]
+persistence = "save-all"
+max_bytes = 10485760  # 10 MB
+
+# TUI
+[tui]
+animations = true
+theme = "dark"
+
+# MCP servers (enable only what the project needs)
+[mcp_servers.filesystem]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-filesystem", "/Users/<you>"]
+enabled = true
+
+[mcp_servers.github]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-github"]
+env = { GITHUB_TOKEN = "$GITHUB_TOKEN" }
+enabled = false  # enable per-project
+
+# Feature flags
+[features]
+multi_agent = true  # enable when parallel subagents materially help

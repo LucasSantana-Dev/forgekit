@@ -1,0 +1,14 @@
+# Patterns and rules
+/patterns/    @LucasSantana-Dev/maintainers
+/rules/       @LucasSantana-Dev/maintainers
+/best-practices/ @LucasSantana-Dev/maintainers
+
+# Agent companies
+/companies/   @LucasSantana-Dev/maintainers
+
+# Tools and scripts
+/tools/       @LucasSantana-Dev/maintainers
+/scripts/     @LucasSantana-Dev/maintainers
+
+# CI/CD
+/.github/     @LucasSantana-Dev/maintainers

@@ -1,0 +1,27 @@
+{
+  "id": "adt-specs-roadmap-refresh",
+  "name": "Adt Specs Roadmap Refresh",
+  "description": "Regenerate `docs/roadmap.md` for a repo from all specs under `docs/specs/` + their frontmatter (status, tags, pr). Produces Now/Next/Recently-shipped sections. Run after creating / shipping a spec, or at the start of a new session for orientation.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "specs",
+    "spec-driven",
+    "design",
+    "git",
+    "deploy"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/specs/skills/roadmap-refresh/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/specs/skills/roadmap-refresh"
+}

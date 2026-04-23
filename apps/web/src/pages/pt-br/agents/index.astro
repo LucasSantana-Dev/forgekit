@@ -1,0 +1,42 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Card from "../../../components/Card.astro";
+import SearchFilter from "../../../components/SearchFilter.astro";
+import { getAgents } from "../../../lib/catalog.ts";
+import { localizeEntries, t, localizedUrl, type Locale } from "../../../lib/i18n.ts";
+
+const locale: Locale = "pt-br";
+const agents = localizeEntries(await getAgents(), locale);
+const base = import.meta.env.BASE_URL;
+const url = (p: string) => localizedUrl(base, p, locale);
+
+const tagSet = new Set<string>();
+for (const a of agents) for (const tag of a.tags) tagSet.add(tag);
+const tags = [...tagSet].sort();
+---
+<Base
+  title={t("list.agents.title", locale)}
+  description={t("list.agents.description", locale, { count: agents.length })}
+  locale={locale}
+>
+  <h1>{t("list.agents.title", locale)}</h1>
+  <p class="lead-muted">
+    Sub-agentes do Claude Code. Instale com <code>npx forge-kit install &lt;id&gt;</code> —
+    vai para <code>~/.claude/agents/&lt;id&gt;.md</code>.
+  </p>
+  <SearchFilter placeholder={`${t("search.placeholder", locale)} (${agents.length})`} tags={tags} />
+  <div class="grid">
+    {agents.map((a) => (
+      <Card
+        kind="agent"
+        id={a.id}
+        name={a.name}
+        description={a.description}
+        tags={a.tags}
+        href={url(`agents/${a.id}/`)}
+        extraTag={a.model}
+      />
+    ))}
+  </div>
+  <div id="empty-state" class="empty" style="display: none;">{t("search.noResults", locale)}</div>
+</Base>

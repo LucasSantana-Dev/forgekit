@@ -1,0 +1,27 @@
+{
+  "id": "eng-database-designer",
+  "name": "Eng Database Designer",
+  "description": "Use when the user asks to design database schemas, plan data migrations, optimize queries, choose between SQL and NoSQL, or model data relationships.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "engineering",
+    "design",
+    "planning",
+    "database",
+    "deploy"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/alirezarezvani/claude-skills",
+    "ref": "main",
+    "path": "engineering/database-designer/SKILL.md"
+  },
+  "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/database-designer",
+  "license": "MIT",
+  "author": "alirezarezvani"
+}

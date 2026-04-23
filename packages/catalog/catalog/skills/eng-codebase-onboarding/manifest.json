@@ -1,0 +1,23 @@
+{
+  "id": "eng-codebase-onboarding",
+  "name": "Eng Codebase Onboarding",
+  "description": "Codebase Onboarding",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "engineering"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/alirezarezvani/claude-skills",
+    "ref": "main",
+    "path": "engineering/codebase-onboarding/SKILL.md"
+  },
+  "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/codebase-onboarding",
+  "license": "MIT",
+  "author": "alirezarezvani"
+}

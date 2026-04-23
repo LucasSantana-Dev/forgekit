@@ -1,0 +1,26 @@
+{
+  "id": "adt-rag",
+  "name": "Adt Rag",
+  "description": "Build and debug Retrieval-Augmented Generation pipelines — chunking, embedding, retrieval, reranking",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "debugging",
+    "rag",
+    "evaluation"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/rag.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/rag.md"
+}

@@ -1,0 +1,34 @@
+id: claude-code-power-user
+name: Claude Code Power User
+description: Opinionated bundle for Claude Code users — prompting discipline, known
+  agent gotchas, worktree workflow, plus the two MCP servers you'll reach for most
+  often.
+tags:
+- claude
+- claude-code
+- starter
+items:
+- kind: skill
+  id: prompting-discipline
+- kind: skill
+  id: agent-gotchas
+- kind: skill
+  id: git-worktrees
+- kind: skill
+  id: context-building
+- kind: skill
+  id: task-orchestration
+- kind: server
+  id: context7
+- kind: server
+  id: github
+- kind: server
+  id: serena
+- kind: server
+  id: memory
+translations:
+  pt-BR:
+    name: Power User do Claude Code
+    description: Bundle curado para usuários do Claude Code — disciplina de prompts,
+      agentes conhecidos, sub-agentes de revisão e debug, operações git, carregamento
+      preguiçoso de ferramentas MCP e verificação antes de concluir.

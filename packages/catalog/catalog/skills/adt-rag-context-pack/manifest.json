@@ -1,0 +1,28 @@
+{
+  "id": "adt-rag-context-pack",
+  "name": "Adt Rag Context Pack",
+  "description": "Build a task-aware context bundle (relevant code + applicable standards + related past decisions) via the local RAG index, capped at a token budget. Use at the start of any implementation/refactor/debug task instead of reading files blindly. Replaces \"read whole file\" with \"retrieve the function + callers + rules + prior ADR.\"",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "rag",
+    "design",
+    "debugging",
+    "git",
+    "deploy",
+    "token-optimization"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/kit/rag/skills/context-pack/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/rag/skills/context-pack"
+}

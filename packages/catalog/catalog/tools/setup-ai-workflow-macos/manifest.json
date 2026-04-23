@@ -1,0 +1,32 @@
+{
+  "id": "setup-ai-workflow-macos",
+  "name": "Setup AI Workflow Macos",
+  "description": "Script: setup-ai-workflow-macos.sh",
+  "version": "0.1.0",
+  "tags": [
+    "tool",
+    "ai-dev-toolkit",
+    "setup"
+  ],
+  "runtime": "bash",
+  "category": "setup",
+  "install": {
+    "copy_to": "~/.local/bin/setup-ai-workflow-macos",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "ref": "main",
+    "path": "packages/core/tools/setup-ai-workflow-macos.sh"
+  },
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/packages/core/tools/setup-ai-workflow-macos.sh",
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Setup AI Workflow macOS",
+      "description": "Script de bootstrap one-shot para o workflow AI-assisted em macOS — Claude Code, skills padrão, hooks, config global."
+    }
+  }
+}

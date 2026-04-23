@@ -1,0 +1,26 @@
+{
+  "id": "xlsx",
+  "name": "Xlsx",
+  "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \"the xlsx in my",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "anthropic-official",
+    "documents",
+    "design",
+    "api"
+  ],
+  "editors": [
+    "claude-code",
+    "claude-api"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/anthropics/skills",
+    "ref": "main",
+    "path": "skills/xlsx/SKILL.md"
+  },
+  "homepage": "https://github.com/anthropics/skills/tree/main/skills/xlsx",
+  "license": "MIT",
+  "author": "Anthropic"
+}

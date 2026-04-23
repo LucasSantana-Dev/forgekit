@@ -1,0 +1,208 @@
+{
+  "$schema": "../schema/hooks.schema.json",
+  "version": "1.0.0",
+  "hooks": {
+    "PreToolUse": {
+      "description": "Runs before any tool executes. Can deny, rewrite input, or log.",
+      "triggers": ["every tool call"],
+      "actions": ["allow", "deny", "rewrite-input", "log"],
+      "rules": [
+        {
+          "id": "block-secrets-in-write",
+          "tool": "FileWrite",
+          "condition": "content matches secret pattern (API key, token, password)",
+          "action": "deny",
+          "message": "Blocked: attempted to write secret to file"
+        },
+        {
+          "id": "block-rm-rf",
+          "tool": "Bash",
+          "condition": "command contains 'rm -rf /' or 'rm -rf ~'",
+          "action": "deny",
+          "message": "Blocked: destructive rm command"
+        },
+        {
+          "id": "block-force-push-main",
+          "tool": "Bash",
+          "condition": "command contains 'git push --force' and target is main/master",
+          "action": "deny",
+          "message": "Blocked: force push to protected branch"
+        },
+        {
+          "id": "log-all-bash",
+          "tool": "Bash",
+          "condition": "always",
+          "action": "log",
+          "message": "Shell command executed"
+        }
+      ]
+    },
+    "PostToolUse": {
+      "description": "Runs after a tool completes. Can transform output, trigger follow-up, or log.",
+      "triggers": ["every tool completion"],
+      "actions": ["pass", "transform-output", "trigger-followup", "log"],
+      "rules": [
+        {
+          "id": "truncate-large-output",
+          "tool": "*",
+          "condition": "output exceeds 5000 chars",
+          "action": "transform-output",
+          "transform": "truncate to 2000 chars with '... (truncated)' suffix"
+        },
+        {
+          "id": "auto-lint-after-write",
+          "tool": "FileWrite",
+          "condition": "file extension is .ts, .tsx, .js, .jsx, .py",
+          "action": "trigger-followup",
+          "followup": "run lint on changed file"
+        },
+        {
+          "id": "suggest-self-heal-on-bash-error",
+          "tool": "Bash",
+          "condition": "exit code non-zero",
+          "action": "trigger-followup",
+          "followup": "apply self-heal skill: diagnose root cause before retrying"
+        },
+        {
+          "id": "suggest-eval-after-llm-prompt-write",
+          "tool": "FileWrite",
+          "condition": "file path contains 'prompt' or 'system' or content matches LLM API call pattern",
+          "action": "trigger-followup",
+          "followup": "apply eval skill: measure output quality before shipping"
+        },
+        {
+          "id": "suggest-memory-on-context-limit",
+          "tool": "*",
+          "condition": "session approaching context limit (>80%)",
+          "action": "trigger-followup",
+          "followup": "apply memory skill: write episodic entry and checkpoint before compacting"
+        }
+      ]
+    },
+    "SessionStart": {
+      "description": "Runs when a new session begins. Loads context and state.",
+      "triggers": ["session creation"],
+      "actions": ["load-context", "check-state", "log"],
+      "rules": [
+        {
+          "id": "auto-resume",
+          "condition": "plan file exists in .agents/plans/",
+          "action": "load-context",
+          "message": "Resuming from saved plan"
+        },
+        {
+          "id": "load-git-state",
+          "condition": "always",
+          "action": "load-context",
+          "message": "Loading git status, branch, and recent commits"
+        }
+      ]
+    },
+    "SessionEnd": {
+      "description": "Runs when a session ends. Persists state and syncs memory.",
+      "triggers": ["session termination", "context compaction"],
+      "actions": ["save-state", "sync-memory", "log"],
+      "rules": [
+        {
+          "id": "persist-plan-on-exit",
+          "condition": "active plan with incomplete phases",
+          "action": "save-state",
+          "message": "Saving plan state for resume"
+        },
+        {
+          "id": "sync-decisions",
+          "condition": "key decisions made this session",
+          "action": "sync-memory",
+          "message": "Syncing session decisions to persistent memory"
+        },
+        {
+          "id": "apply-memory-skill-on-end",
+          "condition": "always",
+          "action": "trigger-followup",
+          "followup": "apply memory skill: write episodic entry for any significant decisions, discoveries, or gotchas"
+        }
+      ]
+    },
+    "PreCommit": {
+      "description": "Runs before git commit. Enforces quality gates.",
+      "triggers": ["git commit"],
+      "actions": ["allow", "deny", "log"],
+      "rules": [
+        {
+          "id": "require-lint-pass",
+          "condition": "lint not run or lint failed",
+          "action": "deny",
+          "message": "Blocked: lint must pass before commit"
+        },
+        {
+          "id": "require-type-check",
+          "condition": "type-check not run or type-check failed",
+          "action": "deny",
+          "message": "Blocked: type-check must pass before commit"
+        },
+        {
+          "id": "block-secrets-in-diff",
+          "condition": "staged diff contains secret patterns",
+          "action": "deny",
+          "message": "Blocked: secrets detected in staged changes"
+        }
+      ]
+    },
+    "PrePush": {
+      "description": "Runs before git push. Ensures tests pass.",
+      "triggers": ["git push"],
+      "actions": ["allow", "deny", "log"],
+      "rules": [
+        {
+          "id": "require-tests-pass",
+          "condition": "tests not run or tests failed",
+          "action": "deny",
+          "message": "Blocked: tests must pass before push"
+        }
+      ]
+    }
+  },
+  "runtimeControls": {
+    "profiles": {
+      "minimal": {
+        "description": "Only hard-block rules — secrets, destructive commands",
+        "enabledHooks": ["PreToolUse", "PreCommit"],
+        "enabledRules": [
+          "block-secrets-in-write",
+          "block-rm-rf",
+          "block-force-push-main",
+          "block-secrets-in-diff"
+        ]
+      },
+      "standard": {
+        "description": "Security + quality gates — default profile",
+        "enabledHooks": ["PreToolUse", "PostToolUse", "PreCommit", "PrePush"],
+        "enabledRules": "all"
+      },
+      "strict": {
+        "description": "All hooks including session lifecycle and auto-lint",
+        "enabledHooks": "all",
+        "enabledRules": "all"
+      }
+    },
+    "envOverrides": {
+      "FORGE_HOOK_PROFILE": "minimal | standard | strict (default: standard)",
+      "FORGE_DISABLED_HOOKS": "comma-separated rule IDs to disable at runtime",
+      "FORGE_DISABLED_HOOK_TYPES": "comma-separated hook types to disable (e.g., PostToolUse,SessionEnd)"
+    },
+    "precedence": [
+      "FORGE_DISABLED_HOOKS overrides profile (individual rule disable)",
+      "FORGE_DISABLED_HOOK_TYPES overrides profile (entire hook type disable)",
+      "FORGE_HOOK_PROFILE selects base profile",
+      "Default: standard profile with all rules enabled"
+    ]
+  },
+  "toolMapping": {
+    "claude-code": "settings.json hooks array",
+    "opencode": "~/.config/opencode/hooks.json (installed by forge-kit)",
+    "codex": "AGENTS.md hook instructions (declarative)",
+    "cursor": ".cursor/rules/ hook rules (declarative)",
+    "windsurf": ".windsurfrules hook section (declarative)",
+    "antigravity": "~/.antigravity/hooks.json (installed by forge-kit)"
+  }
+}

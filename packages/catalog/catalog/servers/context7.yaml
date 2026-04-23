@@ -1,0 +1,21 @@
+id: context7
+name: Context7
+description: Fetches current documentation for libraries, frameworks, SDKs, and APIs.
+  Prefer over web search for library docs — training data rots fast.
+transport: stdio
+command: npx
+args:
+- -y
+- '@upstash/context7-mcp'
+tags:
+- docs
+- reference
+- library
+- research
+homepage: https://github.com/upstash/context7
+license: MIT
+translations:
+  pt-BR:
+    name: Context7
+    description: Busca documentação atualizada de bibliotecas, frameworks, SDKs e
+      APIs. Prefira Context7 em vez de busca web para docs de bibliotecas.

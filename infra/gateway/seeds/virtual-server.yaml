@@ -1,0 +1,10 @@
+# The single virtual-server UUID exposed by this gateway.
+#
+# Claude Code / IDE points at this UUID via:
+#   http://127.0.0.1:4444/servers/<uuid>/mcp
+#
+# Change with care: every user's ~/.claude/mcpServers entry embeds this UUID.
+
+uuid: 00000000-aaaa-bbbb-cccc-000000000001
+name: library
+description: Forge Kit — one virtual server fronting every registered upstream.

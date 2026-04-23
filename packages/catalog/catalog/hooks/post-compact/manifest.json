@@ -1,0 +1,23 @@
+{
+  "id": "post-compact",
+  "name": "Post Compact",
+  "description": "Claude Code hook: post-compact",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code",
+    "token-optimization"
+  ],
+  "event": "PostCompact",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/post-compact.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/post-compact.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

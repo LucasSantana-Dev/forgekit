@@ -1,0 +1,23 @@
+{
+  "id": "automation-orchestrator",
+  "name": "Automation Orchestrator",
+  "description": "Claude Code Hook: Automation Orchestrator Intelligent automation orchestration for development workflows",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code",
+    "orchestration"
+  ],
+  "event": "any",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/automation-orchestrator.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/automation-orchestrator.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana"
+}

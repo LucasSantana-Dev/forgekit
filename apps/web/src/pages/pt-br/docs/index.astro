@@ -1,0 +1,38 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Card from "../../../components/Card.astro";
+import SearchFilter from "../../../components/SearchFilter.astro";
+import { getDocs } from "../../../lib/catalog.ts";
+import { localizeEntries, t, localizedUrl, type Locale } from "../../../lib/i18n.ts";
+
+const locale: Locale = "pt-br";
+const docs = localizeEntries(await getDocs(), locale);
+const base = import.meta.env.BASE_URL;
+const url = (p: string) => localizedUrl(base, p, locale);
+
+const tagSet = new Set<string>();
+for (const d of docs) for (const tag of d.tags) tagSet.add(tag);
+const tags = [...tagSet].sort();
+---
+<Base
+  title={t("list.docs.title", locale)}
+  description={t("list.docs.description", locale, { count: docs.length })}
+  locale={locale}
+>
+  <h1>{t("list.docs.title", locale)}</h1>
+  <p class="lead-muted">Material de referência. Somente leitura — sem comando de instalação.</p>
+  <SearchFilter placeholder={`${t("search.placeholder", locale)} (${docs.length})`} tags={tags} />
+  <div class="grid">
+    {docs.map((d) => (
+      <Card
+        kind="doc"
+        id={d.id}
+        name={d.title}
+        description={d.description}
+        tags={d.tags}
+        href={url(`docs/${d.id}/`)}
+      />
+    ))}
+  </div>
+  <div id="empty-state" class="empty" style="display: none;">{t("search.noResults", locale)}</div>
+</Base>

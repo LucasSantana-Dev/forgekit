@@ -1,0 +1,24 @@
+{
+  "id": "executing-plans",
+  "name": "Executing Plans",
+  "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "community",
+    "superpowers",
+    "planning"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/obra/superpowers",
+    "ref": "main",
+    "path": "skills/executing-plans/SKILL.md"
+  },
+  "homepage": "https://github.com/obra/superpowers/tree/main/skills/executing-plans",
+  "license": "MIT",
+  "author": "obra"
+}
