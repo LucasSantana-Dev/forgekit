@@ -1,7 +1,7 @@
 {
   "id": "capture-training",
   "name": "Capture Training",
-  "description": "Script: capture-training.py",
+  "description": "Capture prompt/response training data from Claude Code sessions for evals, fine-tuning prep, and workflow analysis. Best on any machine with Python 3; low CPU and RAM needs.",
   "version": "0.1.0",
   "tags": [
     "tool",
@@ -26,7 +26,7 @@
   "translations": {
     "pt-BR": {
       "name": "Capture Training",
-      "description": "Script Python para capturar dados de treinamento de sessões do Claude Code — pares prompt/resposta para fine-tuning ou avaliação."
+      "description": "Captura dados de treinamento de sessões do Claude Code para avaliação, preparo de fine-tuning e análise de workflow. Ideal em qualquer máquina com Python 3; baixo uso de CPU e RAM."
     }
   }
 }

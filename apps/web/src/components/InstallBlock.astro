@@ -1,11 +1,23 @@
 ---
+import { resolveLocale, t, type Locale } from "../lib/i18n";
+
 interface Props {
   command: string;
   label?: string;
+  locale?: Locale;
+  installLabel?: string;
 }
-const { command, label = "copy" } = Astro.props;
+const locale = Astro.props.locale ?? resolveLocale(Astro.url.pathname);
+const {
+  command,
+  label = t("installCopy.label", locale),
+  installLabel = t("entry.install", locale),
+} = Astro.props;
 ---
 <div class="install">
-  <code class="cmd">{command}</code>
+  <div class="install-copy">
+    <span class="install-label">{installLabel}</span>
+    <code class="cmd">{command}</code>
+  </div>
   <button class="copy" data-copy={command} type="button">{label}</button>
 </div>

@@ -1,0 +1,44 @@
+---
+import Base from "../../../layouts/Base.astro";
+import InstallBlock from "../../../components/InstallBlock.astro";
+import { getSkills } from "../../../lib/catalog.ts";
+import { localizeEntries, type Locale } from "../../../lib/i18n.ts";
+import { installCommand, renderMarkdown } from "../../../lib/ui.ts";
+
+const locale: Locale = "pt-br";
+
+export async function getStaticPaths() {
+  const locale: Locale = "pt-br";
+  const skills = localizeEntries(await getSkills(), locale);
+  return skills.map((skill) => ({ params: { id: skill.id }, props: { skill } }));
+}
+
+const { skill } = Astro.props;
+const rendered = renderMarkdown(skill.body);
+const cmd = installCommand("skill", skill.id)!;
+---
+<Base title={skill.name} description={skill.description} locale={locale}>
+  <p style="margin-bottom: 1.5rem;"><a href="../">← todas as skills</a></p>
+  <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+    <span style="font-size: 1.6rem;">🎯</span>
+    <h1 style="margin: 0;">{skill.name}</h1>
+    <span class="kind kind-skill">skill</span>
+  </div>
+  <p class="lead-muted" style="margin-bottom: 1rem;">{skill.description}</p>
+  <div class="tags" style="margin-bottom: 1.25rem;">
+    {skill.version && <span class="tag">v{skill.version}</span>}
+    {skill.editors?.map((e) => <span class="tag">{e}</span>)}
+    {skill.tags.map((t) => <span class="tag">{t}</span>)}
+  </div>
+
+  <InstallBlock command={cmd} />
+
+  <article class="markdown mt-4" set:html={rendered} />
+
+  {(skill.source?.path || skill.license) && (
+    <p style="color: var(--fg-subtle); font-size: 0.82rem; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+      {skill.source?.path && <>Fonte: <code>{skill.source.path}</code></>}
+      {skill.license && <>{skill.source?.path ? " · " : "Licença: "}{skill.license}</>}
+    </p>
+  )}
+</Base>

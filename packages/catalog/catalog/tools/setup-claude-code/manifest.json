@@ -1,7 +1,7 @@
 {
   "id": "setup-claude-code",
   "name": "Setup Claude Code",
-  "description": "--------------------------------------------------------------------------- 1. MCP servers — write ~/.claude/.mcp.json with recommended global servers ---------------------------------------------------------------------------",
+  "description": "Configure Claude Code with Forge Kit defaults for MCP servers, hooks, skills, and global settings. Best for developers standardizing a local AI workflow on a machine with existing Claude Code access.",
   "version": "0.1.0",
   "tags": [
     "tool",
@@ -26,7 +26,7 @@
   "translations": {
     "pt-BR": {
       "name": "Setup Claude Code",
-      "description": "Configura o Claude Code com defaults sensatos — modelos, permissões, hooks, skills globais. Seguro para reexecutar."
+      "description": "Configura o Claude Code com defaults do Forge Kit para servidores MCP, hooks, skills e ajustes globais. Ideal para padronizar o workflow local de IA em uma máquina com Claude Code já disponível."
     }
   }
 }

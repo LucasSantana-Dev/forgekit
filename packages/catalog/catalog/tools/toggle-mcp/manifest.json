@@ -1,7 +1,7 @@
 {
   "id": "toggle-mcp",
   "name": "Toggle Mcp",
-  "description": "Script: toggle-mcp.py",
+  "description": "Enable or disable individual MCP providers quickly while debugging tool conflicts, cost, or startup issues. Best on any Python 3 environment with local access to your editor or agent config files.",
   "version": "0.1.0",
   "tags": [
     "tool",
@@ -26,7 +26,7 @@
   "translations": {
     "pt-BR": {
       "name": "Toggle MCP",
-      "description": "Liga/desliga servidores MCP individuais em settings.json. Útil para depurar interações entre MCPs."
+      "description": "Liga ou desliga provedores MCP individuais rapidamente ao depurar conflitos de ferramentas, custo ou startup. Ideal em qualquer ambiente com Python 3 e acesso local aos arquivos de configuração do editor/agente."
     }
   }
 }

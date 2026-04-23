@@ -1,7 +1,7 @@
 {
   "id": "setup-ai-workflow-macos",
   "name": "Setup AI Workflow Macos",
-  "description": "Script: setup-ai-workflow-macos.sh",
+  "description": "Provision a full Forge Kit AI-assisted workflow on macOS, including tools, defaults, and daily-use integrations. Best for a primary dev machine with admin access, network access, and enough disk for local tooling.",
   "version": "0.1.0",
   "tags": [
     "tool",
@@ -26,7 +26,7 @@
   "translations": {
     "pt-BR": {
       "name": "Setup AI Workflow macOS",
-      "description": "Script de bootstrap one-shot para o workflow AI-assisted em macOS — Claude Code, skills padrão, hooks, config global."
+      "description": "Provisiona um workflow completo de desenvolvimento assistido por IA no macOS com ferramentas, defaults e integrações de uso diário. Ideal para a máquina principal de desenvolvimento com acesso administrativo, rede e espaço em disco suficiente."
     }
   }
 }

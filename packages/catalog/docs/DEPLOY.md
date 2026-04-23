@@ -1,6 +1,6 @@
 # Deploy to Cloudflare Workers Static Assets + custom domain
 
-Target: **`library.lucassantana.tech`** on Cloudflare Workers. Free tier. Works with the private GitHub repo.
+Target: **`forgekit.lucassantana.tech`** on Cloudflare Workers. Free tier. Works with the private GitHub repo.
 
 Cloudflare builds and deploys on every push to `main` via its Git integration. No GitHub Actions workflow needed.
 
@@ -20,23 +20,24 @@ Cloudflare builds and deploys on every push to `main` via its Git integration. N
    - **Root directory:** _(leave empty)_
 4. **Environment variables** (Production):
    - `NODE_VERSION` = `20`
-   - `ASTRO_SITE` = `https://library.lucassantana.tech`
+   - `ASTRO_SITE` = `https://forgekit.lucassantana.tech`
    - `ASTRO_BASE` = `/`
 5. **Save and deploy.** First build takes ~2 min; subsequent rebuilds ~30–60s.
 
 Every push to `main` rebuilds and publishes. Every non-main push gets a preview deploy.
 
-## 2. Custom domain — `library.lucassantana.tech`
+## 2. Custom domain — `forgekit.lucassantana.tech`
 
-In the Worker project → **Settings** → **Domains & Routes** → enter `library.lucassantana.tech`.
+In the Worker project → **Settings** → **Domains & Routes** → enter `forgekit.lucassantana.tech`.
+Keep `library.lucassantana.tech` attached during rollout until the new host resolves and serves the same app.
 
 - **If `lucassantana.tech` is on Cloudflare DNS:** CF auto-adds the CNAME — done in ~30s. Verify in the DNS tab:
   ```
-  library  CNAME  <worker-target>  (Proxied)
+  forgekit  CNAME  <worker-target>  (Proxied)
   ```
 - **If `lucassantana.tech` is on another registrar:** CF shows DNS instructions — add at your registrar:
   ```
-  Host:   library
+  Host:   forgekit
   Type:   CNAME
   Value:  <worker-target>
   TTL:    300
@@ -56,4 +57,4 @@ Free tier capacity is more than enough for the static catalog.
 
 - **Build fails with `pnpm: command not found`** — add `PNPM_VERSION=9.12.0` to env vars. CF detects pnpm from `packageManager` in `package.json`, but being explicit helps.
 - **Site loads but assets 404** — `ASTRO_BASE` must be `/` for root-of-domain deploys. It gets baked into every asset URL at build time.
-- **Custom domain stuck on "Verifying"** — usually DNS propagation. Wait 5 min, then check the Cloudflare-provided target for the route.
+- **Custom domain stuck on "Verifying"** — usually DNS propagation or pending certificate issuance. Wait 5–10 min, then check the Cloudflare-provided target for the route.

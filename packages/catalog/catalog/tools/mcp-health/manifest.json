@@ -1,7 +1,7 @@
 {
   "id": "mcp-health",
   "name": "Mcp Health",
-  "description": "Script: mcp-health.py",
+  "description": "Validate configured MCP servers for connectivity, auth, and tool/schema health before you depend on them in daily workflows. Best on any Python 3 environment with network access to your MCP targets.",
   "version": "0.1.0",
   "tags": [
     "tool",
@@ -26,7 +26,7 @@
   "translations": {
     "pt-BR": {
       "name": "MCP Health",
-      "description": "Checagem de saúde para servidores MCP configurados — valida conectividade, autenticação e schema de ferramentas."
+      "description": "Valida servidores MCP configurados quanto a conectividade, autenticação e saúde de ferramentas/schema antes de usá-los no fluxo diário. Ideal em qualquer ambiente com Python 3 e acesso de rede aos alvos MCP."
     }
   }
 }

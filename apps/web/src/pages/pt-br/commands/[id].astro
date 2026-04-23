@@ -1,0 +1,43 @@
+---
+import Base from "../../../layouts/Base.astro";
+import InstallBlock from "../../../components/InstallBlock.astro";
+import { getCommands } from "../../../lib/catalog.ts";
+import { localizeEntries, type Locale } from "../../../lib/i18n.ts";
+import { installCommand, kindGlyph, kindLabel, renderMarkdown } from "../../../lib/ui.ts";
+
+const locale: Locale = "pt-br";
+
+export async function getStaticPaths() {
+  const locale: Locale = "pt-br";
+  const commands = localizeEntries(await getCommands(), locale);
+  return commands.map((command) => ({ params: { id: command.id }, props: { command } }));
+}
+
+const { command } = Astro.props;
+const rendered = renderMarkdown(command.body);
+const cmd = installCommand("command", command.id)!;
+---
+<Base title={command.name} description={command.description} locale={locale}>
+  <p style="margin-bottom: 1.5rem;"><a href="../">← todos os comandos</a></p>
+  <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+    <span style="font-size: 1.6rem;">{kindGlyph(command.kind)}</span>
+    <h1 style="margin: 0;">{command.name}</h1>
+    <span class="kind kind-command">{kindLabel(command.kind)}</span>
+  </div>
+  <p class="lead-muted" style="margin-bottom: 1rem;">{command.description}</p>
+  <div class="tags" style="margin-bottom: 1.25rem;">
+    {command.category && <span class="tag">{command.category}</span>}
+    {command.tags.map((t) => <span class="tag">{t}</span>)}
+  </div>
+
+  <InstallBlock command={cmd} />
+
+  <article class="markdown mt-4" set:html={rendered} />
+
+  {(command.source?.path || command.license) && (
+    <p style="color: var(--fg-subtle); font-size: 0.82rem; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+      {command.source?.path && <>Fonte: <code>{command.source.path}</code></>}
+      {command.license && <>{command.source?.path ? " · " : "Licença: "}{command.license}</>}
+    </p>
+  )}
+</Base>

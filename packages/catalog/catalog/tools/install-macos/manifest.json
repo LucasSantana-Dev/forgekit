@@ -1,7 +1,7 @@
 {
   "id": "install-macos",
   "name": "Install Macos",
-  "description": "Check if brew is installed Core CLI tools",
+  "description": "Bootstrap Homebrew and the core Forge Kit CLI stack on macOS. Use on a fresh machine or to repair drift; recommended for developer Macs with admin access and network access.",
   "version": "0.1.0",
   "tags": [
     "tool",
@@ -26,7 +26,7 @@
   "translations": {
     "pt-BR": {
       "name": "Install macOS",
-      "description": "Instala toolchain de CLI (Homebrew + ferramentas centrais) em macOS. Idempotente — pule pacotes já instalados."
+      "description": "Faz bootstrap do Homebrew e da stack principal de CLI do Forge Kit no macOS. Use em máquinas novas ou para corrigir drift; recomendado para Macs de desenvolvimento com acesso administrativo e rede."
     }
   }
 }

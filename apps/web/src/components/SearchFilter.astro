@@ -1,33 +1,40 @@
 ---
+import { resolveLocale, t } from "../lib/i18n";
+
 interface Props {
   placeholder?: string;
   tags?: string[];
 }
+const locale = resolveLocale(Astro.url.pathname);
+const allChipLabel = locale === "pt-br" ? "Todos" : t("search.allTags", locale);
 const { placeholder = "Search by name, description, or tag…", tags = [] } = Astro.props;
 ---
-<div class="search-wrap" style="margin: 0 0 1.25rem;">
-  <span class="search-icon" aria-hidden="true">
-    <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-      <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8" />
-      <path d="M14 14L18 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-    </svg>
-  </span>
-  <input
-    id="search"
-    type="search"
-    autocomplete="off"
-    spellcheck="false"
-    placeholder={placeholder}
-  />
-</div>
-{tags.length > 0 && (
-  <div class="chips" id="chips">
-    <button class="chip active" data-tag="" type="button">all</button>
-    {tags.map((t) => (
-      <button class="chip" data-tag={t} type="button">{t}</button>
-    ))}
+<div class="search-panel">
+  <div class="search-wrap">
+    <span class="search-icon" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+        <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8" />
+        <path d="M14 14L18 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      </svg>
+    </span>
+    <input
+      id="search"
+      type="search"
+      autocomplete="off"
+      spellcheck="false"
+      placeholder={placeholder}
+      aria-label={placeholder}
+    />
   </div>
-)}
+  {tags.length > 0 && (
+    <div class="chips" id="chips">
+      <button class="chip active" data-tag="" type="button">{allChipLabel}</button>
+      {tags.map((t) => (
+        <button class="chip" data-tag={t} type="button">{t}</button>
+      ))}
+    </div>
+  )}
+</div>
 
 <script is:inline>
   (function () {

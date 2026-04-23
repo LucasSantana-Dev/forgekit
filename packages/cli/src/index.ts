@@ -33,7 +33,7 @@ Commands:
 
   ${kleur.cyan("--version")} / ${kleur.cyan("--help")}
 
-Docs: https://library.lucassantana.tech
+Docs: https://forgekit.lucassantana.tech
 Repo: https://github.com/LucasSantana-Dev/ai-dev-toolkit
 `;
 

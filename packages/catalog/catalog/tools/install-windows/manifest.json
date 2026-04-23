@@ -1,7 +1,7 @@
 {
   "id": "install-windows",
   "name": "Install Windows",
-  "description": "Requires -RunAsAdministrator > Check for winget",
+  "description": "Bootstrap the core Forge Kit CLI stack on Windows via PowerShell and winget. Use on workstation setup or repair runs; requires administrator access, package-manager access, and standard developer hardware.",
   "version": "0.1.0",
   "tags": [
     "tool",
@@ -26,7 +26,7 @@
   "translations": {
     "pt-BR": {
       "name": "Install Windows",
-      "description": "Instala toolchain de CLI em Windows via winget. Requer PowerShell administrador."
+      "description": "Faz bootstrap da stack principal de CLI do Forge Kit no Windows via PowerShell e winget. Útil no setup ou reparo da estação; requer acesso administrativo, acesso ao gerenciador de pacotes e hardware de desenvolvedor padrão."
     }
   }
 }

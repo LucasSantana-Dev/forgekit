@@ -12,13 +12,24 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   // Keep the existing Worker binding until the Cloudflare app rename is scheduled.
   "name": "ai-dev-toolkit-library",
+  // Keep the legacy library host during cutover; make forgekit the canonical host.
+  "routes": [
+    {
+      "pattern": "library.lucassantana.tech",
+      "custom_domain": true,
+    },
+    {
+      "pattern": "forgekit.lucassantana.tech",
+      "custom_domain": true,
+    },
+  ],
   "compatibility_date": "2025-04-01",
   "assets": {
     "directory": "./dist",
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash",
   },
-  "workers_dev": true,
+  "workers_dev": false,
   "observability": {
     "enabled": false,
   },

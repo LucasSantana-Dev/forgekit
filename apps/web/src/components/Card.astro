@@ -1,5 +1,5 @@
 ---
-import { kindIcon, type Kind } from "../lib/ui.ts";
+import { displayEntryName, kindGlyph, kindLabel, type Kind } from "../lib/ui.ts";
 
 interface Props {
   kind: Kind;
@@ -11,7 +11,9 @@ interface Props {
   extraTag?: string;
 }
 const { kind, id, name, description, tags = [], href, extraTag } = Astro.props;
-const icon = kindIcon(kind);
+const icon = kindGlyph(kind);
+const label = kindLabel(kind);
+const displayName = displayEntryName(name);
 const haystack = [id, name, description, ...tags].join(" ").toLowerCase();
 ---
 <a
@@ -20,17 +22,24 @@ const haystack = [id, name, description, ...tags].join(" ").toLowerCase();
   data-kind={kind}
   data-tags={tags.join(",")}
   data-search={haystack}
+  style={`--card-accent: var(--kind-${kind})`}
 >
-  <div class="row-head">
+  <div class="card-top">
     <span class="icon">{icon}</span>
-    <h3>{name}</h3>
-    <span class={`kind kind-${kind}`}>{kind}</span>
+    <span class={`kind kind-${kind}`}>{label}</span>
   </div>
-  <p>{description}</p>
+  <div class="card-body">
+    <h3>{displayName}</h3>
+    <p>{description}</p>
+  </div>
   {(extraTag || tags.length > 0) && (
-    <div class="tags">
-      {extraTag && <span class="tag">{extraTag}</span>}
-      {tags.slice(0, 5).map((t) => <span class="tag">{t}</span>)}
+    <div class="card-footer">
+      <div class="tags">
+        {extraTag && <span class="tag tag-extra">{extraTag}</span>}
+        {tags.slice(0, 2).map((t) => <span class="tag">{t}</span>)}
+        {tags.length > 2 && <span class="tag tag-more">+{tags.length - 2}</span>}
+      </div>
+      <span class="card-arrow" aria-hidden="true">↗</span>
     </div>
   )}
 </a>

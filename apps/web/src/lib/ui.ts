@@ -2,24 +2,65 @@ import { marked } from "marked";
 
 export type Kind = "skill" | "server" | "agent" | "collection" | "doc" | "hook" | "command" | "tool";
 
-export function kindIcon(kind: Kind): string {
+const ACRONYM_REPLACEMENTS: Array<[RegExp, string]> = [
+  [/^adt\s+/i, ""],
+  [/\bai\b/gi, "AI"],
+  [/\bapi\b/gi, "API"],
+  [/\bci cd\b/gi, "CI/CD"],
+  [/\bmcp\b/gi, "MCP"],
+  [/\brag\b/gi, "RAG"],
+  [/\brtk\b/gi, "RTK"],
+];
+
+export function displayEntryName(name: string): string {
+  return ACRONYM_REPLACEMENTS.reduce((value, [pattern, replacement]) => {
+    return value.replace(pattern, replacement);
+  }, name);
+}
+
+export function kindGlyph(kind: Kind): string {
   switch (kind) {
     case "skill":
-      return "🎯";
+      return "SK";
     case "server":
-      return "🔌";
+      return "MCP";
     case "agent":
-      return "🤖";
+      return "AG";
     case "collection":
-      return "📦";
+      return "COL";
     case "doc":
-      return "📖";
+      return "DOC";
     case "hook":
-      return "🪝";
+      return "HK";
     case "command":
-      return "⚡";
+      return "CMD";
     case "tool":
-      return "🛠";
+      return "TL";
+  }
+}
+
+export function kindIcon(kind: Kind): string {
+  return kindGlyph(kind);
+}
+
+export function kindLabel(kind: Kind): string {
+  switch (kind) {
+    case "skill":
+      return "Skill";
+    case "server":
+      return "MCP server";
+    case "agent":
+      return "Agent";
+    case "collection":
+      return "Collection";
+    case "doc":
+      return "Doc";
+    case "hook":
+      return "Hook";
+    case "command":
+      return "Command";
+    case "tool":
+      return "Tool";
   }
 }
 

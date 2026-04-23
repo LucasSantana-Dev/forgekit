@@ -78,7 +78,7 @@ The skill lands in `~/.claude/skills/prompting-discipline/` and Claude Code pick
 
 ## 5. Browse the catalog
 
-Open the [catalog site](https://library.lucassantana.tech) or run `npx forge-kit list`.
+Open the [catalog site](https://forgekit.lucassantana.tech) or run `npx forge-kit list`.
 
 ## Troubleshooting
 

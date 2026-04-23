@@ -45,7 +45,7 @@ python seeds/seed.py
 npx forge-kit setup-claude
 
 # 3. Browse the catalog
-open https://library.lucassantana.tech
+open https://forgekit.lucassantana.tech
 
 # 4. Install a skill / register a server
 npx forge-kit install <slug>

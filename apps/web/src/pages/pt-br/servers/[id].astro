@@ -1,0 +1,61 @@
+---
+import Base from "../../../layouts/Base.astro";
+import InstallBlock from "../../../components/InstallBlock.astro";
+import { getServers } from "../../../lib/catalog.ts";
+import { localizeEntries, type Locale } from "../../../lib/i18n.ts";
+import { installCommand, kindGlyph, kindLabel } from "../../../lib/ui.ts";
+
+const locale: Locale = "pt-br";
+
+export async function getStaticPaths() {
+  const locale: Locale = "pt-br";
+  const servers = localizeEntries(await getServers(), locale);
+  return servers.map((server) => ({ params: { id: server.id }, props: { server } }));
+}
+
+const { server } = Astro.props;
+
+const cmd = installCommand("server", server.id)!;
+const runCmd =
+  server.transport === "stdio"
+    ? `${server.command ?? ""} ${(server.args ?? []).join(" ")}`.trim()
+    : server.url ?? "";
+---
+<Base title={server.name} description={server.description} locale={locale}>
+  <p style="margin-bottom: 1.5rem;"><a href="../">← todos os servidores</a></p>
+  <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+    <span style="font-size: 1.6rem;">{kindGlyph(server.kind)}</span>
+    <h1 style="margin: 0;">{server.name}</h1>
+    <span class="kind kind-server">{kindLabel(server.kind)}</span>
+  </div>
+  <p class="lead-muted" style="margin-bottom: 1rem;">{server.description}</p>
+  <div class="tags" style="margin-bottom: 1.25rem;">
+    <span class="tag">transport: {server.transport}</span>
+    {server.tags.map((t) => <span class="tag">{t}</span>)}
+  </div>
+
+  <InstallBlock command={cmd} />
+
+  <h2>Como ele roda</h2>
+  <pre><code>{runCmd}</code></pre>
+
+  {server.env && server.env.length > 0 && (
+    <>
+      <h2>Variáveis de ambiente</h2>
+      <ul class="markdown">
+        {server.env.map((e) => (
+          <li>
+            <code>{e.name}</code>
+            {e.required ? " (obrigatória)" : " (opcional)"}
+            {e.description && <> — {e.description}</>}
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+
+  <p style="color: var(--fg-subtle); font-size: 0.82rem; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+    {server.homepage && <>Homepage: <a href={server.homepage}>{server.homepage}</a></>}
+    {server.license && <> · {server.license}</>}
+  </p>
+</Base>

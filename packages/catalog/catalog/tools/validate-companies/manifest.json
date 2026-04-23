@@ -1,7 +1,7 @@
 {
   "id": "validate-companies",
   "name": "Validate Companies",
-  "description": "Script: validate-companies.sh",
+  "description": "Validate company profile data against the Forge Kit schema before publishing, syncing, or importing it elsewhere. Best in CI or content-maintenance workflows on any POSIX shell with low resource requirements.",
   "version": "0.1.0",
   "tags": [
     "tool",
@@ -26,7 +26,7 @@
   "translations": {
     "pt-BR": {
       "name": "Validate Companies",
-      "description": "Valida entradas em uma lista de empresas contra um schema JSON. Usado para sincronizar dados em múltiplos repos."
+      "description": "Valida perfis de empresas contra o schema do Forge Kit antes de publicar, sincronizar ou importar os dados em outros lugares. Ideal em CI ou manutenção de conteúdo com shell POSIX e baixo consumo de recursos."
     }
   }
 }

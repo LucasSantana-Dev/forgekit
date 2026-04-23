@@ -1,7 +1,7 @@
 {
   "id": "release",
   "name": "Release",
-  "description": "Script: release.py",
+  "description": "Run a semver release flow with version bump, changelog generation, tagging, and publish orchestration. Best for maintainers on a clean git tree with Python 3, git, and release credentials ready.",
   "version": "0.1.0",
   "tags": [
     "tool",
@@ -26,7 +26,7 @@
   "translations": {
     "pt-BR": {
       "name": "Release",
-      "description": "Helper de release semver — bump de versão, tag git, gera changelog e publica. Comporta-se bem com commitlint."
+      "description": "Executa o fluxo de release semver com bump de versão, changelog, tags e publicação. Ideal para mantenedores em árvore git limpa com Python 3, git e credenciais de release prontas."
     }
   }
 }

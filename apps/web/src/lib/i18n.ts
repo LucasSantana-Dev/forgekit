@@ -69,6 +69,13 @@ export const SHELL: Record<Locale, Record<string, string>> = {
     "home.headline": "The Forge Kit catalog",
     "home.lede":
       "Curated skills, sub-agents, MCP servers, hooks, commands, and tools for AI-assisted dev. Free, self-hosted, inspired by skills.sh and mcpmarket.com.",
+    "home.eyebrow": "Premium editorial catalog",
+    "home.commandTitle": "Install surface",
+    "home.commandNote": "One command to seed the whole stack.",
+    "home.metric.collections": "Collections",
+    "home.metric.depth": "Live categories",
+    "home.metric.install": "Install path",
+    "home.metric.flow": "Curated entries",
     "home.ctaBrowse": "Browse {count} entries",
     "home.ctaQuickstart": "Quickstart",
     "home.stat.skills": "Skills",
@@ -88,10 +95,26 @@ export const SHELL: Record<Locale, Record<string, string>> = {
     "home.section.toolsLede":
       "Token optimization, RAG, compression, MCP ops, diagnostics.",
     "home.section.hooks": "Hooks",
+    "home.section.workflow": "Workflow essentials",
+    "home.section.workflowLede":
+      "The pieces people reach for first: compact context, retrieval, and token-saving hooks.",
     "home.section.tags": "Browse by tag",
     "home.allOf": "All {count} {kind} →",
 
-    "installCopy.label": "copy install",
+    "home.workflow.exploreAll": "Open workflow search",
+    "home.workflow.browse": "Browse category",
+    "home.workflow.fallback": "Browse this area",
+    "home.workflow.compact.title": "Compact context",
+    "home.workflow.compact.lede":
+      "Keep sessions lean, preserve active state, and compact before the session runs hot.",
+    "home.workflow.rag.title": "RAG",
+    "home.workflow.rag.lede":
+      "Build task-aware context bundles instead of reading files blindly.",
+    "home.workflow.rtk.title": "RTK",
+    "home.workflow.rtk.lede":
+      "Let token-savings hooks rewrite noisy commands automatically.",
+
+    "installCopy.label": "Copy command",
     "installCopy.copied": "✓ copied",
 
     "list.skills.title": "Skills",
@@ -159,6 +182,13 @@ export const SHELL: Record<Locale, Record<string, string>> = {
     "home.headline": "O catálogo do Forge Kit",
     "home.lede":
       "Skills, sub-agentes, servidores MCP, hooks, comandos e ferramentas curados para desenvolvimento assistido por IA. Grátis, auto-hospedável, inspirado em skills.sh e mcpmarket.com.",
+    "home.eyebrow": "Catálogo editorial premium",
+    "home.commandTitle": "Superfície de instalação",
+    "home.commandNote": "Um comando para iniciar toda a stack.",
+    "home.metric.collections": "Coleções",
+    "home.metric.depth": "Categorias ativas",
+    "home.metric.install": "Caminho de instalação",
+    "home.metric.flow": "Itens curados",
     "home.ctaBrowse": "Ver {count} itens",
     "home.ctaQuickstart": "Início rápido",
     "home.stat.skills": "Skills",
@@ -178,10 +208,26 @@ export const SHELL: Record<Locale, Record<string, string>> = {
     "home.section.toolsLede":
       "Otimização de tokens, RAG, compressão, operações MCP, diagnóstico.",
     "home.section.hooks": "Hooks",
+    "home.section.workflow": "Essenciais do fluxo",
+    "home.section.workflowLede":
+      "Os itens que entram primeiro na prática: contexto compacto, recuperação e hooks para economizar tokens.",
     "home.section.tags": "Navegar por tag",
     "home.allOf": "Todos os {count} {kind} →",
 
-    "installCopy.label": "copiar instalação",
+    "home.workflow.exploreAll": "Abrir busca do fluxo",
+    "home.workflow.browse": "Ver categoria",
+    "home.workflow.fallback": "Ver esta área",
+    "home.workflow.compact.title": "Contexto compacto",
+    "home.workflow.compact.lede":
+      "Mantenha as sessões leves, preserve o estado ativo e compacte antes de estourar o contexto.",
+    "home.workflow.rag.title": "RAG",
+    "home.workflow.rag.lede":
+      "Monte bundles de contexto por tarefa em vez de ler arquivos às cegas.",
+    "home.workflow.rtk.title": "RTK",
+    "home.workflow.rtk.lede":
+      "Deixe hooks de economia de tokens reescreverem comandos barulhentos automaticamente.",
+
+    "installCopy.label": "Copiar comando",
     "installCopy.copied": "✓ copiado",
 
     "list.skills.title": "Skills",
