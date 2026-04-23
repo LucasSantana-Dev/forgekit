@@ -13,6 +13,7 @@ Three portable, optional hooks that run at edit moments. **Signature feature** �
 ## The Three Hooks
 
 ### 1. post-edit-format.sh
+
 **When**: Immediately after you Write or Edit a file  
 **What**: Runs your repo's formatter (`npm run format`, `make format`, `black`, etc.)  
 **Output**: File formatted; advisory if formatting changes were made  
@@ -27,6 +28,7 @@ $ claude "refactor this function"
 ```
 
 ### 2. post-edit-typecheck.sh
+
 **When**: After Write / Edit  
 **What**: Runs type checker (`tsc --noEmit`, `mypy`, `go vet`)  
 **Output**: Type errors listed; blocks if strict mode  
@@ -40,6 +42,7 @@ $ claude "add async timeout"
 ```
 
 ### 3. evaluate-response.sh
+
 **When**: After Claude finishes a response (PostToolUse)  
 **What**: Scans output for lazy patterns (`// TODO implement`, `pass`, empty functions)  
 **Output**: Warnings logged; never blocks  
@@ -60,10 +63,11 @@ $ RAG_HOOKS_EVALUATE=1 claude "write the service"
 
 ```bash
 cd your-project
-bash /path/to/ai-dev-toolkit/ai-dev-toolkit-setup/scripts/install-rag.sh --with-hooks
+bash packages/setup/scripts/install-rag.sh --with-hooks
 ```
 
 This:
+
 - Copies hooks to `~/.claude/hooks/`
 - Wires them in `settings.json`
 - Creates `.claude.local/hooks.json` with per-project toggles
@@ -71,7 +75,7 @@ This:
 ### Option B: Global Setup
 
 ```bash
-bash install-rag.sh --with-hooks --global
+bash packages/setup/scripts/install-rag.sh --with-hooks --global
 ```
 
 Hooks apply to all projects. Per-project overrides via `.claude.local/`.
@@ -99,11 +103,13 @@ export RAG_HOOKS_FORMAT=0
 ## Why "Signature Feature"?
 
 **No other public AI dev toolkit ships edit-moment hooks.** Most solutions rely on:
+
 - Manual "did you run lint?" prompting
 - Post-session CI checks (late feedback)
 - No automated feedback at all
 
 Our hooks run **immediately**, **optionally**, **without blocking**. They're:
+
 - ✓ Governance-safe (no execution, no secrets)
 - ✓ Portable (work with any formatter / type checker)
 - ✓ Silent by default (zero surprise on first install)
@@ -123,6 +129,7 @@ kit/hooks/
 ```
 
 Each script:
+
 1. **Checks prerequisites** (`command -v npm >/dev/null || exit 0`)
 2. **Runs the tool** (formatter, type-checker, or analyzer)
 3. **Logs output** (always to console, never silent)

@@ -18,16 +18,19 @@ cd ai-dev-toolkit
 
 The toolkit ships with a **RAG (Retrieval-Augmented Generation) index** — a local SQLite database of all skills, rules, and patterns indexed by semantic similarity.
 
+From the Forge Kit monorepo root, the setup script lives at `packages/setup/scripts/install-rag.sh`.
+
 ```bash
-bash ai-dev-toolkit-setup/scripts/install-rag.sh
+bash packages/setup/scripts/install-rag.sh
 ```
 
 This:
+
 - Creates `~/.claude/rag-index/` with 18k+ chunks
 - Installs MCP server (port 7429 by default)
 - Wires up the `/recall` and `/context-pack` skills
 
-**Verify**: 
+**Verify**:
 
 ```bash
 rag_query "skill for automated code review"

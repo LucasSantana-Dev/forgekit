@@ -16,5 +16,5 @@
 - [x] Add root workspace scripts and path-filtered CI
 - [x] Update docs and package metadata for Forge Kit naming
 - [x] Run full verification across core, setup, catalog, CLI, web, and docs
-- [ ] Open implementation PR
+- [x] Open implementation PR
 - [ ] Rename repo and add old-repo pointers only after CI is green
