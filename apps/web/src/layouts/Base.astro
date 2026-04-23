@@ -11,7 +11,7 @@ interface Props {
 }
 const {
   title,
-  description = "Curated library of Skills, MCP servers, and Claude Code sub-agents for AI-assisted development.",
+  description = "Curated Forge Kit catalog of Skills, MCP servers, and Claude Code sub-agents for AI-assisted development.",
   locale = resolveLocale(Astro.url.pathname),
 } = Astro.props;
 const base = import.meta.env.BASE_URL;
@@ -502,7 +502,7 @@ const htmlLang = locale === "pt-br" ? "pt-BR" : "en";
       <a href="https://github.com/LucasSantana-Dev/ai-dev-toolkit">{t("footer.source", locale)}</a>
       · {t("footer.license", locale)}
       · {t("footer.builtWith", locale)} <a href="https://astro.build">Astro</a>,
-      {t("footer.runsOn", locale)} <a href="https://pages.cloudflare.com">Cloudflare Pages</a>
+      {t("footer.runsOn", locale)} <a href="https://workers.cloudflare.com">Cloudflare Workers</a>
     </footer>
 
     <script is:inline>

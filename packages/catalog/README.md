@@ -1,7 +1,8 @@
-# Forge Kit
+# Forge Kit catalog
 
 A curated catalog of **Skills** and **MCP servers** for AI-assisted development,
-fronted by a single local MCP gateway. Inspired by [skills.sh] and [mcpmarket.com].
+fronted by a single local MCP gateway and a Cloudflare-hosted web catalog.
+Inspired by [skills.sh] and [mcpmarket.com].
 
 Free, open-source (MIT for the code), invite-friendly. Each person runs their
 own gateway locally — the catalog is shared, the runtime is not.
@@ -20,7 +21,7 @@ own gateway locally — the catalog is shared, the runtime is not.
   - `docs/` — reference material (no install verb)
 - **`README.md`** — package overview and quickstart.
 - **`../cli/`** — `forge-kit`: `list`, `search`, `install`, `add-server`, `setup-claude`, `doctor`.
-- **`../../apps/web/`** — Astro static site that browses the catalog.
+- **`../../apps/web/`** — Astro static site deployed on Cloudflare Workers.
 - **`../../infra/gateway/`** — docker-compose for a local [mcp-context-forge] gateway that aggregates every registered MCP server behind one endpoint.
 - **`schemas/`** — JSON schemas for all catalog kinds.
 - **`scripts/`** — validators + importers.

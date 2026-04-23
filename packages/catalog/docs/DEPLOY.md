@@ -1,6 +1,6 @@
 # Deploy to Cloudflare Workers Static Assets + custom domain
 
-Target: **`library.lucassantana.tech`**. Free tier. Works with the private GitHub repo.
+Target: **`library.lucassantana.tech`** on Cloudflare Workers. Free tier. Works with the private GitHub repo.
 
 Cloudflare builds and deploys on every push to `main` via its Git integration. No GitHub Actions workflow needed.
 
@@ -11,13 +11,13 @@ Cloudflare builds and deploys on every push to `main` via its Git integration. N
 1. Log in to Cloudflare → **Workers & Pages** → **Create** → **Worker**.
 2. Authorize the Cloudflare GitHub app for `LucasSantana-Dev/ai-dev-toolkit`.
 3. Project settings:
-   - **Project name:** `ai-dev-toolkit-library` until the app rename is scheduled.
+   - **Project name:** keep the existing `ai-dev-toolkit-library` Worker binding until the production app rename is scheduled.
    - **Production branch:** `main`
    - **Framework preset:** Astro
    - **Build command:** `pnpm install --frozen-lockfile && pnpm --filter @forge-kit/web run build`
    - **Deploy command:** `cd apps/web && npx wrangler deploy`
    - **Build output directory:** `apps/web/dist`
-   - **Root directory:** *(leave empty)*
+   - **Root directory:** _(leave empty)_
 4. **Environment variables** (Production):
    - `NODE_VERSION` = `20`
    - `ASTRO_SITE` = `https://library.lucassantana.tech`

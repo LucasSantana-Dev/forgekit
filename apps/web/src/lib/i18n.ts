@@ -21,7 +21,10 @@ interface EntryLike {
   };
 }
 
-export function localizeEntry<T extends EntryLike>(entry: T, locale: Locale): T {
+export function localizeEntry<T extends EntryLike>(
+  entry: T,
+  locale: Locale,
+): T {
   if (locale === "pt-br" && entry.translations?.["pt-BR"]) {
     const pt = entry.translations["pt-BR"];
     return {
@@ -34,7 +37,10 @@ export function localizeEntry<T extends EntryLike>(entry: T, locale: Locale): T 
   return entry;
 }
 
-export function localizeEntries<T extends EntryLike>(entries: T[], locale: Locale): T[] {
+export function localizeEntries<T extends EntryLike>(
+  entries: T[],
+  locale: Locale,
+): T[] {
   return entries.map((e) => localizeEntry(e, locale));
 }
 
@@ -59,8 +65,8 @@ export const SHELL: Record<Locale, Record<string, string>> = {
     "language.en": "English",
     "language.pt-br": "Português (Brasil)",
 
-    "home.title": "Library",
-    "home.headline": "The AI-dev toolkit library",
+    "home.title": "Catalog",
+    "home.headline": "The Forge Kit catalog",
     "home.lede":
       "Curated skills, sub-agents, MCP servers, hooks, commands, and tools for AI-assisted dev. Free, self-hosted, inspired by skills.sh and mcpmarket.com.",
     "home.ctaBrowse": "Browse {count} entries",
@@ -149,8 +155,8 @@ export const SHELL: Record<Locale, Record<string, string>> = {
     "language.en": "English",
     "language.pt-br": "Português (Brasil)",
 
-    "home.title": "Biblioteca",
-    "home.headline": "A biblioteca do toolkit de dev com IA",
+    "home.title": "Catálogo",
+    "home.headline": "O catálogo do Forge Kit",
     "home.lede":
       "Skills, sub-agentes, servidores MCP, hooks, comandos e ferramentas curados para desenvolvimento assistido por IA. Grátis, auto-hospedável, inspirado em skills.sh e mcpmarket.com.",
     "home.ctaBrowse": "Ver {count} itens",
@@ -181,8 +187,7 @@ export const SHELL: Record<Locale, Record<string, string>> = {
     "list.skills.title": "Skills",
     "list.skills.description": "{count} skills para dev com IA.",
     "list.servers.title": "Servidores MCP",
-    "list.servers.description":
-      "{count} servidores MCP prontos para conectar.",
+    "list.servers.description": "{count} servidores MCP prontos para conectar.",
     "list.agents.title": "Sub-agentes",
     "list.agents.description": "{count} sub-agentes do Claude Code.",
     "list.tools.title": "Ferramentas",
@@ -246,7 +251,11 @@ export function switchLocalePath(pathname: string, target: Locale): string {
   return `/pt-br/${trimmed}`;
 }
 
-export function localizedUrl(base: string, path: string, locale: Locale): string {
+export function localizedUrl(
+  base: string,
+  path: string,
+  locale: Locale,
+): string {
   const clean = path.replace(/^\//, "");
   if (locale === "en") return `${base}${clean}`;
   return `${base}pt-br/${clean}`;

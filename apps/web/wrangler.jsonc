@@ -1,8 +1,7 @@
-// Cloudflare Workers static-asset deploy config.
+// Cloudflare Workers static-asset deploy config for the Forge Kit web app.
 //
-// This project is an Astro static site. The Cloudflare "Workers with
-// static assets" flow (newer replacement for Pages) serves the built
-// output from dist/ via this config.
+// This project is an Astro static site. The Cloudflare "Workers with static
+// assets" flow serves the built output from dist/ via this config.
 //
 // CF build commands (configured in the dashboard, not here):
 //   Build:   pnpm install --frozen-lockfile && pnpm --filter @forge-kit/web run build
@@ -17,10 +16,10 @@
   "assets": {
     "directory": "./dist",
     "not_found_handling": "404-page",
-    "html_handling": "auto-trailing-slash"
+    "html_handling": "auto-trailing-slash",
   },
   "workers_dev": true,
   "observability": {
-    "enabled": false
-  }
+    "enabled": false,
+  },
 }
