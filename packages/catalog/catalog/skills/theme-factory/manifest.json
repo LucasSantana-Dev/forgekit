@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/theme-factory",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "Fábrica de Tema",
+      "description": "Toolkit para estilizar artefatos com um tema. Estes artefatos podem ser slides, docs, websites ou apps."
+    }
+  }
 }

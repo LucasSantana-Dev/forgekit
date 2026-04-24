@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/obra/superpowers/tree/main/skills/executing-plans",
   "license": "MIT",
-  "author": "obra"
+  "author": "obra",
+  "translations": {
+    "pt-BR": {
+      "name": "Executando Planos",
+      "description": "Use quando você tem um plano de implementação escrito para executar em uma sessão separada."
+    }
+  }
 }

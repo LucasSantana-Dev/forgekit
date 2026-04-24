@@ -22,5 +22,11 @@
   },
   "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/api-test-suite-builder",
   "license": "MIT",
-  "author": "alirezarezvani"
+  "author": "alirezarezvani",
+  "translations": {
+    "pt-BR": {
+      "name": "Construtor de Suíte de Teste de API",
+      "description": "Use quando o usuário solicita gerar testes de API, criar suítes de testes de integração ou autótestes para endpoints."
+    }
+  }
 }

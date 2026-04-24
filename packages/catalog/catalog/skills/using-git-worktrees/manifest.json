@@ -22,5 +22,11 @@
   },
   "homepage": "https://github.com/obra/superpowers/tree/main/skills/using-git-worktrees",
   "license": "MIT",
-  "author": "obra"
+  "author": "obra",
+  "translations": {
+    "pt-BR": {
+      "name": "Usando Git Worktrees",
+      "description": "Use quando começando trabalho de feature que precisa de isolamento da workspace atual."
+    }
+  }
 }

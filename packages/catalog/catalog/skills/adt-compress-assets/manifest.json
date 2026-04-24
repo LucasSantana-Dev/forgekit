@@ -22,5 +22,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/compress-assets.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/compress-assets.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Compress Assets",
+      "description": "Compressão lossless de imagens e SVGs. Executa pipeline determinístico via oxipng + svgo + cwebp + ImageMagick."
+    }
+  }
 }

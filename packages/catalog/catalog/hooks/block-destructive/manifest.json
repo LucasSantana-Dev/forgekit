@@ -18,5 +18,11 @@
     "path": "~/.claude/hooks/security/block-destructive.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Bloquear Comandos Destrutivos",
+      "description": "Hook para bloquear comandos destrutivos no Claude Code. Previne operações perigosas que podem causar perda de dados"
+    }
+  }
 }

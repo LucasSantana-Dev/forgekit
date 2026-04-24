@@ -18,5 +18,11 @@
     "path": "ai-dev-toolkit/packages/core/patterns/prompting-discipline.md"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Disciplina de Prompting",
+      "description": "Como você pergunta ao modelo importa mais que qual modelo você pergunta. Duas disciplinas: specificity + verification."
+    }
+  }
 }

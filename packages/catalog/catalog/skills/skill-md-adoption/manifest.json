@@ -20,5 +20,11 @@
     "path": "ai-dev-toolkit/packages/core/patterns/skill-md-adoption.md"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Adoção de SKILL.md",
+      "description": "SKILL.md é uma especificação aberta lançada pela Anthropic em 2025 que padroniza descoberta e descrição de skills."
+    }
+  }
 }

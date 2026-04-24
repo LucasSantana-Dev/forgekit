@@ -19,5 +19,11 @@
     "path": "ai-dev-toolkit/packages/core/patterns/prompt-injection-defense.md"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Defesa contra Prompt Injection",
+      "description": "Prompt injection não é um ataque teórico. Proteja aplicações contra manipulação de prompt com estratégias em camadas."
+    }
+  }
 }

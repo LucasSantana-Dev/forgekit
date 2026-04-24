@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/obra/superpowers/tree/main/skills/writing-plans",
   "license": "MIT",
-  "author": "obra"
+  "author": "obra",
+  "translations": {
+    "pt-BR": {
+      "name": "Escrevendo Planos",
+      "description": "Use quando você tem um spec ou requisitos para uma tarefa multi-step, antes de tocar qualquer código."
+    }
+  }
 }

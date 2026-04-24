@@ -18,5 +18,11 @@
     "path": "~/.claude/hooks/productivity/pre-commit-validation.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Validação Pré-Commit",
+      "description": "Hook de validação pré-commit para UIForge MCP. Executa verificações essenciais antes de permitir commits"
+    }
+  }
 }

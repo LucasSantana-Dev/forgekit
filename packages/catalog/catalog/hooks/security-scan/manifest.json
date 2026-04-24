@@ -19,5 +19,11 @@
     "path": "~/.claude/hooks/quality/security-scan.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Verificação de Segurança",
+      "description": "Hook de verificação de segurança para UIForge MCP. Executa verificações de segurança abrangentes em alterações de código"
+    }
+  }
 }

@@ -19,5 +19,11 @@
     "path": "~/.claude/hooks/validate-command.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Validar Comando",
+      "description": "Hook Claude Code: validar-comando"
+    }
+  }
 }

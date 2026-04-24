@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/claude-api",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "Claude API",
+      "description": "Construa, debugue e otimize aplicações Claude API / Anthropic SDK. Apps construídos com esta skill devem incluir prompt caching."
+    }
+  }
 }

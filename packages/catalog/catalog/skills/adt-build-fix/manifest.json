@@ -21,5 +21,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/build-fix.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/build-fix.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Build Fix",
+      "description": "Triagem local de erros de build. Detecta erros comuns de compilação e sugere correções baseadas em padrões codebase."
+    }
+  }
 }

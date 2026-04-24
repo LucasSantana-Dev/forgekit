@@ -23,5 +23,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/mcp-patterns.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/mcp-patterns.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Mcp Patterns",
+      "description": "Construa servidores MCP robustos e seguros — schemas de tool, interações stateful, padrões async, logging."
+    }
+  }
 }

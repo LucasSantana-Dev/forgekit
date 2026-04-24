@@ -19,5 +19,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/bilingual-readme-sync.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/bilingual-readme-sync.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Bilingual Readme Sync",
+      "description": "Mantém paridade EN/PT em pares de README.md em um repositório (e em repos gêmeos como agentes parallelos importando um README.md de outra forma)."
+    }
+  }
 }

@@ -19,5 +19,11 @@
     "path": "~/.claude/hooks/test-auto-context-pack.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Teste Auto Context Pack",
+      "description": "Suite de testes para o hook auto-context-pack"
+    }
+  }
 }

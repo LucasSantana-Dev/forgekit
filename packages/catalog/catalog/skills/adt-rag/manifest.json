@@ -22,5 +22,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/rag.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/rag.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Rag",
+      "description": "Construa e debugue pipelines de Retrieval-Augmented Generation — chunking, embedding, ranking, retrieval, synthesis."
+    }
+  }
 }

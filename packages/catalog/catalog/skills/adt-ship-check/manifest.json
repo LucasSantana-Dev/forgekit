@@ -21,5 +21,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/ship-check.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/ship-check.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Ship Check",
+      "description": "Verifique trabalho antes de commitar, pushar ou solicitar review. Valide completude, segurança, e prontidão."
+    }
+  }
 }

@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/obra/superpowers/tree/main/skills/test-driven-development",
   "license": "MIT",
-  "author": "obra"
+  "author": "obra",
+  "translations": {
+    "pt-BR": {
+      "name": "Test-Driven Development",
+      "description": "Use quando implementando qualquer feature ou bugfix, antes de escrever código de implementação."
+    }
+  }
 }

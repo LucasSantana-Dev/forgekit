@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/obra/superpowers/tree/main/skills/brainstorming",
   "license": "MIT",
-  "author": "obra"
+  "author": "obra",
+  "translations": {
+    "pt-BR": {
+      "name": "Brainstorming",
+      "description": "Você DEVE usar isto antes de qualquer trabalho criativo - criando features, construindo componentes, redesignando UX."
+    }
+  }
 }

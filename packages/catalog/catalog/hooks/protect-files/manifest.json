@@ -19,5 +19,11 @@
     "path": "~/.claude/hooks/protect-files.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Proteger Arquivos",
+      "description": "Hook Claude Code: proteger-arquivos"
+    }
+  }
 }

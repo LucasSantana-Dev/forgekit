@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/doc-coauthoring",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "Co-autoria de Documentação",
+      "description": "Guie usuários através de um workflow estruturado para co-autorizar documentação. Use quando criando documentação com múltiplos autores."
+    }
+  }
 }

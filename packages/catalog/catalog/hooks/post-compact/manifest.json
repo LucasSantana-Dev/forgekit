@@ -19,5 +19,11 @@
     "path": "~/.claude/hooks/post-compact.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Pós Compactação",
+      "description": "Hook Claude Code: pós-compactação"
+    }
+  }
 }

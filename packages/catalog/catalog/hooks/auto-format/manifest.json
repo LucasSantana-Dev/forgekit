@@ -18,5 +18,11 @@
     "path": "~/.claude/hooks/quality/auto-format.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Formatação Automática",
+      "description": "Formata automaticamente o código após edições do Claude. Garante formatação consistente em todos os tipos de arquivo"
+    }
+  }
 }

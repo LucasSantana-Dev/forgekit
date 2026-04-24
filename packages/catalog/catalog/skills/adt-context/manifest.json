@@ -41,5 +41,11 @@
       "multi-PR reviews",
       "sessions that have already consumed >60% context"
     ]
+  },
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Context",
+      "description": "Otimize uso da janela de contexto — compacte dados obsoletos, comprima via summarização, remova ruído, prepare context antes de grandes tarefas."
+    }
   }
 }
