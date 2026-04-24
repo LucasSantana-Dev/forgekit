@@ -9,6 +9,9 @@ Batteries-included, opt-in-per-skill reference layer for AI-assisted development
 
 Pick your entry point:
 
+## Installing
+- **[Installing entries](./installing.md)** — the reference. Why there's no mega-install script; what each kind of install does; where files land; how to verify and uninstall (15 min)
+
 ## Just curious about AI tools? Start here.
 Plain-language, non-technical. No install required for the first two.
 - **[Get productive with AI in 10 minutes](./ten-minute-start.md)** — three decisions, one real task, no jargon (10 min)
