@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "Criador de Skill",
+      "description": "Crie novas skills, modifique e melhore skills existentes, e meça performance de skill."
+    }
+  }
 }

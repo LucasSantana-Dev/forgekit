@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/mcp-server-builder",
   "license": "MIT",
-  "author": "alirezarezvani"
+  "author": "alirezarezvani",
+  "translations": {
+    "pt-BR": {
+      "name": "Construtor de Servidor MCP",
+      "description": "Skill para construir servidores MCP (Model Context Protocol) de alta qualidade com segurança e performance."
+    }
+  }
 }

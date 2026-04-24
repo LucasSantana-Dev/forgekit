@@ -21,5 +21,11 @@
   },
   "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/api-design-reviewer",
   "license": "MIT",
-  "author": "alirezarezvani"
+  "author": "alirezarezvani",
+  "translations": {
+    "pt-BR": {
+      "name": "Revisor de Design de API",
+      "description": "Skill para revisar designs de API e garantir best practices, segurança, versionamento e escalabilidade."
+    }
+  }
 }

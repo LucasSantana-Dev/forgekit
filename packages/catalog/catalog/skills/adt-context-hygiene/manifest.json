@@ -23,5 +23,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/context-hygiene.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/context-hygiene.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Context Hygiene",
+      "description": "Mantenha sessões focadas e eficientes — remova outputs obsoletos, preserve estado ativo, compacte grandes blocos de texto."
+    }
+  }
 }

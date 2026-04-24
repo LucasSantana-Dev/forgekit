@@ -21,5 +21,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/release-flow.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/release-flow.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Release Flow",
+      "description": "Entregue mudanças validadas com evidência de release repetível — version bump, changelog, commit convencional."
+    }
+  }
 }

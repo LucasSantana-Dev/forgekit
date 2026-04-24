@@ -19,5 +19,11 @@
     "path": "~/.claude/hooks/productivity/context-injector.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Injetor de Contexto",
+      "description": "Hook de injeção de contexto para Claude Code. Injeta contexto relevante com base na análise do prompt do usuário"
+    }
+  }
 }

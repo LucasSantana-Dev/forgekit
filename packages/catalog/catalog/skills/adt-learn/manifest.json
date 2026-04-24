@@ -20,5 +20,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/learn.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/learn.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Learn",
+      "description": "Auto-extraia padrões reutilizáveis da sessão atual em skills ou memória. Captura learnings implícitos e os reifica."
+    }
+  }
 }

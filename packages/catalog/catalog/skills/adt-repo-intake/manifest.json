@@ -19,5 +19,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/repo-intake.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/repo-intake.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Repo Intake",
+      "description": "Incorpore um repositório desconhecido rapidamente antes de fazer qualquer mudança. Mapeia estrutura, descobrir padrões de código."
+    }
+  }
 }

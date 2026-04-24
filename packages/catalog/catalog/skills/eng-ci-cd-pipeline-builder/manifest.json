@@ -21,5 +21,11 @@
   },
   "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/ci-cd-pipeline-builder",
   "license": "MIT",
-  "author": "alirezarezvani"
+  "author": "alirezarezvani",
+  "translations": {
+    "pt-BR": {
+      "name": "Construtor de Pipeline CI/CD",
+      "description": "Skill para design e implementação de pipelines de CI/CD robustos, seguros e mantíveis."
+    }
+  }
 }

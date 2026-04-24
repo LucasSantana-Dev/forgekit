@@ -21,5 +21,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/verify.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/verify.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Verify",
+      "description": "Rode suite completa de quality gate antes de commitar ou criar um PR."
+    }
+  }
 }

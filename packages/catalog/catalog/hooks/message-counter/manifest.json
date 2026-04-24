@@ -18,5 +18,11 @@
     "path": "~/.claude/hooks/message-counter.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Contador de Mensagens",
+      "description": "message-counter.sh — Hook UserPromptSubmit. Rastreia contagem de mensagens por sessão. Gera automaticamente handoff por projeto no limite. Custo: 0 tokens em mensagens normais. Imprime apenas nos limiares 15, 20, 25, 30+."
+    }
+  }
 }

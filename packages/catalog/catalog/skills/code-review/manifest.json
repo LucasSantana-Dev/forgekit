@@ -19,5 +19,11 @@
     "path": "ai-dev-toolkit/packages/core/patterns/code-review.md"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Revisão de Código Assistida por IA",
+      "description": "Code review é time-consuming e inconsistente. Reviewers perdem security issues, UX problems, edge cases, opportunities para design improvement."
+    }
+  }
 }

@@ -18,5 +18,11 @@
     "path": "~/.claude/hooks/rtk-rewrite.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "RTK Rewrite",
+      "description": "Hook RTK Claude Code — reescreve comandos para usar rtk para economia de tokens. Requer: rtk >= 0.23.0, jq. Delegação de lógica de reescrita em `rtk rewrite` (src/discover/registry.rs). Edit o registro Rust para alterar regras, não este arquivo. Protocolo: 0=reescrita encontrada auto-allow, 1=sem equivalente, passa inalterado"
+    }
+  }
 }

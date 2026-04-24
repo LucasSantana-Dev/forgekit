@@ -18,5 +18,11 @@
     "path": "ai-dev-toolkit/packages/core/patterns/testing.md"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Geração de Teste Assistida por IA",
+      "description": "Escreva testes sistematicamente para reduzir regressões, aumentar cobertura e prevenir refatorações acidentais."
+    }
+  }
 }

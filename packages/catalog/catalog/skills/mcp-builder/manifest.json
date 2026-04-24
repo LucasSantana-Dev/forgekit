@@ -22,5 +22,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/mcp-builder",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "Construtor MCP",
+      "description": "Guia para criar servidores MCP (Model Context Protocol) de alta qualidade que habilitam automação e integração."
+    }
+  }
 }

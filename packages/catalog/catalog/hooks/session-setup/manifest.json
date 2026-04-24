@@ -18,5 +18,11 @@
     "path": "~/.claude/hooks/productivity/session-setup.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Configuração de Sessão",
+      "description": "Hook de configuração de sessão Claude Code (versão Fish). Otimiza a sessão para produtividade e eficiência de tokens"
+    }
+  }
 }

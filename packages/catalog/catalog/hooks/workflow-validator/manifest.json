@@ -18,5 +18,11 @@
     "path": "~/.claude/hooks/productivity/workflow-validator.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Validador de Fluxo de Trabalho",
+      "description": "Hook de validação de fluxo de trabalho para Claude Code. Valida fluxos de trabalho e garante conformidade com padrões Forge Space"
+    }
+  }
 }

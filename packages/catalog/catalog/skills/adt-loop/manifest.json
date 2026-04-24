@@ -24,5 +24,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/loop.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/loop.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Loop",
+      "description": "Ciclo de desenvolvimento autônomo — plan, implement, test, review, fix, commit, and PR com checkpoints de salvação."
+    }
+  }
 }

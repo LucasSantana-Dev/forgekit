@@ -19,5 +19,11 @@
     "path": "~/.claude/hooks/automation-orchestrator.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Orquestrador de Automação",
+      "description": "Hook Claude Code: Orquestrador de Automação. Orquestração inteligente de automação para fluxos de desenvolvimento"
+    }
+  }
 }

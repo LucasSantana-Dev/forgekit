@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/git-worktree-manager",
   "license": "MIT",
-  "author": "alirezarezvani"
+  "author": "alirezarezvani",
+  "translations": {
+    "pt-BR": {
+      "name": "Gerenciador de Git Worktree",
+      "description": "Skill para gerenciar git worktrees para trabalho paralelo isolado em repositórios grandes."
+    }
+  }
 }

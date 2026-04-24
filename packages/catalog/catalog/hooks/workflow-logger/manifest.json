@@ -18,5 +18,11 @@
     "path": "~/.claude/hooks/productivity/workflow-logger.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Registrador de Fluxo de Trabalho",
+      "description": "Hook de registro de fluxo de trabalho para Claude Code. Rastreia eventos de fluxo de trabalho e métricas de produtividade"
+    }
+  }
 }

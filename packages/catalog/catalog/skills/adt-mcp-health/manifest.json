@@ -21,5 +21,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/mcp-health.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/mcp-health.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Mcp Health",
+      "description": "Valide saúde de provedores MCP ao vivo — separe problemas de config de auth e connectivity."
+    }
+  }
 }

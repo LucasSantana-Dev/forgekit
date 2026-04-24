@@ -22,5 +22,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/rag/skills/recall"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/rag/skills/recall",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Rag Recall",
+      "description": "Recupere memory/context relevante via RAG (embeddings + semantic search). Complementa grep (exato) e Serena (símbolos code)."
+    }
+  }
 }
