@@ -57,6 +57,9 @@ export const SHELL: Record<Locale, Record<string, string>> = {
     "nav.github": "GitHub",
     "nav.brand": "Forge Kit",
 
+    "a11y.skipToContent": "Skip to main content",
+    "a11y.primaryNav": "Primary",
+
     "footer.source": "Source",
     "footer.license": "MIT",
     "footer.builtWith": "Built with",
@@ -177,6 +180,9 @@ export const SHELL: Record<Locale, Record<string, string>> = {
     "nav.docs": "Documentação",
     "nav.github": "GitHub",
     "nav.brand": "Forge Kit",
+
+    "a11y.skipToContent": "Pular para o conteúdo principal",
+    "a11y.primaryNav": "Navegação principal",
 
     "footer.source": "Código-fonte",
     "footer.license": "MIT",
