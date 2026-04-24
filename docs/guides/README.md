@@ -42,6 +42,7 @@ Plain-language, non-technical. No install required for the first two.
 - **[Conventions as Code](./conventions-as-code.md)** — rules/ rendering, tool-overlay model, sliced standards (5 min)
 
 ## Operations
+- **[Auto-deploy](./auto-deploy.md)** — how `forgekit.lucassantana.tech` redeploys on every push to main. One-time CF token setup, smoke check, manual fallback (4 min)
 - **[Hooks](./hooks.md)** — edit-moment hooks pack: format, typecheck, evaluate-response. Signature feature (6 min)
 - **[Governance](./governance.md)** — compliance Q&A: data, secrets, deps, audit, chezmoi vs dual-branch (10 min)
 - **[Tool Matrix](./tool-matrix.md)** — skill × tool (Claude Code / Codex / Cursor / Copilot / Gemini) × primitive (4 min)

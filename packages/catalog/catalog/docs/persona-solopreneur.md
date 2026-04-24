@@ -15,6 +15,14 @@ source:
   upstream: >-
     https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/companies/solopreneur
   license: MIT
+translations:
+  pt-BR:
+    title: Persona Solopreneur
+    description: >-
+      Solopreneur Studio é uma empresa compacta de agentes para um produto
+      conduzido por um fundador. Mantém a organização simples: um
+      fundador/operador define prioridades, um engenheiro de produto entrega
+      e um operador de growth fecha o loop com os usuários.
 ---
 ## COMPANY
 

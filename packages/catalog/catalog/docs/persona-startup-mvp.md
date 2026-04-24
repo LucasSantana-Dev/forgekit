@@ -15,6 +15,13 @@ source:
   upstream: >-
     https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/companies/startup-mvp
   license: MIT
+translations:
+  pt-BR:
+    title: Persona Startup MVP
+    description: >-
+      Startup MVP Lab é um template pequeno de empresa para startups em
+      estágio inicial. Separa direção de produto, implementação e lançamento
+      para que os times andem rápido sem turvar a responsabilidade.
 ---
 ## COMPANY
 

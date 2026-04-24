@@ -107,6 +107,45 @@ async function main() {
     }
   }
 
+  // Bilingual parity: every user-facing entry must carry pt-BR translations
+  // for the user-visible name/title and description. Without this gate, new
+  // catalog entries silently regress the /pt-br/* surface to English fallback
+  // (which is what regressed in PRs predating #110).
+  //
+  // Disable per-environment with FORGE_KIT_SKIP_I18N_CHECK=1.
+  if (process.env.FORGE_KIT_SKIP_I18N_CHECK !== "1") {
+    const I18N_REQUIRED: CatalogKind[] = [
+      "skill",
+      "server",
+      "agent",
+      "hook",
+      "command",
+      "tool",
+      "collection",
+      "doc",
+    ];
+    for (const entry of allEntries) {
+      if (!I18N_REQUIRED.includes(entry.kind)) continue;
+      const data = entry.data as Record<string, unknown>;
+      const pt = ((data.translations as { "pt-BR"?: { name?: string; title?: string; description?: string } } | undefined) ?? {})["pt-BR"];
+      const reasons: string[] = [];
+      if (!pt) {
+        reasons.push("missing translations.pt-BR");
+      } else {
+        // docs use `title`, every other kind uses `name`.
+        const nameField = entry.kind === "doc" ? "title" : "name";
+        const ptName = entry.kind === "doc" ? pt.title : pt.name;
+        if (!ptName || ptName.trim() === "") reasons.push(`missing translations.pt-BR.${nameField}`);
+        if (!pt.description || pt.description.trim() === "") reasons.push("missing translations.pt-BR.description");
+      }
+      if (reasons.length > 0) {
+        console.error(`❌ i18n parity ${entry.kind} ${entry.id} (${entry.path})`);
+        for (const r of reasons) console.error(`  - ${r}`);
+        failures++;
+      }
+    }
+  }
+
   if (failures) {
     console.error(`\n❌ ${failures} validation error${failures === 1 ? "" : "s"}`);
     console.error(JSON.stringify(counts));

@@ -15,6 +15,13 @@ source:
   upstream: >-
     https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/companies/agency
   license: MIT
+translations:
+  pt-BR:
+    title: Persona Agência
+    description: >-
+      Delivery Agency é um template compacto de empresa orientada a serviços.
+      Foi pensado para projetos cliente onde discovery, execução, QA e
+      comunicação precisam andar juntos.
 ---
 ## COMPANY
 

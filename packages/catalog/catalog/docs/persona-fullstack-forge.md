@@ -16,6 +16,15 @@ source:
   upstream: >-
     https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/companies/fullstack-forge
   license: MIT
+translations:
+  pt-BR:
+    title: Persona Fullstack Forge
+    description: >-
+      Fullstack Forge é uma consultoria full-service de desenvolvimento de
+      software construída a partir de 66 skills especializadas. A empresa
+      opera em hub-and-spoke: o CTO roteia o trabalho para o team lead
+      apropriado, e os team leads delegam para especialistas com profundidade
+      de domínio.
 ---
 ## COMPANY
 

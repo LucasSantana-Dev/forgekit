@@ -15,6 +15,13 @@ source:
   upstream: >-
     https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/companies/open-source-maintainer
   license: MIT
+translations:
+  pt-BR:
+    title: Persona Mantenedor Open Source
+    description: >-
+      Open Source Maintainer Collective é um template leve de empresa para
+      mantenedores que precisam de estrutura em torno de releases,
+      documentação, suporte à comunidade e triagem de issues.
 ---
 ## COMPANY
 
