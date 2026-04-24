@@ -28,5 +28,27 @@
       "name": "MCP Health",
       "description": "Valida servidores MCP configurados quanto a conectividade, autenticação e saúde de ferramentas/schema antes de usá-los no fluxo diário. Ideal em qualquer ambiente com Python 3 e acesso de rede aos alvos MCP."
     }
+  },
+  "usage": {
+    "use_when": "You want to verify every configured MCP server responds with auth + expected tools before a critical workflow (daily standup, agent loop, demo).",
+    "skip_when": "You only need a sanity check on one specific server — invoke that server directly instead.",
+    "prerequisites": [
+      "Python 3.10+",
+      "~/.claude/mcp.json or equivalent MCP config present",
+      "Network reachability to configured servers"
+    ],
+    "resources": {
+      "ram": "< 256 MB",
+      "compute": "cpu-light",
+      "network": "online",
+      "cost": "free"
+    },
+    "install_difficulty": "easy",
+    "time_to_setup": "minutes",
+    "good_for": [
+      "pre-flight before a demo",
+      "CI sanity check on agent config",
+      "diagnosing a flaky MCP workflow"
+    ]
   }
 }

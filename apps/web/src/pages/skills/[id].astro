@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import InstallBlock from "../../components/InstallBlock.astro";
+import UsageBlock from "../../components/UsageBlock.astro";
 import { getSkills } from "../../lib/catalog.ts";
 import { installCommand, renderMarkdown } from "../../lib/ui.ts";
 
@@ -27,6 +28,8 @@ const cmd = installCommand("skill", skill.id)!;
   </div>
 
   <InstallBlock command={cmd} />
+
+  <UsageBlock usage={skill.usage} locale="en" />
 
   <article class="markdown mt-4" set:html={rendered} />
 

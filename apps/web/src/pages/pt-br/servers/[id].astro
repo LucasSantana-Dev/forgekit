@@ -1,6 +1,7 @@
 ---
 import Base from "../../../layouts/Base.astro";
 import InstallBlock from "../../../components/InstallBlock.astro";
+import UsageBlock from "../../../components/UsageBlock.astro";
 import { getServers } from "../../../lib/catalog.ts";
 import { localizeEntries, type Locale } from "../../../lib/i18n.ts";
 import { installCommand, kindGlyph, kindLabel } from "../../../lib/ui.ts";
@@ -35,6 +36,8 @@ const runCmd =
   </div>
 
   <InstallBlock command={cmd} />
+
+  <UsageBlock usage={server.usage} locale={locale} />
 
   <h2>Como ele roda</h2>
   <pre><code>{runCmd}</code></pre>

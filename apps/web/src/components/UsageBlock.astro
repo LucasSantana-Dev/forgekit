@@ -1,0 +1,201 @@
+---
+import type { Usage } from "../lib/catalog";
+import type { Locale } from "../lib/i18n";
+import { t } from "../lib/i18n";
+
+interface Props {
+  usage?: Usage;
+  locale: Locale;
+}
+
+const { usage, locale } = Astro.props;
+
+const has = (v: unknown) => v !== undefined && v !== null && v !== "";
+
+const resourceRows: Array<[string, string | undefined]> = usage?.resources
+  ? [
+      [t("usage.res.ram", locale), usage.resources.ram],
+      [t("usage.res.storage", locale), usage.resources.storage],
+      [t("usage.res.compute", locale), usage.resources.compute && t(`usage.compute.${usage.resources.compute}`, locale)],
+      [t("usage.res.network", locale), usage.resources.network && t(`usage.network.${usage.resources.network}`, locale)],
+      [t("usage.res.cost", locale), usage.resources.cost && t(`usage.cost.${usage.resources.cost}`, locale)],
+    ].filter(([, v]) => has(v))
+  : [];
+
+const metaChips: Array<{ label: string; value: string }> = [];
+if (usage?.install_difficulty) metaChips.push({ label: t("usage.meta.difficulty", locale), value: t(`usage.difficulty.${usage.install_difficulty}`, locale) });
+if (usage?.time_to_setup) metaChips.push({ label: t("usage.meta.setup", locale), value: t(`usage.setup.${usage.time_to_setup}`, locale) });
+
+const showBlock = !!usage && (
+  has(usage.use_when) ||
+  has(usage.skip_when) ||
+  (usage.prerequisites?.length ?? 0) > 0 ||
+  resourceRows.length > 0 ||
+  metaChips.length > 0 ||
+  (usage.good_for?.length ?? 0) > 0
+);
+---
+{showBlock && (
+  <section class="usage" aria-labelledby="usage-heading">
+    <h2 id="usage-heading" class="usage-heading">{t("usage.title", locale)}</h2>
+    <div class="usage-grid">
+      {has(usage.use_when) && (
+        <div class="usage-card usage-card--use">
+          <h3>{t("usage.useWhen", locale)}</h3>
+          <p>{usage.use_when}</p>
+        </div>
+      )}
+      {has(usage.skip_when) && (
+        <div class="usage-card usage-card--skip">
+          <h3>{t("usage.skipWhen", locale)}</h3>
+          <p>{usage.skip_when}</p>
+        </div>
+      )}
+    </div>
+
+    {(metaChips.length > 0 || (usage.good_for && usage.good_for.length > 0)) && (
+      <div class="usage-chips">
+        {metaChips.map((c) => (
+          <span class="usage-chip"><strong>{c.label}:</strong>&nbsp;{c.value}</span>
+        ))}
+        {usage.good_for?.map((g) => (
+          <span class="usage-chip usage-chip--good">{g}</span>
+        ))}
+      </div>
+    )}
+
+    {(resourceRows.length > 0 || (usage.prerequisites && usage.prerequisites.length > 0)) && (
+      <div class="usage-details">
+        {usage.prerequisites && usage.prerequisites.length > 0 && (
+          <div class="usage-detail">
+            <h3>{t("usage.prereqs", locale)}</h3>
+            <ul>
+              {usage.prerequisites.map((p) => (<li>{p}</li>))}
+            </ul>
+          </div>
+        )}
+        {resourceRows.length > 0 && (
+          <div class="usage-detail">
+            <h3>{t("usage.resources", locale)}</h3>
+            <dl>
+              {resourceRows.map(([label, value]) => (
+                <div class="usage-res-row">
+                  <dt>{label}</dt>
+                  <dd>{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        )}
+      </div>
+    )}
+  </section>
+)}
+
+<style>
+  .usage {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    margin: 2rem 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .usage-heading {
+    margin: 0 0 0.25rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--fg-subtle);
+  }
+  .usage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.9rem;
+  }
+  .usage-card {
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    background: rgba(255, 255, 255, 0.025);
+    border-left: 3px solid rgba(255, 255, 255, 0.25);
+  }
+  .usage-card--use { border-left-color: #86efac; }
+  .usage-card--skip { border-left-color: #fca5a5; }
+  .usage-card h3 {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+    margin: 0 0 0.35rem;
+    font-weight: 700;
+  }
+  .usage-card p {
+    margin: 0;
+    color: var(--fg);
+    line-height: 1.55;
+    font-size: 0.95rem;
+  }
+  .usage-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .usage-chip {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--fg);
+  }
+  .usage-chip strong { color: var(--fg-muted); font-weight: 600; }
+  .usage-chip--good {
+    border-color: rgba(134, 239, 172, 0.25);
+    background: rgba(134, 239, 172, 0.06);
+    color: #86efac;
+  }
+  .usage-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .usage-detail h3 {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+  }
+  .usage-detail ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--fg);
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+  .usage-detail dl {
+    margin: 0;
+    display: grid;
+    gap: 0.3rem;
+  }
+  .usage-res-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+    padding: 0.25rem 0;
+  }
+  .usage-res-row dt {
+    color: var(--fg-muted);
+    font-weight: 500;
+  }
+  .usage-res-row dd {
+    margin: 0;
+    color: var(--fg);
+    text-align: right;
+  }
+</style>

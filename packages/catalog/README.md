@@ -57,6 +57,42 @@ See [`docs/QUICKSTART.md`](docs/QUICKSTART.md) for the full walkthrough and
 
 ---
 
+## Usage metadata
+
+Every skill, server, agent, hook, and tool can carry an optional `usage` block
+that tells a reader *when* to reach for it, what it costs, and what it needs.
+Not required — but the more entries declare it, the more useful the catalog is
+to someone new. Schema lives in each `schemas/<kind>.schema.json`.
+
+Minimal example (YAML for a server; same shape as JSON in a skill/tool manifest):
+
+```yaml
+usage:
+  use_when: One sentence — the situation that should make a reader pick this entry.
+  skip_when: One sentence — when this is NOT the right fit.
+  prerequisites:
+    - Node.js 20+
+    - Outbound HTTPS to the target backend
+  resources:
+    ram: "< 256 MB"
+    storage: negligible       # free-form string, keep short
+    compute: cpu-light        # cpu-light | cpu-moderate | cpu-heavy | gpu-optional | gpu-required
+    network: online           # offline | online | online-optional
+    cost: free                # free | paid-optional | paid-required | metered-api
+  install_difficulty: easy    # easy | medium | hard
+  time_to_setup: seconds      # seconds | minutes | hours
+  good_for:
+    - one-line tag of a concrete situation
+    - another concrete situation
+```
+
+See `catalog/servers/context7.yaml`, `catalog/skills/adt-context/manifest.json`,
+`catalog/tools/mcp-health/manifest.json`, and `catalog/agents/adt-code-reviewer.md`
+for worked examples. The web app renders the block as a "Usage" section on each
+entry's detail page.
+
+---
+
 ## Design principles
 
 1. **Curate, don't rebuild.** We consume `mcp-context-forge` as a Docker image.

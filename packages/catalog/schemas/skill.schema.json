@@ -122,6 +122,40 @@
       "type": "boolean",
       "default": false
     },
+    "usage": {
+      "type": "object",
+      "description": "Optional adoption metadata: when this entry helps most, what it needs, what it costs.",
+      "additionalProperties": false,
+      "properties": {
+        "use_when": { "type": "string", "maxLength": 400 },
+        "skip_when": { "type": "string", "maxLength": 400 },
+        "prerequisites": {
+          "type": "array",
+          "items": { "type": "string", "maxLength": 200 },
+          "maxItems": 8,
+          "uniqueItems": true
+        },
+        "resources": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "ram": { "type": "string", "maxLength": 40 },
+            "storage": { "type": "string", "maxLength": 40 },
+            "compute": { "enum": ["cpu-light", "cpu-moderate", "cpu-heavy", "gpu-optional", "gpu-required"] },
+            "network": { "enum": ["offline", "online", "online-optional"] },
+            "cost": { "enum": ["free", "paid-optional", "paid-required", "metered-api"] }
+          }
+        },
+        "install_difficulty": { "enum": ["easy", "medium", "hard"] },
+        "time_to_setup": { "enum": ["seconds", "minutes", "hours"] },
+        "good_for": {
+          "type": "array",
+          "items": { "type": "string", "maxLength": 120 },
+          "maxItems": 8,
+          "uniqueItems": true
+        }
+      }
+    },
     "translations": {
       "type": "object",
       "description": "Optional locale-specific overrides for user-visible fields. Keys are BCP-47 language tags.",

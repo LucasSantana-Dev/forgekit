@@ -17,6 +17,22 @@ export interface CollectionItem {
   id: string;
 }
 
+export interface Usage {
+  use_when?: string;
+  skip_when?: string;
+  prerequisites?: string[];
+  resources?: {
+    ram?: string;
+    storage?: string;
+    compute?: "cpu-light" | "cpu-moderate" | "cpu-heavy" | "gpu-optional" | "gpu-required";
+    network?: "offline" | "online" | "online-optional";
+    cost?: "free" | "paid-optional" | "paid-required" | "metered-api";
+  };
+  install_difficulty?: "easy" | "medium" | "hard";
+  time_to_setup?: "seconds" | "minutes" | "hours";
+  good_for?: string[];
+}
+
 export interface Skill {
   id: string;
   name: string;
@@ -28,6 +44,7 @@ export interface Skill {
   homepage?: string;
   license?: string;
   body: string;
+  usage?: Usage;
   translations?: { "pt-BR"?: { name?: string; description?: string } };
 }
 
@@ -43,6 +60,7 @@ export interface Server {
   tags: string[];
   homepage?: string;
   license?: string;
+  usage?: Usage;
   translations?: { "pt-BR"?: { name?: string; description?: string } };
 }
 
@@ -226,6 +244,7 @@ export interface Agent {
   homepage?: string;
   license?: string;
   body: string;
+  usage?: Usage;
   translations?: { "pt-BR"?: { name?: string; description?: string } };
 }
 
@@ -254,6 +273,7 @@ export interface Hook {
   license?: string;
   author?: string;
   script: string;
+  usage?: Usage;
   translations?: { "pt-BR"?: { name?: string; description?: string } };
 }
 
@@ -312,7 +332,7 @@ export interface Tool {
   runtime: string;
   category: string;
   install?: { copy_to?: string; chmod_exec?: boolean; dependencies?: string[] };
-  usage?: string;
+  usage?: Usage;
   source?: { type?: string; path?: string; repo?: string };
   license?: string;
   author?: string;

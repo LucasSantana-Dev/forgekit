@@ -18,6 +18,23 @@ source:
   repo: https://github.com/LucasSantana-Dev/ai-dev-toolkit
 license: MIT
 author: Lucas Santana
+usage:
+  use_when: You have a diff, a PR, or a set of changed files and need a structured review covering correctness, security, tests, and style — before merge.
+  skip_when: You want the agent to fix issues — this reviewer reports only, it does not edit.
+  prerequisites:
+    - Claude Code with sub-agent support
+    - Read access to the target diff or files
+  resources:
+    ram: negligible
+    compute: cpu-light
+    network: online
+    cost: metered-api
+  install_difficulty: easy
+  time_to_setup: seconds
+  good_for:
+    - pre-merge review
+    - catching security smells before CI
+    - coaching less-senior contributors
 translations:
   pt-BR:
     name: code-reviewer

@@ -18,6 +18,23 @@ tags:
 - research
 homepage: https://github.com/upstash/context7
 license: MIT
+usage:
+  use_when: You are working with a library, framework, SDK, or CLI and need current API docs, version-specific behavior, or migration notes.
+  skip_when: The task is pure business logic, code review, or writing scripts from scratch — Context7 is for library reference, not design decisions.
+  prerequisites:
+    - Node.js 20+ (npx runtime)
+    - Outbound HTTPS to context7 backend
+  resources:
+    ram: negligible
+    compute: cpu-light
+    network: online
+    cost: free
+  install_difficulty: easy
+  time_to_setup: seconds
+  good_for:
+    - debugging library quirks
+    - learning a new framework
+    - verifying API before writing code
 translations:
   pt-BR:
     name: Context7

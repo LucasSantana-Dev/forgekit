@@ -1,6 +1,7 @@
 ---
 import Base from "../../../layouts/Base.astro";
 import InstallBlock from "../../../components/InstallBlock.astro";
+import UsageBlock from "../../../components/UsageBlock.astro";
 import { getHooks } from "../../../lib/catalog.ts";
 import { localizeEntries, type Locale } from "../../../lib/i18n.ts";
 import { installCommand } from "../../../lib/ui.ts";
@@ -32,6 +33,8 @@ const cmd = installCommand("hook", hook.id)!;
   </div>
 
   <InstallBlock command={cmd} />
+
+  <UsageBlock usage={hook.usage} locale={locale} />
 
   <h2>Script</h2>
   <pre><code>{hook.script}</code></pre>

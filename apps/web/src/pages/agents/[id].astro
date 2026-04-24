@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import InstallBlock from "../../components/InstallBlock.astro";
+import UsageBlock from "../../components/UsageBlock.astro";
 import { getAgents } from "../../lib/catalog.ts";
 import { installCommand, renderMarkdown } from "../../lib/ui.ts";
 
@@ -27,6 +28,8 @@ const cmd = installCommand("agent", agent.id)!;
   </div>
 
   <InstallBlock command={cmd} />
+
+  <UsageBlock usage={agent.usage} locale="en" />
 
   {agent.disallowed_tools && agent.disallowed_tools.length > 0 && (
     <>
