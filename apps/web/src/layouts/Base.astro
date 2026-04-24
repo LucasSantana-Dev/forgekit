@@ -296,6 +296,39 @@ const jsonLd = {
         outline: none;
       }
 
+      .workflow-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+        gap: 1rem;
+      }
+      .workflow-card {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.25rem;
+      }
+      .workflow-card-header h3 {
+        margin: 0 0 0.4rem;
+        font-size: 1.05rem;
+        line-height: 1.25;
+      }
+      .workflow-card-header p {
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.55;
+        max-width: 52ch;
+      }
+      .workflow-card-footer {
+        margin-top: auto;
+        align-self: flex-start;
+        font-size: 0.85rem;
+      }
+      @media (max-width: 720px) {
+        .workflow-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
       main {
         max-width: 1280px;
         margin: 0 auto;
