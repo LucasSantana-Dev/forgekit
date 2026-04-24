@@ -3,11 +3,16 @@ name: Deploy webapp
 # Auto-deploy apps/web to Cloudflare Workers on every push to main that
 # touches the webapp surface or the catalog data that drives it.
 #
-# Required repository secrets:
+# Required repository secret:
 #   CLOUDFLARE_API_TOKEN — token with `Workers Scripts:Edit` permission on
 #                          the account that owns `ai-dev-toolkit-library`.
 #                          Create at: https://dash.cloudflare.com/profile/api-tokens
 #                          (template: "Edit Cloudflare Workers")
+#
+# Cloudflare account ID is pinned in `env.CLOUDFLARE_ACCOUNT_ID` below — it
+# is not a secret (visible in any CF dashboard URL), but pinning it
+# explicitly avoids ambiguity when the API token grants access to multiple
+# accounts.
 #
 # Until the secret is configured, this workflow short-circuits with a
 # non-fatal log line so the PR feedback isn't a sea of red. Configure the
@@ -28,6 +33,11 @@ on:
 
 permissions:
   contents: read
+
+env:
+  # Account that owns the `ai-dev-toolkit-library` Worker.
+  # Not a secret — visible in any Cloudflare dashboard URL.
+  CLOUDFLARE_ACCOUNT_ID: 712118840109d834d5e99925fd172432
 
 concurrency:
   group: deploy-web-${{ github.ref }}
@@ -84,6 +94,7 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: apps/web
           command: deploy
 
