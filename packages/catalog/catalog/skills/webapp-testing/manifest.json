@@ -21,5 +21,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/webapp-testing",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "Teste de Webapp",
+      "description": "Toolkit para interagir e testar aplicações web locais usando Playwright com headless automation."
+    }
+  }
 }

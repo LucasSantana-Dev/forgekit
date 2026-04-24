@@ -19,5 +19,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/route.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/route.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Route",
+      "description": "Rotear uma tarefa para a skill ou agente mais apropriado. Parse intenção do usuário, verifique instruções locais."
+    }
+  }
 }

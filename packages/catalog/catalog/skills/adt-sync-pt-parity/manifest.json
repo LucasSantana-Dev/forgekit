@@ -20,5 +20,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/sync-pt-parity.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/sync-pt-parity.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Sync Pt Parity",
+      "description": "Mantenha README.md EN/PT em paridade — sincronize conteúdo traduzido e abra PR."
+    }
+  }
 }

@@ -18,5 +18,11 @@
     "path": "~/.claude/hooks/productivity/post-edit-optimization.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Otimização Pós-Edição",
+      "description": "Hook de Otimização de Tokens Pós-Edição. Otimiza contexto e uso de tokens após edições de arquivo"
+    }
+  }
 }

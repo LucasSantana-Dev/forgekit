@@ -22,5 +22,11 @@
   },
   "homepage": "https://github.com/obra/superpowers/tree/main/skills/finishing-a-development-branch",
   "license": "MIT",
-  "author": "obra"
+  "author": "obra",
+  "translations": {
+    "pt-BR": {
+      "name": "Finalizando uma Branch de Desenvolvimento",
+      "description": "Use quando a implementação está completa, todos os testes passam, e você precisa decidir como finalizar."
+    }
+  }
 }

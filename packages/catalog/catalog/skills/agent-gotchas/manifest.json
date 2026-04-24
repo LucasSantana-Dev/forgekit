@@ -21,5 +21,11 @@
     "path": "ai-dev-toolkit/packages/core/patterns/agent-gotchas.md"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Armadilhas de Agentes IA",
+      "description": "Agentes de code IA falham de formas consistentes e previsíveis. Eles fabricam npm packages, alucinam APIs, cometem a mesma refatoração 10 vezes."
+    }
+  }
 }

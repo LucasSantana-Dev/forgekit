@@ -23,5 +23,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/specs/skills/aggregate-roadmap"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/specs/skills/aggregate-roadmap",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Specs Aggregate Roadmap",
+      "description": "Regenere o agregado de roadmap cross-repo em seu diretório de Claude memory processando specs de múltiplos repos."
+    }
+  }
 }

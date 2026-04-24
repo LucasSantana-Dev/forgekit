@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/env-secrets-manager",
   "license": "MIT",
-  "author": "alirezarezvani"
+  "author": "alirezarezvani",
+  "translations": {
+    "pt-BR": {
+      "name": "Gerenciador de Env & Secrets",
+      "description": "Skill para gerenciar variáveis de ambiente, secrets e configurações seguramente."
+    }
+  }
 }

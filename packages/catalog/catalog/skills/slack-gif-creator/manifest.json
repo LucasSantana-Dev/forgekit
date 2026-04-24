@@ -21,5 +21,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/slack-gif-creator",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "Criador de GIF para Slack",
+      "description": "Crie GIFs animados otimizados para compartilhamento em Slack com subtítulos e timing."
+    }
+  }
 }

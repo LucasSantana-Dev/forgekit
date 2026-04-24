@@ -18,5 +18,11 @@
     "path": "~/.claude/hooks/productivity/session-start-optimization.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Otimização de Início de Sessão",
+      "description": "Hook de Otimização de Contexto de Início de Sessão. Otimiza contexto ao iniciar uma nova sessão"
+    }
+  }
 }

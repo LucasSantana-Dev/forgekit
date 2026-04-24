@@ -19,5 +19,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/auto-invoke.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/auto-invoke.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Auto Invoke",
+      "description": "Meta-skill — define quando aplicar outras skills automaticamente sem ser perguntado. Aprendia dos padrões de uso do usuário e ativa skills relevantes sem prompt explícito."
+    }
+  }
 }

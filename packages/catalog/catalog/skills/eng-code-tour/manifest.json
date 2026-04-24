@@ -21,5 +21,11 @@
   },
   "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/code-tour",
   "license": "MIT",
-  "author": "alirezarezvani"
+  "author": "alirezarezvani",
+  "translations": {
+    "pt-BR": {
+      "name": "Eng Code Tour",
+      "description": "Use quando o usuário solicita criar um arquivo CodeTour .tour — step-by-step guias de código personalizados por persona."
+    }
+  }
 }

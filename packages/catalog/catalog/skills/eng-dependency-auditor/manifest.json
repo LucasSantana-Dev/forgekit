@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/dependency-auditor",
   "license": "MIT",
-  "author": "alirezarezvani"
+  "author": "alirezarezvani",
+  "translations": {
+    "pt-BR": {
+      "name": "Auditor de Dependências",
+      "description": "Skill para auditar, atualizar e gerenciar dependências do projeto com análise de vulnerabilidades."
+    }
+  }
 }

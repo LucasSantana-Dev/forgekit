@@ -20,5 +20,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/plan.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/plan.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Plan",
+      "description": "Analise a codebase e crie um plano de implementação estruturado antes de escrever qualquer código."
+    }
+  }
 }

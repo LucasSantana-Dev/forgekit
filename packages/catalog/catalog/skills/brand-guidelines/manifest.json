@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/brand-guidelines",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "Diretrizes de Marca",
+      "description": "Aplique cores de marca oficiais da Anthropic e tipografia a qualquer tipo de artefato."
+    }
+  }
 }

@@ -19,5 +19,11 @@
   },
   "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/codebase-onboarding",
   "license": "MIT",
-  "author": "alirezarezvani"
+  "author": "alirezarezvani",
+  "translations": {
+    "pt-BR": {
+      "name": "Onboarding de Codebase",
+      "description": "Skill para acelerar onboarding em uma codebase desconhecida através de análise estruturada e documentação gerada."
+    }
+  }
 }

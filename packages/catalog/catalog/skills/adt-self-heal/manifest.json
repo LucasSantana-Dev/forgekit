@@ -20,5 +20,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/self-heal.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/self-heal.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Self Heal",
+      "description": "Recuperação autônoma de erros — detecte falhas, diagnostique causa raiz, aplique fixes, revalide automaticamente."
+    }
+  }
 }

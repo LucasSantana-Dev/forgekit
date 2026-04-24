@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/internal-comms",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "Comunicações Internas",
+      "description": "Conjunto de recursos para ajudar na escrita de todos os tipos de comunicações internas usando templates e guidelines."
+    }
+  }
 }

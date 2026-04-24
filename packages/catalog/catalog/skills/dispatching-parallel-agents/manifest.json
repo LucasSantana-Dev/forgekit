@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/obra/superpowers/tree/main/skills/dispatching-parallel-agents",
   "license": "MIT",
-  "author": "obra"
+  "author": "obra",
+  "translations": {
+    "pt-BR": {
+      "name": "Dispatching de Agentes Paralelos",
+      "description": "Use quando enfrentando 2+ tarefas independentes que podem ser trabalhadas sem state compartilhado."
+    }
+  }
 }

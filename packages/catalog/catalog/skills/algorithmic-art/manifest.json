@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/algorithmic-art",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "Arte Algorítmica",
+      "description": "Criando arte algorítmica usando p5.js com randomness seeded e parâmetros interativos."
+    }
+  }
 }

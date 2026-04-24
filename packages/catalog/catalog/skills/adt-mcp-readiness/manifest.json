@@ -20,5 +20,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/mcp-readiness.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/mcp-readiness.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Mcp Readiness",
+      "description": "Verifique se workflows backed por MCP são utilizáveis nesta máquina. Detecta dependências faltantes e mis-configs."
+    }
+  }
 }

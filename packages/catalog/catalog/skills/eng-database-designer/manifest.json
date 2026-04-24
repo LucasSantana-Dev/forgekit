@@ -23,5 +23,11 @@
   },
   "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/database-designer",
   "license": "MIT",
-  "author": "alirezarezvani"
+  "author": "alirezarezvani",
+  "translations": {
+    "pt-BR": {
+      "name": "Designer de Banco de Dados",
+      "description": "Use quando o usuário solicita design de schemas de banco de dados, planejamento de migrações, otimizações."
+    }
+  }
 }

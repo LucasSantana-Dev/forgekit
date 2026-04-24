@@ -23,5 +23,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/specs/skills/roadmap-refresh"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/specs/skills/roadmap-refresh",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Specs Roadmap Refresh",
+      "description": "Regenere `docs/roadmap.md` para um repo a partir de todos os specs sob `docs/specs/` + git commits recentes."
+    }
+  }
 }

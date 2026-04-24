@@ -20,5 +20,11 @@
     "path": "~/.claude/hooks/security/validate-secrets.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Validar Segredos",
+      "description": "Valida segredos e aplica política zero-segredos. Garante que nenhum segredo seja commitado ou processado"
+    }
+  }
 }

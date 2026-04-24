@@ -21,5 +21,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "Design de Frontend",
+      "description": "Crie interfaces de frontend distintivas e production-grade com alta qualidade de design e acessibilidade."
+    }
+  }
 }

@@ -20,5 +20,11 @@
     "path": "ai-dev-toolkit/packages/core/patterns/git-worktrees.md"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Git Worktrees para Trabalho Paralelo de Agentes IA",
+      "description": "Múltiplas sessões de agentes IA trabalhando no mesmo repositório causam caos. Worktrees isolam trabalho paralelo."
+    }
+  }
 }

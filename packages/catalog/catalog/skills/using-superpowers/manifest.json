@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/obra/superpowers/tree/main/skills/using-superpowers",
   "license": "MIT",
-  "author": "obra"
+  "author": "obra",
+  "translations": {
+    "pt-BR": {
+      "name": "Usando Superpoderes",
+      "description": "Use quando começando qualquer conversa - estabelece como encontrar e usar skills, requisitos do projeto, e padrões de código."
+    }
+  }
 }

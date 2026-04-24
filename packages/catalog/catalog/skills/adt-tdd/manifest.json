@@ -20,5 +20,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/tdd.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/tdd.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Tdd",
+      "description": "Test-driven development — escreva testes primeiro, implemente segundo, refatore terceiro."
+    }
+  }
 }

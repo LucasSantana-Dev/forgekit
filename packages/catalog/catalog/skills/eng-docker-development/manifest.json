@@ -23,5 +23,11 @@
   },
   "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/docker-development",
   "license": "MIT",
-  "author": "alirezarezvani"
+  "author": "alirezarezvani",
+  "translations": {
+    "pt-BR": {
+      "name": "Desenvolvimento Docker",
+      "description": "Skill e plugin para desenvolvimento e otimização de Docker — Dockerfile best practices, multi-stage builds, layer caching."
+    }
+  }
 }

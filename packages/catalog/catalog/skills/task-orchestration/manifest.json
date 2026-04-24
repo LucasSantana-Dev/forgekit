@@ -21,5 +21,11 @@
     "path": "ai-dev-toolkit/packages/core/patterns/task-orchestration.md"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Orquestração de Tarefas",
+      "description": "Coordene múltiplas tarefas paralelas — execute, espere, troque, repita. Você está agindo como um cron job humano."
+    }
+  }
 }

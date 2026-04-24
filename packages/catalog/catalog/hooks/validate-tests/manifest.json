@@ -19,5 +19,11 @@
     "path": "~/.claude/hooks/quality/validate-tests.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Validar Testes",
+      "description": "Valida testes após alterações de código. Garante cobertura de testes e padrões de qualidade"
+    }
+  }
 }

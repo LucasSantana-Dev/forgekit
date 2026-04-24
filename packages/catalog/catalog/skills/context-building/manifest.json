@@ -19,5 +19,11 @@
     "path": "ai-dev-toolkit/packages/core/patterns/context-building.md"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Construção de Contexto",
+      "description": "Agentes IA são tão bons quanto o contexto que recebem. Um modelo poderoso com zero context falha. Um modelo menor com contexto rich sucede."
+    }
+  }
 }

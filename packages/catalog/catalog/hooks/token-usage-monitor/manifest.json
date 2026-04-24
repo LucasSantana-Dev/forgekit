@@ -19,5 +19,11 @@
     "path": "~/.claude/hooks/productivity/token-usage-monitor.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Monitor de Uso de Tokens",
+      "description": "Hook de Monitoramento de Uso de Tokens. Monitora e relata padrões de uso de tokens"
+    }
+  }
 }

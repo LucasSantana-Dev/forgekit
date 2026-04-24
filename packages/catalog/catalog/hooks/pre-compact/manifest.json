@@ -19,5 +19,11 @@
     "path": "~/.claude/hooks/pre-compact.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Pré Compactação",
+      "description": "Snapshot de Pré-Compactação"
+    }
+  }
 }

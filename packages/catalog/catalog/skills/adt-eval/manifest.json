@@ -22,5 +22,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/eval.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/eval.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Eval",
+      "description": "Avalie outputs de LLM sistematicamente — benchmarks, métricas automatizadas, preferências humanas, relatórios comparativos."
+    }
+  }
 }

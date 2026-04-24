@@ -22,5 +22,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "Construtor de Artefatos Web",
+      "description": "Suite de ferramentas para criar artefatos HTML multi-componente elaborados no claude.ai com React e Tailwind."
+    }
+  }
 }

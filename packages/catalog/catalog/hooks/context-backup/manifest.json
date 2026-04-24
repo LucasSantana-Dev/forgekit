@@ -19,5 +19,11 @@
     "path": "~/.claude/hooks/productivity/context-backup.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Backup de Contexto",
+      "description": "Hook de backup de contexto para Claude Code. Faz backup do contexto importante antes da compactação"
+    }
+  }
 }

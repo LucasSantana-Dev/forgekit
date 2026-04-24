@@ -21,5 +21,11 @@
   },
   "homepage": "https://github.com/obra/superpowers/tree/main/skills/verification-before-completion",
   "license": "MIT",
-  "author": "obra"
+  "author": "obra",
+  "translations": {
+    "pt-BR": {
+      "name": "Verificação Antes de Completar",
+      "description": "Use quando prestes a afirmar que trabalho está completo, fixado ou passando, antes de commitar ou abrir PR."
+    }
+  }
 }

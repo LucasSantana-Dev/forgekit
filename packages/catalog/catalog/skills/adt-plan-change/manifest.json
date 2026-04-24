@@ -20,5 +20,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/plan-change.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/plan-change.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Plan Change",
+      "description": "Planeje uma mudança de código antes de editar — identifique arquivos, sequencie steps, estabeleça verificação."
+    }
+  }
 }

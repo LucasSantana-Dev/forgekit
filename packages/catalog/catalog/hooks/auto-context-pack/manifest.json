@@ -19,5 +19,11 @@
     "path": "~/.claude/hooks/auto-context-pack.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Auto Context Pack",
+      "description": "Hook Claude Code: auto-context-pack"
+    }
+  }
 }

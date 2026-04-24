@@ -22,5 +22,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/docx",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "Docx",
+      "description": "Use esta skill sempre que o usuário quiser criar, ler, editar ou manipular documentos Word (.docx)."
+    }
+  }
 }

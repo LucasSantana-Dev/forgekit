@@ -22,5 +22,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/xlsx",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "XLSX",
+      "description": "Use esta skill sempre que o usuário quiser criar, editar ou manipular planilhas Excel (.xlsx)."
+    }
+  }
 }

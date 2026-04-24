@@ -21,5 +21,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/pdf",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "PDF",
+      "description": "Use esta skill sempre que o usuário quiser fazer qualquer coisa com arquivos PDF — ler, editar, extrair, gerar, criar."
+    }
+  }
 }

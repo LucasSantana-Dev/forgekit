@@ -19,5 +19,11 @@
     "path": "~/.claude/hooks/context-optimizer.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Otimizador de Contexto",
+      "description": "Hook Claude Code: Otimizador de Contexto. Otimização inteligente de contexto para eficiência de tokens e desempenho"
+    }
+  }
 }

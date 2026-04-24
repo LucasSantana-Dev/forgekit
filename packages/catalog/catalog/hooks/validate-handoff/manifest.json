@@ -19,5 +19,11 @@
     "path": "~/.claude/hooks/validate-handoff.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Validar Handoff",
+      "description": "Hook Claude Code: validar-handoff"
+    }
+  }
 }

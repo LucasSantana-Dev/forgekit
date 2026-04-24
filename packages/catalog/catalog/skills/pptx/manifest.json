@@ -21,5 +21,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/pptx",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "PPTX",
+      "description": "Use esta skill sempre que o usuário quiser criar, editar ou manipular apresentações PowerPoint."
+    }
+  }
 }

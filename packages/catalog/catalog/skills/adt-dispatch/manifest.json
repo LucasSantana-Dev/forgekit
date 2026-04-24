@@ -20,5 +20,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/dispatch.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/dispatch.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Dispatch",
+      "description": "Spawne subtarefas paralelas, atribua a agentes worker, colete resultados, sincronize re-entry."
+    }
+  }
 }

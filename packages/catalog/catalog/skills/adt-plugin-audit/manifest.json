@@ -21,5 +21,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/plugin-audit.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/plugin-audit.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Plugin Audit",
+      "description": "Diff o marketplace oficial de plugins da Anthropic contra plugins instalados localmente — detecte deprecations, updates, riscos."
+    }
+  }
 }

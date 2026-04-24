@@ -20,5 +20,11 @@
     "path": "ai-dev-toolkit/packages/core/patterns/spec-driven-development.md"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Desenvolvimento Orientado a Spec",
+      "description": "Agentes IA são rápidos em escrever código mas não têm memória de sua intenção. Você descreve e planeja; eles implementam."
+    }
+  }
 }

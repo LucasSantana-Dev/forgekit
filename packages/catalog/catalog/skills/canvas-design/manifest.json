@@ -21,5 +21,11 @@
   },
   "homepage": "https://github.com/anthropics/skills/tree/main/skills/canvas-design",
   "license": "MIT",
-  "author": "Anthropic"
+  "author": "Anthropic",
+  "translations": {
+    "pt-BR": {
+      "name": "Design em Canvas",
+      "description": "Crie bela arte visual em documentos .png e .pdf usando filosofia de design bem fundamentada."
+    }
+  }
 }

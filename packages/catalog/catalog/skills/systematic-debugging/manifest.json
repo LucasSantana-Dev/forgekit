@@ -22,5 +22,11 @@
   },
   "homepage": "https://github.com/obra/superpowers/tree/main/skills/systematic-debugging",
   "license": "MIT",
-  "author": "obra"
+  "author": "obra",
+  "translations": {
+    "pt-BR": {
+      "name": "Debugging Sistemático",
+      "description": "Use quando encontrando qualquer bug, test failure ou comportamento inesperado, antes de conjeturar soluções."
+    }
+  }
 }

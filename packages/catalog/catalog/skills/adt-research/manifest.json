@@ -19,5 +19,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/research.md"
+  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/research.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Research",
+      "description": "Pesquisa profunda em um tópico usando web search, docs, e análise de codebase."
+    }
+  }
 }

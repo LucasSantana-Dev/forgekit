@@ -19,5 +19,11 @@
     "path": "~/.claude/hooks/security/secret-detection.sh"
   },
   "license": "MIT",
-  "author": "Lucas Santana"
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Detecção de Segredos",
+      "description": "Hook de detecção de segredos para UIForge MCP. Verifica segredos codificados e dados sensíveis"
+    }
+  }
 }

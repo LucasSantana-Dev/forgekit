@@ -21,5 +21,11 @@
   },
   "homepage": "https://github.com/obra/superpowers/tree/main/skills/receiving-code-review",
   "license": "MIT",
-  "author": "obra"
+  "author": "obra",
+  "translations": {
+    "pt-BR": {
+      "name": "Recebendo Revisão de Código",
+      "description": "Use quando recebendo feedback de code review, antes de implementar sugestões, especialmente em feedback crítico."
+    }
+  }
 }

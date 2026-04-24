@@ -20,5 +20,11 @@
   },
   "homepage": "https://github.com/obra/superpowers/tree/main/skills/subagent-driven-development",
   "license": "MIT",
-  "author": "obra"
+  "author": "obra",
+  "translations": {
+    "pt-BR": {
+      "name": "Desenvolvimento Orientado a Sub-agentes",
+      "description": "Use quando executando planos de implementação com tarefas independentes na sessão atual."
+    }
+  }
 }
