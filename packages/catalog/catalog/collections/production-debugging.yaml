@@ -1,0 +1,42 @@
+id: production-debugging
+name: Production Debugging
+description: Triage and fix production incidents from the editor — read Sentry
+  issues, narrow the failing path with systematic debugging, write a
+  single-issue fix, verify it didn't make things worse. Works for any prod stack
+  that emits errors or logs.
+tags:
+- debugging
+- production
+- incident
+- triage
+- sre
+items:
+- kind: skill
+  id: systematic-debugging
+- kind: skill
+  id: eng-focused-fix
+- kind: skill
+  id: adt-self-heal
+- kind: skill
+  id: adt-cost
+- kind: skill
+  id: verification-before-completion
+- kind: agent
+  id: adt-systematic-debugger
+- kind: agent
+  id: debugger
+- kind: server
+  id: sentry
+- kind: server
+  id: github
+- kind: server
+  id: kubernetes
+- kind: hook
+  id: workflow-logger
+translations:
+  pt-BR:
+    name: Debugging em Produção
+    description: Triagem e correção de incidentes de produção a partir do editor —
+      ler issues do Sentry, isolar o caminho que falhou via debugging
+      sistemático, escrever uma correção focada e verificar que não piorou
+      nada. Funciona para qualquer stack em produção que emita erros ou logs.

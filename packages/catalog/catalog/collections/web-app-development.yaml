@@ -1,0 +1,46 @@
+id: web-app-development
+name: Web App Development
+description: General-purpose bundle for full-stack web work — frontend design,
+  API contracts, schema design, browser-based testing, and a code-review pass
+  before merge. Stack-agnostic; pairs with any of React/Vue/Svelte/Astro on the
+  front and any language/framework on the back.
+tags:
+- web
+- fullstack
+- frontend
+- api
+- testing
+items:
+- kind: skill
+  id: frontend-design
+- kind: skill
+  id: webapp-testing
+- kind: skill
+  id: eng-api-design-reviewer
+- kind: skill
+  id: eng-database-designer
+- kind: skill
+  id: eng-codebase-onboarding
+- kind: skill
+  id: code-review
+- kind: agent
+  id: code-reviewer
+- kind: agent
+  id: test-engineer
+- kind: server
+  id: context7
+- kind: server
+  id: github
+- kind: server
+  id: playwright
+- kind: hook
+  id: auto-format
+- kind: hook
+  id: pre-commit-validation
+translations:
+  pt-BR:
+    name: Desenvolvimento Web Full-Stack
+    description: Bundle de uso geral para desenvolvimento web full-stack — design
+      de frontend, contratos de API, modelagem de banco, testes baseados em
+      navegador e revisão de código antes do merge. Independente de stack —
+      combina com React/Vue/Svelte/Astro no front e qualquer linguagem no back.

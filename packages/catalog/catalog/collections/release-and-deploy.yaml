@@ -1,0 +1,43 @@
+id: release-and-deploy
+name: Release & Deploy
+description: Disciplined release cadence — finish a branch cleanly, run a
+  ship-check pass, verify before merge, write the release script with version
+  bump and changelog, gate CI on tests + secret scans. For any project that
+  ships on a regular tag/version cadence.
+tags:
+- release
+- ci
+- deployment
+- ship
+- governance
+items:
+- kind: skill
+  id: adt-ship
+- kind: skill
+  id: adt-ship-check
+- kind: skill
+  id: adt-release-flow
+- kind: skill
+  id: adt-verify
+- kind: skill
+  id: finishing-a-development-branch
+- kind: skill
+  id: eng-ci-cd-pipeline-builder
+- kind: agent
+  id: verifier
+- kind: server
+  id: github
+- kind: hook
+  id: pre-commit-validation
+- kind: hook
+  id: validate-tests
+- kind: tool
+  id: release
+translations:
+  pt-BR:
+    name: Release & Deploy
+    description: Cadência disciplinada de release — fechar uma branch
+      corretamente, rodar um ship-check, verificar antes do merge, montar o
+      script de release com bump de versão e changelog, gatear o CI por testes
+      e scans de segredos. Para qualquer projeto que faz release regular por
+      tag/versão.

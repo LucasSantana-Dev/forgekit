@@ -1,0 +1,43 @@
+id: security-first-dev
+name: Security-First Development
+description: Security-aware development without the productivity tax — secret
+  hygiene, dependency auditing, prompt-injection defence, hardened review
+  cadence, and pre-merge hooks that catch the obvious mistakes early. Pairs
+  with any stack; expensive to retrofit, cheap to start with.
+tags:
+- security
+- hardening
+- audit
+- secrets
+- compliance
+items:
+- kind: skill
+  id: prompt-injection-defense
+- kind: skill
+  id: eng-dependency-auditor
+- kind: skill
+  id: eng-env-secrets-manager
+- kind: skill
+  id: code-review
+- kind: agent
+  id: adt-security-auditor
+- kind: agent
+  id: code-reviewer
+- kind: server
+  id: github
+- kind: hook
+  id: secret-detection
+- kind: hook
+  id: validate-secrets
+- kind: hook
+  id: security-scan
+- kind: hook
+  id: protect-files
+translations:
+  pt-BR:
+    name: Desenvolvimento com Segurança em Primeiro Lugar
+    description: Desenvolvimento atento à segurança sem o custo de produtividade —
+      higiene de segredos, auditoria de dependências, defesa contra prompt
+      injection, cadência de review reforçada e hooks pre-merge que pegam os
+      erros óbvios cedo. Combina com qualquer stack; caro para colocar depois,
+      barato para começar agora.
