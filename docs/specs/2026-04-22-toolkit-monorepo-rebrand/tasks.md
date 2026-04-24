@@ -18,3 +18,15 @@
 - [x] Run full verification across core, setup, catalog, CLI, web, and docs
 - [x] Open implementation PR
 - [ ] Rename repo and add old-repo pointers only after CI is green
+  - [ ] Pre-flight (see [playbook-rename.md § 0](./playbook-rename.md))
+  - [ ] `gh repo rename forge-kit` ([§ 1](./playbook-rename.md))
+  - [ ] Update every local clone's remote ([§ 2](./playbook-rename.md))
+  - [ ] Repo-metadata cleanup ([§ 3](./playbook-rename.md))
+  - [ ] Internal-references PR ([§ 4](./playbook-rename.md))
+  - [ ] External consumers scan ([§ 5](./playbook-rename.md))
+- [ ] Archive source repos after one green monorepo release
+  - [ ] Pre-flight (see [playbook-archive-source-repos.md § 0](./playbook-archive-source-repos.md))
+  - [ ] Redirect README PR on each of `ai-dev-toolkit-setup`, `-pt-br`, `-library` ([§ 1](./playbook-archive-source-repos.md))
+  - [ ] `gh repo archive` each of the three ([§ 2](./playbook-archive-source-repos.md))
+  - [ ] Metadata cleanup + Ecosystem heritage section in Forge Kit README ([§ 3–4](./playbook-archive-source-repos.md))
+  - [ ] Move spec to `docs/specs/archived/`
