@@ -9,7 +9,13 @@ Batteries-included, opt-in-per-skill reference layer for AI-assisted development
 
 Pick your entry point:
 
-## First Time Here?
+## Just curious about AI tools? Start here.
+Plain-language, non-technical. No install required for the first two.
+- **[Get productive with AI in 10 minutes](./ten-minute-start.md)** — three decisions, one real task, no jargon (10 min)
+- **[Pick your first tool](./pick-your-first-tool.md)** — maps 5 common situations to the right Forge Kit piece (6 min)
+- **[Is it working?](./is-it-working.md)** — honest measurements so you don't confuse "feeling faster" with actually shipping more (7 min)
+
+## First Time Here? (technical)
 - **[Getting Started](./getting-started.md)** — 10-minute clone → install → first query (5 min read)
 
 ## By Role
