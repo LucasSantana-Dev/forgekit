@@ -1,0 +1,54 @@
+---
+import Card from "./Card.astro";
+import type { Collection } from "../lib/catalog";
+import type { Locale } from "../lib/i18n";
+import { pluralizeItems } from "../lib/i18n";
+
+interface Props {
+  collections: Collection[];
+  locale: Locale;
+  hrefFor: (id: string) => string;
+  heading?: string;
+  lede?: string;
+}
+
+const { collections, locale, hrefFor, heading, lede } = Astro.props;
+const featured = collections.slice(0, 3);
+const remaining = collections.slice(3);
+---
+<section class="hero-surface" style="margin: 1.25rem 0 1rem; display: grid; gap: 1rem;">
+  {(heading || lede) && (
+    <div>
+      {heading && <div class="hero-surface-title">{heading}</div>}
+      {lede && <p class="lead-muted">{lede}</p>}
+    </div>
+  )}
+  <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+    {featured.map((c) => (
+      <Card
+        kind="collection"
+        id={c.id}
+        name={c.name}
+        description={c.description}
+        tags={c.tags ?? []}
+        href={hrefFor(c.id)}
+        extraTag={pluralizeItems(c.items.length, locale)}
+      />
+    ))}
+  </div>
+</section>
+{remaining.length > 0 && (
+  <div class="grid">
+    {remaining.map((c) => (
+      <Card
+        kind="collection"
+        id={c.id}
+        name={c.name}
+        description={c.description}
+        tags={c.tags ?? []}
+        href={hrefFor(c.id)}
+        extraTag={pluralizeItems(c.items.length, locale)}
+      />
+    ))}
+  </div>
+)}

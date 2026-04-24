@@ -165,6 +165,14 @@ const htmlLang = locale === "pt-br" ? "pt-BR" : "en";
         background: rgba(255, 255, 255, 0.03);
         border-color: rgba(255, 255, 255, 0.08);
       }
+      nav.primary a.collections {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.12);
+        color: var(--fg);
+      }
+      nav.primary a.collections:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
 
       main {
         max-width: 1280px;
@@ -549,9 +557,9 @@ const htmlLang = locale === "pt-br" ? "pt-BR" : "en";
         border-radius: 10px;
         background: rgba(255,255,255,0.04);
         border: 1px solid rgba(255,255,255,0.08);
-        font-size: 0.74rem;
+        font-size: 0.95rem;
         font-weight: 700;
-        letter-spacing: 0.12em;
+        letter-spacing: 0;
         line-height: 1;
         color: var(--fg);
       }
@@ -767,6 +775,7 @@ const htmlLang = locale === "pt-br" ? "pt-BR" : "en";
           <span class="name">{t("nav.brand", locale)}</span>
         </a>
         <nav class="primary">
+          <a class="collections" href={`${localeBase}collections/`}>{t("nav.collections", locale)}</a>
           <a href={`${localeBase}skills/`}>{t("nav.skills", locale)}</a>
           <a href={`${localeBase}agents/`}>{t("nav.agents", locale)}</a>
           <a href={`${localeBase}servers/`}>{t("nav.servers", locale)}</a>

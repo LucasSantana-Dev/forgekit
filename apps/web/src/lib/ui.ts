@@ -2,6 +2,28 @@ import { marked } from "marked";
 
 export type Kind = "skill" | "server" | "agent" | "collection" | "doc" | "hook" | "command" | "tool";
 
+const KIND_GLYPHS: Record<Kind, string> = {
+  skill: "SK",
+  server: "MCP",
+  agent: "AG",
+  collection: "COL",
+  doc: "DOC",
+  hook: "HK",
+  command: "CMD",
+  tool: "TL",
+};
+
+const KIND_ICONS: Record<Kind, string> = {
+  skill: "✦",
+  server: "⌬",
+  agent: "◌",
+  collection: "▣",
+  doc: "▤",
+  hook: "↯",
+  command: "⌘",
+  tool: "⚙",
+};
+
 const ACRONYM_REPLACEMENTS: Array<[RegExp, string]> = [
   [/^adt\s+/i, ""],
   [/\bai\b/gi, "AI"],
@@ -19,28 +41,11 @@ export function displayEntryName(name: string): string {
 }
 
 export function kindGlyph(kind: Kind): string {
-  switch (kind) {
-    case "skill":
-      return "SK";
-    case "server":
-      return "MCP";
-    case "agent":
-      return "AG";
-    case "collection":
-      return "COL";
-    case "doc":
-      return "DOC";
-    case "hook":
-      return "HK";
-    case "command":
-      return "CMD";
-    case "tool":
-      return "TL";
-  }
+  return KIND_GLYPHS[kind];
 }
 
 export function kindIcon(kind: Kind): string {
-  return kindGlyph(kind);
+  return KIND_ICONS[kind];
 }
 
 export function kindLabel(kind: Kind): string {

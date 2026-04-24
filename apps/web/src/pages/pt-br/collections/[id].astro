@@ -1,36 +1,38 @@
 ---
 import Base from "../../../layouts/Base.astro";
-import { getCollections } from "../../../lib/catalog.ts";
+import Card from "../../../components/Card.astro";
+import {
+  buildCollectionItemResolver,
+  collectionItemPath,
+  getCatalogData,
+  getCollections,
+} from "../../../lib/catalog.ts";
 import { localizeEntries, localizedUrl, type Locale } from "../../../lib/i18n.ts";
-import { kindIcon, type Kind } from "../../../lib/ui.ts";
 
 const locale: Locale = "pt-br";
 
 export async function getStaticPaths() {
-  const locale: Locale = "pt-br";
-  const collections = localizeEntries(await getCollections(), locale);
+  const staticLocale: Locale = "pt-br";
+  const collections = localizeEntries(await getCollections(), staticLocale);
   return collections.map((collection) => ({ params: { id: collection.id }, props: { collection } }));
 }
 
+const catalog = await getCatalogData();
 const { collection } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const url = (p: string) => localizedUrl(base, p, locale);
 
-const kindRoutes: Record<Kind, string> = {
-  skill: "skills",
-  server: "servers",
-  agent: "agents",
-  tool: "tools",
-  hook: "hooks",
-  command: "commands",
-  doc: "docs",
-  collection: "collections",
-}
-;
+const localizedCatalog = {
+  skills: localizeEntries(catalog.skills, locale),
+  servers: localizeEntries(catalog.servers, locale),
+  docs: localizeEntries(catalog.docs, locale),
+  agents: localizeEntries(catalog.agents, locale),
+  hooks: localizeEntries(catalog.hooks, locale),
+  commands: localizeEntries(catalog.commands, locale),
+  tools: localizeEntries(catalog.tools, locale),
+};
 
-function kindHref(item: { kind: Kind; id: string }) {
-  return url(`${kindRoutes[item.kind]}/${item.id}/`);
-}
+const resolveItem = buildCollectionItemResolver(localizedCatalog, (item) => url(collectionItemPath(item)));
 ---
 <Base title={collection.name} description={collection.description} locale={locale}>
   <p style="margin-bottom: 1.5rem;"><a href="../">← todas as coleções</a></p>
@@ -48,14 +50,6 @@ function kindHref(item: { kind: Kind; id: string }) {
 
   <h2>Itens ({collection.items.length})</h2>
   <div class="grid">
-    {collection.items.map((item) => (
-      <a class="card" href={kindHref(item)}>
-        <div class="row-head">
-          <span class="icon">{kindIcon(item.kind as Kind)}</span>
-          <h3>{item.id}</h3>
-          <span class={`kind kind-${item.kind}`}>{item.kind}</span>
-        </div>
-      </a>
-    ))}
+    {collection.items.map((item) => <Card {...resolveItem(item)} />)}
   </div>
 </Base>

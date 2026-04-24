@@ -1,0 +1,38 @@
+id: context-rag-launchpad
+name: Context + RAG Launchpad
+description: Explorer launchpad for starting with the right context, then pulling in
+  memory, docs, and code symbols only when needed.
+tags:
+- context
+- rag
+- recall
+- onboarding
+- explorer
+items:
+- kind: skill
+  id: adt-context
+- kind: skill
+  id: context-building
+- kind: skill
+  id: adt-rag-context-pack
+- kind: skill
+  id: adt-rag-recall
+- kind: skill
+  id: adt-rag
+- kind: skill
+  id: adt-resume
+- kind: skill
+  id: adt-route
+- kind: skill
+  id: adt-research
+- kind: server
+  id: memory
+- kind: server
+  id: context7
+- kind: server
+  id: serena
+translations:
+  pt-BR:
+    name: Lançador de Contexto + RAG
+    description: Lançador para começar com o contexto certo e trazer memória, docs
+      e símbolos de código só quando precisar.

@@ -1,12 +1,13 @@
 id: discord-bot-dev
 name: Discord Bot Development
-description: Opinionated bundle for building a TypeScript Discord bot (e.g. Lucky).
-  Pairs prompting/testing skills with the servers you'll reach for — GitHub for PRs,
-  Redis for state inspection, Sentry for production triage.
+description: TypeScript Discord bot starter pack — testing, code review, debug loops,
+  and the MCP surfaces that help you ship and operate reliably.
 tags:
 - discord
 - typescript
 - bot
+- testing
+- ops
 items:
 - kind: skill
   id: testing
@@ -14,6 +15,14 @@ items:
   id: code-review
 - kind: skill
   id: agent-gotchas
+- kind: skill
+  id: systematic-debugging
+- kind: skill
+  id: eng-focused-fix
+- kind: skill
+  id: verification-before-completion
+- kind: skill
+  id: adt-verify
 - kind: server
   id: github
 - kind: server
@@ -22,8 +31,14 @@ items:
   id: sentry
 - kind: server
   id: context7
+- kind: hook
+  id: validate-tests
+- kind: hook
+  id: security-scan
+- kind: hook
+  id: validate-secrets
 translations:
   pt-BR:
     name: Desenvolvimento de Bot Discord
-    description: 'Bundle curado para criar um bot Discord em TypeScript (ex.: Lucky).
-      Combina skills de prompt/engenharia com docs de bot Discord e MCPs essenciais.'
+    description: 'Pacote inicial para bot Discord em TypeScript — testes, code review,
+      ciclos de debug e as superfícies MCP que ajudam a entregar e operar com confiança.'

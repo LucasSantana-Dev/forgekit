@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import Card from "../../components/Card.astro";
+import CollectionsFeaturedGrid from "../../components/CollectionsFeaturedGrid.astro";
 import InstallBlock from "../../components/InstallBlock.astro";
 import {
   getSkills,
@@ -105,19 +106,13 @@ const popularTags = [...tagCount.entries()]
     </div>
     <a class="section-link" href={url("collections/")}>{t("home.allOf", locale, { count: collections.length, kind: t("list.collections.title", locale).toLowerCase() })}</a>
   </div>
-  <div class="grid">
-    {collections.map((c) => (
-      <Card
-        kind="collection"
-        id={c.id}
-        name={c.name}
-        description={c.description}
-        tags={c.tags ?? []}
-        href={url(`collections/${c.id}/`)}
-        extraTag={`${c.items.length} items`}
-      />
-    ))}
-  </div>
+  <CollectionsFeaturedGrid
+    collections={collections}
+    locale={locale}
+    hrefFor={(id) => url(`collections/${id}/`)}
+    heading={t("home.collections.title", locale)}
+    lede={t("home.collections.lede", locale)}
+  />
 
   <div class="section-top">
     <div><h2>{t("home.section.skills", locale)}</h2></div>

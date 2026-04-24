@@ -1,6 +1,6 @@
 ---
 import Base from "../../../layouts/Base.astro";
-import Card from "../../../components/Card.astro";
+import CollectionsFeaturedGrid from "../../../components/CollectionsFeaturedGrid.astro";
 import { getCollections } from "../../../lib/catalog.ts";
 import { localizeEntries, t, localizedUrl, type Locale } from "../../../lib/i18n.ts";
 
@@ -15,18 +15,11 @@ const url = (p: string) => localizedUrl(base, p, locale);
   locale={locale}
 >
   <h1>{t("list.collections.title", locale)}</h1>
-  <p class="lead-muted">Bundles curados para fluxos de trabalho específicos.</p>
-  <div class="grid" style="margin-top: 1.5rem;">
-    {collections.map((c) => (
-      <Card
-        kind="collection"
-        id={c.id}
-        name={c.name}
-        description={c.description}
-        tags={c.tags ?? []}
-        href={url(`collections/${c.id}/`)}
-        extraTag={`${c.items.length} itens`}
-      />
-    ))}
-  </div>
+  <CollectionsFeaturedGrid
+    collections={collections}
+    locale={locale}
+    hrefFor={(id) => url(`collections/${id}/`)}
+    heading={t("list.collections.intro", locale)}
+    lede={t("list.collections.introLede", locale)}
+  />
 </Base>

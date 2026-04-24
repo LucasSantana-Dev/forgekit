@@ -1,0 +1,42 @@
+id: mcp-ops-and-recovery
+name: MCP Ops and Recovery
+description: Operational bundle for checking, debugging, and recovering MCP-backed
+  workflows without guesswork.
+tags:
+- mcp
+- ops
+- recovery
+- diagnostics
+- tooling
+items:
+- kind: skill
+  id: mcp-builder
+- kind: skill
+  id: adt-mcp-patterns
+- kind: skill
+  id: adt-mcp-readiness
+- kind: skill
+  id: adt-mcp-doctor
+- kind: tool
+  id: mcp-health
+- kind: tool
+  id: toggle-mcp
+- kind: hook
+  id: context-backup
+- kind: hook
+  id: block-destructive
+- kind: hook
+  id: auto-context-pack
+- kind: hook
+  id: context-injector
+- kind: server
+  id: context7
+- kind: server
+  id: memory
+- kind: server
+  id: serena
+translations:
+  pt-BR:
+    name: Operações e Recuperação de MCP
+    description: Pacote operacional para checar, diagnosticar e recuperar fluxos
+      com MCP sem adivinhação.

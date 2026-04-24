@@ -1,26 +1,23 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { getCollections } from "../../lib/catalog.ts";
-import { kindIcon, type Kind } from "../../lib/ui.ts";
+import Card from "../../components/Card.astro";
+import {
+  buildCollectionItemResolver,
+  collectionItemPath,
+  getCatalogData,
+  getCollections,
+} from "../../lib/catalog.ts";
 
 export async function getStaticPaths() {
   const collections = await getCollections();
   return collections.map((c) => ({ params: { id: c.id }, props: { collection: c } }));
 }
+
+const catalog = await getCatalogData();
 const { collection } = Astro.props;
 const base = import.meta.env.BASE_URL;
 
-function kindHref(item: { kind: string; id: string }) {
-  const dir =
-    item.kind === "skill"
-      ? "skills"
-      : item.kind === "server"
-      ? "servers"
-      : item.kind === "agent"
-      ? "agents"
-      : "docs";
-  return `${base}${dir}/${item.id}/`;
-}
+const resolveItem = buildCollectionItemResolver(catalog, (item) => `${base}${collectionItemPath(item)}`);
 ---
 <Base title={collection.name} description={collection.description}>
   <p style="margin-bottom: 1.5rem;"><a href="../">← all collections</a></p>
@@ -38,14 +35,6 @@ function kindHref(item: { kind: string; id: string }) {
 
   <h2>Items ({collection.items.length})</h2>
   <div class="grid">
-    {collection.items.map((item) => (
-      <a class="card" href={kindHref(item)}>
-        <div class="row-head">
-          <span class="icon">{kindIcon(item.kind as Kind)}</span>
-          <h3>{item.id}</h3>
-          <span class={`kind kind-${item.kind}`}>{item.kind}</span>
-        </div>
-      </a>
-    ))}
+    {collection.items.map((item) => <Card {...resolveItem(item)} />)}
   </div>
 </Base>

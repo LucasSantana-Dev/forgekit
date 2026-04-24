@@ -1,34 +1,48 @@
 id: claude-code-power-user
 name: Claude Code Power User
-description: Opinionated bundle for Claude Code users — prompting discipline, known
-  agent gotchas, worktree workflow, plus the two MCP servers you'll reach for most
-  often.
+description: High-signal starter pack for Claude Code power users — prompt discipline,
+  context packing, worktree flow, verification, and the MCP tooling you reach for
+  every day.
 tags:
 - claude
 - claude-code
 - starter
+- productivity
+- mcp
 items:
 - kind: skill
   id: prompting-discipline
 - kind: skill
-  id: agent-gotchas
+  id: context-building
 - kind: skill
   id: git-worktrees
-- kind: skill
-  id: context-building
 - kind: skill
   id: task-orchestration
 - kind: server
   id: context7
+- kind: skill
+  id: agent-gotchas
 - kind: server
   id: github
 - kind: server
   id: serena
 - kind: server
   id: memory
+- kind: skill
+  id: adt-context
+- kind: skill
+  id: adt-rag-context-pack
+- kind: skill
+  id: verification-before-completion
+- kind: skill
+  id: code-review
+- kind: hook
+  id: workflow-validator
+- kind: hook
+  id: pre-commit-validation
 translations:
   pt-BR:
     name: Power User do Claude Code
-    description: Bundle curado para usuários do Claude Code — disciplina de prompts,
-      agentes conhecidos, sub-agentes de revisão e debug, operações git, carregamento
-      preguiçoso de ferramentas MCP e verificação antes de concluir.
+    description: Pacote de alto sinal para usuários avançados do Claude Code —
+      disciplina de prompts, empacotamento de contexto, fluxo com worktrees, verificação
+      e as ferramentas MCP que você usa todo dia.

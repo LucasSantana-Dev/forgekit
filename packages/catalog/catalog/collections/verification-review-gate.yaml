@@ -1,0 +1,44 @@
+id: verification-review-gate
+name: Verification Review Gate
+description: Quality-gate bundle for code review, test evidence, and fail-fast recovery
+  before anything ships.
+tags:
+- verification
+- review
+- testing
+- quality
+- safety
+items:
+- kind: skill
+  id: verification-before-completion
+- kind: skill
+  id: adt-verify
+- kind: skill
+  id: code-review
+- kind: skill
+  id: testing
+- kind: skill
+  id: systematic-debugging
+- kind: skill
+  id: eng-focused-fix
+- kind: skill
+  id: adt-build-fix
+- kind: skill
+  id: adt-self-heal
+- kind: hook
+  id: validate-tests
+- kind: hook
+  id: validate-command
+- kind: hook
+  id: workflow-validator
+- kind: hook
+  id: security-scan
+- kind: hook
+  id: validate-secrets
+- kind: hook
+  id: pre-commit-validation
+translations:
+  pt-BR:
+    name: Gate de Verificação e Revisão
+    description: Pacote de qualidade para revisão de código, evidência de testes e
+      recuperação rápida antes de qualquer entrega.

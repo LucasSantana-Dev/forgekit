@@ -47,6 +47,7 @@ export function localizeEntries<T extends EntryLike>(
 export const SHELL: Record<Locale, Record<string, string>> = {
   en: {
     "nav.skills": "Skills",
+    "nav.collections": "Collections",
     "nav.agents": "Agents",
     "nav.servers": "Servers",
     "nav.tools": "Tools",
@@ -88,6 +89,9 @@ export const SHELL: Record<Locale, Record<string, string>> = {
     "home.section.collections": "Featured collections",
     "home.section.collectionsLede":
       "Opinionated bundles — one-click starting points.",
+    "home.collections.title": "Curated starting points",
+    "home.collections.lede":
+      "Collections bundle the catalog into guided entry paths instead of raw category lists.",
     "home.section.skills": "Popular skills",
     "home.section.agents": "Sub-agents",
     "home.section.servers": "MCP servers",
@@ -133,6 +137,8 @@ export const SHELL: Record<Locale, Record<string, string>> = {
     "list.docs.description": "{count} documents.",
     "list.collections.title": "Collections",
     "list.collections.description": "{count} opinionated bundles.",
+    "list.collections.intro": "Start here",
+    "list.collections.introLede": "Curated bundles that work well as entry points.",
 
     "search.placeholder": "Search…",
     "search.filterByTag": "Filter by tag",
@@ -160,6 +166,7 @@ export const SHELL: Record<Locale, Record<string, string>> = {
   },
   "pt-br": {
     "nav.skills": "Skills",
+    "nav.collections": "Coleções",
     "nav.agents": "Agentes",
     "nav.servers": "Servidores",
     "nav.tools": "Ferramentas",
@@ -201,6 +208,9 @@ export const SHELL: Record<Locale, Record<string, string>> = {
     "home.section.collections": "Coleções em destaque",
     "home.section.collectionsLede":
       "Bundles prontos — pontos de partida com um clique.",
+    "home.collections.title": "Pontos de partida curados",
+    "home.collections.lede":
+      "As coleções agrupam o catálogo em caminhos guiados, em vez de uma lista crua de categorias.",
     "home.section.skills": "Skills populares",
     "home.section.agents": "Sub-agentes",
     "home.section.servers": "Servidores MCP",
@@ -246,6 +256,8 @@ export const SHELL: Record<Locale, Record<string, string>> = {
     "list.docs.description": "{count} documentos.",
     "list.collections.title": "Coleções",
     "list.collections.description": "{count} bundles curados.",
+    "list.collections.intro": "Comece por aqui",
+    "list.collections.introLede": "Bundles curados que funcionam bem como ponto de partida.",
 
     "search.placeholder": "Buscar…",
     "search.filterByTag": "Filtrar por tag",
@@ -288,6 +300,11 @@ export function t(
 
 export function localePrefix(locale: Locale): string {
   return locale === "en" ? "" : `${locale}/`;
+}
+
+export function pluralizeItems(count: number, locale: Locale): string {
+  if (locale === "pt-br") return count === 1 ? `${count} item` : `${count} itens`;
+  return count === 1 ? `${count} item` : `${count} items`;
 }
 
 export function switchLocalePath(pathname: string, target: Locale): string {

@@ -1,5 +1,5 @@
 ---
-import { displayEntryName, kindGlyph, kindLabel, type Kind } from "../lib/ui.ts";
+import { displayEntryName, kindIcon, kindLabel, type Kind } from "../lib/ui.ts";
 
 interface Props {
   kind: Kind;
@@ -11,7 +11,7 @@ interface Props {
   extraTag?: string;
 }
 const { kind, id, name, description, tags = [], href, extraTag } = Astro.props;
-const icon = kindGlyph(kind);
+const icon = kindIcon(kind);
 const label = kindLabel(kind);
 const displayName = displayEntryName(name);
 const haystack = [id, name, description, ...tags].join(" ").toLowerCase();
