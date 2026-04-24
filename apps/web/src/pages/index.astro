@@ -175,16 +175,13 @@ const popularTags = [...tagCount.entries()]
     </div>
     <a class="section-link" href={url("search/")}>{t("home.workflow.exploreAll", locale)}</a>
   </div>
-  <div class="grid">
+  <div class="workflow-grid">
     {workflowEssentials.map((item) => (
-      <section class="hero-surface" style="display:flex;flex-direction:column;gap:1rem;">
-        <div style="display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;">
-          <div>
-            <h3 style="margin-top:0.15rem;">{t(`home.workflow.${item.key}.title`, locale)}</h3>
-            <p class="lead-muted">{t(`home.workflow.${item.key}.lede`, locale)}</p>
-          </div>
-          <a class="section-link" href={item.browseHref}>{t("home.workflow.browse", locale)}</a>
-        </div>
+      <section class="hero-surface workflow-card">
+        <header class="workflow-card-header">
+          <h3>{t(`home.workflow.${item.key}.title`, locale)}</h3>
+          <p class="lead-muted">{t(`home.workflow.${item.key}.lede`, locale)}</p>
+        </header>
         {item.primary ? (
           <Card
             kind={item.primary.kind}
@@ -205,6 +202,7 @@ const popularTags = [...tagCount.entries()]
             ))}
           </div>
         )}
+        <a class="section-link workflow-card-footer" href={item.browseHref}>{t("home.workflow.browse", locale)} →</a>
       </section>
     ))}
   </div>
