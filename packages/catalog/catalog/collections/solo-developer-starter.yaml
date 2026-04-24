@@ -1,0 +1,40 @@
+id: solo-developer-starter
+name: Solo Developer Starter
+description: Minimal first-install for someone using AI-assisted dev for the
+  first time. Six picks — context discipline, prompt hygiene, planning,
+  agent gotchas you'll trip over, code review as a habit, and live library
+  docs. Any stack, any project. Stop here for the first week before adding
+  more.
+tags:
+- starter
+- beginner
+- solo
+- foundation
+- onboarding
+items:
+- kind: skill
+  id: adt-context
+- kind: skill
+  id: prompting-discipline
+- kind: skill
+  id: agent-gotchas
+- kind: skill
+  id: writing-plans
+- kind: skill
+  id: code-review
+- kind: agent
+  id: code-reviewer
+- kind: agent
+  id: planner
+- kind: server
+  id: context7
+- kind: hook
+  id: secret-detection
+translations:
+  pt-BR:
+    name: Início para Desenvolvedor Solo
+    description: Primeiro install mínimo para quem está usando dev assistido por
+      IA pela primeira vez. Seis itens — disciplina de contexto, higiene de
+      prompts, planejamento, armadilhas comuns dos agentes, revisão de código
+      como hábito e docs de bibliotecas ao vivo. Funciona em qualquer stack.
+      Pare aqui pela primeira semana antes de adicionar mais.
