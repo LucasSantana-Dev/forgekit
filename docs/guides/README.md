@@ -9,6 +9,11 @@ Batteries-included, opt-in-per-skill reference layer for AI-assisted development
 
 Pick your entry point:
 
+## Step-by-step adoption
+Stepped walkthroughs. Pick the depth that matches where you are.
+- **[Adoption — beginner](./adoption-beginner.md)** — 7 steps, 45 min. Copy-paste-able. For people who've never installed an AI dev tool before (15 min read, hours of steps)
+- **[Adoption — advanced](./adoption-advanced.md)** — 6 stages, ~3 hours. Gateway + MCP + hooks + CI + observability. Assumes Docker/Node/git fluency (20 min read)
+
 ## Installing
 - **[Installing entries](./installing.md)** — the reference. Why there's no mega-install script; what each kind of install does; where files land; how to verify and uninstall (15 min)
 
@@ -17,6 +22,10 @@ Plain-language, non-technical. No install required for the first two.
 - **[Get productive with AI in 10 minutes](./ten-minute-start.md)** — three decisions, one real task, no jargon (10 min)
 - **[Pick your first tool](./pick-your-first-tool.md)** — maps 5 common situations to the right Forge Kit piece (6 min)
 - **[Is it working?](./is-it-working.md)** — honest measurements so you don't confuse "feeling faster" with actually shipping more (7 min)
+
+## Technical deep-dives
+- **[Catalog schema reference](./catalog-schema-reference.md)** — every field on every kind, with examples and validation rules (12 min)
+- **[MCP servers](./mcp-servers.md)** — transport choice, gateway model, secrets, how to add a server, how to troubleshoot (9 min)
 
 ## First Time Here? (technical)
 - **[Getting Started](./getting-started.md)** — 10-minute clone → install → first query (5 min read)

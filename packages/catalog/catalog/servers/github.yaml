@@ -1,7 +1,11 @@
 id: github
 name: GitHub
-description: Access GitHub PRs, issues, reviews, CI checks, commits, branches, and
-  releases via MCP. Preferred over raw `gh` for structured reads.
+description: Official GitHub MCP server — access PRs, issues, reviews, CI
+  checks, commits, branches, and releases with a structured schema the agent
+  can reason about. Preferred over raw `gh` CLI because list-and-filter
+  responses come back typed, not parsed from shell output. Scope the
+  GITHUB_PERSONAL_ACCESS_TOKEN narrowly (contents, pull-requests, issues) and
+  rotate quarterly.
 transport: stdio
 command: docker
 args:
@@ -26,5 +30,9 @@ license: MIT
 translations:
   pt-BR:
     name: GitHub
-    description: Acesse PRs, issues, reviews, checks de CI, commits, branches e releases
-      do GitHub via MCP. Útil para fluxos agênticos de triagem de PR / babysitting.
+    description: Servidor MCP oficial do GitHub — acessa PRs, issues, reviews,
+      checks de CI, commits, branches e releases com schema estruturado que o
+      agente consegue raciocinar. Prefira em vez do `gh` CLI puro porque as
+      respostas de list-and-filter vêm tipadas, não parseadas de stdout.
+      Limite o GITHUB_PERSONAL_ACCESS_TOKEN a escopos estreitos (contents,
+      pull-requests, issues) e rotacione trimestralmente.

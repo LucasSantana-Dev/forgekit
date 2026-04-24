@@ -1,7 +1,10 @@
 id: memory
 name: Memory (Knowledge Graph)
-description: Official reference knowledge-graph memory server — entities, relations,
-  observations persisted across sessions. Good default for project memory.
+description: Official MCP reference implementation of a knowledge-graph memory
+  store — entities, relations, and observations persisted across sessions in a
+  local JSON file. Good default for "remember this fact for next time" without
+  adding a database. Not a general-purpose vector store; for long-form retrieval
+  pair with a RAG pipeline instead.
 transport: stdio
 command: npx
 args:
@@ -16,5 +19,8 @@ license: MIT
 translations:
   pt-BR:
     name: Memory (Grafo de Conhecimento)
-    description: Servidor oficial de memória baseado em grafo de conhecimento — entidades,
-      relações, observações. Útil para memória persistente do agente entre sessões.
+    description: Implementação MCP oficial de referência para memória baseada
+      em grafo de conhecimento — entidades, relações e observações persistidas
+      entre sessões em um arquivo JSON local. Default bom para "lembre esse
+      fato na próxima vez" sem adicionar um banco. Não é um vector store geral;
+      para retrieval de texto longo combine com um pipeline de RAG.

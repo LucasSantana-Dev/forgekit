@@ -1,7 +1,11 @@
 id: redis
 name: Redis
-description: Get / set / list / delete keys in a Redis instance. Useful for inspecting
-  queue state, caches, and ad-hoc debugging.
+description: Get, set, list, and delete keys in a Redis instance via the
+  official MCP reference server. Works with any Redis-compatible endpoint
+  (local, Docker, Upstash, Elasticache, Valkey) through a REDIS_URL connection
+  string. Ideal for inspecting queue state, cache hits/misses, and session data
+  during debugging — not intended for bulk migrations or persisted writes to
+  production caches.
 transport: stdio
 command: npx
 args:
@@ -22,5 +26,9 @@ license: MIT
 translations:
   pt-BR:
     name: Redis
-    description: Get / set / list / delete de chaves em uma instância Redis. Útil
-      para inspecionar filas e cache durante o desenvolvimento.
+    description: Get, set, list e delete de chaves em uma instância Redis via
+      servidor MCP de referência oficial. Funciona com qualquer endpoint
+      compatível com Redis (local, Docker, Upstash, Elasticache, Valkey) por
+      uma connection string REDIS_URL. Ideal para inspecionar estado de fila,
+      hits/misses de cache e dados de sessão durante debug — não para
+      migrações em bulk ou writes persistidos em caches de produção.

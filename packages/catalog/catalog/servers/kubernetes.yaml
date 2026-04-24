@@ -1,7 +1,11 @@
 id: kubernetes
 name: Kubernetes
-description: Read + edit live cluster state — pods, nodes, events, logs, resources.
-  Use only against clusters you expect the model to touch.
+description: Read and edit live Kubernetes cluster state — pods, nodes, events,
+  logs, deployments, services, arbitrary custom resources. Honors whichever
+  context your KUBECONFIG points at, so a misconfigured kubeconfig is a
+  production-risk event. Use only against dev, staging, or homelab clusters;
+  for production, review every agent action before apply, or wrap the server
+  in a read-only kubeconfig.
 transport: stdio
 command: npx
 args:
