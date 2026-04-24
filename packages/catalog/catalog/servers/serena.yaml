@@ -1,7 +1,11 @@
 id: serena
 name: Serena
-description: Semantic code navigation — symbol search, referencing-symbols, symbol-body
-  read/rewrite. Cheaper than full-file reads on large codebases.
+description: Semantic code navigation built on Language Server Protocol — find
+  symbols by name, find references to a symbol, read and rewrite just the body
+  of a symbol. Dramatically cheaper than full-file reads on large codebases and
+  keeps refactors scoped to one declaration at a time. Works well as a
+  companion to file-level tools; don't use it as the only code-reading path —
+  plain file reads remain clearer for small changes.
 transport: stdio
 command: uvx
 args:
@@ -21,5 +25,10 @@ license: MIT
 translations:
   pt-BR:
     name: Serena
-    description: Navegação semântica de código — busca de símbolos, referências, leitura/escrita
-      de corpo de símbolo. Baseia-se em Language Server Protocol.
+    description: Navegação semântica de código baseada em Language Server
+      Protocol — busca de símbolos por nome, busca de referências, leitura e
+      reescrita do corpo de um símbolo. Muito mais barato que ler o arquivo
+      inteiro em codebases grandes e mantém refactors focados em uma
+      declaração por vez. Ótimo como companheiro de ferramentas a nível de
+      arquivo; não use como único caminho de leitura — leituras simples de
+      arquivo continuam mais claras para mudanças pequenas.

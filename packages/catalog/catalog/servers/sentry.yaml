@@ -1,7 +1,11 @@
 id: sentry
 name: Sentry
-description: Query Sentry issues, events, and releases from an MCP client. Useful
-  for triaging production errors inline.
+description: Official Sentry MCP server — query issues, events, releases, DSNs,
+  and team/project metadata; fetch stack traces, replay details, profile
+  details, and attached event files. Good for triaging production errors inline
+  without leaving the agent. Use a read-scoped auth token (event:read,
+  project:read, org:read) and revoke on leave; Sentry keys carry a wide blast
+  radius into your telemetry.
 transport: stdio
 command: npx
 args:
@@ -21,5 +25,9 @@ license: MIT
 translations:
   pt-BR:
     name: Sentry
-    description: Consulte issues, eventos e releases do Sentry via cliente MCP. Útil
-      para triagem de erros de produção a partir do editor.
+    description: Servidor MCP oficial do Sentry — consulte issues, eventos,
+      releases, DSNs e metadata de time/projeto; busque stack traces, detalhes
+      de replay, de perfil e arquivos anexados a eventos. Ideal para triagem
+      de erros de produção inline no agente. Use um token com escopo de
+      leitura (event:read, project:read, org:read) e revogue ao sair; chaves
+      Sentry têm blast radius amplo na telemetria.

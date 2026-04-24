@@ -1,7 +1,10 @@
 id: docker
 name: Docker
-description: Inspect containers, fetch logs, run one-off containers, deploy compose
-  stacks. Useful for homelab / local-stack debugging from the editor.
+description: Read-and-write Docker control from the agent — list and inspect
+  containers, fetch logs, exec one-off runs, deploy docker-compose stacks. Uses
+  the local Docker socket, so the blast radius matches what your user can do
+  via `docker` CLI. Best for homelab + local-stack debugging; avoid pointing
+  it at production daemons without a dedicated, locked-down DOCKER_HOST.
 transport: stdio
 command: uvx
 args:
@@ -16,5 +19,9 @@ license: MIT
 translations:
   pt-BR:
     name: Docker
-    description: Inspecione containers, colete logs, execute containers ad-hoc e faça
-      deploy de stacks compose. Use para operações locais e homelab.
+    description: Controle Docker read-and-write a partir do agente — listar e
+      inspecionar containers, buscar logs, rodar exec ad-hoc, fazer deploy de
+      stacks docker-compose. Usa o socket Docker local, então o blast radius é
+      o que seu usuário pode fazer via CLI `docker`. Ideal para homelab e
+      stack local; evite apontar para daemons de produção sem um DOCKER_HOST
+      dedicado e travado.

@@ -1,7 +1,11 @@
 id: playwright
 name: Playwright
-description: Browser automation via Playwright — navigate, click, fill forms, take
-  screenshots, inspect console/network. Use for UI testing and scraping.
+description: Microsoft's Playwright MCP server for browser automation —
+  navigate, click, fill forms, drag, take screenshots, inspect console and
+  network activity, run JavaScript in-page. Launches a headless browser per
+  session, typically under ~400 MB memory. Good for UI smoke tests,
+  accessibility spot checks, and bug-report repro; avoid for heavy scraping
+  where a dedicated scraper will outperform.
 transport: stdio
 command: npx
 args:
@@ -17,5 +21,10 @@ license: Apache-2.0
 translations:
   pt-BR:
     name: Playwright
-    description: Automação de navegador via Playwright — navegar, clicar, preencher
-      formulários, tirar screenshots. Útil para testes e2e e smoke testing de UI.
+    description: Servidor MCP Playwright da Microsoft para automação de
+      navegador — navegar, clicar, preencher formulários, arrastar, tirar
+      screenshots, inspecionar console e rede, rodar JavaScript in-page. Sobe
+      um browser headless por sessão, tipicamente menos de 400 MB de memória.
+      Ideal para smoke tests de UI, checagens pontuais de acessibilidade e
+      repro de bugs; evite para scraping pesado — um scraper dedicado vai
+      performar melhor.

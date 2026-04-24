@@ -1,7 +1,11 @@
 id: context7
 name: Context7
-description: Fetches current documentation for libraries, frameworks, SDKs, and APIs.
-  Prefer over web search for library docs — training data rots fast.
+description: Upstash-hosted MCP server that fetches current documentation for
+  libraries, frameworks, SDKs, CLI tools, and cloud services. Resolves library
+  IDs, retrieves API syntax, configuration, migration notes, and setup instructions
+  directly from upstream docs — far more reliable than training-data recall.
+  Prefer over web search whenever the agent needs to write or debug code that
+  depends on a specific library.
 transport: stdio
 command: npx
 args:
@@ -17,5 +21,10 @@ license: MIT
 translations:
   pt-BR:
     name: Context7
-    description: Busca documentação atualizada de bibliotecas, frameworks, SDKs e
-      APIs. Prefira Context7 em vez de busca web para docs de bibliotecas.
+    description: Servidor MCP hospedado pela Upstash que busca documentação
+      atualizada de bibliotecas, frameworks, SDKs, CLIs e serviços cloud. Resolve
+      IDs de biblioteca, consulta sintaxe de API, configuração, notas de
+      migração e passos de setup direto da doc oficial — muito mais confiável
+      do que a memória do modelo. Prefira em vez de busca web sempre que o
+      agente precisar escrever ou depurar código que depende de uma biblioteca
+      específica.
