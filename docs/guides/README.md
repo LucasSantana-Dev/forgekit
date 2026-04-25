@@ -44,6 +44,7 @@ Plain-language, non-technical. No install required for the first two.
 
 ## Operations
 - **[Auto-deploy](./auto-deploy.md)** — how `forgekit.lucassantana.tech` redeploys on every push to main. One-time CF token setup, smoke check, manual fallback (4 min)
+- **[Secret hygiene](./secret-hygiene.md)** — pre-commit gitleaks in 5 minutes. Three drop-in hook styles (husky / pre-commit framework / plain git hook), ready-to-copy `.gitleaks.toml` with test-fixture allowlist, canary verification (8 min)
 - **[Hooks](./hooks.md)** — edit-moment hooks pack: format, typecheck, evaluate-response. Signature feature (6 min)
 - **[Governance](./governance.md)** — compliance Q&A: data, secrets, deps, audit, chezmoi vs dual-branch (10 min)
 - **[Tool Matrix](./tool-matrix.md)** — skill × tool (Claude Code / Codex / Cursor / Copilot / Gemini) × primitive (4 min)
