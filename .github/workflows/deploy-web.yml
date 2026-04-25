@@ -67,15 +67,15 @@ jobs:
       - name: Setup pnpm
         if: steps.creds.outputs.ready == 'true'
         # No `version:` here — `packageManager: pnpm@9.12.0` in root
-        # package.json is the source of truth. action-setup@v4 errors out
+        # package.json is the source of truth. action-setup errors out
         # if you specify both.
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       - name: Setup Node.js
         if: steps.creds.outputs.ready == 'true'
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: 22
           cache: 'pnpm'
 
       - name: Install dependencies
