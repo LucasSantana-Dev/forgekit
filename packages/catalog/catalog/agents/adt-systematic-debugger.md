@@ -14,7 +14,7 @@ tags:
 source:
   type: git
   path: ai-dev-toolkit/packages/core/kit/core/agents/systematic-debugger
-  repo: https://github.com/LucasSantana-Dev/ai-dev-toolkit
+  repo: https://github.com/LucasSantana-Dev/forgekit
 license: MIT
 author: Lucas Santana
 translations:

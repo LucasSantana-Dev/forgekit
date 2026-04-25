@@ -131,4 +131,4 @@ This document lists all documentation files for `ai-dev-toolkit-setup`, with bri
 
 - **README.md** — Quick start
 - **README.en.md** — English version of README
-- **LucasSantana-Dev/ai-dev-toolkit** — Upstream repo with reusable patterns and skills
+- **LucasSantana-Dev/forgekit** — Upstream repo with reusable patterns and skills

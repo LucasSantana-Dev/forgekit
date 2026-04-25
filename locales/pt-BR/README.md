@@ -1,9 +1,9 @@
-[English](https://github.com/LucasSantana-Dev/ai-dev-toolkit) | [Português](README.md)
+[English](https://github.com/LucasSantana-Dev/forgekit) | [Português](README.md)
 
 # AI Dev Toolkit
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Latest Release](https://img.shields.io/github/v/release/LucasSantana-Dev/ai-dev-toolkit)](https://github.com/LucasSantana-Dev/ai-dev-toolkit/releases)
+[![Latest Release](https://img.shields.io/github/v/release/LucasSantana-Dev/forgekit)](https://github.com/LucasSantana-Dev/forgekit/releases)
 
 Patterns reutilizáveis, regras prontas para usar, skills portáveis e automação de setup multiplataforma para que agentes AI de codificação produzam código alinhado com seu projeto desde a primeira sessão.
 
@@ -17,8 +17,8 @@ Copie um arquivo de rule para seu projeto. Esse arquivo único oferece a seu age
 
 ```bash
 # Clone the toolkit
-git clone https://github.com/LucasSantana-Dev/ai-dev-toolkit.git
-cd ai-dev-toolkit
+git clone https://github.com/LucasSantana-Dev/forgekit.git
+cd forgekit
 
 # Copy the rule file that matches your tool
 cp rules/CLAUDE.md    ~/my-project/CLAUDE.md       # Claude Code / OpenCode

@@ -1,6 +1,6 @@
 # forge-kit
 
-CLI for [Forge Kit](https://github.com/LucasSantana-Dev/ai-dev-toolkit) —
+CLI for [Forge Kit](https://github.com/LucasSantana-Dev/forgekit) —
 browse Skills and MCP servers, install them into Claude Code, and wire up your local MCP gateway
 to Claude Code, Codex, Cursor, Gemini, Windsurf, or Claude Desktop.
 
@@ -60,8 +60,8 @@ Every setup command:
 
 ```bash
 # 1. Start your local gateway (one-time)
-git clone https://github.com/LucasSantana-Dev/ai-dev-toolkit
-cd ai-dev-toolkit/infra/gateway
+git clone https://github.com/LucasSantana-Dev/forgekit
+cd forgekit/infra/gateway
 # create gateway/.env per gateway/README.md
 docker compose up -d
 python seeds/seed.py

@@ -15,13 +15,13 @@
   ],
   "source": {
     "type": "git",
-    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
     "ref": "main",
     "path": "packages/core/kit/core/skills/secure.md"
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/secure.md",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/secure.md",
   "translations": {
     "pt-BR": {
       "name": "Adt Secure",

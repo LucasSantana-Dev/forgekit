@@ -8,7 +8,7 @@ ai-dev-toolkit-setup consumes**.
 
 1. **setup-owned** — authored and maintained here. Never duplicated in toolkit.
 2. **toolkit-sourced** — canonical copy lives in
-   [ai-dev-toolkit](https://github.com/LucasSantana-Dev/ai-dev-toolkit). This repo
+   [ai-dev-toolkit](https://github.com/LucasSantana-Dev/forgekit). This repo
    fetches it at bootstrap time from the pinned `TOOLKIT_VERSION`. Do **not**
    edit these files locally — submit changes to the toolkit repo instead.
 3. **generated** — produced by a script at bootstrap time. Not committed.
@@ -101,6 +101,6 @@ These local files are only used when the toolkit tarball is unreachable.
 
 ## How to Update Toolkit Content
 
-1. Submit a PR to [LucasSantana-Dev/ai-dev-toolkit](https://github.com/LucasSantana-Dev/ai-dev-toolkit)
+1. Submit a PR to [LucasSantana-Dev/forgekit](https://github.com/LucasSantana-Dev/forgekit)
 2. After toolkit releases, bump `TOOLKIT_VERSION` in this repo so newly tagged helper capabilities become available here
 3. Run `./scripts/doctor.sh` to verify the pin is valid

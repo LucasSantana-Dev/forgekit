@@ -9,7 +9,7 @@ tags:
 - workflow
 source:
   path: ai-dev-toolkit/packages/core/best-practices/workflow.md
-  upstream: https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/packages/core/best-practices/workflow.md
+  upstream: https://github.com/LucasSantana-Dev/forgekit/blob/main/packages/core/best-practices/workflow.md
   license: MIT
 translations:
   pt-BR:

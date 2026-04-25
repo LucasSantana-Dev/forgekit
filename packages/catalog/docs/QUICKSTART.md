@@ -13,8 +13,8 @@ Get your local stack running in ~5 minutes. Works on macOS and Linux; Windows us
 ## 1. Clone + start the gateway
 
 ```bash
-git clone https://github.com/LucasSantana-Dev/ai-dev-toolkit
-cd ai-dev-toolkit/infra/gateway
+git clone https://github.com/LucasSantana-Dev/forgekit
+cd forgekit/infra/gateway
 ```
 
 Create `infra/gateway/.env`:

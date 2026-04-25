@@ -34,8 +34,8 @@ own gateway locally — the catalog is shared, the runtime is not.
 
 ```bash
 # 1. Run your local gateway
-git clone https://github.com/LucasSantana-Dev/ai-dev-toolkit
-cd ai-dev-toolkit/infra/gateway
+git clone https://github.com/LucasSantana-Dev/forgekit
+cd forgekit/infra/gateway
 cp .env.example .env
 # edit .env: generate GATEWAY_ADMIN_TOKEN + JWT_SECRET with `openssl rand -hex 32`
 docker compose up -d

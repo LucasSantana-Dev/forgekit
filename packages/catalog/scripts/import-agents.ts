@@ -98,7 +98,7 @@ const SOURCES: AgentSource[] = [
     baseDir: path.join(WORKSPACE_ROOT, "packages/core/kit/core/agents"),
     layout: "dir",
     sourcePath: "ai-dev-toolkit/packages/core/kit/core/agents",
-    repo: "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    repo: "https://github.com/LucasSantana-Dev/forgekit",
     author: "Lucas Santana",
     license: "MIT",
     extraTags: ["agent", "claude-code", "ai-dev-toolkit"],

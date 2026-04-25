@@ -244,7 +244,7 @@ one PR at a time.
   deploy-time RLS smoke test.
 - Reads cleanly into the in-flight Supabase migration (PR #764).
 
-### Port #2 — ai-dev-toolkit PR [#93](https://github.com/LucasSantana-Dev/ai-dev-toolkit/pull/93) ✅ opened
+### Port #2 — ai-dev-toolkit PR [#93](https://github.com/LucasSantana-Dev/forgekit/pull/93) ✅ opened
 
 `feat(patterns): add external prompt-catalogs index`
 

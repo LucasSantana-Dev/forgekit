@@ -170,6 +170,6 @@ TOOLKIT_DIR_OVERRIDE=~/path/to/local-toolkit ./bootstrap.sh --work-mac
 Or clone the toolkit manually and point to it:
 
 ```bash
-git clone https://github.com/LucasSantana-Dev/ai-dev-toolkit.git ~/ai-dev-toolkit
+git clone https://github.com/LucasSantana-Dev/forgekit.git ~/ai-dev-toolkit
 TOOLKIT_DIR_OVERRIDE=~/ai-dev-toolkit ./bootstrap.sh --work-mac
 ```

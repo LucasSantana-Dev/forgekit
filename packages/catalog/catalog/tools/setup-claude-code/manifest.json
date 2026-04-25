@@ -16,11 +16,11 @@
   },
   "source": {
     "type": "git",
-    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
     "ref": "main",
     "path": "packages/core/tools/setup-claude-code.sh"
   },
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/packages/core/tools/setup-claude-code.sh",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/blob/main/packages/core/tools/setup-claude-code.sh",
   "license": "MIT",
   "author": "Lucas Santana",
   "translations": {

@@ -61,8 +61,8 @@ Each path comes from `packages/cli/src/lib/claude-config.ts`. Override with
 curl -s https://forgekit.lucassantana.tech/<kind>/<id>/ | less
 
 # Or clone the repo and inspect the catalog source directly
-git clone https://github.com/LucasSantana-Dev/ai-dev-toolkit
-cd ai-dev-toolkit/packages/catalog/catalog/<kind>/<id>
+git clone https://github.com/LucasSantana-Dev/forgekit
+cd forgekit/packages/catalog/catalog/<kind>/<id>
 cat manifest.json  # or the .yaml / .md for that kind
 ```
 
@@ -304,7 +304,7 @@ agent sees one aggregated endpoint instead of one-per-server.
 
 ```bash
 # 1. Run the gateway (one-time)
-cd ai-dev-toolkit/infra/gateway
+cd forgekit/infra/gateway
 cp .env.example .env
 # edit .env: set GATEWAY_ADMIN_TOKEN and any upstream server secrets
 docker compose up -d

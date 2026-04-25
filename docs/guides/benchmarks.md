@@ -38,7 +38,7 @@ Ranking: Reciprocal of position (1st result = 1.0, 2nd = 0.5, 3rd = 0.33, etc.)
 ## Reproduce
 
 ```bash
-cd ai-dev-toolkit
+cd forgekit
 python3 ~/.claude/rag-index/eval/run_eval.py \
   --dataset ~/.claude/rag-index/eval/baseline.json \
   --model default

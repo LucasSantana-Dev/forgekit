@@ -52,7 +52,7 @@ Account setup:
 ## Stage 1 — Clone and inspect (≈ 15 min)
 
 ```bash
-git clone https://github.com/LucasSantana-Dev/ai-dev-toolkit forge-kit
+git clone https://github.com/LucasSantana-Dev/forgekit forge-kit
 cd forge-kit
 pnpm install --frozen-lockfile
 pnpm --filter @forge-kit/catalog run validate

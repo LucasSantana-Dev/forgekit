@@ -18,7 +18,7 @@ export interface CatalogIndex {
   entries: IndexEntry[];
 }
 
-const REPO_RAW_BASE = "https://raw.githubusercontent.com/LucasSantana-Dev/ai-dev-toolkit/main";
+const REPO_RAW_BASE = "https://raw.githubusercontent.com/LucasSantana-Dev/forgekit/main";
 const CATALOG_REPO_PATH = "packages/catalog/catalog";
 const CATALOG_URL = `${REPO_RAW_BASE}/${CATALOG_REPO_PATH}/index.json`;
 

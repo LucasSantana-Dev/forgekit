@@ -39,7 +39,7 @@ red, it just no-ops, until the token is configured.
 ### 2. Store it as a GitHub secret
 
 ```bash
-gh secret set CLOUDFLARE_API_TOKEN --repo LucasSantana-Dev/ai-dev-toolkit
+gh secret set CLOUDFLARE_API_TOKEN --repo LucasSantana-Dev/forgekit
 # Paste the token at the prompt.
 ```
 
@@ -51,8 +51,8 @@ repository secret → name `CLOUDFLARE_API_TOKEN`, value `<token>`**.
 Either push something to `main` that matches the path filter, or manually:
 
 ```bash
-gh workflow run deploy-web.yml --repo LucasSantana-Dev/ai-dev-toolkit
-gh run watch --repo LucasSantana-Dev/ai-dev-toolkit
+gh workflow run deploy-web.yml --repo LucasSantana-Dev/forgekit
+gh run watch --repo LucasSantana-Dev/forgekit
 ```
 
 Expected output: `Validate catalog ✅`, `Build webapp ✅`, `Deploy to

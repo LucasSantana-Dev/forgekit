@@ -18,7 +18,7 @@ tags:
 source:
   path: ai-dev-toolkit/packages/catalog/catalog/docs/local-models.md
   upstream: >-
-    https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/catalog/catalog/docs/local-models.md
+    https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/catalog/catalog/docs/local-models.md
   license: MIT
 translations:
   pt-BR:

@@ -10,8 +10,8 @@ Clone, instale RAG, execute sua primeira query. Nenhuma configuração necessár
 ## 1. Clone (2 min)
 
 ```bash
-git clone https://github.com/LucasSantana-Dev/ai-dev-toolkit.git
-cd ai-dev-toolkit
+git clone https://github.com/LucasSantana-Dev/forgekit.git
+cd forgekit
 ```
 
 ## 2. Instale o Índice RAG (5 min)
