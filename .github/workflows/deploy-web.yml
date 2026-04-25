@@ -92,12 +92,15 @@ jobs:
 
       - name: Deploy to Cloudflare Workers
         if: steps.creds.outputs.ready == 'true'
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: apps/web
-          command: deploy
+        # Use the workspace-pinned wrangler (apps/web devDependency) rather
+        # than cloudflare/wrangler-action's bundled version — the action's
+        # old wrangler doesn't understand static-assets-only Workers and
+        # fails with "Missing entry-point" on our wrangler.jsonc.
+        working-directory: apps/web
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
+        run: pnpm exec wrangler deploy
 
       - name: Smoke check
         if: steps.creds.outputs.ready == 'true'
