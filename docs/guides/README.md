@@ -26,6 +26,7 @@ Plain-language, non-technical. No install required for the first two.
 ## Technical deep-dives
 - **[Catalog schema reference](./catalog-schema-reference.md)** — every field on every kind, with examples and validation rules (12 min)
 - **[MCP servers](./mcp-servers.md)** — transport choice, gateway model, secrets, how to add a server, how to troubleshoot (9 min)
+- **[Local models](./local-models.md)** — Ollama, LM Studio, llama.cpp — when to pick local over the Claude API, hardware budget, three wiring patterns (editor autocomplete, batch work, privacy-gated review) (12 min)
 
 ## First Time Here? (technical)
 - **[Getting Started](./getting-started.md)** — 10-minute clone → install → first query (5 min read)

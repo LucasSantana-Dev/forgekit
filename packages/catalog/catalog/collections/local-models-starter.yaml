@@ -1,0 +1,35 @@
+id: local-models-starter
+name: Local Models Starter
+description: Run Llama, Qwen, Mistral, or other open-weight models on your
+  own hardware — privacy, offline capability, zero per-token cost for bulk
+  work. Bundles the docs + skills you need to pick a runtime (Ollama, LM
+  Studio, llama.cpp), measure whether local pays off, and avoid the
+  obvious failure modes. Ideal for NDA/offline/bulk-labeling workflows.
+tags:
+- local
+- models
+- llm
+- privacy
+- offline
+items:
+- kind: doc
+  id: local-models
+- kind: skill
+  id: adt-model-serving
+- kind: skill
+  id: adt-eval
+- kind: skill
+  id: adt-cost
+- kind: skill
+  id: adt-rag
+- kind: skill
+  id: prompting-discipline
+translations:
+  pt-BR:
+    name: Início com Modelos Locais
+    description: Rode Llama, Qwen, Mistral ou outros modelos open-weight no
+      seu próprio hardware — privacidade, funciona offline, custo zero por
+      token em trabalho em lote. Agrupa docs + skills para escolher um
+      runtime (Ollama, LM Studio, llama.cpp), medir se o local compensa e
+      evitar os erros mais comuns. Ideal para NDA / offline / labeling em
+      lote.
