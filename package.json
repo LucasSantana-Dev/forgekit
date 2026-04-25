@@ -8,7 +8,7 @@
   "packageManager": "pnpm@9.12.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LucasSantana-Dev/ai-dev-toolkit"
+    "url": "https://github.com/LucasSantana-Dev/forgekit"
   },
   "keywords": [
     "ai",

@@ -5,7 +5,7 @@
   "description": "Forge Kit catalog of skills, agents, hooks, commands, tools, docs, and MCP servers.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LucasSantana-Dev/ai-dev-toolkit.git",
+    "url": "https://github.com/LucasSantana-Dev/forgekit.git",
     "directory": "packages/catalog"
   },
   "license": "MIT",
