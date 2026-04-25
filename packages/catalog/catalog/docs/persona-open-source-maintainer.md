@@ -13,7 +13,7 @@ tags:
 source:
   path: ai-dev-toolkit/packages/core/companies/open-source-maintainer
   upstream: >-
-    https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/companies/open-source-maintainer
+    https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/companies/open-source-maintainer
   license: MIT
 translations:
   pt-BR:

@@ -9,7 +9,7 @@
 > ai-dev-toolkit instead of shipping its own copies. See `OWNERSHIP.md` for the
 > current ownership map, `TOOLKIT_VERSION` for the pinned release, and the
 > toolkit-side canonical declaration in
-> [ai-dev-toolkit/OWNERSHIP.md](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/OWNERSHIP.md).
+> [ai-dev-toolkit/OWNERSHIP.md](https://github.com/LucasSantana-Dev/forgekit/blob/main/OWNERSHIP.md).
 
 ---
 

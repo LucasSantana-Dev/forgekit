@@ -3,7 +3,7 @@
 # Forge Kit
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Latest Release](https://img.shields.io/github/v/release/LucasSantana-Dev/ai-dev-toolkit)](https://github.com/LucasSantana-Dev/ai-dev-toolkit/releases)
+[![Latest Release](https://img.shields.io/github/v/release/LucasSantana-Dev/forgekit)](https://github.com/LucasSantana-Dev/forgekit/releases)
 
 Forge Kit é a casa unificada dos antigos projetos `ai-dev-toolkit`,
 `ai-dev-toolkit-setup`, `ai-dev-toolkit-pt-br` e `ai-dev-toolkit-library`.
@@ -34,8 +34,8 @@ Copie um arquivo de rule para seu projeto. Esse arquivo único oferece a seu age
 
 ```bash
 # Clone the toolkit
-git clone https://github.com/LucasSantana-Dev/ai-dev-toolkit.git
-cd ai-dev-toolkit
+git clone https://github.com/LucasSantana-Dev/forgekit.git
+cd forgekit
 
 # Copy the rule file that matches your tool
 cp packages/core/rules/CLAUDE.md    ~/my-project/CLAUDE.md       # Claude Code / OpenCode

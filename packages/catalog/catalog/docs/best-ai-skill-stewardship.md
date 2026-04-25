@@ -10,7 +10,7 @@ tags:
 - skill-md
 source:
   path: ai-dev-toolkit/packages/core/best-practices/ai-skill-stewardship.md
-  upstream: https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/packages/core/best-practices/ai-skill-stewardship.md
+  upstream: https://github.com/LucasSantana-Dev/forgekit/blob/main/packages/core/best-practices/ai-skill-stewardship.md
   license: MIT
 translations:
   pt-BR:

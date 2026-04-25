@@ -6,7 +6,7 @@
 
 Portable setup for `ai-dev-toolkit` on new machines, without depending on personal dotfiles.
 
-Looking for the shareable guide with patterns, rule templates, and tool-specific implementations? See the companion repository [ai-dev-toolkit](https://github.com/LucasSantana-Dev/ai-dev-toolkit).
+Looking for the shareable guide with patterns, rule templates, and tool-specific implementations? See the companion repository [ai-dev-toolkit](https://github.com/LucasSantana-Dev/forgekit).
 
 ## Which repository should I use?
 

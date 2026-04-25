@@ -14,7 +14,7 @@ The `personal` branch is a strict superset of `main`. Sync is mechanical: `git m
 - **Work environment** (corp Mac, SI review, compliance): audit-friendly, no cross-vendor session handoff, no outbound writes to `~/.codex/` or `~/.claude/handoffs/`. Nothing surprising for infosec.
 - **Personal environment**: full-featured — handoff continuity between Claude Code ↔ Codex, session auto-resume, deeper MCP wiring.
 
-Same approach as the companion repo `LucasSantana-Dev/ai-dev-toolkit` (which also ships `main` + `personal`).
+Same approach as the companion repo `LucasSantana-Dev/forgekit` (which also ships `main` + `personal`).
 
 ## How to install
 

@@ -11,7 +11,7 @@ triggers:
   - "Invalid tool name"
 ---
 
-> **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [Forge Kit](https://github.com/LucasSantana-Dev/ai-dev-toolkit/issues).
+> **Tradução pendente** — conteúdo em inglês, aguardando tradução para pt-BR. Contribute to [Forge Kit](https://github.com/LucasSantana-Dev/forgekit/issues).
 
 # MCP Doctor
 

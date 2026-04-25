@@ -9,7 +9,7 @@ Cloudflare builds and deploys on every push to `main` via its Git integration. N
 ## 1. Create the Worker project (one-time, ~10 min)
 
 1. Log in to Cloudflare → **Workers & Pages** → **Create** → **Worker**.
-2. Authorize the Cloudflare GitHub app for `LucasSantana-Dev/ai-dev-toolkit`.
+2. Authorize the Cloudflare GitHub app for `LucasSantana-Dev/forgekit`.
 3. Project settings:
    - **Project name:** keep the existing `ai-dev-toolkit-library` Worker binding until the production app rename is scheduled.
    - **Production branch:** `main`

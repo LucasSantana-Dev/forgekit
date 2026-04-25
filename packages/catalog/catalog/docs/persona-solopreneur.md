@@ -13,7 +13,7 @@ tags:
 source:
   path: ai-dev-toolkit/packages/core/companies/solopreneur
   upstream: >-
-    https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/companies/solopreneur
+    https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/companies/solopreneur
   license: MIT
 translations:
   pt-BR:

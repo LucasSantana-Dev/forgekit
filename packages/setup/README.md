@@ -9,7 +9,7 @@ Portable machine setup for the AI Dev Toolkit stack: bootstrap a new macOS, Ubun
 ## Which repository should I use?
 
 - **Use this repository (`ai-dev-toolkit-setup`)** when you want to install the shared environment on a machine.
-- **Use [`ai-dev-toolkit`](https://github.com/LucasSantana-Dev/ai-dev-toolkit)** when you want reusable rules, patterns, skills, and reference implementations inside your projects.
+- **Use [`ai-dev-toolkit`](https://github.com/LucasSantana-Dev/forgekit)** when you want reusable rules, patterns, skills, and reference implementations inside your projects.
 
 This repo is the machine bootstrap layer. The companion repo is the reusable toolkit content.
 

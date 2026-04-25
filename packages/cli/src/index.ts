@@ -34,7 +34,7 @@ Commands:
   ${kleur.cyan("--version")} / ${kleur.cyan("--help")}
 
 Docs: https://forgekit.lucassantana.tech
-Repo: https://github.com/LucasSantana-Dev/ai-dev-toolkit
+Repo: https://github.com/LucasSantana-Dev/forgekit
 `;
 
 const SETUP_ALIASES: Record<string, string> = {

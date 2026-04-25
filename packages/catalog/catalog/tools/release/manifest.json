@@ -16,11 +16,11 @@
   },
   "source": {
     "type": "git",
-    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
     "ref": "main",
     "path": "packages/core/tools/release.py"
   },
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/packages/core/tools/release.py",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/blob/main/packages/core/tools/release.py",
   "license": "MIT",
   "author": "Lucas Santana",
   "translations": {

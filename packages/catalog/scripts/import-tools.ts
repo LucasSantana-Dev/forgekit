@@ -81,11 +81,11 @@ async function importOne(filename: string, destRoot: string, written: string[], 
     install: { copy_to: `~/.local/bin/${id}`, chmod_exec: true },
     source: {
       type: "git",
-      repo: "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+      repo: "https://github.com/LucasSantana-Dev/forgekit",
       ref: "main",
       path: `packages/core/tools/${filename}`,
     },
-    homepage: `https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/packages/core/tools/${filename}`,
+    homepage: `https://github.com/LucasSantana-Dev/forgekit/blob/main/packages/core/tools/${filename}`,
     license: "MIT",
     author: "Lucas Santana",
   };

@@ -13,13 +13,13 @@
   ],
   "source": {
     "type": "git",
-    "repo": "https://github.com/LucasSantana-Dev/ai-dev-toolkit",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
     "ref": "main",
     "path": "packages/core/kit/core/skills/route.md"
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/kit/core/skills/route.md",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/route.md",
   "translations": {
     "pt-BR": {
       "name": "Adt Route",

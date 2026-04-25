@@ -13,7 +13,7 @@ tags:
 source:
   path: ai-dev-toolkit/packages/core/companies/startup-mvp
   upstream: >-
-    https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/companies/startup-mvp
+    https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/companies/startup-mvp
   license: MIT
 translations:
   pt-BR:

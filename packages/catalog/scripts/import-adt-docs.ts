@@ -79,7 +79,7 @@ async function importBestPractice(srcFile: string, destDir: string, written: str
     tags: tags.slice(0, 8),
     source: {
       path: `ai-dev-toolkit/packages/core/best-practices/${name}.md`,
-      upstream: `https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/packages/core/best-practices/${name}.md`,
+      upstream: `https://github.com/LucasSantana-Dev/forgekit/blob/main/packages/core/best-practices/${name}.md`,
       license: "MIT",
     },
   });
@@ -117,7 +117,7 @@ async function importCompany(companyDir: string, destDir: string, written: strin
     tags: ["persona", `persona-${slugify(companyName)}`, "ai-dev-toolkit", "workflow"],
     source: {
       path: `ai-dev-toolkit/packages/core/companies/${companyName}`,
-      upstream: `https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/companies/${companyName}`,
+      upstream: `https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/companies/${companyName}`,
       license: "MIT",
     },
   });

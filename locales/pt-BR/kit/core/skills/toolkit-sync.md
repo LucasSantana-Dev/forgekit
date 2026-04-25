@@ -15,7 +15,7 @@ Atualize a versão pinada do ai-dev-toolkit em um repositório consumidor e veri
 ## Steps
 
 1. **Check current pin** — leia o arquivo `TOOLKIT_VERSION`
-2. **Find latest release** — `gh release list -R LucasSantana-Dev/ai-dev-toolkit -L 1`
+2. **Find latest release** — `gh release list -R LucasSantana-Dev/forgekit -L 1`
 3. **Update pin** — escreva a nova versão em `TOOLKIT_VERSION`
 4. **Test fetch** — rode o script de setup que baixa o toolkit tarball
 5. **Verify** — rode `doctor.sh` ou equivalente para confirmar o novo version stamp

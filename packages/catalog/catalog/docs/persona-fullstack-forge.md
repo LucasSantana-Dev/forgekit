@@ -14,7 +14,7 @@ tags:
 source:
   path: ai-dev-toolkit/packages/core/companies/fullstack-forge
   upstream: >-
-    https://github.com/LucasSantana-Dev/ai-dev-toolkit/tree/main/packages/core/companies/fullstack-forge
+    https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/companies/fullstack-forge
   license: MIT
 translations:
   pt-BR:
