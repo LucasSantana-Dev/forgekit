@@ -5,7 +5,7 @@
       "kind": "agent",
       "id": "adt-code-reviewer",
       "name": "code-reviewer",
-      "description": "Code Reviewer — systematically identifies bugs, security issues, test coverage gaps, and style violations",
+      "description": "Code Reviewer \u2014 systematically identifies bugs, security issues, test coverage gaps, and style violations",
       "tags": [
         "agent",
         "claude-code",
@@ -22,7 +22,7 @@
       "kind": "agent",
       "id": "adt-database-reviewer",
       "name": "database-reviewer",
-      "description": "Database Reviewer — schema design, migrations, indexes, constraints, transaction boundaries",
+      "description": "Database Reviewer \u2014 schema design, migrations, indexes, constraints, transaction boundaries",
       "tags": [
         "agent",
         "claude-code",
@@ -38,7 +38,7 @@
       "kind": "agent",
       "id": "adt-security-auditor",
       "name": "security-auditor",
-      "description": "Security Auditor — OWASP checks, dependency scanning, secrets detection, threat paths",
+      "description": "Security Auditor \u2014 OWASP checks, dependency scanning, secrets detection, threat paths",
       "tags": [
         "agent",
         "claude-code",
@@ -53,7 +53,7 @@
       "kind": "agent",
       "id": "adt-systematic-debugger",
       "name": "systematic-debugger",
-      "description": "Systematic Debugger — evidence-driven root cause analysis, hypothesis testing",
+      "description": "Systematic Debugger \u2014 evidence-driven root cause analysis, hypothesis testing",
       "tags": [
         "agent",
         "claude-code",
@@ -69,7 +69,7 @@
       "kind": "agent",
       "id": "adt-ultrathink-debugger",
       "name": "ultrathink-debugger",
-      "description": "Ultrathink Debugger — deep reasoning for gnarly bugs, 3+ level traces",
+      "description": "Ultrathink Debugger \u2014 deep reasoning for gnarly bugs, 3+ level traces",
       "tags": [
         "agent",
         "claude-code",
@@ -113,7 +113,7 @@
       "kind": "agent",
       "id": "critic",
       "name": "Critic",
-      "description": "Work plan and code review expert — thorough, structured, multi-perspective (Opus)",
+      "description": "Work plan and code review expert \u2014 thorough, structured, multi-perspective (Opus)",
       "tags": [
         "agent",
         "claude-code",
@@ -221,7 +221,7 @@
       "kind": "collection",
       "id": "claude-code-power-user",
       "name": "Claude Code Power User",
-      "description": "Opinionated bundle for Claude Code users — prompting discipline, known agent gotchas, worktree workflow, plus the two MCP servers you'll reach for most often.",
+      "description": "Opinionated bundle for Claude Code users \u2014 prompting discipline, known agent gotchas, worktree workflow, plus the two MCP servers you'll reach for most often.",
       "tags": [
         "claude",
         "claude-code",
@@ -233,7 +233,7 @@
       "kind": "collection",
       "id": "discord-bot-dev",
       "name": "Discord Bot Development",
-      "description": "Opinionated bundle for building a TypeScript Discord bot (e.g. Lucky). Pairs prompting/testing skills with the servers you'll reach for — GitHub for PRs, Redis for state inspection, Sentry for production triage.",
+      "description": "Opinionated bundle for building a TypeScript Discord bot (e.g. Lucky). Pairs prompting/testing skills with the servers you'll reach for \u2014 GitHub for PRs, Redis for state inspection, Sentry for production triage.",
       "tags": [
         "discord",
         "typescript",
@@ -328,7 +328,7 @@
       "kind": "doc",
       "id": "best-workflow",
       "name": "AI-Assisted Development Workflow",
-      "description": "`` feature/my-feature → PR to main → automated deploy ``",
+      "description": "`` feature/my-feature \u2192 PR to main \u2192 automated deploy ``",
       "tags": [
         "best-practice",
         "ai-dev-toolkit",
@@ -355,7 +355,7 @@
       "kind": "doc",
       "id": "llm-evaluation",
       "name": "LLM Evaluation Patterns",
-      "description": "Measure before you ship. Intuition about model quality is unreliable — score it systematically. This guide covers evaluation frameworks, golden datasets, regression testing, and production monitoring for LLM-powered features.",
+      "description": "Measure before you ship. Intuition about model quality is unreliable \u2014 score it systematically. This guide covers evaluation frameworks, golden datasets, regression testing, and production monitoring for LLM-powered features.",
       "tags": [
         "skill-md",
         "claude",
@@ -604,7 +604,7 @@
       "kind": "hook",
       "id": "message-counter",
       "name": "Message Counter",
-      "description": "message-counter.sh — UserPromptSubmit hook Tracks message count per session. Auto-generates per-project handoff at limit threshold. Cost: 0 tokens on normal messages. Only prints at thresholds 15, 20, 25, 30+.",
+      "description": "message-counter.sh \u2014 UserPromptSubmit hook Tracks message count per session. Auto-generates per-project handoff at limit threshold. Cost: 0 tokens on normal messages. Only prints at thresholds 15, 20, 25, 30+.",
       "tags": [
         "hook",
         "claude-code"
@@ -679,7 +679,7 @@
       "kind": "hook",
       "id": "rtk-rewrite",
       "name": "Rtk Rewrite",
-      "description": "rtk-hook-version: 3 RTK Claude Code hook — rewrites commands to use rtk for token savings. Requires: rtk >= 0.23.0, jq This is a thin delegating hook: all rewrite logic lives in `rtk rewrite`, which is the single source of truth (src/discover/registry.rs). To add or change rewrite rules, edit the Rust registry — not this file. Exit code protocol for `rtk rewrite`: 0 + stdout Rewrite found, no deny/ask rule matched → auto-allow 1 No RTK equivalent → pass through unchanged 2 De",
+      "description": "rtk-hook-version: 3 RTK Claude Code hook \u2014 rewrites commands to use rtk for token savings. Requires: rtk >= 0.23.0, jq This is a thin delegating hook: all rewrite logic lives in `rtk rewrite`, which is the single source of truth (src/discover/registry.rs). To add or change rewrite rules, edit the Rust registry \u2014 not this file. Exit code protocol for `rtk rewrite`: 0 + stdout Rewrite found, no deny/ask rule matched \u2192 auto-allow 1 No RTK equivalent \u2192 pass through unchanged 2 De",
       "tags": [
         "hook",
         "claude-code"
@@ -844,7 +844,7 @@
       "kind": "server",
       "id": "context7",
       "name": "Context7",
-      "description": "Fetches current documentation for libraries, frameworks, SDKs, and APIs. Prefer over web search for library docs — training data rots fast.",
+      "description": "Fetches current documentation for libraries, frameworks, SDKs, and APIs. Prefer over web search for library docs \u2014 training data rots fast.",
       "tags": [
         "docs",
         "reference",
@@ -884,7 +884,7 @@
       "kind": "server",
       "id": "kubernetes",
       "name": "Kubernetes",
-      "description": "Read + edit live cluster state — pods, nodes, events, logs, resources. Use only against clusters you expect the model to touch.",
+      "description": "Read + edit live cluster state \u2014 pods, nodes, events, logs, resources. Use only against clusters you expect the model to touch.",
       "tags": [
         "kubernetes",
         "infra",
@@ -897,7 +897,7 @@
       "kind": "server",
       "id": "linear",
       "name": "Linear",
-      "description": "Read + write Linear issues, projects, cycles, comments, and documents. Uses a local stdio wrapper against Linear's GraphQL API — your API key never leaves your machine.",
+      "description": "Read + write Linear issues, projects, cycles, comments, and documents. Uses a local stdio wrapper against Linear's GraphQL API \u2014 your API key never leaves your machine.",
       "tags": [
         "project-mgmt",
         "issues",
@@ -909,7 +909,7 @@
       "kind": "server",
       "id": "memory",
       "name": "Memory (Knowledge Graph)",
-      "description": "Official reference knowledge-graph memory server — entities, relations, observations persisted across sessions. Good default for project memory.",
+      "description": "Official reference knowledge-graph memory server \u2014 entities, relations, observations persisted across sessions. Good default for project memory.",
       "tags": [
         "memory",
         "knowledge-graph",
@@ -921,7 +921,7 @@
       "kind": "server",
       "id": "playwright",
       "name": "Playwright",
-      "description": "Browser automation via Playwright — navigate, click, fill forms, take screenshots, inspect console/network. Use for UI testing and scraping.",
+      "description": "Browser automation via Playwright \u2014 navigate, click, fill forms, take screenshots, inspect console/network. Use for UI testing and scraping.",
       "tags": [
         "browser",
         "automation",
@@ -959,7 +959,7 @@
       "kind": "server",
       "id": "serena",
       "name": "Serena",
-      "description": "Semantic code navigation — symbol search, referencing-symbols, symbol-body read/rewrite. Cheaper than full-file reads on large codebases.",
+      "description": "Semantic code navigation \u2014 symbol search, referencing-symbols, symbol-body read/rewrite. Cheaper than full-file reads on large codebases.",
       "tags": [
         "code-nav",
         "lsp",
@@ -987,7 +987,7 @@
       "kind": "skill",
       "id": "adt-auto-invoke",
       "name": "Adt Auto Invoke",
-      "description": "Meta-skill — defines when to apply other skills automatically without being asked",
+      "description": "Meta-skill \u2014 defines when to apply other skills automatically without being asked",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1059,7 +1059,7 @@
       "kind": "skill",
       "id": "adt-context",
       "name": "Adt Context",
-      "description": "Optimize context window usage — compact stale data, compress via summarization, preserve active state",
+      "description": "Optimize context window usage \u2014 compact stale data, compress via summarization, preserve active state",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1074,7 +1074,7 @@
       "kind": "skill",
       "id": "adt-context-hygiene",
       "name": "Adt Context Hygiene",
-      "description": "Keep sessions focused and efficient — prune stale outputs, preserve active state, recommend compaction",
+      "description": "Keep sessions focused and efficient \u2014 prune stale outputs, preserve active state, recommend compaction",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1119,7 +1119,7 @@
       "kind": "skill",
       "id": "adt-eval",
       "name": "Adt Eval",
-      "description": "Evaluate LLM outputs systematically — benchmarks, automated metrics, human preference, and regression tracking",
+      "description": "Evaluate LLM outputs systematically \u2014 benchmarks, automated metrics, human preference, and regression tracking",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1163,7 +1163,7 @@
       "kind": "skill",
       "id": "adt-loop",
       "name": "Adt Loop",
-      "description": "Autonomous development cycle — plan, implement, test, review, fix, commit, and PR without stopping",
+      "description": "Autonomous development cycle \u2014 plan, implement, test, review, fix, commit, and PR without stopping",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1199,7 +1199,7 @@
       "kind": "skill",
       "id": "adt-mcp-health",
       "name": "Adt Mcp Health",
-      "description": "Validate live MCP provider health — separate config issues from auth and connectivity failures",
+      "description": "Validate live MCP provider health \u2014 separate config issues from auth and connectivity failures",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1214,7 +1214,7 @@
       "kind": "skill",
       "id": "adt-mcp-patterns",
       "name": "Adt Mcp Patterns",
-      "description": "Build robust, secure MCP servers — tool schemas, stateful interactions, async patterns, error handling, and testing",
+      "description": "Build robust, secure MCP servers \u2014 tool schemas, stateful interactions, async patterns, error handling, and testing",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1261,7 +1261,7 @@
       "kind": "skill",
       "id": "adt-model-serving",
       "name": "Adt Model Serving",
-      "description": "Choose and configure inference servers (vLLM, TGI, Ollama) — quantization, batching, scaling, and serving patterns",
+      "description": "Choose and configure inference servers (vLLM, TGI, Ollama) \u2014 quantization, batching, scaling, and serving patterns",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1274,7 +1274,7 @@
       "kind": "skill",
       "id": "adt-multi-agent",
       "name": "Adt Multi Agent",
-      "description": "Orchestrate teams of specialized agents — DAG execution, task distribution, state sharing, failure recovery",
+      "description": "Orchestrate teams of specialized agents \u2014 DAG execution, task distribution, state sharing, failure recovery",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1318,7 +1318,7 @@
       "kind": "skill",
       "id": "adt-plan-change",
       "name": "Adt Plan Change",
-      "description": "Plan a code change before editing — identify files, sequence steps, set verification criteria",
+      "description": "Plan a code change before editing \u2014 identify files, sequence steps, set verification criteria",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1347,7 +1347,7 @@
       "kind": "skill",
       "id": "adt-rag",
       "name": "Adt Rag",
-      "description": "Build and debug Retrieval-Augmented Generation pipelines — chunking, embedding, retrieval, reranking",
+      "description": "Build and debug Retrieval-Augmented Generation pipelines \u2014 chunking, embedding, retrieval, reranking",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1397,7 +1397,7 @@
       "kind": "skill",
       "id": "adt-release-flow",
       "name": "Adt Release Flow",
-      "description": "Ship validated changes with repeatable release evidence — version bump, changelog, tag, and optional GitHub release",
+      "description": "Ship validated changes with repeatable release evidence \u2014 version bump, changelog, tag, and optional GitHub release",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1466,7 +1466,7 @@
       "kind": "skill",
       "id": "adt-schedule",
       "name": "Adt Schedule",
-      "description": "Define and manage recurring automated agent runs — CI monitoring, dep updates, security scans",
+      "description": "Define and manage recurring automated agent runs \u2014 CI monitoring, dep updates, security scans",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1496,7 +1496,7 @@
       "kind": "skill",
       "id": "adt-self-heal",
       "name": "Adt Self Heal",
-      "description": "Autonomous error recovery — detect failures, diagnose root cause, apply fixes, and resume without stopping",
+      "description": "Autonomous error recovery \u2014 detect failures, diagnose root cause, apply fixes, and resume without stopping",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1592,7 +1592,7 @@
       "kind": "skill",
       "id": "adt-sync-pt-parity",
       "name": "Adt Sync PT Parity",
-      "description": "Sync files (skills/patterns/agents/specs) from EN canonical repo to PT mirror, inserting \"Tradução pendente\" blockquote after YAML frontmatter, then open PR.",
+      "description": "Sync files (skills/patterns/agents/specs) from EN canonical repo to PT mirror, inserting \"Tradu\u00e7\u00e3o pendente\" blockquote after YAML frontmatter, then open PR.",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1606,7 +1606,7 @@
       "kind": "skill",
       "id": "adt-tdd",
       "name": "Adt Tdd",
-      "description": "Test-driven development — write tests first, implement second, refactor third",
+      "description": "Test-driven development \u2014 write tests first, implement second, refactor third",
       "tags": [
         "skill-md",
         "ai-dev-toolkit",
@@ -1750,7 +1750,7 @@
       "kind": "skill",
       "id": "claude-api",
       "name": "Claude Api",
-      "description": "Build, debug, and optimize Claude API / Anthropic SDK apps. Apps built with this skill should include prompt caching. Also handles migrating existing Claude API code between Claude model versions (4.5 → 4.6, 4.6 → 4.7, retired-model replacements). TRIGGER when: code imports `anthropic`/`@anthropic-ai/sdk`; user asks for the Claude API, Anthropic SDK, or Managed Agents; user adds/modifies/tunes a Claude feature (caching, thinking, compaction, tool use, batch, files, citations, memory) or model (O",
+      "description": "Build, debug, and optimize Claude API / Anthropic SDK apps. Apps built with this skill should include prompt caching. Also handles migrating existing Claude API code between Claude model versions (4.5 \u2192 4.6, 4.6 \u2192 4.7, retired-model replacements). TRIGGER when: code imports `anthropic`/`@anthropic-ai/sdk`; user asks for the Claude API, Anthropic SDK, or Managed Agents; user adds/modifies/tunes a Claude feature (caching, thinking, compaction, tool use, batch, files, citations, memory) or model (O",
       "tags": [
         "skill-md",
         "anthropic-official",
@@ -1881,7 +1881,7 @@
       "kind": "skill",
       "id": "eng-code-tour",
       "name": "Eng Code Tour",
-      "description": "Use when the user asks to create a CodeTour .tour file — persona-targeted, step-by-step walkthroughs that link to real files and line numbers. Trigger for: create a tour, onboarding tour, architecture tour, PR review tour, explain how X works, vibe check, RCA tour, contributor guide, or any structured code walkthrough request.",
+      "description": "Use when the user asks to create a CodeTour .tour file \u2014 persona-targeted, step-by-step walkthroughs that link to real files and line numbers. Trigger for: create a tour, onboarding tour, architecture tour, PR review tour, explain how X works, vibe check, RCA tour, contributor guide, or any structured code walkthrough request.",
       "tags": [
         "skill-md",
         "community",
@@ -1971,7 +1971,7 @@
       "kind": "skill",
       "id": "eng-focused-fix",
       "name": "Eng Focused Fix",
-      "description": "Use when the user asks to fix, debug, or make a specific feature/module/area work end-to-end. Triggers: 'make X work', 'fix the Y feature', 'the Z module is broken', 'focus on [area]'. Not for quick single-bug fixes — this is for systematic deep-dive repair across all files and dependencies.",
+      "description": "Use when the user asks to fix, debug, or make a specific feature/module/area work end-to-end. Triggers: 'make X work', 'fix the Y feature', 'the Z module is broken', 'focus on [area]'. Not for quick single-bug fixes \u2014 this is for systematic deep-dive repair across all files and dependencies.",
       "tags": [
         "skill-md",
         "community",
@@ -2116,7 +2116,7 @@
       "kind": "skill",
       "id": "pptx",
       "name": "Pptx",
-      "description": "Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates, layouts, speaker notes, or comments. Trigger whenever the user mentions \"deck,\" \"slid",
+      "description": "Use this skill any time a .pptx file is involved in any way \u2014 as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates, layouts, speaker notes, or comments. Trigger whenever the user mentions \"deck,\" \"slid",
       "tags": [
         "skill-md",
         "anthropic-official",
@@ -2436,7 +2436,7 @@
       "kind": "skill",
       "id": "xlsx",
       "name": "Xlsx",
-      "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \"the xlsx in my",
+      "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path \u2014 even casually (like \"the xlsx in my",
       "tags": [
         "skill-md",
         "anthropic-official",
@@ -2542,7 +2542,7 @@
       "kind": "tool",
       "id": "setup-claude-code",
       "name": "Setup Claude Code",
-      "description": "--------------------------------------------------------------------------- 1. MCP servers — write ~/.claude/.mcp.json with recommended global servers ---------------------------------------------------------------------------",
+      "description": "--------------------------------------------------------------------------- 1. MCP servers \u2014 write ~/.claude/.mcp.json with recommended global servers ---------------------------------------------------------------------------",
       "tags": [
         "tool",
         "ai-dev-toolkit",
@@ -2576,6 +2576,53 @@
       ],
       "version": "0.1.0",
       "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "adt-token-audit",
+      "name": "token-audit",
+      "description": "Token Audit \u2014 analyse Claude Code session JSONL files for cache hit rates, per-model costs, top expensive sessions, and weekly spend trends",
+      "tags": [
+        "skill",
+        "claude-code",
+        "ai-dev-toolkit",
+        "token-usage",
+        "cost",
+        "observability",
+        "cache"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "adt-smart-model-route",
+      "name": "smart-model-route",
+      "description": "Smart Model Route \u2014 UserPromptSubmit hook that classifies prompt complexity via Haiku (with heuristic fallback) and injects model routing hints for Agent tool calls",
+      "tags": [
+        "skill",
+        "claude-code",
+        "ai-dev-toolkit",
+        "model-routing",
+        "cost-optimisation",
+        "hooks",
+        "haiku"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "name": "smart-commands",
+      "type": "skill",
+      "path": "catalog/skills/adt-smart-commands/skill.md",
+      "description": "Smart Commands \u2014 decision guide for when to use /think, /model, /compact, /clear; pairs with complexity-classifier hook for zero-cost auto-routing",
+      "tags": [
+        "claude-code",
+        "optimization",
+        "slash-commands",
+        "model-selection",
+        "workflow"
+      ]
     }
   ]
 }
