@@ -5,6 +5,13 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Latest Release](https://img.shields.io/github/v/release/LucasSantana-Dev/forgekit)](https://github.com/LucasSantana-Dev/forgekit/releases)
 
+**Works with:**
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-black?style=flat-square&logo=anthropic&logoColor=white)](https://claude.ai/code)
+[![Codex](https://img.shields.io/badge/Codex-412991?style=flat-square&logo=openai&logoColor=white)](https://openai.com/codex)
+[![Cursor](https://img.shields.io/badge/Cursor-000000?style=flat-square)](https://cursor.sh)
+[![Windsurf](https://img.shields.io/badge/Windsurf-0066FF?style=flat-square)](https://codeium.com/windsurf)
+[![GitHub Copilot](https://img.shields.io/badge/GitHub%20Copilot-000000?style=flat-square&logo=github&logoColor=white)](https://github.com/features/copilot)
+
 Forge Kit is the unified home for the former `ai-dev-toolkit`, `ai-dev-toolkit-setup`,
 `ai-dev-toolkit-pt-br`, and `ai-dev-toolkit-library` projects.
 
@@ -30,6 +37,21 @@ Most users should start with [`packages/setup`](packages/setup/README.md) — th
 machine bootstrap layer that consumes this toolkit at a pinned version. It
 detects your installed tools, applies pre-built configurations, and installs the
 entire skill and rule set in one command.
+
+## 30-second install
+
+```bash
+# Copy one file to give your AI agent your project conventions
+cp packages/core/rules/CLAUDE.md    ~/my-project/CLAUDE.md    # Claude Code / OpenCode
+cp packages/core/rules/AGENTS.md    ~/my-project/AGENTS.md    # Codex CLI
+cp packages/core/rules/.cursorrules ~/my-project/.cursorrules  # Cursor
+```
+
+Or install the full toolkit (rules + 29 skills + MCP config) in one command:
+
+```bash
+FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --profile standard
+```
 
 ## How do I start using this?
 
