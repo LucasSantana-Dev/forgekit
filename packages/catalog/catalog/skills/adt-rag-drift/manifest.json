@@ -1,0 +1,23 @@
+{
+  "id": "adt-rag-drift",
+  "name": "Adt Rag Drift",
+  "description": "Detect and fix stale chunks from deleted or modified files",
+  "version": "0.1.0",
+  "tags": ["skill-md", "ai-dev-toolkit", "rag", "maintenance", "drift"],
+  "editors": ["claude-code"],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/catalog/catalog/skills/adt-rag-drift/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/catalog/catalog/skills/adt-rag-drift/SKILL.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Drift RAG",
+      "description": "Detecta e corrige chunks obsoletos — arquivos deletados ou modificados desde a última indexação"
+    }
+  }
+}
