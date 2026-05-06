@@ -1,17 +1,19 @@
 # Roadmap — ai-dev-toolkit
 
-_Auto-regenerated 2026-04-22 from `docs/specs/`._
+_Auto-regenerated 2026-05-06 from `docs/specs/`._
 
 ## Now (active)
 
-- **2026-04-22-toolkit-monorepo-rebrand** _(active)_ `monorepo,rebrand,tooling`
+_(none at this moment — core rebrand now complete)_
 
 ## Next (proposed)
 
 - **2026-04-23-dev-assets-import** _(proposed)_ `follow-up,portability,setup`
+- **2026-05-06-backlog-map** _(proposed)_ `backlog,roadmap,cataloging`
 
 ## Recently shipped
 
+- **2026-04-22-toolkit-monorepo-rebrand** _(shipped)_ `shipped` → PR: 117, 119, 121
 - **2026-04-15-skill-auto-invocation** _(shipped)_ `shipped` → PR: 48
 - **2026-04-15-remove-handoff-skills** _(shipped)_ `shipped` → PR: 58
 - **2026-04-15-mcp-multi-agent-patterns** _(shipped)_ `shipped` → PR: 49

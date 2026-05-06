@@ -1,12 +1,12 @@
 # ai-dev-toolkit Backlog Map
 
-_Last updated: 2026-04-18_
+_Last updated: 2026-05-06_
 
 ## Snapshot
 
 - Current branch inspected: `main`
 - Default branch: `main`
-- Latest release: `v0.16.0`
+- Latest release: `v0.17.0`
 - Open PRs: `0`
 - Open issues: `0`
 - Primary backlog source: `backlog.json`
@@ -16,6 +16,11 @@ _Last updated: 2026-04-18_
 
 ### Confirmed recent shipments
 
+- `v0.17.0` released (latest, v0.18.0 pending).
+- Catalog pruned: 60 unused local skills removed, 6 dead catalog entries removed.
+- `professional-work-toolkit` collection added (enterprise-safe, bilingual).
+- Web: nav reorder, collections sort by size, hero note shows collection count.
+- Dependabot PRs #122 (marked), #123 (astro), #124 (wrangler) merged.
 - `v0.16.0` released (PR #79).
 - Dev-assets-sync workspace backup skill shipped (PR #81).
 - Vendor-neutral `SKILL.md` adoption pattern shipped (PR #80).
@@ -33,6 +38,9 @@ _Last updated: 2026-04-18_
 
 ### Confirmed remaining gaps
 
+- Complete forgekit rename in pt-BR locale (185 files, PR in progress).
+- Externalize homepage curation config from curation.ts to YAML (PR in progress).
+- Enable Dependabot alerts (manual: GitHub Settings → Code security).
 - `kit/plugins/` missing (design phase only — not queued for near-term).
 - Additional company templates beyond `fullstack-forge` (deferred until core parity stabilizes).
 
