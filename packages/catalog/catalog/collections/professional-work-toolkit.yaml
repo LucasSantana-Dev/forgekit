@@ -1,0 +1,61 @@
+id: professional-work-toolkit
+name: Professional Work Toolkit
+description: Curated set of tools, skills, and integrations safe and appropriate
+  for professional / enterprise environments — code review, secure secret handling,
+  project management, error tracking, and structured debugging. No creative-AI,
+  personal-account, or entertainment tools. Suitable for use on company machines
+  and shared codebases.
+tags:
+- work
+- enterprise
+- professional
+- security
+- productivity
+items:
+- kind: skill
+  id: code-review
+- kind: skill
+  id: systematic-debugging
+- kind: skill
+  id: verification-before-completion
+- kind: skill
+  id: eng-dependency-auditor
+- kind: skill
+  id: eng-env-secrets-manager
+- kind: skill
+  id: prompt-injection-defense
+- kind: skill
+  id: spec-driven-development
+- kind: skill
+  id: prompting-discipline
+- kind: skill
+  id: adt-secure
+- kind: agent
+  id: code-reviewer
+- kind: agent
+  id: adt-security-auditor
+- kind: agent
+  id: adt-systematic-debugger
+- kind: server
+  id: github
+- kind: server
+  id: linear
+- kind: server
+  id: sentry
+- kind: server
+  id: context7
+- kind: hook
+  id: secret-detection
+- kind: hook
+  id: pre-commit-validation
+- kind: hook
+  id: block-destructive
+translations:
+  pt-BR:
+    name: Kit de Trabalho Profissional
+    description: Conjunto curado de ferramentas, skills e integrações seguras e
+      adequadas para ambientes profissionais / corporativos — revisão de código,
+      gerenciamento seguro de segredos, gestão de projetos, rastreamento de erros
+      e debugging estruturado. Sem IA criativa, contas pessoais ou ferramentas
+      de entretenimento. Adequado para uso em máquinas corporativas e codebases
+      compartilhadas.
