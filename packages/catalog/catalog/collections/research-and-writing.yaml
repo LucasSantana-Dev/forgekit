@@ -16,8 +16,6 @@ items:
 - kind: skill
   id: doc-coauthoring
 - kind: skill
-  id: brand-guidelines
-- kind: skill
   id: internal-comms
 - kind: skill
   id: brainstorming

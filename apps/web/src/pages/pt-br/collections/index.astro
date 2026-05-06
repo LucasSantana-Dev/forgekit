@@ -5,7 +5,7 @@ import { getCollections } from "../../../lib/catalog.ts";
 import { localizeEntries, t, localizedUrl, type Locale } from "../../../lib/i18n.ts";
 
 const locale: Locale = "pt-br";
-const collections = localizeEntries(await getCollections(), locale);
+const collections = localizeEntries(await getCollections(), locale).sort((a, b) => b.items.length - a.items.length);
 const base = import.meta.env.BASE_URL;
 const url = (p: string) => localizedUrl(base, p, locale);
 ---
