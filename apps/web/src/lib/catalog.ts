@@ -5,9 +5,25 @@ import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
 import matter from "gray-matter";
 
-const HERE = path.dirname(fileURLToPath(import.meta.url));
-const REPO_ROOT = path.resolve(HERE, "../../../..");
-const CATALOG = path.join(REPO_ROOT, "packages/catalog/catalog");
+function findCatalogDir(): string {
+  const marker = "packages/catalog/catalog";
+  // Try progressively from the compiled module location upward, then from cwd.
+  // Astro/Vite may place the compiled chunk at different depths depending on
+  // build mode (source → 4 up; dist/_astro → 4 up; .astro → 3 up; etc.).
+  const fromMeta = path.dirname(fileURLToPath(import.meta.url));
+  for (const candidate of [
+    path.resolve(fromMeta, "../../../.."),
+    path.resolve(fromMeta, "../../.."),
+    path.resolve(process.cwd(), "../.."),
+    process.cwd(),
+  ]) {
+    const dir = path.join(candidate, marker);
+    if (existsSync(dir)) return dir;
+  }
+  return path.join(fromMeta, "../../../..", marker);
+}
+
+const CATALOG = findCatalogDir();
 
 export type Kind = "skill" | "server" | "collection" | "doc" | "agent" | "hook" | "command" | "tool";
 export type CollectionItemKind = Exclude<Kind, "collection">;
