@@ -1,0 +1,23 @@
+{
+  "id": "adt-rag-coverage",
+  "name": "Adt Rag Coverage",
+  "description": "Audit corpus distribution by source type and repo; identify coverage gaps and underindexed topics",
+  "version": "0.1.0",
+  "tags": ["skill-md", "ai-dev-toolkit", "rag", "maintenance", "audit"],
+  "editors": ["claude-code"],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/catalog/catalog/skills/adt-rag-coverage/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/catalog/catalog/skills/adt-rag-coverage/SKILL.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Auditoria RAG",
+      "description": "Audita distribuição do corpus por tipo de fonte e repo; identifica lacunas e tópicos subindexados"
+    }
+  }
+}

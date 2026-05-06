@@ -1,0 +1,23 @@
+{
+  "id": "adt-rag-inspect",
+  "name": "Adt Rag Inspect",
+  "description": "Examine what's actually stored in the index for specific items",
+  "version": "0.1.0",
+  "tags": ["skill-md", "ai-dev-toolkit", "rag", "maintenance", "inspection"],
+  "editors": ["claude-code"],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/catalog/catalog/skills/adt-rag-inspect/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/catalog/catalog/skills/adt-rag-inspect/SKILL.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Inspeção RAG",
+      "description": "Inspeciona chunks armazenados no índice — contagem, tamanho, metadados, conteúdo"
+    }
+  }
+}
