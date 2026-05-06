@@ -1,0 +1,23 @@
+{
+  "id": "adt-rag-quality",
+  "name": "Adt Rag Quality",
+  "description": "Evaluate retrieval quality by analyzing query logs and running test queries",
+  "version": "0.1.0",
+  "tags": ["skill-md", "ai-dev-toolkit", "rag", "maintenance", "quality"],
+  "editors": ["claude-code"],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/catalog/catalog/skills/adt-rag-quality/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/catalog/catalog/skills/adt-rag-quality/SKILL.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Qualidade RAG",
+      "description": "Avalia qualidade de recuperação — queries sem resultado, pontuações baixas, gaps do corpus"
+    }
+  }
+}
