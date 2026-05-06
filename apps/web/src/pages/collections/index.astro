@@ -5,7 +5,8 @@ import { getCollections } from "../../lib/catalog.ts";
 import { t, type Locale } from "../../lib/i18n.ts";
 
 const locale: Locale = "en";
-const collections = await getCollections();
+const collectionsRaw = await getCollections();
+const collections = [...collectionsRaw].sort((a, b) => b.items.length - a.items.length);
 const base = import.meta.env.BASE_URL;
 ---
 <Base title={t("list.collections.title", locale)} description={t("list.collections.description", locale, { count: collections.length })}>

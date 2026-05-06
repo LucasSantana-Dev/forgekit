@@ -1,8 +1,8 @@
 ---
-status: active
+status: shipped
 created: 2026-04-22
 owner: lucassantana
-pr:
+pr: 117, 119, 121
 tags: monorepo,rebrand,tooling
 ---
 
@@ -151,3 +151,7 @@ The migration is done only when all of these are true:
 - old repo READMEs point to the monorepo after the rename
 - one monorepo release validates the setup bootstrap against the new source path
 - no secrets are introduced by imported history or config files
+
+## Shipped
+
+Core rebrand work completed in PRs #117, #119, #121. Monorepo structure stable and CI green.
