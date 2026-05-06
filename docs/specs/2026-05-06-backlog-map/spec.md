@@ -1,8 +1,9 @@
 ---
-status: proposed
+status: shipped
 created: 2026-05-06
+shipped: 2026-05-06
 owner: lucassantana
-pr:
+pr: "#122 #123 #124 #126 #127 #128"
 tags: backlog,planning,audit
 ---
 
@@ -36,31 +37,20 @@ Source: `.claude/plans/backlog-2026-05-06.md` (full audit, all buckets A–J).
 9. **Update stale BACKLOG.md** — last updated 2026-04-18 (18 days). `[low/S/low]`
 10. **Close monorepo-rebrand spec as shipped** — `docs/roadmap.md` still shows it as "active"; most sub-tasks shipped (PRs #117, #119, #121). `[low/S/low]`
 
-## Status snapshot — 2026-05-06
+## Status snapshot — 2026-05-06 (final)
 
-- 0 of 10 items started
-- All 3 Dependabot PRs (items 2–4) are MERGEABLE with CI green
-- Items 2–5 should land this week
-- Items 6–8 are the non-trivial engineering work for next 2 weeks
-
-## Security findings
-
-- **Dependabot alerts disabled** — re-enable via Settings → Code security (item 1)
-- **marked 14→18** — no open CVEs per `npm audit`; 4 major version gap on Markdown renderer; merge PR #122 (all tests pass)
-- **GHSA-j687-52p2-xcff (Astro XSS)** — not exploitable (static output, no `define:vars`); hygiene bump via PR #123
+- 10 of 10 items shipped same day as audit
 
 ## Tasks
 
-- [ ] Enable Dependabot alerts (UI, no PR)
-- [ ] Merge PR #124 (wrangler)
-- [ ] Merge PR #122 (marked)
-- [ ] Merge PR #123 (astro) — review Astro 6 changelog first
-- [ ] Cut v0.18.0
-- [ ] PR: Complete ai-dev-toolkit → forgekit rename in 185 remaining files
-- [ ] PR: Externalize homepage curation to YAML
-- [ ] PR: Add tag-filter + sort toggle to collections page
-- [ ] Update BACKLOG.md
-- [ ] Mark `2026-04-22-toolkit-monorepo-rebrand` spec as shipped; regenerate roadmap
+- [x] Enable Dependabot alerts (UI, no PR) — done by user
+- [x] Merge PR #124 (wrangler) — auto-merged
+- [x] Merge PR #122 (marked) — auto-merged
+- [x] Merge PR #123 (astro) — auto-merged
+- [x] Cut v0.18.0 — https://github.com/LucasSantana-Dev/forgekit/releases/tag/v0.18.0
+- [x] PR #128: Complete ai-dev-toolkit → forgekit rename in 109 files
+- [x] PR #126: Externalize homepage curation to YAML + add collections tag filter
+- [x] PR #127: Update BACKLOG.md + close monorepo-rebrand spec + refresh roadmap
 
 ## Notes
 
