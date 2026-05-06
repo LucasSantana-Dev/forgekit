@@ -221,11 +221,27 @@
       "kind": "collection",
       "id": "claude-code-power-user",
       "name": "Claude Code Power User",
-      "description": "Opinionated bundle for Claude Code users — prompting discipline, known agent gotchas, worktree workflow, plus the two MCP servers you'll reach for most often.",
+      "description": "High-signal starter pack for Claude Code power users — prompt discipline, context packing, worktree flow, verification, and the MCP tooling you reach for every day.",
       "tags": [
         "claude",
         "claude-code",
-        "starter"
+        "starter",
+        "productivity",
+        "mcp"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "collection",
+      "id": "context-rag-launchpad",
+      "name": "Context + RAG Launchpad",
+      "description": "Explorer launchpad for starting with the right context, then pulling in memory, docs, and code symbols only when needed.",
+      "tags": [
+        "context",
+        "rag",
+        "recall",
+        "onboarding",
+        "explorer"
       ],
       "deprecated": false
     },
@@ -233,11 +249,153 @@
       "kind": "collection",
       "id": "discord-bot-dev",
       "name": "Discord Bot Development",
-      "description": "Opinionated bundle for building a TypeScript Discord bot (e.g. Lucky). Pairs prompting/testing skills with the servers you'll reach for — GitHub for PRs, Redis for state inspection, Sentry for production triage.",
+      "description": "TypeScript Discord bot starter pack — testing, code review, debug loops, and the MCP surfaces that help you ship and operate reliably.",
       "tags": [
         "discord",
         "typescript",
-        "bot"
+        "bot",
+        "testing",
+        "ops"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "collection",
+      "id": "local-models-starter",
+      "name": "Local Models Starter",
+      "description": "Run Llama, Qwen, Mistral, or other open-weight models on your own hardware — privacy, offline capability, zero per-token cost for bulk work. Bundles the docs + skills you need to pick a runtime (Ollama, LM Studio, llama.cpp), measure whether local pays off, and avoid the obvious failure modes. Ideal for NDA/offline/bulk-labeling workflows.",
+      "tags": [
+        "local",
+        "models",
+        "llm",
+        "privacy",
+        "offline"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "collection",
+      "id": "mcp-ops-and-recovery",
+      "name": "MCP Ops and Recovery",
+      "description": "Operational bundle for checking, debugging, and recovering MCP-backed workflows without guesswork.",
+      "tags": [
+        "mcp",
+        "ops",
+        "recovery",
+        "diagnostics",
+        "tooling"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "collection",
+      "id": "production-debugging",
+      "name": "Production Debugging",
+      "description": "Triage and fix production incidents from the editor — read Sentry issues, narrow the failing path with systematic debugging, write a single-issue fix, verify it didn't make things worse. Works for any prod stack that emits errors or logs.",
+      "tags": [
+        "debugging",
+        "production",
+        "incident",
+        "triage",
+        "sre"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "collection",
+      "id": "professional-work-toolkit",
+      "name": "Professional Work Toolkit",
+      "description": "Curated set of tools, skills, and integrations safe and appropriate for professional / enterprise environments — code review, secure secret handling, project management, error tracking, and structured debugging. No creative-AI, personal-account, or entertainment tools. Suitable for use on company machines and shared codebases.",
+      "tags": [
+        "work",
+        "enterprise",
+        "professional",
+        "security",
+        "productivity"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "collection",
+      "id": "release-and-deploy",
+      "name": "Release & Deploy",
+      "description": "Disciplined release cadence — finish a branch cleanly, run a ship-check pass, verify before merge, write the release script with version bump and changelog, gate CI on tests + secret scans. For any project that ships on a regular tag/version cadence.",
+      "tags": [
+        "release",
+        "ci",
+        "deployment",
+        "ship",
+        "governance"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "collection",
+      "id": "research-and-writing",
+      "name": "Research & Writing",
+      "description": "For work that's mostly prose — internal docs, brand-aligned copy, technical research, RFC drafts, brainstorms. Pairs research skills, writing structure, voice consistency, and the doc-coauthoring agents. No code-review or testing pieces — those live in other collections.",
+      "tags": [
+        "writing",
+        "research",
+        "docs",
+        "communication",
+        "content"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "collection",
+      "id": "security-first-dev",
+      "name": "Security-First Development",
+      "description": "Security-aware development without the productivity tax — secret hygiene, dependency auditing, prompt-injection defence, hardened review cadence, and pre-merge hooks that catch the obvious mistakes early. Pairs with any stack; expensive to retrofit, cheap to start with.",
+      "tags": [
+        "security",
+        "hardening",
+        "audit",
+        "secrets",
+        "compliance"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "collection",
+      "id": "solo-developer-starter",
+      "name": "Solo Developer Starter",
+      "description": "Minimal first-install for someone using AI-assisted dev for the first time. Six picks — context discipline, prompt hygiene, planning, agent gotchas you'll trip over, code review as a habit, and live library docs. Any stack, any project. Stop here for the first week before adding more.",
+      "tags": [
+        "starter",
+        "beginner",
+        "solo",
+        "foundation",
+        "onboarding"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "collection",
+      "id": "verification-review-gate",
+      "name": "Verification Review Gate",
+      "description": "Quality-gate bundle for code review, test evidence, and fail-fast recovery before anything ships.",
+      "tags": [
+        "verification",
+        "review",
+        "testing",
+        "quality",
+        "safety"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "collection",
+      "id": "web-app-development",
+      "name": "Web App Development",
+      "description": "General-purpose bundle for full-stack web work — frontend design, API contracts, schema design, browser-based testing, and a code-review pass before merge. Stack-agnostic; pairs with any of React/Vue/Svelte/Astro on the front and any language/framework on the back.",
+      "tags": [
+        "web",
+        "fullstack",
+        "frontend",
+        "api",
+        "testing"
       ],
       "deprecated": false
     },
@@ -362,6 +520,23 @@
         "prompting",
         "testing",
         "security"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
+      "id": "local-models",
+      "name": "Local Models",
+      "description": "Run Llama, Qwen, Mistral, and other open-weight models directly on your machine via Ollama, LM Studio, or llama.cpp — private, offline-capable, zero per-token cost. Covers when local makes sense over the Claude API, the tradeoffs, and how to wire each runtime into Forge Kit workflows.",
+      "tags": [
+        "local",
+        "models",
+        "llm",
+        "ollama",
+        "lmstudio",
+        "llama-cpp",
+        "privacy",
+        "offline"
       ],
       "deprecated": false
     },
@@ -844,7 +1019,7 @@
       "kind": "server",
       "id": "context7",
       "name": "Context7",
-      "description": "Fetches current documentation for libraries, frameworks, SDKs, and APIs. Prefer over web search for library docs — training data rots fast.",
+      "description": "Upstash-hosted MCP server that fetches current documentation for libraries, frameworks, SDKs, CLI tools, and cloud services. Resolves library IDs, retrieves API syntax, configuration, migration notes, and setup instructions directly from upstream docs — far more reliable than training-data recall. Prefer over web search whenever the agent needs to write or debug code that depends on a specific library.",
       "tags": [
         "docs",
         "reference",
@@ -857,7 +1032,7 @@
       "kind": "server",
       "id": "docker",
       "name": "Docker",
-      "description": "Inspect containers, fetch logs, run one-off containers, deploy compose stacks. Useful for homelab / local-stack debugging from the editor.",
+      "description": "Read-and-write Docker control from the agent — list and inspect containers, fetch logs, exec one-off runs, deploy docker-compose stacks. Uses the local Docker socket, so the blast radius matches what your user can do via `docker` CLI. Best for homelab + local-stack debugging; avoid pointing it at production daemons without a dedicated, locked-down DOCKER_HOST.",
       "tags": [
         "docker",
         "infra",
@@ -870,7 +1045,7 @@
       "kind": "server",
       "id": "github",
       "name": "GitHub",
-      "description": "Access GitHub PRs, issues, reviews, CI checks, commits, branches, and releases via MCP. Preferred over raw `gh` for structured reads.",
+      "description": "Official GitHub MCP server — access PRs, issues, reviews, CI checks, commits, branches, and releases with a structured schema the agent can reason about. Preferred over raw `gh` CLI because list-and-filter responses come back typed, not parsed from shell output. Scope the GITHUB_PERSONAL_ACCESS_TOKEN narrowly (contents, pull-requests, issues) and rotate quarterly.",
       "tags": [
         "github",
         "pr",
@@ -884,7 +1059,7 @@
       "kind": "server",
       "id": "kubernetes",
       "name": "Kubernetes",
-      "description": "Read + edit live cluster state — pods, nodes, events, logs, resources. Use only against clusters you expect the model to touch.",
+      "description": "Read and edit live Kubernetes cluster state — pods, nodes, events, logs, deployments, services, arbitrary custom resources. Honors whichever context your KUBECONFIG points at, so a misconfigured kubeconfig is a production-risk event. Use only against dev, staging, or homelab clusters; for production, review every agent action before apply, or wrap the server in a read-only kubeconfig.",
       "tags": [
         "kubernetes",
         "infra",
@@ -909,7 +1084,7 @@
       "kind": "server",
       "id": "memory",
       "name": "Memory (Knowledge Graph)",
-      "description": "Official reference knowledge-graph memory server — entities, relations, observations persisted across sessions. Good default for project memory.",
+      "description": "Official MCP reference implementation of a knowledge-graph memory store — entities, relations, and observations persisted across sessions in a local JSON file. Good default for \"remember this fact for next time\" without adding a database. Not a general-purpose vector store; for long-form retrieval pair with a RAG pipeline instead.",
       "tags": [
         "memory",
         "knowledge-graph",
@@ -921,7 +1096,7 @@
       "kind": "server",
       "id": "playwright",
       "name": "Playwright",
-      "description": "Browser automation via Playwright — navigate, click, fill forms, take screenshots, inspect console/network. Use for UI testing and scraping.",
+      "description": "Microsoft's Playwright MCP server for browser automation — navigate, click, fill forms, drag, take screenshots, inspect console and network activity, run JavaScript in-page. Launches a headless browser per session, typically under ~400 MB memory. Good for UI smoke tests, accessibility spot checks, and bug-report repro; avoid for heavy scraping where a dedicated scraper will outperform.",
       "tags": [
         "browser",
         "automation",
@@ -934,7 +1109,7 @@
       "kind": "server",
       "id": "redis",
       "name": "Redis",
-      "description": "Get / set / list / delete keys in a Redis instance. Useful for inspecting queue state, caches, and ad-hoc debugging.",
+      "description": "Get, set, list, and delete keys in a Redis instance via the official MCP reference server. Works with any Redis-compatible endpoint (local, Docker, Upstash, Elasticache, Valkey) through a REDIS_URL connection string. Ideal for inspecting queue state, cache hits/misses, and session data during debugging — not intended for bulk migrations or persisted writes to production caches.",
       "tags": [
         "database",
         "cache",
@@ -947,7 +1122,7 @@
       "kind": "server",
       "id": "sentry",
       "name": "Sentry",
-      "description": "Query Sentry issues, events, and releases from an MCP client. Useful for triaging production errors inline.",
+      "description": "Official Sentry MCP server — query issues, events, releases, DSNs, and team/project metadata; fetch stack traces, replay details, profile details, and attached event files. Good for triaging production errors inline without leaving the agent. Use a read-scoped auth token (event:read, project:read, org:read) and revoke on leave; Sentry keys carry a wide blast radius into your telemetry.",
       "tags": [
         "observability",
         "errors",
@@ -959,7 +1134,7 @@
       "kind": "server",
       "id": "serena",
       "name": "Serena",
-      "description": "Semantic code navigation — symbol search, referencing-symbols, symbol-body read/rewrite. Cheaper than full-file reads on large codebases.",
+      "description": "Semantic code navigation built on Language Server Protocol — find symbols by name, find references to a symbol, read and rewrite just the body of a symbol. Dramatically cheaper than full-file reads on large codebases and keeps refactors scoped to one declaration at a time. Works well as a companion to file-level tools; don't use it as the only code-reading path — plain file reads remain clearer for small changes.",
       "tags": [
         "code-nav",
         "lsp",
@@ -1694,19 +1869,6 @@
     },
     {
       "kind": "skill",
-      "id": "algorithmic-art",
-      "name": "Algorithmic Art",
-      "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
-      "tags": [
-        "skill-md",
-        "anthropic-official",
-        "design"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
       "id": "brainstorming",
       "name": "Brainstorming",
       "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
@@ -1714,33 +1876,6 @@
         "skill-md",
         "community",
         "superpowers",
-        "design"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "brand-guidelines",
-      "name": "Brand Guidelines",
-      "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
-      "tags": [
-        "skill-md",
-        "anthropic-official",
-        "design"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "canvas-design",
-      "name": "Canvas Design",
-      "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
-      "tags": [
-        "skill-md",
-        "anthropic-official",
-        "documents",
         "design"
       ],
       "version": "0.1.0",
@@ -2157,34 +2292,6 @@
     },
     {
       "kind": "skill",
-      "id": "receiving-code-review",
-      "name": "Receiving Code Review",
-      "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
-      "tags": [
-        "skill-md",
-        "community",
-        "superpowers",
-        "database",
-        "deploy"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "requesting-code-review",
-      "name": "Requesting Code Review",
-      "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
-      "tags": [
-        "skill-md",
-        "community",
-        "superpowers"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
       "id": "skill-creator",
       "name": "Skill Creator",
       "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
@@ -2319,19 +2426,6 @@
     },
     {
       "kind": "skill",
-      "id": "theme-factory",
-      "name": "Theme Factory",
-      "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
-      "tags": [
-        "skill-md",
-        "anthropic-official",
-        "design"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
       "id": "using-git-worktrees",
       "name": "Using Git Worktrees",
       "description": "Use when starting feature work that needs isolation from current workspace or before executing implementation plans - creates isolated git worktrees with smart directory selection and safety verification",
@@ -2451,7 +2545,7 @@
       "kind": "tool",
       "id": "capture-training",
       "name": "Capture Training",
-      "description": "Script: capture-training.py",
+      "description": "Capture prompt/response training data from Claude Code sessions for evals, fine-tuning prep, and workflow analysis. Best on any machine with Python 3; low CPU and RAM needs.",
       "tags": [
         "tool",
         "ai-dev-toolkit",
@@ -2464,7 +2558,7 @@
       "kind": "tool",
       "id": "install-macos",
       "name": "Install Macos",
-      "description": "Check if brew is installed Core CLI tools",
+      "description": "Bootstrap Homebrew and the core Forge Kit CLI stack on macOS. Use on a fresh machine or to repair drift; recommended for developer Macs with admin access and network access.",
       "tags": [
         "tool",
         "ai-dev-toolkit",
@@ -2477,7 +2571,7 @@
       "kind": "tool",
       "id": "install-ubuntu",
       "name": "Install Ubuntu",
-      "description": "Update apt cache APT packages",
+      "description": "Bootstrap the core Forge Kit CLI stack on Ubuntu with apt-managed dependencies. Best for fresh dev boxes or CI images with sudo access, network access, and modest system resources.",
       "tags": [
         "tool",
         "ai-dev-toolkit",
@@ -2490,7 +2584,7 @@
       "kind": "tool",
       "id": "install-windows",
       "name": "Install Windows",
-      "description": "Requires -RunAsAdministrator > Check for winget",
+      "description": "Bootstrap the core Forge Kit CLI stack on Windows via PowerShell and winget. Use on workstation setup or repair runs; requires administrator access, package-manager access, and standard developer hardware.",
       "tags": [
         "tool",
         "ai-dev-toolkit",
@@ -2503,7 +2597,7 @@
       "kind": "tool",
       "id": "mcp-health",
       "name": "Mcp Health",
-      "description": "Script: mcp-health.py",
+      "description": "Validate configured MCP servers for connectivity, auth, and tool/schema health before you depend on them in daily workflows. Best on any Python 3 environment with network access to your MCP targets.",
       "tags": [
         "tool",
         "ai-dev-toolkit",
@@ -2516,7 +2610,7 @@
       "kind": "tool",
       "id": "release",
       "name": "Release",
-      "description": "Script: release.py",
+      "description": "Run a semver release flow with version bump, changelog generation, tagging, and publish orchestration. Best for maintainers on a clean git tree with Python 3, git, and release credentials ready.",
       "tags": [
         "tool",
         "ai-dev-toolkit",
@@ -2529,7 +2623,7 @@
       "kind": "tool",
       "id": "setup-ai-workflow-macos",
       "name": "Setup AI Workflow Macos",
-      "description": "Script: setup-ai-workflow-macos.sh",
+      "description": "Provision a full Forge Kit AI-assisted workflow on macOS, including tools, defaults, and daily-use integrations. Best for a primary dev machine with admin access, network access, and enough disk for local tooling.",
       "tags": [
         "tool",
         "ai-dev-toolkit",
@@ -2542,7 +2636,7 @@
       "kind": "tool",
       "id": "setup-claude-code",
       "name": "Setup Claude Code",
-      "description": "--------------------------------------------------------------------------- 1. MCP servers — write ~/.claude/.mcp.json with recommended global servers ---------------------------------------------------------------------------",
+      "description": "Configure Claude Code with Forge Kit defaults for MCP servers, hooks, skills, and global settings. Best for developers standardizing a local AI workflow on a machine with existing Claude Code access.",
       "tags": [
         "tool",
         "ai-dev-toolkit",
@@ -2555,7 +2649,7 @@
       "kind": "tool",
       "id": "toggle-mcp",
       "name": "Toggle Mcp",
-      "description": "Script: toggle-mcp.py",
+      "description": "Enable or disable individual MCP providers quickly while debugging tool conflicts, cost, or startup issues. Best on any Python 3 environment with local access to your editor or agent config files.",
       "tags": [
         "tool",
         "ai-dev-toolkit",
@@ -2568,7 +2662,7 @@
       "kind": "tool",
       "id": "validate-companies",
       "name": "Validate Companies",
-      "description": "Script: validate-companies.sh",
+      "description": "Validate company profile data against the Forge Kit schema before publishing, syncing, or importing it elsewhere. Best in CI or content-maintenance workflows on any POSIX shell with low resource requirements.",
       "tags": [
         "tool",
         "ai-dev-toolkit",
