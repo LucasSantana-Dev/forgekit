@@ -4,6 +4,7 @@
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Latest Release](https://img.shields.io/github/v/release/LucasSantana-Dev/forgekit)](https://github.com/LucasSantana-Dev/forgekit/releases)
+[![GitHub Stars](https://img.shields.io/github/stars/LucasSantana-Dev/forgekit?style=flat-square)](https://github.com/LucasSantana-Dev/forgekit/stargazers)
 
 **Works with:**
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-black?style=flat-square&logo=anthropic&logoColor=white)](https://claude.ai/code)
@@ -354,6 +355,16 @@ Not all provider fallback chains are supported. Example: Anthropic + Ollama fall
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 High-impact areas: new reference implementations, production-tested pattern updates, adapter improvements, and documentation accuracy fixes.
+
+## Using Forge Kit in your project?
+
+Add a badge to your README:
+
+```markdown
+[![Powered by Forge Kit](https://img.shields.io/badge/Powered%20by-Forge%20Kit-6366f1?style=flat-square)](https://github.com/LucasSantana-Dev/forgekit)
+```
+
+[![Powered by Forge Kit](https://img.shields.io/badge/Powered%20by-Forge%20Kit-6366f1?style=flat-square)](https://github.com/LucasSantana-Dev/forgekit)
 
 ## License
 
