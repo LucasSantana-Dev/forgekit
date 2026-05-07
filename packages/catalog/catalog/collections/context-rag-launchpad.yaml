@@ -1,7 +1,7 @@
 id: context-rag-launchpad
 name: Context + RAG Launchpad
-description: Explorer launchpad for starting with the right context, then pulling in
-  memory, docs, and code symbols only when needed.
+description: Explorer launchpad for starting with the right context, then pulling in memory, docs, and code symbols only when
+  needed.
 tags:
 - context
 - rag
@@ -34,5 +34,4 @@ items:
 translations:
   pt-BR:
     name: Lançador de Contexto + RAG
-    description: Lançador para começar com o contexto certo e trazer memória, docs
-      e símbolos de código só quando precisar.
+    description: Lançador para começar com o contexto certo e trazer memória, docs e símbolos de código só quando precisar.

@@ -1,8 +1,7 @@
 id: claude-code-power-user
 name: Claude Code Power User
-description: High-signal starter pack for Claude Code power users — prompt discipline,
-  context packing, worktree flow, verification, and the MCP tooling you reach for
-  every day.
+description: High-signal starter pack for Claude Code power users — prompt discipline, context packing, worktree flow, verification,
+  and the MCP tooling you reach for every day.
 tags:
 - claude
 - claude-code
@@ -43,6 +42,5 @@ items:
 translations:
   pt-BR:
     name: Power User do Claude Code
-    description: Pacote de alto sinal para usuários avançados do Claude Code —
-      disciplina de prompts, empacotamento de contexto, fluxo com worktrees, verificação
-      e as ferramentas MCP que você usa todo dia.
+    description: Pacote de alto sinal para usuários avançados do Claude Code — disciplina de prompts, empacotamento de contexto,
+      fluxo com worktrees, verificação e as ferramentas MCP que você usa todo dia.

@@ -1,0 +1,37 @@
+id: document-generation
+name: Document Generation
+description: 'Generate polished documents without leaving the editor — Word docs, PDFs, spreadsheets, slide decks, and web
+  artifacts from structured data or prose. Pairs with research-and-writing for the full cycle: draft → format → export.
+
+  '
+tags:
+- documents
+- productivity
+- export
+- office
+- artifacts
+items:
+- kind: skill
+  id: pdf
+- kind: skill
+  id: docx
+- kind: skill
+  id: pptx
+- kind: skill
+  id: xlsx
+- kind: skill
+  id: doc-coauthoring
+- kind: skill
+  id: web-artifacts-builder
+- kind: skill
+  id: internal-comms
+- kind: agent
+  id: document-specialist
+translations:
+  pt-BR:
+    name: Geração de Documentos
+    description: 'Gerar documentos polidos sem sair do editor — docs Word, PDFs, planilhas, decks de slides, e artefatos web
+      a partir de dados estruturados ou prosa. Funciona com research-and-writing para o ciclo completo: rascunho → formatar
+      → exportar.
+
+      '

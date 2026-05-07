@@ -1,0 +1,38 @@
+id: git-and-version-control
+name: Git & Version Control
+description: 'Worktree-aware git workflows — spin up isolated branches for each feature, manage multiple Claude Code sessions
+  in parallel, finish branches cleanly, and checkpoint state before long-running sessions. Works for solo devs and team repos
+  alike.
+
+  '
+tags:
+- git
+- worktrees
+- version-control
+- branching
+- flow
+items:
+- kind: skill
+  id: git-worktrees
+- kind: skill
+  id: using-git-worktrees
+- kind: skill
+  id: eng-git-worktree-manager
+- kind: skill
+  id: adt-worktree-flow
+- kind: skill
+  id: adt-checkpoint
+- kind: skill
+  id: finishing-a-development-branch
+- kind: agent
+  id: git-master
+- kind: server
+  id: github
+translations:
+  pt-BR:
+    name: Git e Controle de Versão
+    description: 'Fluxos git conscientes de worktree — criar branches isoladas para cada feature, gerenciar múltiplas sessões
+      de Claude Code em paralelo, terminar branches limamente, e fazer checkpoint de estado antes de sessões longas. Funciona
+      para desenvolvedores solo e repos de equipe.
+
+      '

@@ -1,0 +1,44 @@
+id: infrastructure-and-devops
+name: Infrastructure & DevOps
+description: 'Container-first development and automated pipelines — build Docker environments, design CI/CD workflows, manage
+  secrets safely, and audit dependencies before they reach production. Stack-agnostic; pairs well with security-first-dev.
+
+  '
+tags:
+- docker
+- ci-cd
+- infra
+- devops
+- containers
+- secrets
+items:
+- kind: skill
+  id: eng-docker-development
+- kind: skill
+  id: eng-ci-cd-pipeline-builder
+- kind: skill
+  id: eng-env-secrets-manager
+- kind: skill
+  id: eng-dependency-auditor
+- kind: skill
+  id: adt-toolkit-sync
+- kind: server
+  id: docker
+- kind: server
+  id: kubernetes
+- kind: server
+  id: github
+- kind: hook
+  id: validate-secrets
+- kind: hook
+  id: pre-commit-validation
+- kind: agent
+  id: adt-systematic-debugger
+translations:
+  pt-BR:
+    name: Infraestrutura e DevOps
+    description: 'Desenvolvimento container-first e pipelines automatizados — construir ambientes Docker, projetar fluxos
+      CI/CD, gerenciar secrets com segurança, e auditar dependências antes de atingirem produção. Agnóstico de stack; funciona
+      bem com security-first-dev.
+
+      '
