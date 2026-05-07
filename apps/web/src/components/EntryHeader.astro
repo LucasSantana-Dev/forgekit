@@ -25,7 +25,7 @@ const label = kindLabel(kind);
 
 <div class="entry-header" style={`--entry-accent: var(--kind-${kind})`}>
   <div class="entry-header-top">
-    <span class="entry-icon">{icon}</span>
+    <span class="entry-icon" aria-hidden="true">{icon}</span>
     <span class={`kind kind-${kind}`}>{label}</span>
   </div>
   <h1 class="entry-title">{name}</h1>

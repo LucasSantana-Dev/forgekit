@@ -29,10 +29,10 @@ const cmd = installCommand("skill", skill.id)!;
 
   <article class="markdown mt-4" set:html={rendered} />
 
-  {skill.source?.path && (
+  {(skill.source?.path || skill.license) && (
     <p class="entry-source">
-      Source: <code>{skill.source.path}</code>
-      {skill.license && <> · {skill.license}</>}
+      {skill.source?.path && <>Source: <code>{skill.source.path}</code></>}
+      {skill.license && <>{skill.source?.path ? " · " : "License: "}{skill.license}</>}
     </p>
   )}
 </Base>

@@ -53,8 +53,10 @@ const runCmd =
     </>
   )}
 
-  <p class="entry-source">
-    {server.homepage && <>Homepage: <a href={server.homepage}>{server.homepage}</a></>}
-    {server.license && <> · {server.license}</>}
-  </p>
+  {(server.homepage || server.license) && (
+    <p class="entry-source">
+      {server.homepage && <>Homepage: <a href={server.homepage}>{server.homepage}</a></>}
+      {server.license && <>{server.homepage ? " · " : ""}{server.license}</>}
+    </p>
+  )}
 </Base>

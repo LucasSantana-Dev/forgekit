@@ -1111,6 +1111,7 @@ const jsonLd = {
     <script is:inline>
       // Scroll reveal with per-grid card stagger
       (function () {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
         if (!window.IntersectionObserver) return;
         var obs = new IntersectionObserver(function (entries) {
           entries.forEach(function (e) {
