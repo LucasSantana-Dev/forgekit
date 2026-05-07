@@ -1,0 +1,26 @@
+{
+  "id": "adt-smart-model-route",
+  "name": "Smart Model Route",
+  "description": "Auto-classify prompt complexity via Haiku (with heuristic fallback) and inject model routing hints for Agent tool calls. Wired as a UserPromptSubmit hook — fires on every prompt, routes low tasks to Haiku, standard to Sonnet, complex to Sonnet with thorough reasoning, and critical (security/arch/migrations) to Opus.",
+  "version": "0.1.0",
+  "tags": [
+    "model-routing",
+    "complexity-classification",
+    "automation",
+    "optimization",
+    "agents"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "local",
+    "path": "packages/catalog/catalog/skills/adt-smart-model-route/skill.md"
+  },
+  "translations": {
+    "pt-BR": {
+      "name": "Roteamento Inteligente de Modelo",
+      "description": "Auto-classificar complexidade de prompt via Haiku (com fallback heurístico) e injetar dicas de roteamento de modelo para chamadas de ferramenta Agent. Conectado como um hook UserPromptSubmit — dispara em cada prompt, roteia tarefas baixas para Haiku, padrão para Sonnet, complexas para Sonnet com raciocínio aprofundado, e críticas (segurança/arq/migrações) para Opus."
+    }
+  }
+}

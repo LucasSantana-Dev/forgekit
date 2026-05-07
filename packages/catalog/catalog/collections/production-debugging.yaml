@@ -1,9 +1,7 @@
 id: production-debugging
 name: Production Debugging
-description: Triage and fix production incidents from the editor — read Sentry
-  issues, narrow the failing path with systematic debugging, write a
-  single-issue fix, verify it didn't make things worse. Works for any prod stack
-  that emits errors or logs.
+description: Triage and fix production incidents from the editor — read Sentry issues, narrow the failing path with systematic
+  debugging, write a single-issue fix, verify it didn't make things worse. Works for any prod stack that emits errors or logs.
 tags:
 - debugging
 - production
@@ -36,7 +34,6 @@ items:
 translations:
   pt-BR:
     name: Debugging em Produção
-    description: Triagem e correção de incidentes de produção a partir do editor —
-      ler issues do Sentry, isolar o caminho que falhou via debugging
-      sistemático, escrever uma correção focada e verificar que não piorou
-      nada. Funciona para qualquer stack em produção que emita erros ou logs.
+    description: Triagem e correção de incidentes de produção a partir do editor — ler issues do Sentry, isolar o caminho
+      que falhou via debugging sistemático, escrever uma correção focada e verificar que não piorou nada. Funciona para qualquer
+      stack em produção que emita erros ou logs.

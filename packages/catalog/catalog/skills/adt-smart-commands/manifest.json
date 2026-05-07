@@ -1,0 +1,26 @@
+{
+  "id": "adt-smart-commands",
+  "name": "Smart Commands",
+  "description": "Decision guide for when to proactively use Claude Code slash commands — /think, /model, /compact, /clear. Use when choosing whether to invoke a command before or during a task, or when a complexity-classifier hook has flagged a task as high or critical. Pairs with the complexity-classifier UserPromptSubmit hook.",
+  "version": "0.1.0",
+  "tags": [
+    "commands",
+    "decision-guide",
+    "slash-commands",
+    "thinking",
+    "optimization"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "local",
+    "path": "packages/catalog/catalog/skills/adt-smart-commands/skill.md"
+  },
+  "translations": {
+    "pt-BR": {
+      "name": "Comandos Inteligentes",
+      "description": "Guia de decisão para quando usar proativamente comandos de barra Claude Code — /think, /model, /compact, /clear. Use ao escolher se deve invocar um comando antes ou durante uma tarefa, ou quando um hook de classificador de complexidade marcou a tarefa como alta ou crítica. Funciona com o hook UserPromptSubmit de classificador de complexidade."
+    }
+  }
+}

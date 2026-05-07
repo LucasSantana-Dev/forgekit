@@ -6,7 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **10 new catalog collections** — `multi-agent-orchestration`, `rag-maintenance`, `spec-and-planning`, `token-and-context-optimization`, `git-and-version-control`, `document-generation`, `infrastructure-and-devops`, `api-and-mcp-development`, `codebase-onboarding`, `skill-authoring`. Catalog grows from 13 → 22 collections, covering ~85% of the 103 available skills. (#132)
+- **6 RAG maintenance skills** — `adt-rag-coverage`, `adt-rag-curate`, `adt-rag-drift`, `adt-rag-index-rebuild`, `adt-rag-inspect`, `adt-rag-quality` — full lifecycle for auditing, curating, and rebuilding the local RAG index. (#132)
+- **3 missing skill manifests** — `adt-token-audit`, `adt-smart-commands`, `adt-smart-model-route` added to catalog so they are installable via CLI. (#132)
 - feat(skills): add sync-ai-tools and warp-ai-setup for cross-editor parity
+
+### Changed
+
+- **Collections i18n schema** — all 22 collection YAML files migrated to `translations.pt-BR` block (from legacy root-level `name_pt`/`description_pt` fields). (#132)
+
+### Removed
+
+- **`discord-bot-dev` collection** — too platform-specific; all constituent skills are available in broader collections (`security-first-dev`, `verification-review-gate`, `production-debugging`). (#132)
+
+### Fixed
+
+- **`apps/web/src/lib/catalog.ts` path resolution** — `findCatalogDir()` replaces the hardcoded `../../../../` traversal that broke under Astro 6 / Vite 6 compiled module depth changes.
 
 ## [0.17.0] - 2026-04-18
 

@@ -1,0 +1,26 @@
+{
+  "id": "adt-token-audit",
+  "name": "Token Audit",
+  "description": "Audit historical Claude Code token usage from JSONL session files — shows total spend, cache hit rates, top costly sessions, weekly trends, and where tokens are going. Run after heavy sessions or weekly to measure optimization impact.",
+  "version": "0.1.0",
+  "tags": [
+    "tokens",
+    "cost",
+    "analysis",
+    "optimization",
+    "analytics"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "local",
+    "path": "packages/catalog/catalog/skills/adt-token-audit/skill.md"
+  },
+  "translations": {
+    "pt-BR": {
+      "name": "Auditoria de Token",
+      "description": "Auditar uso histórico de tokens Claude Code a partir de arquivos de sessão JSONL — mostra gastos totais, taxas de cache hit, sessões mais caras, tendências semanais e para onde os tokens estão indo. Execute após sessões pesadas ou semanalmente para medir impacto de otimização."
+    }
+  }
+}

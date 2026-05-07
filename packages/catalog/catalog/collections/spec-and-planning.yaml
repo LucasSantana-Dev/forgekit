@@ -1,0 +1,43 @@
+id: spec-and-planning
+name: Spec & Planning
+description: 'From rough idea to a committed, validated plan — write a spec, break it into phased work, aggregate across specs
+  into a living roadmap, and execute with evidence-gated checkpoints. Stack-agnostic; pairs with any project type.
+
+  '
+tags:
+- planning
+- spec-driven
+- roadmap
+- design
+- architecture
+items:
+- kind: skill
+  id: adt-plan
+- kind: skill
+  id: adt-plan-change
+- kind: skill
+  id: adt-specs-spec-new
+- kind: skill
+  id: adt-specs-aggregate-roadmap
+- kind: skill
+  id: adt-specs-roadmap-refresh
+- kind: skill
+  id: spec-driven-development
+- kind: skill
+  id: writing-plans
+- kind: skill
+  id: executing-plans
+- kind: skill
+  id: brainstorming
+- kind: agent
+  id: planner
+- kind: agent
+  id: architect
+translations:
+  pt-BR:
+    name: Specs e Planejamento
+    description: 'De uma ideia bruta a um plano validado e compromissado — escrever uma spec, dividir em trabalho faseado,
+      agregar entre specs em um roadmap vivo, e executar com checkpoints com gates de evidência. Agnóstico de stack; funciona
+      com qualquer tipo de projeto.
+
+      '

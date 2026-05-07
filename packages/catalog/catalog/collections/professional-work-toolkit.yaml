@@ -1,10 +1,8 @@
 id: professional-work-toolkit
 name: Professional Work Toolkit
-description: Curated set of tools, skills, and integrations safe and appropriate
-  for professional / enterprise environments — code review, secure secret handling,
-  project management, error tracking, and structured debugging. No creative-AI,
-  personal-account, or entertainment tools. Suitable for use on company machines
-  and shared codebases.
+description: Curated set of tools, skills, and integrations safe and appropriate for professional / enterprise environments
+  — code review, secure secret handling, project management, error tracking, and structured debugging. No creative-AI, personal-account,
+  or entertainment tools. Suitable for use on company machines and shared codebases.
 tags:
 - work
 - enterprise
@@ -53,9 +51,7 @@ items:
 translations:
   pt-BR:
     name: Kit de Trabalho Profissional
-    description: Conjunto curado de ferramentas, skills e integrações seguras e
-      adequadas para ambientes profissionais / corporativos — revisão de código,
-      gerenciamento seguro de segredos, gestão de projetos, rastreamento de erros
-      e debugging estruturado. Sem IA criativa, contas pessoais ou ferramentas
-      de entretenimento. Adequado para uso em máquinas corporativas e codebases
+    description: Conjunto curado de ferramentas, skills e integrações seguras e adequadas para ambientes profissionais / corporativos
+      — revisão de código, gerenciamento seguro de segredos, gestão de projetos, rastreamento de erros e debugging estruturado.
+      Sem IA criativa, contas pessoais ou ferramentas de entretenimento. Adequado para uso em máquinas corporativas e codebases
       compartilhadas.
