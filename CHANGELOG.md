@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.18.0] - 2026-05-07
+
 ### Added
 
 - **10 new catalog collections** — `multi-agent-orchestration`, `rag-maintenance`, `spec-and-planning`, `token-and-context-optimization`, `git-and-version-control`, `document-generation`, `infrastructure-and-devops`, `api-and-mcp-development`, `codebase-onboarding`, `skill-authoring`. Catalog grows from 13 → 22 collections, covering ~85% of the 103 available skills. (#132)
@@ -16,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - **Collections i18n schema** — all 22 collection YAML files migrated to `translations.pt-BR` block (from legacy root-level `name_pt`/`description_pt` fields). (#132)
+- **Web UI — `EntryHeader` component** — shared component replaces emoji + inline-style headers across all 16 detail pages (8 en + 8 pt-BR). Kind-aware accent colors, typographic glyphs, accessible `aria-hidden` decoration, `prefers-reduced-motion` guard on scroll-reveal. (#133)
 
 ### Removed
 
@@ -24,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - **`apps/web/src/lib/catalog.ts` path resolution** — `findCatalogDir()` replaces the hardcoded `../../../../` traversal that broke under Astro 6 / Vite 6 compiled module depth changes.
+- **Web UI a11y** — skill and server detail pages now show license-only footer correctly; empty `<p>` tag guard added when both `homepage` and `license` are absent. (#133)
 
 ## [0.17.0] - 2026-04-18
 
