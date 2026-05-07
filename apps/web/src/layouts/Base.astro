@@ -131,14 +131,14 @@ const jsonLd = {
         --chip-bg: rgba(255, 255, 255, 0.05);
         --chip-fg: #e4e4e7;
 
-        --kind-skill: #d4d4d8;
-        --kind-server: #bcbcc6;
-        --kind-agent: #e5e7eb;
-        --kind-collection: #a1a1aa;
-        --kind-doc: #d4d4d8;
-        --kind-hook: #b3b3be;
-        --kind-command: #e4e4e7;
-        --kind-tool: #c8c8d0;
+        --kind-skill:      oklch(75% 0.08 75);
+        --kind-agent:      oklch(72% 0.10 275);
+        --kind-server:     oklch(73% 0.09 185);
+        --kind-collection: oklch(71% 0.10 15);
+        --kind-doc:        oklch(70% 0.09 235);
+        --kind-hook:       oklch(73% 0.11 45);
+        --kind-command:    oklch(85% 0.015 85);
+        --kind-tool:       oklch(72% 0.09 145);
 
         --radius: 14px;
         --radius-sm: 10px;
@@ -206,6 +206,16 @@ const jsonLd = {
           linear-gradient(rgba(255,255,255,0.015), rgba(255,255,255,0.015)),
           radial-gradient(circle at 50% 0%, rgba(255,255,255,0.035), transparent 28%);
         opacity: 0.4;
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.032;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+        background-size: 256px 256px;
       }
       a { color: var(--accent); text-decoration: none; }
       a:hover { color: var(--accent-hot); }
@@ -359,6 +369,7 @@ const jsonLd = {
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: clamp(18px, 2.5vw, 26px);
         background:
+          radial-gradient(ellipse at 8% 95%, oklch(75% 0.08 75 / 0.07), transparent 42%),
           linear-gradient(180deg, rgba(18, 18, 20, 0.96), rgba(10, 10, 11, 0.98)),
           radial-gradient(circle at top left, rgba(255, 255, 255, 0.04), transparent 30%),
           radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.03), transparent 24%);
@@ -395,9 +406,9 @@ const jsonLd = {
         gap: 0.4rem;
         padding: 0.42rem 0.7rem;
         border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        background: rgba(255, 255, 255, 0.03);
-        color: var(--fg-muted);
+        border: 1px solid oklch(75% 0.08 75 / 0.28);
+        background: oklch(75% 0.08 75 / 0.07);
+        color: var(--kind-skill);
         font-size: 0.74rem;
         letter-spacing: 0.12em;
         text-transform: uppercase;
@@ -443,12 +454,12 @@ const jsonLd = {
       }
       .btn:active { transform: translateY(0); }
       .btn-primary {
-        background: linear-gradient(180deg, #ffffff 0%, #e5e7eb 100%);
-        border-color: rgba(255, 255, 255, 0.8);
-        color: #080808;
+        background: linear-gradient(180deg, oklch(99% 0.003 265) 0%, oklch(92% 0.004 265) 100%);
+        border-color: oklch(95% 0.003 265 / 0.8);
+        color: oklch(5% 0.003 265);
         box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
       }
-      .btn-primary:hover { color: #080808; background: linear-gradient(180deg, #ffffff 0%, #f4f4f5 100%); }
+      .btn-primary:hover { color: oklch(5% 0.003 265); background: linear-gradient(180deg, oklch(99% 0.003 265) 0%, oklch(96% 0.003 265) 100%); }
       .hero-note {
         font-size: 0.82rem;
         letter-spacing: 0.01em;
@@ -491,54 +502,60 @@ const jsonLd = {
         width: 8px;
         height: 8px;
         border-radius: 999px;
-        background: #e5e7eb;
-        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06);
+        background: var(--kind-skill);
+        box-shadow: 0 0 0 4px oklch(75% 0.08 75 / 0.14);
       }
       .hero-install {
         border-radius: 18px;
-        background: rgba(255,255,255,0.02);
-        border: 1px solid rgba(255,255,255,0.08);
+        background: oklch(75% 0.08 75 / 0.03);
+        border: 1px solid oklch(75% 0.08 75 / 0.14);
         padding: 1rem;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+        box-shadow: inset 0 1px 0 oklch(75% 0.08 75 / 0.05);
       }
       .hero-install p {
         color: var(--fg-muted);
         font-size: 0.92rem;
         margin-top: 0.65rem;
       }
-      .metric-grid {
+      .kind-legend {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.8rem;
+        gap: 0.5rem;
       }
-      .metric-card {
-        border-radius: 16px;
-        border: 1px solid rgba(255,255,255,0.08);
-        background: rgba(255,255,255,0.03);
-        padding: 0.95rem;
-        min-height: 104px;
+      .kind-legend-item {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        align-items: center;
         gap: 0.55rem;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+        padding: 0.65rem 0.8rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.06);
+        background: rgba(255,255,255,0.02);
+        color: var(--fg-muted);
+        font-size: 0.82rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+        text-decoration: none;
       }
-      .metric-card strong {
-        font-size: clamp(1.45rem, 3vw, 2rem);
-        line-height: 1;
-        letter-spacing: -0.05em;
+      .kind-legend-item:hover {
+        background: rgba(255,255,255,0.04);
+        border-color: rgba(255,255,255,0.12);
         color: var(--fg);
       }
-      .metric-card span {
-        font-size: 0.76rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--fg-subtle);
+      .kind-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background: var(--dot-color, var(--fg-subtle));
       }
-      .metric-card:nth-child(1),
-      .metric-card:nth-child(2),
-      .metric-card:nth-child(3),
-      .metric-card:nth-child(4) { background: rgba(255,255,255,0.03); }
+      .kind-legend-count {
+        margin-left: auto;
+        font-size: 0.75rem;
+        color: var(--fg-subtle);
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
 
       .section-top {
         display: flex;
@@ -688,9 +705,9 @@ const jsonLd = {
         content: "";
         position: absolute;
         inset: 0 0 auto;
-        height: 2px;
-        background: linear-gradient(90deg, rgba(255,255,255,0.36), transparent);
-        opacity: 0.45;
+        height: 1px;
+        background: linear-gradient(90deg, var(--card-accent), transparent 70%);
+        opacity: 0.5;
       }
       .card:hover {
         transform: translateY(-2px);
@@ -710,13 +727,13 @@ const jsonLd = {
         width: 34px;
         height: 34px;
         border-radius: 10px;
-        background: rgba(255,255,255,0.04);
-        border: 1px solid rgba(255,255,255,0.08);
+        background: color-mix(in oklch, var(--card-accent) 12%, transparent);
+        border: 1px solid color-mix(in oklch, var(--card-accent) 20%, transparent);
         font-size: 0.95rem;
         font-weight: 700;
         letter-spacing: 0;
         line-height: 1;
-        color: var(--fg);
+        color: var(--card-accent);
       }
       .card h3 {
         color: var(--fg);
@@ -913,13 +930,39 @@ const jsonLd = {
         nav.primary a { padding: 0.45rem 0.65rem; }
         .hero { padding-top: 0.35rem; }
         .hero-grid { padding: 1rem; }
-        .metric-grid { grid-template-columns: 1fr; }
         .section-top { flex-direction: column; align-items: flex-start; }
         .stats { grid-template-columns: 1fr 1fr; }
         .install { flex-direction: column; align-items: stretch; }
         .install button.copy { width: 100%; justify-content: center; }
         .grid { grid-template-columns: 1fr; }
       }
+
+      /* ===== Motion ===== */
+      @keyframes fsu {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes fi {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .hero-kicker { animation: fsu 0.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
+      .hero h1 { animation: fsu 0.65s 0.07s cubic-bezier(0.16, 1, 0.3, 1) both; }
+      .hero p.lede { animation: fsu 0.6s 0.16s cubic-bezier(0.16, 1, 0.3, 1) both; }
+      .hero-cta { animation: fsu 0.55s 0.24s cubic-bezier(0.16, 1, 0.3, 1) both; }
+      .hero-note { animation: fsu 0.5s 0.32s cubic-bezier(0.16, 1, 0.3, 1) both; }
+      .hero-aside { animation: fi 0.72s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both; }
+      /* Card icon micro-interaction on card hover */
+      .card .icon { transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), background 0.18s ease, border-color 0.18s ease, color 0.18s ease; }
+      .card:hover .icon { transform: scale(1.1) rotate(2deg); }
+      /* Scroll reveal states — set via JS, so no initial FOUC */
+      .sr {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.52s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.52s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .sr.in { opacity: 1; transform: none; }
     </style>
   </head>
   <body>
@@ -976,6 +1019,37 @@ const jsonLd = {
           }, 1500);
         });
       });
+    </script>
+    <script is:inline>
+      // Scroll reveal with per-grid card stagger
+      (function () {
+        if (!window.IntersectionObserver) return;
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              obs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.06, rootMargin: "0px 0px -28px 0px" });
+
+        requestAnimationFrame(function () {
+          var vh = window.innerHeight;
+          document.querySelectorAll(".card, .section-top, .workflow-card").forEach(function (el) {
+            var top = el.getBoundingClientRect().top;
+            if (top > vh * 0.88) {
+              el.classList.add("sr");
+              obs.observe(el);
+            }
+          });
+          // Stagger cards per grid section
+          document.querySelectorAll(".grid").forEach(function (grid) {
+            grid.querySelectorAll(".card.sr").forEach(function (card, i) {
+              card.style.transitionDelay = Math.min(i * 42, 180) + "ms";
+            });
+          });
+        });
+      })();
     </script>
   </body>
 </html>
