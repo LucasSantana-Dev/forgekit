@@ -1,0 +1,34 @@
+---
+import { kindIcon, kindLabel, type Kind } from "../lib/ui.ts";
+
+interface Props {
+  kind: Kind;
+  name: string;
+  description?: string;
+  backHref?: string;
+  backLabel?: string;
+}
+
+const { kind, name, description, backHref = "../", backLabel } = Astro.props;
+const icon = kindIcon(kind);
+const label = kindLabel(kind);
+---
+
+<div class="entry-nav">
+  <a class="entry-back" href={backHref}>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    {backLabel ?? `All ${label.toLowerCase()}s`}
+  </a>
+</div>
+
+<div class="entry-header" style={`--entry-accent: var(--kind-${kind})`}>
+  <div class="entry-header-top">
+    <span class="entry-icon">{icon}</span>
+    <span class={`kind kind-${kind}`}>{label}</span>
+  </div>
+  <h1 class="entry-title">{name}</h1>
+  {description && <p class="entry-desc">{description}</p>}
+  <slot />
+</div>

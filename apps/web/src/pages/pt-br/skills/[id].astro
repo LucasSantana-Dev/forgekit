@@ -1,5 +1,6 @@
 ---
 import Base from "../../../layouts/Base.astro";
+import EntryHeader from "../../../components/EntryHeader.astro";
 import InstallBlock from "../../../components/InstallBlock.astro";
 import UsageBlock from "../../../components/UsageBlock.astro";
 import { getSkills } from "../../../lib/catalog.ts";
@@ -19,18 +20,13 @@ const rendered = renderMarkdown(skill.body);
 const cmd = installCommand("skill", skill.id)!;
 ---
 <Base title={skill.name} description={skill.description} locale={locale}>
-  <p style="margin-bottom: 1.5rem;"><a href="../">← todas as skills</a></p>
-  <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
-    <span style="font-size: 1.6rem;">🎯</span>
-    <h1 style="margin: 0;">{skill.name}</h1>
-    <span class="kind kind-skill">skill</span>
-  </div>
-  <p class="lead-muted" style="margin-bottom: 1rem;">{skill.description}</p>
-  <div class="tags" style="margin-bottom: 1.25rem;">
-    {skill.version && <span class="tag">v{skill.version}</span>}
-    {skill.editors?.map((e) => <span class="tag">{e}</span>)}
-    {skill.tags.map((t) => <span class="tag">{t}</span>)}
-  </div>
+  <EntryHeader kind="skill" name={skill.name} description={skill.description} backLabel="Todas as skills">
+    <div class="entry-tags">
+      {skill.version && <span class="tag">v{skill.version}</span>}
+      {skill.editors?.map((e) => <span class="tag">{e}</span>)}
+      {skill.tags.map((t) => <span class="tag">{t}</span>)}
+    </div>
+  </EntryHeader>
 
   <InstallBlock command={cmd} />
 
@@ -39,7 +35,7 @@ const cmd = installCommand("skill", skill.id)!;
   <article class="markdown mt-4" set:html={rendered} />
 
   {(skill.source?.path || skill.license) && (
-    <p style="color: var(--fg-subtle); font-size: 0.82rem; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+    <p class="entry-source">
       {skill.source?.path && <>Fonte: <code>{skill.source.path}</code></>}
       {skill.license && <>{skill.source?.path ? " · " : "Licença: "}{skill.license}</>}
     </p>
