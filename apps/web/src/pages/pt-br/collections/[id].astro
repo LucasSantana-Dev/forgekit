@@ -1,6 +1,7 @@
 ---
 import Base from "../../../layouts/Base.astro";
 import Card from "../../../components/Card.astro";
+import EntryHeader from "../../../components/EntryHeader.astro";
 import {
   buildCollectionItemResolver,
   collectionItemPath,
@@ -35,18 +36,13 @@ const localizedCatalog = {
 const resolveItem = buildCollectionItemResolver(localizedCatalog, (item) => url(collectionItemPath(item)));
 ---
 <Base title={collection.name} description={collection.description} locale={locale}>
-  <p style="margin-bottom: 1.5rem;"><a href="../">← todas as coleções</a></p>
-  <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
-    <span style="font-size: 1.6rem;">📦</span>
-    <h1 style="margin: 0;">{collection.name}</h1>
-    <span class="kind kind-collection">collection</span>
-  </div>
-  <p class="lead-muted" style="margin-bottom: 1rem;">{collection.description}</p>
-  {collection.tags && collection.tags.length > 0 && (
-    <div class="tags" style="margin-bottom: 1.5rem;">
-      {collection.tags.map((t) => <span class="tag">{t}</span>)}
-    </div>
-  )}
+  <EntryHeader kind="collection" name={collection.name} description={collection.description} backLabel="Todas as coleções">
+    {collection.tags && collection.tags.length > 0 && (
+      <div class="entry-tags">
+        {collection.tags.map((t) => <span class="tag">{t}</span>)}
+      </div>
+    )}
+  </EntryHeader>
 
   <h2>Itens ({collection.items.length})</h2>
   <div class="grid">

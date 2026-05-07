@@ -1,10 +1,11 @@
 ---
 import Base from "../../../layouts/Base.astro";
+import EntryHeader from "../../../components/EntryHeader.astro";
 import InstallBlock from "../../../components/InstallBlock.astro";
 import UsageBlock from "../../../components/UsageBlock.astro";
 import { getAgents } from "../../../lib/catalog.ts";
 import { localizeEntries, type Locale } from "../../../lib/i18n.ts";
-import { installCommand, kindGlyph, kindLabel, renderMarkdown } from "../../../lib/ui.ts";
+import { installCommand, renderMarkdown } from "../../../lib/ui.ts";
 
 const locale: Locale = "pt-br";
 
@@ -19,18 +20,13 @@ const rendered = renderMarkdown(agent.body);
 const cmd = installCommand("agent", agent.id)!;
 ---
 <Base title={agent.name} description={agent.description} locale={locale}>
-  <p style="margin-bottom: 1.5rem;"><a href="../">← todos os agentes</a></p>
-  <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
-    <span style="font-size: 1.6rem;">{kindGlyph(agent.kind)}</span>
-    <h1 style="margin: 0;">{agent.name}</h1>
-    <span class="kind kind-agent">{kindLabel(agent.kind)}</span>
-  </div>
-  <p class="lead-muted" style="margin-bottom: 1rem;">{agent.description}</p>
-  <div class="tags" style="margin-bottom: 1.25rem;">
-    {agent.model && <span class="tag">{agent.model}</span>}
-    {agent.level !== undefined && <span class="tag">level {agent.level}</span>}
-    {agent.tags.map((t) => <span class="tag">{t}</span>)}
-  </div>
+  <EntryHeader kind="agent" name={agent.name} description={agent.description} backLabel="Todos os agentes">
+    <div class="entry-tags">
+      {agent.model && <span class="tag">{agent.model}</span>}
+      {agent.level !== undefined && <span class="tag">level {agent.level}</span>}
+      {agent.tags.map((t) => <span class="tag">{t}</span>)}
+    </div>
+  </EntryHeader>
 
   <InstallBlock command={cmd} />
 
@@ -50,7 +46,7 @@ const cmd = installCommand("agent", agent.id)!;
   <article class="markdown" set:html={rendered} />
 
   {agent.source?.path && (
-    <p style="color: var(--fg-subtle); font-size: 0.82rem; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+    <p class="entry-source">
       Fonte: <code>{agent.source.path}</code>
       {agent.license && <> · {agent.license}</>}
     </p>
