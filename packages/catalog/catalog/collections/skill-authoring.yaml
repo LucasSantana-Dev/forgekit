@@ -1,0 +1,22 @@
+id: skill-authoring
+name: Skill Authoring
+name_pt: Autoria de Skills
+description: >
+  Write, adopt, and publish Claude Code skills — design a SKILL.md, test the
+  pattern in practice, maintain locale parity, and integrate with the forgekit
+  catalog. For contributors building reusable AI-assisted workflows.
+description_pt: >
+  Escrever, adotar e publicar skills de Claude Code — projetar um SKILL.md, testar
+  o padrão na prática, manter paridade de locale, e integrar com o catálogo
+  forgekit. Para contribuidores construindo fluxos de trabalho reutilizáveis
+  assistidos por IA.
+tags: [skills, authoring, community, catalog, contribution]
+items:
+  - {kind: skill, id: skill-creator}
+  - {kind: skill, id: skill-md-adoption}
+  - {kind: skill, id: writing-skills}
+  - {kind: skill, id: adt-add}
+  - {kind: skill, id: adt-auto-invoke}
+  - {kind: skill, id: adt-sync-pt-parity}
+  - {kind: skill, id: adt-bilingual-readme-sync}
+  - {kind: skill, id: prompting-discipline}

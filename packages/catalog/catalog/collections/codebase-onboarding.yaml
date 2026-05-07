@@ -1,0 +1,26 @@
+id: codebase-onboarding
+name: Codebase Onboarding
+name_pt: Integração ao Codebase
+description: >
+  Get productive in an unfamiliar codebase quickly — map the project structure,
+  walk through core abstractions with a code tour, identify entry points, and
+  pull live docs for the libraries in use. Useful for new hires, OSS contributors,
+  and anyone inheriting a legacy project.
+description_pt: >
+  Ficar produtivo em um codebase desconhecido rapidamente — mapear estrutura do
+  projeto, caminhar através de abstrações principais com um code tour, identificar
+  pontos de entrada, e puxar docs vivos para as bibliotecas em uso. Útil para
+  novos funcionários, contribuidores de OSS, e qualquer um herdando um projeto legado.
+tags: [onboarding, exploration, codebase, learning, architecture]
+items:
+  - {kind: skill, id: eng-codebase-onboarding}
+  - {kind: skill, id: eng-code-tour}
+  - {kind: skill, id: adt-repo-intake}
+  - {kind: skill, id: adt-learn}
+  - {kind: skill, id: brainstorming}
+  - {kind: skill, id: using-superpowers}
+  - {kind: server, id: context7}
+  - {kind: server, id: serena}
+  - {kind: server, id: github}
+  - {kind: agent, id: architect}
+  - {kind: agent, id: document-specialist}

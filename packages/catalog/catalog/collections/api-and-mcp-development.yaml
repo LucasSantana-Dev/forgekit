@@ -1,0 +1,24 @@
+id: api-and-mcp-development
+name: API & MCP Development
+name_pt: Desenvolvimento de API e MCP
+description: >
+  Design, build, and test APIs and MCP servers — from contract-first API design
+  and automated test suites to full MCP server construction and Claude API
+  integration. Use when building the surface that agents and clients depend on.
+description_pt: >
+  Projetar, construir e testar APIs e servidores MCP — do design de API contrato-first
+  e suites de testes automatizados para construção completa de servidor MCP e
+  integração com Claude API. Use ao construir a superfície que agentes e clientes
+  dependem.
+tags: [api, mcp, sdk, integration, development, claude-api]
+items:
+  - {kind: skill, id: eng-api-design-reviewer}
+  - {kind: skill, id: eng-api-test-suite-builder}
+  - {kind: skill, id: eng-mcp-server-builder}
+  - {kind: skill, id: mcp-builder}
+  - {kind: skill, id: claude-api}
+  - {kind: skill, id: adt-mcp-patterns}
+  - {kind: skill, id: adt-eval}
+  - {kind: server, id: context7}
+  - {kind: server, id: github}
+  - {kind: agent, id: architect}
