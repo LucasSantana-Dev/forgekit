@@ -1,9 +1,8 @@
 id: security-first-dev
 name: Security-First Development
-description: Security-aware development without the productivity tax — secret
-  hygiene, dependency auditing, prompt-injection defence, hardened review
-  cadence, and pre-merge hooks that catch the obvious mistakes early. Pairs
-  with any stack; expensive to retrofit, cheap to start with.
+description: Security-aware development without the productivity tax — secret hygiene, dependency auditing, prompt-injection
+  defence, hardened review cadence, and pre-merge hooks that catch the obvious mistakes early. Pairs with any stack; expensive
+  to retrofit, cheap to start with.
 tags:
 - security
 - hardening
@@ -36,8 +35,6 @@ items:
 translations:
   pt-BR:
     name: Desenvolvimento com Segurança em Primeiro Lugar
-    description: Desenvolvimento atento à segurança sem o custo de produtividade —
-      higiene de segredos, auditoria de dependências, defesa contra prompt
-      injection, cadência de review reforçada e hooks pre-merge que pegam os
-      erros óbvios cedo. Combina com qualquer stack; caro para colocar depois,
-      barato para começar agora.
+    description: Desenvolvimento atento à segurança sem o custo de produtividade — higiene de segredos, auditoria de dependências,
+      defesa contra prompt injection, cadência de review reforçada e hooks pre-merge que pegam os erros óbvios cedo. Combina
+      com qualquer stack; caro para colocar depois, barato para começar agora.

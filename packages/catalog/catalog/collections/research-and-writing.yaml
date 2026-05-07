@@ -1,9 +1,8 @@
 id: research-and-writing
 name: Research & Writing
-description: For work that's mostly prose — internal docs, brand-aligned
-  copy, technical research, RFC drafts, brainstorms. Pairs research skills,
-  writing structure, voice consistency, and the doc-coauthoring agents. No
-  code-review or testing pieces — those live in other collections.
+description: For work that's mostly prose — internal docs, brand-aligned copy, technical research, RFC drafts, brainstorms.
+  Pairs research skills, writing structure, voice consistency, and the doc-coauthoring agents. No code-review or testing pieces
+  — those live in other collections.
 tags:
 - writing
 - research
@@ -32,8 +31,6 @@ items:
 translations:
   pt-BR:
     name: Pesquisa & Escrita
-    description: Para trabalho que é majoritariamente texto — docs internos,
-      copy alinhado à marca, pesquisa técnica, rascunhos de RFC, brainstorms.
-      Combina skills de pesquisa, estrutura de escrita, consistência de voz e
-      os agentes de co-autoria de docs. Sem revisão de código nem testes —
-      esses ficam em outras coleções.
+    description: Para trabalho que é majoritariamente texto — docs internos, copy alinhado à marca, pesquisa técnica, rascunhos
+      de RFC, brainstorms. Combina skills de pesquisa, estrutura de escrita, consistência de voz e os agentes de co-autoria
+      de docs. Sem revisão de código nem testes — esses ficam em outras coleções.

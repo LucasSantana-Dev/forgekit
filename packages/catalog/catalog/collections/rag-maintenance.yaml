@@ -1,34 +1,40 @@
 id: rag-maintenance
 name: RAG Maintenance
-name_pt: Manutenção de RAG
-description: >
-  Keep your RAG index clean and high-quality — audit chunk coverage, inspect
-  what's indexed, curate low-quality or stale entries, detect drift between
-  source and index, and rebuild after large catalog changes. For anyone running
-  the forgekit local RAG pipeline.
-description_pt: >
-  Manter seu índice RAG limpo e de alta qualidade — auditar cobertura de chunks,
-  inspecionar o que está indexado, selecionar entradas de baixa qualidade ou
-  desatualizadas, detectar desvios entre fonte e índice, e reconstruir após
-  grandes mudanças no catálogo. Para qualquer pessoa executando o pipeline RAG
-  local do forgekit.
-tags: [rag, maintenance, indexing, quality, context]
+description: 'Keep your RAG index clean and high-quality — audit chunk coverage, inspect what''s indexed, curate low-quality
+  or stale entries, detect drift between source and index, and rebuild after large catalog changes. For anyone running the
+  forgekit local RAG pipeline.
+
+  '
+tags:
+- rag
+- maintenance
+- indexing
+- quality
+- context
 items:
-  - kind: skill
-    id: adt-rag-coverage
-  - kind: skill
-    id: adt-rag-curate
-  - kind: skill
-    id: adt-rag-drift
-  - kind: skill
-    id: adt-rag-index-rebuild
-  - kind: skill
-    id: adt-rag-inspect
-  - kind: skill
-    id: adt-rag-quality
-  - kind: skill
-    id: adt-rag
-  - kind: skill
-    id: adt-rag-context-pack
-  - kind: server
-    id: memory
+- kind: skill
+  id: adt-rag-coverage
+- kind: skill
+  id: adt-rag-curate
+- kind: skill
+  id: adt-rag-drift
+- kind: skill
+  id: adt-rag-index-rebuild
+- kind: skill
+  id: adt-rag-inspect
+- kind: skill
+  id: adt-rag-quality
+- kind: skill
+  id: adt-rag
+- kind: skill
+  id: adt-rag-context-pack
+- kind: server
+  id: memory
+translations:
+  pt-BR:
+    name: Manutenção de RAG
+    description: 'Manter seu índice RAG limpo e de alta qualidade — auditar cobertura de chunks, inspecionar o que está indexado,
+      selecionar entradas de baixa qualidade ou desatualizadas, detectar desvios entre fonte e índice, e reconstruir após
+      grandes mudanças no catálogo. Para qualquer pessoa executando o pipeline RAG local do forgekit.
+
+      '

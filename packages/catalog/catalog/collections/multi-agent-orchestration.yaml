@@ -1,39 +1,46 @@
 id: multi-agent-orchestration
 name: Multi-Agent Orchestration
-name_pt: Orquestração de Múltiplos Agentes
-description: >
-  Build and operate multi-agent workflows — dispatch parallel tasks, route
-  sub-agents to the right tier, loop until convergence, and handle failures
-  gracefully. For teams automating complex pipelines or maintaining autonomous
-  Claude Code sessions.
-description_pt: >
-  Construir e operar fluxos de trabalho com múltiplos agentes — distribuir tarefas
-  em paralelo, rotear sub-agentes para a camada correta, iterar até convergência e
-  lidar com falhas graciosamente. Para equipes automatizando pipelines complexos ou
-  mantendo sessões autônomas de Claude Code.
-tags: [orchestration, agents, automation, dispatch, multi-agent]
+description: 'Build and operate multi-agent workflows — dispatch parallel tasks, route sub-agents to the right tier, loop
+  until convergence, and handle failures gracefully. For teams automating complex pipelines or maintaining autonomous Claude
+  Code sessions.
+
+  '
+tags:
+- orchestration
+- agents
+- automation
+- dispatch
+- multi-agent
 items:
-  - kind: skill
-    id: adt-dispatch
-  - kind: skill
-    id: adt-orchestrate
-  - kind: skill
-    id: adt-multi-agent
-  - kind: skill
-    id: adt-loop
-  - kind: skill
-    id: adt-route
-  - kind: skill
-    id: adt-fallback
-  - kind: skill
-    id: dispatching-parallel-agents
-  - kind: skill
-    id: subagent-driven-development
-  - kind: skill
-    id: task-orchestration
-  - kind: skill
-    id: adt-smart-model-route
-  - kind: agent
-    id: executor
-  - kind: agent
-    id: planner
+- kind: skill
+  id: adt-dispatch
+- kind: skill
+  id: adt-orchestrate
+- kind: skill
+  id: adt-multi-agent
+- kind: skill
+  id: adt-loop
+- kind: skill
+  id: adt-route
+- kind: skill
+  id: adt-fallback
+- kind: skill
+  id: dispatching-parallel-agents
+- kind: skill
+  id: subagent-driven-development
+- kind: skill
+  id: task-orchestration
+- kind: skill
+  id: adt-smart-model-route
+- kind: agent
+  id: executor
+- kind: agent
+  id: planner
+translations:
+  pt-BR:
+    name: Orquestração de Múltiplos Agentes
+    description: 'Construir e operar fluxos de trabalho com múltiplos agentes — distribuir tarefas em paralelo, rotear sub-agentes
+      para a camada correta, iterar até convergência e lidar com falhas graciosamente. Para equipes automatizando pipelines
+      complexos ou mantendo sessões autônomas de Claude Code.
+
+      '

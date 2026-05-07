@@ -1,39 +1,46 @@
 id: token-and-context-optimization
 name: Token & Context Optimization
-name_pt: Otimização de Token e Contexto
-description: >
-  Keep sessions lean and cheap — audit token usage, compress assets before
-  context load, enforce context hygiene, route tasks to the right model tier,
-  and automate pre-compact/post-compact maintenance. Extends any workflow
-  without changing how you code.
-description_pt: >
-  Manter sessões limpas e baratas — auditar uso de token, comprimir assets antes
-  de carregar contexto, aplicar higiene de contexto, rotear tarefas para a camada
-  de modelo certa, e automatizar manutenção pré-compacto/pós-compacto. Estende
-  qualquer fluxo sem mudar como você programa.
-tags: [tokens, context, performance, cost, optimization]
+description: 'Keep sessions lean and cheap — audit token usage, compress assets before context load, enforce context hygiene,
+  route tasks to the right model tier, and automate pre-compact/post-compact maintenance. Extends any workflow without changing
+  how you code.
+
+  '
+tags:
+- tokens
+- context
+- performance
+- cost
+- optimization
 items:
-  - kind: skill
-    id: adt-token-audit
-  - kind: skill
-    id: adt-cost
-  - kind: skill
-    id: adt-compress-assets
-  - kind: skill
-    id: adt-context-hygiene
-  - kind: skill
-    id: adt-context
-  - kind: skill
-    id: adt-smart-commands
-  - kind: skill
-    id: adt-smart-model-route
-  - kind: skill
-    id: context-building
-  - kind: hook
-    id: pre-compact
-  - kind: hook
-    id: post-compact
-  - kind: hook
-    id: token-usage-monitor
-  - kind: hook
-    id: context-optimizer
+- kind: skill
+  id: adt-token-audit
+- kind: skill
+  id: adt-cost
+- kind: skill
+  id: adt-compress-assets
+- kind: skill
+  id: adt-context-hygiene
+- kind: skill
+  id: adt-context
+- kind: skill
+  id: adt-smart-commands
+- kind: skill
+  id: adt-smart-model-route
+- kind: skill
+  id: context-building
+- kind: hook
+  id: pre-compact
+- kind: hook
+  id: post-compact
+- kind: hook
+  id: token-usage-monitor
+- kind: hook
+  id: context-optimizer
+translations:
+  pt-BR:
+    name: Otimização de Token e Contexto
+    description: 'Manter sessões limpas e baratas — auditar uso de token, comprimir assets antes de carregar contexto, aplicar
+      higiene de contexto, rotear tarefas para a camada de modelo certa, e automatizar manutenção pré-compacto/pós-compacto.
+      Estende qualquer fluxo sem mudar como você programa.
+
+      '
