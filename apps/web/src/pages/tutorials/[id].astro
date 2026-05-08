@@ -14,7 +14,7 @@ const base = import.meta.env.BASE_URL;
 
 const catalog = await getCatalogData();
 const resolve = buildCollectionItemResolver(catalog, (item) => `${base}${collectionItemPath(item)}`);
-const related = tutorial.relates_to?.map(resolve) ?? [];
+const related = tutorial.relates_to.map(resolve);
 ---
 <Base title={tutorial.title} description={tutorial.description}>
   <EntryHeader kind="tutorial" name={tutorial.title} description={tutorial.description} backLabel="All tutorials" backHref={`${base}tutorials/`}>
