@@ -1,0 +1,35 @@
+---
+import Base from "../../layouts/Base.astro";
+import Card from "../../components/Card.astro";
+import SearchFilter from "../../components/SearchFilter.astro";
+import { getTutorials } from "../../lib/catalog.ts";
+import { localizeEntries, type Locale } from "../../lib/i18n.ts";
+
+const locale: Locale = "en";
+const raw = await getTutorials();
+const tutorials = localizeEntries(raw, locale);
+
+const base = import.meta.env.BASE_URL;
+
+const tagSet = new Set<string>();
+for (const t of tutorials) for (const tag of t.tags) tagSet.add(tag);
+const tags = [...tagSet].sort();
+---
+<Base title="Tutorials" description={`${tutorials.length} step-by-step guides.`}>
+  <h1>Tutorials</h1>
+  <p class="lead-muted">Step-by-step guides for installing, configuring, and getting the most out of catalog entries.</p>
+  <SearchFilter placeholder={`Search ${tutorials.length} tutorials…`} tags={tags} />
+  <div class="grid">
+    {tutorials.map((t) => (
+      <Card
+        kind="tutorial"
+        id={t.id}
+        name={t.title}
+        description={t.description}
+        tags={t.tags}
+        href={`${base}tutorials/${t.id}/`}
+      />
+    ))}
+  </div>
+  <div id="empty-state" class="empty" style="display: none;">No tutorials match your filters.</div>
+</Base>

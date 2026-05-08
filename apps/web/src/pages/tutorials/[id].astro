@@ -1,0 +1,145 @@
+---
+import Base from "../../layouts/Base.astro";
+import EntryHeader from "../../components/EntryHeader.astro";
+import { getTutorials, getCatalogData, buildCollectionItemResolver, collectionItemPath } from "../../lib/catalog.ts";
+import { renderMarkdown } from "../../lib/ui.ts";
+
+export async function getStaticPaths() {
+  const tutorials = await getTutorials();
+  return tutorials.map((t) => ({ params: { id: t.id }, props: { tutorial: t } }));
+}
+const { tutorial } = Astro.props;
+const rendered = renderMarkdown(tutorial.body);
+const base = import.meta.env.BASE_URL;
+
+const catalog = await getCatalogData();
+const resolve = buildCollectionItemResolver(catalog, (item) => `${base}${collectionItemPath(item)}`);
+const related = tutorial.relates_to.map(resolve);
+---
+<Base title={tutorial.title} description={tutorial.description}>
+  <EntryHeader kind="tutorial" name={tutorial.title} description={tutorial.description} backLabel="All tutorials" backHref={`${base}tutorials/`}>
+    <div class="tutorial-meta">
+      {tutorial.difficulty && <span class={`difficulty difficulty-${tutorial.difficulty}`}>{tutorial.difficulty}</span>}
+      {tutorial.time_estimate && <span class="time-estimate">{tutorial.time_estimate}</span>}
+    </div>
+    <div class="entry-tags">
+      {tutorial.tags.map((t) => <span class="tag">{t}</span>)}
+    </div>
+  </EntryHeader>
+
+  <article class="markdown" set:html={rendered} />
+
+  {related.length > 0 && (
+    <section class="related-entries">
+      <h2>Related catalog entries</h2>
+      <ul class="related-list">
+        {related.map((r) => (
+          <li>
+            <a href={r.href} class={`related-link kind-${r.kind}`}>
+              <span class="related-kind">{r.kind}</span>
+              <span class="related-name">{r.name}</span>
+            </a>
+            {r.description && <p class="related-desc">{r.description}</p>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+</Base>
+
+<style>
+  .tutorial-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .difficulty {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2em 0.6em;
+    border-radius: 4px;
+    border: 1px solid currentColor;
+  }
+
+  .difficulty-beginner {
+    color: oklch(72% 0.16 150);
+    background: oklch(72% 0.16 150 / 0.1);
+  }
+
+  .difficulty-intermediate {
+    color: oklch(74% 0.16 55);
+    background: oklch(74% 0.16 55 / 0.1);
+  }
+
+  .difficulty-advanced {
+    color: oklch(70% 0.18 25);
+    background: oklch(70% 0.18 25 / 0.1);
+  }
+
+  .time-estimate {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .related-entries {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .related-entries h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .related-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .related-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .related-link:hover .related-name {
+    text-decoration: underline;
+  }
+
+  .related-kind {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 0.15em 0.45em;
+    border-radius: 3px;
+    background: var(--surface-raised);
+    color: var(--text-muted);
+  }
+
+  .related-name {
+    font-weight: 500;
+  }
+
+  .related-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0.25rem 0 0 0;
+    padding-left: calc(0.7rem + 0.9rem + 0.5rem);
+  }
+</style>

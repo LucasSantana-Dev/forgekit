@@ -1,0 +1,110 @@
+---
+import type { Kind, Tutorial } from "../lib/catalog.ts";
+
+interface Props {
+  kind: Kind;
+  id: string;
+  tutorials: Tutorial[];
+  base: string;
+}
+
+const { kind, id, tutorials, base } = Astro.props;
+const related = tutorials.filter((t) =>
+  t.relates_to?.some((r) => r.kind === kind && r.id === id)
+);
+---
+{related.length > 0 && (
+  <section class="related-tutorials">
+    <h2>Related tutorials</h2>
+    <ul class="tutorial-list">
+      {related.map((t) => (
+        <li>
+          <a href={`${base}tutorials/${t.id}/`} class="tutorial-link">
+            <span class="tutorial-name">{t.title}</span>
+            {t.difficulty && <span class={`difficulty difficulty-${t.difficulty}`}>{t.difficulty}</span>}
+            {t.time_estimate && <span class="time-estimate">{t.time_estimate}</span>}
+          </a>
+          {t.description && <p class="tutorial-desc">{t.description}</p>}
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
+
+<style>
+  .related-tutorials {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .related-tutorials h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .tutorial-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .tutorial-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .tutorial-link:hover .tutorial-name {
+    text-decoration: underline;
+  }
+
+  .tutorial-name {
+    font-weight: 500;
+  }
+
+  .difficulty {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.15em 0.45em;
+    border-radius: 3px;
+    border: 1px solid currentColor;
+  }
+
+  .difficulty-beginner {
+    color: oklch(72% 0.16 150);
+    background: oklch(72% 0.16 150 / 0.1);
+  }
+
+  .difficulty-intermediate {
+    color: oklch(74% 0.16 55);
+    background: oklch(74% 0.16 55 / 0.1);
+  }
+
+  .difficulty-advanced {
+    color: oklch(70% 0.18 25);
+    background: oklch(70% 0.18 25 / 0.1);
+  }
+
+  .time-estimate {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .tutorial-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0.25rem 0 0 0;
+  }
+</style>

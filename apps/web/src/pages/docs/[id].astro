@@ -1,7 +1,8 @@
 ---
 import Base from "../../layouts/Base.astro";
 import EntryHeader from "../../components/EntryHeader.astro";
-import { getDocs } from "../../lib/catalog.ts";
+import RelatedTutorials from "../../components/RelatedTutorials.astro";
+import { getDocs, getTutorials } from "../../lib/catalog.ts";
 import { renderMarkdown } from "../../lib/ui.ts";
 
 export async function getStaticPaths() {
@@ -10,6 +11,8 @@ export async function getStaticPaths() {
 }
 const { doc } = Astro.props;
 const rendered = renderMarkdown(doc.body);
+const tutorials = await getTutorials();
+const base = import.meta.env.BASE_URL;
 ---
 <Base title={doc.title} description={doc.description}>
   <EntryHeader kind="doc" name={doc.title} description={doc.description} backLabel="All docs">
@@ -26,4 +29,6 @@ const rendered = renderMarkdown(doc.body);
       {doc.source.license && <> · {doc.source.license}</>}
     </p>
   )}
+
+  <RelatedTutorials kind="doc" id={doc.id} tutorials={tutorials} base={base} />
 </Base>

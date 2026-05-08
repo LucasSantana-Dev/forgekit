@@ -1,6 +1,6 @@
 import { marked } from "marked";
 
-export type Kind = "skill" | "server" | "agent" | "collection" | "doc" | "hook" | "command" | "tool";
+export type Kind = "skill" | "server" | "agent" | "collection" | "doc" | "hook" | "command" | "tool" | "tutorial";
 
 const KIND_GLYPHS: Record<Kind, string> = {
   skill: "SK",
@@ -11,6 +11,7 @@ const KIND_GLYPHS: Record<Kind, string> = {
   hook: "HK",
   command: "CMD",
   tool: "TL",
+  tutorial: "TUT",
 };
 
 const KIND_ICONS: Record<Kind, string> = {
@@ -22,6 +23,7 @@ const KIND_ICONS: Record<Kind, string> = {
   hook: "↯",
   command: "⌘",
   tool: "⚙",
+  tutorial: "▷",
 };
 
 const ACRONYM_REPLACEMENTS: Array<[RegExp, string]> = [
@@ -66,6 +68,8 @@ export function kindLabel(kind: Kind): string {
       return "Command";
     case "tool":
       return "Tool";
+    case "tutorial":
+      return "Tutorial";
   }
 }
 

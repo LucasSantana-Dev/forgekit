@@ -44,6 +44,7 @@ const navItems = [
   { href: `${localeBase}collections/`, key: "nav.collections" },
   { href: `${localeBase}commands/`, key: "nav.commands" },
   { href: `${localeBase}docs/`, key: "nav.docs" },
+  { href: `${localeBase}tutorials/`, key: "nav.tutorials" },
 ];
 const isActive = (href: string) => {
   const trimmed = href.replace(/\/$/, "") || "/";
@@ -115,21 +116,21 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <style is:global>
       :root {
-        --bg: #050505;
-        --bg-elev: #0a0a0a;
-        --bg-panel: #0f0f10;
-        --bg-hover: #151517;
-        --fg: #f5f5f5;
-        --fg-muted: #a1a1aa;
-        --fg-subtle: #71717a;
-        --border: rgba(255, 255, 255, 0.08);
-        --border-strong: rgba(255, 255, 255, 0.14);
-        --accent: #d4d4d8;
-        --accent-hot: #ffffff;
-        --accent-soft: rgba(255, 255, 255, 0.06);
-        --code-bg: rgba(255, 255, 255, 0.035);
-        --chip-bg: rgba(255, 255, 255, 0.05);
-        --chip-fg: #e4e4e7;
+        --bg: oklch(6% 0.006 75);
+        --bg-elev: oklch(9% 0.006 75);
+        --bg-panel: oklch(11% 0.007 75);
+        --bg-hover: oklch(14% 0.008 75);
+        --fg: oklch(96% 0.004 75);
+        --fg-muted: oklch(68% 0.005 75);
+        --fg-subtle: oklch(52% 0.005 75);
+        --border: oklch(100% 0 0 / 0.08);
+        --border-strong: oklch(100% 0 0 / 0.14);
+        --accent: oklch(82% 0.005 75);
+        --accent-hot: oklch(98% 0.003 75);
+        --accent-soft: oklch(100% 0 0 / 0.06);
+        --code-bg: oklch(100% 0 0 / 0.035);
+        --chip-bg: oklch(100% 0 0 / 0.05);
+        --chip-fg: oklch(89% 0.005 75);
 
         --kind-skill:      oklch(75% 0.08 75);
         --kind-agent:      oklch(72% 0.10 275);
@@ -471,11 +472,7 @@ const jsonLd = {
         gap: 0.9rem;
         align-content: stretch;
       }
-      .hero-surface,
-      .search-panel,
-      .install {
-        backdrop-filter: blur(18px) saturate(145%);
-      }
+
       .hero-surface {
         border: 1px solid rgba(255,255,255,0.08);
         border-radius: 18px;
@@ -694,21 +691,13 @@ const jsonLd = {
         border-radius: 16px;
         padding: 0.95rem;
         background: rgba(255,255,255,0.02);
-        box-shadow: var(--shadow-card);
         transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
         position: relative;
         overflow: hidden;
         min-height: 248px;
         height: 100%;
       }
-      .card::before {
-        content: "";
-        position: absolute;
-        inset: 0 0 auto;
-        height: 1px;
-        background: linear-gradient(90deg, var(--card-accent), transparent 70%);
-        opacity: 0.5;
-      }
+
       .card:hover {
         transform: translateY(-2px);
         border-color: rgba(255,255,255,0.14);
@@ -935,14 +924,7 @@ const jsonLd = {
         flex-direction: column;
         gap: 0.7rem;
       }
-      .entry-header::before {
-        content: "";
-        position: absolute;
-        inset: 0 0 auto;
-        height: 1px;
-        background: linear-gradient(90deg, var(--entry-accent), transparent 55%);
-        opacity: 0.3;
-      }
+
       .entry-header-top {
         display: flex;
         align-items: center;

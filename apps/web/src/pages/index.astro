@@ -13,9 +13,7 @@ import {
   getCommands,
   getTools,
 } from "../lib/catalog.ts";
-import { buildHomepageCuration } from "../lib/curation.ts";
 import { localizeEntries, t, localizedUrl, type Locale } from "../lib/i18n.ts";
-import { displayEntryName } from "../lib/ui.ts";
 
 const locale: Locale = "en";
 
@@ -41,19 +39,6 @@ const tools = localizeEntries(toolsRaw, locale);
 
 const base = import.meta.env.BASE_URL;
 const url = (p: string) => localizedUrl(base, p, locale);
-
-const {
-  featuredSkills,
-  featuredAgents,
-  featuredServers,
-  featuredTools,
-  featuredHooks,
-  workflowEssentials,
-} = buildHomepageCuration(
-  { skills, agents, servers, tools, hooks },
-  base,
-  locale,
-);
 
 const total = skills.length + agents.length + servers.length + hooks.length + commands.length + tools.length;
 
@@ -140,98 +125,6 @@ const popularTags = [...tagCount.entries()]
     heading={t("home.collections.title", locale)}
     lede={t("home.collections.lede", locale)}
   />
-
-  <div class="section-top">
-    <div><h2>{t("home.section.skills", locale)}</h2></div>
-    <a class="section-link" href={url("skills/")}>{t("home.allOf", locale, { count: skills.length, kind: t("nav.skills", locale).toLowerCase() })}</a>
-  </div>
-  <div class="grid">
-    {featuredSkills.map((s) => (
-      <Card kind="skill" id={s.id} name={s.name} description={s.description} tags={s.tags} href={s.href} extraTag={s.extraTag} />
-    ))}
-  </div>
-
-  <div class="section-top">
-    <div><h2>{t("home.section.agents", locale)}</h2></div>
-    <a class="section-link" href={url("agents/")}>{t("home.allOf", locale, { count: agents.length, kind: t("nav.agents", locale).toLowerCase() })}</a>
-  </div>
-  <div class="grid">
-    {featuredAgents.map((a) => (
-      <Card kind="agent" id={a.id} name={a.name} description={a.description} tags={a.tags} href={a.href} extraTag={a.extraTag} />
-    ))}
-  </div>
-
-  <div class="section-top">
-    <div><h2>{t("home.section.servers", locale)}</h2></div>
-    <a class="section-link" href={url("servers/")}>{t("home.allOf", locale, { count: servers.length, kind: t("nav.servers", locale).toLowerCase() })}</a>
-  </div>
-  <div class="grid">
-    {featuredServers.map((s) => (
-      <Card kind="server" id={s.id} name={s.name} description={s.description} tags={s.tags} href={s.href} extraTag={s.extraTag} />
-    ))}
-  </div>
-
-  <div class="section-top">
-    <div>
-      <h2>{t("home.section.tools", locale)}</h2>
-      <p class="lead-muted">{t("home.section.toolsLede", locale)}</p>
-    </div>
-    <a class="section-link" href={url("tools/")}>{t("home.allOf", locale, { count: tools.length, kind: t("nav.tools", locale).toLowerCase() })}</a>
-  </div>
-  <div class="grid">
-    {featuredTools.map((tool) => (
-      <Card kind="tool" id={tool.id} name={tool.name} description={tool.description} tags={tool.tags} href={tool.href} extraTag={tool.extraTag} />
-    ))}
-  </div>
-
-  <div class="section-top">
-    <div><h2>{t("home.section.hooks", locale)}</h2></div>
-    <a class="section-link" href={url("hooks/")}>{t("home.allOf", locale, { count: hooks.length, kind: t("nav.hooks", locale).toLowerCase() })}</a>
-  </div>
-  <div class="grid">
-    {featuredHooks.map((h) => (
-      <Card kind="hook" id={h.id} name={h.name} description={h.description} tags={h.tags} href={h.href} extraTag={h.extraTag} />
-    ))}
-  </div>
-
-  <div class="section-top">
-    <div>
-      <h2>{t("home.section.workflow", locale)}</h2>
-      <p class="lead-muted">{t("home.section.workflowLede", locale)}</p>
-    </div>
-    <a class="section-link" href={url("search/")}>{t("home.workflow.exploreAll", locale)}</a>
-  </div>
-  <div class="workflow-grid">
-    {workflowEssentials.map((item) => (
-      <section class="hero-surface workflow-card">
-        <header class="workflow-card-header">
-          <h3>{t(`home.workflow.${item.key}.title`, locale)}</h3>
-          <p class="lead-muted">{t(`home.workflow.${item.key}.lede`, locale)}</p>
-        </header>
-        {item.primary ? (
-          <Card
-            kind={item.primary.kind}
-            id={item.primary.id}
-            name={displayEntryName(item.primary.name)}
-            description={item.primary.description}
-            tags={item.related.slice(0, 4).map((entry) => displayEntryName(entry.name))}
-            href={item.primary.href}
-            extraTag={item.primary.kind}
-          />
-        ) : (
-          <a class="section-link" href={item.browseHref}>{t("home.workflow.fallback", locale)}</a>
-        )}
-        {item.related.length > 0 && (
-          <div class="chips">
-            {item.related.map((entry) => (
-              <a class="chip" href={entry.href}>{displayEntryName(entry.name)}</a>
-            ))}
-          </div>
-        )}
-        <a class="section-link workflow-card-footer" href={item.browseHref}>{t("home.workflow.browse", locale)} →</a>
-      </section>
-    ))}
-  </div>
 
   <div class="section-top">
     <div><h2>{t("home.section.tags", locale)}</h2></div>
