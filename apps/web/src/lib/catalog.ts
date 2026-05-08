@@ -25,7 +25,7 @@ function findCatalogDir(): string {
 
 const CATALOG = findCatalogDir();
 
-export type Kind = "skill" | "server" | "collection" | "doc" | "agent" | "hook" | "command" | "tool";
+export type Kind = "skill" | "server" | "collection" | "doc" | "agent" | "hook" | "command" | "tool" | "tutorial";
 export type CollectionItemKind = Exclude<Kind, "collection">;
 
 export interface CollectionItem {
@@ -97,6 +97,7 @@ export const COLLECTION_ITEM_ROUTES: Record<CollectionItemKind, string> = {
   hook: "hooks",
   command: "commands",
   tool: "tools",
+  tutorial: "tutorials",
 };
 
 export function collectionItemPath(item: CollectionItem): string {
@@ -111,6 +112,8 @@ export interface CatalogData {
   hooks: Hook[];
   commands: Command[];
   tools: Tool[];
+  tutorials: Tutorial[];
+  collections: Collection[];
 }
 
 export interface Doc {
@@ -120,6 +123,18 @@ export interface Doc {
   tags: string[];
   body: string;
   source?: { path?: string; upstream?: string; license?: string };
+  translations?: { "pt-BR"?: { title?: string; description?: string } };
+}
+
+export interface Tutorial {
+  id: string;
+  title: string;
+  description: string;
+  tags: string[];
+  relates_to: Array<{ kind: Exclude<Kind, "tutorial">; id: string }>;
+  difficulty?: "beginner" | "intermediate" | "advanced";
+  time_estimate?: string;
+  body: string;
   translations?: { "pt-BR"?: { title?: string; description?: string } };
 }
 
@@ -184,11 +199,22 @@ export async function getDocs(): Promise<Doc[]> {
   return out;
 }
 
+export async function getTutorials(): Promise<Tutorial[]> {
+  const dir = path.join(CATALOG, "tutorials");
+  const out: Tutorial[] = [];
+  for (const file of await listFiles(dir, ".md")) {
+    const raw = await readFile(path.join(dir, file), "utf8");
+    const { data, content } = matter(raw);
+    out.push({ ...(data as Omit<Tutorial, "body">), body: content });
+  }
+  return out;
+}
+
 let catalogDataPromise: Promise<CatalogData> | null = null;
 
 export async function getCatalogData(): Promise<CatalogData> {
   catalogDataPromise ??= (async () => {
-    const [skills, servers, docs, agents, hooks, commands, tools] = await Promise.all([
+    const [skills, servers, docs, agents, hooks, commands, tools, tutorials, collections] = await Promise.all([
       getSkills(),
       getServers(),
       getDocs(),
@@ -196,8 +222,10 @@ export async function getCatalogData(): Promise<CatalogData> {
       getHooks(),
       getCommands(),
       getTools(),
+      getTutorials(),
+      getCollections(),
     ]);
-    return { skills, servers, docs, agents, hooks, commands, tools };
+    return { skills, servers, docs, agents, hooks, commands, tools, tutorials, collections };
   })();
   return catalogDataPromise;
 }
@@ -220,12 +248,16 @@ interface CatalogLike {
   hooks: NamedEntry[];
   commands: NamedEntry[];
   tools: NamedEntry[];
+  tutorials: NamedEntry[];
+  collections?: NamedEntry[];
 }
+
+type ResolvableItem = CollectionItem | { kind: Exclude<Kind, "tutorial">; id: string };
 
 export function buildCollectionItemResolver(
   catalog: CatalogLike,
-  hrefFor: (item: CollectionItem) => string,
-): (item: CollectionItem) => ResolvedCollectionItem {
+  hrefFor: (item: ResolvableItem) => string,
+): (item: ResolvableItem) => ResolvedCollectionItem {
   const maps: Record<CollectionItemKind, Map<string, NamedEntry>> = {
     skill: new Map(catalog.skills.map((e) => [e.id, e])),
     server: new Map(catalog.servers.map((e) => [e.id, e])),
@@ -234,11 +266,16 @@ export function buildCollectionItemResolver(
     hook: new Map(catalog.hooks.map((e) => [e.id, e])),
     command: new Map(catalog.commands.map((e) => [e.id, e])),
     tool: new Map(catalog.tools.map((e) => [e.id, e])),
+    tutorial: new Map(catalog.tutorials.map((e) => [e.id, e])),
   };
+  const collectionMap = new Map((catalog.collections ?? []).map((e) => [e.id, e]));
   return (item) => {
-    const entry = maps[item.kind].get(item.id);
+    const entry =
+      item.kind === "collection"
+        ? collectionMap.get(item.id)
+        : maps[item.kind as CollectionItemKind].get(item.id);
     return {
-      kind: item.kind,
+      kind: item.kind as CollectionItemKind,
       id: item.id,
       name: entry?.name ?? entry?.title ?? item.id,
       description: entry?.description ?? "",

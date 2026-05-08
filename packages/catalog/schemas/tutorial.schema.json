@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lucassantana-dev.github.io/ai-dev-toolkit/packages/catalog/schemas/tutorial.schema.json",
+  "title": "Tutorial",
+  "description": "Step-by-step how-to guide for catalog entries. May include images and GIFs.",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "description",
+    "tags",
+    "relates_to"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      },
+      "minItems": 1,
+      "maxItems": 16,
+      "uniqueItems": true
+    },
+    "relates_to": {
+      "type": "array",
+      "description": "Catalog entries this tutorial covers.",
+      "items": {
+        "type": "object",
+        "required": ["kind", "id"],
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": ["skill", "agent", "server", "hook", "collection", "tool", "command", "doc"]
+          },
+          "id": { "type": "string" }
+        }
+      },
+      "minItems": 1
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["beginner", "intermediate", "advanced"]
+    },
+    "time_estimate": {
+      "type": "string",
+      "description": "Human-readable estimate, e.g. \"5 min\" or \"~30 min\"."
+    },
+    "translations": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pt-BR": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "title": { "type": "string", "minLength": 1, "maxLength": 160 },
+            "description": { "type": "string", "minLength": 1, "maxLength": 500 }
+          }
+        }
+      }
+    }
+  }
+}

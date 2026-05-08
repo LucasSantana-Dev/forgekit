@@ -54,6 +54,7 @@ export const SHELL: Record<Locale, Record<string, string>> = {
     "nav.hooks": "Hooks",
     "nav.commands": "Commands",
     "nav.docs": "Docs",
+    "nav.tutorials": "Tutorials",
     "nav.github": "GitHub",
     "nav.brand": "Forge Kit",
 
@@ -209,6 +210,7 @@ export const SHELL: Record<Locale, Record<string, string>> = {
     "nav.hooks": "Hooks",
     "nav.commands": "Comandos",
     "nav.docs": "Documentação",
+    "nav.tutorials": "Tutoriais",
     "nav.github": "GitHub",
     "nav.brand": "Forge Kit",
 

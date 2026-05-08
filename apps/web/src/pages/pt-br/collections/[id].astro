@@ -31,6 +31,7 @@ const localizedCatalog = {
   hooks: localizeEntries(catalog.hooks, locale),
   commands: localizeEntries(catalog.commands, locale),
   tools: localizeEntries(catalog.tools, locale),
+  tutorials: localizeEntries(catalog.tutorials, locale),
 };
 
 const resolveItem = buildCollectionItemResolver(localizedCatalog, (item) => url(collectionItemPath(item)));

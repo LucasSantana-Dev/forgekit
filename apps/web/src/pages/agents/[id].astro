@@ -3,7 +3,8 @@ import Base from "../../layouts/Base.astro";
 import EntryHeader from "../../components/EntryHeader.astro";
 import InstallBlock from "../../components/InstallBlock.astro";
 import UsageBlock from "../../components/UsageBlock.astro";
-import { getAgents } from "../../lib/catalog.ts";
+import RelatedTutorials from "../../components/RelatedTutorials.astro";
+import { getAgents, getTutorials } from "../../lib/catalog.ts";
 import { installCommand, renderMarkdown } from "../../lib/ui.ts";
 
 export async function getStaticPaths() {
@@ -13,6 +14,8 @@ export async function getStaticPaths() {
 const { agent } = Astro.props;
 const rendered = renderMarkdown(agent.body);
 const cmd = installCommand("agent", agent.id)!;
+const tutorials = await getTutorials();
+const base = import.meta.env.BASE_URL;
 ---
 <Base title={agent.name} description={agent.description}>
   <EntryHeader kind="agent" name={agent.name} description={agent.description} backLabel="All agents">
@@ -46,4 +49,6 @@ const cmd = installCommand("agent", agent.id)!;
       {agent.license && <> · {agent.license}</>}
     </p>
   )}
+
+  <RelatedTutorials kind="agent" id={agent.id} tutorials={tutorials} base={base} />
 </Base>
