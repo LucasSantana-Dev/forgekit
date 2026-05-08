@@ -12,6 +12,7 @@ import {
   loadHooks,
   loadCommands,
   loadTools,
+  loadTutorials,
   type CatalogEntry,
   type CatalogKind,
 } from "./lib/catalog.ts";
@@ -38,6 +39,7 @@ async function main() {
     hook: await loadSchema("hook.schema.json"),
     command: await loadSchema("command.schema.json"),
     tool: await loadSchema("tool.schema.json"),
+    tutorial: await loadSchema("tutorial.schema.json"),
   };
 
   const validators = {
@@ -49,6 +51,7 @@ async function main() {
     hook: ajv.compile(schemas.hook),
     command: ajv.compile(schemas.command),
     tool: ajv.compile(schemas.tool),
+    tutorial: ajv.compile(schemas.tutorial),
   };
 
   const allEntries: CatalogEntry[] = [
@@ -60,6 +63,7 @@ async function main() {
     ...(await loadHooks()),
     ...(await loadCommands()),
     ...(await loadTools()),
+    ...(await loadTutorials()),
   ];
 
   let failures = 0;
@@ -92,6 +96,7 @@ async function main() {
     hooks: allEntries.filter((e) => e.kind === "hook").length,
     commands: allEntries.filter((e) => e.kind === "command").length,
     tools: allEntries.filter((e) => e.kind === "tool").length,
+    tutorials: allEntries.filter((e) => e.kind === "tutorial").length,
   };
 
   // Collection items must reference existing catalog entries.
@@ -123,6 +128,7 @@ async function main() {
       "tool",
       "collection",
       "doc",
+      "tutorial",
     ];
     for (const entry of allEntries) {
       if (!I18N_REQUIRED.includes(entry.kind)) continue;
@@ -132,9 +138,9 @@ async function main() {
       if (!pt) {
         reasons.push("missing translations.pt-BR");
       } else {
-        // docs use `title`, every other kind uses `name`.
-        const nameField = entry.kind === "doc" ? "title" : "name";
-        const ptName = entry.kind === "doc" ? pt.title : pt.name;
+        // docs and tutorials use `title`, every other kind uses `name`.
+        const nameField = (entry.kind === "doc" || entry.kind === "tutorial") ? "title" : "name";
+        const ptName = (entry.kind === "doc" || entry.kind === "tutorial") ? pt.title : pt.name;
         if (!ptName || ptName.trim() === "") reasons.push(`missing translations.pt-BR.${nameField}`);
         if (!pt.description || pt.description.trim() === "") reasons.push("missing translations.pt-BR.description");
       }

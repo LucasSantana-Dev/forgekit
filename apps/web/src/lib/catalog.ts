@@ -25,7 +25,7 @@ function findCatalogDir(): string {
 
 const CATALOG = findCatalogDir();
 
-export type Kind = "skill" | "server" | "collection" | "doc" | "agent" | "hook" | "command" | "tool";
+export type Kind = "skill" | "server" | "collection" | "doc" | "agent" | "hook" | "command" | "tool" | "tutorial";
 export type CollectionItemKind = Exclude<Kind, "collection">;
 
 export interface CollectionItem {
@@ -97,6 +97,7 @@ export const COLLECTION_ITEM_ROUTES: Record<CollectionItemKind, string> = {
   hook: "hooks",
   command: "commands",
   tool: "tools",
+  tutorial: "tutorials",
 };
 
 export function collectionItemPath(item: CollectionItem): string {
@@ -120,6 +121,18 @@ export interface Doc {
   tags: string[];
   body: string;
   source?: { path?: string; upstream?: string; license?: string };
+  translations?: { "pt-BR"?: { title?: string; description?: string } };
+}
+
+export interface Tutorial {
+  id: string;
+  title: string;
+  description: string;
+  tags: string[];
+  relates_to: Array<{ kind: Kind; id: string }>;
+  difficulty?: "beginner" | "intermediate" | "advanced";
+  time_estimate?: string;
+  body: string;
   translations?: { "pt-BR"?: { title?: string; description?: string } };
 }
 
@@ -180,6 +193,17 @@ export async function getDocs(): Promise<Doc[]> {
     const raw = await readFile(path.join(dir, file), "utf8");
     const { data, content } = matter(raw);
     out.push({ ...(data as Omit<Doc, "body">), body: content });
+  }
+  return out;
+}
+
+export async function getTutorials(): Promise<Tutorial[]> {
+  const dir = path.join(CATALOG, "tutorials");
+  const out: Tutorial[] = [];
+  for (const file of await listFiles(dir, ".md")) {
+    const raw = await readFile(path.join(dir, file), "utf8");
+    const { data, content } = matter(raw);
+    out.push({ ...(data as Omit<Tutorial, "body">), body: content });
   }
   return out;
 }

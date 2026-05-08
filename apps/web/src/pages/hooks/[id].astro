@@ -3,7 +3,8 @@ import Base from "../../layouts/Base.astro";
 import EntryHeader from "../../components/EntryHeader.astro";
 import InstallBlock from "../../components/InstallBlock.astro";
 import UsageBlock from "../../components/UsageBlock.astro";
-import { getHooks } from "../../lib/catalog.ts";
+import RelatedTutorials from "../../components/RelatedTutorials.astro";
+import { getHooks, getTutorials } from "../../lib/catalog.ts";
 import { installCommand } from "../../lib/ui.ts";
 
 export async function getStaticPaths() {
@@ -12,6 +13,8 @@ export async function getStaticPaths() {
 }
 const { hook } = Astro.props;
 const cmd = installCommand("hook", hook.id)!;
+const tutorials = await getTutorials();
+const base = import.meta.env.BASE_URL;
 ---
 <Base title={hook.name} description={hook.description}>
   <EntryHeader kind="hook" name={hook.name} description={hook.description} backLabel="All hooks">
@@ -36,4 +39,6 @@ const cmd = installCommand("hook", hook.id)!;
       {hook.license && <> · {hook.license}</>}
     </p>
   )}
+
+  <RelatedTutorials kind="hook" id={hook.id} tutorials={tutorials} base={base} />
 </Base>

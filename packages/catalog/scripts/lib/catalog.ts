@@ -17,7 +17,8 @@ export type CatalogKind =
   | "agent"
   | "hook"
   | "command"
-  | "tool";
+  | "tool"
+  | "tutorial";
 
 export interface CatalogEntry {
   kind: CatalogKind;
@@ -148,8 +149,20 @@ export async function loadTools(): Promise<CatalogEntry[]> {
   return out;
 }
 
+export async function loadTutorials(): Promise<CatalogEntry[]> {
+  const dir = path.join(CATALOG_ROOT, "tutorials");
+  const out: CatalogEntry[] = [];
+  for (const file of await listFiles(dir, ".md")) {
+    const raw = await readFile(path.join(dir, file), "utf8");
+    const { data, content } = matter(raw);
+    const id = (data.id as string) ?? file.replace(/\.md$/, "");
+    out.push({ kind: "tutorial", id, path: path.join(dir, file), data: { ...data, id, body: content } });
+  }
+  return out;
+}
+
 export async function loadAll(): Promise<CatalogEntry[]> {
-  const [s, sv, c, d, a, h, cm, t] = await Promise.all([
+  const [s, sv, c, d, a, h, cm, t, tu] = await Promise.all([
     loadSkills(),
     loadServers(),
     loadCollections(),
@@ -158,6 +171,7 @@ export async function loadAll(): Promise<CatalogEntry[]> {
     loadHooks(),
     loadCommands(),
     loadTools(),
+    loadTutorials(),
   ]);
-  return [...s, ...sv, ...c, ...d, ...a, ...h, ...cm, ...t];
+  return [...s, ...sv, ...c, ...d, ...a, ...h, ...cm, ...t, ...tu];
 }
