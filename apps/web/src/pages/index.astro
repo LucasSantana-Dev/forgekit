@@ -73,39 +73,6 @@ const popularTags = [...tagCount.entries()]
             <p>{t("home.commandExample", locale)}</p>
             <p><a href="https://github.com/LucasSantana-Dev/forgekit/blob/main/docs/guides/installing.md">{t("home.commandGuideCta", locale)} →</a></p>
           </div>
-
-          <div class="kind-legend">
-            <a href={url("skills/")} class="kind-legend-item" style="--dot-color: var(--kind-skill)">
-              <span class="kind-dot"></span>
-              <span>Skills</span>
-              <span class="kind-legend-count">{skills.length}</span>
-            </a>
-            <a href={url("agents/")} class="kind-legend-item" style="--dot-color: var(--kind-agent)">
-              <span class="kind-dot"></span>
-              <span>Agents</span>
-              <span class="kind-legend-count">{agents.length}</span>
-            </a>
-            <a href={url("servers/")} class="kind-legend-item" style="--dot-color: var(--kind-server)">
-              <span class="kind-dot"></span>
-              <span>Servers</span>
-              <span class="kind-legend-count">{servers.length}</span>
-            </a>
-            <a href={url("hooks/")} class="kind-legend-item" style="--dot-color: var(--kind-hook)">
-              <span class="kind-dot"></span>
-              <span>Hooks</span>
-              <span class="kind-legend-count">{hooks.length}</span>
-            </a>
-            <a href={url("collections/")} class="kind-legend-item" style="--dot-color: var(--kind-collection)">
-              <span class="kind-dot"></span>
-              <span>Collections</span>
-              <span class="kind-legend-count">{collections.length}</span>
-            </a>
-            <a href={url("tools/")} class="kind-legend-item" style="--dot-color: var(--kind-tool)">
-              <span class="kind-dot"></span>
-              <span>Tools</span>
-              <span class="kind-legend-count">{tools.length}</span>
-            </a>
-          </div>
         </aside>
       </div>
     </div>
