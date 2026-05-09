@@ -1,0 +1,31 @@
+{
+  "id": "adt-production-incident",
+  "name": "Production Incident",
+  "description": "Composite skill — full production incident workflow from alert to post-mortem. Chains sentry (triage incoming events) → debug-deep (root cause) → incident-response (coordinate fix + comms) → ship-it (rollback or hotfix deploy) → adr-write (post-mortem). Use when production is on fire — not for dev-time debugging (use debug-deep alone for that).",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "composite",
+    "ops"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/production-incident.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/production-incident.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Production Incident",
+      "description": "Skill composta — workflow completo de incidente em produção do alerta até post-mortem. Encadeia sentry triage → debug-deep → incident-response → ship-it (rollback ou hotfix) → adr-write (post-mortem)."
+    }
+  }
+}

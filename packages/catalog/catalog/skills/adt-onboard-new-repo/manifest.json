@@ -1,0 +1,31 @@
+{
+  "id": "adt-onboard-new-repo",
+  "name": "Onboard New Repo",
+  "description": "Composite skill — first-touch workflow for an unfamiliar repo. Chains adt-repo-intake (understand) → audit-deep (health check) → config-drift-detect (gate audit) → init (CLAUDE.md if missing) → fewer-permission-prompts (prune permission noise). Use when entering a new repo for the first time, taking over from another developer, or after a major repo restructure.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "composite",
+    "onboarding"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/onboard-new-repo.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/onboard-new-repo.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Onboard New Repo",
+      "description": "Skill composta — workflow de primeiro contato com um repo desconhecido. Encadeia adt-repo-intake → audit-deep → config-drift-detect → init (CLAUDE.md) → fewer-permission-prompts."
+    }
+  }
+}

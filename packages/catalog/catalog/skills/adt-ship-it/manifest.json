@@ -1,0 +1,32 @@
+{
+  "id": "adt-ship-it",
+  "name": "Ship It",
+  "description": "Composite skill — take a merged PR all the way to production. Chains version-bump → changelog-update → ship (tag + release) → deployment-automation or vercel-deploy / cloudflare-deploy / prod-rebuild → post-deploy verify (sentry + ci-watch). Distinct from merge-confidently which stops at merge; this one ends with \"live in prod, verified, no incidents.\"",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "composite",
+    "git",
+    "workflow"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/ship-it.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/ship-it.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Ship It",
+      "description": "Skill composta — leva um PR mergeado até produção. Encadeia version-bump → changelog-update → ship (tag + release) → deployer correto → verify pós-deploy. Pareia com merge-confidently (que termina no merge)."
+    }
+  }
+}
