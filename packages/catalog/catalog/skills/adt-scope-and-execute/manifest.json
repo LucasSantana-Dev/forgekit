@@ -1,0 +1,25 @@
+{
+  "id": "adt-scope-and-execute",
+  "name": "Scope And Execute",
+  "description": "Composite skill \u2014 understand a problem area, plan the work, execute it, and ship it in one chained workflow. Chains adt-repo-intake or ecosystem-health (analysis) \u2192 context-pack (load context) \u2192 plan (phased plan) \u2192 dispatch or loop (execute) \u2192 ship (merge). Use when the task is \"fix the X area\" or \"implement Y end-to-end\" \u2014 the single command for analysis through merge.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "composite",
+    "engineering"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/scope-and-execute.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/scope-and-execute.md"
+}

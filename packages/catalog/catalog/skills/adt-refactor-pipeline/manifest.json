@@ -1,0 +1,25 @@
+{
+  "id": "adt-refactor-pipeline",
+  "name": "Refactor Pipeline",
+  "description": "Composite skill \u2014 safely refactor a module end-to-end with sequencing, parallel implementation, post-refactor cleanup, and rationale capture. Chains refactor-plan (phased plan + rollback) \u2192 three-man-team (architect/builder/reviewer in parallel) \u2192 fix-the-suite post-refactor \u2192 adr-write \u2192 docs-sync. Use for non-trivial refactors that need both careful sequencing and durable record.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "composite",
+    "engineering"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/refactor-pipeline.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/refactor-pipeline.md"
+}

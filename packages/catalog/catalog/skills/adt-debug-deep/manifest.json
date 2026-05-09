@@ -1,0 +1,25 @@
+{
+  "id": "adt-debug-deep",
+  "name": "Debug Deep",
+  "description": "Composite skill \u2014 full debugging workflow from \"this is broken\" to root cause and fix. Chains systematic-debugging (root-cause hypotheses) \u2192 tracer agent (evidence walk) \u2192 sentry (production correlation if applicable) \u2192 ci-watch (regression check) \u2192 incident-response (if production-impacting). Use when a bug needs deep investigation, not just a quick fix.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "composite",
+    "ops"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/debug-deep.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/debug-deep.md"
+}

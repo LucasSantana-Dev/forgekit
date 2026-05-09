@@ -1,0 +1,25 @@
+{
+  "id": "adt-feature-from-zero",
+  "name": "Feature From Zero",
+  "description": "Mega-composite \u2014 full greenfield feature development from idea to live. Chains research-and-decide (validate the idea + capture decision) \u2192 scope-and-execute (analysis + plan + implement) \u2192 design-build (if UI involved) \u2192 fix-the-suite (if tests need work) \u2192 merge-confidently \u2192 ship-it \u2192 knowledge-loop. The single command for \"build feature X end-to-end.\"",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "composite",
+    "engineering"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/feature-from-zero.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/feature-from-zero.md"
+}

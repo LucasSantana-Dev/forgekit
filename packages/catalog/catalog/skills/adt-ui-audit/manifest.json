@@ -1,0 +1,24 @@
+{
+  "id": "adt-ui-audit",
+  "name": "Ui Audit",
+  "description": "UI/UX design system reference, pattern library, and focused review guidance for web and mobile applications. Use for targeted design research, pattern selection, UX audits, accessibility guidance, palette and typography selection, layout heuristics, and component pattern research. Covers 50+ styles, 97 color palettes, 57 font pairings, Web Interface Guidelines compliance, and concrete visual/usability improvements for modern SaaS and product interfaces.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "diagnostics"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/ui-audit.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/ui-audit.md"
+}

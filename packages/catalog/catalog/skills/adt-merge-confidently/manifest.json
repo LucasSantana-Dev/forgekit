@@ -1,0 +1,26 @@
+{
+  "id": "adt-merge-confidently",
+  "name": "Merge Confidently",
+  "description": "Composite skill \u2014 take a PR from \"I think it's ready\" to merged with full gate verification. Chains pr-merge-readiness (verdict) \u2192 ci-watch / gh-fix-ci (if blockers) \u2192 gh-address-comments (if review needed) \u2192 ship (when verdict is MERGE). Use as the one-call answer to \"can I merge this?\" instead of running 4 skills sequentially.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "composite",
+    "git",
+    "workflow"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/merge-confidently.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/merge-confidently.md"
+}

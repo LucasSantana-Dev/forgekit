@@ -1,0 +1,24 @@
+{
+  "id": "adt-optimize",
+  "name": "Optimize",
+  "description": "Optimize context usage for the session by reducing bloat, improving token efficiency, and focusing on relevant areas. Use when context is growing large, responses are slow, or switching between unrelated tasks. Covers context analysis, compacting, targeted pruning, MCP-first strategies, and focused scoping by area.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "workflow"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/optimize.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/optimize.md"
+}

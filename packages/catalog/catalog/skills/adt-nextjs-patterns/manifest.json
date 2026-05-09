@@ -1,0 +1,24 @@
+{
+  "id": "adt-nextjs-patterns",
+  "name": "Nextjs Patterns",
+  "description": "Next.js App Router patterns, best practices, and cache components guidance. Use when building or debugging App Router code, implementing Server Components and Actions, optimizing rendering modes, configuring caching strategies, or migrating to Cache Components. Covers file conventions, RSC boundaries, data patterns, metadata, route handlers, caching modes, partial prerendering, cache invalidation, and Next.js 16+ features.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "workflow"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/nextjs-patterns.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/nextjs-patterns.md"
+}

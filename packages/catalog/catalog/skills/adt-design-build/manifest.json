@@ -1,0 +1,25 @@
+{
+  "id": "adt-design-build",
+  "name": "Design Build",
+  "description": "Composite skill \u2014 design, scaffold, build, and verify a UI in one workflow. Chains ui-ux-pro-max or web-design-guidelines (audit/principles) \u2192 shadcn or tailwind-design-system (component scaffold) \u2192 impeccable or frontend-design (build) \u2192 webapp-testing (verify). Use when the task is \"build this page\", \"design and implement X\", or any new UI surface.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "composite",
+    "frontend"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/design-build.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/design-build.md"
+}
