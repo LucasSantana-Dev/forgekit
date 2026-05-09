@@ -1,0 +1,30 @@
+{
+  "id": "adt-security-sweep",
+  "name": "Security Sweep",
+  "description": "Composite skill — full security pass across secrets, dependencies, code paths, and OWASP risks. Chains security-audit (broad) + socket-audit (npm supply chain) + semgrep (pattern scan) + code-security (code review for vulns) in parallel, reconciles into one severity-ranked report with remediation plan. Use quarterly per active repo or before any release of security-sensitive code.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "composite"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/security-sweep.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/security-sweep.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Security Sweep",
+      "description": "Skill composta — audit completo de segurança cobrindo secrets, dependências, code paths e riscos OWASP. Encadeia security-audit + socket-audit + semgrep + code-security em paralelo, reconcilia em relatório ranqueado."
+    }
+  }
+}

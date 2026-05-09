@@ -1,0 +1,30 @@
+{
+  "id": "adt-fix-the-suite",
+  "name": "Fix The Suite",
+  "description": "Composite skill — diagnose, repair, and validate a test suite end-to-end. Chains test-health (diagnose) → config-drift-detect (gate compatibility) → test-cleanup (prune + add integration tests) → mutation-test (validate survivors) → adr-write (capture decisions) → docs-sync. Use when \"the test suite is bad\" or you've hit the test-cleanup-bails-at-the-gate failure mode.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "composite"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/fix-the-suite.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/fix-the-suite.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Fix the Suite",
+      "description": "Skill composta — diagnostica, repara e valida uma suíte de testes end-to-end. Encadeia test-health → config-drift-detect → test-cleanup → mutation-test → adr-write → docs-sync."
+    }
+  }
+}

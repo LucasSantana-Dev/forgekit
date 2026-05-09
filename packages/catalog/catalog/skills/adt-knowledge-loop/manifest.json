@@ -1,0 +1,31 @@
+{
+  "id": "adt-knowledge-loop",
+  "name": "Knowledge Loop",
+  "description": "Composite skill — query, capture, improve, and persist knowledge in one workflow. Chains recall (RAG query) → sync-memories (write durable note) → rag-curate (improve weak retrievals) → handoff (durable snapshot if session-ending). Use when the work involves \"what did we decide\", \"remember this\", \"save where we are\", or any closing checkpoint.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "composite",
+    "knowledge"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/knowledge-loop.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/knowledge-loop.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Knowledge Loop",
+      "description": "Skill composta — consulta, captura, melhora e persiste conhecimento em um workflow. Encadeia recall (RAG) → sync-memories → rag-curate → handoff."
+    }
+  }
+}
