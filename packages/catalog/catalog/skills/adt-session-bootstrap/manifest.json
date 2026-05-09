@@ -1,7 +1,7 @@
 {
   "id": "adt-session-bootstrap",
   "name": "Session Bootstrap",
-  "description": "Composite skill \u2014 start-of-day routine. Chains wake-up (compact brief) \u2192 next-priority (decide) \u2192 pr-snapshot (PR queue) \u2192 context-pack (load relevant context if work-intent). Replaces \"what was I doing\", \"what's next\", \"load context\" with one invocation. Auto-fires on the first non-trivial prompt of a fresh session.",
+  "description": "Composite skill — start-of-day routine. Chains wake-up (compact brief) → next-priority (decide) → pr-snapshot (PR queue) → context-pack (load relevant context if work-intent). Replaces \"what was I doing\", \"what's next\", \"load context\" with one invocation. Auto-fires on the first non-trivial prompt of a fresh session.",
   "version": "0.1.0",
   "tags": [
     "skill-md",
@@ -21,5 +21,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/session-bootstrap.md"
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/session-bootstrap.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Session Bootstrap",
+      "description": "Skill composta — rotina de início de sessão. Encadeia wake-up (briefing) → next-priority (decide) → pr-snapshot (fila de PRs) → context-pack (carrega contexto relevante)."
+    }
+  }
 }

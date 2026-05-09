@@ -20,5 +20,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/nextjs-patterns.md"
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/nextjs-patterns.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Next.js Patterns",
+      "description": "Padrões consolidados de Next.js — App Router, caching, file conventions, async patterns, melhores práticas gerais. Mesclado de nextjs-app-router-patterns + next-best-practices + next-cache-components."
+    }
+  }
 }

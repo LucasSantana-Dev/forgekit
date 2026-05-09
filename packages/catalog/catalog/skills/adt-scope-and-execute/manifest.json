@@ -1,7 +1,7 @@
 {
   "id": "adt-scope-and-execute",
   "name": "Scope And Execute",
-  "description": "Composite skill \u2014 understand a problem area, plan the work, execute it, and ship it in one chained workflow. Chains adt-repo-intake or ecosystem-health (analysis) \u2192 context-pack (load context) \u2192 plan (phased plan) \u2192 dispatch or loop (execute) \u2192 ship (merge). Use when the task is \"fix the X area\" or \"implement Y end-to-end\" \u2014 the single command for analysis through merge.",
+  "description": "Composite skill — understand a problem area, plan the work, execute it, and ship it in one chained workflow. Chains adt-repo-intake or ecosystem-health (analysis) → context-pack (load context) → plan (phased plan) → dispatch or loop (execute) → ship (merge). Use when the task is \"fix the X area\" or \"implement Y end-to-end\" — the single command for analysis through merge.",
   "version": "0.1.0",
   "tags": [
     "skill-md",
@@ -21,5 +21,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/scope-and-execute.md"
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/scope-and-execute.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Scope and Execute",
+      "description": "Skill composta — entende um problema, planeja o trabalho, executa e faz o ship em um workflow encadeado. Encadeia adt-repo-intake → context-pack → plan → dispatch/loop → ship → adr-write."
+    }
+  }
 }

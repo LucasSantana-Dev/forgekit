@@ -1,7 +1,7 @@
 {
   "id": "adt-mcp-care",
   "name": "Mcp Care",
-  "description": "Composite skill \u2014 full MCP server lifecycle audit and repair. Chains mcp-audit (usage stats) \u2192 mcp-health (live readiness) \u2192 mcp-doctor (fix broken servers) \u2192 suggest mcp-builder if a missing capability surfaces. Use monthly or when claude mcp list shows failures, after major MCP server updates, or when adding new MCP capabilities.",
+  "description": "Composite skill — full MCP server lifecycle audit and repair. Chains mcp-audit (usage stats) → mcp-health (live readiness) → mcp-doctor (fix broken servers) → suggest mcp-builder if a missing capability surfaces. Use monthly or when claude mcp list shows failures, after major MCP server updates, or when adding new MCP capabilities.",
   "version": "0.1.0",
   "tags": [
     "skill-md",
@@ -20,5 +20,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/mcp-care.md"
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/mcp-care.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt MCP Care",
+      "description": "Skill composta — audit e reparo do ciclo de vida completo de servidores MCP. Encadeia mcp-audit (uso) → mcp-health (readiness) → mcp-doctor (repara servidores quebrados) → sugere mcp-builder se gap surgir."
+    }
+  }
 }

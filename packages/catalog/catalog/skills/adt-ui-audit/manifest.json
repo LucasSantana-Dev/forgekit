@@ -20,5 +20,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/ui-audit.md"
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/ui-audit.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt UI Audit",
+      "description": "Referência de design system UI/UX, biblioteca de patterns e guidance de revisão para aplicações web e mobile. Use para pesquisa de design, seleção de patterns, audits de UX, guidance de acessibilidade, paleta e tipografia."
+    }
+  }
 }

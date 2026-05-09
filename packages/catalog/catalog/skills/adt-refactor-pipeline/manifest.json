@@ -1,7 +1,7 @@
 {
   "id": "adt-refactor-pipeline",
   "name": "Refactor Pipeline",
-  "description": "Composite skill \u2014 safely refactor a module end-to-end with sequencing, parallel implementation, post-refactor cleanup, and rationale capture. Chains refactor-plan (phased plan + rollback) \u2192 three-man-team (architect/builder/reviewer in parallel) \u2192 fix-the-suite post-refactor \u2192 adr-write \u2192 docs-sync. Use for non-trivial refactors that need both careful sequencing and durable record.",
+  "description": "Composite skill — safely refactor a module end-to-end with sequencing, parallel implementation, post-refactor cleanup, and rationale capture. Chains refactor-plan (phased plan + rollback) → three-man-team (architect/builder/reviewer in parallel) → fix-the-suite post-refactor → adr-write → docs-sync. Use for non-trivial refactors that need both careful sequencing and durable record.",
   "version": "0.1.0",
   "tags": [
     "skill-md",
@@ -21,5 +21,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/refactor-pipeline.md"
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/refactor-pipeline.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Refactor Pipeline",
+      "description": "Skill composta — refatora um módulo end-to-end com sequenciamento, implementação paralela, cleanup pós-refactor e captura de rationale. Encadeia refactor-plan → three-man-team → fix-the-suite → adr-write → docs-sync."
+    }
+  }
 }

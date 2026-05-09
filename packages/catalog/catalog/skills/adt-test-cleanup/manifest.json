@@ -20,5 +20,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/test-cleanup.md"
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/test-cleanup.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Test Cleanup",
+      "description": "Audita e poda uma suíte de testes inflada para o mínimo de testes que atingem o threshold de cobertura e protegem comportamento real. Substitui muitos testes unitários superficiais por menos testes de integração bem escopados."
+    }
+  }
 }

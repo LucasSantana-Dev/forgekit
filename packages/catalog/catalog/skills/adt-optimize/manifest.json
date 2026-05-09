@@ -20,5 +20,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/optimize.md"
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/optimize.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Optimize",
+      "description": "Otimiza uso de contexto na sessão reduzindo bloat, melhorando eficiência de tokens e focando em áreas relevantes. Cobre análise de contexto, compactação, pruning, estratégias MCP-first e escopamento por área."
+    }
+  }
 }

@@ -1,7 +1,7 @@
 {
   "id": "adt-debug-deep",
   "name": "Debug Deep",
-  "description": "Composite skill \u2014 full debugging workflow from \"this is broken\" to root cause and fix. Chains systematic-debugging (root-cause hypotheses) \u2192 tracer agent (evidence walk) \u2192 sentry (production correlation if applicable) \u2192 ci-watch (regression check) \u2192 incident-response (if production-impacting). Use when a bug needs deep investigation, not just a quick fix.",
+  "description": "Composite skill — full debugging workflow from \"this is broken\" to root cause and fix. Chains systematic-debugging (root-cause hypotheses) → tracer agent (evidence walk) → sentry (production correlation if applicable) → ci-watch (regression check) → incident-response (if production-impacting). Use when a bug needs deep investigation, not just a quick fix.",
   "version": "0.1.0",
   "tags": [
     "skill-md",
@@ -21,5 +21,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/debug-deep.md"
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/debug-deep.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Debug Deep",
+      "description": "Skill composta — workflow completo de debug de \"isso está quebrado\" até root cause e fix. Encadeia systematic-debugging → tracer → sentry → ci-watch → incident-response."
+    }
+  }
 }

@@ -1,7 +1,7 @@
 {
   "id": "adt-audit-deep",
   "name": "Audit Deep",
-  "description": "Composite skill \u2014 full project health check across testing, config, hooks, performance, security, MCP, and plugins. Runs the audit skills in parallel and reconciles into one severity-ranked report with prioritized remediation plan. Use weekly per active project, before major releases, or as part of quarterly tech-debt review.",
+  "description": "Composite skill — full project health check across testing, config, hooks, performance, security, MCP, and plugins. Runs the audit skills in parallel and reconciles into one severity-ranked report with prioritized remediation plan. Use weekly per active project, before major releases, or as part of quarterly tech-debt review.",
   "version": "0.1.0",
   "tags": [
     "skill-md",
@@ -21,5 +21,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/audit-deep.md"
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/audit-deep.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Audit Deep",
+      "description": "Skill composta — health check completo do projeto cobrindo testes, config, hooks, performance, segurança, MCP e plugins. Roda audits em paralelo e reconcilia em relatório ranqueado por severidade."
+    }
+  }
 }

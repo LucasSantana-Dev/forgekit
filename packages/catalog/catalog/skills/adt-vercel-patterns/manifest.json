@@ -20,5 +20,11 @@
   },
   "license": "MIT",
   "author": "Lucas Santana",
-  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/vercel-patterns.md"
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/vercel-patterns.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Vercel Patterns",
+      "description": "Padrões para apps na Vercel — composition patterns, melhores práticas de React, otimizações de bundle, async patterns, server actions, rendering. Mesclado de vercel-composition-patterns + vercel-react-best-practices."
+    }
+  }
 }
