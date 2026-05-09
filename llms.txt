@@ -4,10 +4,42 @@
 
 Key capabilities:
 - 15 tool-agnostic workflow patterns
-- 18 portable skills for autonomous development
-- 12 specialty agents with org chart and fallback chains
+- 103 portable skills for autonomous development
+- 20 specialty agents with org chart and fallback chains
 - Cross-tool installer (forge-kit) with interactive setup wizard
 - Autonomous loop engine with governance gates
+
+## Catalog overview
+- 103 portable skills in `packages/catalog/catalog/skills/`
+- 15 catalog agents in `packages/catalog/catalog/agents/`
+- 23 collections organizing workflows and personas
+- 10 MCP server definitions in `packages/catalog/catalog/servers/`
+- Counts are approximate; source of truth is `packages/catalog/catalog/` and `packages/catalog/catalog/index.json`
+
+## Collections
+- API & MCP Development
+- AWS Kiro IDE Workflow
+- Claude Code Power User
+- Codebase Onboarding
+- Context + RAG Launchpad
+- Document Generation
+- Git & Version Control
+- Infrastructure & DevOps
+- Local Models Starter
+- MCP Ops and Recovery
+- Multi-Agent Orchestration
+- Production Debugging
+- Professional Work Toolkit
+- RAG Maintenance
+- Release & Deploy
+- Research & Writing
+- Security-First Development
+- Skill Authoring
+- Solo Developer Starter
+- Spec & Planning
+- Token & Context Optimization
+- Verification Review Gate
+- Web App Development
 
 ## Documentation
 
@@ -29,7 +61,7 @@ Key capabilities:
 
 ## Core Configs
 
-- [Agents](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/kit/core/agents.json): 12 specialty agents with org chart, fallback chains, tool access
+- [Agents](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/kit/core/agents.json): 20 specialty agents with org chart, fallback chains, tool access
 - [Routing](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/kit/core/routing.json): Complexity classifier, tier escalation, provider model maps
 - [Loop](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/kit/core/loop.json): Autonomous dev cycle definition with governance gates
 - [Autopilot](https://github.com/LucasSantana-Dev/ai-dev-toolkit/blob/main/kit/core/autopilot.json): Autonomy levels, guardrails, durable execution
