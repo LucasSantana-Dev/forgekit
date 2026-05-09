@@ -1,0 +1,56 @@
+---
+import Base from "../layouts/Base.astro";
+---
+<Base
+  title="Contact"
+  description="Open an issue on GitHub for catalog questions, contributions, or bug reports. Security disclosures via private channel — see the security policy."
+  titleSuffix="reach the forgekit maintainer"
+>
+  <article class="prose">
+    <h1>Contact</h1>
+    <p class="lead-muted">Open an issue, ping me on GitHub, or use the security policy for private disclosures.</p>
+
+    <h2>Catalog questions, contributions, bug reports</h2>
+    <p>
+      Open an issue on the repository — that's the fastest path:
+    </p>
+    <p>
+      <a class="btn" href="https://github.com/LucasSantana-Dev/forgekit/issues/new/choose" rel="noopener">Open an issue on GitHub →</a>
+    </p>
+
+    <h2>Security disclosures</h2>
+    <p>
+      Found a vulnerability? Report it privately via <a href="https://github.com/LucasSantana-Dev/forgekit/security/advisories/new" rel="noopener">GitHub Security Advisories</a> — please do not open a public issue first. Acknowledged within 72 hours, fix targeted within 14 days for high-severity reports.
+    </p>
+
+    <h2>Hello, ideas, feedback</h2>
+    <p>
+      <a href="https://github.com/LucasSantana-Dev" rel="noopener">@LucasSantana-Dev on GitHub</a> · <a href="mailto:lucas.diassantana@gmail.com">lucas.diassantana@gmail.com</a>
+    </p>
+
+    <h2>Response times</h2>
+    <ul>
+      <li><strong>Bugs in core packages</strong> — usually within 48 h on weekdays.</li>
+      <li><strong>Catalog entries / new collections</strong> — within a week.</li>
+      <li><strong>Security reports</strong> — acknowledged within 72 h.</li>
+      <li><strong>Feature requests</strong> — triaged into the backlog; no SLA.</li>
+    </ul>
+
+    <h2>Related</h2>
+    <ul>
+      <li><a href="/about/">About Forge Kit</a> — what the catalog is and who maintains it.</li>
+      <li><a href="/privacy/">Privacy policy</a> — what the site collects (nothing).</li>
+      <li><a href="/docs/">Reference docs</a> — observability, RAG architecture, model routing.</li>
+      <li><a href="/tutorials/">Tutorials</a> — step-by-step guides for installing and configuring entries.</li>
+    </ul>
+  </article>
+</Base>
+
+<style>
+  .prose { max-width: 70ch; margin: 2.5rem 0 4rem; }
+  .prose h2 { margin-top: 2.5rem; margin-bottom: 0.6rem; }
+  .prose ul { color: var(--fg); padding-left: 1.5rem; }
+  .prose li { margin: 0.4rem 0; }
+  .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.6rem 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.06); color: var(--fg); font-weight: 600; text-decoration: none; }
+  .btn:hover { background: rgba(255,255,255,0.1); }
+</style>

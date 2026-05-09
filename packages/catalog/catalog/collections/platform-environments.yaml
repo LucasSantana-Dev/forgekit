@@ -1,0 +1,33 @@
+id: platform-environments
+name: Platform Environments
+description: >
+  Configuration guides for every major AI coding platform — Claude Code, Gemini CLI, Cursor,
+  OpenAI Codex (CLI and App), AWS Kiro, and Windsurf. Each entry covers context files,
+  agent wiring, approval modes, and MCP integration for that specific environment.
+tags:
+  - platform-env
+  - agent
+  - setup
+  - reference
+items:
+  - kind: agent
+    id: env-claude-code
+  - kind: agent
+    id: env-gemini-cli
+  - kind: agent
+    id: env-cursor
+  - kind: agent
+    id: env-codex-cli
+  - kind: agent
+    id: env-codex-app
+  - kind: agent
+    id: env-kiro
+  - kind: agent
+    id: env-windsurf
+translations:
+  pt-BR:
+    name: Ambientes de Plataforma
+    description: >
+      Guias de configuração para as principais plataformas de codificação com IA — Claude Code, Gemini CLI, Cursor,
+      OpenAI Codex (CLI e App), AWS Kiro e Windsurf. Cada entrada cobre arquivos de contexto,
+      configuração de agentes, modos de aprovação e integração MCP para o ambiente específico.

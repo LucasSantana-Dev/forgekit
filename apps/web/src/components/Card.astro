@@ -1,5 +1,5 @@
 ---
-import { displayEntryName, kindIcon, kindLabel, type Kind } from "../lib/ui.ts";
+import { displayEntryName, kindLabel, type Kind } from "../lib/ui.ts";
 
 interface Props {
   kind: Kind;
@@ -9,37 +9,47 @@ interface Props {
   tags?: string[];
   href: string;
   extraTag?: string;
+  /** Kept for backwards compatibility; the redesigned card always shows the id row instead of the kind chip. */
+  hideKind?: boolean;
 }
 const { kind, id, name, description, tags = [], href, extraTag } = Astro.props;
-const icon = kindIcon(kind);
 const label = kindLabel(kind);
 const displayName = displayEntryName(name);
 const haystack = [id, name, description, ...tags].join(" ").toLowerCase();
+
+function stripMd(text: string): string {
+  return text
+    .replace(/#{1,6}\s+/g, "")
+    .replace(/\*\*(.+?)\*\*/g, "$1")
+    .replace(/\*(.+?)\*/g, "$1")
+    .replace(/`{1,3}[^`]*`{1,3}/g, "")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/^\s*[-*+]\s+/gm, "")
+    .trim();
+}
 ---
 <a
-  class="card"
+  class="card card-terminal"
   href={href}
   data-kind={kind}
   data-tags={tags.join(",")}
   data-search={haystack}
   style={`--card-accent: var(--kind-${kind})`}
 >
-  <div class="card-top">
-    <span class="icon">{icon}</span>
-    <span class={`kind kind-${kind}`}>{label}</span>
+  <div class="card-head">
+    <span class="card-dot" aria-hidden="true" title={label}></span>
+    <span class="card-id">{id}</span>
   </div>
   <div class="card-body">
     <h3>{displayName}</h3>
-    <p>{description}</p>
+    <p>{stripMd(description)}</p>
   </div>
-  {(extraTag || tags.length > 0) && (
-    <div class="card-footer">
-      <div class="tags">
-        {extraTag && <span class="tag tag-extra">{extraTag}</span>}
-        {tags.slice(0, 2).map((t) => <span class="tag">{t}</span>)}
-        {tags.length > 2 && <span class="tag tag-more">+{tags.length - 2}</span>}
-      </div>
-      <span class="card-arrow" aria-hidden="true">↗</span>
+  <div class="card-footer">
+    <div class="tags">
+      {extraTag && <span class="tag tag-extra">{extraTag}</span>}
+      {tags.slice(0, 3).map((t) => <span class="tag">#{t}</span>)}
+      {tags.length > 3 && <span class="tag tag-more">+{tags.length - 3}</span>}
     </div>
-  )}
+    <span class="card-arrow" aria-hidden="true">↗</span>
+  </div>
 </a>

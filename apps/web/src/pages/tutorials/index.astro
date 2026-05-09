@@ -15,10 +15,14 @@ const tagSet = new Set<string>();
 for (const t of tutorials) for (const tag of t.tags) tagSet.add(tag);
 const tags = [...tagSet].sort();
 ---
-<Base title="Tutorials" description={`${tutorials.length} step-by-step guides.`}>
+<Base
+  title="Tutorials"
+  description={`Browse ${tutorials.length} ${tutorials.length === 1 ? "step-by-step guide" : "step-by-step guides"} for installing, configuring, and getting the most out of Forge Kit catalog entries — skills, agents, MCP servers, hooks, commands, and tools.`}
+>
   <h1>Tutorials</h1>
   <p class="lead-muted">Step-by-step guides for installing, configuring, and getting the most out of catalog entries.</p>
   <SearchFilter placeholder={`Search ${tutorials.length} tutorials…`} tags={tags} />
+  <h2 class="visually-hidden">Tutorial list</h2>
   <div class="grid">
     {tutorials.map((t) => (
       <Card
