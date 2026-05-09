@@ -1,60 +1,84 @@
 import { existsSync } from 'node:fs';
 import { readFile, readdir, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const CATALOG_ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'catalog');
+const CATALOG_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'catalog');
 const LLMS_PATH = path.join(CATALOG_ROOT, '..', '..', '..', 'llms.txt');
 const MARKER_START = '<!-- llms-catalog-start -->';
 const MARKER_END = '<!-- llms-catalog-end -->';
 
-async function listDirs(dir) {
+async function listDirs(dir: string): Promise<string[]> {
   if (!existsSync(dir)) return [];
+
   const entries = await readdir(dir);
-  const dirs = [];
+  const dirs: string[] = [];
+
   for (const entry of entries) {
     const fullPath = path.join(dir, entry);
     if ((await stat(fullPath)).isDirectory()) dirs.push(entry);
   }
+
   return dirs.sort();
 }
 
-async function listFiles(dir, ext) {
+async function listFiles(dir: string, ext: string): Promise<string[]> {
   if (!existsSync(dir)) return [];
   return (await readdir(dir)).filter((entry) => entry.endsWith(ext)).sort();
 }
 
-async function loadSkills() {
+async function loadSkills(): Promise<string[]> {
   const skillsDir = path.join(CATALOG_ROOT, 'skills');
-  const out = [];
+  const out: string[] = [];
+
   for (const slug of await listDirs(skillsDir)) {
     const manifestPath = path.join(skillsDir, slug, 'manifest.json');
     if (existsSync(manifestPath)) out.push(slug);
   }
+
   return out;
 }
 
-async function loadAgents() {
+async function loadAgents(): Promise<string[]> {
   const dir = path.join(CATALOG_ROOT, 'agents');
   return await listFiles(dir, '.md');
 }
 
-async function loadCollections() {
+async function loadCollections(): Promise<string[]> {
   const dir = path.join(CATALOG_ROOT, 'collections');
-  const result = [];
+  const result: string[] = [];
+
   for (const file of await listFiles(dir, '.yaml')) {
     const raw = await readFile(path.join(dir, file), 'utf8');
-    const match = raw.match(/^\s*name:\s*(?:"([^"]+)"|'([^']+)'|(.+))$/m);
-    result.push(match ? match[1] ?? match[2] ?? match[3].trim() : file.replace(/\.yaml$/, ''));
+    const match = raw.match(/^[ \t]*name:\s*(?:"([^"]+)"|'([^']+)'|(.+))$/m);
+    const rawName = match ? match[1] ?? match[2] ?? match[3] : undefined;
+    const name = rawName?.replace(/\s+#.*$/, '').trim();
+    result.push(name ?? file.replace(/\.yaml$/, ''));
   }
+
   return result;
 }
 
-async function loadServers() {
+async function loadServers(): Promise<string[]> {
   const dir = path.join(CATALOG_ROOT, 'servers');
   return await listFiles(dir, '.yaml');
 }
 
-function buildGeneratedSection({ skillCount, agentCount, collectionCount, serverCount, collectionNames }) {
+interface GeneratedSectionOptions {
+  skillCount: number;
+  agentCount: number;
+  collectionCount: number;
+  serverCount: number;
+  collectionNames: string[];
+}
+
+function buildGeneratedSection({
+  skillCount,
+  agentCount,
+  collectionCount,
+  serverCount,
+  collectionNames,
+}: GeneratedSectionOptions): string {
   return `${MARKER_START}
 Key capabilities:
 - 15 tool-agnostic workflow patterns
@@ -76,7 +100,7 @@ ${collectionNames.map((name) => `- ${name}`).join('\n')}
 ${MARKER_END}`;
 }
 
-async function main() {
+async function main(): Promise<void> {
   const [skills, agents, collections, servers] = await Promise.all([
     loadSkills(),
     loadAgents(),
