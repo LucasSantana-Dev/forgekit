@@ -1,0 +1,66 @@
+---
+import Base from "../layouts/Base.astro";
+---
+<Base
+  title="About"
+  description="Forge Kit is a single-developer catalog of skills, agents, MCP servers, hooks, commands, and tools for AI-assisted development. Built and maintained by Lucas Santana."
+  titleSuffix="who built forgekit and why"
+>
+  <article class="prose">
+    <h1>About Forge Kit</h1>
+    <p class="lead-muted">A single-developer catalog of skills, sub-agents, MCP servers, hooks, commands, and tools for AI-assisted development.</p>
+
+    <h2>What this is</h2>
+    <p>
+      Forge Kit is an opinionated, curated index of installable building blocks that work with Claude Code, Codex, Gemini, Cursor, and local LLMs. Every entry has been used in real projects — there's no "added for completeness" filler.
+    </p>
+    <p>
+      Install with <code>npx forge-kit install &lt;id&gt;</code>. Skills, agents, hooks, commands, and tools land in <code>~/.claude/&lt;kind&gt;/</code>. MCP servers register with the local <code>mcp-context-forge</code> gateway via <code>npx forge-kit add-server &lt;id&gt;</code>.
+    </p>
+
+    <h2>What this isn't</h2>
+    <ul>
+      <li>An aggregator. The catalog is hand-curated and reviewed; nothing is auto-imported.</li>
+      <li>A marketplace. Everything is MIT-licensed and free.</li>
+      <li>Tied to a single provider. Provider tags route entries to Claude / Codex / Gemini / Cursor / Local on <a href="/providers/">/providers/</a>.</li>
+    </ul>
+
+    <h2>Author</h2>
+    <p>
+      Built and maintained by <a href="https://github.com/LucasSantana-Dev" rel="noopener">Lucas Santana</a> — a software engineer working on AI-assisted development tooling. Most entries originated as patterns I needed across my own projects (Lucky, Craftvaria, homelab, ai-dev-toolkit) and were extracted into the catalog when they earned their second use.
+    </p>
+
+    <h2>How to contribute</h2>
+    <p>
+      The source lives at <a href="https://github.com/LucasSantana-Dev/forgekit" rel="noopener">github.com/LucasSantana-Dev/forgekit</a>. PRs welcome. See the <a href="https://github.com/LucasSantana-Dev/forgekit/blob/main/CONTRIBUTING.md" rel="noopener">contribution guide</a> for entry conventions, schema, and the validation pipeline.
+    </p>
+
+    <h2>Links</h2>
+    <ul>
+      <li><a href="/contact/">Contact</a> — open issues, security disclosures, hello</li>
+      <li><a href="/privacy/">Privacy policy</a> — what the site collects (spoiler: nothing)</li>
+      <li><a href="https://github.com/LucasSantana-Dev/forgekit/blob/main/LICENSE" rel="noopener">License</a> — MIT</li>
+    </ul>
+  </article>
+</Base>
+
+<style>
+  .prose {
+    max-width: 70ch;
+    margin: 2.5rem 0 4rem;
+  }
+  .prose h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 0.6rem;
+  }
+  .prose ul {
+    color: var(--fg);
+    padding-left: 1.5rem;
+  }
+  .prose li { margin: 0.4rem 0; }
+  .prose code {
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+</style>

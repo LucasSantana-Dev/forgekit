@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Card from "../components/Card.astro";
 import CollectionsFeaturedGrid from "../components/CollectionsFeaturedGrid.astro";
-import InstallBlock from "../components/InstallBlock.astro";
+import HeroTerminal from "../components/HeroTerminal.astro";
 import {
   getSkills,
   getServers,
@@ -63,20 +63,51 @@ const popularTags = [...tagCount.entries()]
             <a class="btn btn-primary" href={url("skills/")}>{t("home.ctaBrowse", locale, { count: total })}</a>
             <a class="btn" href="https://github.com/LucasSantana-Dev/forgekit/blob/main/docs/guides/installing.md">{t("home.ctaQuickstart", locale)} ↗</a>
           </div>
-          <p class="hero-note">{skills.length} skills, {agents.length} agents, {servers.length} servers, {commands.length} commands, {collections.length} collections, {docs.length} docs.</p>
         </div>
 
-        <aside class="hero-aside">
-          <div class="hero-surface hero-install">
+        <div class="hero-aside">
+          <div class="hero-install">
             <div class="hero-surface-title">{t("home.commandTitle", locale)}</div>
-            <InstallBlock command="npx forge-kit install <slug>" label={t("installCopy.label", locale)} />
+            <HeroTerminal command="npx forge-kit install <slug>" locale={locale} />
             <p>{t("home.commandExample", locale)}</p>
             <p><a href="https://github.com/LucasSantana-Dev/forgekit/blob/main/docs/guides/installing.md">{t("home.commandGuideCta", locale)} →</a></p>
           </div>
-        </aside>
+        </div>
       </div>
     </div>
   </section>
+
+  <div class="home-search-wrap">
+    <div class="home-search-inner">
+      <span class="home-search-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+          <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M14 14L18 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <input
+        id="home-search"
+        type="search"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder={`Search ${total} skills, agents, servers, tools…`}
+        aria-label="Search the catalog"
+        class="home-search-input"
+      />
+    </div>
+  </div>
+  <script is:inline define:vars={{ searchBase: url("search/") }}>
+    (function () {
+      const input = document.getElementById("home-search");
+      if (!input) return;
+      input.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          const q = input.value.trim();
+          if (q) window.location.href = searchBase + "?q=" + encodeURIComponent(q);
+        }
+      });
+    })();
+  </script>
 
   <div class="section-top">
     <div>
@@ -86,11 +117,9 @@ const popularTags = [...tagCount.entries()]
     <a class="section-link" href={url("collections/")}>{t("home.allOf", locale, { count: collections.length, kind: t("list.collections.title", locale).toLowerCase() })}</a>
   </div>
   <CollectionsFeaturedGrid
-    collections={collections}
+    collections={collections.slice(0, 6)}
     locale={locale}
     hrefFor={(id) => url(`collections/${id}/`)}
-    heading={t("home.collections.title", locale)}
-    lede={t("home.collections.lede", locale)}
   />
 
   <div class="section-top">
@@ -101,4 +130,180 @@ const popularTags = [...tagCount.entries()]
       <a href={url(`search/?tag=${encodeURIComponent(tag)}`)} class="chip">#{tag}</a>
     ))}
   </div>
+
+  <section class="related-catalogs">
+    <div class="related-head">
+      <h2>Other catalogs worth a look</h2>
+      <p class="lead-muted">Forge Kit isn't the only attempt at this. These adjacent projects each take a different angle — browse them, lift what works, contribute back where you can.</p>
+    </div>
+    <div class="related-grid">
+      <a class="related-card" href="https://skills.sh" rel="noopener">
+        <div class="related-card-head">
+          <span class="related-host">skills.sh</span>
+          <span class="related-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="related-name">skills.sh</div>
+        <p>Curated directory of Anthropic-style Skills. Strong taxonomy, focused on read-only browsing.</p>
+      </a>
+      <a class="related-card" href="https://mcpmarket.com" rel="noopener">
+        <div class="related-card-head">
+          <span class="related-host">mcpmarket.com</span>
+          <span class="related-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="related-name">MCP Market</div>
+        <p>Searchable directory of Model Context Protocol servers, with install instructions, reviews, and a "trending" feed.</p>
+      </a>
+      <a class="related-card" href="https://github.com/anthropics/skills" rel="noopener">
+        <div class="related-card-head">
+          <span class="related-host">github.com/anthropics/skills</span>
+          <span class="related-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="related-name">Anthropic Skills</div>
+        <p>Official starter set of Skills from Anthropic. Source-of-truth for the skill schema and conventions.</p>
+      </a>
+      <a class="related-card" href="https://github.com/modelcontextprotocol/servers" rel="noopener">
+        <div class="related-card-head">
+          <span class="related-host">github.com/modelcontextprotocol/servers</span>
+          <span class="related-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="related-name">Reference MCP Servers</div>
+        <p>Canonical server implementations from the Model Context Protocol authors. Cite this when authoring new ones.</p>
+      </a>
+      <a class="related-card" href="https://www.pulsemcp.com" rel="noopener">
+        <div class="related-card-head">
+          <span class="related-host">pulsemcp.com</span>
+          <span class="related-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="related-name">PulseMCP</div>
+        <p>Aggregator-style directory of context-protocol servers, with categorisation by use-case and popularity ranking.</p>
+      </a>
+      <a class="related-card" href="https://cursor.directory" rel="noopener">
+        <div class="related-card-head">
+          <span class="related-host">cursor.directory</span>
+          <span class="related-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="related-name">Cursor Directory</div>
+        <p>Cursor-focused rules, MCPs, and prompts. Useful cross-reference if you target the Cursor IDE.</p>
+      </a>
+    </div>
+  </section>
 </Base>
+
+<style>
+  .home-search-wrap {
+    margin: 2.5rem 0 2rem;
+  }
+  .home-search-inner {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .home-search-icon {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--fg-subtle);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+  }
+  .home-search-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1.1rem 1.4rem 1.1rem 3.4rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--fg);
+    font-size: 1.1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+    appearance: none;
+  }
+  .home-search-input::placeholder {
+    color: var(--fg-subtle);
+  }
+  .home-search-input:focus {
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--accent) 20%, transparent);
+  }
+  .home-search-input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  /* Related catalogs section */
+  .related-catalogs {
+    margin: 5rem 0 1rem;
+    padding: 2.5rem 0 0;
+    border-top: 1px solid var(--border);
+  }
+  .related-head {
+    max-width: 60ch;
+    margin-bottom: 2rem;
+  }
+  .related-head h2 {
+    margin: 0 0 0.6rem;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .related-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 1.05rem 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.025);
+    color: var(--fg);
+    text-decoration: none;
+    transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+  }
+  .related-card:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateY(-2px);
+    color: var(--fg);
+  }
+  .related-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+  }
+  .related-host {
+    color: var(--fg-subtle);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
+  .related-arrow {
+    color: var(--fg-subtle);
+    transition: transform 0.18s ease, color 0.18s ease;
+    flex-shrink: 0;
+  }
+  .related-card:hover .related-arrow {
+    color: var(--accent);
+    transform: translate(2px, -2px);
+  }
+  .related-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--fg);
+    line-height: 1.3;
+  }
+  .related-card p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--fg-muted);
+    line-height: 1.5;
+  }
+</style>

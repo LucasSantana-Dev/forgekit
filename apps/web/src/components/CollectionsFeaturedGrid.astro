@@ -36,7 +36,7 @@ const remaining = collections.slice(3);
   ))}
 </div>
 {remaining.length > 0 && (
-  <div class="grid">
+  <div class="grid remaining-grid" style="margin-top: 1.25rem;">
     {remaining.map((c) => (
       <Card
         kind="collection"
