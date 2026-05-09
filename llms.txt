@@ -2,10 +2,11 @@
 
 > Reusable patterns, drop-in rules, portable skills, and cross-tool setup automation for AI-assisted development. Works with Claude Code, Cursor, Codex, OpenCode, Windsurf, and Antigravity.
 
+<!-- llms-catalog-start -->
 Key capabilities:
 - 15 tool-agnostic workflow patterns
 - 103 portable skills for autonomous development
-- 20 specialty agents with org chart and fallback chains
+- 15 catalog agents in `packages/catalog/catalog/agents/`
 - Cross-tool installer (forge-kit) with interactive setup wizard
 - Autonomous loop engine with governance gates
 
@@ -40,6 +41,8 @@ Key capabilities:
 - Token & Context Optimization
 - Verification Review Gate
 - Web App Development
+
+<!-- llms-catalog-end -->
 
 ## Documentation
 
