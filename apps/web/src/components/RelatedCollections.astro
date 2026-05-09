@@ -1,0 +1,102 @@
+---
+// Show every collection that includes this entry. Surfaces internal links from
+// detail pages back to the collection-detail pages, fixing the orphan-pages /
+// weak-internal-links findings squirrelscan reported (collection details were
+// only linked from the /collections/ index).
+import type { Collection, Kind } from "../lib/catalog.ts";
+
+interface Props {
+  /** Kind of the entry the visitor is looking at. */
+  kind: Kind;
+  /** Id of the entry. */
+  id: string;
+  /** Full collections list passed in from the page (already loaded via getCollections). */
+  collections: Collection[];
+  /** Site base URL prefix. */
+  base: string;
+}
+
+const { kind, id, collections, base } = Astro.props;
+const includes = collections.filter((c) =>
+  c.items.some((item) => item.kind === kind && item.id === id),
+);
+---
+{includes.length > 0 && (
+  <section class="related-collections" aria-labelledby="related-collections-heading">
+    <h2 id="related-collections-heading">Used in collections</h2>
+    <ul class="collection-list">
+      {includes.map((c) => (
+        <li>
+          <a href={`${base}collections/${c.id}/`} class="collection-link">
+            <span class="collection-name">{c.name}</span>
+            <span class="collection-count">{c.items.length} items</span>
+          </a>
+          {c.description && <p class="collection-desc">{c.description}</p>}
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
+
+<style>
+  .related-collections {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .related-collections h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--fg-subtle);
+    margin: 0 0 1rem;
+  }
+  .collection-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.75rem;
+  }
+  .collection-list li {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    background: rgba(255, 255, 255, 0.025);
+    transition: border-color 0.16s ease, background 0.16s ease;
+  }
+  .collection-list li:hover {
+    border-color: color-mix(in oklch, var(--kind-collection) 35%, rgba(255, 255, 255, 0.15));
+    background: rgba(255, 255, 255, 0.045);
+  }
+  .collection-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--fg);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .collection-link:hover .collection-name { color: var(--kind-collection); }
+  .collection-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .collection-count {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    color: var(--fg-subtle);
+    flex-shrink: 0;
+  }
+  .collection-desc {
+    color: var(--fg-muted);
+    font-size: 0.84rem;
+    line-height: 1.5;
+    margin: 0.4rem 0 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

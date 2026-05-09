@@ -1,7 +1,6 @@
 ---
 import type { Locale } from "../lib/i18n";
-import { resolveLocale, switchLocalePath, t } from "../lib/i18n";
-import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+import { resolveLocale, t } from "../lib/i18n";
 
 interface Props {
   title: string;
@@ -9,30 +8,94 @@ interface Props {
   ogImage?: string;
   locale?: Locale;
   noindex?: boolean;
+  /**
+   * Extra keyword-rich phrase appended to the page title to land it inside the
+   * 30-60 char SEO range without bloating the visible site banner. Use 4-30
+   * chars; we'll trim if the resulting `<title>` would exceed 65.
+   */
+  titleSuffix?: string;
 }
 const {
   title,
-  description = "Curated Forge Kit catalog of Skills, MCP servers, and Claude Code sub-agents for AI-assisted development.",
+  description = "Curated catalog of skills, agents, MCP servers, hooks, commands, and tools for Claude Code, Codex, Gemini, and local LLMs.",
   locale = resolveLocale(Astro.url.pathname),
   ogImage,
   noindex = false,
+  titleSuffix,
 } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const site = Astro.site?.toString().replace(/\/$/, "") ?? "";
-const localeBase = locale === "en" ? base : `${base}pt-br/`;
-const htmlLang = locale === "pt-br" ? "pt-BR" : "en";
-const ogLocale = locale === "pt-br" ? "pt_BR" : "en_US";
-const ogLocaleAlternate = locale === "pt-br" ? "en_US" : "pt_BR";
+const localeBase = base;
+const htmlLang = "en";
+const ogLocale = "en_US";
 
 const pathname = Astro.url.pathname;
 const canonicalPath = pathname.endsWith("/") || pathname.includes(".") ? pathname : `${pathname}/`;
 const canonicalUrl = `${site}${canonicalPath}`;
-const alternateEn = `${site}${switchLocalePath(canonicalPath, "en")}`;
-const alternatePt = `${site}${switchLocalePath(canonicalPath, "pt-br")}`;
 const ogImageUrl = ogImage
   ? (ogImage.startsWith("http") ? ogImage : `${site}${ogImage.startsWith("/") ? ogImage : `/${ogImage}`}`)
   : `${site}/og-image.svg`;
-const fullTitle = `${title} · Forge Kit`;
+
+// Land the page title inside the 30-60 char SEO sweet spot. The bare
+// `Title · Forge Kit` is too short on most pages (often <30 chars), so we
+// append a `titleSuffix` provided by the page (or fall back to a generic suffix
+// derived from the path). Truncate if the combined string exceeds 65 chars.
+const baseTitle = `${title} · Forge Kit`;
+const fallbackSuffix =
+  pathname === "/" || pathname === ""
+    ? "AI-assisted dev catalog"
+    : pathname.startsWith("/skills") ? "Claude Code skills catalog"
+    : pathname.startsWith("/agents") ? "Claude Code sub-agents"
+    : pathname.startsWith("/servers") ? "Servers for AI agents"
+    : pathname.startsWith("/hooks") ? "Claude Code hooks"
+    : pathname.startsWith("/commands") ? "Claude Code slash commands"
+    : pathname.startsWith("/tools") ? "developer CLIs and scripts"
+    : pathname.startsWith("/collections") ? "curated forgekit bundles"
+    : pathname.startsWith("/docs") ? "AI-dev reference docs"
+    : pathname.startsWith("/tutorials") ? "step-by-step guides"
+    : pathname.startsWith("/providers") ? "Claude, Codex, Gemini, Cursor"
+    : pathname.startsWith("/search") ? "search the catalog"
+    : null;
+const effectiveSuffix = titleSuffix ?? fallbackSuffix;
+// Land combined title in the SEO 30-60 char sweet spot. We bias toward the
+// suffix being included whenever the bare title is short, then hard-cap at 60.
+let fullTitle = effectiveSuffix && baseTitle.length < 45
+  ? `${baseTitle} — ${effectiveSuffix}`
+  : baseTitle;
+if (fullTitle.length > 60) fullTitle = `${fullTitle.slice(0, 57).trimEnd()}…`;
+
+// Land meta description in the SEO sweet spot (120-155 chars). Pad short
+// descriptions with a path-derived suffix; trim long ones at a word boundary.
+const padSuffix =
+  pathname.startsWith("/skills/") ? " — installable Claude Code skill from the Forge Kit catalog of AI-assisted dev tooling."
+  : pathname.startsWith("/agents/") ? " — Claude Code sub-agent from the Forge Kit catalog of AI-assisted dev tooling."
+  : pathname.startsWith("/servers/") ? " — Model Context Protocol server from the Forge Kit catalog for Claude, Codex, and Gemini."
+  : pathname.startsWith("/hooks/") ? " — Claude Code hook from the Forge Kit catalog of AI-assisted dev tooling."
+  : pathname.startsWith("/commands/") ? " — Claude Code slash command from the Forge Kit catalog of AI-assisted dev tooling."
+  : pathname.startsWith("/tools/") ? " — standalone CLI from the Forge Kit catalog of AI-assisted dev tooling."
+  : pathname.startsWith("/collections/") ? " — curated forgekit bundle of skills, agents, hooks, and MCP servers."
+  : pathname.startsWith("/docs/") ? " — Forge Kit reference doc on AI-assisted development workflows and architecture."
+  : pathname.startsWith("/tutorials/") ? " — step-by-step Forge Kit tutorial for installing and configuring catalog entries."
+  : pathname.startsWith("/providers/") ? " — Forge Kit catalog grouped by AI provider for Claude, Codex, Gemini, and Cursor."
+  : "";
+// Optional second-tier filler appended only when the first padSuffix still
+// leaves the description under the 120-char SEO floor.
+const padFiller = " Install with one command: `npx forge-kit install <slug>`.";
+let metaDescription = description;
+if (metaDescription.length < 120 && padSuffix) {
+  metaDescription = `${metaDescription.replace(/\s+$/, "").replace(/\.$/, "")}${padSuffix}`;
+}
+if (metaDescription.length < 120 && padSuffix) {
+  metaDescription = `${metaDescription.replace(/\s+$/, "").replace(/\.$/, "")}${padFiller}`;
+}
+if (metaDescription.length > 155) {
+  const cut = metaDescription.slice(0, 152);
+  // Prefer a word boundary, but only if it leaves us within the 120-155 SEO
+  // sweet spot. Otherwise hard-cut at 152 to avoid undershooting the floor.
+  const lastSpace = cut.lastIndexOf(" ");
+  const wordCut = lastSpace > 0 ? cut.slice(0, lastSpace) : cut;
+  metaDescription = `${(wordCut.length >= 120 ? wordCut : cut).trimEnd()}…`;
+}
 
 const currentPath = pathname.replace(/\/$/, "") || "/";
 const navItems = [
@@ -43,6 +106,7 @@ const navItems = [
   { href: `${localeBase}hooks/`, key: "nav.hooks" },
   { href: `${localeBase}collections/`, key: "nav.collections" },
   { href: `${localeBase}commands/`, key: "nav.commands" },
+  { href: `${localeBase}providers/`, key: "nav.providers" },
   { href: `${localeBase}docs/`, key: "nav.docs" },
   { href: `${localeBase}tutorials/`, key: "nav.tutorials" },
 ];
@@ -56,7 +120,7 @@ const jsonLd = {
   "@type": "WebSite",
   name: "Forge Kit",
   alternateName: "forge-kit",
-  description,
+  description: metaDescription,
   url: site || canonicalUrl,
   inLanguage: htmlLang,
   publisher: {
@@ -82,20 +146,16 @@ const jsonLd = {
     {noindex && <meta name="robots" content="noindex,nofollow" />}
 
     <title>{fullTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
 
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="alternate" hreflang="en" href={alternateEn} />
-    <link rel="alternate" hreflang="pt-BR" href={alternatePt} />
-    <link rel="alternate" hreflang="x-default" href={alternateEn} />
 
     <meta property="og:site_name" content="Forge Kit" />
     <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={metaDescription} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:locale" content={ogLocale} />
-    <meta property="og:locale:alternate" content={ogLocaleAlternate} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -103,7 +163,7 @@ const jsonLd = {
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:image:alt" content={fullTitle} />
 
@@ -113,24 +173,24 @@ const jsonLd = {
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <link rel="sitemap" href={`${base}sitemap-index.xml`} />
 
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {!noindex && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     <style is:global>
       :root {
-        --bg: oklch(6% 0.006 75);
-        --bg-elev: oklch(9% 0.006 75);
-        --bg-panel: oklch(11% 0.007 75);
-        --bg-hover: oklch(14% 0.008 75);
-        --fg: oklch(96% 0.004 75);
-        --fg-muted: oklch(68% 0.005 75);
-        --fg-subtle: oklch(52% 0.005 75);
-        --border: oklch(100% 0 0 / 0.08);
-        --border-strong: oklch(100% 0 0 / 0.14);
-        --accent: oklch(82% 0.005 75);
-        --accent-hot: oklch(98% 0.003 75);
-        --accent-soft: oklch(100% 0 0 / 0.06);
-        --code-bg: oklch(100% 0 0 / 0.035);
-        --chip-bg: oklch(100% 0 0 / 0.05);
-        --chip-fg: oklch(89% 0.005 75);
+        --bg: oklch(7% 0.004 265);
+        --bg-elev: oklch(11% 0.004 265);
+        --bg-panel: oklch(15% 0.005 265);
+        --bg-hover: oklch(18% 0.005 265);
+        --fg: oklch(97% 0.003 265);
+        --fg-muted: oklch(86% 0.007 265);
+        --fg-subtle: oklch(72% 0.006 265);
+        --border: oklch(100% 0 0 / 0.22);
+        --border-strong: oklch(100% 0 0 / 0.34);
+        --accent: oklch(87% 0.005 265);
+        --accent-hot: oklch(99% 0.002 265);
+        --accent-soft: oklch(100% 0 0 / 0.08);
+        --code-bg: oklch(100% 0 0 / 0.08);
+        --chip-bg: oklch(100% 0 0 / 0.10);
+        --chip-fg: oklch(91% 0.006 75);
 
         --kind-skill:      oklch(75% 0.08 75);
         --kind-agent:      oklch(72% 0.10 275);
@@ -189,9 +249,10 @@ const jsonLd = {
         margin: 0;
         min-height: 100vh;
         background:
+          radial-gradient(ellipse at -10% 110%, oklch(75% 0.08 75 / 0.09), transparent 50%),
           radial-gradient(circle at top, rgba(255, 255, 255, 0.05), transparent 26%),
           radial-gradient(circle at 85% 0%, rgba(255, 255, 255, 0.03), transparent 18%),
-          linear-gradient(180deg, #040404 0%, #070707 100%);
+          linear-gradient(180deg, oklch(5% 0.004 265) 0%, oklch(7% 0.004 265) 100%);
         color: var(--fg);
         line-height: 1.6;
         font-size: 15px;
@@ -284,17 +345,14 @@ const jsonLd = {
       nav.primary a.github {
         display: inline-flex;
         align-items: center;
-        gap: 0.35rem;
+        justify-content: center;
+        padding: 0.45rem 0.65rem;
         background: rgba(255, 255, 255, 0.03);
         border-color: rgba(255, 255, 255, 0.08);
       }
-      nav.primary a.collections {
-        background: rgba(255, 255, 255, 0.05);
-        border-color: rgba(255, 255, 255, 0.12);
-        color: var(--fg);
-      }
-      nav.primary a.collections:hover {
-        background: rgba(255, 255, 255, 0.08);
+      nav.primary a.github svg {
+        display: block;
+        flex-shrink: 0;
       }
       nav.primary a[aria-current="page"],
       nav.primary a.is-active {
@@ -343,7 +401,7 @@ const jsonLd = {
       main {
         max-width: 1280px;
         margin: 0 auto;
-        padding: 1.75rem 1.25rem 4rem;
+        padding: 2.5rem 2rem 6rem;
       }
       h1, h2, h3, h4 { color: var(--fg); letter-spacing: -0.04em; }
       h1 {
@@ -353,51 +411,60 @@ const jsonLd = {
         font-weight: 720;
       }
       h2 {
-        font-size: clamp(1.1rem, 2vw, 1.45rem);
+        font-size: clamp(1.3rem, 2.2vw, 1.65rem);
         margin: 0;
-        font-weight: 700;
+        font-weight: 720;
       }
       h3 { font-size: 1.04rem; margin: 0; font-weight: 650; }
       p { color: var(--fg-muted); margin: 0.5rem 0; }
 
       .hero {
-        padding: 0.5rem 0 1.25rem;
-        margin-bottom: 1.75rem;
+        padding: 2.5rem 0 4rem;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, oklch(75% 0.08 75 / 0.45) 0%, oklch(75% 0.08 75 / 0.12) 50%, transparent 100%);
       }
       .hero-shell {
         position: relative;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: clamp(18px, 2.5vw, 26px);
-        background:
-          radial-gradient(ellipse at 8% 95%, oklch(75% 0.08 75 / 0.07), transparent 42%),
-          linear-gradient(180deg, rgba(18, 18, 20, 0.96), rgba(10, 10, 11, 0.98)),
-          radial-gradient(circle at top left, rgba(255, 255, 255, 0.04), transparent 30%),
-          radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.03), transparent 24%);
-        box-shadow: var(--shadow-card);
+        overflow: visible;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
       }
       .hero-shell::before {
         content: "";
         position: absolute;
-        inset: 0;
-        background:
-          linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.012) 48%, transparent 100%),
-          radial-gradient(circle at 18% 18%, rgba(255,255,255,0.03), transparent 12%);
+        top: -40%;
+        left: 60%;
+        width: 55%;
+        height: 130%;
+        background: radial-gradient(ellipse at center, oklch(75% 0.08 75 / 0.07), transparent 65%);
         pointer-events: none;
+        z-index: 0;
       }
       .hero-grid {
         position: relative;
+        z-index: 1;
         display: grid;
-        grid-template-columns: minmax(0, 1.35fr) minmax(290px, 0.9fr);
-        gap: clamp(1.25rem, 3vw, 2rem);
-        padding: clamp(1.15rem, 2.8vw, 1.7rem);
+        grid-template-columns: 1fr 320px;
+        gap: clamp(2rem, 4vw, 3rem);
+        padding: 0;
         align-items: stretch;
       }
       .hero-copy {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 1rem;
+        gap: 1.4rem;
         min-width: 0;
       }
       .hero-kicker {
@@ -455,12 +522,12 @@ const jsonLd = {
       }
       .btn:active { transform: translateY(0); }
       .btn-primary {
-        background: linear-gradient(180deg, oklch(99% 0.003 265) 0%, oklch(92% 0.004 265) 100%);
-        border-color: oklch(95% 0.003 265 / 0.8);
-        color: oklch(5% 0.003 265);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+        background: oklch(75% 0.08 75);
+        border-color: oklch(78% 0.09 75);
+        color: oklch(12% 0.003 265);
+        box-shadow: 0 8px 28px oklch(75% 0.08 75 / 0.35);
       }
-      .btn-primary:hover { color: oklch(5% 0.003 265); background: linear-gradient(180deg, oklch(99% 0.003 265) 0%, oklch(96% 0.003 265) 100%); }
+      .btn-primary:hover { color: oklch(12% 0.003 265); background: oklch(78% 0.085 75); box-shadow: 0 10px 32px oklch(75% 0.08 75 / 0.45); }
       .hero-note {
         font-size: 0.82rem;
         letter-spacing: 0.01em;
@@ -474,10 +541,10 @@ const jsonLd = {
       }
 
       .hero-surface {
-        border: 1px solid rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
         border-radius: 18px;
-        background: rgba(255,255,255,0.02);
-        padding: 1rem;
+        background: rgba(255,255,255,0.04);
+        padding: 1.25rem;
       }
       .hero-surface-title,
       .search-panel .search-label,
@@ -503,16 +570,31 @@ const jsonLd = {
         box-shadow: 0 0 0 4px oklch(75% 0.08 75 / 0.14);
       }
       .hero-install {
-        border-radius: 18px;
-        background: oklch(75% 0.08 75 / 0.03);
-        border: 1px solid oklch(75% 0.08 75 / 0.14);
-        padding: 1rem;
-        box-shadow: inset 0 1px 0 oklch(75% 0.08 75 / 0.05);
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+      }
+      .hero-install .hero-surface-title {
+        margin-bottom: 0;
       }
       .hero-install p {
         color: var(--fg-muted);
         font-size: 0.92rem;
-        margin-top: 0.65rem;
+        margin: 0;
+      }
+      .hero-install .install {
+        border-color: oklch(75% 0.08 75 / 0.38);
+        background: oklch(75% 0.08 75 / 0.10);
+        box-shadow: inset 0 1px 0 oklch(75% 0.08 75 / 0.12);
+        transition: box-shadow 0.18s ease, border-color 0.18s ease;
+      }
+      .hero-install .install:hover {
+        border-color: oklch(75% 0.08 75 / 0.55);
+        box-shadow: inset 0 1px 0 oklch(75% 0.08 75 / 0.18), 0 8px 24px oklch(75% 0.08 75 / 0.18);
       }
       .kind-legend {
         display: grid;
@@ -559,9 +641,38 @@ const jsonLd = {
         align-items: end;
         justify-content: space-between;
         gap: 1rem;
-        margin: 2.2rem 0 1rem;
+        margin: 4.5rem 0 2rem;
       }
-      .section-top h2 + p { max-width: 62ch; }
+      .section-top h2 + p { max-width: 65ch; }
+
+      .section-collections-header {
+        margin-bottom: 1.2rem;
+      }
+      .section-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-bottom: 0.65rem;
+        color: var(--fg-subtle);
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      .section-title::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--kind-collection);
+        box-shadow: 0 0 0 4px oklch(71% 0.10 15 / 0.14);
+      }
+      .section-lede {
+        max-width: 65ch;
+        color: var(--fg-muted);
+        margin: 0 0 0.8rem;
+      }
+
       .section-link {
         display: inline-flex;
         align-items: center;
@@ -589,9 +700,42 @@ const jsonLd = {
         box-shadow: var(--shadow-card);
         margin: 0 0 1.25rem;
       }
+      .search-row {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
       .search-wrap {
         margin: 0;
         position: relative;
+        flex: 1;
+      }
+      .view-toggle {
+        display: flex;
+        align-items: center;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .view-btn {
+        display: inline-grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: var(--fg-subtle);
+        transition: background 0.14s ease, color 0.14s ease;
+      }
+      .view-btn + .view-btn {
+        border-left: 1px solid rgba(255,255,255,0.1);
+      }
+      .view-btn:hover { background: rgba(255,255,255,0.06); color: var(--fg); }
+      .view-btn.active {
+        background: rgba(255,255,255,0.1);
+        color: var(--fg);
       }
       .search-wrap input {
         width: 100%;
@@ -657,8 +801,8 @@ const jsonLd = {
       .chip {
         padding: 0.48rem 0.9rem;
         border-radius: 10px;
-        border: 1px solid rgba(255,255,255,0.08);
-        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.06);
         color: var(--fg-muted);
         font-size: 0.82rem;
         cursor: pointer;
@@ -667,12 +811,12 @@ const jsonLd = {
       }
       .chip:hover {
         color: var(--fg);
-        border-color: rgba(255,255,255,0.18);
-        background: rgba(255,255,255,0.06);
+        border-color: rgba(255,255,255,0.22);
+        background: rgba(255,255,255,0.1);
         transform: translateY(-1px);
       }
       .chip.active {
-        background: rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.12);
         border-color: rgba(255,255,255,0.22);
         color: var(--fg);
       }
@@ -680,69 +824,224 @@ const jsonLd = {
       .grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-        gap: 0.95rem;
+        gap: 1.5rem;
+      }
+      .grid.list-view {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: 0.4rem;
+      }
+      .grid.list-view .card {
+        flex-direction: row;
+        align-items: center;
+        height: auto;
+        padding: 0.65rem 1rem;
+        gap: 1rem;
+        border-radius: 10px;
+      }
+      .grid.list-view .card:hover {
+        transform: none;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+      }
+      .grid.list-view .card-head {
+        flex-shrink: 0;
+        width: 200px;
+        min-width: 0;
+      }
+      .grid.list-view .card-id {
+        font-size: 0.78rem;
+        color: var(--card-accent);
+        opacity: 0.85;
+      }
+      .grid.list-view .card-body {
+        flex: 1;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        min-width: 0;
+      }
+      .grid.list-view .card h3 {
+        flex-shrink: 0;
+        width: 220px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.92rem;
+        font-weight: 600;
+      }
+      .grid.list-view .card p {
+        flex: 1;
+        -webkit-line-clamp: 1;
+        min-width: 0;
+        font-size: 0.85rem;
+        margin: 0;
+      }
+      .grid.list-view .card-footer {
+        flex-shrink: 0;
+        margin: 0;
+        gap: 0.6rem;
+      }
+      .grid.list-view .tags {
+        max-width: 260px;
+        flex-wrap: nowrap;
+        overflow: hidden;
+      }
+      .grid.list-view .card-arrow {
+        opacity: 0.5;
+      }
+      @media (max-width: 900px) {
+        .grid.list-view .card-head { width: 150px; }
+        .grid.list-view .card h3 { width: 160px; }
+        .grid.list-view .tags { display: none; }
+      }
+      @media (max-width: 640px) {
+        .grid.list-view .card { flex-wrap: wrap; gap: 0.4rem 0.8rem; }
+        .grid.list-view .card-head { width: auto; }
+        .grid.list-view .card-body { flex-basis: 100%; flex-direction: column; align-items: flex-start; gap: 0.15rem; }
+        .grid.list-view .card h3 { width: auto; }
       }
       .card {
         --card-accent: var(--accent);
         display: flex;
         flex-direction: column;
-        gap: 0.8rem;
-        border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 16px;
-        padding: 0.95rem;
-        background: rgba(255,255,255,0.02);
+        gap: 0.85rem;
+        border: 1px solid rgba(255,255,255,0.10);
+        border-radius: 12px;
+        padding: 1.1rem 1.15rem;
+        background: rgba(255,255,255,0.025);
         transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
         position: relative;
         overflow: hidden;
-        min-height: 248px;
-        height: 100%;
+        height: 220px;
+        text-decoration: none;
+      }
+      .grid { grid-auto-rows: 220px; }
+
+      /* Standard screen-reader-only utility for landmark labels and hidden
+         headings that satisfy a11y heading-order without polluting the visual
+         layout. */
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* Collapsible category sections — markup lives on each listing page,
+         these rules turn the header into an interactive toggle and hide the
+         grid + content when collapsed. */
+      .category-header-toggle {
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        align-items: center !important;
+        padding-right: 0.4rem;
+        border-radius: 6px;
+        transition: background 0.15s ease, color 0.15s ease;
+      }
+      .category-header-toggle:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .category-header-toggle:hover .category-title {
+        color: var(--fg);
+      }
+      .category-header-toggle:focus-visible {
+        outline: 2px solid var(--accent-hot);
+        outline-offset: 3px;
+      }
+      .category-chevron {
+        margin-left: auto;
+        color: var(--fg-subtle);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        transition: transform 0.2s ease, color 0.18s ease, background 0.15s ease;
+      }
+      .category-header-toggle:hover .category-chevron {
+        color: var(--fg);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .entry-category.collapsed .category-chevron {
+        transform: rotate(-90deg);
+      }
+      .entry-category.collapsed .grid,
+      .entry-category.collapsed > *:not(.category-header) {
+        display: none !important;
+      }
+      .entry-category.collapsed .category-header {
+        margin-bottom: 0;
+        padding-bottom: 0.4rem;
+        border-bottom-style: dashed;
+        opacity: 0.9;
       }
 
       .card:hover {
         transform: translateY(-2px);
-        border-color: rgba(255,255,255,0.14);
-        background: rgba(255,255,255,0.03);
-        box-shadow: 0 22px 48px rgba(0, 0, 0, 0.3);
+        border-color: color-mix(in oklch, var(--card-accent) 35%, rgba(255,255,255,0.15));
+        background: rgba(255,255,255,0.04);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28),
+                    inset 0 0 0 1px color-mix(in oklch, var(--card-accent) 8%, transparent);
       }
       .card:active { transform: translateY(-1px); }
-      .card-top {
+
+      .card-head {
         display: flex;
         align-items: center;
-        gap: 0.65rem;
+        gap: 0.55rem;
+        font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
       }
-      .card .icon {
-        display: inline-grid;
-        place-items: center;
-        width: 34px;
-        height: 34px;
-        border-radius: 10px;
-        background: color-mix(in oklch, var(--card-accent) 12%, transparent);
-        border: 1px solid color-mix(in oklch, var(--card-accent) 20%, transparent);
-        font-size: 0.95rem;
-        font-weight: 700;
-        letter-spacing: 0;
-        line-height: 1;
-        color: var(--card-accent);
+      .card-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--card-accent);
+        box-shadow: 0 0 0 3px color-mix(in oklch, var(--card-accent) 18%, transparent);
+        flex-shrink: 0;
       }
+      .card-id {
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: var(--fg-subtle);
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+      }
+      .card:hover .card-id {
+        color: var(--fg-muted);
+      }
+
       .card h3 {
         color: var(--fg);
         font-size: 1.02rem;
-        line-height: 1.25;
+        line-height: 1.3;
+        font-weight: 600;
+        margin: 0;
       }
       .card p {
         color: var(--fg-muted);
-        font-size: 0.92rem;
+        font-size: 0.9rem;
         margin: 0;
-        line-height: 1.56;
+        line-height: 1.55;
+        max-width: 68ch;
         display: -webkit-box;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
       .card-body { display: flex; flex-direction: column; gap: 0.45rem; flex: 1; }
       .card-footer {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         align-items: center;
         justify-content: space-between;
         gap: 0.5rem;
@@ -750,47 +1049,61 @@ const jsonLd = {
       }
       .card-arrow {
         color: var(--fg-subtle);
-        font-size: 1rem;
-        transition: transform 0.18s ease, color 0.18s ease;
+        font-size: 0.95rem;
+        opacity: 0;
+        transition: transform 0.18s ease, color 0.18s ease, opacity 0.18s ease;
+        flex-shrink: 0;
       }
       .card:hover .card-arrow {
-        color: var(--fg);
-        transform: translateX(2px);
+        color: var(--card-accent);
+        transform: translate(2px, -2px);
+        opacity: 1;
       }
       .tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.38rem;
+        gap: 0.45rem;
         min-width: 0;
-        max-height: 2.4rem;
+        max-height: 1.65rem;
         overflow: hidden;
+        align-items: center;
       }
       .tag {
-        font-size: 0.7rem;
-        padding: 0.3rem 0.65rem;
-        border-radius: 8px;
-        background: var(--chip-bg);
-        color: var(--chip-fg);
-        font-weight: 600;
+        font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 0.74rem;
+        padding: 0;
+        background: transparent;
+        color: var(--fg-subtle);
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        transition: color 0.15s ease;
       }
+      .card:hover .tag { color: var(--fg-muted); }
       .tag-extra {
-        background: rgba(255,255,255,0.05);
-        color: var(--fg);
-        border: 1px solid rgba(255,255,255,0.08);
+        font-family: inherit;
+        font-size: 0.7rem;
+        padding: 0.18rem 0.5rem;
+        border-radius: 6px;
+        background: color-mix(in oklch, var(--card-accent) 12%, transparent);
+        color: var(--card-accent);
+        border: 1px solid color-mix(in oklch, var(--card-accent) 22%, transparent);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-transform: lowercase;
       }
       .tag-more {
-        background: transparent;
-        border: 1px solid rgba(255,255,255,0.06);
+        font-family: inherit;
         color: var(--fg-subtle);
+        font-size: 0.72rem;
       }
       .kind {
         display: inline-flex;
         align-items: center;
         gap: 0.35rem;
-        font-size: 0.78rem;
+        font-size: 0.8rem;
         letter-spacing: 0;
         text-transform: none;
-        padding: 0;
+        padding: 0.25rem 0.5rem;
         font-weight: 600;
         border: 0;
         color: var(--fg-muted);
@@ -826,8 +1139,8 @@ const jsonLd = {
         gap: 0.85rem;
         padding: 0.95rem 1rem;
         border-radius: 16px;
-        border: 1px solid rgba(255,255,255,0.08);
-        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.03);
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
         font-size: 0.86rem;
         color: var(--fg);
@@ -849,9 +1162,22 @@ const jsonLd = {
         color: var(--fg);
         font-size: 0.92rem;
       }
+      /* Inside constrained aside column, stack vertically so cmd gets full width */
+      .hero-install .install {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.65rem;
+      }
+      .hero-install .install .install-copy {
+        width: 100%;
+      }
+      .hero-install .install button.copy {
+        align-self: flex-end;
+        width: auto;
+      }
       .install button.copy {
-        border: 1px solid rgba(255,255,255,0.1);
-        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.06);
         color: var(--fg);
         padding: 0.55rem 0.75rem;
         border-radius: 999px;
@@ -864,14 +1190,14 @@ const jsonLd = {
       .install button.copy:hover {
         transform: translateY(-1px);
         color: var(--fg);
-        border-color: rgba(255,255,255,0.18);
-        background: rgba(255,255,255,0.07);
+        border-color: rgba(255,255,255,0.22);
+        background: rgba(255,255,255,0.1);
       }
       .install button.copy.copied { color: oklch(92% 0.003 265); border-color: rgba(255,255,255,0.18); }
 
       .markdown h1, .markdown h2, .markdown h3 { margin-top: 2rem; }
       .markdown h1:first-child { margin-top: 0; }
-      .markdown p { color: var(--fg); }
+      .markdown p { color: var(--fg); max-width: 70ch; }
       .markdown ul, .markdown ol { color: var(--fg); padding-left: 1.5rem; }
       .markdown li { margin: 0.25rem 0; }
       .markdown blockquote {
@@ -977,16 +1303,57 @@ const jsonLd = {
         color: var(--fg-subtle);
       }
 
+      .empty-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 5rem 1rem;
+        color: var(--fg-subtle);
+        text-align: center;
+      }
+      .empty-page svg {
+        opacity: 0.35;
+        margin-bottom: 0.5rem;
+      }
+      .empty-page .empty-title {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--fg-muted);
+        margin: 0;
+      }
+      .empty-page .empty-sub {
+        font-size: 0.9rem;
+        color: var(--fg-subtle);
+        margin: 0;
+        max-width: 36ch;
+      }
+      .empty-page .empty-cta {
+        margin-top: 0.5rem;
+        font-size: 0.83rem;
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 0.3rem 0.7rem;
+        color: var(--accent);
+      }
+
       footer.site {
         border-top: 1px solid var(--border);
         padding: 1.75rem 1.25rem;
         color: var(--fg-subtle);
         font-size: 0.82rem;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        align-items: center;
       }
       footer.site a { color: var(--fg-muted); }
+      footer.site .footer-credits { color: var(--fg-muted); font-size: 0.875rem; }
+      footer.site .footer-credits a { color: var(--fg); }
 
-      .lead-muted { color: var(--fg-muted); max-width: 76ch; }
+      .lead-muted { color: var(--fg-muted); max-width: 96ch; }
       .mt-4 { margin-top: 2rem; }
 
       @media (max-width: 900px) {
@@ -1049,7 +1416,6 @@ const jsonLd = {
               href={item.href}
               aria-current={isActive(item.href) ? "page" : undefined}
               class:list={[
-                item.key === "nav.collections" ? "collections" : undefined,
                 isActive(item.href) ? "is-active" : undefined,
               ]}
             >
@@ -1057,9 +1423,10 @@ const jsonLd = {
             </a>
           ))}
           <a class="github" href="https://github.com/LucasSantana-Dev/forgekit" rel="noopener" aria-label={t("nav.github", locale)}>
-            {t("nav.github", locale)} <span aria-hidden="true">↗</span>
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .322.216.694.825.576C20.565 21.795 24 17.298 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
           </a>
-          <LanguageSwitcher locale={locale} />
         </nav>
       </div>
     </header>
@@ -1067,12 +1434,112 @@ const jsonLd = {
       <slot />
     </main>
     <footer class="site" role="contentinfo">
-      <a href="https://github.com/LucasSantana-Dev/forgekit" rel="noopener">{t("footer.source", locale)}</a>
-      · {t("footer.license", locale)}
-      · {t("footer.builtWith", locale)} <a href="https://astro.build" rel="noopener">Astro</a>,
-      {t("footer.runsOn", locale)} <a href="https://workers.cloudflare.com" rel="noopener">Cloudflare Workers</a>
+      <div class="footer-credits">Made by <a href="https://github.com/LucasSantana-Dev" rel="noopener">Lucas Santana</a></div>
+      <div class="footer-links">
+        <a href={`${base}about/`}>About</a>
+        · <a href={`${base}contact/`}>Contact</a>
+        · <a href={`${base}privacy/`}>Privacy</a>
+        · <a href="https://github.com/LucasSantana-Dev/forgekit" rel="noopener">{t("footer.source", locale)}</a>
+        · {t("footer.license", locale)}
+        · {t("footer.builtWith", locale)} <a href="https://astro.build" rel="noopener">Astro</a>,
+        {t("footer.runsOn", locale)} <a href="https://workers.cloudflare.com" rel="noopener">Cloudflare Workers</a>
+      </div>
     </footer>
 
+    <script is:inline>
+      // Collapsible category sections. Click the header to fold/unfold; state
+      // is persisted per-page in localStorage so a refresh keeps your view.
+      (function () {
+        function init() {
+          const sections = document.querySelectorAll("section.entry-category");
+          if (sections.length === 0) return;
+          const STORAGE_KEY = "fk-collapsed:" + window.location.pathname;
+          let collapsed = new Set();
+          try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) collapsed = new Set(JSON.parse(raw));
+          } catch (e) {}
+          const persist = () => {
+            try {
+              localStorage.setItem(STORAGE_KEY, JSON.stringify([...collapsed]));
+            } catch (e) {}
+          };
+
+          sections.forEach((section) => {
+            const header = section.querySelector(".category-header");
+            if (!header || header.dataset.collapseInit === "1") return;
+            header.dataset.collapseInit = "1";
+            header.setAttribute("role", "button");
+            header.setAttribute("tabindex", "0");
+            header.classList.add("category-header-toggle");
+            if (!header.querySelector(".category-chevron")) {
+              const chev = document.createElement("span");
+              chev.className = "category-chevron";
+              chev.setAttribute("aria-hidden", "true");
+              chev.innerHTML =
+                '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4.5 7l4.5 4.5L13.5 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+              header.appendChild(chev);
+            }
+            const id = section.id || (header.textContent || "").trim();
+            if (collapsed.has(id)) section.classList.add("collapsed");
+            header.setAttribute("aria-expanded", section.classList.contains("collapsed") ? "false" : "true");
+
+            const toggle = (e) => {
+              if (e) e.preventDefault();
+              const isCollapsed = section.classList.toggle("collapsed");
+              header.setAttribute("aria-expanded", isCollapsed ? "false" : "true");
+              if (isCollapsed) collapsed.add(id);
+              else collapsed.delete(id);
+              persist();
+            };
+            header.addEventListener("click", toggle);
+            header.addEventListener("keydown", (e) => {
+              if (e.key === "Enter" || e.key === " ") toggle(e);
+            });
+          });
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", init);
+        } else {
+          init();
+        }
+      })();
+    </script>
+    <script is:inline>
+      // Scroll-spy: highlight the sidebar link for the section currently in view.
+      (function () {
+        if (!window.IntersectionObserver) return;
+        const sidebar = document.querySelector(".page-sidebar nav");
+        if (!sidebar) return;
+        const sections = Array.from(document.querySelectorAll("section.entry-category[id]"));
+        if (sections.length === 0) return;
+        const linkFor = (id) => sidebar.querySelector(`a[href="#${id}"]`);
+        const setActive = (id) => {
+          sidebar.querySelectorAll("a.sidebar-link").forEach((a) => a.classList.remove("is-active"));
+          const link = linkFor(id);
+          if (link) link.classList.add("is-active");
+        };
+        let activeId = sections[0].id;
+        setActive(activeId);
+        const obs = new IntersectionObserver(
+          (entries) => {
+            // Pick the entry closest to the top that's currently intersecting.
+            const visible = entries
+              .filter((e) => e.isIntersecting)
+              .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+            if (visible.length > 0) {
+              const id = visible[0].target.id;
+              if (id !== activeId) {
+                activeId = id;
+                setActive(id);
+              }
+            }
+          },
+          { rootMargin: "-20% 0px -60% 0px", threshold: 0 },
+        );
+        sections.forEach((s) => obs.observe(s));
+      })();
+    </script>
     <script is:inline>
       // Copy-to-clipboard for .install buttons
       document.addEventListener("click", (e) => {

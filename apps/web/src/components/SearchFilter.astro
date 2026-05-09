@@ -4,45 +4,102 @@ import { resolveLocale, t } from "../lib/i18n";
 interface Props {
   placeholder?: string;
   tags?: string[];
+  /** How many tag chips to show before the "+N more" expander. */
+  visibleTags?: number;
 }
 const locale = resolveLocale(Astro.url.pathname);
-const allChipLabel = locale === "pt-br" ? "Todos" : t("search.allTags", locale);
-const { placeholder = "Search by name, description, or tag…", tags = [] } = Astro.props;
+const allChipLabel = t("search.allTags", locale);
+const { placeholder = "Search by name, description, or tag…", tags = [], visibleTags = 4 } = Astro.props;
+const overflow = Math.max(0, tags.length - visibleTags);
 ---
 <div class="search-panel">
-  <div class="search-wrap">
-    <span class="search-icon" aria-hidden="true">
-      <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-        <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8" />
-        <path d="M14 14L18 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-      </svg>
-    </span>
-    <input
-      id="search"
-      type="search"
-      autocomplete="off"
-      spellcheck="false"
-      placeholder={placeholder}
-      aria-label={placeholder}
-    />
+  <div class="search-row">
+    <div class="search-wrap">
+      <span class="search-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+          <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8" />
+          <path d="M14 14L18 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+      </span>
+      <input
+        id="search"
+        type="search"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder={placeholder}
+        aria-label={placeholder}
+      />
+    </div>
+    <div class="view-toggle" id="view-toggle" role="group" aria-label="View mode">
+      <button class="view-btn active" id="btn-grid" data-view="grid" type="button" aria-label="Grid view" title="Grid view">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <rect x="0.75" y="0.75" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="8.25" y="0.75" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="0.75" y="8.25" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="8.25" y="8.25" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+      </button>
+      <button class="view-btn" id="btn-list" data-view="list" type="button" aria-label="List view" title="List view">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <rect x="1" y="2" width="12" height="1.8" rx="0.9" fill="currentColor"/>
+          <rect x="1" y="6.1" width="12" height="1.8" rx="0.9" fill="currentColor"/>
+          <rect x="1" y="10.2" width="12" height="1.8" rx="0.9" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
   </div>
   {tags.length > 0 && (
     <div class="chips" id="chips">
       <button class="chip active" data-tag="" type="button">{allChipLabel}</button>
-      {tags.map((t) => (
-        <button class="chip" data-tag={t} type="button">{t}</button>
+      {tags.map((tag, i) => (
+        <button class="chip" data-tag={tag} type="button" data-extra={i >= visibleTags ? "true" : undefined}>{tag}</button>
       ))}
+      {overflow > 0 && (
+        <button class="chip chip-more-btn" id="chip-more" type="button" aria-expanded="false">
+          <span class="chip-more-collapsed">+{overflow} more</span>
+          <span class="chip-more-expanded">Show less</span>
+        </button>
+      )}
     </div>
   )}
 </div>
+
+<style>
+  .chip[data-extra="true"] { display: none; }
+  .chips.expanded .chip[data-extra="true"] { display: inline-flex; }
+  .chip-more-btn {
+    background: transparent;
+    border: 1px dashed rgba(255, 255, 255, 0.18);
+    color: var(--fg-subtle);
+  }
+  .chip-more-btn:hover {
+    color: var(--fg);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .chip-more-expanded { display: none; }
+  .chips.expanded .chip-more-collapsed { display: none; }
+  .chips.expanded .chip-more-expanded { display: inline; }
+</style>
 
 <script is:inline>
   (function () {
     const input = document.getElementById("search");
     const chips = document.getElementById("chips");
+    const chipMore = document.getElementById("chip-more");
     const cards = () => document.querySelectorAll("a.card");
     let activeTag = "";
     let query = "";
+
+    function applySectionVisibility() {
+      // Hide entry-category sections that have zero visible cards.
+      document.querySelectorAll("section.entry-category").forEach((section) => {
+        const anyVisible = Array.from(section.querySelectorAll("a.card")).some(
+          (c) => c.style.display !== "none",
+        );
+        section.style.display = anyVisible ? "" : "none";
+      });
+    }
 
     function apply() {
       let visible = 0;
@@ -55,8 +112,18 @@ const { placeholder = "Search by name, description, or tag…", tags = [] } = As
         card.style.display = show ? "" : "none";
         if (show) visible++;
       });
+      applySectionVisibility();
       const empty = document.getElementById("empty-state");
       if (empty) empty.style.display = visible === 0 ? "" : "none";
+    }
+
+    if (chipMore && chips) {
+      chipMore.addEventListener("click", (e) => {
+        // Stop the parent chips listener (which would treat this as a tag click).
+        e.stopPropagation();
+        const expanded = chips.classList.toggle("expanded");
+        chipMore.setAttribute("aria-expanded", expanded ? "true" : "false");
+      });
     }
 
     if (input) {
@@ -68,10 +135,41 @@ const { placeholder = "Search by name, description, or tag…", tags = [] } = As
     if (chips) {
       chips.addEventListener("click", (e) => {
         const btn = e.target.closest("button.chip");
-        if (!btn) return;
+        if (!btn || btn.id === "chip-more") return;
         activeTag = btn.dataset.tag || "";
-        chips.querySelectorAll("button.chip").forEach((b) => b.classList.toggle("active", b === btn));
+        chips.querySelectorAll("button.chip").forEach((b) => {
+          if (b.id === "chip-more") return;
+          b.classList.toggle("active", b === btn);
+        });
         apply();
+      });
+    }
+
+    // View toggle
+    const btnGrid = document.getElementById("btn-grid");
+    const btnList = document.getElementById("btn-list");
+    const STORAGE_KEY = "fk-view";
+
+    function setView(view) {
+      const grid = document.querySelector(".grid");
+      const isList = view === "list";
+      if (grid) grid.classList.toggle("list-view", isList);
+      if (btnGrid) btnGrid.classList.toggle("active", !isList);
+      if (btnList) btnList.classList.toggle("active", isList);
+      try { localStorage.setItem(STORAGE_KEY, view); } catch (e) {}
+    }
+
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved === "list") setView("list");
+    } catch (e) {}
+
+    const toggleEl = document.getElementById("view-toggle");
+    if (toggleEl) {
+      toggleEl.addEventListener("click", (e) => {
+        const btn = e.target.closest("button.view-btn");
+        if (!btn) return;
+        setView(btn.dataset.view);
       });
     }
   })();
