@@ -6,6 +6,45 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.19.0] - 2026-05-09
+
+### Added
+
+- **`/providers/` page** — groups all 171 catalog entries by AI provider (Claude Code, Codex, Gemini CLI, Cursor, local LLMs) with provider-specific tooling lanes. New `deriveProvider()` and `PROVIDER_ORDER` in `lib/ui.ts`. (#165)
+- **Trust pages — `/about/`, `/contact/`, `/privacy/`** — author bio, security disclosure flow, response-time SLAs, and a static-site-no-tracking privacy policy. Cross-linked via "Related" sections to `/docs/`, `/tutorials/`, and the GitHub source. (#165)
+- **`EntryHeader.astro`** — shared component with kind-aware accent colors and back link, wired into all 6 entry detail kinds (replaces emoji-prefixed headers). (#165)
+- **`RelatedCollections.astro`** — every entry detail page now lists the curated collections it appears in. (#165)
+- **`HeroTerminal.astro` + reskinned `InstallBlock.astro`** — terminal-style with traffic-light dots, copy button, blinking caret. (#165)
+- **`SearchFilter.astro` partial-collapse** — first 4 tag chips visible, "+N more" toggle for the long tail. (#165)
+- **Collapsible category sections** in `Base.astro` with `localStorage`-persisted state per pathname; 18px chevron in 28px hover target. (#165)
+- **7 new env-* agents** — `env-claude-code`, `env-codex-app`, `env-codex-cli`, `env-cursor`, `env-gemini-cli`, `env-kiro`, `env-windsurf` — and the `platform-environments` collection. (#165)
+- **`public/_headers`** — CSP, HSTS, X-Frame-Options, Referrer-Policy, Permissions-Policy, plus cache-control rules for `/_astro/*`, llms.txt, sitemaps. (#165)
+- **`llms.txt` + `llms-full.txt`** generators (llmstxt.org spec) so AI agents can discover the catalog efficiently. (#165)
+- **Auto-padding meta descriptions** in `Base.astro` — short descriptions are padded to a 120-char floor with a path-derived suffix per kind (skills/agents/servers/hooks/…) plus an install-instruction filler; long ones trim at the last word boundary ≤152 chars (hard-cut to 152 if word-cut would undershoot the floor). (#165)
+- **`labelTaskListCheckboxes`** in `lib/ui.ts` — wraps GFM checkbox `<li>` in `<label>`, killing 83 axe-core label violations. (#165)
+- **`rewriteCatalogLinks`** in `lib/ui.ts` — strips broken `*.md` cross-references from rendered docs (preserves citation text as inline `<code>`). 20 broken-link errors → 0. (#165)
+
+### Changed
+
+- **Listing page descriptions rewritten** to the 120-155 SEO sweet spot across `/skills/`, `/agents/`, `/servers/`, `/tools/`, `/hooks/`, `/commands/`, `/docs/`, `/providers/`, `/tutorials/`. (#165)
+- **`astro.config.mjs`** — `trailingSlash: "always"` for canonical URL hygiene; sitemap config no longer carries the i18n bucket. (#165)
+- **JSON-LD now hidden on `noindex` pages** — eliminates `schema-noindex-conflict` errors on `/search/?tag=*` variants. (#165)
+- **Title-suffix system** caps combined `<title>` at 60 chars; appends a path-derived keyword phrase when the bare title would otherwise undershoot the SEO floor. (#165)
+- **`demoteHeadings`** rewrites in-body `<h1>` to `<h2>` so detail pages no longer ship duplicate H1s alongside the page-level header. (#165)
+- **Expanded `CATEGORY_RULES`** in `lib/ui.ts` with 13 new buckets (Setup & Install, Documentation, Version Control, Project Management, Infrastructure, Browser & Automation, Memory & Storage, Code & IDE, Observability, MCP Operations, Diagnostics, Release, Training). (#165)
+- **`Card.astro` + `CollectionsFeaturedGrid.astro`** — fixed 220px card height with `grid-auto-rows: 220px` for visual rhythm. (#165)
+- **i18n descriptions** rewritten to land in the 120-160 char range. (#165)
+
+### Removed
+
+- **`src/pages/pt-br/` locale tree** — entire 17-route Portuguese mirror removed; `LanguageSwitcher.astro` deleted. The `locales/pt-BR/` translation source remains for future locale work. (#165)
+
+### Fixed
+
+- **Local SEO health 55 → 66/100** on the production-build squirrelscan baseline. Core SEO 89% → 94%, Links 60% → 88%, E-E-A-T 89% → 100%, Structured Data stays at 100%. Remaining audit warnings on the local baseline are environment-only artifacts (HTTPS, sitemap-domain pointing at the prod URL, Cloudflare cache headers, JS/CSS minification) that resolve automatically on the production Worker. (#165)
+- **Hero-aside is now a `<div>`** instead of `<aside>` — passes the `landmark-complementary-is-top-level` axe rule. (#165)
+- **axe-core: 0 violations across 22 representative pages** (was 85). (#165)
+
 ## [0.18.0] - 2026-05-07
 
 ### Added
