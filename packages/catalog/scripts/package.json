@@ -6,6 +6,7 @@
   "scripts": {
     "validate": "tsx validate-catalog.ts",
     "index": "tsx generate-index.ts",
+    "llms": "node generate-llms.js",
     "import:patterns": "tsx import-patterns.ts",
     "import:agents": "tsx import-agents.ts",
     "import:upstream-skills": "tsx import-upstream-skills.ts",
