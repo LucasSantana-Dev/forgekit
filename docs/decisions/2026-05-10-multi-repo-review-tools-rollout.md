@@ -39,7 +39,7 @@ Concretely:
 
 3. **Version lockfile** at `.review-tools-config.json` per consumer repo:
    - Pins Danger.js version, Claude action SHA, CodeRabbit config version
-   - Read by the installer's `--check-updates` flag to detect drift
+   - Read by the F4 drift detector (forthcoming scheduled workflow in `LucasSantana-Dev/.github`); future installer enhancement may add a `--check-updates` flag, but not part of the F2 deliverable
 
 4. **Weekly drift detector** as a scheduled workflow in `LucasSantana-Dev/.github`:
    - Scans all consumer repos' `.review-tools-config.json`

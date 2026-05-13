@@ -19,7 +19,7 @@ const sourceLikelyNeedingTest = (p: string): boolean =>
     !p.endsWith('index.ts')
 
 const sourceChanges = all.filter(sourceLikelyNeedingTest)
-const testChanges = all.filter((p) => /\.(spec|test)\.(ts|tsx)$/.test(p))
+const testChanges = all.filter((p) => /\.(spec|test)\.(ts|tsx|js|jsx|mjs|cjs)$/.test(p))
 
 async function countSourceAdditions(): Promise<number> {
     if (sourceChanges.length === 0) return 0
@@ -29,7 +29,8 @@ async function countSourceAdditions(): Promise<number> {
 
 const TITLE_PREFIX_SKIP = /^(chore|test|docs|refactor|ci|build|style|perf)(\([^)]*\))?:\s/
 const userFacingChange = all.some((p) => /^src\//.test(p))
-if (userFacingChange && !modified.includes('CHANGELOG.md') && !TITLE_PREFIX_SKIP.test(pr.title)) {
+const changelogTouched = all.includes('CHANGELOG.md')
+if (userFacingChange && !changelogTouched && !TITLE_PREFIX_SKIP.test(pr.title)) {
     message(`User-facing change without a CHANGELOG.md update. Add a line under \`## [Unreleased]\` if release-worthy.`)
 }
 

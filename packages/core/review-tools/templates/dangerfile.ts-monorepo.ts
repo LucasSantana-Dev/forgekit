@@ -43,7 +43,7 @@ async function countSourceAdditions(): Promise<number> {
 }
 
 // --- 3. CHANGELOG reminder for user-facing changes --------------------------
-const changelogTouched = modified.includes('CHANGELOG.md')
+const changelogTouched = all.includes('CHANGELOG.md')
 const userFacingPatterns = [/^packages\/[^/]+\/src\//]
 const userFacingChange = all.some((p) =>
     userFacingPatterns.some((rx) => rx.test(p)),
