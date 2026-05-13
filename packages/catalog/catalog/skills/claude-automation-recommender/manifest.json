@@ -1,0 +1,28 @@
+{
+  "id": "claude-automation-recommender",
+  "name": "Claude Automation Recommender",
+  "description": "Analyze a codebase and recommend Claude Code automations (hooks, subagents, skills, plugins, MCP servers). Use when user asks for automation recommendations, wants to optimize their Claude Code setup, mentions improving Claude Code workflows, asks how to first set up Claude Code for a project, or wants to know which Claude Code features to use.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "claude-code",
+    "recommendation",
+    "onboarding",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/claude-automation-recommender/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Recomendador de Automações Claude",
+      "description": "Analisa um codebase e recomenda automações do Claude Code (hooks, subagents, skills, plugins, servers MCP). Use quando o usuário pede recomendações de automação, quer otimizar a configuração do Claude Code, fala em melhorar fluxos do Claude Code, pergunta como configurar o Claude Code num projeto pela primeira vez, ou quer saber quais features usar."
+    }
+  }
+}
