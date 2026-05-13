@@ -38,7 +38,7 @@ async function countSourceAdditions(): Promise<number> {
     )
     return diffs.reduce((sum, d) => {
         if (!d?.added) return sum
-        return sum + d.added.split('\n').filter((l) => l.startsWith('+')).length
+        return sum + d.added.split('\n').filter((l) => l.trim().length > 0).length
     }, 0)
 }
 
@@ -59,7 +59,7 @@ if (userFacingChange && !changelogTouched && !TITLE_PREFIX_SKIP.test(pr.title)) 
 
 // --- 4. Lockfile guard ------------------------------------------------------
 const packageJsonChanged = modified.some((p) => /(^|\/)package\.json$/.test(p))
-const lockChanged = modified.some((p) => p === 'package-lock.json')
+const lockChanged = all.some((p) => p === 'package-lock.json')
 if (packageJsonChanged && !lockChanged) {
     fail(
         `**\`package.json\` changed but \`package-lock.json\` did not.** ` +
@@ -86,7 +86,7 @@ async function checkConsoleLogs(): Promise<void> {
         if (!diff) continue
         const addedLines = diff.added
             .split('\n')
-            .filter((l) => l.startsWith('+'))
+            .filter((l) => l.trim().length > 0)
             .filter((l) => /\bconsole\.(log|debug)\b/.test(l))
         if (addedLines.length > 0) {
             warn(
