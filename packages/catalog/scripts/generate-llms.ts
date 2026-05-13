@@ -4,7 +4,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const CATALOG_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'catalog');
-const LLMS_PATH = path.join(CATALOG_ROOT, '..', '..', '..', 'llms.txt');
+const REPO_ROOT = path.resolve(CATALOG_ROOT, '..', '..', '..');
+const PATTERNS_DIR = path.join(REPO_ROOT, 'packages', 'core', 'patterns');
+const LLMS_PATH = path.join(REPO_ROOT, 'llms.txt');
 const MARKER_START = '<!-- llms-catalog-start -->';
 const MARKER_END = '<!-- llms-catalog-end -->';
 
@@ -66,6 +68,10 @@ async function loadCollections(): Promise<string[]> {
   return result;
 }
 
+async function loadPatterns(): Promise<string[]> {
+  return await listFiles(PATTERNS_DIR, '.md');
+}
+
 async function loadServers(): Promise<string[]> {
   const dir = path.join(CATALOG_ROOT, 'servers');
   return await listFiles(dir, '.yaml');
@@ -76,6 +82,7 @@ interface GeneratedSectionOptions {
   agentCount: number;
   collectionCount: number;
   serverCount: number;
+  patternCount: number;
   collectionNames: string[];
 }
 
@@ -84,11 +91,12 @@ function buildGeneratedSection({
   agentCount,
   collectionCount,
   serverCount,
+  patternCount,
   collectionNames,
 }: GeneratedSectionOptions): string {
   return `${MARKER_START}
 Key capabilities:
-- 15 tool-agnostic workflow patterns
+- ${patternCount} tool-agnostic workflow patterns
 - ${skillCount} portable skills for autonomous development
 - ${agentCount} catalog agents in \`packages/catalog/catalog/agents/\`
 - Cross-tool installer (forge-kit) with interactive setup wizard
@@ -108,11 +116,12 @@ ${MARKER_END}`;
 }
 
 async function main(): Promise<void> {
-  const [skills, agents, collections, servers] = await Promise.all([
+  const [skills, agents, collections, servers, patterns] = await Promise.all([
     loadSkills(),
     loadAgents(),
     loadCollections(),
     loadServers(),
+    loadPatterns(),
   ]);
 
   const collectionNames = collections.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
@@ -121,6 +130,7 @@ async function main(): Promise<void> {
     agentCount: agents.length,
     collectionCount: collections.length,
     serverCount: servers.length,
+    patternCount: patterns.length,
     collectionNames,
   });
 
