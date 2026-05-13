@@ -24,7 +24,7 @@ const testChanges = all.filter((p) => /\.(spec|test)\.(ts|tsx|js|jsx|mjs|cjs)$/.
 async function countSourceAdditions(): Promise<number> {
     if (sourceChanges.length === 0) return 0
     const diffs = await Promise.all(sourceChanges.map((f) => danger.git.diffForFile(f)))
-    return diffs.reduce((sum, d) => sum + (d?.added.split('\n').filter((l) => l.startsWith('+')).length ?? 0), 0)
+    return diffs.reduce((sum, d) => sum + (d?.added.split('\n').filter((l) => l.trim().length > 0).length ?? 0), 0)
 }
 
 const TITLE_PREFIX_SKIP = /^(chore|test|docs|refactor|ci|build|style|perf)(\([^)]*\))?:\s/
@@ -35,7 +35,7 @@ if (userFacingChange && !changelogTouched && !TITLE_PREFIX_SKIP.test(pr.title)) 
 }
 
 const packageJsonChanged = modified.some((p) => /(^|\/)package\.json$/.test(p))
-const lockChanged = modified.some((p) => /(^|\/)package-lock\.json$/.test(p))
+const lockChanged = all.some((p) => /(^|\/)package-lock\.json$/.test(p))
 if (packageJsonChanged && !lockChanged) {
     fail(`\`package.json\` changed but \`package-lock.json\` did not. Run \`npm install\` and commit the lockfile.`)
 }
@@ -50,7 +50,7 @@ async function checkConsoleLogs(): Promise<void> {
     for (const file of touched) {
         const diff = await danger.git.diffForFile(file)
         if (!diff) continue
-        const lines = diff.added.split('\n').filter((l) => l.startsWith('+') && /\bconsole\.(log|debug)\b/.test(l))
+        const lines = diff.added.split('\n').filter((l) => l.trim().length > 0 && /\bconsole\.(log|debug)\b/.test(l))
         if (lines.length > 0) {
             warn(`Possible debug residue in \`${file}\`: ${lines.length} \`console.log/debug\` line(s) added.`)
         }
