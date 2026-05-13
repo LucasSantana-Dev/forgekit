@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.23.0] - 2026-05-13
+
+### Added
+
+- **4 tool-builder skills** for authoring Claude Code primitives: `agent-development` (subagent frontmatter + design), `command-development` (slash command authoring with frontmatter, args, AskUserQuestion patterns), `hook-development` (PreToolUse/PostToolUse/Stop/etc. hook events + prompt-based API), `create-subagent` (reusable specialized-agent design).
+- **Collection cross-reference** — all 4 surfaced under `skill-authoring`.
+
+### Changed
+
+- Catalog skill count: 145 → 149.
+
 ## [0.22.0] - 2026-05-13
 
 ### Added

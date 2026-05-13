@@ -1,0 +1,28 @@
+{
+  "id": "hook-development",
+  "name": "Hook Development",
+  "description": "Guidance for creating Claude Code plugin hooks — PreToolUse, PostToolUse, Stop, SubagentStop, SessionStart, SessionEnd, UserPromptSubmit, PreCompact, Notification events. Covers ${CLAUDE_PLUGIN_ROOT}, prompt-based hooks API, validation patterns, and blocking dangerous commands.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "claude-code",
+    "hooks",
+    "authoring",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/hook-development/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Desenvolvimento de Hooks",
+      "description": "Guia para criar hooks de plugin do Claude Code — eventos PreToolUse, PostToolUse, Stop, SubagentStop, SessionStart, SessionEnd, UserPromptSubmit, PreCompact, Notification. Cobre ${CLAUDE_PLUGIN_ROOT}, API de hooks baseada em prompt, padrões de validação e bloqueio de comandos perigosos."
+    }
+  }
+}

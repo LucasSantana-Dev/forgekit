@@ -27,6 +27,14 @@ items:
   id: adt-bilingual-readme-sync
 - kind: skill
   id: prompting-discipline
+- kind: skill
+  id: agent-development
+- kind: skill
+  id: command-development
+- kind: skill
+  id: hook-development
+- kind: skill
+  id: create-subagent
 translations:
   pt-BR:
     name: Autoria de Skills
