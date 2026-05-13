@@ -1,0 +1,35 @@
+name: Review Tools
+
+# Calls org-level reusable workflows in LucasSantana-Dev/.github.
+# Pinned to @CENTRAL_TAG@ to avoid central breakage cascading.
+#
+# Repo-specific behavior:
+#   - dangerfile.ts   (rules)
+#   - .coderabbit.yaml (path filters, base branches)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches:
+      - main
+      - 'release/**'
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'CHANGELOG.md'
+      - 'package-lock.json'
+      - '*.lock'
+
+concurrency:
+  group: review-tools-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  claude-review:
+    uses: LucasSantana-Dev/.github/.github/workflows/claude-review.yml@@CENTRAL_TAG@
+    secrets:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  danger:
+    uses: LucasSantana-Dev/.github/.github/workflows/danger.yml@@CENTRAL_TAG@
+    secrets: inherit
