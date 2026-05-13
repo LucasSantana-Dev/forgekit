@@ -5,7 +5,7 @@
 // rules are repo-specific by design. The forge-kit installer only
 // scaffolds the starting point.
 
-import { danger, fail, message, warn } from 'danger'
+import { danger, fail, message, schedule, warn } from 'danger'
 
 const pr = danger.github.pr
 const modified = danger.git.modified_files
@@ -141,4 +141,8 @@ async function runAsyncChecks(): Promise<void> {
     await Promise.all([checkConsoleLogs(), checkLargeFiles()])
 }
 
-await runAsyncChecks()
+// Hand the async work to Danger's scheduler. Danger awaits any promises
+// registered via schedule() before exit. Using schedule() instead of a
+// top-level await keeps the dangerfile CommonJS-loadable (Danger v12 uses
+// require(), which rejects top-level await with ERR_REQUIRE_ASYNC_MODULE).
+schedule(runAsyncChecks())
