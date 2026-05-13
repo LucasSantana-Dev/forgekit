@@ -36,6 +36,14 @@ items:
   id: adt-worktree-flow
 - kind: skill
   id: adt-checkpoint
+- kind: skill
+  id: release-cut
+- kind: skill
+  id: hotfix
+- kind: skill
+  id: dep-sweep
+- kind: skill
+  id: repo-bootstrap
 translations:
   pt-BR:
     name: Release & Deploy

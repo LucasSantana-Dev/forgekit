@@ -1,0 +1,29 @@
+{
+  "id": "branch-hygiene",
+  "name": "Branch Hygiene",
+  "description": "Composite skill — one-pass cleanup of stale local branches, dead worktrees, merged branches, and abandoned remote PR branches. Chains `git fetch --prune` → clean_gone → worktree prune → delete merged-to-main/release branches → delete remote PR branches whose PRs merged >7 days ago. Use instead of running clean_gone alone; that only catches half the rot.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "composite",
+    "git",
+    "maintenance",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/branch-hygiene/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Higiene de Branches",
+      "description": "Skill composto — limpeza em uma passada de branches locais obsoletas, worktrees mortas, branches mergeadas e branches remotas de PR abandonadas. Encadeia `git fetch --prune` → clean_gone → poda de worktree → exclusão de branches já mergeadas em main/release → exclusão de branches remotas cujo PR foi mergeado há >7 dias. Use no lugar de rodar clean_gone sozinho — ele só pega metade do lixo."
+    }
+  }
+}

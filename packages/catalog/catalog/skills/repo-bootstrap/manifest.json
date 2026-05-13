@@ -1,0 +1,29 @@
+{
+  "id": "repo-bootstrap",
+  "name": "Repo Bootstrap",
+  "description": "Composite skill — configure a fresh or under-configured repo for the release-branch workflow in one pass. Creates the `release` branch on origin, seeds Keep-a-Changelog `CHANGELOG.md`, drops in `.claude/dep-sweep-config.json` + `.claude/branch-hygiene-config.json` + a `release-cadence.md` standard stub, opens a `chore/repo-bootstrap` PR to main. Without this, none of the release-branch composites can fire. Idempotent.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "composite",
+    "setup",
+    "release",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/repo-bootstrap/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Bootstrap de Repo",
+      "description": "Skill composto — configura em uma passada um repo novo ou subconfigurado para o fluxo de release-branch. Cria a branch `release` no origin, semeia `CHANGELOG.md` em Keep-a-Changelog, instala `.claude/dep-sweep-config.json` + `.claude/branch-hygiene-config.json` + um stub do standard `release-cadence.md`, abre um PR `chore/repo-bootstrap` para main. Sem isso, nenhum dos compostos de release-branch consegue disparar. Idempotente."
+    }
+  }
+}
