@@ -16,29 +16,27 @@ const { collections, locale, hrefFor, heading, lede } = Astro.props;
 const featured = collections.slice(0, 3);
 const remaining = collections.slice(3);
 ---
-<section class="hero-surface" style="margin: 1.25rem 0 1rem; display: grid; gap: 1rem;">
-  {(heading || lede) && (
-    <div>
-      {heading && <div class="hero-surface-title">{heading}</div>}
-      {lede && <p class="lead-muted">{lede}</p>}
-    </div>
-  )}
-  <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-    {featured.map((c) => (
-      <Card
-        kind="collection"
-        id={c.id}
-        name={c.name}
-        description={c.description}
-        tags={c.tags ?? []}
-        href={hrefFor(c.id)}
-        extraTag={pluralizeItems(c.items.length, locale)}
-      />
-    ))}
+{(heading || lede) && (
+  <div class="section-collections-header">
+    {heading && <div class="section-title">{heading}</div>}
+    {lede && <p class="section-lede">{lede}</p>}
   </div>
-</section>
+)}
+<div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+  {featured.map((c) => (
+    <Card
+      kind="collection"
+      id={c.id}
+      name={c.name}
+      description={c.description}
+      tags={c.tags ?? []}
+      href={hrefFor(c.id)}
+      extraTag={pluralizeItems(c.items.length, locale)}
+    />
+  ))}
+</div>
 {remaining.length > 0 && (
-  <div class="grid">
+  <div class="grid remaining-grid" style="margin-top: 1.25rem;">
     {remaining.map((c) => (
       <Card
         kind="collection"

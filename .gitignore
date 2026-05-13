@@ -29,3 +29,18 @@ build/
 .cache/
 .eslintcache
 .astro/
+
+# Local screenshots and audit artifacts (not source)
+*.png
+.impeccable/
+.playwright-mcp/
+
+# Personal agent config (not catalog source)
+.agents/
+.claude/agents/
+.claude/skills/
+.claude/settings.json
+
+# Personal product/design notes (use docs/ for shipped versions)
+PRODUCT.md
+DESIGN.md

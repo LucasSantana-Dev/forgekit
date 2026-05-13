@@ -1,0 +1,219 @@
+---
+import Base from "../../layouts/Base.astro";
+import Card from "../../components/Card.astro";
+import SearchFilter from "../../components/SearchFilter.astro";
+import {
+  getSkills,
+  getServers,
+  getAgents,
+  getHooks,
+  getCommands,
+  getTools,
+} from "../../lib/catalog.ts";
+import { deriveProvider, providerLabel, PROVIDER_ORDER, type Provider, type Kind } from "../../lib/ui.ts";
+
+const base = import.meta.env.BASE_URL;
+
+const [skills, servers, agents, hooks, commands, tools] = await Promise.all([
+  getSkills(),
+  getServers(),
+  getAgents(),
+  getHooks(),
+  getCommands(),
+  getTools(),
+]);
+
+interface UnifiedEntry {
+  kind: Kind;
+  id: string;
+  name: string;
+  description: string;
+  tags: string[];
+  href: string;
+  extraTag?: string;
+}
+
+const all: UnifiedEntry[] = [
+  ...skills.map<UnifiedEntry>((s) => ({
+    kind: "skill", id: s.id, name: s.name, description: s.description, tags: s.tags ?? [],
+    href: `${base}skills/${s.id}/`,
+  })),
+  ...agents.map<UnifiedEntry>((a) => ({
+    kind: "agent", id: a.id, name: a.name, description: a.description, tags: a.tags ?? [],
+    href: `${base}agents/${a.id}/`, extraTag: a.model,
+  })),
+  ...servers.map<UnifiedEntry>((s) => ({
+    kind: "server", id: s.id, name: s.name, description: s.description, tags: s.tags ?? [],
+    href: `${base}servers/${s.id}/`, extraTag: s.transport,
+  })),
+  ...hooks.map<UnifiedEntry>((h) => ({
+    kind: "hook", id: h.id, name: h.name, description: h.description, tags: h.tags ?? [],
+    href: `${base}hooks/${h.id}/`, extraTag: h.event,
+  })),
+  ...commands.map<UnifiedEntry>((c) => ({
+    kind: "command", id: c.id, name: c.name, description: c.description, tags: c.tags ?? [],
+    href: `${base}commands/${c.id}/`, extraTag: c.category,
+  })),
+  ...tools.map<UnifiedEntry>((t) => ({
+    kind: "tool", id: t.id, name: t.name, description: t.description, tags: t.tags ?? [],
+    href: `${base}tools/${t.id}/`, extraTag: t.runtime,
+  })),
+];
+
+// Bucket by primary provider; sort each bucket alphabetically.
+const byProvider = new Map<Provider, UnifiedEntry[]>();
+for (const entry of all) {
+  const provider = deriveProvider(entry.tags);
+  if (!byProvider.has(provider)) byProvider.set(provider, []);
+  byProvider.get(provider)!.push(entry);
+}
+for (const list of byProvider.values()) list.sort((a, b) => a.name.localeCompare(b.name));
+
+const providers = PROVIDER_ORDER.filter((p) => (byProvider.get(p)?.length ?? 0) > 0);
+
+// Tag union for the SearchFilter chips.
+const tagSet = new Set<string>();
+for (const e of all) for (const tag of e.tags) tagSet.add(tag);
+const tags = [...tagSet].sort();
+
+const slugify = (s: string) => s.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+---
+<Base title="Providers" description={`Browse ${all.length} catalog entries grouped by AI provider — Claude Code, Codex, Gemini CLI, Cursor, and local LLMs, with provider-specific tooling.`}>
+  <h1>Providers</h1>
+  <p class="lead-muted">
+    Browse the catalog by which AI provider an entry targets. Most entries land in
+    <code>~/.claude/</code> and run with <strong>Claude Code</strong>; entries tagged for
+    Codex, Gemini, Cursor, or local runtimes are listed under their own bucket.
+  </p>
+  <SearchFilter placeholder={`Search ${all.length} entries…`} tags={tags} />
+
+  <div class="page-layout">
+    <div class="page-main">
+      {providers.map((p) => {
+        const items = byProvider.get(p)!;
+        return (
+          <section class="entry-category" id={slugify(providerLabel(p))}>
+            <div class="category-header">
+              <h2 class="category-title">{providerLabel(p)}</h2>
+              <span class="category-count">{items.length}</span>
+            </div>
+            <div class="grid">
+              {items.map((e) => (
+                <Card
+                  kind={e.kind}
+                  id={e.id}
+                  name={e.name}
+                  description={e.description}
+                  tags={e.tags}
+                  href={e.href}
+                  extraTag={e.extraTag}
+                />
+              ))}
+            </div>
+          </section>
+        );
+      })}
+      <div id="empty-state" class="empty" style="display: none;">No entries match your filters.</div>
+    </div>
+
+    {providers.length > 1 && (
+      <aside class="page-sidebar">
+        <div class="sidebar-heading">Providers</div>
+        <nav aria-label="Jump to provider">
+          {providers.map((p) => (
+            <a class="sidebar-link" href={`#${slugify(providerLabel(p))}`} data-provider={p}>
+              <span class="sidebar-dot" aria-hidden="true"></span>
+              <span class="sidebar-label">{providerLabel(p)}</span>
+              <span class="sidebar-count">{byProvider.get(p)!.length}</span>
+            </a>
+          ))}
+        </nav>
+      </aside>
+    )}
+  </div>
+</Base>
+
+<style>
+  .page-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .page-main { min-width: 0; }
+  .page-sidebar { position: sticky; top: 5rem; }
+  .sidebar-heading {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--fg-subtle);
+    padding: 0 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .page-sidebar nav { display: flex; flex-direction: column; gap: 0.1rem; }
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--fg-subtle);
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .sidebar-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--fg-subtle);
+    opacity: 0.5; flex-shrink: 0;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .sidebar-link[data-provider="claude"] .sidebar-dot { background: oklch(75% 0.08 75); }
+  .sidebar-link[data-provider="codex"] .sidebar-dot { background: oklch(72% 0.16 145); }
+  .sidebar-link[data-provider="gemini"] .sidebar-dot { background: oklch(72% 0.14 250); }
+  .sidebar-link[data-provider="cursor"] .sidebar-dot { background: oklch(70% 0.14 320); }
+  .sidebar-link[data-provider="local"] .sidebar-dot { background: oklch(70% 0.05 200); }
+  .sidebar-link[data-provider="any"] .sidebar-dot { background: var(--fg-subtle); }
+  .sidebar-label { flex: 1; min-width: 0; }
+  .sidebar-link:hover { background: rgba(255, 255, 255, 0.06); color: var(--fg); }
+  .sidebar-link:hover .sidebar-dot { opacity: 0.85; }
+  .sidebar-link.is-active { background: rgba(255, 255, 255, 0.06); color: var(--fg); }
+  .sidebar-link.is-active .sidebar-dot { opacity: 1; transform: scale(1.2); }
+  .sidebar-count { font-size: 0.78rem; opacity: 0.6; flex-shrink: 0; }
+  .entry-category { scroll-margin-top: 5rem; margin-bottom: 3rem; }
+  .category-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .category-title {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--fg-subtle);
+    margin: 0;
+  }
+  .category-count {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--fg-muted, var(--fg-subtle));
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+    line-height: 1.6;
+  }
+  @media (max-width: 768px) {
+    .page-layout { grid-template-columns: 1fr; }
+    .page-sidebar { position: static; order: -1; }
+    .sidebar-heading { display: none; }
+    .page-sidebar nav { flex-direction: row; flex-wrap: wrap; }
+    .sidebar-link { border: 1px solid var(--border); border-radius: 999px; padding: 0.3rem 0.7rem; }
+  }
+</style>

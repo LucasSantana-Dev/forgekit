@@ -1,0 +1,31 @@
+{
+  "id": "adt-research-and-decide",
+  "name": "Research And Decide",
+  "description": "Composite skill — research a question, challenge the conclusion, plan adoption, and capture the decision. Chains adt-research or brainstorming (explore) → critic agent (challenge) → plan (sequence) → adr-write (record). Use when evaluating a library / pattern / architecture choice — forces the research-to-ADR pairing that usually slips.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "composite",
+    "knowledge"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit/core/skills/research-and-decide.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/research-and-decide.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Research and Decide",
+      "description": "Skill composta — pesquisa um tópico, desafia a conclusão, planeja adoção e captura a decisão. Encadeia adt-research/brainstorming → critic agent → plan → adr-write."
+    }
+  }
+}

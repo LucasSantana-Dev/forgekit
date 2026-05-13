@@ -29,10 +29,11 @@ for (const e of [...skills, ...servers, ...agents, ...docs, ...hooks, ...command
 }
 const tags = [...tagSet].sort();
 ---
-<Base title="Search" description="Search the whole library.">
+<Base title="Search" description="Search the entire Forge Kit catalog of skills, agents, MCP servers, hooks, commands, tools, docs, and tutorials in one place." noindex={true}>
   <h1>Search</h1>
   <p class="lead-muted">Everything in the library — skills, servers, agents, tools, hooks, commands, docs.</p>
   <SearchFilter placeholder="Search everything…" tags={tags} />
+  <h2 class="visually-hidden">Results</h2>
   <div class="grid">
     {skills.map((s) => (
       <Card kind="skill" id={s.id} name={s.name} description={s.description} tags={s.tags} href={`${base}skills/${s.id}/`} />

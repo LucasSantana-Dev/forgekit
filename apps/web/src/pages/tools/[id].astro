@@ -4,7 +4,8 @@ import EntryHeader from "../../components/EntryHeader.astro";
 import InstallBlock from "../../components/InstallBlock.astro";
 import UsageBlock from "../../components/UsageBlock.astro";
 import RelatedTutorials from "../../components/RelatedTutorials.astro";
-import { getTools, getTutorials } from "../../lib/catalog.ts";
+import RelatedCollections from "../../components/RelatedCollections.astro";
+import { getTools, getTutorials, getCollections } from "../../lib/catalog.ts";
 import { installCommand } from "../../lib/ui.ts";
 
 export async function getStaticPaths() {
@@ -14,6 +15,7 @@ export async function getStaticPaths() {
 const { tool } = Astro.props;
 const cmd = installCommand("tool", tool.id)!;
 const tutorials = await getTutorials();
+const collections = await getCollections();
 const base = import.meta.env.BASE_URL;
 ---
 <Base title={tool.name} description={tool.description}>
@@ -48,5 +50,6 @@ const base = import.meta.env.BASE_URL;
     </p>
   )}
 
+  <RelatedCollections kind="tool" id={tool.id} collections={collections} base={base} />
   <RelatedTutorials kind="tool" id={tool.id} tutorials={tutorials} base={base} />
 </Base>

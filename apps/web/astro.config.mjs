@@ -11,27 +11,14 @@ const site = process.env.ASTRO_SITE ?? "https://forgekit.lucassantana.tech";
 export default defineConfig({
   site,
   base,
-  trailingSlash: "ignore",
+  // "always" eliminates the `/skills → /skills/` 307 redirect chain that
+  // squirrelscan flagged on 99 pages — every internal link now goes directly
+  // to the canonical trailing-slash URL.
+  trailingSlash: "always",
   build: {
     format: "directory",
   },
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en", "pt-br"],
-    routing: {
-      prefixDefaultLocale: false,
-      redirectToDefaultLocale: false,
-    },
-  },
-  integrations: [
-    sitemap({
-      i18n: {
-        defaultLocale: "en",
-        locales: {
-          en: "en",
-          "pt-br": "pt-BR",
-        },
-      },
-    }),
-  ],
+  // pt-BR locale was unpublished — the i18n + sitemap blocks no longer reference
+  // it so `@astrojs/sitemap` doesn't emit 338 stale `/pt-br/*` URLs.
+  integrations: [sitemap()],
 });

@@ -3,7 +3,8 @@ import Base from "../../layouts/Base.astro";
 import EntryHeader from "../../components/EntryHeader.astro";
 import InstallBlock from "../../components/InstallBlock.astro";
 import RelatedTutorials from "../../components/RelatedTutorials.astro";
-import { getCommands, getTutorials } from "../../lib/catalog.ts";
+import RelatedCollections from "../../components/RelatedCollections.astro";
+import { getCommands, getTutorials, getCollections } from "../../lib/catalog.ts";
 import { installCommand, renderMarkdown } from "../../lib/ui.ts";
 
 export async function getStaticPaths() {
@@ -14,6 +15,7 @@ const { command } = Astro.props;
 const rendered = renderMarkdown(command.body);
 const cmd = installCommand("command", command.id)!;
 const tutorials = await getTutorials();
+const collections = await getCollections();
 const base = import.meta.env.BASE_URL;
 ---
 <Base title={command.name} description={command.description}>
@@ -28,5 +30,6 @@ const base = import.meta.env.BASE_URL;
 
   <article class="markdown mt-4" set:html={rendered} />
 
+  <RelatedCollections kind="command" id={command.id} collections={collections} base={base} />
   <RelatedTutorials kind="command" id={command.id} tutorials={tutorials} base={base} />
 </Base>

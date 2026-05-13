@@ -1,0 +1,141 @@
+---
+import { resolveLocale, t, type Locale } from "../lib/i18n";
+
+interface Props {
+  command: string;
+  locale?: Locale;
+  /** Optional title shown in the terminal title bar (e.g. "~/forge-kit"). */
+  windowTitle?: string;
+}
+const locale = Astro.props.locale ?? resolveLocale(Astro.url.pathname);
+const { command, windowTitle = "forge-kit" } = Astro.props;
+const copyLabel = t("installCopy.label", locale);
+---
+<div class="term">
+  <div class="term-bar">
+    <span class="term-traffic" aria-hidden="true">
+      <span class="dot dot-r"></span>
+      <span class="dot dot-y"></span>
+      <span class="dot dot-g"></span>
+    </span>
+    <span class="term-title">{windowTitle}</span>
+    <button class="term-copy" data-copy={command} type="button" aria-label={copyLabel} title={copyLabel}>
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <rect x="4.5" y="4.5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M2.5 11V3a.5.5 0 0 1 .5-.5h8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="term-body">
+    <span class="term-prompt" aria-hidden="true">$</span>
+    <code class="term-cmd">{command}</code>
+    <span class="term-cursor" aria-hidden="true"></span>
+  </div>
+</div>
+
+<style>
+  .term {
+    border-radius: 12px;
+    background: oklch(8% 0.005 265);
+    border: 1px solid oklch(75% 0.08 75 / 0.32);
+    overflow: hidden;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    box-shadow:
+      0 14px 36px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  .term:hover {
+    border-color: oklch(75% 0.08 75 / 0.55);
+    box-shadow:
+      0 20px 44px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 0 0 0 transparent;
+  }
+  .term-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.5rem 0.7rem;
+    background: oklch(12% 0.005 265);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .term-traffic {
+    display: inline-flex;
+    gap: 0.4rem;
+    align-items: center;
+  }
+  .term-traffic .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .term-traffic .dot-r { background: oklch(64% 0.18 25); }
+  .term-traffic .dot-y { background: oklch(78% 0.16 85); }
+  .term-traffic .dot-g { background: oklch(70% 0.16 145); }
+  .term-title {
+    flex: 1;
+    text-align: center;
+    font-size: 0.74rem;
+    color: oklch(60% 0.01 265);
+    letter-spacing: 0.04em;
+  }
+  .term-copy {
+    display: inline-grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: oklch(70% 0.005 265);
+    cursor: pointer;
+    transition: background 0.14s ease, color 0.14s ease, border-color 0.14s ease;
+  }
+  .term-copy:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: oklch(95% 0 0);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .term-copy.copied {
+    color: oklch(78% 0.13 145);
+  }
+  .term-body {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.95rem 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .term-prompt {
+    color: oklch(75% 0.08 75);
+    font-weight: 700;
+    user-select: none;
+  }
+  .term-cmd {
+    color: oklch(94% 0 0);
+    font-size: 0.93rem;
+    background: transparent;
+    padding: 0;
+    border: 0;
+    line-height: 1.4;
+  }
+  .term-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.05em;
+    background: oklch(75% 0.08 75);
+    border-radius: 1px;
+    animation: term-blink 1.05s steps(1) infinite;
+    flex-shrink: 0;
+  }
+  @keyframes term-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .term-cursor { animation: none; }
+  }
+</style>

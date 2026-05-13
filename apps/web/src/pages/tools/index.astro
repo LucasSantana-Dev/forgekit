@@ -1,36 +1,155 @@
 ---
 import Base from "../../layouts/Base.astro";
 import Card from "../../components/Card.astro";
-import SearchFilter from "../../components/SearchFilter.astro";
 import { getTools } from "../../lib/catalog.ts";
+import { deriveCategory } from "../../lib/ui.ts";
 
 const tools = await getTools();
 const base = import.meta.env.BASE_URL;
 
-const tagSet = new Set<string>();
-for (const t of tools) for (const tag of t.tags) tagSet.add(tag);
-const tags = [...tagSet].sort();
+// Topical category from tags + the explicit `category` field. The combined input
+// gives `deriveCategory()` a chance to land entries like `mcp-ops` and `setup` in
+// the human-readable buckets defined in `lib/ui.ts`.
+const byCategory = tools.reduce<Record<string, typeof tools>>((acc, t) => {
+  const cat = deriveCategory([t.category, ...t.tags].filter(Boolean) as string[]);
+  (acc[cat] ??= []).push(t);
+  return acc;
+}, {});
+const categories = Object.keys(byCategory).sort();
+
+const slugify = (s: string) => s.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 ---
-<Base title="Tools" description={`${tools.length} standalone scripts and CLIs.`}>
+<Base title="Tools" description={`Browse ${tools.length} standalone CLIs and shell scripts — installers, MCP health probes, release helpers, and capture utilities for AI-assisted dev.`}>
   <h1>Tools</h1>
   <p class="lead-muted">
     Standalone scripts and CLIs — token optimization, RAG, compression, MCP ops, diagnostics.
     Install with <code>npx forge-kit install &lt;id&gt;</code> → lands in
     <code>~/.local/bin/&lt;id&gt;</code>.
   </p>
-  <SearchFilter placeholder={`Search ${tools.length} tools…`} tags={tags} />
-  <div class="grid">
-    {tools.map((t) => (
-      <Card
-        kind="tool"
-        id={t.id}
-        name={t.name}
-        description={t.description}
-        tags={t.tags}
-        href={`${base}tools/${t.id}/`}
-        extraTag={`${t.category} · ${t.runtime}`}
-      />
-    ))}
+
+  <div class="page-layout">
+    <div class="page-main">
+      {categories.map((category) => (
+        <section class="entry-category" id={slugify(category)}>
+          <div class="category-header">
+            <h2 class="category-title">{category}</h2>
+            <span class="category-count">{byCategory[category].length}</span>
+          </div>
+          <div class="grid">
+            {byCategory[category].map((t) => (
+              <Card
+                kind="tool"
+                id={t.id}
+                name={t.name}
+                description={t.description}
+                tags={t.tags}
+                href={`${base}tools/${t.id}/`}
+                extraTag={t.runtime}
+                hideKind={true}
+              />
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    {categories.length > 1 && (
+      <aside class="page-sidebar">
+        <div class="sidebar-heading">Categories</div>
+        <nav aria-label="Jump to category">
+          {categories.map((category) => (
+            <a class="sidebar-link" href={`#${slugify(category)}`}>
+              <span class="sidebar-dot" aria-hidden="true"></span>
+              <span class="sidebar-label">{category}</span>
+              <span class="sidebar-count">{byCategory[category].length}</span>
+            </a>
+          ))}
+        </nav>
+      </aside>
+    )}
   </div>
-  <div id="empty-state" class="empty" style="display: none;">No tools match your filters.</div>
 </Base>
+
+<style>
+  .page-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .page-main {
+    min-width: 0;
+  }
+  .page-sidebar { position: sticky; top: 5rem; }
+  .sidebar-heading {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--fg-subtle);
+    padding: 0 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .page-sidebar nav { display: flex; flex-direction: column; gap: 0.1rem; }
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--fg-subtle);
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .sidebar-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--kind-tool, var(--fg-subtle));
+    opacity: 0.5; flex-shrink: 0;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .sidebar-label { flex: 1; min-width: 0; }
+  .sidebar-link:hover { background: rgba(255, 255, 255, 0.06); color: var(--fg); }
+  .sidebar-link:hover .sidebar-dot { opacity: 0.85; }
+  .sidebar-link.is-active { background: rgba(255, 255, 255, 0.06); color: var(--fg); }
+  .sidebar-link.is-active .sidebar-dot { opacity: 1; transform: scale(1.2); }
+  .sidebar-count { font-size: 0.78rem; opacity: 0.6; flex-shrink: 0; }
+  .entry-category {
+    scroll-margin-top: 5rem;
+    margin-bottom: 3rem;
+  }
+  .category-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .category-title {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--fg-subtle);
+    margin: 0;
+  }
+  .category-count {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--fg-muted, var(--fg-subtle));
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+    line-height: 1.6;
+  }
+  @media (max-width: 768px) {
+    .page-layout { grid-template-columns: 1fr; }
+    .page-sidebar { position: static; order: -1; }
+    .sidebar-heading { display: none; }
+    .page-sidebar nav { flex-direction: row; flex-wrap: wrap; }
+    .sidebar-link { border: 1px solid var(--border); border-radius: 999px; padding: 0.3rem 0.7rem; }
+  }
+</style>

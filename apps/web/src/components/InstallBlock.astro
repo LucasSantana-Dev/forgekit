@@ -14,10 +14,125 @@ const {
   installLabel = t("entry.install", locale),
 } = Astro.props;
 ---
-<div class="install">
-  <div class="install-copy">
-    <span class="install-label">{installLabel}</span>
-    <code class="cmd">{command}</code>
+<div class="install-term">
+  <div class="install-term-bar">
+    <span class="install-term-traffic" aria-hidden="true">
+      <span class="dot dot-r"></span>
+      <span class="dot dot-y"></span>
+      <span class="dot dot-g"></span>
+    </span>
+    <span class="install-term-label">{installLabel}</span>
+    <button class="install-term-copy copy" data-copy={command} type="button">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <rect x="4.5" y="4.5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M2.5 11V3a.5.5 0 0 1 .5-.5h8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <span>{label}</span>
+    </button>
   </div>
-  <button class="copy" data-copy={command} type="button">{label}</button>
+  <div class="install-term-body">
+    <span class="install-term-prompt" aria-hidden="true">$</span>
+    <code class="install-term-cmd">{command}</code>
+  </div>
 </div>
+
+<style>
+  .install-term {
+    border-radius: 12px;
+    background: oklch(8% 0.005 265);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    overflow: hidden;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    box-shadow:
+      0 10px 28px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  .install-term:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow:
+      0 14px 32px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+  .install-term-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.5rem 0.7rem;
+    background: oklch(12% 0.005 265);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .install-term-traffic {
+    display: inline-flex;
+    gap: 0.4rem;
+    align-items: center;
+  }
+  .install-term-traffic .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .install-term-traffic .dot-r { background: oklch(64% 0.18 25); }
+  .install-term-traffic .dot-y { background: oklch(78% 0.16 85); }
+  .install-term-traffic .dot-g { background: oklch(70% 0.16 145); }
+  .install-term-label {
+    flex: 1;
+    text-align: center;
+    font-family: inherit;
+    font-size: 0.72rem;
+    color: oklch(60% 0.01 265);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .install-term-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: oklch(70% 0.005 265);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 500;
+    transition: background 0.14s ease, color 0.14s ease, border-color 0.14s ease;
+  }
+  .install-term-copy:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: oklch(95% 0 0);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  .install-term-copy.copied {
+    color: oklch(78% 0.13 145);
+    border-color: oklch(78% 0.13 145 / 0.4);
+  }
+  .install-term-body {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.95rem 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .install-term-prompt {
+    color: oklch(75% 0.08 75);
+    font-weight: 700;
+    user-select: none;
+  }
+  .install-term-cmd {
+    color: oklch(94% 0 0);
+    font-size: 0.92rem;
+    background: transparent;
+    padding: 0;
+    border: 0;
+    line-height: 1.4;
+  }
+  @media (max-width: 520px) {
+    .install-term-label { display: none; }
+    .install-term-bar { justify-content: space-between; }
+  }
+</style>

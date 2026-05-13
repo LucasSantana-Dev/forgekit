@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.19.0] - 2026-05-09
+
+### Added
+
+- **27 new catalog skills + composite workflow ecosystem** (#166) — 17 composite skills that chain related skills with reconciliation rules and explicit stop conditions, plus 10 individual skills + 4 merged-cluster skills. See PR #166 for the full list.
+- **Web — SEO + accessibility + UX overhaul** (#165) — provider and trust pages, improved typography and contrast, dropped pt-BR locale duplication, accessibility audit fixes across detail pages.
+
+### Removed
+
+- **`apps/web/src/pages/pt-br/`** locale routes (#165) — duplicated content moved to canonical English pages with `lang` attribute switching.
+
 ## [0.18.0] - 2026-05-07
 
 ### Added

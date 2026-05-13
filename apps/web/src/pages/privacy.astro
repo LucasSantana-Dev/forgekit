@@ -1,0 +1,63 @@
+---
+import Base from "../layouts/Base.astro";
+
+const lastUpdated = "2026-05-09";
+---
+<Base
+  title="Privacy"
+  description="The forgekit catalog is a static site with no analytics, cookies, or user tracking. Cloudflare edge logs are the only data Cloudflare retains."
+  titleSuffix="what the site collects (nothing)"
+>
+  <article class="prose">
+    <h1>Privacy policy</h1>
+    <p class="lead-muted">Last updated: {lastUpdated}.</p>
+
+    <h2>Short version</h2>
+    <p>
+      <strong>The catalog is a static site. We don't run analytics, set cookies, or collect personal data.</strong> The only data that exists is whatever Cloudflare's edge layer logs (IP, request URL, user agent, timing) for abuse prevention and performance — see <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare's privacy policy</a> for that surface.
+    </p>
+
+    <h2>What we collect</h2>
+    <ul>
+      <li><strong>Nothing client-side.</strong> No cookies, no <code>localStorage</code> tracking, no analytics scripts. The only <code>localStorage</code> use is your view-mode preference (grid vs. list) and which category sections you collapsed — those never leave the browser.</li>
+      <li><strong>Server-side.</strong> Standard Cloudflare edge logs. We do not have, store, or analyse a separate copy.</li>
+    </ul>
+
+    <h2>Third parties</h2>
+    <ul>
+      <li><strong>Google Fonts.</strong> The site loads the Geist font family from <code>fonts.googleapis.com</code>. Google may log the request — see <a href="https://policies.google.com/privacy" rel="noopener">Google's privacy policy</a>.</li>
+      <li><strong>Cloudflare.</strong> The site is hosted on Cloudflare Workers static assets. Cloudflare handles the edge and applies its standard logging policy.</li>
+      <li><strong>GitHub.</strong> Source links, contribution flow, and security disclosures route through GitHub. Their policy applies once you click out.</li>
+    </ul>
+
+    <h2>Your rights (GDPR / CCPA)</h2>
+    <p>
+      Because the site doesn't collect personal data directly, there's nothing for us to delete, export, or correct. If you have concerns about Cloudflare's edge logs, contact Cloudflare directly through their data-subject-access-request channel.
+    </p>
+
+    <h2>Changes</h2>
+    <p>
+      Material changes will bump the "last updated" date at the top of this page. Diff history lives in <a href="https://github.com/LucasSantana-Dev/forgekit/commits/main/apps/web/src/pages/privacy.astro" rel="noopener">the git log</a>.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about this policy: <a href="/contact/">/contact/</a>.
+    </p>
+
+    <h2>Related</h2>
+    <ul>
+      <li><a href="/about/">About</a> — who built this and why.</li>
+      <li><a href="/contact/">Contact</a> — bug reports, security disclosures, ideas.</li>
+      <li><a href="https://github.com/LucasSantana-Dev/forgekit" rel="noopener">Source on GitHub</a> — every change to this policy is in the git log.</li>
+    </ul>
+  </article>
+</Base>
+
+<style>
+  .prose { max-width: 70ch; margin: 2.5rem 0 4rem; }
+  .prose h2 { margin-top: 2.5rem; margin-bottom: 0.6rem; }
+  .prose ul { color: var(--fg); padding-left: 1.5rem; }
+  .prose li { margin: 0.4rem 0; }
+  .prose code { background: var(--code-bg); padding: 2px 6px; border-radius: 4px; }
+</style>
