@@ -1,7 +1,7 @@
 // Danger rules — single-package Node/TS variant.
 // Drops the packages/* glob assumption from the ts-monorepo template.
 
-import { danger, fail, message, warn } from 'danger'
+import { danger, fail, message, schedule, warn } from 'danger'
 
 const pr = danger.github.pr
 const modified = danger.git.modified_files
@@ -71,4 +71,7 @@ async function runAsyncChecks(): Promise<void> {
     await checkConsoleLogs()
 }
 
-await runAsyncChecks()
+// schedule() registers the async work with Danger's runner — required
+// because Danger v12 loads dangerfile.ts via require(), which rejects
+// top-level await (ERR_REQUIRE_ASYNC_MODULE).
+schedule(runAsyncChecks())
