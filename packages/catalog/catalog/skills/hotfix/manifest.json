@@ -1,0 +1,29 @@
+{
+  "id": "hotfix",
+  "name": "Hotfix",
+  "description": "Composite skill — emergency bypass of the release branch when production is broken and waiting for the next release-cut is not viable. Chains incident scoping → branch from main → minimal fix → pr-merge-readiness → merge → patch-tag → deploy → cherry-pick to release → post-deploy verify (sentry + ci-watch). Use ONLY for production-impacting breakage; routine fixes belong in /pr-to-release.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "composite",
+    "incident",
+    "release",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/hotfix/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Hotfix",
+      "description": "Skill composto — bypass emergencial da branch release quando produção está quebrada e esperar o próximo release-cut não é viável. Encadeia escopo de incidente → branch a partir de main → fix mínimo → pr-merge-readiness → merge → patch-tag → deploy → cherry-pick para release → verificação pós-deploy (sentry + ci-watch). Use APENAS para quebra que afeta produção; fixes rotineiros vão por /pr-to-release."
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "first-pr",
+  "name": "First PR",
+  "description": "Composite skill — land a safe first PR in an unfamiliar repo without rediscovery loops or guessing at conventions. Chains onboard-new-repo (architecture + scripts + CI scan) → context-pack (relevant files + standards + ADRs) → scope-and-execute (narrow the task) → test-driven-development (failing test first) → pr-to-release (open the PR). Use the first time you contribute to a repo.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "composite",
+    "onboarding",
+    "git",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/first-pr/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Primeiro PR",
+      "description": "Skill composto — entregue um primeiro PR seguro num repo desconhecido sem loops de descoberta nem chutes sobre convenções. Encadeia onboard-new-repo (arquitetura + scripts + scan de CI) → context-pack (arquivos relevantes + standards + ADRs) → scope-and-execute (escopo restrito) → test-driven-development (teste que falha primeiro) → pr-to-release (abre o PR). Use a primeira vez que contribuir num repo."
+    }
+  }
+}

@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.21.0] - 2026-05-13
+
+### Added
+
+- **7 release-flow composite skills** promoted from Codex/Claude-private into the shared catalog: `release-cut` (batch release branch into one tagged version), `branch-hygiene` (one-pass cleanup of stale branches + worktrees), `dep-sweep` (batch-process bot PR queues), `incident-followup` (postmortem chain), `hotfix` (emergency main-branch bypass), `repo-bootstrap` (one-pass release-branch workflow setup), `first-pr` (safe-first-PR onboarding chain). These close the doc→installable loop opened by the `codex-parity` doc in v0.20.0, which referenced them as the composite-first principle anchors.
+- **Collection cross-references** — new composites surfaced under `release-and-deploy`, `git-and-version-control`, `production-debugging`, and `codebase-onboarding`.
+
+### Changed
+
+- Catalog skill count: 134 → 141.
+
 ## [0.20.0] - 2026-05-13
 
 ### Added
