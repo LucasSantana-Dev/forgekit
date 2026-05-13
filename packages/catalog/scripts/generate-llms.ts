@@ -24,7 +24,11 @@ async function listDirs(dir: string): Promise<string[]> {
 
 async function listFiles(dir: string, ext: string): Promise<string[]> {
   if (!existsSync(dir)) return [];
-  return (await readdir(dir)).filter((entry) => entry.endsWith(ext)).sort();
+  const entries = await readdir(dir, { withFileTypes: true });
+  return entries
+    .filter((e) => e.isFile() && e.name.endsWith(ext))
+    .map((e) => e.name)
+    .sort();
 }
 
 async function loadSkills(): Promise<string[]> {
@@ -51,9 +55,12 @@ async function loadCollections(): Promise<string[]> {
   for (const file of await listFiles(dir, '.yaml')) {
     const raw = await readFile(path.join(dir, file), 'utf8');
     const match = raw.match(/^[ \t]*name:\s*(?:"([^"]+)"|'([^']+)'|(.+))$/m);
-    const rawName = match ? match[1] ?? match[2] ?? match[3] : undefined;
-    const name = rawName?.replace(/\s+#.*$/, '').trim();
-    result.push(name ?? file.replace(/\.yaml$/, ''));
+    // Only strip inline `# comment` from unquoted scalars — quoted values
+    // can legitimately contain `#` (e.g. "AI # Ops") and YAML preserves them.
+    const quoted = match?.[1] ?? match?.[2];
+    const unquoted = match?.[3]?.replace(/\s+#.*$/, '').trim();
+    const name = quoted?.trim() ?? unquoted;
+    result.push(name || file.replace(/\.yaml$/, ''));
   }
 
   return result;
