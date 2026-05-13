@@ -1,0 +1,29 @@
+{
+  "id": "incident-followup",
+  "name": "Incident Followup",
+  "description": "Composite skill — runs the postmortem chain after any production incident (hotfix, rollback, or prod outage). Chains adt-research → adr-write → generate-tests → security-sweep (conditional) → knowledge-loop → handoff. Stops the silent-postmortem failure mode where a hotfix ships and the lessons evaporate. Fires after /hotfix Phase 10 or when user says 'postmortem' / 'what did we learn'.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "composite",
+    "incident",
+    "postmortem",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/incident-followup/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Follow-up de Incidente",
+      "description": "Skill composto — roda a cadeia de postmortem depois de qualquer incidente de produção (hotfix, rollback ou outage). Encadeia adt-research → adr-write → generate-tests → security-sweep (condicional) → knowledge-loop → handoff. Acaba com o modo de falha do postmortem silencioso onde o hotfix sobe e as lições evaporam. Dispara após /hotfix fase 10 ou quando o usuário diz 'postmortem' / 'o que aprendemos'."
+    }
+  }
+}

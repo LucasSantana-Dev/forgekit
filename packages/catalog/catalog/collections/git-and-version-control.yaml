@@ -28,6 +28,10 @@ items:
   id: git-master
 - kind: server
   id: github
+- kind: skill
+  id: branch-hygiene
+- kind: skill
+  id: dep-sweep
 translations:
   pt-BR:
     name: Git e Controle de Versão

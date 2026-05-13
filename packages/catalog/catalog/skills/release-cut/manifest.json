@@ -1,0 +1,29 @@
+{
+  "id": "release-cut",
+  "name": "Release Cut",
+  "description": "Composite skill — promote the long-lived `release` branch to `main` and cut a single tagged version that batches every PR accumulated since the last tag. Chains pr-merge-readiness → version-bump → changelog-update → ship → stale-branch cleanup. Use instead of releasing every small fix individually so many small commits become one well-scoped release.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "composite",
+    "release",
+    "git",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/release-cut/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Cortar Release",
+      "description": "Skill composto — promove a branch `release` longeva para `main` e gera uma única versão tagueada que agrupa todos os PRs acumulados desde a última tag. Encadeia pr-merge-readiness → bump de versão → changelog-update → ship → limpeza de branches obsoletas. Use no lugar de lançar cada fix pequeno como release próprio: muitos commits viram um release bem escopado."
+    }
+  }
+}

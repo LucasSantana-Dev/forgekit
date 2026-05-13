@@ -33,6 +33,10 @@ items:
   id: workflow-logger
 - kind: skill
   id: debug
+- kind: skill
+  id: hotfix
+- kind: skill
+  id: incident-followup
 translations:
   pt-BR:
     name: Debugging em Produção

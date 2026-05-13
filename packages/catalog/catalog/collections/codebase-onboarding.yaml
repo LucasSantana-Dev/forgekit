@@ -34,6 +34,10 @@ items:
   id: architect
 - kind: agent
   id: document-specialist
+- kind: skill
+  id: first-pr
+- kind: skill
+  id: repo-bootstrap
 translations:
   pt-BR:
     name: Integração ao Codebase
