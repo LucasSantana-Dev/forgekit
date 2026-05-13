@@ -1,0 +1,20 @@
+id: filesystem
+name: Filesystem
+description: Reference MCP server from the Model Context Protocol team for read/write access to a sandboxed set of local directories. Agents can list, read, search, edit, move, and delete files within the allowed roots — no other paths are accessible. Configure roots as positional args (one per directory). Useful for letting an agent operate on a workspace or scratch directory without granting full disk access.
+transport: stdio
+command: npx
+args:
+  - -y
+  - '@modelcontextprotocol/server-filesystem'
+  - '${WORKSPACE_ROOT}'
+tags:
+  - filesystem
+  - files
+  - local
+  - sandbox
+homepage: https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem
+license: MIT
+translations:
+  pt-BR:
+    name: Filesystem
+    description: Servidor MCP de referência do time do Model Context Protocol para acesso leitura/escrita a um conjunto restrito de diretórios locais. Agentes podem listar, ler, buscar, editar, mover e deletar arquivos dentro dos roots permitidos — nenhum outro caminho fica acessível. Configure os roots como args posicionais (um por diretório). Útil para deixar um agente operar em um workspace ou diretório scratch sem dar acesso ao disco inteiro.

@@ -40,6 +40,8 @@ items:
   id: test-driven-development
 - kind: skill
   id: adt-tdd
+- kind: tool
+  id: review-tools
 translations:
   pt-BR:
     name: Gate de Verificação e Revisão

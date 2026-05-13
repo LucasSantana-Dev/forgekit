@@ -1,0 +1,18 @@
+id: fetch
+name: Fetch
+description: Reference MCP server from the Model Context Protocol team that fetches a URL and returns its contents as markdown (or raw HTML). Use when the agent needs to read public web pages, API docs, or blog posts without going through a full browser. No auth required; respects robots.txt and content-type. Pairs well with `firecrawl` (deeper scraping) and `tavily` (search).
+transport: stdio
+command: uvx
+args:
+  - mcp-server-fetch
+tags:
+  - fetch
+  - http
+  - content
+  - web
+homepage: https://github.com/modelcontextprotocol/servers/tree/main/src/fetch
+license: MIT
+translations:
+  pt-BR:
+    name: Fetch
+    description: Servidor MCP de referência do time do Model Context Protocol que busca uma URL e retorna o conteúdo como markdown (ou HTML cru). Use quando o agente precisar ler páginas web públicas, docs de API ou posts de blog sem passar por um browser completo. Sem auth; respeita robots.txt e content-type. Combina bem com `firecrawl` (scraping mais profundo) e `tavily` (busca).

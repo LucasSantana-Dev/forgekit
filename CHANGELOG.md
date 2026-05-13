@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.20.0] - 2026-05-13
+
+### Added
+
+- **4 new portable skills** promoted from Codex-only into the shared catalog: `debug` (systematic root-cause analysis), `dev-assets-sync` (workspace backup), `handoff-diet` (no-wakeup-polling pattern), `mac-optimize` (macOS resource-pressure triage with `boost.sh` + `diagnose.sh` companions).
+- **`codex-parity` doc** — full setup guide for bringing OpenAI Codex CLI into parity with Claude Code on the same machine: symlinked skill catalog, `.agents/memory/` mirror, composite-first AGENTS.md section, shared RAG MCP wiring.
+- **`review-tools` tool** — cross-repo PR review installer (Danger + CodeRabbit + Sonar templates per stack) — promoted from `packages/core/review-tools/` after PR #173 merged.
+- **11 MCP server catalog entries** — `fetch`, `filesystem`, `firecrawl`, `git`, `google-drive`, `notion`, `rag-index`, `sonarqube`, `ssh`, `tavily`, `context-mode`. Each entry includes the canonical `command`/`args`/`env` block needed by Codex/Claude MCP hosts.
+- **Collection cross-references** — new entries surfaced under `api-and-mcp-development`, `mcp-ops-and-recovery`, `token-and-context-optimization`, `context-rag-launchpad`, `solo-developer-starter`, `production-debugging`, and `verification-review-gate`.
+
+### Changed
+
+- Catalog server count: 10 → 21.
+- Catalog skill count: 130 → 134.
+- Catalog tool count: 10 → 11.
+- Catalog doc count: 21 → 22.
+
 ## [0.19.0] - 2026-05-09
 
 ### Added

@@ -1,0 +1,34 @@
+{
+  "id": "review-tools",
+  "name": "Cross-Repo Review Tools Installer",
+  "description": "Bash installer that wires automated code review across a repo — drops in stack-appropriate Danger, CodeRabbit, and SonarCloud config plus a Dangerfile template tuned for the detected runtime (Node, Python, Go, or mixed). Runs idempotent — re-running re-applies the latest templates without duplicating CI jobs. Best for trunk-based monorepos and feature branches that want CodeRabbit-grade review on every PR without per-repo manual setup.",
+  "version": "0.1.0",
+  "tags": [
+    "tool",
+    "ai-dev-toolkit",
+    "review",
+    "git",
+    "ci"
+  ],
+  "runtime": "bash",
+  "category": "setup",
+  "install": {
+    "copy_to": "~/.local/bin/install-review-tools",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/review-tools/install.sh"
+  },
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/review-tools",
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Instalador de Ferramentas de Review Multi-Repo",
+      "description": "Instalador em bash que conecta review automatizado de código em um repo — solta as configs adequadas de Danger, CodeRabbit e SonarCloud por stack, além de um Dangerfile template ajustado para o runtime detectado (Node, Python, Go ou misto). Roda de forma idempotente — re-executar reaplica os templates mais recentes sem duplicar jobs de CI. Ideal para monorepos trunk-based e branches de feature que querem review nível CodeRabbit em todo PR sem setup manual por repo."
+    }
+  }
+}

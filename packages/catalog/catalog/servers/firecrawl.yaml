@@ -1,0 +1,23 @@
+id: firecrawl
+name: Firecrawl
+description: Official Firecrawl MCP server — turn any website into clean markdown, JSON, or structured data via the Firecrawl API. Handles JavaScript-rendered pages, anti-bot protection, and pagination automatically. Use for deep scraping or extracting structured records (product listings, docs, articles) that the simpler `fetch` server can't reach. Requires a Firecrawl API key.
+transport: stdio
+command: npx
+args:
+  - -y
+  - firecrawl-mcp
+env:
+  - name: FIRECRAWL_API_KEY
+    description: Firecrawl API key from https://firecrawl.dev/
+    required: true
+tags:
+  - scraping
+  - web
+  - search
+  - extraction
+homepage: https://github.com/mendableai/firecrawl-mcp-server
+license: MIT
+translations:
+  pt-BR:
+    name: Firecrawl
+    description: Servidor MCP oficial do Firecrawl — transforma qualquer site em markdown limpo, JSON ou dados estruturados via API Firecrawl. Lida com páginas renderizadas em JavaScript, proteção anti-bot e paginação automaticamente. Use para scraping profundo ou extrair registros estruturados (catálogos de produtos, docs, artigos) que o servidor `fetch` mais simples não alcança. Requer uma API key Firecrawl.

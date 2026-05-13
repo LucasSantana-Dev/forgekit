@@ -36,6 +36,10 @@ items:
   id: token-usage-monitor
 - kind: hook
   id: context-optimizer
+- kind: skill
+  id: handoff-diet
+- kind: server
+  id: context-mode
 translations:
   pt-BR:
     name: Otimização de Token e Contexto

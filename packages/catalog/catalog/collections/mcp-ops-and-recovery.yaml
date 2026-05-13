@@ -34,6 +34,12 @@ items:
   id: memory
 - kind: server
   id: serena
+- kind: server
+  id: rag-index
+- kind: server
+  id: sonarqube
+- kind: server
+  id: ssh
 translations:
   pt-BR:
     name: Operações e Recuperação de MCP

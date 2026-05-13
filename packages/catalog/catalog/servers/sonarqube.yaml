@@ -1,0 +1,27 @@
+id: sonarqube
+name: SonarQube
+description: Community MCP server for SonarQube / SonarCloud — fetch quality gate status, issues by severity, hotspots, coverage trends, and per-rule occurrences from an authenticated Sonar instance. Useful for letting an agent answer "what's blocking the quality gate on this branch?" without leaving the session. Pairs with the `sonar-check` skill for pre-push preflights.
+transport: stdio
+command: npx
+args:
+  - -y
+  - sonarqube-mcp-server@latest
+env:
+  - name: SONAR_TOKEN
+    description: SonarCloud or self-hosted SonarQube user token (read-only scope is enough).
+    required: true
+  - name: SONAR_URL
+    description: Base URL of the Sonar instance. Defaults to https://sonarcloud.io for SonarCloud.
+    required: false
+    default: https://sonarcloud.io
+tags:
+  - code-quality
+  - static-analysis
+  - sonar
+  - security
+homepage: https://www.npmjs.com/package/sonarqube-mcp-server
+license: MIT
+translations:
+  pt-BR:
+    name: SonarQube
+    description: Servidor MCP da comunidade para SonarQube / SonarCloud — busca status do quality gate, issues por severidade, hotspots, tendências de cobertura e ocorrências por regra de uma instância Sonar autenticada. Útil para deixar um agente responder "o que está bloqueando o quality gate nesta branch?" sem sair da sessão. Combina com a skill `sonar-check` para preflights antes do push.
