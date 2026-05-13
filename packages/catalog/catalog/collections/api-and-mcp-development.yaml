@@ -30,6 +30,12 @@ items:
   id: context7
 - kind: server
   id: github
+- kind: server
+  id: filesystem
+- kind: server
+  id: fetch
+- kind: server
+  id: git
 - kind: agent
   id: architect
 translations:

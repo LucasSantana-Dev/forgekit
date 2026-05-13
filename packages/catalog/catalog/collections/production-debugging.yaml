@@ -31,6 +31,8 @@ items:
   id: kubernetes
 - kind: hook
   id: workflow-logger
+- kind: skill
+  id: debug
 translations:
   pt-BR:
     name: Debugging em Produção

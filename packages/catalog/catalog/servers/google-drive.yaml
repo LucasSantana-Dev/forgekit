@@ -1,0 +1,19 @@
+id: google-drive
+name: Google Drive
+description: Community MCP server for searching and reading Google Drive files. Lists folders and files, fetches document content as text/markdown, and supports basic search by filename or full-text. Best for agents that need to pull context from team docs without manual copy-paste. Requires an OAuth-authenticated Google account (the server handles the auth flow on first run).
+transport: stdio
+command: npx
+args:
+  - -y
+  - '@piotr-agier/google-drive-mcp'
+tags:
+  - google
+  - drive
+  - files
+  - docs
+homepage: https://www.npmjs.com/package/@piotr-agier/google-drive-mcp
+license: MIT
+translations:
+  pt-BR:
+    name: Google Drive
+    description: Servidor MCP da comunidade para buscar e ler arquivos do Google Drive. Lista pastas e arquivos, busca conteúdo de documentos em texto/markdown e suporta busca básica por nome ou full-text. Ideal para agentes que precisam puxar contexto de docs do time sem copy-paste manual. Requer uma conta Google autenticada via OAuth (o servidor faz o fluxo de auth na primeira execução).

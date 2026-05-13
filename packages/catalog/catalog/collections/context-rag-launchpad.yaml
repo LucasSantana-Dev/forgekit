@@ -31,6 +31,10 @@ items:
   id: context7
 - kind: server
   id: serena
+- kind: server
+  id: rag-index
+- kind: doc
+  id: codex-parity
 translations:
   pt-BR:
     name: Lançador de Contexto + RAG

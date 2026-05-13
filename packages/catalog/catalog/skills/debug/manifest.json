@@ -1,0 +1,28 @@
+{
+  "id": "debug",
+  "name": "Debug",
+  "description": "Systematic root-cause analysis for bugs, errors, and unexpected behavior. Prompts the agent to gather evidence, form competing hypotheses, and rule them out one at a time before proposing a fix — instead of pattern-matching to the most recent similar issue. Triggers on phrases like 'why is this failing', 'investigate', 'root cause', 'ultradebug'.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "core",
+    "debugging",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/debug/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Debug",
+      "description": "Análise sistemática de causa-raiz para bugs, erros e comportamento inesperado. Faz o agente coletar evidências, formular hipóteses concorrentes e descartá-las uma por uma antes de propor o fix — em vez de pular para a solução do problema parecido mais recente. Dispara em frases como 'por que isso está falhando', 'investigar', 'causa-raiz', 'ultradebug'."
+    }
+  }
+}

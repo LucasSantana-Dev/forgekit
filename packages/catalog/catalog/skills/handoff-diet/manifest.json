@@ -1,0 +1,29 @@
+{
+  "id": "handoff-diet",
+  "name": "Handoff Diet",
+  "description": "Meta-skill codifying the no-wakeup-polling pattern. Describes the ScheduleWakeup anti-pattern (polling every N minutes burns context), the fix (--auto merge + detached watcher script), and when wakeups still make sense (truly unpredictable external state). Reduces handoff spam by ~80% in CI-watching and PR-cascade workflows.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "core",
+    "token-optimization",
+    "session",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/handoff-diet/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Dieta de Handoff",
+      "description": "Meta-skill que codifica o padrão sem polling de wakeup. Descreve o anti-padrão do ScheduleWakeup (polling de N em N minutos queima contexto), o fix (merge --auto + watcher destacado), e quando wakeups ainda fazem sentido (estado externo realmente imprevisível). Reduz spam de handoff em ~80% em fluxos de CI-watching e cascata de PRs."
+    }
+  }
+}

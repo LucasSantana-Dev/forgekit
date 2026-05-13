@@ -1,0 +1,19 @@
+id: ssh
+name: SSH
+description: Community MCP server that exposes SSH session management as tools — open named sessions, run commands, list active connections, close cleanly. Useful for agents that operate on a homelab, remote dev box, or set of CI runners over SSH without re-authenticating per command. Connection metadata (host, port, key path) is passed per call; private keys never cross the MCP boundary.
+transport: stdio
+command: npx
+args:
+  - -y
+  - mcp-ssh-server-tool
+tags:
+  - ssh
+  - infrastructure
+  - remote
+  - ops
+homepage: https://www.npmjs.com/package/mcp-ssh-server-tool
+license: MIT
+translations:
+  pt-BR:
+    name: SSH
+    description: Servidor MCP da comunidade que expõe gerenciamento de sessões SSH como tools — abrir sessões nomeadas, rodar comandos, listar conexões ativas, fechar limpo. Útil para agentes que operam em homelab, dev box remoto ou conjunto de runners de CI via SSH sem reautenticar a cada comando. Metadados de conexão (host, porta, caminho da chave) são passados por chamada; chaves privadas nunca cruzam a fronteira do MCP.

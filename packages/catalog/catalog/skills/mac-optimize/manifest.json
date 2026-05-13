@@ -1,0 +1,29 @@
+{
+  "id": "mac-optimize",
+  "name": "Mac Optimize",
+  "description": "Diagnose and fix macOS resource pressure for Claude Code and parallel agent workflows. Use when load average is high, swap is saturated, the CLI feels sluggish, or before spinning up multiple worktrees and subagents. Covers CPU top-talkers, swap pressure, zombie claude processes, Node heap tuning, Spotlight and background-agent pruning, and memory purge. Apple Silicon aware.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "core",
+    "macos",
+    "performance",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code",
+    "codex"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/mac-optimize/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Otimização do Mac",
+      "description": "Diagnostica e corrige pressão de recursos no macOS para Claude Code e fluxos com múltiplos agentes paralelos. Use quando o load average está alto, o swap está saturado, o CLI parece lento, ou antes de subir múltiplos worktrees e subagents. Cobre top de CPU, pressão de swap, processos claude zumbis, tuning de heap do Node, poda de Spotlight e agentes de fundo, e purge de memória. Otimizado para Apple Silicon."
+    }
+  }
+}
