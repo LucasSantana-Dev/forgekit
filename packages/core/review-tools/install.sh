@@ -73,7 +73,7 @@ detect_variant() {
         echo "ts-monorepo"
     elif [ -f "package.json" ]; then
         echo "node"
-    elif find . -maxdepth 3 -name '*.tf' -o -name '*.tfvars' 2>/dev/null | head -1 | grep -q .; then
+    elif find . -maxdepth 3 \( -name '*.tf' -o -name '*.tfvars' \) 2>/dev/null | head -1 | grep -q .; then
         echo "bash-iac"
     elif [ -f "go.mod" ] || [ -f "Cargo.toml" ] || [ -f "pyproject.toml" ]; then
         echo "minimal"
@@ -97,10 +97,18 @@ case "$VARIANT" in
 esac
 
 DANGERFILE_TEMPLATE="$TEMPLATES_DIR/dangerfile.${VARIANT}.ts"
-if [ ! -f "$DANGERFILE_TEMPLATE" ]; then
-    log_error "missing template: $DANGERFILE_TEMPLATE"
-    exit 1
-fi
+REQUIRED_TEMPLATES="
+$DANGERFILE_TEMPLATE
+$TEMPLATES_DIR/review-tools.yml.tmpl
+$TEMPLATES_DIR/.coderabbit.yaml.tmpl
+$TEMPLATES_DIR/.review-tools-config.json.tmpl
+"
+for tmpl in $REQUIRED_TEMPLATES; do
+    if [ ! -f "$tmpl" ]; then
+        log_error "missing template: $tmpl"
+        exit 1
+    fi
+done
 
 # --- file inventory ---------------------------------------------------------
 FILES_TO_INSTALL="

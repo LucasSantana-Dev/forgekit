@@ -18,6 +18,8 @@ The same problem exists in every other repo — every PR gets the same broken ga
 | **B — Installer profile only** | Add `forge-kit install --review-tools` that copies all 4 files | Profile maintenance overhead grows with repo-type variance; updates require re-running installer in each repo; no version tracking; lock-in to Lucas's installer with high switching cost |
 | **C — Reusable workflows only** | Centralize workflows in `LucasSantana-Dev/.github`; each repo has 5-line caller. Skip `.coderabbit.yaml` / `dangerfile.ts` distribution | Doesn't solve dotfile drift; secrets-replication still manual; centralized failure domain |
 | **D — GitHub starter workflows** | Native `.github/workflow-templates/`-driven repo creation | Only fires at repo creation, no live updates; insufficient for retrofitting existing repos |
+| **E — Hybrid: reusable workflows + installer for dotfiles** (preliminary — see F) | Reusable workflows for CI logic, separate installer for `.coderabbit.yaml` + `dangerfile.ts` | Doesn't track versions across consumers; no drift detection — superseded by F |
+| **F — Hybrid + version lockfile** (CHOSEN) | E plus `.review-tools-config.json` lockfile and a weekly drift-detector | — (chosen below) |
 
 ## Decision
 

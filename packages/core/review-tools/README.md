@@ -15,7 +15,7 @@ Per-repo installer for the multi-repo PR review-tooling stack. Pairs with the or
 
 ```bash
 cd /path/to/your-repo
-sh /path/to/ai-dev-toolkit/packages/core/review-tools/install.sh
+sh /path/to/forgekit/packages/core/review-tools/install.sh
 ```
 
 The installer auto-detects the repo variant (`ts-monorepo`, `node`, `bash-iac`, `minimal`) from `package.json`, `*.tf` files, etc.
@@ -39,7 +39,7 @@ Override auto-detection with `--variant <name>`.
 
 ## Options
 
-```
+```bash
 sh install.sh --help
 ```
 

@@ -34,7 +34,7 @@ if (userFacingChange && !modified.includes('CHANGELOG.md') && !TITLE_PREFIX_SKIP
 }
 
 const packageJsonChanged = modified.some((p) => /(^|\/)package\.json$/.test(p))
-const lockChanged = modified.some((p) => p === 'package-lock.json')
+const lockChanged = modified.some((p) => /(^|\/)package-lock\.json$/.test(p))
 if (packageJsonChanged && !lockChanged) {
     fail(`\`package.json\` changed but \`package-lock.json\` did not. Run \`npm install\` and commit the lockfile.`)
 }

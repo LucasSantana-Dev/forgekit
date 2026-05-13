@@ -111,9 +111,10 @@ if (!validPrefixes.test(headRef) && !headRef.startsWith('worktree-')) {
 // --- 8. Big-file warning ----------------------------------------------------
 async function checkLargeFiles(): Promise<void> {
     for (const file of created) {
-        const lineCount = (await danger.git.structuredDiffForFile(file))?.chunks
+        const structured = await danger.git.structuredDiffForFile(file)
+        const lineCount = structured?.chunks
             ?.flatMap((c) => c.changes)
-            .filter((c) => c.type === 'add').length
+            ?.filter((c) => c.type === 'add').length
         if (lineCount && lineCount > 500) {
             warn(
                 `New file \`${file}\` is **${lineCount} lines** — consider splitting.`,
