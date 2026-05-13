@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.22.0] - 2026-05-13
+
+### Added
+
+- **4 Claude-Code ops skills** for managing the Claude Code setup itself: `hook-effectiveness` (audit hook fire rate, latency, exit codes), `mcp-audit` (read-only MCP-usage diagnostic), `claude-md-improver` (audit + improve CLAUDE.md files), `claude-automation-recommender` (analyze a codebase and recommend hooks/skills/agents/MCP servers).
+- **Collection cross-references** — new skills surfaced under `claude-code-power-user` (hook-effectiveness, claude-md-improver, claude-automation-recommender) and `mcp-ops-and-recovery` (mcp-audit).
+
+### Changed
+
+- Catalog skill count: 141 → 145.
+
 ## [0.21.0] - 2026-05-13
 
 ### Added

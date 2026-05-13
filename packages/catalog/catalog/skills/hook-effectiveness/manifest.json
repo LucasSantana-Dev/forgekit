@@ -1,0 +1,28 @@
+{
+  "id": "hook-effectiveness",
+  "name": "Hook Effectiveness",
+  "description": "Audit Claude Code hooks for fire frequency, latency, exit codes, and output value. Surfaces hooks that never fire, hooks that fire too often (spam), hooks that exit non-zero silently, and hooks that fire but produce no output Claude actually uses. Run weekly; required after wiring new hooks.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "claude-code",
+    "hooks",
+    "diagnostics",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/hook-effectiveness/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Eficácia dos Hooks",
+      "description": "Audita hooks do Claude Code por frequência de disparo, latência, exit code e valor da saída. Expõe hooks que nunca disparam, hooks que disparam demais (spam), hooks que saem com exit não-zero silenciosamente e hooks que disparam mas não produzem saída usada pelo Claude. Rode semanalmente; obrigatório depois de instalar hooks novos."
+    }
+  }
+}

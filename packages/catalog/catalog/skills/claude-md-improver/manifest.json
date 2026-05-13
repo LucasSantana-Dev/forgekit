@@ -1,0 +1,28 @@
+{
+  "id": "claude-md-improver",
+  "name": "CLAUDE.md Improver",
+  "description": "Audit and improve CLAUDE.md files in repositories. Scans for all CLAUDE.md files, evaluates quality against templates, outputs a quality report, then makes targeted updates. Use when user asks to check, audit, update, improve, or fix CLAUDE.md — or mentions 'CLAUDE.md maintenance' or 'project memory optimization'.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "claude-code",
+    "documentation",
+    "maintenance",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/claude-md-improver/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Otimizador de CLAUDE.md",
+      "description": "Audita e melhora arquivos CLAUDE.md em repositórios. Varre todos os CLAUDE.md, avalia qualidade contra templates, gera um relatório e aplica updates focados. Use quando o usuário pede para checar, auditar, atualizar, melhorar ou consertar CLAUDE.md — ou cita 'manutenção de CLAUDE.md' ou 'otimização de memória do projeto'."
+    }
+  }
+}

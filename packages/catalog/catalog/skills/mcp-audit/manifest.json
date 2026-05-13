@@ -1,0 +1,28 @@
+{
+  "id": "mcp-audit",
+  "name": "MCP Audit",
+  "description": "Read-only diagnostic that scans Claude Code session transcripts to surface which MCP servers and tools you actually use, ranked by call frequency, with zero-use servers flagged for removal. Use before authoring an MCP-removal PR or evaluating new servers. Outputs a markdown report; modifies no settings.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "claude-code",
+    "mcp",
+    "diagnostics",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/mcp-audit/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Auditoria de MCP",
+      "description": "Diagnóstico read-only que analisa transcripts de sessões do Claude Code para mostrar quais servidores e ferramentas MCP você realmente usa, ranqueados por frequência de chamada, com servidores de uso-zero marcados para remoção. Use antes de abrir um PR removendo MCP ou avaliando servers novos. Gera relatório markdown; não altera configurações."
+    }
+  }
+}
