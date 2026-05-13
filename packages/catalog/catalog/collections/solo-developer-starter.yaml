@@ -28,6 +28,10 @@ items:
   id: context7
 - kind: hook
   id: secret-detection
+- kind: skill
+  id: mac-optimize
+- kind: skill
+  id: dev-assets-sync
 translations:
   pt-BR:
     name: Início para Desenvolvedor Solo

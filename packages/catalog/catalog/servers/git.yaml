@@ -1,0 +1,17 @@
+id: git
+name: Git
+description: Reference MCP server from the Model Context Protocol team that exposes safe git operations on local repositories — status, diff, log, show, branch, checkout, commit, and reset. Useful for agents that need to inspect or stage changes without shelling out manually each time. Sensitive write operations (push, force-reset) should be approval-gated by the host. Works on any repo accessible from the launching process.
+transport: stdio
+command: uvx
+args:
+  - mcp-server-git
+tags:
+  - git
+  - vcs
+  - local
+homepage: https://github.com/modelcontextprotocol/servers/tree/main/src/git
+license: MIT
+translations:
+  pt-BR:
+    name: Git
+    description: Servidor MCP de referência do time do Model Context Protocol que expõe operações git seguras em repositórios locais — status, diff, log, show, branch, checkout, commit e reset. Útil para agentes que precisam inspecionar ou preparar mudanças sem rodar shell manualmente toda vez. Operações sensíveis de escrita (push, force-reset) devem ter aprovação manual no host. Funciona em qualquer repo acessível pelo processo que lança o servidor.

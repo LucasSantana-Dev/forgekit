@@ -1,0 +1,28 @@
+id: rag-index
+name: RAG Index
+description: Local-first MCP server backing semantic recall over the ai-dev-toolkit knowledge corpus — code, memory notes, plans, handoffs, skill docs, repo READMEs, commit messages, and session transcripts. Embedding inference runs entirely on-device (HF Hub offline) against a SQLite-backed vector store. Exposes `rag_query` for fuzzy / cross-file lookups that grep cannot handle. Best for `recall`, `context-pack`, and `wake-up` skill workflows.
+transport: stdio
+command: ~/.claude/rag-index/venv/bin/python
+args:
+  - ~/.claude/rag-index/mcp_server.py
+env:
+  - name: HF_HUB_OFFLINE
+    description: Force the HuggingFace hub client to operate offline (uses cached model files only).
+    required: false
+    default: "1"
+  - name: TRANSFORMERS_OFFLINE
+    description: Force the transformers library to operate offline.
+    required: false
+    default: "1"
+tags:
+  - rag
+  - retrieval
+  - memory
+  - ai-dev-toolkit
+  - local
+homepage: https://github.com/LucasSantana-Dev/forgekit
+license: MIT
+translations:
+  pt-BR:
+    name: Índice RAG
+    description: Servidor MCP local que faz recall semântico sobre o corpus de conhecimento do ai-dev-toolkit — código, notas de memória, plans, handoffs, docs de skills, READMEs de repo, mensagens de commit e transcrições de sessão. Inferência de embeddings roda 100% on-device (HF Hub offline) contra um vector store em SQLite. Expõe `rag_query` para buscas fuzzy / multi-arquivo que o grep não consegue. Ideal para os fluxos `recall`, `context-pack` e `wake-up`.

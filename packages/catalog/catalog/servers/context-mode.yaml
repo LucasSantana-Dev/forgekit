@@ -1,0 +1,19 @@
+id: context-mode
+name: Context Mode
+description: Community MCP server that exposes context-window-mode controls — switch between large-context and standard-context model routing per-task without changing the host config. Useful when a session needs a 1M-context model for a specific exploration phase but should default back to the standard model afterwards. Best for sessions that mix deep code-archeology with routine edits.
+transport: stdio
+command: npx
+args:
+  - -y
+  - context-mode
+tags:
+  - context
+  - memory
+  - routing
+  - models
+homepage: https://www.npmjs.com/package/context-mode
+license: MIT
+translations:
+  pt-BR:
+    name: Context Mode
+    description: Servidor MCP da comunidade que expõe controles de modo de context-window — alterne entre roteamento de modelo de contexto grande e contexto padrão por tarefa sem mexer na config do host. Útil quando uma sessão precisa de um modelo com 1M de contexto para uma fase específica de exploração mas deve voltar ao padrão depois. Ideal para sessões que misturam arqueologia profunda de código com edições rotineiras.

@@ -1,0 +1,23 @@
+id: notion
+name: Notion
+description: Official Notion MCP server — read, search, and update Notion pages and databases from an agent session. Useful for treating Notion as a structured project memory (PRDs, ADRs, sprint boards) that the agent can both consume and append to. Requires a Notion integration token scoped to the workspaces the agent should reach; revoke from Notion settings on offboarding.
+transport: stdio
+command: npx
+args:
+  - -y
+  - '@notionhq/notion-mcp-server'
+env:
+  - name: NOTION_API_KEY
+    description: Notion internal integration token (starts with `secret_`). Create one at https://www.notion.so/profile/integrations and share the relevant pages with the integration.
+    required: true
+tags:
+  - notion
+  - docs
+  - knowledge
+  - planning
+homepage: https://github.com/makenotion/notion-mcp-server
+license: MIT
+translations:
+  pt-BR:
+    name: Notion
+    description: Servidor MCP oficial do Notion — leia, busque e atualize páginas e databases do Notion a partir de uma sessão de agente. Útil para tratar o Notion como memória estruturada do projeto (PRDs, ADRs, sprint boards) que o agente consome e onde escreve. Requer um token de integration do Notion com escopo para os workspaces que o agente deve acessar; revogue nas configurações do Notion ao sair.

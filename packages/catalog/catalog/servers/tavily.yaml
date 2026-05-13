@@ -1,0 +1,22 @@
+id: tavily
+name: Tavily
+description: Official Tavily MCP server — agent-grade web search optimized for LLM consumption. Returns deduplicated, freshness-sorted result chunks with optional content extraction. Better than raw search-engine scraping for fact-finding, news, and current-state queries. Pairs naturally with `fetch` (read the top result in full) and `firecrawl` (deep extraction). Requires a Tavily API key.
+transport: stdio
+command: npx
+args:
+  - -y
+  - tavily-mcp
+env:
+  - name: TAVILY_API_KEY
+    description: Tavily API key from https://app.tavily.com/
+    required: true
+tags:
+  - search
+  - web
+  - research
+homepage: https://github.com/tavily-ai/tavily-mcp
+license: MIT
+translations:
+  pt-BR:
+    name: Tavily
+    description: Servidor MCP oficial do Tavily — busca web nível agente, otimizada para consumo por LLMs. Retorna chunks de resultado deduplicados e ordenados por frescor, com extração de conteúdo opcional. Melhor que scraping cru de search engine para fact-finding, notícias e queries de estado atual. Combina naturalmente com `fetch` (ler o top result completo) e `firecrawl` (extração profunda). Requer uma API key Tavily.
