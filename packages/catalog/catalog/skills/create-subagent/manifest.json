@@ -1,0 +1,28 @@
+{
+  "id": "create-subagent",
+  "name": "Create Subagent",
+  "description": "Design and author reusable subagents for specialized AI tasks. Use when the task needs an isolated agent persona, scoped system prompt, or reusable domain-specific assistant rather than a general skill.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "claude-code",
+    "agent",
+    "authoring",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/create-subagent/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Criar Subagent",
+      "description": "Desenhe e escreva subagents reutilizáveis para tarefas de IA especializadas. Use quando a tarefa exige uma persona de agente isolada, prompt de sistema com escopo, ou assistente específico de domínio reutilizável — não um skill genérico."
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "command-development",
+  "name": "Command Development",
+  "description": "Guidance for creating Claude Code slash commands — YAML frontmatter, dynamic arguments, bash execution, file references, interactive AskUserQuestion patterns, and best practices for organizing custom commands.",
+  "version": "0.2.0",
+  "tags": [
+    "skill-md",
+    "claude-code",
+    "slash-command",
+    "authoring",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/command-development/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Desenvolvimento de Comandos",
+      "description": "Guia para criar slash commands do Claude Code — frontmatter YAML, argumentos dinâmicos, execução de bash, referências a arquivos, padrões interativos com AskUserQuestion e boas práticas para organizar comandos customizados."
+    }
+  }
+}

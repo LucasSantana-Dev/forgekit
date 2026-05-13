@@ -1,0 +1,28 @@
+{
+  "id": "agent-development",
+  "name": "Agent Development",
+  "description": "Guidance for authoring Claude Code subagents — frontmatter fields, when to set a description, examples, tools, colors, triggering conditions, and best practices for autonomous-agent design.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "claude-code",
+    "agent",
+    "authoring",
+    "ai-dev-toolkit"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "local",
+    "path": "ai-dev-toolkit/packages/catalog/catalog/skills/agent-development/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Desenvolvimento de Agentes",
+      "description": "Guia para criar subagents do Claude Code — campos de frontmatter, quando definir description, exemplos, tools, cores, condições de disparo e boas práticas para agentes autônomos."
+    }
+  }
+}
