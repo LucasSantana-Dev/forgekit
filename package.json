@@ -1,6 +1,6 @@
 {
   "name": "forge-kit-monorepo",
-  "version": "0.23.0",
+  "version": "0.24.0",
   "description": "Forge Kit monorepo for AI development rules, skills, setup, catalog, CLI, and web app",
   "type": "module",
   "private": true,

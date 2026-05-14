@@ -1,0 +1,31 @@
+{
+  "id": "adt-parallel-investigate",
+  "name": "Adt Parallel Investigate",
+  "description": "Fan out N independent investigations as parallel agents in a single tool-use block, then roll up the results. Use whenever the same question must be answered against multiple repos, PRs, or services.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "git",
+    "orchestration"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "kit/core/skills/parallel-investigate.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/parallel-investigate.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Parallel Investigate",
+      "description": "Dispare N investiga\u00e7\u00f5es independentes como agentes paralelos num \u00fanico bloco de tool-use, depois consolide os resultados."
+    }
+  }
+}

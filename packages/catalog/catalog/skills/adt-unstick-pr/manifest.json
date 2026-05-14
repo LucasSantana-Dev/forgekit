@@ -1,0 +1,30 @@
+{
+  "id": "adt-unstick-pr",
+  "name": "Adt Unstick PR",
+  "description": "Recover a PR whose head SHA disagrees with its branch ref (webhook desync). Force-push and close+reopen rarely fix it \u2014 recreate the PR.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "git"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "kit/core/skills/unstick-pr.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/unstick-pr.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Unstick PR",
+      "description": "Recupere um PR cujo head SHA discorda do ref da branch (webhook desync). Force-push e close+reopen raramente resolvem \u2014 recrie o PR."
+    }
+  }
+}

@@ -6,6 +6,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.24.0] - 2026-05-14
+
+### Added
+
+- **7 ops/recipe skills** to the catalog (`adt-` namespace):
+  - `adt-ci-watch` — PR state machine + Monitor pattern + already-merged race handling
+  - `adt-next-priority` — decision order + blocker escape hatches (self-PR enforce_admins toggle, webhook desync)
+  - `adt-sync-memories` — durable memory writes across systems
+  - `adt-rag-curate` — gap-filling patterns for the RAG corpus (also moved from kit; was unprefixed before)
+  - `adt-force-merge-self-pr` — wraps the 4-step enforce_admins toggle for self-PR merges through protected branches
+  - `adt-unstick-pr` — recreate a PR whose head SHA disagrees with its branch ref (webhook desync); skips futile force-push loops
+  - `adt-parallel-investigate` — fan out N agents in one tool-use block when answering the same question across multiple targets
+- pt-BR translations on all 6 new manifest entries.
+
+### Changed
+
+- **`adt-plan`** — added extend-vs-new plan rule, skip rule, and a worked example.
+- **`adt-loop`** — added context-budget stop condition (>75%) and parallel-mode guidance while a Monitor is running.
+- **`adt-knowledge-loop`** — added worked example with skipped-phase rationale.
+- **`adt-rag-curate`** content trimmed and restructured into 3 named patterns + a cheatsheet (183 → 98 lines).
+- **`adt-sync-memories`** trimmed; removed forge-space-specific bloat (176 → 88 lines).
+- Catalog skill count: 149 → 155.
+
 ## [0.23.0] - 2026-05-13
 
 ### Added
