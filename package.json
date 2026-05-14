@@ -35,6 +35,7 @@
     "lint": "eslint scripts/ test/",
     "catalog:validate": "pnpm --filter @forge-kit/catalog-scripts run validate",
     "catalog:index": "pnpm --filter @forge-kit/catalog-scripts run index",
+    "catalog:llms": "pnpm --filter @forge-kit/catalog-scripts run llms",
     "cli:build": "pnpm --filter forge-kit run build",
     "cli:typecheck": "pnpm --filter forge-kit run typecheck",
     "web:dev": "pnpm --filter @forge-kit/web run dev",
