@@ -41,7 +41,7 @@
     "web:dev": "pnpm --filter @forge-kit/web run dev",
     "web:build": "pnpm --filter @forge-kit/web run build",
     "setup:check": "bash packages/setup/scripts/ci-check.sh",
-    "workspace:validate": "npm run validate && npm run lint && npm run test && pnpm run catalog:validate && pnpm run cli:typecheck && pnpm run web:build",
+    "workspace:validate": "npm run validate && npm run lint && npm run test && pnpm run catalog:validate && pnpm run catalog:llms && pnpm run cli:typecheck && pnpm run web:build",
     "format": "prettier --write \"**/*.{md,json,yml,yaml}\" --ignore-path .prettierignore",
     "format:check": "prettier --check \"**/*.{md,json,yml,yaml}\" --ignore-path .prettierignore"
   },
