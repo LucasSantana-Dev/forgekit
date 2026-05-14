@@ -1,14 +1,12 @@
 ---
 name: knowledge-loop
 description: Composite skill — query, capture, improve, and persist knowledge in one workflow. Chains recall (RAG query) → sync-memories (write durable note) → rag-curate (improve weak retrievals) → handoff (durable snapshot if session-ending). Use when the work involves "what did we decide", "remember this", "save where we are", or any closing checkpoint.
-triggers:
-  - knowledge-loop
-  - end-of-task
-  - recall-questions
-  - checkpoint-requests
-  - composite skill
-  - capture
-  - recall
+user-invocable: true
+auto-invoke: end-of-task + recall-questions + checkpoint-requests
+metadata:
+  owner: global-agents
+  tier: contextual
+  canonical_source: /Users/lucassantana/.claude/skills/knowledge-loop
 ---
 
 # Knowledge Loop
@@ -69,3 +67,25 @@ If a phase was skipped, mark it `(skipped: <reason>)` so the trail is visible.
 - If `sync-memories` and `rag-curate` would write to the same file → consolidate writes
   to avoid double-update churn
 - Never skip Phase 4 if context is >80% — handoff is required for cross-session continuity
+
+## Worked example
+
+End of a multi-round token-optimization session that shipped 15 hooks + a /caveman skill + autocompact tuning.
+
+```
+KNOWLEDGE LOOP — token optimization rounds 1-4
+  Recalled:  3 hits, top cos 0.50 (skill: recall)
+  Captured:  token_opt_round4_2026-05-13.md + token_baseline_2026-05-13.md
+             (skill: sync-memories — manual write because the work was
+              still in-flight when the prompt arrived)
+  Improved:  (skipped: RAG hits strong, no curation needed — top cos 0.50
+              is above the 0.40 weak-hit threshold)
+  Snapshot:  handoffs/latest.md + precompact_snapshot_2026-05-13T23-53-44Z.md
+             (skill: handoff — auto-written by PreCompact hook 5 min earlier,
+              so phase 4 was effectively idempotent)
+```
+
+Key points the example demonstrates:
+- Each phase output names the underlying skill, even when invoked indirectly (PreCompact hook fired `handoff` for me).
+- A skipped phase says **why**, not just "skipped" — the threshold (cos 0.40) is the audit trail.
+- Capture and Snapshot can land in the same turn without conflict; both write to `memory/`.

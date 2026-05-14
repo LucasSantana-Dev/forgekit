@@ -1,0 +1,30 @@
+{
+  "id": "adt-force-merge-self-pr",
+  "name": "Adt Force Merge Self PR",
+  "description": "Merge your own PR through a protected branch when self-approval is impossible. Wraps the enforce_admins toggle pattern with verification before/after.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "git"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "kit/core/skills/force-merge-self-pr.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/force-merge-self-pr.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Force Merge Self PR",
+      "description": "Fa\u00e7a merge do seu pr\u00f3prio PR atrav\u00e9s de uma branch protegida quando o self-approval \u00e9 imposs\u00edvel. Envolve o padr\u00e3o de toggle do enforce_admins."
+    }
+  }
+}

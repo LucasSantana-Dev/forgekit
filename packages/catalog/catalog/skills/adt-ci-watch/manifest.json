@@ -1,0 +1,30 @@
+{
+  "id": "adt-ci-watch",
+  "name": "Adt CI Watch",
+  "description": "Inspect current CI state, identify the first real blocker, and keep monitoring until the checks are understandable.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "deploy"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "kit/core/skills/ci-watch.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/ci-watch.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt CI Watch",
+      "description": "Inspecione o estado atual do CI, identifique o primeiro bloqueador real e monitore at\u00e9 que os checks fiquem compreens\u00edveis."
+    }
+  }
+}
