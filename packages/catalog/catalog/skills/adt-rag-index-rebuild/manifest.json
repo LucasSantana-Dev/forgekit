@@ -3,7 +3,7 @@
   "name": "Adt Rag Index Rebuild",
   "description": "Trigger a full or incremental reindex of the RAG corpus",
   "version": "0.1.0",
-  "tags": ["skill-md", "ai-dev-toolkit", "rag", "maintenance", "indexing"],
+  "tags": ["skill-md", "forgekit", "rag", "maintenance", "indexing"],
   "editors": ["claude-code"],
   "source": {
     "type": "git",

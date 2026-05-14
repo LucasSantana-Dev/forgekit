@@ -8,7 +8,7 @@
     "composite",
     "git",
     "maintenance",
-    "ai-dev-toolkit"
+    "forgekit"
   ],
   "editors": [
     "claude-code",

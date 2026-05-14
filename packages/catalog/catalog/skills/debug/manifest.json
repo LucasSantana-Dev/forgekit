@@ -7,7 +7,7 @@
     "skill-md",
     "core",
     "debugging",
-    "ai-dev-toolkit"
+    "forgekit"
   ],
   "editors": [
     "claude-code",

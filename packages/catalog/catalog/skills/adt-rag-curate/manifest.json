@@ -3,7 +3,7 @@
   "name": "Adt Rag Curate",
   "description": "Manually improve corpus quality by adding missing docs and filling retrieval gaps",
   "version": "0.1.0",
-  "tags": ["skill-md", "ai-dev-toolkit", "rag", "maintenance", "curation"],
+  "tags": ["skill-md", "forgekit", "rag", "maintenance", "curation"],
   "editors": ["claude-code"],
   "source": {
     "type": "git",

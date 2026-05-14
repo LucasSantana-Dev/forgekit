@@ -8,7 +8,7 @@
     "core",
     "token-optimization",
     "session",
-    "ai-dev-toolkit"
+    "forgekit"
   ],
   "editors": [
     "claude-code",
