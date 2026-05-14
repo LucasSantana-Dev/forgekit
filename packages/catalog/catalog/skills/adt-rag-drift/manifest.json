@@ -3,7 +3,7 @@
   "name": "Adt Rag Drift",
   "description": "Detect and fix stale chunks from deleted or modified files",
   "version": "0.1.0",
-  "tags": ["skill-md", "ai-dev-toolkit", "rag", "maintenance", "drift"],
+  "tags": ["skill-md", "forgekit", "rag", "maintenance", "drift"],
   "editors": ["claude-code"],
   "source": {
     "type": "git",

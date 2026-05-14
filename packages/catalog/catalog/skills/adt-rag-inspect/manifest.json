@@ -3,7 +3,7 @@
   "name": "Adt Rag Inspect",
   "description": "Examine what's actually stored in the index for specific items",
   "version": "0.1.0",
-  "tags": ["skill-md", "ai-dev-toolkit", "rag", "maintenance", "inspection"],
+  "tags": ["skill-md", "forgekit", "rag", "maintenance", "inspection"],
   "editors": ["claude-code"],
   "source": {
     "type": "git",

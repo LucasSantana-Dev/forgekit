@@ -8,7 +8,7 @@
     "composite",
     "incident",
     "release",
-    "ai-dev-toolkit"
+    "forgekit"
   ],
   "editors": [
     "claude-code",

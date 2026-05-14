@@ -3,7 +3,7 @@
   "name": "Adt Rag Quality",
   "description": "Evaluate retrieval quality by analyzing query logs and running test queries",
   "version": "0.1.0",
-  "tags": ["skill-md", "ai-dev-toolkit", "rag", "maintenance", "quality"],
+  "tags": ["skill-md", "forgekit", "rag", "maintenance", "quality"],
   "editors": ["claude-code"],
   "source": {
     "type": "git",

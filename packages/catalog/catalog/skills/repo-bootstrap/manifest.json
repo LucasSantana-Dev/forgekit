@@ -8,7 +8,7 @@
     "composite",
     "setup",
     "release",
-    "ai-dev-toolkit"
+    "forgekit"
   ],
   "editors": [
     "claude-code",

@@ -8,7 +8,7 @@
     "composite",
     "incident",
     "postmortem",
-    "ai-dev-toolkit"
+    "forgekit"
   ],
   "editors": [
     "claude-code",

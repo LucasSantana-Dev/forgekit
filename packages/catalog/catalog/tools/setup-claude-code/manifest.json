@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "tags": [
     "tool",
-    "ai-dev-toolkit",
+    "forgekit",
     "setup"
   ],
   "runtime": "bash",
