@@ -5,6 +5,9 @@ description: >
   Covers context management, RAG recall, structured planning, code review, security,
   MCP server integration, and disciplined prompting — all without requiring homologation.
 tags:
+  - kiro
+  - workflow
+  - platform-env
   - work
   - enterprise
   - mcp
