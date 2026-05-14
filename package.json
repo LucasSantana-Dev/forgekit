@@ -1,6 +1,6 @@
 {
   "name": "forge-kit-monorepo",
-  "version": "0.23.0",
+  "version": "0.24.0",
   "description": "Forge Kit monorepo for AI development rules, skills, setup, catalog, CLI, and web app",
   "type": "module",
   "private": true,
@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "ajv": "^8",
     "eslint": "^10",
     "jest": "^30",
     "prettier": "^3",

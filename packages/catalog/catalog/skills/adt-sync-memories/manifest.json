@@ -1,0 +1,32 @@
+{
+  "id": "adt-sync-memories",
+  "name": "Adt Sync Memories",
+  "description": "Sync durable project or session knowledge into the available memory systems so future sessions have accurate context. Use when meaningful work is complete and the user wants the result remembered.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "ai-dev-toolkit",
+    "core",
+    "git",
+    "token-optimization",
+    "memory"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "kit/core/skills/sync-memories.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/sync-memories.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Adt Sync Memories",
+      "description": "Sincronize conhecimento dur\u00e1vel do projeto/sess\u00e3o nos sistemas de mem\u00f3ria dispon\u00edveis para que sess\u00f5es futuras tenham contexto preciso."
+    }
+  }
+}

@@ -1,87 +1,40 @@
 ---
 name: loop
-description: Autonomous development cycle — plan, implement, test, review, fix, commit, and PR without stopping
+description: Default execution rhythm — inspect → act → verify → checkpoint — applied iteratively until the task is done or a clear blocker emerges. Use when working through a known plan, draining a queue (PRs, issues, dependency bumps), or executing a multi-step recipe where each step's output informs the next. Each iteration must produce a concrete artifact (commit, comment, decision) and a one-line state update. Stop on first unrecoverable error rather than retrying blindly. Pair with `ship` for merge-bound work and `handoff` if budget runs out mid-loop.
 triggers:
   - loop
-  - autonomous
-  - run the full cycle
-  - dev loop
-  - code loop
-  - autopilot
-  - ultraloop
+  - execute this plan
+  - keep going safely
+  - work through these
+  - drain the queue
+  - keep cycling
+  - run iteratively
 ---
 
-# Loop
+# loop
 
-Run the full development cycle autonomously until the task ships or a hard stop triggers.
+This is the default working mode once the path is known.
 
 ## Cycle
 
-```text
-PLAN → IMPLEMENT → VERIFY → REVIEW → FIX → COMMIT → (repeat) → PR
-```
+1. Inspect the smallest missing evidence.
+2. Act on the smallest coherent change.
+3. Verify with narrow checks first.
+4. Checkpoint the result.
+5. Repeat until done or blocked.
 
-## Steps
+## Stop conditions
 
-1. **Receive task** — accept description, estimate scope, pick model tier (use route skill)
-2. **Plan** — break into phases with dependencies (use orchestrate skill)
-3. **For each phase:**
-   a. Implement the change
-   b. Run lint + type-check (fast feedback)
-   c. If lint/types fail → fix immediately, max 3 attempts
-   d. Run tests
-   e. If tests fail → debug (use debug skill), fix, max 3 attempts
-   f. Self-review the diff (use review skill)
-   g. If review finds issues → fix and re-verify
-   h. Commit with conventional message
-4. **After all phases:**
-   a. Run full quality gates (use verify skill)
-   b. Push branch
-   c. Open PR (use ship skill)
-5. **If interrupted** — save state to plan file for resume
+Stop and re-route if:
+- the evidence no longer supports the current path
+- the diff grows beyond the intended scope
+- the same failure repeats without progress
+- the work becomes multi-step enough to require `plan`
+- context budget exceeds 75% → emit `handoff`, then stop the loop
+- cumulative tool-result bytes >50KB without progress → summarize + drop noise before next iteration
 
-## Fallback Behavior
+## Parallel mode
 
-```text
-Attempt 1: current model at current tier
-Attempt 2: retry same model (transient failure)
-Attempt 3: switch to fallback model at same tier
-Attempt 4: switch to fallback provider
-Attempt 5: escalate to next tier
-After 5 failures on same phase: STOP and report
-```
+If a `Monitor` task is running (CI settle, build, long test), do NOT busy-wait. Pick up an independent priority — refactor a different file, draft a memory note, answer an open review thread — and resume the original loop when the monitor fires its event.
 
-## Guardrails
-
-- Never force-push or push to main
-- Never skip tests to "make progress"
-- Never suppress type errors to unblock
-- Stop the loop if 3 consecutive phases fail
-- Always run verify before claiming done
-
-## Output Per Phase
-
-```text
-Phase N: <name> [DONE]
-  Files: <list>
-  Lint: ✓  Types: ✓  Tests: ✓ (N passed)
-  Commit: <hash> <message>
-```
-
-## Final Output
-
-```text
-Loop Complete
-─────────────
-Phases: N/N completed
-Commits: N
-Branch: <name>
-PR: <url>
-Quality: lint ✓ | types ✓ | tests ✓ (N passed) | build ✓
-```
-
-## Resume
-
-If the loop was interrupted, delegate to the `resume` skill — it detects the
-handoff, plan state, git state, and open PRs, then re-enters the loop at the
-last-incomplete phase without repeating work.
+Rule: at most one Monitor active per loop; otherwise events collide.
