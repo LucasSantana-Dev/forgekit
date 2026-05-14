@@ -3,6 +3,12 @@ name: sync-memories
 description: Sync durable project or session knowledge into the available memory systems
   so future sessions have accurate context. Use when meaningful work is complete and
   the user wants the result remembered.
+triggers:
+  - sync memories
+  - update memory
+  - persist this
+  - remember session
+  - capture session
 metadata:
   owner: global-agents
   tier: stateful
