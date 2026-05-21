@@ -30,6 +30,14 @@ items:
   id: branch-hygiene
 - kind: skill
   id: dep-sweep
+- kind: skill
+  id: adt-force-merge-self-pr
+- kind: skill
+  id: adt-merge-confidently
+- kind: skill
+  id: adt-pr-merge-readiness
+- kind: skill
+  id: adt-unstick-pr
 translations:
   pt-BR:
     name: Git e Controle de Versão

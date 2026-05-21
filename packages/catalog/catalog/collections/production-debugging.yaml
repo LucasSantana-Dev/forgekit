@@ -37,6 +37,10 @@ items:
   id: hotfix
 - kind: skill
   id: incident-followup
+- kind: skill
+  id: adt-audit-deep
+- kind: skill
+  id: adt-production-incident
 translations:
   pt-BR:
     name: Debugging em Produção

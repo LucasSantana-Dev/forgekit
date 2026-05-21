@@ -48,6 +48,10 @@ items:
   id: pre-commit-validation
 - kind: hook
   id: block-destructive
+- kind: skill
+  id: adt-ticket
+- kind: skill
+  id: slack-gif-creator
 translations:
   pt-BR:
     name: Kit de Trabalho Profissional

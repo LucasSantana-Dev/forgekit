@@ -32,6 +32,12 @@ items:
   id: mac-optimize
 - kind: skill
   id: dev-assets-sync
+- kind: skill
+  id: adt-feature-from-zero
+- kind: skill
+  id: adt-next-priority
+- kind: skill
+  id: adt-session-bootstrap
 translations:
   pt-BR:
     name: Início para Desenvolvedor Solo

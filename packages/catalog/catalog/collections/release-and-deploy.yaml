@@ -42,6 +42,12 @@ items:
   id: dep-sweep
 - kind: skill
   id: repo-bootstrap
+- kind: skill
+  id: adt-ci-watch
+- kind: skill
+  id: adt-merge-confidently
+- kind: skill
+  id: adt-schedule
 translations:
   pt-BR:
     name: Release & Deploy

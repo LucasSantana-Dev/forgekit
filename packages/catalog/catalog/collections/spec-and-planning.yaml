@@ -31,6 +31,14 @@ items:
   id: planner
 - kind: agent
   id: architect
+- kind: skill
+  id: adt-adr-write
+- kind: skill
+  id: adt-research-and-decide
+- kind: skill
+  id: adt-scope-and-execute
+- kind: skill
+  id: adt-ticket
 translations:
   pt-BR:
     name: Specs e Planejamento

@@ -33,6 +33,12 @@ items:
   id: hook-development
 - kind: skill
   id: create-subagent
+- kind: skill
+  id: adt-adr-write
+- kind: skill
+  id: adt-knowledge-loop
+- kind: skill
+  id: adt-memory
 translations:
   pt-BR:
     name: Autoria de Skills

@@ -36,6 +36,8 @@ items:
   id: first-pr
 - kind: skill
   id: repo-bootstrap
+- kind: skill
+  id: adt-session-bootstrap
 translations:
   pt-BR:
     name: Integração ao Codebase
