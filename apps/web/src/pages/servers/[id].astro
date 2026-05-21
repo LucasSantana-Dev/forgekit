@@ -6,7 +6,7 @@ import UsageBlock from "../../components/UsageBlock.astro";
 import RelatedTutorials from "../../components/RelatedTutorials.astro";
 import RelatedCollections from "../../components/RelatedCollections.astro";
 import { getServers, getTutorials, getCollections } from "../../lib/catalog.ts";
-import { installCommand } from "../../lib/ui.ts";
+import { installCommand, deriveProvider } from "../../lib/ui.ts";
 
 export async function getStaticPaths() {
   const servers = await getServers();
@@ -24,7 +24,7 @@ const runCmd =
     : server.url ?? "";
 ---
 <Base title={server.name} description={server.description}>
-  <EntryHeader kind="server" name={server.name} description={server.description} backLabel="All servers">
+  <EntryHeader kind="server" name={server.name} description={server.description} backLabel="All servers" provider={deriveProvider(server.tags)}>
     <div class="entry-tags">
       <span class="tag">transport: {server.transport}</span>
       {server.tags.map((t) => <span class="tag">{t}</span>)}

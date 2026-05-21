@@ -2,7 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import Card from "../../components/Card.astro";
 import { getTools } from "../../lib/catalog.ts";
-import { deriveCategory } from "../../lib/ui.ts";
+import { deriveCategory, deriveProvider } from "../../lib/ui.ts";
 
 const tools = await getTools();
 const base = import.meta.env.BASE_URL;
@@ -45,6 +45,7 @@ const slugify = (s: string) => s.toLowerCase().replace(/\s+/g, "-").replace(/[^a
                 tags={t.tags}
                 href={`${base}tools/${t.id}/`}
                 extraTag={t.runtime}
+                provider={deriveProvider(t.tags)}
                 hideKind={true}
               />
             ))}

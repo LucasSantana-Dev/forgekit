@@ -1,5 +1,5 @@
 ---
-import { displayEntryName, kindLabel, type Kind } from "../lib/ui.ts";
+import { displayEntryName, kindLabel, providerLabel, type Kind, type Provider } from "../lib/ui.ts";
 
 interface Props {
   kind: Kind;
@@ -9,10 +9,11 @@ interface Props {
   tags?: string[];
   href: string;
   extraTag?: string;
+  provider?: Provider;
   /** Kept for backwards compatibility; the redesigned card always shows the id row instead of the kind chip. */
   hideKind?: boolean;
 }
-const { kind, id, name, description, tags = [], href, extraTag } = Astro.props;
+const { kind, id, name, description, tags = [], href, extraTag, provider } = Astro.props;
 const label = kindLabel(kind);
 const displayName = displayEntryName(name);
 const haystack = [id, name, description, ...tags].join(" ").toLowerCase();
@@ -39,6 +40,11 @@ function stripMd(text: string): string {
   <div class="card-head">
     <span class="card-dot" aria-hidden="true" title={label}></span>
     <span class="card-id">{id}</span>
+    {provider && (
+      <span class={`card-provider card-provider-${provider}`} aria-label={`Provider: ${providerLabel(provider)}`}>
+        {provider}
+      </span>
+    )}
   </div>
   <div class="card-body">
     <h3>{displayName}</h3>
@@ -53,3 +59,26 @@ function stripMd(text: string): string {
     <span class="card-arrow" aria-hidden="true">↗</span>
   </div>
 </a>
+
+<style>
+  .card-provider {
+    margin-left: auto;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    border: 1px solid currentColor;
+    opacity: 0.55;
+    line-height: 1.5;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .card-provider-claude  { color: oklch(75% 0.08 75); }
+  .card-provider-codex   { color: oklch(72% 0.16 145); }
+  .card-provider-gemini  { color: oklch(72% 0.14 250); }
+  .card-provider-cursor  { color: oklch(70% 0.14 320); }
+  .card-provider-local   { color: oklch(70% 0.05 200); }
+  .card-provider-any     { color: var(--fg-subtle); }
+</style>
