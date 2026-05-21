@@ -8,6 +8,7 @@
     "claude-code",
     "orchestration"
   ],
+  "provider": "claude",
   "event": "any",
   "runtime": "bash",
   "install": {

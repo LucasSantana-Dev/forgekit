@@ -11,6 +11,7 @@
     "security",
     "git"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code",
     "codex"

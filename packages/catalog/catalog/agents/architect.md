@@ -8,6 +8,7 @@ tags:
 - claude-code
 - debugging
 - architecture
+provider: claude
 model: claude-opus-4-6
 level: 3
 disallowed_tools:

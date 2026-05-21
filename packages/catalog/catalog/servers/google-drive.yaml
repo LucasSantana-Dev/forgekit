@@ -11,6 +11,7 @@ tags:
   - drive
   - files
   - docs
+provider: claude
 homepage: https://www.npmjs.com/package/@piotr-agier/google-drive-mcp
 license: MIT
 translations:

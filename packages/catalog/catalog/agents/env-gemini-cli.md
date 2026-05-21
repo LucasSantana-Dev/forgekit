@@ -8,6 +8,7 @@ tags:
 - platform-env
 - gemini
 - google
+provider: gemini
 source:
   type: git
   repo: https://github.com/LucasSantana-Dev/forgekit

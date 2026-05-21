@@ -7,6 +7,7 @@ tags:
 - agent
 - claude-code
 - planning
+provider: claude
 model: claude-opus-4-6
 level: 4
 source:

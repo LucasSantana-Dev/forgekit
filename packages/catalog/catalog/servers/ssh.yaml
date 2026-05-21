@@ -11,6 +11,7 @@ tags:
   - infrastructure
   - remote
   - ops
+provider: claude
 homepage: https://www.npmjs.com/package/mcp-ssh-server-tool
 license: MIT
 translations:

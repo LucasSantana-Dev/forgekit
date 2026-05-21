@@ -3,8 +3,17 @@
   "name": "Adt Rag Curate",
   "description": "Manually improve corpus quality by adding missing docs and filling retrieval gaps",
   "version": "0.1.0",
-  "tags": ["skill-md", "forgekit", "rag", "maintenance", "curation"],
-  "editors": ["claude-code"],
+  "tags": [
+    "skill-md",
+    "forgekit",
+    "rag",
+    "maintenance",
+    "curation"
+  ],
+  "provider": "claude",
+  "editors": [
+    "claude-code"
+  ],
   "source": {
     "type": "git",
     "repo": "https://github.com/LucasSantana-Dev/forgekit",

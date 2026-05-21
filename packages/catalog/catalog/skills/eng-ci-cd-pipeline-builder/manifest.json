@@ -10,6 +10,7 @@
     "mcp",
     "deploy"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

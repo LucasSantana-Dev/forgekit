@@ -9,6 +9,7 @@
     "scraping",
     "firecrawl"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

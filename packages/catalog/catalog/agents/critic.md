@@ -9,6 +9,7 @@ tags:
 - claude-code
 - review
 - planning
+provider: claude
 model: claude-opus-4-6
 level: 3
 disallowed_tools:

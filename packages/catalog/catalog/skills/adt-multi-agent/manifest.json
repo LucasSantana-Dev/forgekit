@@ -10,6 +10,7 @@
     "deploy",
     "orchestration"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

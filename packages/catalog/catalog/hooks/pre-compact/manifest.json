@@ -8,6 +8,7 @@
     "claude-code",
     "token-optimization"
   ],
+  "provider": "claude",
   "event": "PreCompact",
   "runtime": "bash",
   "install": {

@@ -8,6 +8,7 @@
     "anthropic-official",
     "documents"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code",
     "claude-api"

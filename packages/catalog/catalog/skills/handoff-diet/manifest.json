@@ -10,6 +10,7 @@
     "session",
     "forgekit"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code",
     "codex"

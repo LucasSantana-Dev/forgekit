@@ -14,6 +14,7 @@ tags:
 - memory
 - knowledge-graph
 - persistence
+provider: claude
 homepage: https://github.com/modelcontextprotocol/servers/tree/main/src/memory
 license: MIT
 translations:

@@ -8,6 +8,7 @@
     "forgekit",
     "mcp-ops"
   ],
+  "provider": "claude",
   "runtime": "python",
   "category": "mcp-ops",
   "install": {

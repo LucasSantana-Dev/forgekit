@@ -10,6 +10,7 @@
     "design",
     "api"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code",
     "claude-api"

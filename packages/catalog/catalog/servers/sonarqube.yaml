@@ -19,6 +19,7 @@ tags:
   - static-analysis
   - sonar
   - security
+provider: claude
 homepage: https://www.npmjs.com/package/sonarqube-mcp-server
 license: MIT
 translations:

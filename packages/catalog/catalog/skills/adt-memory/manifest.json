@@ -11,6 +11,7 @@
     "deploy",
     "memory"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

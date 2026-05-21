@@ -9,6 +9,7 @@
     "core",
     "git"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],
@@ -24,7 +25,7 @@
   "translations": {
     "pt-BR": {
       "name": "Adt Force Merge Self PR",
-      "description": "Fa\u00e7a merge do seu pr\u00f3prio PR atrav\u00e9s de uma branch protegida quando o self-approval \u00e9 imposs\u00edvel. Envolve o padr\u00e3o de toggle do enforce_admins."
+      "description": "Faça merge do seu próprio PR através de uma branch protegida quando o self-approval é impossível. Envolve o padrão de toggle do enforce_admins."
     }
   }
 }

@@ -11,6 +11,7 @@ tags:
 - review
 - architecture
 - database
+provider: claude
 source:
   type: git
   path: ai-dev-toolkit/packages/core/kit/core/agents/database-reviewer

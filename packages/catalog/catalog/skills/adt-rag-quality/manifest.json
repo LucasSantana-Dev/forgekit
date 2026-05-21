@@ -3,8 +3,17 @@
   "name": "Adt Rag Quality",
   "description": "Evaluate retrieval quality by analyzing query logs and running test queries",
   "version": "0.1.0",
-  "tags": ["skill-md", "forgekit", "rag", "maintenance", "quality"],
-  "editors": ["claude-code"],
+  "tags": [
+    "skill-md",
+    "forgekit",
+    "rag",
+    "maintenance",
+    "quality"
+  ],
+  "provider": "claude",
+  "editors": [
+    "claude-code"
+  ],
   "source": {
     "type": "git",
     "repo": "https://github.com/LucasSantana-Dev/forgekit",

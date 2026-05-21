@@ -9,6 +9,7 @@ tags:
 - testing
 - planning
 - verification
+provider: claude
 model: claude-sonnet-4-6
 level: 3
 source:

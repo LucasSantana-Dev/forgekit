@@ -17,6 +17,7 @@ tags:
 - project-mgmt
 - issues
 - linear
+provider: claude
 homepage: https://github.com/tacticlaunch/mcp-linear
 license: MIT
 translations:

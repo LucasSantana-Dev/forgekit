@@ -20,6 +20,7 @@ tags:
 - lsp
 - refactor
 - ide
+provider: claude
 homepage: https://github.com/oraios/serena
 license: MIT
 translations:

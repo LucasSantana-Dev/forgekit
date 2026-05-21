@@ -13,6 +13,7 @@
     "token-optimization",
     "observability"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

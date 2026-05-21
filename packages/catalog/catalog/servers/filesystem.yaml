@@ -12,6 +12,7 @@ tags:
   - files
   - local
   - sandbox
+provider: claude
 homepage: https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem
 license: MIT
 translations:

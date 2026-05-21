@@ -13,6 +13,7 @@
     "optimization",
     "agents"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

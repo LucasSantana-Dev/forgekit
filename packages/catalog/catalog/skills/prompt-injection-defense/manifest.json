@@ -10,6 +10,7 @@
     "security",
     "agents"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code",
     "codex"

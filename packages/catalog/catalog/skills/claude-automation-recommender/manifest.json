@@ -10,6 +10,7 @@
     "onboarding",
     "forgekit"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

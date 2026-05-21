@@ -9,6 +9,7 @@
     "core",
     "planning"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

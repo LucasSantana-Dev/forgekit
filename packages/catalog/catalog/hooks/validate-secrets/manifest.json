@@ -9,6 +9,7 @@
     "security",
     "validation"
   ],
+  "provider": "claude",
   "event": "any",
   "runtime": "bash",
   "install": {

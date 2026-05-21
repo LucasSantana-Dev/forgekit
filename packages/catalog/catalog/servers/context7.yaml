@@ -16,6 +16,7 @@ tags:
 - reference
 - library
 - research
+provider: claude
 homepage: https://github.com/upstash/context7
 license: MIT
 usage:

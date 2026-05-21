@@ -9,6 +9,7 @@
     "engineering",
     "security"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

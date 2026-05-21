@@ -9,6 +9,7 @@ tags:
   - git
   - vcs
   - local
+provider: claude
 homepage: https://github.com/modelcontextprotocol/servers/tree/main/src/git
 license: MIT
 translations:

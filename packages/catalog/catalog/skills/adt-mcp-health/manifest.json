@@ -10,6 +10,7 @@
     "mcp",
     "git"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

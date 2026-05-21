@@ -9,6 +9,7 @@
     "webapp",
     "design"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code",
     "claude-api"

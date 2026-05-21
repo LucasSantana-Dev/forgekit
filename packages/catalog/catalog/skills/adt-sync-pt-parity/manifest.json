@@ -9,6 +9,7 @@
     "core",
     "git"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

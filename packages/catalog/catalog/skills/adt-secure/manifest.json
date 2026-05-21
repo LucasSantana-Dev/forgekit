@@ -10,6 +10,7 @@
     "git",
     "security"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

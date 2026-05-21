@@ -10,6 +10,7 @@
     "comms",
     "deploy"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

@@ -9,6 +9,7 @@ tags:
 - codex
 - openai
 - web-app
+provider: codex
 source:
   type: git
   repo: https://github.com/LucasSantana-Dev/forgekit

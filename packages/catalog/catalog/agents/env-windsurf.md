@@ -8,6 +8,7 @@ tags:
 - platform-env
 - windsurf
 - codeium
+provider: claude
 source:
   type: git
   repo: https://github.com/LucasSantana-Dev/forgekit

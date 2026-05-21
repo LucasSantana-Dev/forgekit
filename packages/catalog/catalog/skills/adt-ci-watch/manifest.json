@@ -9,6 +9,7 @@
     "core",
     "deploy"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],
@@ -24,7 +25,7 @@
   "translations": {
     "pt-BR": {
       "name": "Adt CI Watch",
-      "description": "Inspecione o estado atual do CI, identifique o primeiro bloqueador real e monitore at\u00e9 que os checks fiquem compreens\u00edveis."
+      "description": "Inspecione o estado atual do CI, identifique o primeiro bloqueador real e monitore até que os checks fiquem compreensíveis."
     }
   }
 }

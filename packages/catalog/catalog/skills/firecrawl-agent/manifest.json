@@ -10,6 +10,7 @@
     "firecrawl",
     "data-extraction"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

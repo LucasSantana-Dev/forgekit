@@ -10,6 +10,7 @@
     "git",
     "orchestration"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

@@ -13,6 +13,7 @@
     "optimization",
     "analytics"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

@@ -14,6 +14,7 @@ tags:
   - search
   - web
   - research
+provider: claude
 homepage: https://github.com/tavily-ai/tavily-mcp
 license: MIT
 translations:

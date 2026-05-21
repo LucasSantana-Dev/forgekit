@@ -14,6 +14,7 @@ tags:
 - infra
 - containers
 - homelab
+provider: claude
 homepage: https://github.com/QuantGeekDev/docker-mcp
 license: MIT
 translations:

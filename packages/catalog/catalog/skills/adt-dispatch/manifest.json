@@ -9,6 +9,7 @@
     "core",
     "orchestration"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

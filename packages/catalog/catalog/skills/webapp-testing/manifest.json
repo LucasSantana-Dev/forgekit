@@ -9,6 +9,7 @@
     "webapp",
     "testing"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code",
     "claude-api"

@@ -9,6 +9,7 @@
     "core",
     "debugging"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],
