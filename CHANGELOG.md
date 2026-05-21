@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - Optional `provider` field in manifest schemas (skill, agent, hook, command, tool, server); validator emits advisory warnings for entries missing it, pointing to #155 backfill (closes #154).
+- `docs/PROVIDERS.md` — provider taxonomy: all 6 provider IDs, install-path conventions, field rules, and backfill promotion logic; pt-BR mirror at `locales/pt-BR/docs/PROVIDERS.md` (closes #162).
 
 ## [0.25.0] - 2026-05-21
 
