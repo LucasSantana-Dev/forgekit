@@ -50,7 +50,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
       - name: Check Cloudflare credentials
         id: creds
@@ -69,11 +69,11 @@ jobs:
         # No `version:` here — `packageManager: pnpm@9.12.0` in root
         # package.json is the source of truth. action-setup errors out
         # if you specify both.
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@0e279bb959325dab635dd2c09392533439d90093 # v6
 
       - name: Setup Node.js
         if: steps.creds.outputs.ready == 'true'
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: 22
           cache: 'pnpm'
