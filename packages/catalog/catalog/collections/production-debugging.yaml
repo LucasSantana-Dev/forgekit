@@ -10,7 +10,7 @@ tags:
 - sre
 items:
 - kind: skill
-  id: systematic-debugging
+  id: adt-debug-deep
 - kind: skill
   id: eng-focused-fix
 - kind: skill
@@ -18,7 +18,7 @@ items:
 - kind: skill
   id: adt-cost
 - kind: skill
-  id: verification-before-completion
+  id: adt-verify
 - kind: agent
   id: adt-systematic-debugger
 - kind: agent

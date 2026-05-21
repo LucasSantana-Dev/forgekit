@@ -17,7 +17,7 @@ items:
 - kind: skill
   id: agent-gotchas
 - kind: skill
-  id: writing-plans
+  id: adt-plan
 - kind: skill
   id: code-review
 - kind: agent

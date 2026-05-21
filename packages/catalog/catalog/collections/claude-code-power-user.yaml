@@ -32,7 +32,7 @@ items:
 - kind: skill
   id: adt-rag-context-pack
 - kind: skill
-  id: verification-before-completion
+  id: adt-verify
 - kind: skill
   id: code-review
 - kind: hook

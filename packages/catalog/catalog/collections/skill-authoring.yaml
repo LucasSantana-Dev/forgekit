@@ -16,8 +16,6 @@ items:
 - kind: skill
   id: skill-md-adoption
 - kind: skill
-  id: writing-skills
-- kind: skill
   id: adt-add
 - kind: skill
   id: adt-auto-invoke

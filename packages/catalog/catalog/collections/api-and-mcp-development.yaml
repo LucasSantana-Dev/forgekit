@@ -17,8 +17,6 @@ items:
 - kind: skill
   id: eng-api-test-suite-builder
 - kind: skill
-  id: eng-mcp-server-builder
-- kind: skill
   id: mcp-builder
 - kind: skill
   id: claude-api

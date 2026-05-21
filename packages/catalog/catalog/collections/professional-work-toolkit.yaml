@@ -13,9 +13,9 @@ items:
 - kind: skill
   id: code-review
 - kind: skill
-  id: systematic-debugging
+  id: adt-debug-deep
 - kind: skill
-  id: verification-before-completion
+  id: adt-verify
 - kind: skill
   id: eng-dependency-auditor
 - kind: skill

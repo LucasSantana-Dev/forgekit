@@ -25,10 +25,6 @@ items:
 - kind: skill
   id: adt-fallback
 - kind: skill
-  id: dispatching-parallel-agents
-- kind: skill
-  id: subagent-driven-development
-- kind: skill
   id: task-orchestration
 - kind: skill
   id: adt-smart-model-route

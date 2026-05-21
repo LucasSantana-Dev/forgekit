@@ -9,15 +9,13 @@ tags:
 - safety
 items:
 - kind: skill
-  id: verification-before-completion
-- kind: skill
   id: adt-verify
 - kind: skill
   id: code-review
 - kind: skill
   id: testing
 - kind: skill
-  id: systematic-debugging
+  id: adt-debug-deep
 - kind: skill
   id: eng-focused-fix
 - kind: skill
@@ -36,8 +34,6 @@ items:
   id: validate-secrets
 - kind: hook
   id: pre-commit-validation
-- kind: skill
-  id: test-driven-development
 - kind: skill
   id: adt-tdd
 - kind: tool
