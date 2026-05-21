@@ -10,6 +10,7 @@
     "composite",
     "diagnostics"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

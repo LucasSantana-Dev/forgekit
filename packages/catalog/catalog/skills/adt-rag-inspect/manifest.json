@@ -3,8 +3,17 @@
   "name": "Adt Rag Inspect",
   "description": "Examine what's actually stored in the index for specific items",
   "version": "0.1.0",
-  "tags": ["skill-md", "forgekit", "rag", "maintenance", "inspection"],
-  "editors": ["claude-code"],
+  "tags": [
+    "skill-md",
+    "forgekit",
+    "rag",
+    "maintenance",
+    "inspection"
+  ],
+  "provider": "claude",
+  "editors": [
+    "claude-code"
+  ],
   "source": {
     "type": "git",
     "repo": "https://github.com/LucasSantana-Dev/forgekit",

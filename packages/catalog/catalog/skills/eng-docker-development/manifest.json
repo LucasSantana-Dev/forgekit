@@ -12,6 +12,7 @@
     "security",
     "infra"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

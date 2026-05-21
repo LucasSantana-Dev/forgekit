@@ -9,6 +9,7 @@
     "core",
     "mcp"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

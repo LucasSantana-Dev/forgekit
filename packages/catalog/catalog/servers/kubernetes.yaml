@@ -20,6 +20,7 @@ tags:
 - infra
 - homelab
 - ops
+provider: claude
 homepage: https://github.com/Flux159/mcp-server-kubernetes
 license: MIT
 translations:

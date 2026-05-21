@@ -8,6 +8,7 @@
     "claude-code",
     "validation"
   ],
+  "provider": "claude",
   "event": "PreToolUse",
   "runtime": "bash",
   "install": {

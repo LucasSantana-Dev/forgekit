@@ -12,6 +12,7 @@ tags:
 - testing
 - security
 - reasoning
+provider: claude
 source:
   type: git
   path: ai-dev-toolkit/packages/core/kit/core/agents/code-reviewer

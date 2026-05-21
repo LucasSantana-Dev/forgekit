@@ -12,6 +12,7 @@
     "git",
     "deploy"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

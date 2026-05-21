@@ -20,6 +20,7 @@ tags:
   - memory
   - ai-dev-toolkit
   - local
+provider: claude
 homepage: https://github.com/LucasSantana-Dev/forgekit
 license: MIT
 translations:

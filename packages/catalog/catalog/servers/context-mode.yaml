@@ -11,6 +11,7 @@ tags:
   - memory
   - routing
   - models
+provider: claude
 homepage: https://www.npmjs.com/package/context-mode
 license: MIT
 translations:

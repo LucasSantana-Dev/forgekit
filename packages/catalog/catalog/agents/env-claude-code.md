@@ -8,6 +8,7 @@ tags:
 - platform-env
 - claude-code
 - ai-dev-toolkit
+provider: claude
 source:
   type: git
   repo: https://github.com/LucasSantana-Dev/forgekit

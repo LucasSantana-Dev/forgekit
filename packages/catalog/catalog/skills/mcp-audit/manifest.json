@@ -10,6 +10,7 @@
     "diagnostics",
     "forgekit"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

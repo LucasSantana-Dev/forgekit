@@ -21,6 +21,7 @@ tags:
 - cache
 - queue
 - debugging
+provider: claude
 homepage: https://github.com/modelcontextprotocol/servers/tree/main/src/redis
 license: MIT
 translations:

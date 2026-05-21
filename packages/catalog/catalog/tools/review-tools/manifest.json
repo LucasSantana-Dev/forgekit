@@ -10,6 +10,7 @@
     "git",
     "ci"
   ],
+  "provider": "claude",
   "runtime": "bash",
   "category": "setup",
   "install": {

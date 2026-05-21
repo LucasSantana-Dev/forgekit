@@ -12,6 +12,7 @@
     "deploy",
     "token-optimization"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

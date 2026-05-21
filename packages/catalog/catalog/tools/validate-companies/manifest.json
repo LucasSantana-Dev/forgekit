@@ -8,6 +8,7 @@
     "forgekit",
     "diagnostics"
   ],
+  "provider": "claude",
   "runtime": "bash",
   "category": "diagnostics",
   "install": {

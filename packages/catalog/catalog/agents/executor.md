@@ -7,6 +7,7 @@ tags:
 - agent
 - claude-code
 - execution
+provider: claude
 model: claude-sonnet-4-6
 level: 2
 source:

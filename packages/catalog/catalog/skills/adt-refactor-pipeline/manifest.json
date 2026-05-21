@@ -10,6 +10,7 @@
     "composite",
     "engineering"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

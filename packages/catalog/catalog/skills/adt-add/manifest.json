@@ -10,6 +10,7 @@
     "design",
     "git"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

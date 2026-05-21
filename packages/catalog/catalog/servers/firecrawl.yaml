@@ -15,6 +15,7 @@ tags:
   - web
   - search
   - extraction
+provider: claude
 homepage: https://github.com/mendableai/firecrawl-mcp-server
 license: MIT
 translations:

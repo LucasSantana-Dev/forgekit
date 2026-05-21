@@ -10,6 +10,7 @@
     "git",
     "deploy"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],
@@ -25,7 +26,7 @@
   "translations": {
     "pt-BR": {
       "name": "Adt Next Priority",
-      "description": "Decida a pr\u00f3xima a\u00e7\u00e3o de maior valor seguro no repo ou workspace ativo."
+      "description": "Decida a próxima ação de maior valor seguro no repo ou workspace ativo."
     }
   }
 }

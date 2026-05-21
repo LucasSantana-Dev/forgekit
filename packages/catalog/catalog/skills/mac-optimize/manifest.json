@@ -10,6 +10,7 @@
     "performance",
     "forgekit"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code",
     "codex"

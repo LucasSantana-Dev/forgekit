@@ -9,6 +9,7 @@
     "core",
     "testing"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

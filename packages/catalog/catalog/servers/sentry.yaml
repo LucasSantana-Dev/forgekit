@@ -20,6 +20,7 @@ tags:
 - observability
 - errors
 - triage
+provider: claude
 homepage: https://github.com/getsentry/sentry-mcp
 license: MIT
 translations:

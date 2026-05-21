@@ -8,6 +8,7 @@ tags:
 - platform-env
 - cursor
 - vscode
+provider: cursor
 source:
   type: git
   repo: https://github.com/LucasSantana-Dev/forgekit

@@ -10,6 +10,7 @@ tags:
 - ai-dev-toolkit
 - verification
 - security
+provider: claude
 source:
   type: git
   path: ai-dev-toolkit/packages/core/kit/core/agents/security-auditor

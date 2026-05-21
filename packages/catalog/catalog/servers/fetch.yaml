@@ -10,6 +10,7 @@ tags:
   - http
   - content
   - web
+provider: claude
 homepage: https://github.com/modelcontextprotocol/servers/tree/main/src/fetch
 license: MIT
 translations:

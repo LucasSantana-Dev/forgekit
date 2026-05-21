@@ -13,6 +13,7 @@
     "git",
     "planning"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

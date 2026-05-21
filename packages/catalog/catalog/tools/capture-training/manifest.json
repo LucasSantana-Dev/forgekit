@@ -8,6 +8,7 @@
     "forgekit",
     "training"
   ],
+  "provider": "claude",
   "runtime": "python",
   "category": "training",
   "install": {

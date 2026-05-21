@@ -11,6 +11,7 @@
     "git",
     "workflow"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

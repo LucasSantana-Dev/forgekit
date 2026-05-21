@@ -10,6 +10,7 @@
     "composite",
     "frontend"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

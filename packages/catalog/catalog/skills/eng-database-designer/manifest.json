@@ -12,6 +12,7 @@
     "database",
     "deploy"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

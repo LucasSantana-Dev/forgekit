@@ -10,6 +10,7 @@
     "git",
     "orchestration"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],
@@ -25,7 +26,7 @@
   "translations": {
     "pt-BR": {
       "name": "Adt Parallel Investigate",
-      "description": "Dispare N investiga\u00e7\u00f5es independentes como agentes paralelos num \u00fanico bloco de tool-use, depois consolide os resultados."
+      "description": "Dispare N investigações independentes como agentes paralelos num único bloco de tool-use, depois consolide os resultados."
     }
   }
 }

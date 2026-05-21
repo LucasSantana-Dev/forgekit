@@ -15,6 +15,7 @@ tags:
   - docs
   - knowledge
   - planning
+provider: claude
 homepage: https://github.com/makenotion/notion-mcp-server
 license: MIT
 translations:

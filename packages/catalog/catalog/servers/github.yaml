@@ -25,6 +25,7 @@ tags:
 - issues
 - ci
 - vcs
+provider: claude
 homepage: https://github.com/github/github-mcp-server
 license: MIT
 translations:

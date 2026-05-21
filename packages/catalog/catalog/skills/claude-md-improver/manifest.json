@@ -10,6 +10,7 @@
     "maintenance",
     "forgekit"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

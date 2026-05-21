@@ -9,6 +9,7 @@ tags:
 - ai-dev-toolkit
 - debugging
 - reasoning
+provider: claude
 source:
   type: git
   path: ai-dev-toolkit/packages/core/kit/core/agents/ultrathink-debugger

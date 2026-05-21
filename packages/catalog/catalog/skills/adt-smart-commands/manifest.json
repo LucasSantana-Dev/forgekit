@@ -13,6 +13,7 @@
     "thinking",
     "optimization"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

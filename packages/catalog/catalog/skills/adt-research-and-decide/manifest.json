@@ -10,6 +10,7 @@
     "composite",
     "knowledge"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

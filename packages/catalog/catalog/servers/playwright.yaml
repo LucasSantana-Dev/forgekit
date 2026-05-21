@@ -16,6 +16,7 @@ tags:
 - automation
 - testing
 - scraping
+provider: claude
 homepage: https://github.com/microsoft/playwright-mcp
 license: Apache-2.0
 translations:

@@ -1,7 +1,7 @@
 {
   "id": "adt-unstick-pr",
   "name": "Adt Unstick PR",
-  "description": "Recover a PR whose head SHA disagrees with its branch ref (webhook desync). Force-push and close+reopen rarely fix it \u2014 recreate the PR.",
+  "description": "Recover a PR whose head SHA disagrees with its branch ref (webhook desync). Force-push and close+reopen rarely fix it — recreate the PR.",
   "version": "0.1.0",
   "tags": [
     "skill-md",
@@ -9,6 +9,7 @@
     "core",
     "git"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],
@@ -24,7 +25,7 @@
   "translations": {
     "pt-BR": {
       "name": "Adt Unstick PR",
-      "description": "Recupere um PR cujo head SHA discorda do ref da branch (webhook desync). Force-push e close+reopen raramente resolvem \u2014 recrie o PR."
+      "description": "Recupere um PR cujo head SHA discorda do ref da branch (webhook desync). Force-push e close+reopen raramente resolvem — recrie o PR."
     }
   }
 }

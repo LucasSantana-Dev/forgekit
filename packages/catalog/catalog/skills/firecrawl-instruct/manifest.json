@@ -10,6 +10,7 @@
     "firecrawl",
     "browser"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

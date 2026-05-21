@@ -12,6 +12,7 @@
     "debugging",
     "database"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

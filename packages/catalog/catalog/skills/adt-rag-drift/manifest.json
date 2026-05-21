@@ -3,8 +3,17 @@
   "name": "Adt Rag Drift",
   "description": "Detect and fix stale chunks from deleted or modified files",
   "version": "0.1.0",
-  "tags": ["skill-md", "forgekit", "rag", "maintenance", "drift"],
-  "editors": ["claude-code"],
+  "tags": [
+    "skill-md",
+    "forgekit",
+    "rag",
+    "maintenance",
+    "drift"
+  ],
+  "provider": "claude",
+  "editors": [
+    "claude-code"
+  ],
   "source": {
     "type": "git",
     "repo": "https://github.com/LucasSantana-Dev/forgekit",

@@ -10,6 +10,7 @@
     "git",
     "agents"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code",
     "codex"

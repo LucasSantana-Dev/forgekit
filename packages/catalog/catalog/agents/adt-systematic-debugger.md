@@ -11,6 +11,7 @@ tags:
 - testing
 - debugging
 - reasoning
+provider: claude
 source:
   type: git
   path: ai-dev-toolkit/packages/core/kit/core/agents/systematic-debugger

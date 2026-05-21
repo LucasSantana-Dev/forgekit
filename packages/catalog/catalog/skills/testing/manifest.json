@@ -9,6 +9,7 @@
     "testing",
     "agents"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code",
     "codex"

@@ -9,6 +9,7 @@
     "core",
     "workflow"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

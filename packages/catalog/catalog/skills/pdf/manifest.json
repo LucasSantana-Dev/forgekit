@@ -9,6 +9,7 @@
     "documents",
     "design"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code",
     "claude-api"

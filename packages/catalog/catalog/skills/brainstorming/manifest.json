@@ -9,6 +9,7 @@
     "forgekit",
     "design"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],

@@ -9,6 +9,7 @@
     "core",
     "token-optimization"
   ],
+  "provider": "claude",
   "editors": [
     "claude-code"
   ],
