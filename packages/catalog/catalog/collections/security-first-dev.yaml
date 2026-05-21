@@ -32,6 +32,10 @@ items:
   id: security-scan
 - kind: hook
   id: protect-files
+- kind: skill
+  id: adt-plugin-audit
+- kind: skill
+  id: adt-security-sweep
 translations:
   pt-BR:
     name: Desenvolvimento com Segurança em Primeiro Lugar

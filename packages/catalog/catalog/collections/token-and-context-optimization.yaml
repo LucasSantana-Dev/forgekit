@@ -40,6 +40,12 @@ items:
   id: handoff-diet
 - kind: server
   id: context-mode
+- kind: skill
+  id: adt-memory
+- kind: skill
+  id: adt-optimize
+- kind: skill
+  id: adt-sync-memories
 translations:
   pt-BR:
     name: Otimização de Token e Contexto

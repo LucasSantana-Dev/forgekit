@@ -32,6 +32,8 @@ items:
   id: executor
 - kind: agent
   id: planner
+- kind: skill
+  id: adt-parallel-investigate
 translations:
   pt-BR:
     name: Orquestração de Múltiplos Agentes

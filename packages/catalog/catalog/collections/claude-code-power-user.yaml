@@ -45,6 +45,8 @@ items:
   id: claude-md-improver
 - kind: skill
   id: claude-automation-recommender
+- kind: skill
+  id: adt-next-priority
 translations:
   pt-BR:
     name: Power User do Claude Code

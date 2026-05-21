@@ -38,6 +38,22 @@ items:
   id: adt-tdd
 - kind: tool
   id: review-tools
+- kind: skill
+  id: adt-audit-deep
+- kind: skill
+  id: adt-ci-watch
+- kind: skill
+  id: adt-config-drift-detect
+- kind: skill
+  id: adt-fix-the-suite
+- kind: skill
+  id: adt-mutation-test
+- kind: skill
+  id: adt-refactor-pipeline
+- kind: skill
+  id: adt-test-cleanup
+- kind: skill
+  id: adt-test-health
 translations:
   pt-BR:
     name: Gate de Verificação e Revisão

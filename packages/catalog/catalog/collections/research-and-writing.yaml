@@ -28,6 +28,8 @@ items:
   id: critic
 - kind: server
   id: context7
+- kind: skill
+  id: adt-research-and-decide
 translations:
   pt-BR:
     name: Pesquisa & Escrita
