@@ -1,0 +1,29 @@
+{
+  "id": "cursor-tab-mode",
+  "name": "Cursor Tab Mode",
+  "description": "Guidance on using Cursor's Tab (inline completion) and Composer (multi-file agent) modes for skill execution. Maps forgekit skill types to the appropriate Cursor mode and explains how to trigger skills without a slash-command surface.",
+  "version": "0.1.0",
+  "tags": [
+    "cursor",
+    "workflow",
+    "agent",
+    "setup",
+    "skill-md"
+  ],
+  "provider": "cursor",
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit",
+  "translations": {
+    "pt-BR": {
+      "name": "Modo Tab do Cursor",
+      "description": "Guia para usar os modos Tab (completação inline) e Composer (agente multi-arquivo) do Cursor na execução de skills. Mapeia os tipos de skill do forgekit para o modo Cursor apropriado e explica como acionar skills sem uma superfície de slash-command."
+    }
+  }
+}

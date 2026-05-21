@@ -1,0 +1,29 @@
+{
+  "id": "gemini-grounding-config",
+  "name": "Gemini Grounding Config",
+  "description": "Enable and tune Google Search grounding for Gemini API calls. Covers grounding threshold, attribution rendering, dynamic retrieval configuration, and how to combine grounding with forgekit RAG skills for hybrid retrieval.",
+  "version": "0.1.0",
+  "tags": [
+    "gemini",
+    "grounding",
+    "search",
+    "rag",
+    "retrieval"
+  ],
+  "provider": "gemini",
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit",
+  "translations": {
+    "pt-BR": {
+      "name": "Configuração de Grounding do Gemini",
+      "description": "Habilite e ajuste o grounding com Google Search nas chamadas da API Gemini. Cobre threshold de grounding, renderização de atribuição, configuração de recuperação dinâmica e como combinar grounding com as skills de RAG do forgekit para recuperação híbrida."
+    }
+  }
+}

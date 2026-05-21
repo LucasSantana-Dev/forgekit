@@ -1,0 +1,29 @@
+{
+  "id": "vertex-ai-setup",
+  "name": "Vertex AI Setup",
+  "description": "Set up Vertex AI to run Gemini models with forgekit skills. Covers project and region configuration, service-account key rotation, quota requests, and a one-command verify that confirms the model endpoint is reachable.",
+  "version": "0.1.0",
+  "tags": [
+    "gemini",
+    "vertex-ai",
+    "setup",
+    "gcp",
+    "deploy"
+  ],
+  "provider": "gemini",
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit",
+  "translations": {
+    "pt-BR": {
+      "name": "Configuração do Vertex AI",
+      "description": "Configure o Vertex AI para rodar modelos Gemini com as skills do forgekit. Cobre configuração de projeto e região, rotação de chave de conta de serviço, solicitações de quota e um comando de verificação que confirma se o endpoint do modelo está acessível."
+    }
+  }
+}

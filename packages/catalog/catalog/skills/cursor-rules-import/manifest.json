@@ -1,0 +1,29 @@
+{
+  "id": "cursor-rules-import",
+  "name": "Cursor Rules Import",
+  "description": "Port forgekit skills to ~/.cursor/rules/ format. Converts skill markdown to Cursor's .mdc glob-scoped rule files, maps auto-invoke triggers to alwaysApply and file-pattern matchers, and documents which skill categories need to be split per rule.",
+  "version": "0.1.0",
+  "tags": [
+    "cursor",
+    "skill-md",
+    "setup",
+    "rules",
+    "integration"
+  ],
+  "provider": "cursor",
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit",
+  "translations": {
+    "pt-BR": {
+      "name": "Importação de Regras para o Cursor",
+      "description": "Porte skills do forgekit para o formato ~/.cursor/rules/. Converte markdown de skills para arquivos de regra .mdc com escopo glob do Cursor, mapeia triggers de auto-invoke para alwaysApply e matchers de padrão de arquivo, e documenta quais categorias de skill precisam ser divididas por regra."
+    }
+  }
+}

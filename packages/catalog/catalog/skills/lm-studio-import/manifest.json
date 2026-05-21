@@ -1,0 +1,29 @@
+{
+  "id": "lm-studio-import",
+  "name": "LM Studio Import",
+  "description": "Bring forgekit skills into LM Studio's model context via its local server API. Covers selecting a model in LM Studio, pointing the forgekit CLI at the local endpoint, and a system-prompt template that injects skill markdown into LM Studio sessions.",
+  "version": "0.1.0",
+  "tags": [
+    "lm-studio",
+    "local-llm",
+    "setup",
+    "integration",
+    "skill-md"
+  ],
+  "provider": "local",
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit",
+  "translations": {
+    "pt-BR": {
+      "name": "Importação para o LM Studio",
+      "description": "Traga as skills do forgekit para o contexto de modelo do LM Studio via sua API de servidor local. Cobre a seleção de modelo no LM Studio, apontamento do CLI do forgekit para o endpoint local e um template de system-prompt que injeta markdown de skills nas sessões do LM Studio."
+    }
+  }
+}
