@@ -1,0 +1,29 @@
+{
+  "id": "codex-bridge",
+  "name": "Codex Bridge",
+  "description": "Import forgekit skills into the OpenAI Codex agent surface. Maps skill markdown to the AGENTS.md conventions Codex uses, wires context injection, and documents which skill types work with Codex's tool-call model.",
+  "version": "0.1.0",
+  "tags": [
+    "codex",
+    "skill-md",
+    "setup",
+    "agent",
+    "integration"
+  ],
+  "provider": "codex",
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit",
+  "translations": {
+    "pt-BR": {
+      "name": "Codex Bridge",
+      "description": "Importe skills do forgekit na superfície do agente OpenAI Codex. Mapeia o markdown de skills para as convenções AGENTS.md usadas pelo Codex, conecta a injeção de contexto e documenta quais tipos de skill funcionam com o modelo de chamada de ferramenta do Codex."
+    }
+  }
+}

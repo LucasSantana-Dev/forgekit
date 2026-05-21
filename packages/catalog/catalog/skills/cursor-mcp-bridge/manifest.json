@@ -1,0 +1,29 @@
+{
+  "id": "cursor-mcp-bridge",
+  "name": "Cursor MCP Bridge",
+  "description": "Register forgekit MCP servers with Cursor's MCP support. Covers editing ~/.cursor/mcp.json, validating server connectivity via Cursor's MCP panel, and troubleshooting the most common auth and transport failures.",
+  "version": "0.1.0",
+  "tags": [
+    "cursor",
+    "mcp",
+    "setup",
+    "integration",
+    "server"
+  ],
+  "provider": "cursor",
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit",
+  "translations": {
+    "pt-BR": {
+      "name": "Cursor MCP Bridge",
+      "description": "Registre servidores MCP do forgekit com o suporte MCP do Cursor. Cobre a edição de ~/.cursor/mcp.json, validação de conectividade do servidor pelo painel MCP do Cursor e resolução das falhas mais comuns de autenticação e transporte."
+    }
+  }
+}

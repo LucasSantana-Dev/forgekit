@@ -24,6 +24,24 @@ items:
     id: env-kiro
   - kind: agent
     id: env-windsurf
+  - kind: skill
+    id: codex-bridge
+  - kind: skill
+    id: smart-model-select-codex
+  - kind: skill
+    id: codex-prompt-injection-defense
+  - kind: skill
+    id: gemini-context-cache
+  - kind: skill
+    id: gemini-grounding-config
+  - kind: skill
+    id: vertex-ai-setup
+  - kind: skill
+    id: cursor-rules-import
+  - kind: skill
+    id: cursor-mcp-bridge
+  - kind: skill
+    id: cursor-tab-mode
 translations:
   pt-BR:
     name: Ambientes de Plataforma

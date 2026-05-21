@@ -1,0 +1,29 @@
+{
+  "id": "gemini-context-cache",
+  "name": "Gemini Context Cache",
+  "description": "Configure Gemini's context caching API to reduce latency and cost for repeated large-context prompts. Covers cache TTL tuning, cache-hit logging, and when caching pays off versus hurts freshness.",
+  "version": "0.1.0",
+  "tags": [
+    "gemini",
+    "context",
+    "caching",
+    "performance",
+    "cost"
+  ],
+  "provider": "gemini",
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/kit"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit",
+  "translations": {
+    "pt-BR": {
+      "name": "Cache de Contexto do Gemini",
+      "description": "Configure a API de cache de contexto do Gemini para reduzir latência e custo em prompts de grande contexto repetidos. Cobre ajuste de TTL do cache, log de cache-hit e quando o cache compensa versus prejudica a atualização dos dados."
+    }
+  }
+}
