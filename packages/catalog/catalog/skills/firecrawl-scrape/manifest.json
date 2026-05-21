@@ -1,0 +1,30 @@
+{
+  "id": "firecrawl-scrape",
+  "name": "Firecrawl Scrape",
+  "description": "Extract clean markdown from any URL, including JavaScript-rendered SPAs. Use this skill whenever the user provides a URL and wants its content, says \"scrape\", \"grab\", \"fetch\", \"pull\", \"get the page\", \"extract from this URL\", or \"read this webpage\". Handles JS-rendered pages, multiple concurrent URLs, and returns LLM-optimized markdown. Use this instead of WebFetch for any webpage content extraction.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "web",
+    "scraping",
+    "firecrawl"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/skills",
+    "ref": "main",
+    "path": "firecrawl-scrape/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/skills/tree/main/firecrawl-scrape",
+  "translations": {
+    "pt-BR": {
+      "name": "Firecrawl Scrape",
+      "description": "Extrai markdown limpo de qualquer URL, incluindo SPAs renderizadas com JavaScript. Use sempre que o usuário fornecer uma URL e quiser seu conteúdo. Substitui WebFetch para extração de conteúdo de páginas web."
+    }
+  }
+}

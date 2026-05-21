@@ -1,0 +1,31 @@
+{
+  "id": "firecrawl-search",
+  "name": "Firecrawl Search",
+  "description": "Web search with full page content extraction. Use this skill whenever the user asks to search the web, find articles, research a topic, look something up, find recent news, discover sources, or says \"search for\", \"find me\", \"look up\", \"what are people saying about\", or \"find articles about\". Returns real search results with optional full-page markdown — not just snippets. Provides capabilities beyond Claude's built-in WebSearch.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "web",
+    "scraping",
+    "firecrawl",
+    "search"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/skills",
+    "ref": "main",
+    "path": "firecrawl-search/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/skills/tree/main/firecrawl-search",
+  "translations": {
+    "pt-BR": {
+      "name": "Firecrawl Search",
+      "description": "Busca na web com extração completa do conteúdo das páginas. Use quando o usuário pede para buscar artigos, pesquisar um tema, encontrar notícias ou descobrir fontes. Retorna resultados reais com markdown completo."
+    }
+  }
+}

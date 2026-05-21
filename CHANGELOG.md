@@ -6,6 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.25.0] - 2026-05-21
+
+### Added
+
+- **8 Firecrawl skills** to the catalog (`firecrawl-*` namespace):
+  - `firecrawl` — web scraping, search, crawling, and page interaction via the Firecrawl CLI
+  - `firecrawl-search` — search the web and return Markdown results with Firecrawl
+  - `firecrawl-scrape` — scrape a single URL into clean Markdown or structured JSON
+  - `firecrawl-crawl` — crawl an entire site and return all pages as Markdown
+  - `firecrawl-map` — map all URLs on a site before deciding what to scrape
+  - `firecrawl-download` — download files (PDF, CSV, binary) discovered during crawls
+  - `firecrawl-instruct` — drive a real browser with natural-language instructions via Firecrawl
+  - `firecrawl-agent` — autonomous AI agent that navigates complex sites and returns structured JSON
+- **`web-scraping` collection** — surfaces all 8 Firecrawl skills in a dedicated collection.
+- pt-BR translations on all 8 new manifest entries.
+
+### Changed
+
+- Catalog skill count: 155 → 163.
+
 ## [0.24.0] - 2026-05-14
 
 ### Added
