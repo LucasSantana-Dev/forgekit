@@ -15,6 +15,7 @@
         "security",
         "reasoning"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -31,6 +32,7 @@
         "architecture",
         "database"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -45,6 +47,11 @@
         "ai-dev-toolkit",
         "verification",
         "security"
+      ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "professional-work-toolkit",
+        "security-first-dev"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -62,6 +69,12 @@
         "debugging",
         "reasoning"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "infrastructure-and-devops",
+        "production-debugging",
+        "professional-work-toolkit"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -77,6 +90,7 @@
         "debugging",
         "reasoning"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -90,6 +104,11 @@
         "claude-code",
         "debugging",
         "architecture"
+      ],
+      "collectionMembership": [
+        "api-and-mcp-development",
+        "codebase-onboarding",
+        "spec-and-planning"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -106,6 +125,13 @@
         "planning",
         "verification"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "professional-work-toolkit",
+        "security-first-dev",
+        "solo-developer-starter",
+        "web-app-development"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -120,6 +146,9 @@
         "review",
         "planning"
       ],
+      "collectionMembership": [
+        "research-and-writing"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -132,6 +161,9 @@
         "agent",
         "claude-code",
         "debugging"
+      ],
+      "collectionMembership": [
+        "production-debugging"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -146,6 +178,11 @@
         "claude-code",
         "docs"
       ],
+      "collectionMembership": [
+        "codebase-onboarding",
+        "document-generation",
+        "research-and-writing"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -159,6 +196,9 @@
         "platform-env",
         "claude-code",
         "ai-dev-toolkit"
+      ],
+      "collectionMembership": [
+        "platform-environments"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -175,6 +215,9 @@
         "openai",
         "web-app"
       ],
+      "collectionMembership": [
+        "platform-environments"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -190,6 +233,9 @@
         "openai",
         "cli"
       ],
+      "collectionMembership": [
+        "platform-environments"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -204,6 +250,9 @@
         "cursor",
         "vscode"
       ],
+      "collectionMembership": [
+        "platform-environments"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -217,6 +266,9 @@
         "platform-env",
         "gemini",
         "google"
+      ],
+      "collectionMembership": [
+        "platform-environments"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -233,6 +285,9 @@
         "aws",
         "amazon"
       ],
+      "collectionMembership": [
+        "platform-environments"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -247,6 +302,9 @@
         "windsurf",
         "codeium"
       ],
+      "collectionMembership": [
+        "platform-environments"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -259,6 +317,9 @@
         "agent",
         "claude-code",
         "execution"
+      ],
+      "collectionMembership": [
+        "multi-agent-orchestration"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -273,6 +334,9 @@
         "claude-code",
         "git"
       ],
+      "collectionMembership": [
+        "git-and-version-control"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -285,6 +349,11 @@
         "agent",
         "claude-code",
         "planning"
+      ],
+      "collectionMembership": [
+        "multi-agent-orchestration",
+        "solo-developer-starter",
+        "spec-and-planning"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -300,6 +369,9 @@
         "testing",
         "planning"
       ],
+      "collectionMembership": [
+        "web-app-development"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -314,6 +386,9 @@
         "testing",
         "planning",
         "verification"
+      ],
+      "collectionMembership": [
+        "release-and-deploy"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -331,6 +406,7 @@
         "development",
         "claude-api"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -339,6 +415,9 @@
       "name": "AWS Kiro IDE Workflow",
       "description": "Curated toolkit for developers working in AWS Kiro IDE in a corporate environment. Covers context management, RAG recall, structured planning, code review, security, MCP server integration, and disciplined prompting — all without requiring homologation.\n",
       "tags": [
+        "kiro",
+        "workflow",
+        "platform-env",
         "work",
         "enterprise",
         "mcp",
@@ -346,6 +425,7 @@
         "security",
         "rag"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -360,6 +440,7 @@
         "productivity",
         "mcp"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -374,6 +455,7 @@
         "learning",
         "architecture"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -388,6 +470,7 @@
         "onboarding",
         "explorer"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -402,6 +485,7 @@
         "office",
         "artifacts"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -416,6 +500,7 @@
         "branching",
         "flow"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -431,6 +516,7 @@
         "containers",
         "secrets"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -445,6 +531,7 @@
         "privacy",
         "offline"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -459,6 +546,7 @@
         "diagnostics",
         "tooling"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -473,6 +561,7 @@
         "dispatch",
         "multi-agent"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -486,6 +575,7 @@
         "setup",
         "reference"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -500,6 +590,7 @@
         "triage",
         "sre"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -514,6 +605,7 @@
         "security",
         "productivity"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -528,6 +620,7 @@
         "quality",
         "context"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -542,6 +635,7 @@
         "ship",
         "governance"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -556,6 +650,7 @@
         "communication",
         "content"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -570,6 +665,7 @@
         "secrets",
         "compliance"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -584,6 +680,7 @@
         "catalog",
         "contribution"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -598,6 +695,7 @@
         "foundation",
         "onboarding"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -612,6 +710,7 @@
         "design",
         "architecture"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -626,6 +725,7 @@
         "cost",
         "optimization"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -640,6 +740,7 @@
         "quality",
         "safety"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -654,6 +755,22 @@
         "api",
         "testing"
       ],
+      "collectionMembership": [],
+      "deprecated": false
+    },
+    {
+      "kind": "collection",
+      "id": "web-scraping",
+      "name": "Web Scraping & Research",
+      "description": "Tools for scraping, crawling, and extracting structured data from the web using Firecrawl. Covers single-page scraping, multi-page crawls, site mapping, search, file downloads, browser-based interaction, and autonomous agent-driven extraction.",
+      "tags": [
+        "web",
+        "scraping",
+        "firecrawl",
+        "research",
+        "data-extraction"
+      ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -669,6 +786,7 @@
         "security",
         "agents"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -682,6 +800,7 @@
         "prompting",
         "testing"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -697,6 +816,7 @@
         "git",
         "agents"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -710,6 +830,7 @@
         "security",
         "skill-md"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -724,6 +845,7 @@
         "token-optimization",
         "workflow"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -737,6 +859,7 @@
         "security",
         "token-optimization"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -750,6 +873,7 @@
         "security",
         "workflow"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -763,6 +887,9 @@
         "codex",
         "claude-code",
         "setup"
+      ],
+      "collectionMembership": [
+        "context-rag-launchpad"
       ],
       "deprecated": false
     },
@@ -778,6 +905,7 @@
         "testing",
         "security"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -792,6 +920,7 @@
         "testing",
         "security"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -809,6 +938,9 @@
         "privacy",
         "offline"
       ],
+      "collectionMembership": [
+        "local-models-starter"
+      ],
       "deprecated": false
     },
     {
@@ -822,6 +954,7 @@
         "tooling",
         "reference"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -835,6 +968,7 @@
         "testing",
         "agents"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -848,6 +982,7 @@
         "prompting",
         "agents"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -861,6 +996,7 @@
         "ai-dev-toolkit",
         "workflow"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -874,6 +1010,7 @@
         "ai-dev-toolkit",
         "workflow"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -887,6 +1024,7 @@
         "ai-dev-toolkit",
         "workflow"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -900,6 +1038,7 @@
         "ai-dev-toolkit",
         "workflow"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -913,6 +1052,7 @@
         "ai-dev-toolkit",
         "workflow"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -926,6 +1066,7 @@
         "agents",
         "rag"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -940,6 +1081,7 @@
         "testing",
         "security"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -955,6 +1097,7 @@
         "testing",
         "agents"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -967,6 +1110,9 @@
         "claude-code",
         "token-optimization"
       ],
+      "collectionMembership": [
+        "mcp-ops-and-recovery"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -978,6 +1124,9 @@
       "tags": [
         "hook",
         "claude-code"
+      ],
+      "collectionMembership": [
+        "web-app-development"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -992,6 +1141,7 @@
         "claude-code",
         "orchestration"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1003,6 +1153,11 @@
       "tags": [
         "hook",
         "claude-code"
+      ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "mcp-ops-and-recovery",
+        "professional-work-toolkit"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1017,6 +1172,9 @@
         "claude-code",
         "token-optimization"
       ],
+      "collectionMembership": [
+        "mcp-ops-and-recovery"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1029,6 +1187,9 @@
         "hook",
         "claude-code",
         "token-optimization"
+      ],
+      "collectionMembership": [
+        "mcp-ops-and-recovery"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1043,6 +1204,9 @@
         "claude-code",
         "token-optimization"
       ],
+      "collectionMembership": [
+        "token-and-context-optimization"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1055,6 +1219,7 @@
         "hook",
         "claude-code"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1068,6 +1233,9 @@
         "claude-code",
         "token-optimization"
       ],
+      "collectionMembership": [
+        "token-and-context-optimization"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1080,6 +1248,7 @@
         "hook",
         "claude-code"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1091,6 +1260,15 @@
       "tags": [
         "hook",
         "claude-code"
+      ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "claude-code-power-user",
+        "infrastructure-and-devops",
+        "professional-work-toolkit",
+        "release-and-deploy",
+        "verification-review-gate",
+        "web-app-development"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1105,6 +1283,9 @@
         "claude-code",
         "token-optimization"
       ],
+      "collectionMembership": [
+        "token-and-context-optimization"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1118,6 +1299,9 @@
         "claude-code",
         "security"
       ],
+      "collectionMembership": [
+        "security-first-dev"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1130,6 +1314,7 @@
         "hook",
         "claude-code"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1142,6 +1327,12 @@
         "hook",
         "claude-code",
         "security"
+      ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "professional-work-toolkit",
+        "security-first-dev",
+        "solo-developer-starter"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1156,6 +1347,10 @@
         "claude-code",
         "security"
       ],
+      "collectionMembership": [
+        "security-first-dev",
+        "verification-review-gate"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1168,6 +1363,7 @@
         "hook",
         "claude-code"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1180,6 +1376,7 @@
         "hook",
         "claude-code"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1193,6 +1390,7 @@
         "claude-code",
         "token-optimization"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1205,6 +1403,9 @@
         "hook",
         "claude-code",
         "token-optimization"
+      ],
+      "collectionMembership": [
+        "token-and-context-optimization"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1219,6 +1420,9 @@
         "claude-code",
         "validation"
       ],
+      "collectionMembership": [
+        "verification-review-gate"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1232,6 +1436,7 @@
         "claude-code",
         "validation"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1246,6 +1451,11 @@
         "security",
         "validation"
       ],
+      "collectionMembership": [
+        "infrastructure-and-devops",
+        "security-first-dev",
+        "verification-review-gate"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1259,6 +1469,10 @@
         "claude-code",
         "validation"
       ],
+      "collectionMembership": [
+        "release-and-deploy",
+        "verification-review-gate"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1271,6 +1485,9 @@
         "hook",
         "claude-code"
       ],
+      "collectionMembership": [
+        "production-debugging"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1282,6 +1499,10 @@
       "tags": [
         "hook",
         "claude-code"
+      ],
+      "collectionMembership": [
+        "claude-code-power-user",
+        "verification-review-gate"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1297,6 +1518,9 @@
         "routing",
         "models"
       ],
+      "collectionMembership": [
+        "token-and-context-optimization"
+      ],
       "deprecated": false
     },
     {
@@ -1309,6 +1533,18 @@
         "reference",
         "library",
         "research"
+      ],
+      "collectionMembership": [
+        "api-and-mcp-development",
+        "aws-kiro-ide-workflow",
+        "claude-code-power-user",
+        "codebase-onboarding",
+        "context-rag-launchpad",
+        "mcp-ops-and-recovery",
+        "professional-work-toolkit",
+        "research-and-writing",
+        "solo-developer-starter",
+        "web-app-development"
       ],
       "deprecated": false
     },
@@ -1323,6 +1559,9 @@
         "containers",
         "homelab"
       ],
+      "collectionMembership": [
+        "infrastructure-and-devops"
+      ],
       "deprecated": false
     },
     {
@@ -1335,6 +1574,9 @@
         "http",
         "content",
         "web"
+      ],
+      "collectionMembership": [
+        "api-and-mcp-development"
       ],
       "deprecated": false
     },
@@ -1349,6 +1591,9 @@
         "local",
         "sandbox"
       ],
+      "collectionMembership": [
+        "api-and-mcp-development"
+      ],
       "deprecated": false
     },
     {
@@ -1362,6 +1607,7 @@
         "search",
         "extraction"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -1373,6 +1619,9 @@
         "git",
         "vcs",
         "local"
+      ],
+      "collectionMembership": [
+        "api-and-mcp-development"
       ],
       "deprecated": false
     },
@@ -1388,6 +1637,19 @@
         "ci",
         "vcs"
       ],
+      "collectionMembership": [
+        "api-and-mcp-development",
+        "aws-kiro-ide-workflow",
+        "claude-code-power-user",
+        "codebase-onboarding",
+        "git-and-version-control",
+        "infrastructure-and-devops",
+        "production-debugging",
+        "professional-work-toolkit",
+        "release-and-deploy",
+        "security-first-dev",
+        "web-app-development"
+      ],
       "deprecated": false
     },
     {
@@ -1401,6 +1663,7 @@
         "files",
         "docs"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -1414,6 +1677,10 @@
         "homelab",
         "ops"
       ],
+      "collectionMembership": [
+        "infrastructure-and-devops",
+        "production-debugging"
+      ],
       "deprecated": false
     },
     {
@@ -1426,6 +1693,10 @@
         "issues",
         "linear"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "professional-work-toolkit"
+      ],
       "deprecated": false
     },
     {
@@ -1437,6 +1708,12 @@
         "memory",
         "knowledge-graph",
         "persistence"
+      ],
+      "collectionMembership": [
+        "claude-code-power-user",
+        "context-rag-launchpad",
+        "mcp-ops-and-recovery",
+        "rag-maintenance"
       ],
       "deprecated": false
     },
@@ -1451,6 +1728,7 @@
         "knowledge",
         "planning"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -1463,6 +1741,9 @@
         "automation",
         "testing",
         "scraping"
+      ],
+      "collectionMembership": [
+        "web-app-development"
       ],
       "deprecated": false
     },
@@ -1478,6 +1759,10 @@
         "ai-dev-toolkit",
         "local"
       ],
+      "collectionMembership": [
+        "context-rag-launchpad",
+        "mcp-ops-and-recovery"
+      ],
       "deprecated": false
     },
     {
@@ -1491,6 +1776,7 @@
         "queue",
         "debugging"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -1502,6 +1788,10 @@
         "observability",
         "errors",
         "triage"
+      ],
+      "collectionMembership": [
+        "production-debugging",
+        "professional-work-toolkit"
       ],
       "deprecated": false
     },
@@ -1516,6 +1806,12 @@
         "refactor",
         "ide"
       ],
+      "collectionMembership": [
+        "claude-code-power-user",
+        "codebase-onboarding",
+        "context-rag-launchpad",
+        "mcp-ops-and-recovery"
+      ],
       "deprecated": false
     },
     {
@@ -1528,6 +1824,9 @@
         "static-analysis",
         "sonar",
         "security"
+      ],
+      "collectionMembership": [
+        "mcp-ops-and-recovery"
       ],
       "deprecated": false
     },
@@ -1542,6 +1841,9 @@
         "remote",
         "ops"
       ],
+      "collectionMembership": [
+        "mcp-ops-and-recovery"
+      ],
       "deprecated": false
     },
     {
@@ -1554,6 +1856,7 @@
         "web",
         "research"
       ],
+      "collectionMembership": [],
       "deprecated": false
     },
     {
@@ -1568,6 +1871,9 @@
         "design",
         "git"
       ],
+      "collectionMembership": [
+        "skill-authoring"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1581,6 +1887,10 @@
         "forgekit",
         "core",
         "knowledge"
+      ],
+      "collectionMembership": [
+        "skill-authoring",
+        "spec-and-planning"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1597,6 +1907,10 @@
         "composite",
         "diagnostics"
       ],
+      "collectionMembership": [
+        "production-debugging",
+        "verification-review-gate"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1610,6 +1924,9 @@
         "forgekit",
         "core"
       ],
+      "collectionMembership": [
+        "skill-authoring"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1622,6 +1939,9 @@
         "skill-md",
         "forgekit",
         "core"
+      ],
+      "collectionMembership": [
+        "skill-authoring"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1638,6 +1958,9 @@
         "comms",
         "debugging"
       ],
+      "collectionMembership": [
+        "verification-review-gate"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1653,6 +1976,10 @@
         "comms",
         "git"
       ],
+      "collectionMembership": [
+        "git-and-version-control",
+        "release-and-deploy"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1666,6 +1993,10 @@
         "forgekit",
         "core",
         "deploy"
+      ],
+      "collectionMembership": [
+        "release-and-deploy",
+        "verification-review-gate"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1683,6 +2014,9 @@
         "git",
         "token-optimization"
       ],
+      "collectionMembership": [
+        "token-and-context-optimization"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1696,6 +2030,9 @@
         "forgekit",
         "core",
         "diagnostics"
+      ],
+      "collectionMembership": [
+        "verification-review-gate"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1711,6 +2048,13 @@
         "core",
         "git",
         "token-optimization"
+      ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "claude-code-power-user",
+        "context-rag-launchpad",
+        "solo-developer-starter",
+        "token-and-context-optimization"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1729,6 +2073,10 @@
         "deploy",
         "token-optimization"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "token-and-context-optimization"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1742,6 +2090,11 @@
         "forgekit",
         "core",
         "token-optimization"
+      ],
+      "collectionMembership": [
+        "local-models-starter",
+        "production-debugging",
+        "token-and-context-optimization"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1758,6 +2111,12 @@
         "composite",
         "ops"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "production-debugging",
+        "professional-work-toolkit",
+        "verification-review-gate"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1773,6 +2132,9 @@
         "composite",
         "frontend"
       ],
+      "collectionMembership": [
+        "web-app-development"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1786,6 +2148,9 @@
         "forgekit",
         "core",
         "orchestration"
+      ],
+      "collectionMembership": [
+        "multi-agent-orchestration"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1803,6 +2168,10 @@
         "observability",
         "evaluation"
       ],
+      "collectionMembership": [
+        "api-and-mcp-development",
+        "local-models-starter"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1816,6 +2185,9 @@
         "forgekit",
         "core",
         "git"
+      ],
+      "collectionMembership": [
+        "multi-agent-orchestration"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1832,6 +2204,9 @@
         "composite",
         "engineering"
       ],
+      "collectionMembership": [
+        "solo-developer-starter"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1846,6 +2221,9 @@
         "core",
         "composite"
       ],
+      "collectionMembership": [
+        "verification-review-gate"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1859,6 +2237,9 @@
         "forgekit",
         "core",
         "git"
+      ],
+      "collectionMembership": [
+        "git-and-version-control"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1875,6 +2256,9 @@
         "composite",
         "knowledge"
       ],
+      "collectionMembership": [
+        "skill-authoring"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1888,6 +2272,9 @@
         "forgekit",
         "core",
         "memory"
+      ],
+      "collectionMembership": [
+        "codebase-onboarding"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1907,6 +2294,10 @@
         "planning",
         "orchestration"
       ],
+      "collectionMembership": [
+        "multi-agent-orchestration",
+        "spec-and-planning"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1920,6 +2311,9 @@
         "forgekit",
         "core",
         "composite"
+      ],
+      "collectionMembership": [
+        "mcp-ops-and-recovery"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1939,6 +2333,10 @@
         "token-optimization",
         "observability"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "mcp-ops-and-recovery"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1953,6 +2351,9 @@
         "core",
         "mcp",
         "git"
+      ],
+      "collectionMembership": [
+        "mcp-ops-and-recovery"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -1971,6 +2372,10 @@
         "debugging",
         "database"
       ],
+      "collectionMembership": [
+        "api-and-mcp-development",
+        "mcp-ops-and-recovery"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -1984,6 +2389,10 @@
         "forgekit",
         "core",
         "mcp"
+      ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "mcp-ops-and-recovery"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2001,6 +2410,10 @@
         "deploy",
         "memory"
       ],
+      "collectionMembership": [
+        "skill-authoring",
+        "token-and-context-optimization"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2017,6 +2430,10 @@
         "git",
         "workflow"
       ],
+      "collectionMembership": [
+        "git-and-version-control",
+        "release-and-deploy"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2029,6 +2446,9 @@
         "skill-md",
         "forgekit",
         "core"
+      ],
+      "collectionMembership": [
+        "local-models-starter"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2045,6 +2465,9 @@
         "deploy",
         "orchestration"
       ],
+      "collectionMembership": [
+        "multi-agent-orchestration"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2058,6 +2481,9 @@
         "forgekit",
         "core",
         "testing"
+      ],
+      "collectionMembership": [
+        "verification-review-gate"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2074,6 +2500,10 @@
         "git",
         "deploy"
       ],
+      "collectionMembership": [
+        "claude-code-power-user",
+        "solo-developer-starter"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2087,6 +2517,9 @@
         "forgekit",
         "core",
         "workflow"
+      ],
+      "collectionMembership": [
+        "web-app-development"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2103,6 +2536,11 @@
         "composite",
         "onboarding"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "codebase-onboarding",
+        "web-app-development"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2116,6 +2554,9 @@
         "forgekit",
         "core",
         "workflow"
+      ],
+      "collectionMembership": [
+        "token-and-context-optimization"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2132,6 +2573,9 @@
         "git",
         "orchestration"
       ],
+      "collectionMembership": [
+        "multi-agent-orchestration"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2147,6 +2591,9 @@
         "git",
         "orchestration"
       ],
+      "collectionMembership": [
+        "multi-agent-orchestration"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2161,6 +2608,12 @@
         "core",
         "planning"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "research-and-writing",
+        "solo-developer-starter",
+        "spec-and-planning"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2174,6 +2627,9 @@
         "forgekit",
         "core",
         "planning"
+      ],
+      "collectionMembership": [
+        "spec-and-planning"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2190,6 +2646,9 @@
         "security",
         "deploy"
       ],
+      "collectionMembership": [
+        "security-first-dev"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2204,6 +2663,9 @@
         "core",
         "git",
         "workflow"
+      ],
+      "collectionMembership": [
+        "git-and-version-control"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2220,6 +2682,9 @@
         "composite",
         "ops"
       ],
+      "collectionMembership": [
+        "production-debugging"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2235,6 +2700,12 @@
         "debugging",
         "rag",
         "evaluation"
+      ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "context-rag-launchpad",
+        "local-models-starter",
+        "rag-maintenance"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2254,6 +2725,12 @@
         "deploy",
         "token-optimization"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "claude-code-power-user",
+        "context-rag-launchpad",
+        "rag-maintenance"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2268,6 +2745,9 @@
         "rag",
         "maintenance",
         "audit"
+      ],
+      "collectionMembership": [
+        "rag-maintenance"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2284,6 +2764,9 @@
         "maintenance",
         "curation"
       ],
+      "collectionMembership": [
+        "rag-maintenance"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2298,6 +2781,9 @@
         "rag",
         "maintenance",
         "drift"
+      ],
+      "collectionMembership": [
+        "rag-maintenance"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2314,6 +2800,9 @@
         "maintenance",
         "indexing"
       ],
+      "collectionMembership": [
+        "rag-maintenance"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2329,6 +2818,9 @@
         "maintenance",
         "inspection"
       ],
+      "collectionMembership": [
+        "rag-maintenance"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2343,6 +2835,9 @@
         "rag",
         "maintenance",
         "quality"
+      ],
+      "collectionMembership": [
+        "rag-maintenance"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2360,6 +2855,10 @@
         "deploy",
         "memory"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "context-rag-launchpad"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2374,6 +2873,9 @@
         "core",
         "composite",
         "engineering"
+      ],
+      "collectionMembership": [
+        "verification-review-gate"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2390,6 +2892,9 @@
         "git",
         "deploy"
       ],
+      "collectionMembership": [
+        "release-and-deploy"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2403,6 +2908,9 @@
         "forgekit",
         "core"
       ],
+      "collectionMembership": [
+        "codebase-onboarding"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2415,6 +2923,11 @@
         "skill-md",
         "forgekit",
         "core"
+      ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "context-rag-launchpad",
+        "research-and-writing"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2431,6 +2944,10 @@
         "composite",
         "knowledge"
       ],
+      "collectionMembership": [
+        "research-and-writing",
+        "spec-and-planning"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2446,6 +2963,9 @@
         "git",
         "planning"
       ],
+      "collectionMembership": [
+        "context-rag-launchpad"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2458,6 +2978,10 @@
         "skill-md",
         "forgekit",
         "core"
+      ],
+      "collectionMembership": [
+        "context-rag-launchpad",
+        "multi-agent-orchestration"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2474,6 +2998,9 @@
         "security",
         "deploy"
       ],
+      "collectionMembership": [
+        "release-and-deploy"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2488,6 +3015,9 @@
         "core",
         "composite",
         "engineering"
+      ],
+      "collectionMembership": [
+        "spec-and-planning"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2504,6 +3034,10 @@
         "git",
         "security"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "professional-work-toolkit"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2518,6 +3052,9 @@
         "core",
         "composite"
       ],
+      "collectionMembership": [
+        "security-first-dev"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2531,6 +3068,10 @@
         "forgekit",
         "core",
         "debugging"
+      ],
+      "collectionMembership": [
+        "production-debugging",
+        "verification-review-gate"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2547,6 +3088,9 @@
         "composite",
         "diagnostics"
       ],
+      "collectionMembership": [
+        "web-app-development"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2561,6 +3105,10 @@
         "core",
         "composite",
         "onboarding"
+      ],
+      "collectionMembership": [
+        "codebase-onboarding",
+        "solo-developer-starter"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2577,6 +3125,9 @@
         "comms",
         "deploy"
       ],
+      "collectionMembership": [
+        "release-and-deploy"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2591,6 +3142,9 @@
         "core",
         "comms",
         "deploy"
+      ],
+      "collectionMembership": [
+        "release-and-deploy"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2608,6 +3162,9 @@
         "git",
         "workflow"
       ],
+      "collectionMembership": [
+        "git-and-version-control"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2617,11 +3174,18 @@
       "name": "Smart Commands",
       "description": "Decision guide for when to proactively use Claude Code slash commands — /think, /model, /compact, /clear. Use when choosing whether to invoke a command before or during a task, or when a complexity-classifier hook has flagged a task as high or critical. Pairs with the complexity-classifier UserPromptSubmit hook.",
       "tags": [
+        "skill-md",
+        "forgekit",
+        "core",
         "commands",
         "decision-guide",
         "slash-commands",
         "thinking",
         "optimization"
+      ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "token-and-context-optimization"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2632,11 +3196,19 @@
       "name": "Smart Model Route",
       "description": "Auto-classify prompt complexity via Haiku (with heuristic fallback) and inject model routing hints for Agent tool calls. Wired as a UserPromptSubmit hook — fires on every prompt, routes low tasks to Haiku, standard to Sonnet, complex to Sonnet with thorough reasoning, and critical (security/arch/migrations) to Opus.",
       "tags": [
+        "skill-md",
+        "forgekit",
+        "core",
         "model-routing",
         "complexity-classification",
         "automation",
         "optimization",
         "agents"
+      ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "multi-agent-orchestration",
+        "token-and-context-optimization"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2655,6 +3227,9 @@
         "deploy",
         "memory"
       ],
+      "collectionMembership": [
+        "spec-and-planning"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2671,6 +3246,9 @@
         "design",
         "git",
         "deploy"
+      ],
+      "collectionMembership": [
+        "spec-and-planning"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2690,6 +3268,10 @@
         "git",
         "planning"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "spec-and-planning"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2706,6 +3288,9 @@
         "token-optimization",
         "memory"
       ],
+      "collectionMembership": [
+        "token-and-context-optimization"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2719,6 +3304,9 @@
         "forgekit",
         "core",
         "git"
+      ],
+      "collectionMembership": [
+        "skill-authoring"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2734,6 +3322,10 @@
         "core",
         "testing"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "verification-review-gate"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2748,6 +3340,9 @@
         "core",
         "testing"
       ],
+      "collectionMembership": [
+        "verification-review-gate"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2761,6 +3356,9 @@
         "forgekit",
         "core",
         "testing"
+      ],
+      "collectionMembership": [
+        "verification-review-gate"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2778,6 +3376,10 @@
         "git",
         "token-optimization"
       ],
+      "collectionMembership": [
+        "professional-work-toolkit",
+        "spec-and-planning"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2787,11 +3389,17 @@
       "name": "Token Audit",
       "description": "Audit historical Claude Code token usage from JSONL session files — shows total spend, cache hit rates, top costly sessions, weekly trends, and where tokens are going. Run after heavy sessions or weekly to measure optimization impact.",
       "tags": [
+        "skill-md",
+        "forgekit",
+        "core",
         "tokens",
         "cost",
         "analysis",
         "optimization",
         "analytics"
+      ],
+      "collectionMembership": [
+        "token-and-context-optimization"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2805,6 +3413,9 @@
         "skill-md",
         "forgekit",
         "core"
+      ],
+      "collectionMembership": [
+        "infrastructure-and-devops"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2820,6 +3431,9 @@
         "core",
         "diagnostics"
       ],
+      "collectionMembership": [
+        "web-app-development"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2834,6 +3448,9 @@
         "core",
         "git"
       ],
+      "collectionMembership": [
+        "git-and-version-control"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2847,6 +3464,9 @@
         "forgekit",
         "core",
         "workflow"
+      ],
+      "collectionMembership": [
+        "web-app-development"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2863,6 +3483,14 @@
         "comms",
         "git"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "claude-code-power-user",
+        "production-debugging",
+        "professional-work-toolkit",
+        "release-and-deploy",
+        "verification-review-gate"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2878,6 +3506,10 @@
         "git",
         "deploy"
       ],
+      "collectionMembership": [
+        "git-and-version-control",
+        "release-and-deploy"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2892,6 +3524,9 @@
         "agent",
         "authoring",
         "forgekit"
+      ],
+      "collectionMembership": [
+        "skill-authoring"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2910,6 +3545,10 @@
         "git",
         "agents"
       ],
+      "collectionMembership": [
+        "claude-code-power-user",
+        "solo-developer-starter"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2921,8 +3560,13 @@
       "tags": [
         "skill-md",
         "community",
-        "superpowers",
+        "forgekit",
         "design"
+      ],
+      "collectionMembership": [
+        "codebase-onboarding",
+        "research-and-writing",
+        "spec-and-planning"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2939,6 +3583,9 @@
         "maintenance",
         "forgekit"
       ],
+      "collectionMembership": [
+        "git-and-version-control"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2951,6 +3598,9 @@
         "skill-md",
         "anthropic-official",
         "api"
+      ],
+      "collectionMembership": [
+        "api-and-mcp-development"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2967,6 +3617,9 @@
         "onboarding",
         "forgekit"
       ],
+      "collectionMembership": [
+        "claude-code-power-user"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -2981,6 +3634,9 @@
         "documentation",
         "maintenance",
         "forgekit"
+      ],
+      "collectionMembership": [
+        "claude-code-power-user"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -2997,6 +3653,51 @@
         "git",
         "agents"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "claude-code-power-user",
+        "professional-work-toolkit",
+        "security-first-dev",
+        "solo-developer-starter",
+        "verification-review-gate",
+        "web-app-development"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "codex-bridge",
+      "name": "Codex Bridge",
+      "description": "Import forgekit skills into the OpenAI Codex agent surface. Maps skill markdown to the AGENTS.md conventions Codex uses, wires context injection, and documents which skill types work with Codex's tool-call model.",
+      "tags": [
+        "codex",
+        "skill-md",
+        "setup",
+        "agent",
+        "integration"
+      ],
+      "collectionMembership": [
+        "platform-environments"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "codex-prompt-injection-defense",
+      "name": "Prompt Injection Defense — Codex",
+      "description": "Port of the forgekit prompt-injection-defense skill for the OpenAI Codex tool-use surface. Guards against indirect injection through file contents, web fetch results, and tool outputs by adding structured output validation and a sandboxed tool confirmation step.",
+      "tags": [
+        "codex",
+        "security",
+        "prompt-injection",
+        "tool-use",
+        "defense"
+      ],
+      "collectionMembership": [
+        "platform-environments"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3011,6 +3712,9 @@
         "slash-command",
         "authoring",
         "forgekit"
+      ],
+      "collectionMembership": [
+        "skill-authoring"
       ],
       "version": "0.2.0",
       "deprecated": false
@@ -3027,6 +3731,11 @@
         "git",
         "agents"
       ],
+      "collectionMembership": [
+        "claude-code-power-user",
+        "context-rag-launchpad",
+        "token-and-context-optimization"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3042,6 +3751,63 @@
         "authoring",
         "forgekit"
       ],
+      "collectionMembership": [
+        "skill-authoring"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "cursor-mcp-bridge",
+      "name": "Cursor MCP Bridge",
+      "description": "Register forgekit MCP servers with Cursor's MCP support. Covers editing ~/.cursor/mcp.json, validating server connectivity via Cursor's MCP panel, and troubleshooting the most common auth and transport failures.",
+      "tags": [
+        "cursor",
+        "mcp",
+        "setup",
+        "integration",
+        "server"
+      ],
+      "collectionMembership": [
+        "platform-environments"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "cursor-rules-import",
+      "name": "Cursor Rules Import",
+      "description": "Port forgekit skills to ~/.cursor/rules/ format. Converts skill markdown to Cursor's .mdc glob-scoped rule files, maps auto-invoke triggers to alwaysApply and file-pattern matchers, and documents which skill categories need to be split per rule.",
+      "tags": [
+        "cursor",
+        "skill-md",
+        "setup",
+        "rules",
+        "integration"
+      ],
+      "collectionMembership": [
+        "platform-environments"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "cursor-tab-mode",
+      "name": "Cursor Tab Mode",
+      "description": "Guidance on using Cursor's Tab (inline completion) and Composer (multi-file agent) modes for skill execution. Maps forgekit skill types to the appropriate Cursor mode and explains how to trigger skills without a slash-command surface.",
+      "tags": [
+        "cursor",
+        "workflow",
+        "agent",
+        "setup",
+        "skill-md"
+      ],
+      "collectionMembership": [
+        "platform-environments"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3055,6 +3821,9 @@
         "core",
         "debugging",
         "forgekit"
+      ],
+      "collectionMembership": [
+        "production-debugging"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3071,6 +3840,10 @@
         "dependencies",
         "forgekit"
       ],
+      "collectionMembership": [
+        "git-and-version-control",
+        "release-and-deploy"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3086,19 +3859,8 @@
         "git",
         "forgekit"
       ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "dispatching-parallel-agents",
-      "name": "Dispatching Parallel Agents",
-      "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies",
-      "tags": [
-        "skill-md",
-        "community",
-        "superpowers",
-        "deploy"
+      "collectionMembership": [
+        "solo-developer-starter"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3112,6 +3874,10 @@
         "skill-md",
         "anthropic-official",
         "documents"
+      ],
+      "collectionMembership": [
+        "document-generation",
+        "research-and-writing"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3128,6 +3894,9 @@
         "design",
         "comms"
       ],
+      "collectionMembership": [
+        "document-generation"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3142,6 +3911,10 @@
         "engineering",
         "design",
         "api"
+      ],
+      "collectionMembership": [
+        "api-and-mcp-development",
+        "web-app-development"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3159,6 +3932,9 @@
         "testing",
         "api"
       ],
+      "collectionMembership": [
+        "api-and-mcp-development"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3173,6 +3949,10 @@
         "engineering",
         "mcp",
         "deploy"
+      ],
+      "collectionMembership": [
+        "infrastructure-and-devops",
+        "release-and-deploy"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3189,18 +3969,9 @@
         "git",
         "planning"
       ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "eng-codebase-onboarding",
-      "name": "Eng Codebase Onboarding",
-      "description": "Codebase Onboarding",
-      "tags": [
-        "skill-md",
-        "community",
-        "engineering"
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "codebase-onboarding"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3219,6 +3990,9 @@
         "database",
         "deploy"
       ],
+      "collectionMembership": [
+        "web-app-development"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3232,6 +4006,12 @@
         "community",
         "engineering",
         "security"
+      ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "infrastructure-and-devops",
+        "professional-work-toolkit",
+        "security-first-dev"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3250,6 +4030,9 @@
         "security",
         "infra"
       ],
+      "collectionMembership": [
+        "infrastructure-and-devops"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3263,6 +4046,12 @@
         "community",
         "engineering",
         "security"
+      ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "infrastructure-and-devops",
+        "professional-work-toolkit",
+        "security-first-dev"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3279,6 +4068,11 @@
         "debugging",
         "deploy"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "production-debugging",
+        "verification-review-gate"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3293,49 +4087,148 @@
         "engineering",
         "git"
       ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "eng-mcp-server-builder",
-      "name": "Eng Mcp Server Builder",
-      "description": "MCP Server Builder",
-      "tags": [
-        "skill-md",
-        "community",
-        "engineering",
-        "mcp"
+      "collectionMembership": [
+        "git-and-version-control"
       ],
       "version": "0.1.0",
       "deprecated": false
     },
     {
       "kind": "skill",
-      "id": "executing-plans",
-      "name": "Executing Plans",
-      "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints",
+      "id": "firecrawl",
+      "name": "Firecrawl",
+      "description": "Web scraping, search, crawling, and page interaction via the Firecrawl CLI. Covers real-time web search with full page content extraction, single-page scraping, multi-page crawls, site mapping, file downloads, and browser interaction. Use when the user wants to search the web, scrape a URL, extract data from a website, or interact with pages requiring clicks or logins.",
       "tags": [
         "skill-md",
-        "community",
-        "superpowers",
-        "planning"
+        "web",
+        "scraping",
+        "firecrawl",
+        "search"
+      ],
+      "collectionMembership": [
+        "web-scraping"
       ],
       "version": "0.1.0",
       "deprecated": false
     },
     {
       "kind": "skill",
-      "id": "finishing-a-development-branch",
-      "name": "Finishing A Development Branch",
-      "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
+      "id": "firecrawl-agent",
+      "name": "Firecrawl Agent",
+      "description": "AI-powered autonomous data extraction that navigates complex sites and returns structured JSON. Use this skill when the user wants structured data from websites, needs to extract pricing tiers, product listings, directory entries, or any data as JSON with a schema. Triggers on \"extract structured data\", \"get all the products\", \"pull pricing info\", \"extract as JSON\", or when the user provides a JSON schema for website data. More powerful than simple scraping for multi-page structured extraction.",
       "tags": [
         "skill-md",
-        "community",
-        "superpowers",
-        "testing",
-        "git",
-        "deploy"
+        "web",
+        "scraping",
+        "firecrawl",
+        "data-extraction"
+      ],
+      "collectionMembership": [
+        "web-scraping"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "firecrawl-crawl",
+      "name": "Firecrawl Crawl",
+      "description": "Bulk extract content from an entire website or site section. Use this skill when the user wants to crawl a site, extract all pages from a docs section, bulk-scrape multiple pages following links, or says \"crawl\", \"get all the pages\", \"extract everything under /docs\", \"bulk extract\", or needs content from many pages on the same site. Handles depth limits, path filtering, and concurrent extraction.",
+      "tags": [
+        "skill-md",
+        "web",
+        "scraping",
+        "firecrawl"
+      ],
+      "collectionMembership": [
+        "web-scraping"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "firecrawl-download",
+      "name": "Firecrawl Download",
+      "description": "Download an entire website as local files — markdown, screenshots, or multiple formats per page. Use this skill when the user wants to save a site locally, download documentation for offline use, bulk-save pages as files, or says \"download the site\", \"save as local files\", \"offline copy\", \"download all the docs\", or \"save for reference\". Combines site mapping and scraping into organized local directories.",
+      "tags": [
+        "skill-md",
+        "web",
+        "scraping",
+        "firecrawl"
+      ],
+      "collectionMembership": [
+        "web-scraping"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "firecrawl-instruct",
+      "name": "Firecrawl Instruct",
+      "description": "Control a live browser session on any scraped page — click buttons, fill forms, navigate flows, and extract data using natural language or code. Use when content is behind JavaScript interaction: login flows, form submission, pagination, infinite scroll, or multi-step wizards. Also handles authenticated scraping via browser profiles.",
+      "tags": [
+        "skill-md",
+        "web",
+        "scraping",
+        "firecrawl",
+        "browser"
+      ],
+      "collectionMembership": [
+        "web-scraping"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "firecrawl-map",
+      "name": "Firecrawl Map",
+      "description": "Discover and list all URLs on a website, with optional search filtering. Use this skill when the user wants to find a specific page on a large site, list all URLs, see the site structure, find where something is on a domain, or says \"map the site\", \"find the URL for\", \"what pages are on\", or \"list all pages\". Essential when the user knows which site but not which exact page.",
+      "tags": [
+        "skill-md",
+        "web",
+        "scraping",
+        "firecrawl"
+      ],
+      "collectionMembership": [
+        "web-scraping"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "firecrawl-scrape",
+      "name": "Firecrawl Scrape",
+      "description": "Extract clean markdown from any URL, including JavaScript-rendered SPAs. Use this skill whenever the user provides a URL and wants its content, says \"scrape\", \"grab\", \"fetch\", \"pull\", \"get the page\", \"extract from this URL\", or \"read this webpage\". Handles JS-rendered pages, multiple concurrent URLs, and returns LLM-optimized markdown. Use this instead of WebFetch for any webpage content extraction.",
+      "tags": [
+        "skill-md",
+        "web",
+        "scraping",
+        "firecrawl"
+      ],
+      "collectionMembership": [
+        "web-scraping"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "firecrawl-search",
+      "name": "Firecrawl Search",
+      "description": "Web search with full page content extraction. Use this skill whenever the user asks to search the web, find articles, research a topic, look something up, find recent news, discover sources, or says \"search for\", \"find me\", \"look up\", \"what are people saying about\", or \"find articles about\". Returns real search results with optional full-page markdown — not just snippets. Provides capabilities beyond Claude's built-in WebSearch.",
+      "tags": [
+        "skill-md",
+        "web",
+        "scraping",
+        "firecrawl",
+        "search"
+      ],
+      "collectionMembership": [
+        "web-scraping"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3352,6 +4245,9 @@
         "git",
         "forgekit"
       ],
+      "collectionMembership": [
+        "codebase-onboarding"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3365,6 +4261,45 @@
         "anthropic-official",
         "webapp",
         "design"
+      ],
+      "collectionMembership": [
+        "web-app-development"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "gemini-context-cache",
+      "name": "Gemini Context Cache",
+      "description": "Configure Gemini's context caching API to reduce latency and cost for repeated large-context prompts. Covers cache TTL tuning, cache-hit logging, and when caching pays off versus hurts freshness.",
+      "tags": [
+        "gemini",
+        "context",
+        "caching",
+        "performance",
+        "cost"
+      ],
+      "collectionMembership": [
+        "platform-environments"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "gemini-grounding-config",
+      "name": "Gemini Grounding Config",
+      "description": "Enable and tune Google Search grounding for Gemini API calls. Covers grounding threshold, attribution rendering, dynamic retrieval configuration, and how to combine grounding with forgekit RAG skills for hybrid retrieval.",
+      "tags": [
+        "gemini",
+        "grounding",
+        "search",
+        "rag",
+        "retrieval"
+      ],
+      "collectionMembership": [
+        "platform-environments"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3382,6 +4317,10 @@
         "git",
         "agents"
       ],
+      "collectionMembership": [
+        "claude-code-power-user",
+        "git-and-version-control"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3396,6 +4335,9 @@
         "token-optimization",
         "session",
         "forgekit"
+      ],
+      "collectionMembership": [
+        "token-and-context-optimization"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3412,6 +4354,9 @@
         "authoring",
         "forgekit"
       ],
+      "collectionMembership": [
+        "skill-authoring"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3426,6 +4371,9 @@
         "hooks",
         "diagnostics",
         "forgekit"
+      ],
+      "collectionMembership": [
+        "claude-code-power-user"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3442,6 +4390,10 @@
         "release",
         "forgekit"
       ],
+      "collectionMembership": [
+        "production-debugging",
+        "release-and-deploy"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3457,6 +4409,9 @@
         "postmortem",
         "forgekit"
       ],
+      "collectionMembership": [
+        "production-debugging"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3469,6 +4424,28 @@
         "skill-md",
         "anthropic-official",
         "comms"
+      ],
+      "collectionMembership": [
+        "document-generation",
+        "research-and-writing"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "lm-studio-import",
+      "name": "LM Studio Import",
+      "description": "Bring forgekit skills into LM Studio's model context via its local server API. Covers selecting a model in LM Studio, pointing the forgekit CLI at the local endpoint, and a system-prompt template that injects skill markdown into LM Studio sessions.",
+      "tags": [
+        "lm-studio",
+        "local-llm",
+        "setup",
+        "integration",
+        "skill-md"
+      ],
+      "collectionMembership": [
+        "local-models-starter"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3485,6 +4462,9 @@
         "performance",
         "forgekit"
       ],
+      "collectionMembership": [
+        "solo-developer-starter"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3499,6 +4479,9 @@
         "mcp",
         "diagnostics",
         "forgekit"
+      ],
+      "collectionMembership": [
+        "mcp-ops-and-recovery"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3515,6 +4498,28 @@
         "design",
         "api"
       ],
+      "collectionMembership": [
+        "api-and-mcp-development",
+        "mcp-ops-and-recovery"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "ollama-runtime",
+      "name": "Ollama Runtime",
+      "description": "Set up Ollama for local model serving compatible with forgekit skills. Covers model selection (Llama 3, Qwen, Mistral, Phi), the OLLAMA_HOST environment variable, concurrent-request tuning, and a compatibility matrix for which skills work with smaller models.",
+      "tags": [
+        "ollama",
+        "local-llm",
+        "setup",
+        "models",
+        "performance"
+      ],
+      "collectionMembership": [
+        "local-models-starter"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3529,6 +4534,9 @@
         "documents",
         "design"
       ],
+      "collectionMembership": [
+        "document-generation"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3542,6 +4550,9 @@
         "anthropic-official",
         "documents",
         "comms"
+      ],
+      "collectionMembership": [
+        "document-generation"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3558,6 +4569,11 @@
         "security",
         "agents"
       ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "professional-work-toolkit",
+        "security-first-dev"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3571,6 +4587,15 @@
         "prompting",
         "testing",
         "agents"
+      ],
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "claude-code-power-user",
+        "local-models-starter",
+        "professional-work-toolkit",
+        "research-and-writing",
+        "skill-authoring",
+        "solo-developer-starter"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3587,6 +4612,9 @@
         "git",
         "forgekit"
       ],
+      "collectionMembership": [
+        "release-and-deploy"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3602,6 +4630,10 @@
         "release",
         "forgekit"
       ],
+      "collectionMembership": [
+        "codebase-onboarding",
+        "release-and-deploy"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3614,6 +4646,9 @@
         "skill-md",
         "anthropic-official",
         "testing"
+      ],
+      "collectionMembership": [
+        "skill-authoring"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3631,6 +4666,9 @@
         "security",
         "git"
       ],
+      "collectionMembership": [
+        "skill-authoring"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3644,6 +4682,27 @@
         "anthropic-official",
         "design",
         "comms"
+      ],
+      "collectionMembership": [
+        "professional-work-toolkit"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "smart-model-select-codex",
+      "name": "Smart Model Select — Codex",
+      "description": "Routing skill for OpenAI Codex that picks between GPT-4o, GPT-4.1, o4-mini, and o3 based on task complexity, latency budget, and cost ceiling. Includes a decision matrix and a shell helper that reads CODEX_MODEL_TIER from the environment.",
+      "tags": [
+        "codex",
+        "model-selection",
+        "cost",
+        "performance",
+        "routing"
+      ],
+      "collectionMembership": [
+        "platform-environments"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3661,35 +4720,10 @@
         "security",
         "agents"
       ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "subagent-driven-development",
-      "name": "Subagent Driven Development",
-      "description": "Use when executing implementation plans with independent tasks in the current session",
-      "tags": [
-        "skill-md",
-        "community",
-        "superpowers",
-        "planning"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "systematic-debugging",
-      "name": "Systematic Debugging",
-      "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes",
-      "tags": [
-        "skill-md",
-        "community",
-        "superpowers",
-        "testing",
-        "debugging",
-        "git"
+      "collectionMembership": [
+        "aws-kiro-ide-workflow",
+        "professional-work-toolkit",
+        "spec-and-planning"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3708,19 +4742,9 @@
         "git",
         "agents"
       ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "test-driven-development",
-      "name": "Test Driven Development",
-      "description": "Use when implementing any feature or bugfix, before writing implementation code",
-      "tags": [
-        "skill-md",
-        "community",
-        "superpowers",
-        "testing"
+      "collectionMembership": [
+        "claude-code-power-user",
+        "multi-agent-orchestration"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3736,50 +4760,44 @@
         "testing",
         "agents"
       ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "using-git-worktrees",
-      "name": "Using Git Worktrees",
-      "description": "Use when starting feature work that needs isolation from current workspace or before executing implementation plans - creates isolated git worktrees with smart directory selection and safety verification",
-      "tags": [
-        "skill-md",
-        "community",
-        "superpowers",
-        "design",
-        "git",
-        "planning"
+      "collectionMembership": [
+        "verification-review-gate"
       ],
       "version": "0.1.0",
       "deprecated": false
     },
     {
       "kind": "skill",
-      "id": "using-superpowers",
-      "name": "Using Superpowers",
-      "description": "Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions",
+      "id": "vertex-ai-setup",
+      "name": "Vertex AI Setup",
+      "description": "Set up Vertex AI to run Gemini models with forgekit skills. Covers project and region configuration, service-account key rotation, quota requests, and a one-command verify that confirms the model endpoint is reachable.",
       "tags": [
-        "skill-md",
-        "community",
-        "superpowers",
-        "design"
+        "gemini",
+        "vertex-ai",
+        "setup",
+        "gcp",
+        "deploy"
+      ],
+      "collectionMembership": [
+        "platform-environments"
       ],
       "version": "0.1.0",
       "deprecated": false
     },
     {
       "kind": "skill",
-      "id": "verification-before-completion",
-      "name": "Verification Before Completion",
-      "description": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always",
+      "id": "vllm-server",
+      "name": "vLLM Server",
+      "description": "Configure a vLLM server for running forgekit skills against open-weight models. Covers engine args for throughput vs latency, an OpenAI-compatible endpoint that the forgekit CLI can point at, and quantization options for GPU-constrained setups.",
       "tags": [
-        "skill-md",
-        "community",
-        "superpowers",
-        "comms",
-        "git"
+        "vllm",
+        "local-llm",
+        "setup",
+        "server",
+        "gpu-optional"
+      ],
+      "collectionMembership": [
+        "local-models-starter"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3796,6 +4814,9 @@
         "webapp",
         "design"
       ],
+      "collectionMembership": [
+        "document-generation"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3810,33 +4831,8 @@
         "webapp",
         "testing"
       ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "writing-plans",
-      "name": "Writing Plans",
-      "description": "Use when you have a spec or requirements for a multi-step task, before touching code",
-      "tags": [
-        "skill-md",
-        "community",
-        "superpowers",
-        "planning"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "writing-skills",
-      "name": "Writing Skills",
-      "description": "Use when creating new skills, editing existing skills, or verifying skills work before deployment",
-      "tags": [
-        "skill-md",
-        "community",
-        "superpowers",
-        "deploy"
+      "collectionMembership": [
+        "web-app-development"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3853,6 +4849,9 @@
         "design",
         "api"
       ],
+      "collectionMembership": [
+        "document-generation"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3866,6 +4865,7 @@
         "forgekit",
         "training"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3879,6 +4879,7 @@
         "forgekit",
         "setup"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3892,6 +4893,7 @@
         "forgekit",
         "setup"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3905,6 +4907,7 @@
         "forgekit",
         "setup"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3918,6 +4921,9 @@
         "forgekit",
         "mcp-ops"
       ],
+      "collectionMembership": [
+        "mcp-ops-and-recovery"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3930,6 +4936,9 @@
         "tool",
         "forgekit",
         "release"
+      ],
+      "collectionMembership": [
+        "release-and-deploy"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3946,6 +4955,9 @@
         "git",
         "ci"
       ],
+      "collectionMembership": [
+        "verification-review-gate"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3959,6 +4971,7 @@
         "forgekit",
         "setup"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3972,6 +4985,7 @@
         "forgekit",
         "setup"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3984,6 +4998,9 @@
         "tool",
         "forgekit",
         "mcp-ops"
+      ],
+      "collectionMembership": [
+        "mcp-ops-and-recovery"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3998,6 +5015,7 @@
         "forgekit",
         "diagnostics"
       ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     }
