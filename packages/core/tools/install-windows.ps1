@@ -1,7 +1,7 @@
 #Requires -RunAsAdministrator
 <#
 .SYNOPSIS
-    AI Dev Toolkit - Windows Setup
+    Forge Kit - Windows Setup
 .DESCRIPTION
     Installs productivity CLI tools via winget and scoop.
     Run as Administrator in PowerShell.
@@ -9,7 +9,7 @@
 
 $ErrorActionPreference = "Stop"
 
-Write-Output "=== AI Dev Toolkit - Windows Setup ==="
+Write-Output "=== Forge Kit - Windows Setup ==="
 
 $Installed = @()
 $Skipped = @()
@@ -160,10 +160,10 @@ $response = Read-Host
 if ($response -eq 'y') {
     # Check if already configured
     $profileContent = Get-Content $PROFILE -Raw -ErrorAction SilentlyContinue
-    if ($profileContent -notmatch "AI Dev Toolkit") {
+    if ($profileContent -notmatch "Forge Kit") {
         $newConfig = @'
 
-# === AI Dev Toolkit ===
+# === Forge Kit ===
 # zoxide (smart cd)
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
@@ -172,7 +172,7 @@ Set-Alias -Name lg -Value lazygit
 function ll { eza -la --git @args }
 function lt { eza -la --tree --level=2 --git @args }
 Set-Alias -Name cat -Value bat -Option AllScope
-# === End AI Dev Toolkit ===
+# === End Forge Kit ===
 '@
         Add-Content -Path $PROFILE -Value $newConfig
         Write-Output "[ok] Profile updated. Restart PowerShell to apply."

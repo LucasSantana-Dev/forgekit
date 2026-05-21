@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "=== AI Dev Toolkit — Claude Code Setup ==="
+echo "=== Forge Kit — Claude Code Setup ==="
 echo ""
 echo "Configures: MCP servers, memory structure, settings, plugin hygiene"
 echo ""
@@ -45,7 +45,13 @@ recommended = {
     "markdownify": {
         "command": "npx",
         "args": ["-y", "markdownify-mcp@latest"]
+    },
+    "github": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-github@latest"],
+        "env": {"GITHUB_PERSONAL_ACCESS_TOKEN": "\${GITHUB_PERSONAL_ACCESS_TOKEN}"}
     }
+    # optional: "sentry": {"command": "uvx", "args": ["mcp-server-sentry", "--auth-token", "\${SENTRY_AUTH_TOKEN}"]}
 }
 
 data = json.loads(path.read_text()) if path.stat().st_size > 0 else {}
@@ -84,7 +90,13 @@ data = {
         "markdownify": {
             "command": "npx",
             "args": ["-y", "markdownify-mcp@latest"]
+        },
+        "github": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-github@latest"],
+            "env": {"GITHUB_PERSONAL_ACCESS_TOKEN": "\${GITHUB_PERSONAL_ACCESS_TOKEN}"}
         }
+        # optional: "sentry": {"command": "uvx", "args": ["mcp-server-sentry", "--auth-token", "\${SENTRY_AUTH_TOKEN}"]}
     }
 }
 print(json.dumps(data, indent=2))
@@ -94,7 +106,8 @@ PYEOF
 fi
 
 echo ""
-echo "  Servers: tavily (web search), context7 (library docs), playwright (browser automation), markdownify (PDF/image/audio→Markdown)"
+echo "  Servers: tavily (web search), context7 (library docs), playwright (browser automation), markdownify (PDF/image/audio→Markdown), github (code search + PR management)"
+echo "  Optional: sentry (production debugging) — set SENTRY_AUTH_TOKEN and add manually to .mcp.json"
 echo "  Set TAVILY_API_KEY in your shell env for tavily to work: export TAVILY_API_KEY=tvly-..."
 echo "  For project-specific servers, create .mcp.json in your project root."
 

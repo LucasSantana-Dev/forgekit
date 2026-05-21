@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "=== AI Dev Toolkit — macOS Setup ==="
+echo "=== Forge Kit — macOS Setup ==="
 
 INSTALLED=()
 SKIPPED=()

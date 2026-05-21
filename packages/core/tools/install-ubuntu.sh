@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "=== AI Dev Toolkit — Ubuntu Setup ==="
+echo "=== Forge Kit — Ubuntu Setup ==="
 
 INSTALLED=()
 SKIPPED=()
