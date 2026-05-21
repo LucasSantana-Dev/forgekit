@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "=== AI Dev Toolkit — AI Workflow Setup (macOS) ==="
+echo "=== Forge Kit — AI Workflow Setup (macOS) ==="
 
 INSTALLED=()
 SKIPPED=()
@@ -123,11 +123,13 @@ install_codex() {
 
 append_zsh_block() {
   local zshrc="$HOME/.zshrc"
-  local begin="# >>> ai-dev-toolkit workflow >>>"
-  local end="# <<< ai-dev-toolkit workflow <<<"
+  local old_begin="# >>> ai-dev-toolkit workflow >>>"
+  local old_end="# <<< ai-dev-toolkit workflow <<<"
+  local begin="# >>> forgekit workflow >>>"
+  local end="# <<< forgekit workflow <<<"
   local block
   block=$(cat <<'EOF'
-# >>> ai-dev-toolkit workflow >>>
+# >>> forgekit workflow >>>
 alias ai-eval='promptfoo'
 alias ai-flow='n8n'
 alias ai-webui='docker run --rm -p 3000:8080 --name open-webui ghcr.io/open-webui/open-webui:main'
@@ -136,10 +138,6 @@ alias ai-docs='echo "Use Context7 MCP in your agent for up-to-date docs groundin
 alias ai-search='echo "Use Tavily MCP for research queries in agent workflows."'
 alias ai-crawl='echo "Use Firecrawl API/MCP with FIRECRAWL_API_KEY for web-to-markdown ingestion."'
 alias ai-browser-mcp='npx -y @playwright/mcp@latest'
-alias ai-skills-find='npx -y skills find'
-alias ai-skills-add='npx -y skills add'
-alias ai-plan-files='npx -y skills add OthmanAdi/planning-with-files --skill planning-with-files -g'
-alias ai-skill-pack='npx -y antigravity-awesome-skills --claude'
 alias ai-openviking='openviking-server'
 alias ai-browser-use='browser-use'
 alias ai-letta='letta'
@@ -150,7 +148,7 @@ alias ai-mcphub='npx -y mcphub'
 alias ai-lmnr='$HOME/.local/bin/lmnr'
 alias ai-tdd-guard='echo "TDD Guard: drop tdd-guard.json into project root — see github.com/nizos/tdd-guard"'
 alias ai-codex='codex'                                                # OpenAI Codex CLI (sandbox-first)
-# <<< ai-dev-toolkit workflow <<<
+# <<< forgekit workflow <<<
 EOF
 )
 
@@ -161,8 +159,19 @@ EOF
     return
   fi
 
-  if grep -Fq "$begin" "$zshrc" && grep -Fq "$end" "$zshrc"; then
-    python3 - "$zshrc" "$begin" "$end" "$block" <<'PY'
+  # Detect which sentinel version is present (migrate old ai-dev-toolkit → forgekit)
+  local active_begin=""
+  local active_end=""
+  if grep -Fq "$old_begin" "$zshrc" 2>/dev/null && grep -Fq "$old_end" "$zshrc" 2>/dev/null; then
+    active_begin="$old_begin"
+    active_end="$old_end"
+  elif grep -Fq "$begin" "$zshrc" 2>/dev/null && grep -Fq "$end" "$zshrc" 2>/dev/null; then
+    active_begin="$begin"
+    active_end="$end"
+  fi
+
+  if [ -n "$active_begin" ]; then
+    python3 - "$zshrc" "$active_begin" "$active_end" "$block" <<'PY'
 from pathlib import Path
 import sys
 
@@ -225,7 +234,7 @@ fi
 echo ""
 echo "Run: source ~/.zshrc"
 echo "Then try: ai-eval --help, ai-flow --help, ai-browser-mcp --help"
-echo "Optional: ai-plan-files, ai-skill-pack, ai-openviking --help"
+echo "Optional: ai-openviking --help"
 echo "Optional: ai-browser-use --help, ai-letta --help"
 echo "Optional: ai-memory-check"
 echo "Optional: ai-codex (requires OPENAI_API_KEY)"
