@@ -38,11 +38,9 @@ items:
   - kind: skill
     id: code-review
   - kind: skill
-    id: systematic-debugging
+    id: adt-debug-deep
   - kind: skill
     id: adt-tdd
-  - kind: skill
-    id: verification-before-completion
   - kind: skill
     id: eng-focused-fix
   # MCP health
@@ -57,7 +55,7 @@ items:
     id: adt-smart-model-route
   # Codebase orientation
   - kind: skill
-    id: eng-codebase-onboarding
+    id: adt-onboard-new-repo
   - kind: skill
     id: eng-code-tour
   # Verification and research

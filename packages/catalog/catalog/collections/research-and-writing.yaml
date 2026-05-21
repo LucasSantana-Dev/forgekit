@@ -21,7 +21,7 @@ items:
 - kind: skill
   id: prompting-discipline
 - kind: skill
-  id: writing-plans
+  id: adt-plan
 - kind: agent
   id: document-specialist
 - kind: agent

@@ -19,7 +19,7 @@ items:
 - kind: skill
   id: eng-database-designer
 - kind: skill
-  id: eng-codebase-onboarding
+  id: adt-onboard-new-repo
 - kind: skill
   id: code-review
 - kind: agent
