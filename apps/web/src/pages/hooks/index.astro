@@ -3,7 +3,7 @@ import Base from "../../layouts/Base.astro";
 import Card from "../../components/Card.astro";
 import SearchFilter from "../../components/SearchFilter.astro";
 import { getHooks } from "../../lib/catalog.ts";
-import { deriveCategory } from "../../lib/ui.ts";
+import { deriveCategory, deriveProvider } from "../../lib/ui.ts";
 
 const hooks = await getHooks();
 const base = import.meta.env.BASE_URL;
@@ -52,6 +52,7 @@ const slugify = (s: string) => s.toLowerCase().replace(/\s+/g, "-").replace(/[^a
                 tags={h.tags}
                 href={`${base}hooks/${h.id}/`}
                 extraTag={h.event}
+                provider={deriveProvider(h.tags)}
                 hideKind={true}
               />
             ))}
