@@ -152,6 +152,22 @@ async function main() {
     }
   }
 
+  // Advisory: entries that support `provider` but don't set it yet.
+  // This is a warning, not a failure — existing entries don't have the field.
+  const PROVIDER_KINDS: CatalogKind[] = ["skill", "agent", "hook", "command", "tool", "server"];
+  let providerWarnings = 0;
+  for (const entry of allEntries) {
+    if (!PROVIDER_KINDS.includes(entry.kind)) continue;
+    const data = entry.data as Record<string, unknown>;
+    if (!data.provider) {
+      console.warn(`⚠️  ${entry.kind} ${entry.id}: missing 'provider' field (add claude|codex|gemini|cursor|local|any)`);
+      providerWarnings++;
+    }
+  }
+  if (providerWarnings > 0) {
+    console.warn(`\n⚠️  ${providerWarnings} entr${providerWarnings === 1 ? "y" : "ies"} missing 'provider' — run #155 backfill`);
+  }
+
   if (failures) {
     console.error(`\n❌ ${failures} validation error${failures === 1 ? "" : "s"}`);
     console.error(JSON.stringify(counts));
