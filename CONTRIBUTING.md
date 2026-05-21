@@ -16,6 +16,10 @@ Thanks for your interest in improving the AI Dev Toolkit.
 3. Make your changes
 4. Open a PR with a clear description of what and why
 
+## Catalog Entries
+
+When adding or updating catalog entries, each manifest must include a `provider` field. See [`docs/PROVIDERS.md`](docs/PROVIDERS.md) for the full taxonomy, install-path conventions, and rules for picking the right provider ID.
+
 ## Guidelines
 
 ### Patterns
