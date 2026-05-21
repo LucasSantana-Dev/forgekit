@@ -1,0 +1,258 @@
+---
+import Base from "../../layouts/Base.astro";
+import Card from "../../components/Card.astro";
+import SearchFilter from "../../components/SearchFilter.astro";
+import {
+  getSkills,
+  getServers,
+  getAgents,
+  getHooks,
+  getCommands,
+  getTools,
+} from "../../lib/catalog.ts";
+import {
+  deriveProvider,
+  providerLabel,
+  getProviderBlurb,
+  PROVIDER_ORDER,
+  type Provider,
+  type Kind,
+} from "../../lib/ui.ts";
+
+export async function getStaticPaths() {
+  return PROVIDER_ORDER.map((p) => ({ params: { id: p } }));
+}
+
+const { id } = Astro.params;
+const provider = id as Provider;
+const base = import.meta.env.BASE_URL;
+
+const [skills, servers, agents, hooks, commands, tools] = await Promise.all([
+  getSkills(),
+  getServers(),
+  getAgents(),
+  getHooks(),
+  getCommands(),
+  getTools(),
+]);
+
+interface UnifiedEntry {
+  kind: Kind;
+  id: string;
+  name: string;
+  description: string;
+  tags: string[];
+  href: string;
+  extraTag?: string;
+}
+
+const all: UnifiedEntry[] = [
+  ...skills.map<UnifiedEntry>((s) => ({
+    kind: "skill", id: s.id, name: s.name, description: s.description, tags: s.tags ?? [],
+    href: `${base}skills/${s.id}/`,
+  })),
+  ...agents.map<UnifiedEntry>((a) => ({
+    kind: "agent", id: a.id, name: a.name, description: a.description, tags: a.tags ?? [],
+    href: `${base}agents/${a.id}/`, extraTag: a.model,
+  })),
+  ...servers.map<UnifiedEntry>((s) => ({
+    kind: "server", id: s.id, name: s.name, description: s.description, tags: s.tags ?? [],
+    href: `${base}servers/${s.id}/`, extraTag: s.transport,
+  })),
+  ...hooks.map<UnifiedEntry>((h) => ({
+    kind: "hook", id: h.id, name: h.name, description: h.description, tags: h.tags ?? [],
+    href: `${base}hooks/${h.id}/`, extraTag: h.event,
+  })),
+  ...commands.map<UnifiedEntry>((c) => ({
+    kind: "command", id: c.id, name: c.name, description: c.description, tags: c.tags ?? [],
+    href: `${base}commands/${c.id}/`, extraTag: c.category,
+  })),
+  ...tools.map<UnifiedEntry>((t) => ({
+    kind: "tool", id: t.id, name: t.name, description: t.description, tags: t.tags ?? [],
+    href: `${base}tools/${t.id}/`, extraTag: t.runtime,
+  })),
+];
+
+const entries = all
+  .filter((e) => deriveProvider(e.tags) === provider)
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+const KIND_ORDER: Kind[] = ["skill", "agent", "server", "hook", "command", "tool"];
+const KIND_LABELS: Record<string, string> = {
+  skill: "Skills",
+  agent: "Agents",
+  server: "MCP Servers",
+  hook: "Hooks",
+  command: "Commands",
+  tool: "Tools",
+};
+
+const byKind = new Map<Kind, UnifiedEntry[]>();
+for (const e of entries) {
+  if (!byKind.has(e.kind)) byKind.set(e.kind, []);
+  byKind.get(e.kind)!.push(e);
+}
+const presentKinds = KIND_ORDER.filter((k) => (byKind.get(k)?.length ?? 0) > 0);
+
+const tagSet = new Set<string>();
+for (const e of entries) for (const tag of e.tags) tagSet.add(tag);
+const tags = [...tagSet].sort();
+
+const label = providerLabel(provider);
+const blurb = getProviderBlurb(provider);
+---
+<Base
+  title={`${label} — Provider`}
+  description={`${entries.length} catalog entries for ${label}: ${blurb.slice(0, 120)}…`}
+>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href={`${base}providers/`}>Providers</a>
+    <span aria-hidden="true">›</span>
+    <span>{label}</span>
+  </nav>
+
+  <h1>{label}</h1>
+  <p class="lead-muted">{blurb}</p>
+
+  <SearchFilter placeholder={`Search ${entries.length} entries…`} tags={tags} />
+
+  <div class="page-layout">
+    <div class="page-main">
+      {presentKinds.map((k) => {
+        const items = byKind.get(k)!;
+        return (
+          <section class="entry-category" id={k}>
+            <div class="category-header">
+              <h2 class="category-title">{KIND_LABELS[k]}</h2>
+              <span class="category-count">{items.length}</span>
+            </div>
+            <div class="grid">
+              {items.map((e) => (
+                <Card
+                  kind={e.kind}
+                  id={e.id}
+                  name={e.name}
+                  description={e.description}
+                  tags={e.tags}
+                  href={e.href}
+                  extraTag={e.extraTag}
+                  hideKind={true}
+                />
+              ))}
+            </div>
+          </section>
+        );
+      })}
+      {entries.length === 0 && (
+        <p class="empty">No entries for this provider yet.</p>
+      )}
+      <div id="empty-state" class="empty" style="display: none;">No entries match your filters.</div>
+    </div>
+
+    {presentKinds.length > 1 && (
+      <aside class="page-sidebar">
+        <div class="sidebar-heading">By kind</div>
+        <nav aria-label="Jump to kind">
+          {presentKinds.map((k) => (
+            <a class="sidebar-link" href={`#${k}`}>
+              <span class="sidebar-dot" aria-hidden="true"></span>
+              <span class="sidebar-label">{KIND_LABELS[k]}</span>
+              <span class="sidebar-count">{byKind.get(k)!.length}</span>
+            </a>
+          ))}
+        </nav>
+      </aside>
+    )}
+  </div>
+</Base>
+
+<style>
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--fg-subtle);
+    margin-bottom: 1.5rem;
+  }
+  .breadcrumb a { color: var(--fg-subtle); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--fg); }
+
+  .page-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .page-main { min-width: 0; }
+  .page-sidebar { position: sticky; top: 5rem; }
+  .sidebar-heading {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--fg-subtle);
+    padding: 0 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .page-sidebar nav { display: flex; flex-direction: column; gap: 0.1rem; }
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--fg-subtle);
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .sidebar-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--fg-subtle);
+    opacity: 0.5; flex-shrink: 0;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .sidebar-label { flex: 1; min-width: 0; }
+  .sidebar-link:hover { background: rgba(255, 255, 255, 0.06); color: var(--fg); }
+  .sidebar-link:hover .sidebar-dot { opacity: 0.85; }
+  .sidebar-link.is-active { background: rgba(255, 255, 255, 0.06); color: var(--fg); }
+  .sidebar-link.is-active .sidebar-dot { opacity: 1; transform: scale(1.2); }
+  .sidebar-count { font-size: 0.78rem; opacity: 0.6; flex-shrink: 0; }
+
+  .entry-category { scroll-margin-top: 5rem; margin-bottom: 3rem; }
+  .category-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .category-title {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--fg-subtle);
+    margin: 0;
+  }
+  .category-count {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--fg-muted, var(--fg-subtle));
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+    line-height: 1.6;
+  }
+  @media (max-width: 768px) {
+    .page-layout { grid-template-columns: 1fr; }
+    .page-sidebar { position: static; order: -1; }
+    .sidebar-heading { display: none; }
+    .page-sidebar nav { flex-direction: row; flex-wrap: wrap; }
+    .sidebar-link { border: 1px solid var(--border); border-radius: 999px; padding: 0.3rem 0.7rem; }
+  }
+</style>
