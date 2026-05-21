@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- Optional `provider` field in manifest schemas (skill, agent, hook, command, tool, server); validator emits advisory warnings for entries missing it, pointing to #155 backfill (closes #154).
+
 ## [0.25.0] - 2026-05-21
 
 ### Added
