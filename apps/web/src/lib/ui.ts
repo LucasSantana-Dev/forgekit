@@ -241,6 +241,24 @@ export function deriveProvider(tags: readonly string[] | undefined): Provider {
   return "claude";
 }
 
+const PROVIDER_BLURBS: Record<Provider, string> = {
+  claude:
+    "Anything that lands in ~/.claude/ — the catalog default. Skills, agents, hooks, and commands compose into a single Claude Code session. Ship-ready: every entry is install-tested via npx forge-kit install.",
+  codex:
+    "Entries wired for OpenAI Codex agents. Skills map to AGENTS.md conventions, model-routing helpers cover GPT-4o through o3, and security patterns guard tool-call surfaces against prompt injection.",
+  gemini:
+    "Skills and guides for the Gemini CLI and Vertex AI. Covers long-context caching to cut token costs, Google Search grounding for live data, and end-to-end deployment on GCP.",
+  cursor:
+    "Cursor-specific integration: port forgekit skills to .mdc glob-scoped rules, wire MCP servers via ~/.cursor/mcp.json, and learn when to use Tab completions versus the Composer agent.",
+  local:
+    "Run Llama, Qwen, Mistral, or other open-weight models on your own hardware. Runtimes covered: Ollama, vLLM, and LM Studio. Includes a compatibility matrix so you know which skills work at smaller context windows.",
+  any: "Provider-agnostic entries that work across Claude Code, Codex, Gemini, Cursor, and local runtimes. Good starting points regardless of which AI tool you are running.",
+};
+
+export function getProviderBlurb(p: Provider): string {
+  return PROVIDER_BLURBS[p];
+}
+
 /**
  * Derive a broad, human-readable category for an entry from its tag list.
  * Falls back to the first non-generic tag, then to a caller-provided default.
