@@ -27,6 +27,10 @@
       "minLength": 1,
       "maxLength": 500
     },
+    "provider": {
+      "enum": ["claude", "codex", "gemini", "cursor", "local", "any"],
+      "description": "Primary AI provider or runtime this entry targets. Use 'any' for provider-agnostic entries."
+    },
     "transport": {
       "enum": [
         "stdio",

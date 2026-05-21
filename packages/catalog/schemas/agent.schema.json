@@ -41,6 +41,10 @@
       "maxItems": 16,
       "uniqueItems": true
     },
+    "provider": {
+      "enum": ["claude", "codex", "gemini", "cursor", "local", "any"],
+      "description": "Primary AI provider or runtime this entry targets. Use 'any' for provider-agnostic entries."
+    },
     "model": {
       "type": "string",
       "description": "Model ID the sub-agent uses (e.g. claude-opus-4-6, claude-sonnet-4-6)."
