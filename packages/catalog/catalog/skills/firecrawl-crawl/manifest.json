@@ -1,0 +1,30 @@
+{
+  "id": "firecrawl-crawl",
+  "name": "Firecrawl Crawl",
+  "description": "Bulk extract content from an entire website or site section. Use this skill when the user wants to crawl a site, extract all pages from a docs section, bulk-scrape multiple pages following links, or says \"crawl\", \"get all the pages\", \"extract everything under /docs\", \"bulk extract\", or needs content from many pages on the same site. Handles depth limits, path filtering, and concurrent extraction.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "web",
+    "scraping",
+    "firecrawl"
+  ],
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/skills",
+    "ref": "main",
+    "path": "firecrawl-crawl/SKILL.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/skills/tree/main/firecrawl-crawl",
+  "translations": {
+    "pt-BR": {
+      "name": "Firecrawl Crawl",
+      "description": "Extração em massa de conteúdo de um site ou seção. Use quando o usuário quer rastrear um site, extrair todas as páginas de uma seção de docs ou fazer bulk-scrape seguindo links. Suporta limites de profundidade e filtragem de caminhos."
+    }
+  }
+}

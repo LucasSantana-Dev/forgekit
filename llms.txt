@@ -5,15 +5,15 @@
 <!-- llms-catalog-start -->
 Key capabilities:
 - 33 tool-agnostic workflow patterns
-- 155 portable skills for autonomous development
+- 150 portable skills for autonomous development
 - 22 catalog agents in `packages/catalog/catalog/agents/`
 - Cross-tool installer (forge-kit) with interactive setup wizard
 - Autonomous loop engine with governance gates
 
 ## Catalog overview
-- 155 portable skills in `packages/catalog/catalog/skills/`
+- 150 portable skills in `packages/catalog/catalog/skills/`
 - 22 catalog agents in `packages/catalog/catalog/agents/`
-- 24 collections organizing workflows and personas
+- 25 collections organizing workflows and personas
 - 21 MCP server definitions in `packages/catalog/catalog/servers/`
 - Counts are approximate; source of truth is `packages/catalog/catalog/` and `packages/catalog/catalog/index.json`
 
@@ -42,6 +42,7 @@ Key capabilities:
 - Token & Context Optimization
 - Verification Review Gate
 - Web App Development
+- Web Scraping & Research
 
 <!-- llms-catalog-end -->
 
