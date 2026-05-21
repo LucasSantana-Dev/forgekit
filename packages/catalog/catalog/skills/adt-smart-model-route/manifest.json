@@ -4,6 +4,9 @@
   "description": "Auto-classify prompt complexity via Haiku (with heuristic fallback) and inject model routing hints for Agent tool calls. Wired as a UserPromptSubmit hook — fires on every prompt, routes low tasks to Haiku, standard to Sonnet, complex to Sonnet with thorough reasoning, and critical (security/arch/migrations) to Opus.",
   "version": "0.1.0",
   "tags": [
+    "skill-md",
+    "forgekit",
+    "core",
     "model-routing",
     "complexity-classification",
     "automation",
