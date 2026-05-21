@@ -24,9 +24,7 @@ items:
 - kind: skill
   id: spec-driven-development
 - kind: skill
-  id: writing-plans
-- kind: skill
-  id: executing-plans
+  id: adt-loop
 - kind: skill
   id: brainstorming
 - kind: agent

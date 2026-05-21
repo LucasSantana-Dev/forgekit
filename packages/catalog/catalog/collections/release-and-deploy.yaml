@@ -19,8 +19,6 @@ items:
 - kind: skill
   id: adt-verify
 - kind: skill
-  id: finishing-a-development-branch
-- kind: skill
   id: eng-ci-cd-pipeline-builder
 - kind: agent
   id: verifier

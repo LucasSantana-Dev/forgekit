@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
-    "astro": "^6.2.2",
+    "astro": "^6.3.5",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
-    "marked": "^18.0.3"
+    "marked": "^18.0.4"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",

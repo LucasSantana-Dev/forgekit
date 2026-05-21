@@ -15,15 +15,13 @@ items:
 - kind: skill
   id: git-worktrees
 - kind: skill
-  id: using-git-worktrees
-- kind: skill
   id: eng-git-worktree-manager
 - kind: skill
   id: adt-worktree-flow
 - kind: skill
   id: adt-checkpoint
 - kind: skill
-  id: finishing-a-development-branch
+  id: adt-ship-it
 - kind: agent
   id: git-master
 - kind: server

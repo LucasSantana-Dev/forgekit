@@ -4,6 +4,9 @@
   "description": "Audit historical Claude Code token usage from JSONL session files — shows total spend, cache hit rates, top costly sessions, weekly trends, and where tokens are going. Run after heavy sessions or weekly to measure optimization impact.",
   "version": "0.1.0",
   "tags": [
+    "skill-md",
+    "forgekit",
+    "core",
     "tokens",
     "cost",
     "analysis",
