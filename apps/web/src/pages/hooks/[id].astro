@@ -6,7 +6,7 @@ import UsageBlock from "../../components/UsageBlock.astro";
 import RelatedTutorials from "../../components/RelatedTutorials.astro";
 import RelatedCollections from "../../components/RelatedCollections.astro";
 import { getHooks, getTutorials, getCollections } from "../../lib/catalog.ts";
-import { installCommand } from "../../lib/ui.ts";
+import { installCommand, deriveProvider } from "../../lib/ui.ts";
 
 export async function getStaticPaths() {
   const hooks = await getHooks();
@@ -19,7 +19,7 @@ const collections = await getCollections();
 const base = import.meta.env.BASE_URL;
 ---
 <Base title={hook.name} description={hook.description}>
-  <EntryHeader kind="hook" name={hook.name} description={hook.description} backLabel="All hooks">
+  <EntryHeader kind="hook" name={hook.name} description={hook.description} backLabel="All hooks" provider={deriveProvider(hook.tags)}>
     <div class="entry-tags">
       <span class="tag">event: {hook.event}</span>
       <span class="tag">runtime: {hook.runtime}</span>

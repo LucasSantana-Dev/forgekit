@@ -1,5 +1,5 @@
 ---
-import { kindIcon, kindLabel, type Kind } from "../lib/ui.ts";
+import { kindIcon, kindLabel, providerLabel, type Kind, type Provider } from "../lib/ui.ts";
 
 interface Props {
   kind: Kind;
@@ -7,11 +7,13 @@ interface Props {
   description?: string;
   backHref?: string;
   backLabel?: string;
+  provider?: Provider;
 }
 
-const { kind, name, description, backHref = "../", backLabel } = Astro.props;
+const { kind, name, description, backHref = "../", backLabel, provider } = Astro.props;
 const icon = kindIcon(kind);
 const label = kindLabel(kind);
+const base = import.meta.env.BASE_URL;
 ---
 
 <div class="entry-nav">
@@ -27,8 +29,41 @@ const label = kindLabel(kind);
   <div class="entry-header-top">
     <span class="entry-icon" aria-hidden="true">{icon}</span>
     <span class={`kind kind-${kind}`}>{label}</span>
+    {provider && (
+      <a
+        class={`entry-provider entry-provider-${provider}`}
+        href={`${base}providers/${provider}/`}
+        aria-label={`Provider: ${providerLabel(provider)}`}
+      >
+        {provider}
+      </a>
+    )}
   </div>
   <h1 class="entry-title">{name}</h1>
   {description && <p class="entry-desc">{description}</p>}
   <slot />
 </div>
+
+<style>
+  .entry-provider {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid currentColor;
+    opacity: 0.7;
+    line-height: 1.5;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+  }
+  .entry-provider:hover { opacity: 1; }
+  .entry-provider-claude  { color: oklch(75% 0.08 75); }
+  .entry-provider-codex   { color: oklch(72% 0.16 145); }
+  .entry-provider-gemini  { color: oklch(72% 0.14 250); }
+  .entry-provider-cursor  { color: oklch(70% 0.14 320); }
+  .entry-provider-local   { color: oklch(70% 0.05 200); }
+  .entry-provider-any     { color: var(--fg-subtle); }
+</style>
