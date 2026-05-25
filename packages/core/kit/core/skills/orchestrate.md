@@ -61,6 +61,5 @@ Integrate: Merge all 3 PRs, run e2e test
 
 ## References
 
-- Git worktrees: `using-git-worktrees` skill
-- Dispatcher: `dispatch` skill (single-agent routing)
-- Parallel agents: `dispatching-parallel-agents` pattern
+- Git worktrees: `git worktree add` — see `git worktree --help`
+- Parallel agents: spawn via `Agent` tool, one sub-agent per isolated worktree

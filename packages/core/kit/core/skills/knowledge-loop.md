@@ -10,10 +10,6 @@ triggers:
   - knowledge loop
 user-invocable: true
 auto-invoke: end-of-task + recall-questions + checkpoint-requests
-metadata:
-  owner: global-agents
-  tier: contextual
-  canonical_source: /Users/lucassantana/.claude/skills/knowledge-loop
 ---
 
 # Knowledge Loop

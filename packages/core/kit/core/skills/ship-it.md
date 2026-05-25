@@ -43,15 +43,15 @@ Detect deployment target from project:
 - Cloudflare Workers/Pages (`wrangler.toml`): invoke `cloudflare-deploy`
 - Docker on remote server: invoke `prod-rebuild`
 - Generic CI/CD: invoke `deployment-automation`
-- Multi-repo coordinated: invoke `chain-release`
+- Multi-repo coordinated: coordinate downstream deployments manually per project conventions
 
 ### Phase 4 — Post-deploy verify (always)
 - Wait 60s for deploy to settle
-- Invoke `sentry` to check for new issue events post-deploy
+- Query error monitoring for new issue events post-deploy
 - Invoke `ci-watch` to verify any post-deploy smoke checks passed
 - Hit a health endpoint if known (curl `/health`, `/version` to confirm new version is live)
 
-If Sentry shows any new issue with frequency >0 in the post-deploy window, escalate
+If error monitoring shows any new issue with frequency >0 in the post-deploy window, escalate
 to `production-incident` composite.
 
 ### Phase 5 — Capture (conditional)

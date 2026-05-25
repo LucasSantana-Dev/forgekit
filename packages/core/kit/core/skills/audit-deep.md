@@ -30,8 +30,8 @@ Invoke in parallel via Agent tool or sequential Skill calls:
 - `test-health` — suite proportionality, coverage, runtime
 - `config-drift-detect` — gate compatibility
 - `hook-effectiveness` — hooks fire/exit/latency stats
-- `performance-audit` or `performance-test` — runtime perf
-- `security-audit` — secrets, deps, OWASP
+- `perf-audit` — runtime perf
+- `security-sweep` — secrets, deps, OWASP
 - `mcp-audit` — MCP server usage
 - `plugin-audit` — plugin enabled-vs-used
 - `socket-audit` — supply chain (npm only)
@@ -77,7 +77,7 @@ HIGH (N):
   [hook-effectiveness] turn-counter spam every 10 turns
                        Fix: applied 2026-05-08 (commit 04ec576)
 
-  [security-audit] 2 high-severity vulns in transitive deps
+  [security-sweep] 2 high-severity vulns in transitive deps
                    Fix: /dependency-update-batch (estimated 30min)
 
 MEDIUM (N): ...

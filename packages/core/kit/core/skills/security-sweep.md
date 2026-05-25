@@ -1,6 +1,6 @@
 ---
 name: security-sweep
-description: Composite skill — full security pass across secrets, dependencies, code paths, and OWASP risks. Chains security-audit (broad) + socket-audit (npm supply chain) + semgrep (pattern scan) + code-security (code review for vulns) in parallel, reconciles into one severity-ranked report with remediation plan. Use quarterly per active repo or before any release of security-sensitive code.
+description: Composite skill — full security pass across secrets, dependencies, code paths, and OWASP risks. Chains socket-audit (npm supply chain) + semgrep (pattern scan) + code-security (code review for vulns) in parallel, reconciles into one severity-ranked report with remediation plan. Use quarterly per active repo or before any release of security-sensitive code.
 triggers:
   - security-sweep
   - quarterly-per-repo
@@ -29,7 +29,6 @@ clutter the actionable list.
 
 ### Phase 1 — Parallel scan dispatch (always)
 Invoke in parallel:
-- `security-audit` — broad OWASP-style review (secrets, deps, code paths)
 - `socket-audit` — npm supply chain (malicious packages, typosquats) — npm only
 - `semgrep` — pattern-based scan (custom rules + community packs)
 - `code-security` — review of recent diffs for unsafe patterns
@@ -63,15 +62,14 @@ Sort by impact-per-effort.
 Write report to `~/.claude/projects/<slug>/memory/security_sweep_<repo>_<date>.md`.
 Update MEMORY.md index. Trend visible across quarterly runs.
 
-If CRITICAL findings: also create Linear ticket via `incident-response` (without
-the full incident workflow — just ticket creation).
+If CRITICAL findings: create a Linear ticket manually and link to the sweep report.
 
 ## Reconciliation
 
 ```
 SECURITY SWEEP — <repo> — <date>
 
-Tools run:   security-audit, socket-audit, semgrep, code-security
+Tools run:   socket-audit, semgrep, code-security
 Total findings: N (after dedup)
 
 CRITICAL (X):
