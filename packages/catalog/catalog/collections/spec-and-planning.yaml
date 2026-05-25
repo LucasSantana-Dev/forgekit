@@ -16,19 +16,9 @@ items:
 - kind: skill
   id: adt-specs-spec-new
 - kind: skill
-  id: adt-specs-aggregate-roadmap
-- kind: skill
-  id: adt-specs-roadmap-refresh
-- kind: skill
   id: spec-driven-development
 - kind: skill
-  id: adt-loop
-- kind: skill
   id: brainstorming
-- kind: agent
-  id: planner
-- kind: agent
-  id: architect
 - kind: skill
   id: adt-adr-write
 - kind: skill
@@ -37,6 +27,10 @@ items:
   id: adt-scope-and-execute
 - kind: skill
   id: adt-ticket
+- kind: agent
+  id: planner
+- kind: agent
+  id: architect
 translations:
   pt-BR:
     name: Specs e Planejamento
