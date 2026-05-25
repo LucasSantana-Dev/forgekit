@@ -13,8 +13,6 @@ items:
 - kind: skill
   id: code-review
 - kind: skill
-  id: adt-debug-deep
-- kind: skill
   id: adt-verify
 - kind: skill
   id: eng-dependency-auditor
@@ -23,11 +21,11 @@ items:
 - kind: skill
   id: prompt-injection-defense
 - kind: skill
-  id: spec-driven-development
-- kind: skill
   id: prompting-discipline
 - kind: skill
   id: adt-secure
+- kind: skill
+  id: adt-ticket
 - kind: agent
   id: code-reviewer
 - kind: agent
@@ -48,10 +46,6 @@ items:
   id: pre-commit-validation
 - kind: hook
   id: block-destructive
-- kind: skill
-  id: adt-ticket
-- kind: skill
-  id: slack-gif-creator
 translations:
   pt-BR:
     name: Kit de Trabalho Profissional
