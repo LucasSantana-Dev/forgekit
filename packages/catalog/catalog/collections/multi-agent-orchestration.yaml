@@ -13,8 +13,6 @@ tags:
 - multi-agent
 items:
 - kind: skill
-  id: adt-dispatch
-- kind: skill
   id: adt-orchestrate
 - kind: skill
   id: adt-multi-agent

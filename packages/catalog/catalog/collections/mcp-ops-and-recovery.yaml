@@ -10,12 +10,6 @@ tags:
 items:
 - kind: skill
   id: mcp-builder
-- kind: skill
-  id: adt-mcp-patterns
-- kind: skill
-  id: adt-mcp-readiness
-- kind: skill
-  id: adt-mcp-doctor
 - kind: tool
   id: mcp-health
 - kind: tool
@@ -42,10 +36,6 @@ items:
   id: ssh
 - kind: skill
   id: mcp-audit
-- kind: skill
-  id: adt-mcp-care
-- kind: skill
-  id: adt-mcp-health
 translations:
   pt-BR:
     name: Operações e Recuperação de MCP

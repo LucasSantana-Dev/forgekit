@@ -34,8 +34,6 @@ items:
   id: validate-secrets
 - kind: hook
   id: pre-commit-validation
-- kind: skill
-  id: adt-tdd
 - kind: tool
   id: review-tools
 - kind: skill

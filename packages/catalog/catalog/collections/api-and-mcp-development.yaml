@@ -21,8 +21,6 @@ items:
 - kind: skill
   id: claude-api
 - kind: skill
-  id: adt-mcp-patterns
-- kind: skill
   id: adt-eval
 - kind: server
   id: context7
