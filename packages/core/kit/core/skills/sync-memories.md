@@ -9,10 +9,6 @@ triggers:
   - persist this
   - remember session
   - capture session
-metadata:
-  owner: global-agents
-  tier: stateful
-  canonical_source: /Users/lucassantana/.agents/skills/sync-memories
 ---
 
 # Sync Memories — Session Knowledge Capture

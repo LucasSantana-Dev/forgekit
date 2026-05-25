@@ -1,6 +1,6 @@
 ---
 name: debug-deep
-description: Composite skill — full debugging workflow from "this is broken" to root cause and fix. Chains systematic-debugging (root-cause hypotheses) → tracer agent (evidence walk) → sentry (production correlation if applicable) → ci-watch (regression check) → incident-response (if production-impacting). Use when a bug needs deep investigation, not just a quick fix.
+description: Composite skill — full debugging workflow from "this is broken" to root cause and fix. Chains hypothesis-tree (root-cause candidates) → tracer agent (evidence walk) → error-monitoring query (production correlation if applicable) → ci-watch (regression check) → production-incident (if production-impacting). Use when a bug needs deep investigation, not just a quick fix.
 triggers:
   - debug-deep
   - complex-bug-reports
@@ -26,8 +26,9 @@ with one chained skill that gathers evidence systematically.
 ## Workflow
 
 ### Phase 1 — Hypothesis tree (always)
-Invoke `systematic-debugging` to build a hypothesis tree with evidence-for/against
-columns. No fixes yet — just structured root-cause analysis.
+Build a structured hypothesis tree with evidence-for/against columns per candidate.
+No fixes yet — just root-cause analysis. Rank by: most-likely cause, recent change
+that could explain it, and any environmental-only reproductions.
 
 ### Phase 2 — Evidence walk (always)
 Invoke `tracer` agent (via Agent tool, subagent_type=tracer) to walk the call paths
@@ -35,7 +36,8 @@ and collect concrete evidence per hypothesis. Tracer ranks hypotheses by evidenc
 weight and recommends next probes.
 
 ### Phase 3 — Production correlation (if production-impacting)
-Invoke `sentry` to query for matching error signatures in the last 30 days. Look for:
+Query error monitoring (Sentry, Datadog, or the project's observability tool) for
+matching error signatures in the last 30 days. Look for:
 - Frequency trend (rising / steady / one-off)
 - Affected users / orgs / environments
 - Stack trace overlap with the local repro
@@ -52,7 +54,7 @@ tree's "introduced when" entries.
 Once the tree converges on one hypothesis with strong evidence:
 - For local-scope fixes: implement directly via Edit
 - For cross-module fixes: invoke `refactor-pipeline`
-- For production-impacting fixes: invoke `incident-response` to coordinate the fix
+- For production-impacting fixes: invoke `production-incident` to coordinate the fix
   with rollback plan, comms, and post-mortem
 
 ### Phase 6 — Capture (always)

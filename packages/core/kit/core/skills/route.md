@@ -10,7 +10,7 @@ triggers:
 
 # Route
 
-Route a task to the most fitting skill or agent. Meta-router above `dispatch`. Parses the user intent, checks the installed-skill inventory, and picks the best match (single skill or chain). If fuzzy, runs `recall` first.
+Route a task to the most fitting skill or agent. Parses the user intent, checks the installed-skill inventory, and picks the best match (single skill or chain). If fuzzy, runs `recall` first.
 
 ## Purpose
 
@@ -45,9 +45,9 @@ Route: Queries skill inventory, finds `api-design-principles`, scores 0.89
 Output: "Routing to `api-design-principles`. Invoking now."
 
 User: "Route: Weird test timeout, maybe a race condition or a real bug?"
-Route: Scores `systematic-debugging` 0.78, `test-driven-development` 0.72
+Route: Scores `debug-deep` 0.78, `test-health` 0.72
 Output: Runs recall("test timeout race condition"), gets pattern context
-Output: "Likely a race in beforeEach/afterEach. Routing to `systematic-debugging`."
+Output: "Likely a race in beforeEach/afterEach. Routing to `debug-deep`."
 
 User: "Route: Need to set up GitHub Actions for monorepo CI"
 Route: Finds `ci-watch` (0.82), `turborepo` (0.75), `deploment-automation` (0.71)
@@ -68,5 +68,5 @@ Output: "Multiple fits. Suggest: 1) `turborepo` (monorepo structure), 2) `ci-wat
 ## References
 
 - Skill inventory: local skills dir + `kit/core/skills/` (toolkit)
-- Dispatch skill: `dispatch` (lower-level routing)
+- Context retrieval for low-confidence routing: `recall` (pulls RAG index)
 - Context retrieval: `recall` (pulls RAG index)

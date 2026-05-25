@@ -25,7 +25,7 @@ Keep `README.md` and `README.pt-BR.md` structurally aligned in any repo that use
 3. **Language-switch header** as line 1: `[English](README.md) | [Português](README.pt-BR.md)`.
    - In a **PT-primary repo** (e.g. `ai-dev-toolkit-pt-br`): the English link points to the canonical EN repo URL, not a local file.
 4. **Code blocks, URLs, file paths, badges, shell commands**: verbatim identical between EN and PT.
-5. **Technical terms** kept in English: `forge-kit`, `Claude Code`, `Codex`, `OpenCode`, `Cursor`, `Windsurf`, `GitHub Copilot`, `MCP`, `MIT`, `TypeScript`, `ESLint`, `CI`, `PR`, skill/rule/agent/hook/pattern, skill names (`loop`, `route`, `dispatch`, `tdd`, `secure`, `resume`).
+5. **Technical terms** kept in English: `forge-kit`, `Claude Code`, `Codex`, `OpenCode`, `Cursor`, `Windsurf`, `GitHub Copilot`, `MCP`, `MIT`, `TypeScript`, `ESLint`, `CI`, `PR`, skill/rule/agent/hook/pattern, skill names (`loop`, `route`, `secure`, `resume`).
 
 ## Diff heuristic (quick audit)
 

@@ -1,6 +1,6 @@
 ---
 name: production-incident
-description: Composite skill — full production incident workflow from alert to post-mortem. Chains sentry (triage incoming events) → debug-deep (root cause) → incident-response (coordinate fix + comms) → ship-it (rollback or hotfix deploy) → adr-write (post-mortem). Use when production is on fire — not for dev-time debugging (use debug-deep alone for that).
+description: Composite skill — full production incident workflow from alert to post-mortem. Chains error-monitoring triage → debug-deep (root cause) → coordinated fix + comms → ship-it (rollback or hotfix deploy) → adr-write (post-mortem). Use when production is on fire — not for dev-time debugging (use debug-deep alone for that).
 triggers:
   - production-incident
   - production-down
@@ -28,7 +28,8 @@ before root cause.
 ## Workflow — sequential, blast-radius first
 
 ### Phase 1 — Triage (ALWAYS, FIRST)
-Invoke `sentry` to pull the incoming event picture:
+Query error monitoring (Sentry, Datadog, or the project's observability tool) for
+the incoming event picture:
 - Issue count + frequency in last 15 minutes
 - Affected users / orgs / regions
 - First seen timestamp (correlate with recent deploys)
@@ -50,7 +51,7 @@ Two options based on severity:
 
 **Option A — Rollback** (preferred for high blast-radius):
 - Invoke `ship-it` in rollback mode: revert to previous tag, deploy
-- Communicate via `incident-response` (Linear ticket + Slack post)
+- Create a Linear incident ticket; post a Slack/Discord status update
 - Continue to Phase 4 to fix forward
 
 **Option B — Hotfix** (for limited blast-radius with known fix):
@@ -59,15 +60,14 @@ Two options based on severity:
 - Verify in Phase 5
 
 ### Phase 4 — Coordinate (always)
-Invoke `incident-response` to:
-- Create Linear incident ticket
-- Cross-reference Sentry issue ID
-- Pin a Slack/Discord post if applicable
+Create the incident record:
+- Create Linear incident ticket, cross-reference the error monitoring issue ID
+- Pin a Slack/Discord status post if applicable
 - Track timeline (alert time → triage → action → resolve)
 
 ### Phase 5 — Verify resolution (always)
 - Wait 5-10 min after action
-- Invoke `sentry` again — confirm new event rate dropped to zero or pre-incident baseline
+- Query error monitoring again — confirm new event rate dropped to zero or pre-incident baseline
 - Hit affected endpoint manually to confirm
 - Update Linear ticket with resolution
 

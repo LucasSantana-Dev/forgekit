@@ -85,7 +85,7 @@ Skipped:  <phases already done>
 - `checkpoint` — stash uncommitted WIP before switching branches during resume
 - `self-heal` — recover from errors encountered while resuming (corrupt plan, missing files)
 - `loop` — the autonomous cycle that resume re-enters at the right phase
-- `context-save` — write state before a planned pause so the next resume has a clean anchor
+- `handoff` — write state before a planned pause so the next resume has a clean anchor
 
 ## Exit Conditions
 
