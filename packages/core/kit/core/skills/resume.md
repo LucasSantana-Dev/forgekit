@@ -21,9 +21,13 @@ Recover cold from a paused or crashed session. Figure out what was in-flight, wh
 - `.agents/plans/*.json` or `.loop-state.json` exists from a previous run
 - An open PR on the current branch needs its loop resumed
 
+## Post-incident check
+
+After loading the handoff, scan for OPEN incident flags (P0/P1 failures). If present, surface before anything else: a committed root-cause artifact (ADR or incident-log) is required before the next task proceeds.
+
 ## Detection Order
 
-1. **Explicit handoff** — read `~/.claude/handoffs/<user>/latest.md` if present; it declares the next action.
+1. **Explicit handoff** — read the active handoff file if present; it declares the next action.
 2. **Plan state** — scan `.agents/plans/` for `*.json` state files; the newest one names the current phase and step.
 3. **Git state** — `git status`, `git log -3`, and current branch. Uncommitted changes or a WIP commit means work stopped mid-phase.
 4. **Remote state** — `gh pr list --head <branch>` reveals whether the branch is already pushed and reviewable.
@@ -81,7 +85,7 @@ Skipped:  <phases already done>
 - `checkpoint` — stash uncommitted WIP before switching branches during resume
 - `self-heal` — recover from errors encountered while resuming (corrupt plan, missing files)
 - `loop` — the autonomous cycle that resume re-enters at the right phase
-- `context-save` — write state before a planned pause so the next resume has a clean anchor
+- `handoff` — write state before a planned pause so the next resume has a clean anchor
 
 ## Exit Conditions
 

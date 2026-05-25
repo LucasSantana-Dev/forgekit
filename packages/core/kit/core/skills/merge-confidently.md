@@ -1,6 +1,6 @@
 ---
 name: merge-confidently
-description: Composite skill — take a PR from "I think it's ready" to merged with full gate verification. Chains pr-merge-readiness (verdict) → ci-watch / gh-fix-ci (if blockers) → gh-address-comments (if review needed) → ship (when verdict is MERGE). Use as the one-call answer to "can I merge this?" instead of running 4 skills sequentially.
+description: Composite skill — take a PR from "I think it's ready" to merged with full gate verification. Chains pr-merge-readiness (verdict) → ci-watch (if CI blockers) → ship (when verdict is MERGE). Use as the one-call answer to "can I merge this?" instead of running the checks sequentially.
 triggers:
   - merge-confidently
   - merge-requests
@@ -35,15 +35,15 @@ For each WAIT signal:
 - CI in progress → invoke `ci-watch` until checks complete, then re-verdict
 - Branch behind base → rebase or merge base in
 - Awaiting review → notify reviewers, wait or page
-- CodeRabbit/Greptile suggestions → invoke `gh-address-comments`
+- CodeRabbit/Greptile suggestions → resolve threads via `gh pr review` or the GitHub web UI
 
 After resolution: re-invoke `pr-merge-readiness`. If still WAIT after 2 cycles,
 surface to user — likely needs human decision.
 
 ### Phase 3 — Resolve blockers (if FIX)
 For each FAIL signal:
-- CI failure → invoke `gh-fix-ci` (autonomous fix attempt)
-- CHANGES_REQUESTED review → invoke `gh-address-comments`
+- CI failure → invoke `ci-watch` to diagnose; implement the fix directly
+- CHANGES_REQUESTED review → address the requested changes and push
 - Conflicts → rebase, resolve, push
 - Branch protection block → surface to user; do not bypass
 
@@ -58,8 +58,8 @@ verification. Refuses --admin / --no-verify automatically.
 
 ### Phase 6 — Cleanup (always after merge)
 - Delete merged branch (if not auto-deleted by GitHub)
-- Invoke `commit-commands:clean_gone` if multiple stale local branches exist
-- If release was cut: invoke `chain-release` to coordinate downstream repos
+- Prune stale local branches: `git remote prune origin && git branch -vv | grep gone | awk '{print $1}' | xargs git branch -d 2>/dev/null`
+- If release requires downstream coordination: do so manually per project conventions
 
 ## Reconciliation
 

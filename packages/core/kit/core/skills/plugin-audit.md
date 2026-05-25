@@ -18,23 +18,20 @@ Keeps the gap between Anthropic's official marketplace and your installed plugin
 - After a fresh clone / machine setup, before deep work.
 - When a new feature lands in claude-plugins-official (watch its README for changelog hints).
 
-## One-liner
+## Steps
 
-```bash
-bash ~/.claude/skills/plugin-audit/audit.sh
-```
+1. Fetch the current plugin list from `claude-plugins-official`.
+2. Diff against installed plugins (`claude plugin list`).
+3. Filter the delta against a per-user skip list (see below).
+4. Output candidates to install with recommended install commands.
 
-Returns:
-- A ranked list of plugins present in the marketplace but not installed, with reason to install / skip.
-- A short install plan (exact `claude plugin install <name>@claude-plugins-official` commands for the recommended set).
+## Skip list (tune per user)
 
-## Exclusions (tune per user)
+Maintain a skip list to exclude:
 
-Edit `audit.sh` to maintain the user's skip list. Defaults:
-
-- **Language LSPs** not in use: `clangd-lsp`, `csharp-lsp`, `gopls-lsp`, `jdtls-lsp`, `kotlin-lsp`, `lua-lsp`, `php-lsp`, `ruby-lsp`, `rust-analyzer-lsp`, `swift-lsp`, `typescript-lsp` (TS LSP often skipped if you already have editor-integrated TS tooling).
-- **SaaS integrations** not in use: `asana`, `imessage`, `telegram`, `greptile`, `firebase`, `gitlab`, `discord` (plugin — you may run Discord via MCP), `laravel-boost`, `terraform` (unless running IaC).
-- **Samples**: `example-plugin`, `fakechat`, `math-olympiad`, `playground`.
+- **Language LSPs** not in use: `clangd-lsp`, `csharp-lsp`, `gopls-lsp`, `jdtls-lsp`, `kotlin-lsp`, `lua-lsp`, `php-lsp`, `ruby-lsp`, `rust-analyzer-lsp`, `swift-lsp`
+- **SaaS integrations** not in use: `asana`, `imessage`, `telegram`, `greptile`, `firebase`, `gitlab`, `terraform` (unless running IaC)
+- **Samples**: `example-plugin`, `fakechat`, `math-olympiad`, `playground`
 
 Everything else is surfaced with a `(candidate)` tag.
 

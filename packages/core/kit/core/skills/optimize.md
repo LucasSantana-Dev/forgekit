@@ -143,7 +143,7 @@ Use GitHub Actions API or ci-watch skill to get structured results
 
 ## Session State Preservation
 
-### When to Use `context-save`
+### When to Use `handoff`
 
 Preserve session state when:
 - Work is not yet complete
@@ -158,9 +158,9 @@ Write to `~/.claude/handoffs/<project>/latest.md`:
 - Files under active development
 - Next immediate step
 
-### When to Use `session-cleanup`
+### When to do a deliberate context reset
 
-Do a deliberate reset when:
+Reset when:
 - The old task is fully complete
 - Switching to an unrelated project
 - Accumulated stale context is causing confusion
@@ -206,7 +206,7 @@ Do a deliberate reset when:
 
 **Root cause**: Old task context is now noise
 
-**Fix**: Run `/context-save` if work may resume, then `/optimize focus <new-area>`
+**Fix**: Run `/handoff` if work may resume, then `/optimize focus <new-area>`
 
 ## Output Format
 

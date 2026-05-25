@@ -13,14 +13,8 @@ items:
   id: prompting-discipline
 - kind: skill
   id: context-building
-- kind: skill
-  id: git-worktrees
-- kind: skill
-  id: task-orchestration
 - kind: server
   id: context7
-- kind: skill
-  id: agent-gotchas
 - kind: server
   id: github
 - kind: server
@@ -41,10 +35,6 @@ items:
   id: pre-commit-validation
 - kind: skill
   id: hook-effectiveness
-- kind: skill
-  id: claude-md-improver
-- kind: skill
-  id: claude-automation-recommender
 - kind: skill
   id: adt-next-priority
 translations:

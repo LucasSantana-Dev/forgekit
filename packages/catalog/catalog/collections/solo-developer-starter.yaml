@@ -20,6 +20,8 @@ items:
   id: adt-plan
 - kind: skill
   id: code-review
+- kind: skill
+  id: adt-session-bootstrap
 - kind: agent
   id: code-reviewer
 - kind: agent
@@ -28,16 +30,6 @@ items:
   id: context7
 - kind: hook
   id: secret-detection
-- kind: skill
-  id: mac-optimize
-- kind: skill
-  id: dev-assets-sync
-- kind: skill
-  id: adt-feature-from-zero
-- kind: skill
-  id: adt-next-priority
-- kind: skill
-  id: adt-session-bootstrap
 translations:
   pt-BR:
     name: Início para Desenvolvedor Solo

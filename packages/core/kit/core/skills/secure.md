@@ -1,81 +1,44 @@
 ---
 name: secure
-description: Shortcut for security review on current change set. Runs layered checks (secret-scan, dep-audit, semgrep, OWASP patterns, prompt-injection review).
+description: Run a security-first pass for config, credentials, dependency risk, and unsafe operational shortcuts. Use when touching secrets, auth, config, deployment, or risky dependencies.
 triggers:
-  - "secure this"
-  - "security check"
-  - "scan for vulns"
-  - "run security review"
+  - secure
+  - security review
+  - secret hygiene
+  - auth change
+  - scan for vulns
 ---
 
-# Secure
+# secure
 
-Shortcut for security review on current change set. Runs a layered check: secret-scan (trufflehog), dep-audit, semgrep, OWASP top-10 pattern sweep, and prompt-injection review if agent-touching code.
+Use for any work touching secrets, auth, config, deployment, or risky dependencies.
 
-## Purpose
+## Check list
 
-Gate changes for security before shipping. Thin wrapper around existing `security-review` / `security-audit` skills, orchestrated into a single invocation.
+- Inline tokens, API keys, bearer headers, or credentials
+- Secret-bearing files accidentally modified
+- Overbroad permissions or unsafe defaults
+- Dependency vulnerabilities introduced or left unresolved
+- Auth or validation regressions
+- Dangerous release shortcuts
 
-## What Gets Scanned
+## Output
 
-| Layer | Tool | Detects |
-|-------|------|---------|
-| Secrets | trufflehog | API keys, credentials, private keys |
-| Dependencies | npm audit, pip audit | Known vulns in transitive deps |
-| Code patterns | semgrep | OWASP Top 10, injection flaws, unsafe DOM |
-| Prompt injection | Custom rules | Template injection, prompt stuffing, jailbreak patterns |
-
-## Invocation
-
-```bash
-secure                           # Scan staged changes
-secure --staged                  # Explicit staged
-secure --branch <branch>         # Scan diff vs main
-secure --file <path>             # Single file
-secure --fix                     # Attempt auto-fix (secrets rotate, deps upgrade)
-```
-
-## Example Output
+Signal-first: verdict on the first line, then findings by severity.
 
 ```
-Running secure check...
+CLEAR — no risks found
 
-[OK]  Secrets: 0 findings
-[OK]  Dependencies: 1 high vuln detected in lodash (fixed in v4.17.21, yours: v4.17.20)
-[WARN] Semgrep: 2 findings
-      - CWE-79 (XSS): unsafe innerHTML in auth-form.tsx:42
-      - CWE-89 (SQL Injection): dynamic query in db-service.ts:105
-[OK]  Prompt injection: 0 findings
+RISK FOUND:
+  P0 (blocks merge): [what, where, why it blocks]
+  P1 (must fix before merge): [what]
+  P2+ (should fix, non-blocking): [what]
 
-Summary: 2 warnings, 0 errors
-Next: Fix findings or run `secure --fix` for suggestions
+Safe to merge: [explicit list, or "nothing yet"]
+Containment steps: [exact commands if credential exposure found]
 ```
 
-## Interpretation Guide
+## Failure / Stop Conditions
 
-| Severity | Action |
-|----------|--------|
-| **Error** | Block merge; fix before shipping |
-| **High** | Fix or document exception with JIRA ticket |
-| **Medium** | Plan fix; merge with caution |
-| **Low** | Log for backlog; merge OK |
-
-## AI Agent Code Special Rules
-
-If changes touch `src/agents/`, `kit/core/agents/`, or prompt-building logic, ALWAYS run extra prompt-injection scan:
-
-```bash
-secure --agents-mode
-```
-
-Detects:
-- User-controlled input fed directly to LLM prompts
-- Unescaped template variables in agent instructions
-- Jailbreak patterns in example payloads
-
-## References
-
-- Full security audit: `security-audit` skill
-- Best practices: `best-practices/security.md`
-- Prompt defense: `patterns/prompt-injection-defense.md`
-- OWASP Top 10: [owasp.org](https://owasp.org)
+- If a live credential or secret is found exposed in tracked files: halt immediately. Surface the secret type (not value), the file/line, and containment steps. Do not proceed until contained.
+- Do not clear a RISK FOUND verdict without confirming the fix was applied and re-checked.

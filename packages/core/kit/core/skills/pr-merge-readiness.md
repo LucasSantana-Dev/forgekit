@@ -1,6 +1,6 @@
 ---
 name: pr-merge-readiness
-description: Aggregate every signal that gates a PR merge (CI, reviews, conflicts, branch staleness, security scans, third-party reviewers like CodeRabbit/Greptile/Sonar) into a single readiness verdict — MERGE / WAIT / FIX. Use as the one-call check before clicking merge instead of running ci-watch + gh-fix-ci + manual scan.
+description: Aggregate every signal that gates a PR merge (CI, reviews, conflicts, branch staleness, security scans, third-party reviewers like CodeRabbit/Greptile/Sonar) into a single readiness verdict — MERGE / WAIT / FIX. Use as the one-call check before clicking merge instead of running ci-watch + manual scan.
 triggers:
   - pr-merge-readiness
   - merge
@@ -172,7 +172,7 @@ SIGNALS
 
 VERDICT: WAIT
 Reason: CodeRabbit has 2 unresolved suggestions. Resolve or explicitly dismiss
-before merging. Run `/gh-address-comments` to handle them.
+before merging. Resolve the threads directly via `gh pr review` or the GitHub web UI.
 
 Suggested next action:
   /gh-address-comments  (then re-run this skill)
@@ -191,7 +191,7 @@ VERDICT: FIX
 Reason: CI check "test (backend)" is failing. Fix the failing test before merging.
 
 Suggested next action:
-  /gh-fix-ci  (or open the failing run: <detailsUrl>)
+  Diagnose via `ci-watch`  (or open the failing run: <detailsUrl>)
 ```
 
 ---
