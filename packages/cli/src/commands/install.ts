@@ -62,6 +62,8 @@ async function installSkill(id: string, force: boolean) {
     const content = await loadFile(`catalog/skills/${id}/${name}`);
     await writeFile(path.join(target, name), content);
   }
+  const refContent = await tryLoadFile(`catalog/skills/${id}/REFERENCE.md`);
+  if (refContent) await writeFile(path.join(target, "REFERENCE.md"), refContent);
   success("skill", id, target, "Claude Code picks this up on next session start.");
 }
 
