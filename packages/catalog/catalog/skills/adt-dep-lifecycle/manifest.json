@@ -1,0 +1,32 @@
+{
+  "id": "adt-dep-lifecycle",
+  "name": "Dep Lifecycle",
+  "description": "Full dependency lifecycle composite — audit known vulnerabilities, triage by severity and breaking-change risk, upgrade targeted packages, verify tests pass, ship PR. Never does a blanket upgrade; always triages first.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "composite",
+    "forgekit",
+    "core",
+    "dependencies"
+  ],
+  "provider": "claude",
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "kit/core/skills/dep-lifecycle.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/dep-lifecycle.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Ciclo de Vida de Dependências",
+      "description": "Composite completo do ciclo de vida de dependências — audita vulnerabilidades, triagem por severidade e risco de breaking change, atualiza pacotes específicos, verifica testes e abre PR. Nunca atualiza tudo de uma vez; sempre faz triagem primeiro."
+    }
+  }
+}
