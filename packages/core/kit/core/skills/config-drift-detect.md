@@ -18,9 +18,7 @@ with the project's app type, before they cause concrete pain.
 
 ## Auto-invocation
 
-- **Scheduled:** weekly via `~/Library/LaunchAgents/com.lucas.config-drift.plist`
-  (Mondays 03:30). Per-repo report written to
-  `~/.claude/projects/<slug>/memory/config_drift.md`.
+- **Scheduled:** run weekly via your system scheduler (cron / launchd). Per-repo report written to memory for next-session context.
 - **Triggered automatically by Claude when:**
   - User asks to refactor, restructure, or "clean up" anything that touches gated code
   - Any skill stalls with "the gate prevents me from..." (especially test-cleanup, ship)

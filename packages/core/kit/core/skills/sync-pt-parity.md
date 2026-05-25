@@ -80,8 +80,8 @@ Sync EN → PT for wave 2 patterns:
 - patterns/local-first-agents.md
 - patterns/reasoning-model-prompting.md
 
-Source: /Volumes/External\ HD/Desenvolvimento/ai-dev-toolkit
-Target: /Volumes/External\ HD/Desenvolvimento/ai-dev-toolkit-pt-br
+Source: <path-to-en-repo>
+Target: <path-to-pt-repo>
 ```
 
 The skill creates:
@@ -91,12 +91,12 @@ The skill creates:
 
 ## Optional: Helper Script
 
-Use the bundled `sync.sh` script to automate file copy + blockquote insertion:
+If a `sync.sh` helper exists in the skill directory, invoke it with:
 
 ```bash
-bash ~/.claude/skills/sync-pt-parity/sync.sh \
-  --source /Volumes/External\ HD/Desenvolvimento/ai-dev-toolkit \
-  --target /Volumes/External\ HD/Desenvolvimento/ai-dev-toolkit-pt-br \
+bash <skill-dir>/sync.sh \
+  --source <path-to-en-repo> \
+  --target <path-to-pt-repo> \
   --files "patterns/cost-aware-routing.md,patterns/local-first-agents.md"
 ```
 
