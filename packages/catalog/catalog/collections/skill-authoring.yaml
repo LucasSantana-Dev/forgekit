@@ -20,10 +20,6 @@ items:
 - kind: skill
   id: adt-auto-invoke
 - kind: skill
-  id: adt-sync-pt-parity
-- kind: skill
-  id: adt-bilingual-readme-sync
-- kind: skill
   id: prompting-discipline
 - kind: skill
   id: agent-development
@@ -31,14 +27,6 @@ items:
   id: command-development
 - kind: skill
   id: hook-development
-- kind: skill
-  id: create-subagent
-- kind: skill
-  id: adt-adr-write
-- kind: skill
-  id: adt-knowledge-loop
-- kind: skill
-  id: adt-memory
 translations:
   pt-BR:
     name: Autoria de Skills
