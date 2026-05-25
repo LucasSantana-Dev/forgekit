@@ -1,0 +1,32 @@
+{
+  "id": "adt-test-pipeline",
+  "name": "Test Pipeline",
+  "description": "Full test suite improvement composite — audit health, prune dead tests, validate with mutation testing, capture rationale in ADR. Use after a major feature ship, before tightening coverage gates, or when the suite shows bloat, excessive skips, or slow runtime.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "composite",
+    "forgekit",
+    "core",
+    "testing"
+  ],
+  "provider": "claude",
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "kit/core/skills/test-pipeline.md"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/test-pipeline.md",
+  "translations": {
+    "pt-BR": {
+      "name": "Pipeline de Testes",
+      "description": "Composite completo de melhoria da suite de testes — audita saúde, remove testes mortos, valida com mutation testing, captura racional em ADR. Use após um grande lançamento de feature, antes de apertar gates de cobertura, ou quando a suite apresenta inchaço, skips excessivos ou runtime lento."
+    }
+  }
+}
