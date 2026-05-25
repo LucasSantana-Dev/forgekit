@@ -33,8 +33,16 @@ Stop and re-route if:
 - context budget exceeds 75% → emit `handoff`, then stop the loop
 - cumulative tool-result bytes >50KB without progress → summarize + drop noise before next iteration
 
+## Stuck protocol
+
+If the same task has been attempted >2 times without measurable progress, emit: "Stuck: [task], attempt N, last blocker: [X]." Switch to a different approach or tool. After 2 approach switches fail without progress, escalate to the user — do not keep cycling silently.
+
 ## Parallel mode
 
 If a `Monitor` task is running (CI settle, build, long test), do NOT busy-wait. Pick up an independent priority — refactor a different file, draft a memory note, answer an open review thread — and resume the original loop when the monitor fires its event.
 
 Rule: at most one Monitor active per loop; otherwise events collide.
+
+## Output (per checkpoint)
+
+One line per completed step: verdict + artifact produced. Report only what changed or failed. Do not narrate steps that passed cleanly.

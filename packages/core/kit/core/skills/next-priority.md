@@ -34,11 +34,16 @@ Check, in order:
 
 ## Output
 
-Return exactly:
-- current best action
-- why it outranks the alternatives
-- blocking evidence
-- the smallest next PR/task
+Signal-first: one-line verdict before detail.
+
+```
+Priority: <single action>
+Why: <one-line reason it outranks alternatives>
+Blocked by: <what stops it, or "nothing">
+Next step: <smallest concrete action>
+```
+
+Do not list every alternative considered — only surface the top action and its nearest competitor if the choice was close.
 
 ## Blocker escape hatches
 

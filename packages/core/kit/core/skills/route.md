@@ -54,9 +54,19 @@ Route: Finds `ci-watch` (0.82), `turborepo` (0.75), `deploment-automation` (0.71
 Output: "Multiple fits. Suggest: 1) `turborepo` (monorepo structure), 2) `ci-watch` (CI flow), or a chain. Which?"
 ```
 
+## Failure / Stop Conditions
+
+- If the request maps to two composites with equal weight → surface both and ask; do not pick silently.
+- If no skill fits → fall back to `plan` (it handles the general "figure out what to do next" shape).
+- Do not route to a composite when a simpler single skill is clearly sufficient — composite overhead is only warranted when the chain is necessary.
+
+## Memory Hooks
+
+- Read memory if the request touches a domain with prior decisions (auth, CI, release pipeline) to confirm the routing is still correct.
+- No write — routing decisions are ephemeral and not worth persisting.
+
 ## References
 
-- Skill inventory: `~/.claude/skills/` (local) + `kit/core/skills/` (toolkit)
-- Auto-invoke rules: `~/.claude/standards/skill-auto-invoke.md`
+- Skill inventory: local skills dir + `kit/core/skills/` (toolkit)
 - Dispatch skill: `dispatch` (lower-level routing)
 - Context retrieval: `recall` (pulls RAG index)
