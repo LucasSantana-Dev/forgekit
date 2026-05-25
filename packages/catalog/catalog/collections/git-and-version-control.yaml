@@ -18,16 +18,12 @@ items:
   id: eng-git-worktree-manager
 - kind: skill
   id: adt-checkpoint
-- kind: skill
-  id: adt-ship-it
 - kind: agent
   id: git-master
 - kind: server
   id: github
 - kind: skill
   id: branch-hygiene
-- kind: skill
-  id: dep-sweep
 - kind: skill
   id: adt-merge-confidently
 - kind: skill

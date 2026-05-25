@@ -18,8 +18,6 @@ items:
   id: adt-release-flow
 - kind: skill
   id: adt-verify
-- kind: skill
-  id: eng-ci-cd-pipeline-builder
 - kind: agent
   id: verifier
 - kind: server
@@ -31,21 +29,13 @@ items:
 - kind: tool
   id: release
 - kind: skill
-  id: adt-checkpoint
-- kind: skill
   id: release-cut
 - kind: skill
   id: hotfix
 - kind: skill
-  id: dep-sweep
-- kind: skill
-  id: repo-bootstrap
-- kind: skill
   id: adt-ci-watch
 - kind: skill
-  id: adt-merge-confidently
-- kind: skill
-  id: adt-schedule
+  id: adt-dep-lifecycle
 translations:
   pt-BR:
     name: Release & Deploy
