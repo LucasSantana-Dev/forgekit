@@ -31,8 +31,6 @@ items:
 - kind: tool
   id: release
 - kind: skill
-  id: adt-worktree-flow
-- kind: skill
   id: adt-checkpoint
 - kind: skill
   id: release-cut

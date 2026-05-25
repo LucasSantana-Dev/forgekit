@@ -20,8 +20,6 @@ items:
   id: eng-env-secrets-manager
 - kind: skill
   id: eng-dependency-auditor
-- kind: skill
-  id: adt-toolkit-sync
 - kind: server
   id: docker
 - kind: server

@@ -17,8 +17,6 @@ items:
 - kind: skill
   id: eng-git-worktree-manager
 - kind: skill
-  id: adt-worktree-flow
-- kind: skill
   id: adt-checkpoint
 - kind: skill
   id: adt-ship-it
@@ -30,8 +28,6 @@ items:
   id: branch-hygiene
 - kind: skill
   id: dep-sweep
-- kind: skill
-  id: adt-force-merge-self-pr
 - kind: skill
   id: adt-merge-confidently
 - kind: skill

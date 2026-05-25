@@ -40,14 +40,8 @@ items:
   - kind: skill
     id: adt-debug-deep
   - kind: skill
-    id: adt-tdd
-  - kind: skill
     id: eng-focused-fix
   # MCP health
-  - kind: skill
-    id: adt-mcp-doctor
-  - kind: skill
-    id: adt-mcp-readiness
   # Smart routing and commands
   - kind: skill
     id: adt-smart-commands

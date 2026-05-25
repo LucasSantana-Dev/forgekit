@@ -14,8 +14,6 @@ items:
 - kind: skill
   id: adt-plan
 - kind: skill
-  id: adt-plan-change
-- kind: skill
   id: adt-specs-spec-new
 - kind: skill
   id: adt-specs-aggregate-roadmap
