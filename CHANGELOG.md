@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.26.1] - 2026-05-27
+
+### Fixed
+
+- CI deploy workflow now triggers only on `release published` or manual dispatch, preventing unintended deploys on push to main (#215).
+- Added pnpm cache to workspace validation job; pinned all GitHub Actions action SHAs for supply-chain integrity (#216).
+
+### Changed
+
+- Catalog collections trimmed to 6–10 skill items each; `aws-kiro-ide-workflow`, `document-generation`, and `platform-environments` collections removed; `adt-dep-lifecycle`, `adt-perf-audit`, and `adt-test-pipeline` composites wired into relevant collections.
+- `token-and-context-optimization` and `spec-and-planning` collections trimmed to 8 skill items each.
+- 4 skills rewritten to compact SKILL.md + separate REFERENCE.md pattern.
+- `env-kiro` agent comprehensively rewritten with verified Kiro IDE/CLI docs: all 9 hook events, correct MCP config path (`.kiro/settings/mcp.json`), 4 steering inclusion modes, 4 spec-driven workflow variants, EARS notation, Kiro Powers, current pricing and model tables, auth options (v0.3.0).
+
 ## [0.26.0] - 2026-05-21
 
 ### Added
