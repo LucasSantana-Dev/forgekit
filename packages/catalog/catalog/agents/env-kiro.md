@@ -1,14 +1,13 @@
 ---
 id: env-kiro
 name: AWS Kiro environment
-description: Configuration guide for AWS Kiro IDE — steering files, spec-driven development, Agent Skills, and AWS-native integrations
-version: 0.1.0
+description: Configuration guide for AWS Kiro IDE and CLI — steering files, spec-driven development (feature/bugfix/design-first), Agent Skills, hooks, MCP, and AWS integrations
+version: 0.3.0
 tags:
 - agent
 - platform-env
 - kiro
 - aws
-- amazon
 provider: claude
 source:
   type: git
@@ -16,11 +15,11 @@ source:
 license: MIT
 author: Lucas Santana
 usage:
-  use_when: You are setting up or documenting an AWS Kiro workspace and need to wire steering files, specs, Agent Skills, or Kiro hooks correctly.
+  use_when: You are setting up or working inside an AWS Kiro workspace and need to wire steering files, specs, Agent Skills, or hooks correctly.
   skip_when: You are working in a different AI IDE (use the matching env-* agent instead).
   prerequisites:
-    - AWS Kiro IDE installed (download from kiro.dev)
-    - AWS account (optional for local tasks; required for AWS service integrations)
+    - Kiro IDE installed from kiro.dev, or Kiro CLI installed
+    - "Auth: AWS Builder ID (free, no AWS account required), IAM Identity Center, external IdP, GitHub, or Google"
   resources:
     ram: negligible
     compute: cpu-light
@@ -29,129 +28,379 @@ usage:
   install_difficulty: easy
   time_to_setup: minutes
   good_for:
-    - spec-driven development workflows
-    - AWS service integration tasks
-    - teams requiring structured requirements before code
-    - Agent Skills for reusable procedures
+    - spec-driven development (requirements → design → tasks, with approval gates)
+    - teams requiring structured specs and human sign-off before implementation
+    - Agent Skills for reusable procedures across projects
+    - AWS service integration tasks via native use_aws tool
 translations:
   pt-BR:
     name: Ambiente AWS Kiro
-    description: Guia de configuração para AWS Kiro IDE — arquivos de steering, desenvolvimento orientado a spec, Agent Skills e integrações nativas com AWS
+    description: Guia de configuração para AWS Kiro IDE e CLI — steering files, desenvolvimento orientado a spec (feature/bugfix/design-first), Agent Skills, hooks, MCP e integrações AWS
 ---
 # AWS Kiro Environment
 
-## Context files (Steering)
+Kiro is a standalone VS Code-based IDE (Code OSS fork) and CLI. GA since November 17, 2025. **Not a VS Code plugin** — it installs as its own application with its own Open VSX marketplace. It is AWS's official replacement for Amazon Q Developer (EOL April 30, 2027; new signups blocked May 15, 2026).
 
-Kiro uses a `.kiro/steering/` directory for persistent context files that the agent reads before every task:
+## Installation and auth
+
+**IDE:** Download from [kiro.dev](https://kiro.dev) (macOS, Windows, Linux)
+
+**CLI:**
+```bash
+curl -fsSL https://cli.kiro.dev/install | bash
+# or
+brew install kiro
+```
+
+**Auth options:**
+| Method | Who | Notes |
+|--------|-----|-------|
+| AWS Builder ID | Individual (free) | No AWS account required; supports GitHub + Amazon social logins (Mar 2026) |
+| GitHub / Google | Individual | OAuth, redirects to browser |
+| IAM Identity Center | Enterprise | SSO via organization IdP |
+| External IdP (Okta, Entra ID) | Enterprise | As of Feb 12, 2026 |
+| API key | CI/CD | Pro/Pro+/Power subscription required |
+
+**Privacy:** Free/Builder ID users — content may be used for service improvement. Pro tiers with IDC or external IdP — content is **not** used for service improvement.
+
+**Pricing:**
+| Tier | Cost | Credits |
+|------|------|---------|
+| Free | $0 | 50/month |
+| Pro | $20/mo | 1,000/month |
+| Pro+ | $40/mo | 2,000/month |
+| Power | $200/mo | 10,000/month |
+
+Overage: $0.04/credit.
+
+## Models
+
+All inference runs through **Amazon Bedrock** (not direct Anthropic API):
+
+| Model | Credits/task | Notes |
+|-------|-------------|-------|
+| Auto (smart router) | 10 | Recommended; picks optimal model per task |
+| Claude Opus 4.7 | 22 | Exclusive to Kiro as of May 29, 2026 |
+| Claude Sonnet 4.5 | 10–15 | All tiers |
+| Claude Haiku 4.5 | 4 | Extended thinking; 2× speed vs Sonnet |
+| DeepSeek / Qwen3 | 0.5 | Open-weight alternatives |
+
+Auto is recommended as the starting point. Switch to Opus 4.7 for complex problems only.
+
+## Steering files
+
+`.kiro/steering/` (workspace) or `~/.kiro/steering/` (global, applies to all workspaces). Three foundation files are auto-included by default:
 
 | File | Purpose |
 |------|---------|
-| `.kiro/steering/product.md` | Product description, user personas, business goals |
-| `.kiro/steering/structure.md` | Repository layout, package purposes, build conventions |
-| `.kiro/steering/tech.md` | Technology stack, libraries, architectural decisions |
+| `product.md` | Product description, user personas, business goals |
+| `structure.md` | Repository layout, package purposes, build conventions |
+| `tech.md` | Technology stack, libraries, architectural decisions |
 
-These files are automatically loaded as context on every agent invocation — equivalent to `CLAUDE.md` in Claude Code.
-
-**Example `.kiro/steering/tech.md`:**
+Custom steering files use YAML frontmatter to control activation:
 
 ```markdown
-# Tech Stack
-
-## Runtime
-- Node.js 22 + TypeScript strict
-- pnpm workspaces (monorepo)
-
-## Key packages
-- Astro 6 — static site generator for the web UI
-- js-yaml — YAML parsing for catalog entries
-- gray-matter — frontmatter parsing for .md files
-
-## Conventions
-- All new catalog entries require a `translations.pt-BR` block
-- Tags must be kebab-case
-- Run `pnpm catalog:validate` after catalog changes
+---
+inclusion: always
+name: API conventions
+description: REST design standards for this project
+---
+# API Conventions
+All endpoints return `{ data, error }`. Use camelCase field names.
 ```
 
-Add custom steering files with a descriptive name; Kiro loads all `.md` files in `.kiro/steering/`.
+**Inclusion modes:**
+
+| Mode | Behavior |
+|------|---------|
+| `always` | Loaded on every request (default for the three foundation files) |
+| `manual` | Excluded by default; user toggles on when needed |
+| `fileMatch` | Auto-loaded when files matching `fileMatchPattern` are in scope |
+| `auto` | Agent sees summary only; loads full content on demand |
+
+**File-match example:**
+```markdown
+---
+inclusion: fileMatch
+fileMatchPattern: "**/*.tf"
+name: Terraform conventions
+description: IaC standards and provider patterns
+---
+# Terraform Conventions
+Use `terraform fmt` before committing. Remote state in S3.
+```
+
+**Workspace vs global:** Workspace steering takes precedence over global on conflict. Push global files via MDM or distribute via repo download to `~/.kiro/steering/`.
 
 ## Spec-driven development
 
-Kiro's signature workflow generates a requirements spec before writing any code:
-
-1. **Describe the feature** in natural language to Kiro
-2. **Kiro writes a spec** in `.kiro/specs/<feature-name>/`:
-   - `requirements.md` — user stories and acceptance criteria
-   - `design.md` — component design, data models, API contracts
-   - `tasks.md` — implementation task breakdown
-3. **Review and approve** the spec (edit before proceeding)
-4. **Kiro implements** the approved spec task by task
+Specs live in `.kiro/specs/<feature-name>/` — three files, committed to version control:
 
 ```
 .kiro/specs/
   user-auth/
-    requirements.md
-    design.md
-    tasks.md
+    requirements.md   # EARS-format user stories + acceptance criteria
+    design.md         # architecture, data models, API contracts
+    tasks.md          # ordered checklist, dependency graph
 ```
 
-This workflow is optimized for teams that want human sign-off before the agent touches production code.
+**Four workflow variants:**
+
+| Variant | Start from | Use when |
+|---------|-----------|---------|
+| **Requirements-First** | User behavior → design → tasks | Default; feature you're designing top-down |
+| **Design-First** | Architecture → requirements → tasks | You have a technical solution, need to document rationale |
+| **Quick Plan** | Skip approval gates | Well-understood features where you trust Kiro to plan |
+| **Bugfix** | Current / expected / constraints | Structured debugging with regression prevention |
+
+**EARS notation** (requirements.md format):
+```
+WHEN the user submits invalid credentials THE SYSTEM SHALL display an error message within 2 seconds.
+WHEN login succeeds THE SYSTEM SHALL redirect to the dashboard.
+```
+
+**Approval gates:** Between each phase (requirements → design, design → tasks) Kiro waits for explicit approval. You edit before proceeding.
+
+**Parallel execution:** Kiro builds a dependency graph from `tasks.md`. Independent tasks run in parallel as waves. Wave N starts only when wave N-1 completes.
+
+**Property-based testing:** Kiro auto-generates PBT tests from EARS requirements to validate spec compliance.
+
+### Bugfix spec
+
+Bugfix requirements phase has three sections:
+- **Current behavior** — what the bug does
+- **Expected behavior** — what it should do instead
+- **Constraints** — code/behavior that must NOT change (regression prevention)
+
+PBT is auto-generated for all three categories. Available since IDE v0.10 (Feb 18, 2026).
 
 ## Agent Skills
 
-Released February 5, 2026. Agent Skills are reusable procedures that Kiro can invoke:
+Skills are reusable procedure packages stored in `.kiro/skills/` (workspace) or `~/.kiro/skills/` (global). They follow the open [Agent Skills standard](https://www.anthropic.com/news/agent-skills) and work across Kiro, Claude Code, Cursor, Cline, and other compatible tools.
 
 ```
 .kiro/skills/
   deploy-check/
-    SKILL.md     # procedure definition
-    scripts/     # helper scripts
+    SKILL.md           # required: metadata + instructions
+    references/        # optional: detailed docs
+    scripts/           # optional: executable code
+    assets/            # optional: templates
 ```
 
-**Example `SKILL.md`:**
-
+**SKILL.md format:**
 ```markdown
+---
+name: deploy-check
+description: Runs pre-deployment validation. Use before any deploy.
+---
 # deploy-check
-
-Runs pre-deployment validation for the web package.
 
 ## Steps
 1. Run `pnpm web:build` — must succeed with 0 errors
 2. Run `pnpm catalog:validate` — must pass
-3. Check `CHANGELOG.md` has an unreleased section
-4. Confirm no `TODO` or `FIXME` markers in changed files
+3. Confirm `CHANGELOG.md` has an unreleased section
 
 ## Output
-Report pass/fail for each step. Block deploy if any step fails.
+Report pass/fail per step. Block deploy if any step fails.
 ```
 
-Invoke with `@skill deploy-check` in the Kiro chat.
+**Activation:**
+- **Automatic:** Agent matches `description` against request context; loads skill on demand
+- **Manual:** Type `/deploy-check` as a slash command
+
+**Progressive loading:** Only `name` + `description` load at startup. Full SKILL.md loads on demand — write precise descriptions for accurate auto-matching.
+
+**CLI reference via URI:**
+```json
+{
+  "resources": [
+    "skill://.kiro/skills/*/SKILL.md",
+    "skill://~/.kiro/skills/*/SKILL.md"
+  ]
+}
+```
 
 ## Hooks
 
-Kiro hooks run on agent lifecycle events, defined in `.kiro/settings.json`:
+Hooks run on agent lifecycle events. Define in **agent JSON config files** (e.g. `.kiro/agents/my-agent.json`) — **not** in settings.json:
 
 ```json
 {
   "hooks": {
-    "onTaskComplete": "pnpm test",
-    "onFileEdit": "pnpm lint --fix"
+    "agentSpawn": [{ "command": "git status" }],
+    "userPromptSubmit": [{ "command": "echo 'prompt received'" }],
+    "preToolUse": [
+      { "matcher": "execute_bash", "command": "date >> /tmp/audit.log" }
+    ],
+    "postToolUse": [
+      { "matcher": "fs_write", "command": "pnpm lint --fix" }
+    ],
+    "fileSave": [
+      { "matcher": "**/*.ts", "command": "pnpm typecheck" }
+    ],
+    "specTaskEnd": [{ "command": "pnpm test" }]
   }
 }
 ```
 
-## AWS-native integrations
+**All nine hook events:**
 
-Kiro ships with built-in tools for AWS services (no MCP configuration needed):
-- **Amazon Q Developer** — code completion and inline suggestions
-- **AWS CDK** — infrastructure code generation
-- **CloudWatch Logs** — read logs directly in the IDE
-- **CodeWhisperer** — security scanning on save
+| Event | Fires when | Supports matcher |
+|-------|-----------|-----------------|
+| `agentSpawn` | Agent session starts | No |
+| `userPromptSubmit` | User submits a message | No |
+| `preToolUse` | Before tool call | Yes (tool name) |
+| `postToolUse` | After tool call | Yes (tool name) |
+| `fileCreate` | File created | Yes (glob pattern) |
+| `fileSave` | File saved | Yes (glob pattern) |
+| `fileDelete` | File deleted | Yes (glob pattern) |
+| `specTaskStart` | Spec task begins | No |
+| `specTaskEnd` | Spec task completes | No |
 
-For other MCP servers, add them in `.kiro/settings.json` under `mcpServers` (same format as Claude Code and Cursor).
+**Matcher field syntax:**
+- Canonical tool name: `"execute_bash"`, `"fs_write"`, `"fs_read"`, `"use_aws"`
+- Alias: `"shell"`, `"write"`, `"read"`, `"aws"`
+- Regex (prefix `@`): `"@mcp.*sql.*"` — matches MCP tools by name
+- MCP format: `"@postgres/query"`
+- File glob (for file events): `"**/*.ts"`, `"src/api/*.ts"`
 
-## Key behaviors
+**Hook actions:** Can be shell commands (free) or agent prompts (consume credits).
 
-- **Model**: Claude Sonnet (via AWS Bedrock) by default; configurable in IDE settings
-- **Spec-first default**: Kiro prompts for spec approval before implementation
-- **AWS auth**: uses the active AWS profile or SSO session; no separate API key needed for Bedrock
-- **Privacy**: code stays in your AWS account's Bedrock endpoint when using Bedrock mode
+**Exit code behavior:**
+- `0`: Success; stdout added to agent context
+- `2` on `preToolUse`: **Blocks the tool call**; stderr returned to LLM
+- Other: Hook failed; stderr shown as warning
+
+**Timeouts:** 30s (CLI), 60s (IDE). Configure via `timeout_ms`.
+
+**STDIN/STDOUT:** Hooks receive a JSON event via STDIN (includes `session_id`, `tool_name`, `tool_input`, `tool_response` for postToolUse). Route shell output:
+- `$AGENT_CONTEXT_OUT` → adds to agent context
+- `$AGENT_DISPLAY_OUT` → shows in TUI only
+
+## Built-in tools
+
+Four tools with canonical names and aliases:
+
+| Canonical | Alias | What it does |
+|-----------|-------|-------------|
+| `fs_read` | `read` | Read files (supports line-based mode) |
+| `fs_write` | `write` | Create/modify files |
+| `execute_bash` | `shell` | Run shell commands |
+| `use_aws` | `aws` | Execute AWS API calls via SigV4 (15,000+ APIs) |
+
+**Permission defaults:** `fs_read` trusted by default for CWD. `fs_write`, `execute_bash`, `use_aws` prompt for permission.
+
+**Permission config example:**
+```json
+{
+  "allowedTools": ["fs_read", "fs_write"],
+  "tools": {
+    "write": { "allowedPaths": ["~/projects/**"] },
+    "shell": {
+      "allowedCommands": ["pnpm.*", "git.*"],
+      "deniedCommands": ["rm -rf.*"],
+      "autoAllowReadonly": true
+    }
+  }
+}
+```
+
+Hook matchers use **canonical names** (`fs_write`, not `write`).
+
+## MCP integration
+
+MCP servers configured in **`mcp.json`** at workspace (`.kiro/settings/mcp.json`) or global (`~/.kiro/settings/mcp.json`) scope. Note: **not** `.kiro/settings.json`.
+
+**Local server:**
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/workspace"],
+      "env": { "TOKEN": "${MY_TOKEN}" },
+      "autoApprove": ["read_file"],
+      "disabledTools": ["delete_file"],
+      "disabled": false
+    }
+  }
+}
+```
+
+**Remote server (with OAuth):**
+```json
+{
+  "mcpServers": {
+    "remote-api": {
+      "url": "https://api.example.com/mcp",
+      "headers": { "X-API-Key": "${API_KEY}" },
+      "oauth": { "redirectUri": "127.0.0.1:8080" }
+    }
+  }
+}
+```
+
+**Critical:** Kiro CLI does **not** inherit your shell's `PATH`. Use absolute paths from `which node`, `which npx`, etc.
+
+**Config priority (CLI):** Agent config `mcpServers` > workspace mcp.json > global mcp.json. Set `includeMcpJson: true` in agent config to merge instead of override.
+
+## Kiro Powers
+
+Powers are curated MCP bundles — MCP servers + steering files + hooks — pre-packaged for specific domains. They solve context overload by loading tool metadata only, activating full tools on demand.
+
+**Structure:**
+```
+.kiro/powers/power-name/
+  POWER.md      # onboarding guide for agent
+  mcp.json      # MCP server configuration
+  steering/     # workflow-specific guidance
+```
+
+**Official Powers:** Terraform, AWS Observability (CloudWatch + CloudTrail + Application Signals), Aurora PostgreSQL, Datadog, Figma, Stripe, Supabase, Netlify, Postman.
+
+Install via IDE UI or kiro.dev. No additional cost. Commit `.kiro/powers/` to repo for team-wide distribution.
+
+## CLI reference
+
+```bash
+# Interactive chat
+kiro chat
+
+# One-shot non-interactive (CI/CD)
+kiro chat --no-interactive --trust-all-tools --agent my-agent "run tests"
+
+# Resume previous session
+kiro chat --resume
+kiro chat --resume-picker      # select from list
+kiro chat --list-sessions
+
+# Convert English to shell command
+kiro translate "find all TypeScript files modified in the last 7 days"
+kiro translate -n 3 "compress logs folder"  # show top 3 options
+
+# List available models
+kiro chat --list-models
+
+# Show version and changelog
+kiro version --changelog
+```
+
+**Agent management slash commands (inside chat):**
+```
+/agent create -D "Runs pnpm workspace checks" -m filesystem
+/agent edit my-agent
+/agent set-default my-agent
+/agent swap            # switch agents at runtime
+```
+
+**Autocomplete:** `kiro integrations install autocomplete`
+
+## Key behaviors and gotchas
+
+- **Spec-first is mandatory:** Kiro prompts for spec approval before touching implementation. By design — cannot be skipped.
+- **Open VSX, not VS Code Marketplace:** Kiro uses the Open VSX extension registry. Not all VS Code extensions are available.
+- **ACP support (CLI v1.25.0):** Agent Client Protocol lets JetBrains, Zed, and ACP-compatible editors use Kiro as the agent backend.
+- **Privacy gate on auth:** If your work is sensitive, use IDC or external IdP (not Builder ID/GitHub/Google) to ensure content is not used for service improvement.
+- **GovCloud restrictions:** AWS GovCloud (US) supports Kiro IDE/CLI via IDC and external IdPs only — GitHub/Google/Builder ID auth unavailable.
+- **Opus 4.7 exclusive:** As of May 29, 2026, Claude Opus 4.7 is only available on Kiro (removed from Amazon Q Developer, which is being sunset).
+- **Q Developer EOL:** New Q Developer signups blocked May 15, 2026. Full end-of-support April 30, 2027.
