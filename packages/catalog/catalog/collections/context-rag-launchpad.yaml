@@ -16,8 +16,6 @@ items:
 - kind: skill
   id: adt-rag-context-pack
 - kind: skill
-  id: adt-rag-recall
-- kind: skill
   id: adt-rag
 - kind: skill
   id: adt-resume

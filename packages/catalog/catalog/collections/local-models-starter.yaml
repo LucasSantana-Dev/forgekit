@@ -13,8 +13,6 @@ items:
 - kind: doc
   id: local-models
 - kind: skill
-  id: adt-model-serving
-- kind: skill
   id: adt-eval
 - kind: skill
   id: adt-cost
@@ -22,12 +20,6 @@ items:
   id: adt-rag
 - kind: skill
   id: prompting-discipline
-- kind: skill
-  id: ollama-runtime
-- kind: skill
-  id: vllm-server
-- kind: skill
-  id: lm-studio-import
 translations:
   pt-BR:
     name: Início com Modelos Locais
