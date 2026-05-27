@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.26.2] - 2026-05-27
+
+### Fixed
+
+- `adt-*` skill display names no longer leak the `adt-` ID prefix — 69 manifest `name` fields updated (e.g. "Adt CI Watch" → "CI Watch", "Adt RAG" → "RAG"); pt-BR translations updated to match (#238).
+
+### Changed
+
+- Catalog culled from 154 → 135 skills: removed deprecated Codex platform skills (#232), incomplete stub skills (#233), personal/niche-scope skills (#234), and editor-specific Cursor cluster skills (#235).
+- 26 previously orphaned skills (zero collection memberships) wired into existing collections (#237).
+
 ## [0.26.1] - 2026-05-27
 
 ### Fixed
