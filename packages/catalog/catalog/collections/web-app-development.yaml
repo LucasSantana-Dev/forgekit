@@ -36,6 +36,12 @@ items:
   id: auto-format
 - kind: hook
   id: pre-commit-validation
+- kind: skill
+  id: adt-seo-a11y-audit
+- kind: skill
+  id: adt-vercel-patterns
+- kind: skill
+  id: web-artifacts-builder
 translations:
   pt-BR:
     name: Desenvolvimento Web Full-Stack

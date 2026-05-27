@@ -38,6 +38,14 @@ items:
   id: context-optimizer
 - kind: skill
   id: handoff-diet
+- kind: skill
+  id: adt-memory
+- kind: skill
+  id: adt-optimize
+- kind: skill
+  id: adt-sync-memories
+- kind: skill
+  id: adt-knowledge-loop
 - kind: server
   id: context-mode
 translations:

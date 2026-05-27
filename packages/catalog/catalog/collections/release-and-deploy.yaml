@@ -44,6 +44,8 @@ items:
   id: dep-sweep
 - kind: skill
   id: repo-bootstrap
+- kind: skill
+  id: adt-ship-it
 translations:
   pt-BR:
     name: Release & Deploy

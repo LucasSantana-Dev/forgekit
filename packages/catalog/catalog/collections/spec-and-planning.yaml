@@ -29,6 +29,8 @@ items:
   id: executing-plans
 - kind: skill
   id: brainstorming
+- kind: skill
+  id: adt-feature-from-zero
 - kind: agent
   id: planner
 - kind: agent
