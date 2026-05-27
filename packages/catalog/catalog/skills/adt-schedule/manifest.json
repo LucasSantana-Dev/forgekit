@@ -1,6 +1,6 @@
 {
   "id": "adt-schedule",
-  "name": "Adt Schedule",
+  "name": "Schedule",
   "description": "Define and manage recurring automated agent runs — CI monitoring, dep updates, security scans",
   "version": "0.1.0",
   "tags": [
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/schedule.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Schedule",
+      "name": "Schedule",
       "description": "Defina e gerencie execuções de agente recorrentes automatizadas — monitoramento CI, atualizações de deps, sync periódica."
     }
   }

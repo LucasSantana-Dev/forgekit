@@ -1,6 +1,6 @@
 {
   "id": "adt-verify",
-  "name": "Adt Verify",
+  "name": "Verify",
   "description": "Run full quality gate suite before committing or creating a PR",
   "version": "0.1.0",
   "tags": [
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/verify.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Verify",
+      "name": "Verify",
       "description": "Rode suite completa de quality gate antes de commitar ou criar um PR."
     }
   }

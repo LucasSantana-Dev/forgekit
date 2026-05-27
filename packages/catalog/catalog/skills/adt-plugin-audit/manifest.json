@@ -1,6 +1,6 @@
 {
   "id": "adt-plugin-audit",
-  "name": "Adt Plugin Audit",
+  "name": "Plugin Audit",
   "description": "Diff the Anthropic `claude-plugins-official` marketplace against installed plugins and surface the delta, filtering known-unwanted entries (language LSPs you don't use, SaaS integrations you don't use, sample/demo plugins).",
   "version": "0.1.0",
   "tags": [
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/plugin-audit.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Plugin Audit",
+      "name": "Plugin Audit",
       "description": "Diff o marketplace oficial de plugins da Anthropic contra plugins instalados localmente — detecte deprecations, updates, riscos."
     }
   }

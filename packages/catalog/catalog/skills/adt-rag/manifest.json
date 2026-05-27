@@ -1,6 +1,6 @@
 {
   "id": "adt-rag",
-  "name": "Adt Rag",
+  "name": "RAG",
   "description": "Build and debug Retrieval-Augmented Generation pipelines — chunking, embedding, retrieval, reranking",
   "version": "0.1.0",
   "tags": [
@@ -26,7 +26,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/rag.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Rag",
+      "name": "RAG",
       "description": "Construa e debugue pipelines de Retrieval-Augmented Generation — chunking, embedding, ranking, retrieval, synthesis."
     }
   }

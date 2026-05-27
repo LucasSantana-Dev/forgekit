@@ -1,6 +1,6 @@
 {
   "id": "adt-multi-agent",
-  "name": "Adt Multi Agent",
+  "name": "Multi Agent",
   "description": "Orchestrate teams of specialized agents — DAG execution, task distribution, state sharing, failure recovery",
   "version": "0.1.0",
   "tags": [
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/multi-agent.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Multi Agent",
+      "name": "Multi Agent",
       "description": "Orquestre times de agentes especializados — execução DAG, distribuição de tarefas, state management distribuído."
     }
   }

@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/feature-from-zero.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Feature from Zero",
+      "name": "Feature from Zero",
       "description": "Mega-composta — desenvolvimento completo de feature greenfield, da ideia até live. Encadeia research-and-decide → scope-and-execute → design-build → fix-the-suite → merge-confidently → ship-it → knowledge-loop."
     }
   }

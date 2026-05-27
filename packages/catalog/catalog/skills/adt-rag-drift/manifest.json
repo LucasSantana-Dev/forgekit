@@ -1,6 +1,6 @@
 {
   "id": "adt-rag-drift",
-  "name": "Adt Rag Drift",
+  "name": "RAG Drift",
   "description": "Detect and fix stale chunks from deleted or modified files",
   "version": "0.1.0",
   "tags": [

@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/knowledge-loop.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Knowledge Loop",
+      "name": "Knowledge Loop",
       "description": "Skill composta — consulta, captura, melhora e persiste conhecimento em um workflow. Encadeia recall (RAG) → sync-memories → rag-curate → handoff."
     }
   }

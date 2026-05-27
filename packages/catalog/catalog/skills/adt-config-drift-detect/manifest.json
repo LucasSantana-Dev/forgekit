@@ -24,7 +24,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/config-drift-detect.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Config Drift Detect",
+      "name": "Config Drift Detect",
       "description": "Audita gates do projeto (thresholds de cobertura jest/vitest, strictness do tsconfig, regras eslint, husky, sonar, branch protection) e sinaliza valores incompatíveis com defaults razoáveis para o tipo de app."
     }
   }

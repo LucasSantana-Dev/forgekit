@@ -1,6 +1,6 @@
 {
   "id": "adt-sync-memories",
-  "name": "Adt Sync Memories",
+  "name": "Sync Memories",
   "description": "Sync durable project or session knowledge into the available memory systems so future sessions have accurate context. Use when meaningful work is complete and the user wants the result remembered.",
   "version": "0.1.0",
   "tags": [
@@ -26,7 +26,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/sync-memories.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Sync Memories",
+      "name": "Sync Memories",
       "description": "Sincronize conhecimento durável do projeto/sessão nos sistemas de memória disponíveis para que sessões futuras tenham contexto preciso."
     }
   }

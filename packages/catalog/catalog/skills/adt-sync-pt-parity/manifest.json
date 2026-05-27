@@ -1,6 +1,6 @@
 {
   "id": "adt-sync-pt-parity",
-  "name": "Adt Sync PT Parity",
+  "name": "Sync PT Parity",
   "description": "Sync files (skills/patterns/agents/specs) from EN canonical repo to PT mirror, inserting \"Tradução pendente\" blockquote after YAML frontmatter, then open PR.",
   "version": "0.1.0",
   "tags": [
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/sync-pt-parity.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Sync Pt Parity",
+      "name": "Sync PT Parity",
       "description": "Mantenha README.md EN/PT em paridade — sincronize conteúdo traduzido e abra PR."
     }
   }

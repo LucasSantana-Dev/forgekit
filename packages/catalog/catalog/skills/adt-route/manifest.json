@@ -1,6 +1,6 @@
 {
   "id": "adt-route",
-  "name": "Adt Route",
+  "name": "Route",
   "description": "Route a task to the most fitting skill or agent. Parses user intent, checks installed-skill inventory, and picks the best match (single skill or chain).",
   "version": "0.1.0",
   "tags": [
@@ -23,7 +23,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/route.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Route",
+      "name": "Route",
       "description": "Rotear uma tarefa para a skill ou agente mais apropriado. Parse intenção do usuário, verifique instruções locais."
     }
   }

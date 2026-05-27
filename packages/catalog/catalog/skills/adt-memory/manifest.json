@@ -1,6 +1,6 @@
 {
   "id": "adt-memory",
-  "name": "Adt Memory",
+  "name": "Memory",
   "description": "Persist decisions, preferences, and project state across sessions using structured memory types",
   "version": "0.1.0",
   "tags": [
@@ -26,7 +26,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/memory.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Memory",
+      "name": "Memory",
       "description": "Persista decisões, preferências e estado do projeto através de sessões usando estruturas de memory duraáveis."
     }
   }

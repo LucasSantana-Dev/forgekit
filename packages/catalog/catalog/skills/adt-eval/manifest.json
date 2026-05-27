@@ -1,6 +1,6 @@
 {
   "id": "adt-eval",
-  "name": "Adt Eval",
+  "name": "Eval",
   "description": "Evaluate LLM outputs systematically — benchmarks, automated metrics, human preference, and regression tracking",
   "version": "0.1.0",
   "tags": [
@@ -26,7 +26,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/eval.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Eval",
+      "name": "Eval",
       "description": "Avalie outputs de LLM sistematicamente — benchmarks, métricas automatizadas, preferências humanas, relatórios comparativos."
     }
   }

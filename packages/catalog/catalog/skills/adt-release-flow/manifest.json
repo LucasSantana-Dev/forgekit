@@ -1,6 +1,6 @@
 {
   "id": "adt-release-flow",
-  "name": "Adt Release Flow",
+  "name": "Release Flow",
   "description": "Ship validated changes with repeatable release evidence — version bump, changelog, tag, and optional GitHub release",
   "version": "0.1.0",
   "tags": [
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/release-flow.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Release Flow",
+      "name": "Release Flow",
       "description": "Entregue mudanças validadas com evidência de release repetível — version bump, changelog, commit convencional."
     }
   }

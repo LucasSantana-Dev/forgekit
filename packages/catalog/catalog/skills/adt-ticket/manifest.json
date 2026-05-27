@@ -1,6 +1,6 @@
 {
   "id": "adt-ticket",
-  "name": "Adt Ticket",
+  "name": "Ticket",
   "description": "Assemble a Jira/Linear/GitHub-Issue body from recent commits, diff, and branch context",
   "version": "0.1.0",
   "tags": [
@@ -26,7 +26,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/ticket.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Ticket",
+      "name": "Ticket",
       "description": "Forme um corpo de Jira/Linear/GitHub-Issue de commits recentes, diff e nome da branch."
     }
   }

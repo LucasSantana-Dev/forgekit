@@ -1,6 +1,6 @@
 {
   "id": "adt-self-heal",
-  "name": "Adt Self Heal",
+  "name": "Self Heal",
   "description": "Autonomous error recovery — detect failures, diagnose root cause, apply fixes, and resume without stopping",
   "version": "0.1.0",
   "tags": [
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/self-heal.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Self Heal",
+      "name": "Self Heal",
       "description": "Recuperação autônoma de erros — detecte falhas, diagnostique causa raiz, aplique fixes, revalide automaticamente."
     }
   }

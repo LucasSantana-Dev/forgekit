@@ -1,6 +1,6 @@
 {
   "id": "adt-ship",
-  "name": "Adt Ship",
+  "name": "Ship",
   "description": "Commit, push, and open a pull request with a conventional commit message",
   "version": "0.1.0",
   "tags": [
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/ship.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Ship",
+      "name": "Ship",
       "description": "Commite, puxe e abra um pull request com mensagem de commit convencional."
     }
   }

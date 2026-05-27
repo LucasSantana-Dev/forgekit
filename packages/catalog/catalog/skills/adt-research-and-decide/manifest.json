@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/research-and-decide.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Research and Decide",
+      "name": "Research and Decide",
       "description": "Skill composta — pesquisa um tópico, desafia a conclusão, planeja adoção e captura a decisão. Encadeia adt-research/brainstorming → critic agent → plan → adr-write."
     }
   }

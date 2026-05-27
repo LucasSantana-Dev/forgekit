@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/design-build.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Design Build",
+      "name": "Design Build",
       "description": "Skill composta — projeta, faz scaffold, constrói e verifica uma UI em um workflow. Encadeia ui-audit → shadcn/tailwind → impeccable/frontend-design → webapp-testing."
     }
   }

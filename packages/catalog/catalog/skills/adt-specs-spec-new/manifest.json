@@ -1,6 +1,6 @@
 {
   "id": "adt-specs-spec-new",
-  "name": "Adt Specs Spec New",
+  "name": "Specs Spec New",
   "description": "Create a committed per-feature spec under `docs/specs/YYYY-MM-DD-<slug>/{spec,tasks}.md` with frontmatter (status, created, owner, pr, tags). Promotes an ephemeral `.claude/plans/<name>.md` into a persistent, searchable artifact. Use when starting a feature that's larger than a one-shot PR.",
   "version": "0.1.0",
   "tags": [
@@ -28,7 +28,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/specs/skills/spec-new",
   "translations": {
     "pt-BR": {
-      "name": "Adt Specs Spec New",
+      "name": "Specs Spec New",
       "description": "Crie um spec por-feature commitado sob `docs/specs/YYYY-MM-DD-<slug>/{spec,task,tests} seguindo a template."
     }
   }

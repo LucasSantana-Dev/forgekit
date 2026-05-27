@@ -1,6 +1,6 @@
 {
   "id": "adt-rag-quality",
-  "name": "Adt Rag Quality",
+  "name": "RAG Quality",
   "description": "Evaluate retrieval quality by analyzing query logs and running test queries",
   "version": "0.1.0",
   "tags": [

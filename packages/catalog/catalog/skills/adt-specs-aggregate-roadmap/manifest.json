@@ -1,6 +1,6 @@
 {
   "id": "adt-specs-aggregate-roadmap",
-  "name": "Adt Specs Aggregate Roadmap",
+  "name": "Specs Aggregate Roadmap",
   "description": "Regenerate the cross-repo roadmap aggregate in your Claude memory directory by walking every curated repo's `docs/specs/**` frontmatter. Run at session start for cross-repo orientation or after any `spec-new`/`spec-ship` in any repo.",
   "version": "0.1.0",
   "tags": [
@@ -27,7 +27,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/specs/skills/aggregate-roadmap",
   "translations": {
     "pt-BR": {
-      "name": "Adt Specs Aggregate Roadmap",
+      "name": "Specs Aggregate Roadmap",
       "description": "Regenere o agregado de roadmap cross-repo em seu diretório de Claude memory processando specs de múltiplos repos."
     }
   }

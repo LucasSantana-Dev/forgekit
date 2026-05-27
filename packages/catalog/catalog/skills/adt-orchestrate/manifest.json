@@ -1,6 +1,6 @@
 {
   "id": "adt-orchestrate",
-  "name": "Adt Orchestrate",
+  "name": "Orchestrate",
   "description": "Coordinate multiple subagents/worktrees for parallel workstreams. Decomposes larger tasks into independent sub-tasks, dispatches each to a dedicated agent.",
   "version": "0.1.0",
   "tags": [
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/orchestrate.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Orchestrate",
+      "name": "Orchestrate",
       "description": "Coordene múltiplos subagentes/worktrees para workstreams paralelos. Decomponha projetos grandes em atribuições independentes."
     }
   }

@@ -24,7 +24,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/security-sweep.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Security Sweep",
+      "name": "Security Sweep",
       "description": "Skill composta — audit completo de segurança cobrindo secrets, dependências, code paths e riscos OWASP. Encadeia security-audit + socket-audit + semgrep + code-security em paralelo, reconcilia em relatório ranqueado."
     }
   }

@@ -1,6 +1,6 @@
 {
   "id": "adt-rag-inspect",
-  "name": "Adt Rag Inspect",
+  "name": "RAG Inspect",
   "description": "Examine what's actually stored in the index for specific items",
   "version": "0.1.0",
   "tags": [

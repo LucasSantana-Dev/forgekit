@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/audit-deep.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Audit Deep",
+      "name": "Audit Deep",
       "description": "Skill composta — health check completo do projeto cobrindo testes, config, hooks, performance, segurança, MCP e plugins. Roda audits em paralelo e reconcilia em relatório ranqueado por severidade."
     }
   }

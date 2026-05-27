@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/session-bootstrap.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Session Bootstrap",
+      "name": "Session Bootstrap",
       "description": "Skill composta — rotina de início de sessão. Encadeia wake-up (briefing) → next-priority (decide) → pr-snapshot (fila de PRs) → context-pack (carrega contexto relevante)."
     }
   }

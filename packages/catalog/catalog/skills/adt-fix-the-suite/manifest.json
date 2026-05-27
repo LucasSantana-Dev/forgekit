@@ -24,7 +24,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/fix-the-suite.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Fix the Suite",
+      "name": "Fix the Suite",
       "description": "Skill composta — diagnostica, repara e valida uma suíte de testes end-to-end. Encadeia test-health → config-drift-detect → test-cleanup → mutation-test → adr-write → docs-sync."
     }
   }

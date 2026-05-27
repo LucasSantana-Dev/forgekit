@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/production-incident.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Production Incident",
+      "name": "Production Incident",
       "description": "Skill composta — workflow completo de incidente em produção do alerta até post-mortem. Encadeia sentry triage → debug-deep → incident-response → ship-it (rollback ou hotfix) → adr-write (post-mortem)."
     }
   }

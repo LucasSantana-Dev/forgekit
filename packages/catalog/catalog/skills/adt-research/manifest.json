@@ -1,6 +1,6 @@
 {
   "id": "adt-research",
-  "name": "Adt Research",
+  "name": "Research",
   "description": "Deep research on a topic using web search, docs, and codebase analysis",
   "version": "0.1.0",
   "tags": [
@@ -23,7 +23,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/research.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Research",
+      "name": "Research",
       "description": "Pesquisa profunda em um tópico usando web search, docs, e análise de codebase."
     }
   }

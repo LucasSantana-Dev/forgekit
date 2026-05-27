@@ -1,6 +1,6 @@
 {
   "id": "adt-rag-curate",
-  "name": "Adt Rag Curate",
+  "name": "RAG Curate",
   "description": "Manually improve corpus quality by adding missing docs and filling retrieval gaps",
   "version": "0.1.0",
   "tags": [

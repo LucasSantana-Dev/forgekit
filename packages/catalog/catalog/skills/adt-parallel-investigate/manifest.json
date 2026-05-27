@@ -1,6 +1,6 @@
 {
   "id": "adt-parallel-investigate",
-  "name": "Adt Parallel Investigate",
+  "name": "Parallel Investigate",
   "description": "Fan out N independent investigations as parallel agents in a single tool-use block, then roll up the results. Use whenever the same question must be answered against multiple repos, PRs, or services.",
   "version": "0.1.0",
   "tags": [
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/parallel-investigate.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Parallel Investigate",
+      "name": "Parallel Investigate",
       "description": "Dispare N investigações independentes como agentes paralelos num único bloco de tool-use, depois consolide os resultados."
     }
   }

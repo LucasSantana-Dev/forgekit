@@ -1,6 +1,6 @@
 {
   "id": "adt-repo-intake",
-  "name": "Adt Repo Intake",
+  "name": "Repo Intake",
   "description": "Onboard into an unfamiliar repository fast before making any changes",
   "version": "0.1.0",
   "tags": [
@@ -23,7 +23,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/repo-intake.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Repo Intake",
+      "name": "Repo Intake",
       "description": "Incorpore um repositório desconhecido rapidamente antes de fazer qualquer mudança. Mapeia estrutura, descobrir padrões de código."
     }
   }
