@@ -32,6 +32,8 @@ items:
   id: pre-commit-validation
 - kind: agent
   id: adt-systematic-debugger
+- kind: skill
+  id: mac-optimize
 translations:
   pt-BR:
     name: Infraestrutura e DevOps

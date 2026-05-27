@@ -40,6 +40,18 @@ items:
   id: validate-secrets
 - kind: hook
   id: pre-commit-validation
+- kind: skill
+  id: adt-audit-deep
+- kind: skill
+  id: adt-config-drift-detect
+- kind: skill
+  id: adt-fix-the-suite
+- kind: skill
+  id: adt-mutation-test
+- kind: skill
+  id: adt-refactor-pipeline
+- kind: skill
+  id: adt-test-cleanup
 - kind: tool
   id: review-tools
 translations:

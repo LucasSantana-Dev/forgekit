@@ -37,6 +37,10 @@ items:
   id: hook-effectiveness
 - kind: skill
   id: adt-next-priority
+- kind: skill
+  id: adt-smart-commands
+- kind: skill
+  id: adt-schedule
 translations:
   pt-BR:
     name: Power User do Claude Code

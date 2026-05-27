@@ -36,6 +36,8 @@ items:
   id: adt-ci-watch
 - kind: skill
   id: adt-dep-lifecycle
+- kind: skill
+  id: adt-ship-it
 translations:
   pt-BR:
     name: Release & Deploy
