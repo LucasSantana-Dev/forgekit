@@ -15,6 +15,11 @@ Commands:
                           Copy a skill to ~/.claude/skills/<id>/, or an
                           agent to ~/.claude/agents/<id>.md.
 
+  ${kleur.cyan("uninstall")} <id>           Remove an installed skill, agent, hook, command, or tool.
+
+  ${kleur.cyan("update")} <id>              Re-download and overwrite an installed entry from the
+                          latest catalog.
+
   ${kleur.cyan("add-server")} <server-id>   Register a catalog MCP server with your local gateway.
 
   ${kleur.cyan("setup")} <editor> [...]     Wire an editor's MCP config to the local gateway.
@@ -66,6 +71,14 @@ async function main() {
     case "install": {
       const { runInstall } = await import("./commands/install.js");
       return runInstall(rest);
+    }
+    case "uninstall": {
+      const { runUninstall } = await import("./commands/uninstall.js");
+      return runUninstall(rest);
+    }
+    case "update": {
+      const { runUpdate } = await import("./commands/update.js");
+      return runUpdate(rest);
     }
     case "add-server": {
       const { runAddServer } = await import("./commands/add-server.js");
