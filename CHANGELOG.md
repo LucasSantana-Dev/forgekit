@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.27.0] - 2026-05-27
+
+### Added
+
+- Agent detail pages with `## IDE` and `## CLI` headings now render as clickable tab panels with URL hash deep-linking (#240).
+
+### Changed
+
+- Deps: astro 6.3.5 → 6.3.8, @astrojs/sitemap 3.7.2 → 3.7.3, tsx 4.19.2 → 4.22.3.
+
 ## [0.26.2] - 2026-05-27
 
 ### Fixed
