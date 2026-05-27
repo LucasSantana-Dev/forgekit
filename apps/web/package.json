@@ -10,7 +10,7 @@
     "check": "astro check"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/sitemap": "^3.7.3",
     "astro": "^6.3.5",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
