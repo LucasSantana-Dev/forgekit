@@ -13,8 +13,6 @@ items:
 - kind: doc
   id: local-models
 - kind: skill
-  id: adt-model-serving
-- kind: skill
   id: adt-eval
 - kind: skill
   id: adt-cost
