@@ -10,9 +10,10 @@ import {
   getHooks,
   getCommands,
   getTools,
+  getTutorials,
 } from "../../lib/catalog.ts";
 
-const [skills, servers, agents, docs, hooks, commands, tools] = await Promise.all([
+const [skills, servers, agents, docs, hooks, commands, tools, tutorials] = await Promise.all([
   getSkills(),
   getServers(),
   getAgents(),
@@ -20,18 +21,19 @@ const [skills, servers, agents, docs, hooks, commands, tools] = await Promise.al
   getHooks(),
   getCommands(),
   getTools(),
+  getTutorials(),
 ]);
 const base = import.meta.env.BASE_URL;
 
 const tagSet = new Set<string>();
-for (const e of [...skills, ...servers, ...agents, ...docs, ...hooks, ...commands, ...tools]) {
+for (const e of [...skills, ...servers, ...agents, ...docs, ...hooks, ...commands, ...tools, ...tutorials]) {
   for (const t of e.tags ?? []) tagSet.add(t);
 }
 const tags = [...tagSet].sort();
 ---
 <Base title="Search" description="Search the entire Forge Kit catalog of skills, agents, MCP servers, hooks, commands, tools, docs, and tutorials in one place." noindex={true}>
   <h1>Search</h1>
-  <p class="lead-muted">Everything in the library — skills, servers, agents, tools, hooks, commands, docs.</p>
+  <p class="lead-muted">Everything in the library — skills, servers, agents, tools, hooks, commands, docs, tutorials.</p>
   <SearchFilter placeholder="Search everything…" tags={tags} />
   <h2 class="visually-hidden">Results</h2>
   <div class="grid">
@@ -55,6 +57,9 @@ const tags = [...tagSet].sort();
     ))}
     {docs.map((d) => (
       <Card kind="doc" id={d.id} name={d.title} description={d.description} tags={d.tags} href={`${base}docs/${d.id}/`} />
+    ))}
+    {tutorials.map((t) => (
+      <Card kind="tutorial" id={t.id} name={t.title} description={t.description} tags={t.tags} href={`${base}tutorials/${t.id}/`} extraTag={t.difficulty} />
     ))}
   </div>
   <div id="empty-state" class="empty" style="display: none;">No matches.</div>
