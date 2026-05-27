@@ -1,6 +1,6 @@
 {
   "id": "adt-cost",
-  "name": "Adt Cost",
+  "name": "Cost",
   "description": "Track and report token usage and estimated cost per session, agent, and phase",
   "version": "0.1.0",
   "tags": [
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/cost.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Cost",
+      "name": "Cost",
       "description": "Rastreie e reporte uso de tokens e custo estimado por sessão, agente e fase."
     }
   }

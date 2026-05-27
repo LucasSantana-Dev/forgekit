@@ -1,6 +1,6 @@
 {
   "id": "adt-loop",
-  "name": "Adt Loop",
+  "name": "Loop",
   "description": "Autonomous development cycle — plan, implement, test, review, fix, commit, and PR without stopping",
   "version": "0.1.0",
   "tags": [
@@ -28,7 +28,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/loop.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Loop",
+      "name": "Loop",
       "description": "Ciclo de desenvolvimento autônomo — plan, implement, test, review, fix, commit, and PR com checkpoints de salvação."
     }
   }

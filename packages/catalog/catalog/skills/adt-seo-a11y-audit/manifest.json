@@ -1,6 +1,6 @@
 {
   "id": "adt-seo-a11y-audit",
-  "name": "Seo A11y Audit",
+  "name": "SEO A11y Audit",
   "description": "Composite skill — full SEO + Accessibility audit of a website or webapp in one workflow. Chains audit-website (squirrelscan SEO + tech + perf scan) + seo-audit (SEO framing) + playwright-best-practices (axe-core a11y) + ui-audit (design-system accessibility patterns) → reconciled severity-ranked report split by SEO vs A11y vs Both. Use for periodic site health checks, pre-launch audits, or when search rankings drop.",
   "version": "0.1.0",
   "tags": [
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/seo-a11y-audit.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt SEO A11y Audit",
+      "name": "SEO A11y Audit",
       "description": "Skill composta — audit completo de SEO + acessibilidade de site ou webapp em um workflow. Encadeia audit-website + seo-audit + axe-core + ui-audit, reconciliado em relatório ranqueado por severidade dividido em SEO / A11y / Ambos."
     }
   }

@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/scope-and-execute.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Scope and Execute",
+      "name": "Scope and Execute",
       "description": "Skill composta — entende um problema, planeja o trabalho, executa e faz o ship em um workflow encadeado. Encadeia adt-repo-intake → context-pack → plan → dispatch/loop → ship → adr-write."
     }
   }

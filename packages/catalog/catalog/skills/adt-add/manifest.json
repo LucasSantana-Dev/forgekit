@@ -1,6 +1,6 @@
 {
   "id": "adt-add",
-  "name": "Adt Add",
+  "name": "Add",
   "description": "Meta-adder for toolkit artifacts. Single entry point to add a skill, pattern, best-practice, hook, agent, or guide with correct frontmatter + sync to 4 publish targets.",
   "version": "0.1.0",
   "tags": [
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/add.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Add",
+      "name": "Add",
       "description": "Meta-adicionador para artefatos do toolkit. Ponto de entrada único para adicionar uma skill, padrão, best-practice, hook, agente ou guia com frontmatter correto + sincronização com 4 destinos de publicação."
     }
   }

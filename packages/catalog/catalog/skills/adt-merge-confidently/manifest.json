@@ -26,7 +26,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/merge-confidently.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Merge Confidently",
+      "name": "Merge Confidently",
       "description": "Skill composta — leva um PR de \"acho que está pronto\" até merge com verificação completa de gates. Encadeia pr-merge-readiness → ci-watch / gh-fix-ci → gh-address-comments → ship."
     }
   }

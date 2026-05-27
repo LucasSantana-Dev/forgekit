@@ -1,6 +1,6 @@
 {
   "id": "adt-context-hygiene",
-  "name": "Adt Context Hygiene",
+  "name": "Context Hygiene",
   "description": "Keep sessions focused and efficient — prune stale outputs, preserve active state, recommend compaction",
   "version": "0.1.0",
   "tags": [
@@ -27,7 +27,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/context-hygiene.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Context Hygiene",
+      "name": "Context Hygiene",
       "description": "Mantenha sessões focadas e eficientes — remova outputs obsoletos, preserve estado ativo, compacte grandes blocos de texto."
     }
   }

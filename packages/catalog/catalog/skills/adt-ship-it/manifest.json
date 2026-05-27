@@ -26,7 +26,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/ship-it.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Ship It",
+      "name": "Ship It",
       "description": "Skill composta — leva um PR mergeado até produção. Encadeia version-bump → changelog-update → ship (tag + release) → deployer correto → verify pós-deploy. Pareia com merge-confidently (que termina no merge)."
     }
   }

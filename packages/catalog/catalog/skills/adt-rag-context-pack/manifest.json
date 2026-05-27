@@ -1,6 +1,6 @@
 {
   "id": "adt-rag-context-pack",
-  "name": "Adt Rag Context Pack",
+  "name": "RAG Context Pack",
   "description": "Build a task-aware context bundle (relevant code + applicable standards + related past decisions) via the local RAG index, capped at a token budget. Use at the start of any implementation/refactor/debug task instead of reading files blindly. Replaces \"read whole file\" with \"retrieve the function + callers + rules + prior ADR.\"",
   "version": "0.1.0",
   "tags": [
@@ -28,7 +28,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/rag/skills/context-pack",
   "translations": {
     "pt-BR": {
-      "name": "Adt Rag Context Pack",
+      "name": "RAG Context Pack",
       "description": "Prepare um context bundle RAG — embeddings, ranked retrieval, paráfrases, citações."
     }
   }

@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/refactor-pipeline.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Refactor Pipeline",
+      "name": "Refactor Pipeline",
       "description": "Skill composta — refatora um módulo end-to-end com sequenciamento, implementação paralela, cleanup pós-refactor e captura de rationale. Encadeia refactor-plan → three-man-team → fix-the-suite → adr-write → docs-sync."
     }
   }

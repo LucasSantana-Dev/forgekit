@@ -1,6 +1,6 @@
 {
   "id": "adt-fallback",
-  "name": "Adt Fallback",
+  "name": "Fallback",
   "description": "Graceful degradation when primary approach fails. Try alternates in priority order; record which path succeeded for future routing.",
   "version": "0.1.0",
   "tags": [
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/fallback.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Fallback",
+      "name": "Fallback",
       "description": "Degradação graciosa quando a abordagem primária falha. Tente alternativas em ordem de prioridade com recuperação sutil."
     }
   }

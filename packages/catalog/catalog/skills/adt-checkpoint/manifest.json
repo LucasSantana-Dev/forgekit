@@ -1,6 +1,6 @@
 {
   "id": "adt-checkpoint",
-  "name": "Adt Checkpoint",
+  "name": "Checkpoint",
   "description": "Git-level WIP safety net. Stashes uncommitted work, tags, and pushes to remote",
   "version": "0.1.0",
   "tags": [
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/checkpoint.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Checkpoint",
+      "name": "Checkpoint",
       "description": "Rede de segurança WIP em nível git. Faz stash de trabalho não commitado, faz tag, e pusha para remoto como ponto de recuperação."
     }
   }

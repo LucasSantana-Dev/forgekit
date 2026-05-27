@@ -1,6 +1,6 @@
 {
   "id": "adt-plan",
-  "name": "Adt Plan",
+  "name": "Plan",
   "description": "Analyze the codebase and create a structured implementation plan before writing any code",
   "version": "0.1.0",
   "tags": [
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/plan.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Plan",
+      "name": "Plan",
       "description": "Analise a codebase e crie um plano de implementação estruturado antes de escrever qualquer código."
     }
   }

@@ -1,6 +1,6 @@
 {
   "id": "adt-rag-index-rebuild",
-  "name": "Adt Rag Index Rebuild",
+  "name": "RAG Index Rebuild",
   "description": "Trigger a full or incremental reindex of the RAG corpus",
   "version": "0.1.0",
   "tags": [

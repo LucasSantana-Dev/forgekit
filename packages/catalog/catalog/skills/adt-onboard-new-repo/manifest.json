@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/onboard-new-repo.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Onboard New Repo",
+      "name": "Onboard New Repo",
       "description": "Skill composta — workflow de primeiro contato com um repo desconhecido. Encadeia adt-repo-intake → audit-deep → config-drift-detect → init (CLAUDE.md) → fewer-permission-prompts."
     }
   }

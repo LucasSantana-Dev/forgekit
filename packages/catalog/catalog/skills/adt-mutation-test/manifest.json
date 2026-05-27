@@ -24,7 +24,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/mutation-test.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Mutation Test",
+      "name": "Mutation Test",
       "description": "Roda mutation testing contra a suíte para verificar que os testes realmente capturam falhas quando o código é quebrado. Use após mudanças grandes na suíte ou quando cobertura parece alta mas bugs ainda escapam."
     }
   }

@@ -1,6 +1,6 @@
 {
   "id": "adt-context",
-  "name": "Adt Context",
+  "name": "Context",
   "description": "Optimize context window usage — compact stale data, compress via summarization, preserve active state",
   "version": "0.1.0",
   "tags": [
@@ -45,7 +45,7 @@
   },
   "translations": {
     "pt-BR": {
-      "name": "Adt Context",
+      "name": "Context",
       "description": "Otimize uso da janela de contexto — compacte dados obsoletos, comprima via summarização, remova ruído, prepare context antes de grandes tarefas."
     }
   }

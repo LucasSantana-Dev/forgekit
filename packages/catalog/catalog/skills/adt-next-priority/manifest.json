@@ -1,6 +1,6 @@
 {
   "id": "adt-next-priority",
-  "name": "Adt Next Priority",
+  "name": "Next Priority",
   "description": "Decide the highest-value safe thing to do right now in the active repo or workspace.",
   "version": "0.1.0",
   "tags": [
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/next-priority.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Next Priority",
+      "name": "Next Priority",
       "description": "Decida a próxima ação de maior valor seguro no repo ou workspace ativo."
     }
   }

@@ -1,6 +1,6 @@
 {
   "id": "adt-secure",
-  "name": "Adt Secure",
+  "name": "Secure",
   "description": "Shortcut for security review on current change set. Runs layered checks (secret-scan, dep-audit, semgrep, OWASP patterns, prompt-injection review).",
   "version": "0.1.0",
   "tags": [
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/secure.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Secure",
+      "name": "Secure",
       "description": "Atalho para security review em changeset atual. Executa verificações em camadas (secrets, vulnerabilidades, misconfigurações)."
     }
   }

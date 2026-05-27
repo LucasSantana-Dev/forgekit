@@ -1,6 +1,6 @@
 {
   "id": "adt-rag-coverage",
-  "name": "Adt Rag Coverage",
+  "name": "RAG Coverage",
   "description": "Audit corpus distribution by source type and repo; identify coverage gaps and underindexed topics",
   "version": "0.1.0",
   "tags": [

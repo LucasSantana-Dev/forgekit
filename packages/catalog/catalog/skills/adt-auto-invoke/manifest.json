@@ -1,6 +1,6 @@
 {
   "id": "adt-auto-invoke",
-  "name": "Adt Auto Invoke",
+  "name": "Auto Invoke",
   "description": "Meta-skill — defines when to apply other skills automatically without being asked",
   "version": "0.1.0",
   "tags": [
@@ -23,7 +23,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/auto-invoke.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Auto Invoke",
+      "name": "Auto Invoke",
       "description": "Meta-skill — define quando aplicar outras skills automaticamente sem ser perguntado. Aprendia dos padrões de uso do usuário e ativa skills relevantes sem prompt explícito."
     }
   }

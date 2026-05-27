@@ -1,6 +1,6 @@
 {
   "id": "adt-adr-write",
-  "name": "Adr Write",
+  "name": "ADR Write",
   "description": "Capture an Architecture Decision Record — what was decided, why, what alternatives were considered, and when to revisit. Writes a numbered ADR file to docs/adr/ in the active repo, with consistent formatting that downstream skills (improve-codebase-architecture, refactor-plan) can read. Use right after deciding something non-obvious so the reasoning isn't lost.",
   "version": "0.1.0",
   "tags": [
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/adr-write.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt ADR Write",
+      "name": "ADR Write",
       "description": "Captura Architecture Decision Records — o que foi decidido, por quê, alternativas consideradas, e quando revisitar. Escreve arquivo ADR numerado em docs/adr/ com formatação consistente."
     }
   }

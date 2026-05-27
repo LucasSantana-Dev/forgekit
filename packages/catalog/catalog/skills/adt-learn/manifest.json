@@ -1,6 +1,6 @@
 {
   "id": "adt-learn",
-  "name": "Adt Learn",
+  "name": "Learn",
   "description": "Auto-extract reusable patterns from the current session into skills or memory",
   "version": "0.1.0",
   "tags": [
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/learn.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Learn",
+      "name": "Learn",
       "description": "Auto-extraia padrões reutilizáveis da sessão atual em skills ou memória. Captura learnings implícitos e os reifica."
     }
   }

@@ -1,6 +1,6 @@
 {
   "id": "adt-ship-check",
-  "name": "Adt Ship Check",
+  "name": "Ship Check",
   "description": "Verify work before committing, pushing, or requesting review",
   "version": "0.1.0",
   "tags": [
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/core/kit/core/skills/ship-check.md",
   "translations": {
     "pt-BR": {
-      "name": "Adt Ship Check",
+      "name": "Ship Check",
       "description": "Verifique trabalho antes de commitar, pushar ou solicitar review. Valide completude, segurança, e prontidão."
     }
   }
