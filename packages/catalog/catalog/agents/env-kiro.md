@@ -2,7 +2,7 @@
 id: env-kiro
 name: AWS Kiro environment
 description: Configuration guide for AWS Kiro IDE and CLI — steering files, spec-driven development (feature/bugfix/design-first), Agent Skills, hooks, MCP, and AWS integrations
-version: 0.3.0
+version: 0.4.0
 tags:
 - agent
 - platform-env
@@ -86,93 +86,6 @@ All inference runs through **Amazon Bedrock** (not direct Anthropic API):
 | DeepSeek / Qwen3 | 0.5 | Open-weight alternatives |
 
 Auto is recommended as the starting point. Switch to Opus 4.7 for complex problems only.
-
-## Steering files
-
-`.kiro/steering/` (workspace) or `~/.kiro/steering/` (global, applies to all workspaces). Three foundation files are auto-included by default:
-
-| File | Purpose |
-|------|---------|
-| `product.md` | Product description, user personas, business goals |
-| `structure.md` | Repository layout, package purposes, build conventions |
-| `tech.md` | Technology stack, libraries, architectural decisions |
-
-Custom steering files use YAML frontmatter to control activation:
-
-```markdown
----
-inclusion: always
-name: API conventions
-description: REST design standards for this project
----
-# API Conventions
-All endpoints return `{ data, error }`. Use camelCase field names.
-```
-
-**Inclusion modes:**
-
-| Mode | Behavior |
-|------|---------|
-| `always` | Loaded on every request (default for the three foundation files) |
-| `manual` | Excluded by default; user toggles on when needed |
-| `fileMatch` | Auto-loaded when files matching `fileMatchPattern` are in scope |
-| `auto` | Agent sees summary only; loads full content on demand |
-
-**File-match example:**
-```markdown
----
-inclusion: fileMatch
-fileMatchPattern: "**/*.tf"
-name: Terraform conventions
-description: IaC standards and provider patterns
----
-# Terraform Conventions
-Use `terraform fmt` before committing. Remote state in S3.
-```
-
-**Workspace vs global:** Workspace steering takes precedence over global on conflict. Push global files via MDM or distribute via repo download to `~/.kiro/steering/`.
-
-## Spec-driven development
-
-Specs live in `.kiro/specs/<feature-name>/` — three files, committed to version control:
-
-```
-.kiro/specs/
-  user-auth/
-    requirements.md   # EARS-format user stories + acceptance criteria
-    design.md         # architecture, data models, API contracts
-    tasks.md          # ordered checklist, dependency graph
-```
-
-**Four workflow variants:**
-
-| Variant | Start from | Use when |
-|---------|-----------|---------|
-| **Requirements-First** | User behavior → design → tasks | Default; feature you're designing top-down |
-| **Design-First** | Architecture → requirements → tasks | You have a technical solution, need to document rationale |
-| **Quick Plan** | Skip approval gates | Well-understood features where you trust Kiro to plan |
-| **Bugfix** | Current / expected / constraints | Structured debugging with regression prevention |
-
-**EARS notation** (requirements.md format):
-```
-WHEN the user submits invalid credentials THE SYSTEM SHALL display an error message within 2 seconds.
-WHEN login succeeds THE SYSTEM SHALL redirect to the dashboard.
-```
-
-**Approval gates:** Between each phase (requirements → design, design → tasks) Kiro waits for explicit approval. You edit before proceeding.
-
-**Parallel execution:** Kiro builds a dependency graph from `tasks.md`. Independent tasks run in parallel as waves. Wave N starts only when wave N-1 completes.
-
-**Property-based testing:** Kiro auto-generates PBT tests from EARS requirements to validate spec compliance.
-
-### Bugfix spec
-
-Bugfix requirements phase has three sections:
-- **Current behavior** — what the bug does
-- **Expected behavior** — what it should do instead
-- **Constraints** — code/behavior that must NOT change (regression prevention)
-
-PBT is auto-generated for all three categories. Available since IDE v0.10 (Feb 18, 2026).
 
 ## Agent Skills
 
@@ -344,7 +257,60 @@ MCP servers configured in **`mcp.json`** at workspace (`.kiro/settings/mcp.json`
 
 **Config priority (CLI):** Agent config `mcpServers` > workspace mcp.json > global mcp.json. Set `includeMcpJson: true` in agent config to merge instead of override.
 
-## Kiro Powers
+## IDE
+
+### Steering files
+
+`.kiro/steering/` (workspace) or `~/.kiro/steering/` (global, applies to all workspaces). Three foundation files are auto-included by default:
+
+| File | Purpose |
+|------|---------|
+| `product.md` | Product description, user personas, business goals |
+| `structure.md` | Repository layout, package purposes, build conventions |
+| `tech.md` | Technology stack, libraries, architectural decisions |
+
+Custom steering files use YAML frontmatter to control activation:
+
+```markdown
+---
+inclusion: always
+name: API conventions
+description: REST design standards for this project
+---
+# API Conventions
+All endpoints return `{ data, error }`. Use camelCase field names.
+```
+
+**Inclusion modes:**
+
+| Mode | Behavior |
+|------|---------|
+| `always` | Loaded on every request (default for the three foundation files) |
+| `manual` | Excluded by default; user toggles on when needed |
+| `fileMatch` | Auto-loaded when files matching `fileMatchPattern` are in scope |
+| `auto` | Agent sees summary only; loads full content on demand |
+
+**File-match example:**
+```markdown
+---
+inclusion: fileMatch
+fileMatchPattern: "**/*.tf"
+name: Terraform conventions
+description: IaC standards and provider patterns
+---
+# Terraform Conventions
+Use `terraform fmt` before committing. Remote state in S3.
+```
+
+**Workspace vs global:** Workspace steering takes precedence over global on conflict. Push global files via MDM or distribute via repo download to `~/.kiro/steering/`.
+
+### Spec-driven development
+
+Kiro drives feature development through structured specs: EARS-format requirements → architecture design → dependency-ordered task list, with human approval gates between each phase. Bugfix specs follow the same pattern with current/expected/constraints sections. Four workflow variants: Requirements-First, Design-First, Quick Plan, and Bugfix.
+
+**Full reference:** [Specs overview](https://kiro.dev/docs/specs/) · [Best practices](https://kiro.dev/docs/specs/best-practices/)
+
+### Kiro Powers
 
 Powers are curated MCP bundles — MCP servers + steering files + hooks — pre-packaged for specific domains. They solve context overload by loading tool metadata only, activating full tools on demand.
 
@@ -360,7 +326,7 @@ Powers are curated MCP bundles — MCP servers + steering files + hooks — pre-
 
 Install via IDE UI or kiro.dev. No additional cost. Commit `.kiro/powers/` to repo for team-wide distribution.
 
-## CLI reference
+## CLI
 
 ```bash
 # Interactive chat
