@@ -26,6 +26,8 @@ items:
   id: task-orchestration
 - kind: skill
   id: adt-smart-model-route
+- kind: skill
+  id: create-subagent
 - kind: agent
   id: executor
 - kind: agent

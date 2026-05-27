@@ -27,6 +27,8 @@ items:
   id: adt-scope-and-execute
 - kind: skill
   id: adt-ticket
+- kind: skill
+  id: adt-feature-from-zero
 - kind: agent
   id: planner
 - kind: agent
