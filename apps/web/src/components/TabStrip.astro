@@ -113,6 +113,12 @@ const firstId = tabs[0]!.id;
     color: var(--fg);
   }
 
+  .tab-btn:focus-visible {
+    outline: 2px solid var(--accent-soft, oklch(70% 0.18 265));
+    outline-offset: 2px;
+    color: var(--fg);
+  }
+
   .tab-btn.active,
   .tab-btn[aria-selected="true"] {
     border-bottom-color: var(--accent-soft, oklch(70% 0.18 265));

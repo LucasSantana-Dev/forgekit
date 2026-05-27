@@ -117,7 +117,7 @@ export function splitIntoTabs(html: string): TabsResult | null {
   }
   if (matches.length === 0) return null;
   const preamble = html.slice(0, matches[0]!.index);
-  const tabs: TabSection[] = matches.map((match, i) => {
+  const rawTabs: TabSection[] = matches.map((match, i) => {
     const contentStart = match.end;
     const contentEnd = i + 1 < matches.length ? matches[i + 1]!.index : html.length;
     const tabEntry = TAB_HEADINGS.find((t) => t.label.toLowerCase() === match.label.toLowerCase());
@@ -127,6 +127,18 @@ export function splitIntoTabs(html: string): TabsResult | null {
       content: html.slice(contentStart, contentEnd),
     };
   });
+
+  // Deduplicate by merging content of tabs with the same id
+  const tabs: TabSection[] = [];
+  for (const rawTab of rawTabs) {
+    const existing = tabs.find((t) => t.id === rawTab.id);
+    if (existing) {
+      existing.content += rawTab.content;
+    } else {
+      tabs.push(rawTab);
+    }
+  }
+
   return { preamble, tabs };
 }
 
