@@ -86,6 +86,62 @@ export function renderMarkdown(body: string): string {
   return labelTaskListCheckboxes(demoteHeadings(rewriteCatalogLinks(html)));
 }
 
+export interface TabSection {
+  label: string;
+  id: string;
+  content: string;
+}
+
+export interface TabsResult {
+  preamble: string;
+  tabs: TabSection[];
+}
+
+const TAB_HEADINGS: ReadonlyArray<{ label: string; id: string }> = [
+  { label: "IDE", id: "ide" },
+  { label: "CLI", id: "cli" },
+];
+
+/**
+ * Splits rendered HTML into tab sections if `<h2>IDE</h2>` or `<h2>CLI</h2>`
+ * headings are present (after `demoteHeadings()` has run). Returns null when
+ * no tab headings are found so the caller can render a plain article instead.
+ */
+export function splitIntoTabs(html: string): TabsResult | null {
+  const headingPattern = TAB_HEADINGS.map((t) => t.label).join("|");
+  const regex = new RegExp(`<h2>(${headingPattern})</h2>`, "gi");
+  const matches: Array<{ label: string; index: number; end: number }> = [];
+  let m: RegExpExecArray | null;
+  while ((m = regex.exec(html)) !== null) {
+    matches.push({ label: m[1]!, index: m.index, end: m.index + m[0]!.length });
+  }
+  if (matches.length === 0) return null;
+  const preamble = html.slice(0, matches[0]!.index);
+  const rawTabs: TabSection[] = matches.map((match, i) => {
+    const contentStart = match.end;
+    const contentEnd = i + 1 < matches.length ? matches[i + 1]!.index : html.length;
+    const tabEntry = TAB_HEADINGS.find((t) => t.label.toLowerCase() === match.label.toLowerCase());
+    return {
+      label: match.label,
+      id: tabEntry?.id ?? match.label.toLowerCase(),
+      content: html.slice(contentStart, contentEnd),
+    };
+  });
+
+  // Deduplicate by merging content of tabs with the same id
+  const tabs: TabSection[] = [];
+  for (const rawTab of rawTabs) {
+    const existing = tabs.find((t) => t.id === rawTab.id);
+    if (existing) {
+      existing.content += rawTab.content;
+    } else {
+      tabs.push(rawTab);
+    }
+  }
+
+  return { preamble, tabs };
+}
+
 /**
  * Catalog markdown bodies frequently link to sibling files via relative
  * `./foo.md` or `../packages/core/patterns/foo.md` references. Once rendered

@@ -1,0 +1,135 @@
+---
+import type { TabSection } from "../lib/ui.ts";
+
+interface Props {
+  preamble: string;
+  tabs: TabSection[];
+}
+
+const { preamble, tabs } = Astro.props;
+const firstId = tabs[0]!.id;
+---
+
+{preamble && <article class="markdown" set:html={preamble} />}
+
+<div class="tab-strip" data-tabs>
+  <nav class="tab-nav" role="tablist" aria-label="Platform tabs">
+    {tabs.map((tab, i) => (
+      <button
+        role="tab"
+        id={`tab-btn-${tab.id}`}
+        aria-controls={`tab-panel-${tab.id}`}
+        aria-selected={i === 0 ? "true" : "false"}
+        class:list={["tab-btn", { active: i === 0 }]}
+        data-tab={tab.id}
+      >
+        {tab.label}
+      </button>
+    ))}
+  </nav>
+
+  {tabs.map((tab, i) => (
+    <div
+      role="tabpanel"
+      id={`tab-panel-${tab.id}`}
+      aria-labelledby={`tab-btn-${tab.id}`}
+      class:list={["tab-panel", { active: i === 0 }]}
+      data-panel={tab.id}
+    >
+      <article class="markdown" set:html={tab.content} />
+    </div>
+  ))}
+</div>
+
+<script>
+  function initTabs(strip: Element) {
+    const hash = window.location.hash.replace("#", "");
+    const buttons = strip.querySelectorAll<HTMLButtonElement>("[role=tab]");
+    const panels = strip.querySelectorAll<HTMLElement>("[role=tabpanel]");
+
+    function activate(id: string) {
+      buttons.forEach((btn) => {
+        const active = btn.dataset.tab === id;
+        btn.setAttribute("aria-selected", String(active));
+        btn.classList.toggle("active", active);
+      });
+      panels.forEach((panel) => {
+        const active = panel.dataset.panel === id;
+        panel.classList.toggle("active", active);
+      });
+    }
+
+    // Restore from URL hash on load.
+    const matchingBtn = Array.from(buttons).find((b) => b.dataset.tab === hash);
+    if (matchingBtn) activate(hash);
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.tab!;
+        activate(id);
+        history.replaceState(null, "", `#${id}`);
+      });
+    });
+  }
+
+  document.querySelectorAll("[data-tabs]").forEach(initTabs);
+</script>
+
+<style>
+  .tab-strip {
+    margin-top: 2rem;
+  }
+
+  .tab-nav {
+    display: flex;
+    gap: 0.25rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tab-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--fg-muted);
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-bottom: -1px;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+
+  .tab-btn:hover {
+    color: var(--fg);
+  }
+
+  .tab-btn:focus-visible {
+    outline: 2px solid var(--accent-soft, oklch(70% 0.18 265));
+    outline-offset: 2px;
+    color: var(--fg);
+  }
+
+  .tab-btn.active,
+  .tab-btn[aria-selected="true"] {
+    border-bottom-color: var(--accent-soft, oklch(70% 0.18 265));
+    color: var(--fg);
+  }
+
+  .tab-panel {
+    display: none;
+  }
+
+  .tab-panel.active {
+    display: block;
+  }
+</style>
