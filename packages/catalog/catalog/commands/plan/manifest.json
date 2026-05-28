@@ -1,0 +1,25 @@
+{
+  "id": "plan",
+  "name": "Plan",
+  "description": "Enter plan mode — research the codebase, design an implementation approach, and present it for approval before writing any code. Prevents wasted effort on ambiguous or high-risk tasks.",
+  "version": "0.1.0",
+  "tags": ["planning", "spec-driven", "core", "productivity"],
+  "provider": "claude",
+  "category": "planning",
+  "argument_hint": "<task or feature to plan>",
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/catalog/catalog/commands/plan/command.md"
+  },
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/catalog/catalog/commands/plan",
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Planejar",
+      "description": "Entra no modo de planejamento — pesquisa o código, projeta uma abordagem de implementação e apresenta para aprovação antes de escrever qualquer código. Previne esforço desperdiçado em tarefas ambíguas ou de alto risco."
+    }
+  }
+}

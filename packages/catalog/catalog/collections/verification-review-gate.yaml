@@ -54,6 +54,8 @@ items:
   id: adt-test-cleanup
 - kind: tool
   id: review-tools
+- kind: command
+  id: review
 translations:
   pt-BR:
     name: Gate de Verificação e Revisão

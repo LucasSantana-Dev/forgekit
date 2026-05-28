@@ -1,0 +1,25 @@
+{
+  "id": "compact",
+  "name": "Compact Context",
+  "description": "Compress the active context window — summarize completed work, drop resolved tool calls, and keep only the state needed to continue. Run when the session approaches context limits.",
+  "version": "0.1.0",
+  "tags": ["context", "token-optimization", "productivity", "core"],
+  "provider": "claude",
+  "category": "productivity",
+  "argument_hint": "[topic to focus on]",
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/catalog/catalog/commands/compact/command.md"
+  },
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/catalog/catalog/commands/compact",
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Compactar Contexto",
+      "description": "Comprime a janela de contexto ativa — resume trabalho concluído, descarta tool calls resolvidos e mantém apenas o estado necessário para continuar. Usar quando a sessão se aproximar dos limites de contexto."
+    }
+  }
+}
