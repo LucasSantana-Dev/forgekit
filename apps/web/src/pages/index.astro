@@ -8,6 +8,7 @@ import {
   getServers,
   getCollections,
   getDocs,
+  getTutorials,
   getAgents,
   getHooks,
   getCommands,
@@ -17,11 +18,12 @@ import { localizeEntries, t, localizedUrl, type Locale } from "../lib/i18n.ts";
 
 const locale: Locale = "en";
 
-const [skillsRaw, serversRaw, collectionsRaw, docsRaw, agentsRaw, hooksRaw, commandsRaw, toolsRaw] = await Promise.all([
+const [skillsRaw, serversRaw, collectionsRaw, docsRaw, tutorialsRaw, agentsRaw, hooksRaw, commandsRaw, toolsRaw] = await Promise.all([
   getSkills(),
   getServers(),
   getCollections(),
   getDocs(),
+  getTutorials(),
   getAgents(),
   getHooks(),
   getCommands(),
@@ -32,6 +34,7 @@ const skills = localizeEntries(skillsRaw, locale);
 const servers = localizeEntries(serversRaw, locale);
 const collections = localizeEntries(collectionsRaw, locale);
 const docs = localizeEntries(docsRaw, locale);
+const tutorials = localizeEntries(tutorialsRaw, locale);
 const agents = localizeEntries(agentsRaw, locale);
 const hooks = localizeEntries(hooksRaw, locale);
 const commands = localizeEntries(commandsRaw, locale);
@@ -40,7 +43,7 @@ const tools = localizeEntries(toolsRaw, locale);
 const base = import.meta.env.BASE_URL;
 const url = (p: string) => localizedUrl(base, p, locale);
 
-const total = skills.length + agents.length + servers.length + hooks.length + commands.length + tools.length;
+const total = skills.length + agents.length + servers.length + hooks.length + commands.length + tools.length + tutorials.length + docs.length;
 
 const tagCount = new Map<string, number>();
 for (const e of [...skills, ...servers, ...agents, ...hooks, ...tools]) {
