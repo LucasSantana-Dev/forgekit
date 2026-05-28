@@ -46,6 +46,8 @@ items:
   id: adt-knowledge-loop
 - kind: server
   id: context-mode
+- kind: command
+  id: compact
 translations:
   pt-BR:
     name: Otimização de Token e Contexto

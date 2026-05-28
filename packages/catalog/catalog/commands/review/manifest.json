@@ -1,0 +1,25 @@
+{
+  "id": "review",
+  "name": "Code Review",
+  "description": "Review the current diff or recently changed files for correctness bugs, security issues, and quality problems. Returns severity-rated findings with file and line references.",
+  "version": "0.1.0",
+  "tags": ["code-review", "quality", "security", "core"],
+  "provider": "claude",
+  "category": "quality",
+  "argument_hint": "[files or PR to review]",
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/catalog/catalog/commands/review/command.md"
+  },
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/catalog/catalog/commands/review",
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Revisão de Código",
+      "description": "Revisa o diff atual ou arquivos alterados recentemente em busca de bugs de corretude, problemas de segurança e questões de qualidade. Retorna achados com severidade e referências de arquivo e linha."
+    }
+  }
+}

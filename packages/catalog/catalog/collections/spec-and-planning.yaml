@@ -33,6 +33,8 @@ items:
   id: planner
 - kind: agent
   id: architect
+- kind: command
+  id: plan
 translations:
   pt-BR:
     name: Specs e Planejamento
