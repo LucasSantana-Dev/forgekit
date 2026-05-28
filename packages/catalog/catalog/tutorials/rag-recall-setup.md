@@ -12,8 +12,6 @@ relates_to:
   - kind: skill
     id: adt-rag
   - kind: skill
-    id: adt-rag-recall
-  - kind: skill
     id: adt-rag-context-pack
 translations:
   pt-BR:
