@@ -25,10 +25,21 @@ const base = import.meta.env.BASE_URL;
 // `getSkills` leaves `body` empty when no SKILL.md is vendored in the catalog.
 const hasBody = skill.body.trim().length > 0;
 const src = skill.source;
+// Only render source links with an http(s) scheme — metadata is catalog-authored
+// (incl. external manifests), so guard against javascript:/data: href injection.
+const safeHttpUrl = (value?: string | null): string | null => {
+  if (!value) return null;
+  try {
+    const u = new URL(value);
+    return u.protocol === "http:" || u.protocol === "https:" ? u.toString() : null;
+  } catch {
+    return null;
+  }
+};
 const sourceUrl =
-  skill.homepage ??
-  (src?.repo && src.path ? `${src.repo.replace(/\.git$/, "")}/blob/${src.ref ?? "main"}/${src.path}` : null) ??
-  src?.repo ??
+  safeHttpUrl(skill.homepage) ??
+  safeHttpUrl(src?.repo && src.path ? `${src.repo.replace(/\.git$/, "")}/blob/${src.ref ?? "main"}/${src.path}` : null) ??
+  safeHttpUrl(src?.repo) ??
   null;
 const sourceLabel = src?.repo?.replace(/^https?:\/\/(www\.)?github\.com\//, "") ?? src?.path ?? sourceUrl;
 ---
