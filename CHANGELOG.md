@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- **Curated index — link to external skills, don't re-host them.** forgekit no longer vendors `SKILL.md` body copies for skills it didn't author. The externally-sourced catalog skills (from `anthropics/skills`, `obra/superpowers`, `alirezarezvani/claude-skills`) now keep only their manifests as curated link-out entries (`source` + `homepage`); forgekit-authored skills keep their bodies. `forge install <external-skill>` fetches the body from the upstream source on demand instead of serving a copy; skill detail pages render "maintained upstream — view at source" for body-less entries. Rationale in `docs/decisions/2026-06-06-curated-index-link-dont-rehost.md`.
+
 ## [0.28.0] - 2026-05-27
 
 ### Added
