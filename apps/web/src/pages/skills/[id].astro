@@ -20,6 +20,28 @@ const cmd = installCommand("skill", skill.id)!;
 const tutorials = await getTutorials();
 const collections = await getCollections();
 const base = import.meta.env.BASE_URL;
+
+// Externally-sourced skills are not re-hosted here — forgekit links to them.
+// `getSkills` leaves `body` empty when no SKILL.md is vendored in the catalog.
+const hasBody = skill.body.trim().length > 0;
+const src = skill.source;
+// Only render source links with an http(s) scheme — metadata is catalog-authored
+// (incl. external manifests), so guard against javascript:/data: href injection.
+const safeHttpUrl = (value?: string | null): string | null => {
+  if (!value) return null;
+  try {
+    const u = new URL(value);
+    return u.protocol === "http:" || u.protocol === "https:" ? u.toString() : null;
+  } catch {
+    return null;
+  }
+};
+const sourceUrl =
+  safeHttpUrl(skill.homepage) ??
+  safeHttpUrl(src?.repo && src.path ? `${src.repo.replace(/\.git$/, "")}/blob/${src.ref ?? "main"}/${src.path}` : null) ??
+  safeHttpUrl(src?.repo) ??
+  null;
+const sourceLabel = src?.repo?.replace(/^https?:\/\/(www\.)?github\.com\//, "") ?? src?.path ?? sourceUrl;
 ---
 <Base title={skill.name} description={skill.description}>
   <EntryHeader kind="skill" name={skill.name} description={skill.description} backLabel="All skills" provider={deriveProvider(skill.tags)}>
@@ -34,16 +56,31 @@ const base = import.meta.env.BASE_URL;
 
   <UsageBlock usage={skill.usage} locale="en" />
 
-  {tabs ? (
-    <TabStrip preamble={tabs.preamble} tabs={tabs.tabs} />
+  {hasBody ? (
+    tabs ? (
+      <TabStrip preamble={tabs.preamble} tabs={tabs.tabs} />
+    ) : (
+      <article class="markdown mt-4" set:html={rendered} />
+    )
   ) : (
-    <article class="markdown mt-4" set:html={rendered} />
+    <div class="entry-external mt-4">
+      <p>This skill is maintained upstream — forgekit links to it rather than re-hosting a copy.</p>
+      {sourceUrl && (
+        <p>
+          <a href={sourceUrl} target="_blank" rel="noopener noreferrer">View the full skill at source ↗</a>
+        </p>
+      )}
+    </div>
   )}
 
-  {(skill.source?.path || skill.license) && (
+  {(sourceUrl || skill.source?.path || skill.license) && (
     <p class="entry-source">
-      {skill.source?.path && <>Source: <code>{skill.source.path}</code></>}
-      {skill.license && <>{skill.source?.path ? " · " : "License: "}{skill.license}</>}
+      {sourceUrl ? (
+        <>Source: <a href={sourceUrl} target="_blank" rel="noopener noreferrer">{sourceLabel}</a></>
+      ) : (
+        skill.source?.path && <>Source: <code>{skill.source.path}</code></>
+      )}
+      {skill.license && <>{(sourceUrl || skill.source?.path) ? " · " : "License: "}{skill.license}</>}
     </p>
   )}
 

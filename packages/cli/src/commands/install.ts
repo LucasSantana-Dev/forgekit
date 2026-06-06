@@ -57,14 +57,48 @@ async function installSkill(id: string, force: boolean) {
   await ensureSkillsDir();
   const target = skillInstallPath(id);
   if (existsSync(target) && !force) return abortExists(target);
-  await mkdir(target, { recursive: true });
-  for (const name of ["manifest.json", "SKILL.md"]) {
-    const content = await loadFile(`catalog/skills/${id}/${name}`);
-    await writeFile(path.join(target, name), content);
+
+  const manifestRaw = await loadFile(`catalog/skills/${id}/manifest.json`);
+  // forgekit does not vendor bodies for externally-sourced skills — it links to
+  // them. When the body isn't in the catalog, fetch it from the skill's upstream
+  // source on demand (so `install` still works without re-hosting a copy).
+  let body = await tryLoadFile(`catalog/skills/${id}/SKILL.md`);
+  if (body === null) {
+    const manifest = JSON.parse(manifestRaw) as {
+      source?: { repo?: string; ref?: string; path?: string };
+      homepage?: string;
+    };
+    const url = rawSourceUrl(manifest.source);
+    if (!url) {
+      console.error(kleur.red(`✗ '${id}' is an external skill with no resolvable source`));
+      if (manifest.homepage) console.error(kleur.dim(`  get it from: ${manifest.homepage}`));
+      process.exit(1);
+    }
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.error(kleur.red(`✗ could not fetch '${id}' from source (GET ${url} → ${res.status})`));
+      console.error(kleur.dim(`  get it from: ${manifest.homepage ?? manifest.source?.repo}`));
+      process.exit(1);
+    }
+    body = await res.text();
+    console.log(kleur.dim(`  ↗ external skill — fetched from source: ${url}`));
   }
+
+  await mkdir(target, { recursive: true });
+  await writeFile(path.join(target, "manifest.json"), manifestRaw);
+  await writeFile(path.join(target, "SKILL.md"), body);
   const refContent = await tryLoadFile(`catalog/skills/${id}/REFERENCE.md`);
   if (refContent) await writeFile(path.join(target, "REFERENCE.md"), refContent);
   success("skill", id, target, "Claude Code picks this up on next session start.");
+}
+
+/** Build a raw-content URL for a GitHub git source, or null if unresolvable. */
+function rawSourceUrl(source?: { repo?: string; ref?: string; path?: string }): string | null {
+  if (!source?.repo || !source.path) return null;
+  const ref = source.ref || "main";
+  const gh = source.repo.match(/^https?:\/\/github\.com\/([^/]+)\/([^/]+?)(?:\.git)?\/?$/);
+  if (gh) return `https://raw.githubusercontent.com/${gh[1]}/${gh[2]}/${ref}/${source.path}`;
+  return null;
 }
 
 async function installAgent(id: string, force: boolean) {
