@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **Claude Code platform docs**: Three new catalog guides covering recent platform features — `claude-code-workflows` (dynamic multi-agent orchestration), `claude-code-cloud-review-plan` (ultrareview + ultraplan, research preview), and `claude-code-routines-monitor` (scheduled/event-driven agents + background event streaming). Wired into multi-agent-orchestration, spec-and-planning, and infrastructure-and-devops collections.
+
 ### Fixed
 
 - Wired 6 orphan skills into collections: `adt-specs-aggregate-roadmap` → spec-and-planning, `adt-sync-pt-parity` + `claude-automation-recommender` → skill-authoring, `gemini-context-cache` → token-and-context-optimization, `gemini-grounding-config` → api-and-mcp-development, `vertex-ai-setup` → local-models-starter.

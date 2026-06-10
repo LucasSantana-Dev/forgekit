@@ -37,6 +37,8 @@ items:
   id: architect
 - kind: command
   id: plan
+- kind: doc
+  id: claude-code-cloud-review-plan
 translations:
   pt-BR:
     name: Specs e Planejamento
