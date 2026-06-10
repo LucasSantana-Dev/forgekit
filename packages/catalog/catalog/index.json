@@ -3055,7 +3055,9 @@
         "deploy",
         "memory"
       ],
-      "collectionMembership": [],
+      "collectionMembership": [
+        "spec-and-planning"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3110,7 +3112,9 @@
         "core",
         "git"
       ],
-      "collectionMembership": [],
+      "collectionMembership": [
+        "skill-authoring"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3366,7 +3370,9 @@
         "onboarding",
         "forgekit"
       ],
-      "collectionMembership": [],
+      "collectionMembership": [
+        "skill-authoring"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3875,7 +3881,9 @@
         "performance",
         "cost"
       ],
-      "collectionMembership": [],
+      "collectionMembership": [
+        "token-and-context-optimization"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3891,7 +3899,9 @@
         "rag",
         "retrieval"
       ],
-      "collectionMembership": [],
+      "collectionMembership": [
+        "api-and-mcp-development"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -4290,7 +4300,9 @@
         "gcp",
         "deploy"
       ],
-      "collectionMembership": [],
+      "collectionMembership": [
+        "local-models-starter"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
