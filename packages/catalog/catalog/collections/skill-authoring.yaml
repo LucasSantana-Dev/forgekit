@@ -27,6 +27,10 @@ items:
   id: command-development
 - kind: skill
   id: hook-development
+- kind: skill
+  id: adt-sync-pt-parity
+- kind: skill
+  id: claude-automation-recommender
 translations:
   pt-BR:
     name: Autoria de Skills

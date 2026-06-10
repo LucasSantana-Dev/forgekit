@@ -29,6 +29,8 @@ items:
   id: adt-ticket
 - kind: skill
   id: adt-feature-from-zero
+- kind: skill
+  id: adt-specs-aggregate-roadmap
 - kind: agent
   id: planner
 - kind: agent
