@@ -36,6 +36,8 @@ items:
   id: adt-parallel-investigate
 - kind: doc
   id: claude-code-workflows
+- kind: doc
+  id: claude-managed-agents
 translations:
   pt-BR:
     name: Orquestração de Múltiplos Agentes

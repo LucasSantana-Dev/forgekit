@@ -1,0 +1,24 @@
+id: brave-search
+name: Brave Search MCP
+description: "Official Brave Search MCP server — web search, image search, news, and video from Brave's privacy-first index. Returns deduplicated results with optional snippet extraction. No tracking, no user profiling. Good pairing with `fetch` (read full articles) and `firecrawl` (deep extraction). Requires a Brave Search API key (free tier available)."
+transport: stdio
+command: npx
+args:
+  - -y
+  - "@brave/brave-search-mcp-server"
+env:
+  - name: BRAVE_API_KEY
+    description: Brave Search API key from https://api.search.brave.com/
+    required: true
+tags:
+  - search
+  - web
+  - research
+  - privacy
+provider: any
+homepage: https://github.com/brave/brave-search-mcp-server
+license: MIT
+translations:
+  pt-BR:
+    name: Brave Search MCP
+    description: "Servidor MCP oficial do Brave Search — busca web, busca de imagens, notícias e vídeo do índice privado do Brave. Retorna resultados deduplicados com extração de snippet opcional. Sem rastreamento, sem criação de perfis de usuário. Boa combinação com `fetch` (ler artigos completos) e `firecrawl` (extração profunda). Requer uma API key Brave Search (nível gratuito disponível)."

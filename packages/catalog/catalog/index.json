@@ -862,6 +862,23 @@
     },
     {
       "kind": "doc",
+      "id": "braintrust-evals",
+      "name": "Braintrust — LLM Evaluation Platform",
+      "description": "Open-source eval framework (AutoEvals) + managed platform for scoring LLM + agent outputs. LLM-as-judge, multi-step agent evals, tool-use scoring, human annotation. Positioned as eval-first (not observability). Note: OpenAI Evals platform sunsetting Oct 31 2026.",
+      "tags": [
+        "testing",
+        "evaluation",
+        "observability",
+        "agents",
+        "llm"
+      ],
+      "collectionMembership": [
+        "verification-review-gate"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
       "id": "claude-code-cloud-review-plan",
       "name": "Cloud Code Review & Planning — Ultrareview & Ultraplan",
       "description": "RESEARCH PREVIEW: Comprehensive code review and interactive planning in the cloud. Run /ultrareview for multi-agent bug hunting; /ultraplan to draft plans collaboratively and execute remotely.",
@@ -905,6 +922,23 @@
         "agents",
         "automation",
         "workflow"
+      ],
+      "collectionMembership": [
+        "multi-agent-orchestration"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
+      "id": "claude-managed-agents",
+      "name": "Claude Managed Agents",
+      "description": "Anthropic's hosted agent runtime (public beta since April 2026) — sandboxed execution, state management, sessions, scoped permissions, and tracing with token pricing plus $0.08/session-hour. Adopt when you want turnkey multi-step autonomy without infrastructure. Understand tradeoffs vs. local agents, launchd, and CI-based orchestration.",
+      "tags": [
+        "agents",
+        "orchestration",
+        "platform",
+        "anthropic",
+        "beta"
       ],
       "collectionMembership": [
         "multi-agent-orchestration"
@@ -1537,6 +1571,22 @@
         "verification-review-gate"
       ],
       "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "server",
+      "id": "brave-search",
+      "name": "Brave Search MCP",
+      "description": "Official Brave Search MCP server — web search, image search, news, and video from Brave's privacy-first index. Returns deduplicated results with optional snippet extraction. No tracking, no user profiling. Good pairing with `fetch` (read full articles) and `firecrawl` (deep extraction). Requires a Brave Search API key (free tier available).",
+      "tags": [
+        "search",
+        "web",
+        "research",
+        "privacy"
+      ],
+      "collectionMembership": [
+        "research-and-writing"
+      ],
       "deprecated": false
     },
     {
