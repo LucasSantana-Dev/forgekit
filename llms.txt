@@ -14,7 +14,7 @@ Key capabilities:
 - 135 portable skills in `packages/catalog/catalog/skills/`
 - 22 catalog agents in `packages/catalog/catalog/agents/`
 - 22 collections organizing workflows and personas
-- 21 MCP server definitions in `packages/catalog/catalog/servers/`
+- 22 MCP server definitions in `packages/catalog/catalog/servers/`
 - Counts are approximate; source of truth is `packages/catalog/catalog/` and `packages/catalog/catalog/index.json`
 
 ## Collections
