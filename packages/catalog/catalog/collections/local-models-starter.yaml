@@ -20,6 +20,8 @@ items:
   id: adt-rag
 - kind: skill
   id: prompting-discipline
+- kind: skill
+  id: vertex-ai-setup
 translations:
   pt-BR:
     name: Início com Modelos Locais

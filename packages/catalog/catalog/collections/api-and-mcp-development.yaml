@@ -34,6 +34,8 @@ items:
   id: git
 - kind: agent
   id: architect
+- kind: skill
+  id: gemini-grounding-config
 translations:
   pt-BR:
     name: Desenvolvimento de API e MCP

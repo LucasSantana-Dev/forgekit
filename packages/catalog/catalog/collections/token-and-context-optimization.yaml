@@ -48,6 +48,8 @@ items:
   id: context-mode
 - kind: command
   id: compact
+- kind: skill
+  id: gemini-context-cache
 translations:
   pt-BR:
     name: Otimização de Token e Contexto
