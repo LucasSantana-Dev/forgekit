@@ -34,6 +34,8 @@ items:
   id: planner
 - kind: skill
   id: adt-parallel-investigate
+- kind: doc
+  id: claude-code-workflows
 translations:
   pt-BR:
     name: Orquestração de Múltiplos Agentes

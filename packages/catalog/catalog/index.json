@@ -862,6 +862,57 @@
     },
     {
       "kind": "doc",
+      "id": "claude-code-cloud-review-plan",
+      "name": "Cloud Code Review & Planning — Ultrareview & Ultraplan",
+      "description": "RESEARCH PREVIEW: Comprehensive code review and interactive planning in the cloud. Run /ultrareview for multi-agent bug hunting; /ultraplan to draft plans collaboratively and execute remotely.",
+      "tags": [
+        "claude-code",
+        "verification",
+        "code-review",
+        "planning",
+        "research-preview"
+      ],
+      "collectionMembership": [
+        "spec-and-planning"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
+      "id": "claude-code-routines-monitor",
+      "name": "Routines & Monitor — Templated Agents & Background Streaming",
+      "description": "Fire templated cloud agents on a schedule, GitHub event, or API call with Routines. Stream background events into the conversation with Monitor to tail logs, watch CI, and react in real-time without polling.",
+      "tags": [
+        "claude-code",
+        "automation",
+        "infrastructure",
+        "background-jobs",
+        "monitoring"
+      ],
+      "collectionMembership": [
+        "infrastructure-and-devops"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
+      "id": "claude-code-workflows",
+      "name": "Dynamic Workflows — Multi-Agent Orchestration",
+      "description": "Orchestrate dozens to hundreds of subagents from a single command. Use workflows when a task is too large for one conversation — codebase-wide audits, large migrations, cross-repo coordination.",
+      "tags": [
+        "claude-code",
+        "orchestration",
+        "agents",
+        "automation",
+        "workflow"
+      ],
+      "collectionMembership": [
+        "multi-agent-orchestration"
+      ],
+      "deprecated": false
+    },
+    {
+      "kind": "doc",
       "id": "codex-parity",
       "name": "Codex–Claude Parity Setup",
       "description": "Bring an OpenAI Codex CLI installation into full parity with Claude Code on the same machine — share the skill catalog via symlink, mirror per-project memory into the repo, add a composite-first principle to AGENTS.md, and verify the shared RAG index works from both tools.",
@@ -3004,7 +3055,9 @@
         "deploy",
         "memory"
       ],
-      "collectionMembership": [],
+      "collectionMembership": [
+        "spec-and-planning"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3059,7 +3112,9 @@
         "core",
         "git"
       ],
-      "collectionMembership": [],
+      "collectionMembership": [
+        "skill-authoring"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3315,7 +3370,9 @@
         "onboarding",
         "forgekit"
       ],
-      "collectionMembership": [],
+      "collectionMembership": [
+        "skill-authoring"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3824,7 +3881,9 @@
         "performance",
         "cost"
       ],
-      "collectionMembership": [],
+      "collectionMembership": [
+        "token-and-context-optimization"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -3840,7 +3899,9 @@
         "rag",
         "retrieval"
       ],
-      "collectionMembership": [],
+      "collectionMembership": [
+        "api-and-mcp-development"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
@@ -4239,7 +4300,9 @@
         "gcp",
         "deploy"
       ],
-      "collectionMembership": [],
+      "collectionMembership": [
+        "local-models-starter"
+      ],
       "version": "0.1.0",
       "deprecated": false
     },
