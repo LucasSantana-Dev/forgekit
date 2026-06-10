@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - **Claude Code platform docs**: Three new catalog guides covering recent platform features — `claude-code-workflows` (dynamic multi-agent orchestration), `claude-code-cloud-review-plan` (ultrareview + ultraplan, research preview), and `claude-code-routines-monitor` (scheduled/event-driven agents + background event streaming). Wired into multi-agent-orchestration, spec-and-planning, and infrastructure-and-devops collections.
 
+- **Three new catalog entries (v0.29.0 slice 3):** Claude Managed Agents doc (Anthropic's hosted agent runtime, beta since April 2026), Braintrust doc (eval-first LLM + agent scoring platform, with AutoEvals open-source library), Brave Search MCP server (privacy-first web search, image, news, video). All wired into existing collections: Managed Agents → multi-agent-orchestration, Braintrust → verification-review-gate, Brave Search → research-and-writing.
+
 ### Fixed
 
 - Wired 6 orphan skills into collections: `adt-specs-aggregate-roadmap` → spec-and-planning, `adt-sync-pt-parity` + `claude-automation-recommender` → skill-authoring, `gemini-context-cache` → token-and-context-optimization, `gemini-grounding-config` → api-and-mcp-development, `vertex-ai-setup` → local-models-starter.

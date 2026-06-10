@@ -30,6 +30,8 @@ items:
   id: context7
 - kind: skill
   id: adt-research-and-decide
+- kind: server
+  id: brave-search
 translations:
   pt-BR:
     name: Pesquisa & Escrita
