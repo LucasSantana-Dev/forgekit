@@ -5,7 +5,7 @@ transport: stdio
 command: npx
 args:
   - -y
-  - brave-search-mcp
+  - "@brave/brave-search-mcp-server"
 env:
   - name: BRAVE_API_KEY
     description: Brave Search API key from https://api.search.brave.com/
@@ -16,8 +16,8 @@ tags:
   - research
   - privacy
 provider: any
-homepage: https://github.com/mikechao/brave-search-mcp
-license: GPL-3.0-or-later
+homepage: https://github.com/brave/brave-search-mcp-server
+license: MIT
 translations:
   pt-BR:
     name: Brave Search MCP
