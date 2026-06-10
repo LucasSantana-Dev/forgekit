@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.29.0] - 2026-06-10
+
 ### Added
 
 - **Claude Code platform docs**: Three new catalog guides covering recent platform features — `claude-code-workflows` (dynamic multi-agent orchestration), `claude-code-cloud-review-plan` (ultrareview + ultraplan, research preview), and `claude-code-routines-monitor` (scheduled/event-driven agents + background event streaming). Wired into multi-agent-orchestration, spec-and-planning, and infrastructure-and-devops collections.
