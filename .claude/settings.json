@@ -1,0 +1,101 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"\nimport json, sys, subprocess\ndata = json.load(sys.stdin)\nfp = data.get('file_path', '') or data.get('path', '')\nif 'packages/catalog/catalog' in fp and (fp.endswith('.yaml') or fp.endswith('.json')):\n    r = subprocess.run(['pnpm', 'catalog:validate'], capture_output=True, text=True)\n    if r.returncode != 0:\n        out = (r.stdout + r.stderr)[-2000:]\n        print('catalog:validate failed:\\n' + out, file=sys.stderr)\n        sys.exit(1)\n\"",
+            "timeout": 30000
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"\nimport json, sys, subprocess\ndata = json.load(sys.stdin)\nfp = data.get('file_path', '') or data.get('path', '')\nif fp.endswith(('.md', '.json', '.yml', '.yaml')):\n    subprocess.run(['npx', 'prettier', '--write', fp, '--log-level', 'warn'], capture_output=True)\n\"",
+            "timeout": 15000
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Volumes/External HD/Desenvolvimento/ai-dev-toolkit/.claude/hooks/turn-counter.sh",
+            "timeout": 5000
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Volumes/External HD/Desenvolvimento/ai-dev-toolkit/.claude/hooks/session-budget-guard.sh\"",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Volumes/External HD/Desenvolvimento/ai-dev-toolkit/.claude/hooks/bash-prefilter.sh\"",
+            "timeout": 10000
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Volumes/External HD/Desenvolvimento/ai-dev-toolkit/.claude/hooks/protect-files.sh\"",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Volumes/External HD/Desenvolvimento/ai-dev-toolkit/.claude/hooks/sessionend-memory-writer.sh\"",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Volumes/External HD/Desenvolvimento/ai-dev-toolkit/.claude/hooks/pre-compact-summary.sh\"",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Volumes/External HD/Desenvolvimento/ai-dev-toolkit/.claude/hooks/post-compact-reset.sh\"",
+            "timeout": 5000
+          }
+        ]
+      }
+    ]
+  }
+}
