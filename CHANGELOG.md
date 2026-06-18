@@ -16,6 +16,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- **OpenCode harness templates: repoint default + agent models to OpenRouter for robust multi-provider failover.** Primary default model: `openai/gpt-5.3-codex` → `openrouter/z-ai/glm-4.6`; codex-primary: `openai/gpt-5.3-codex` → `openrouter/qwen/qwen-2.5-coder-32b-instruct`; architect: `anthropic/claude-opus-4-1` → `openrouter/moonshotai/kimi-k2-thinking`; fast: `anthropic/claude-sonnet-4-5` → `openrouter/qwen/qwen-2.5-coder-7b`; reviewer & planner: `anthropic/claude-sonnet-4-5` → `openrouter/z-ai/glm-4.6`. Added a `free` escape-hatch agent: `opencode/deepseek-v4-flash-free` (free-tier OpenCode Go model) to handle rate-limit or no-credits fallback scenarios. Disabled unauthenticated `context7` MCP by default (enabled: false) with authentication comment. Prevents subagent stalling on unconfigured/unroutable providers. Applied to all three templates: primary setup, core reference, and pt-BR locale mirror.
+
+
 - **Curated index — link to external skills, don't re-host them.** forgekit no longer vendors `SKILL.md` body copies for skills it didn't author. The externally-sourced catalog skills (from `anthropics/skills`, `obra/superpowers`, `alirezarezvani/claude-skills`) now keep only their manifests as curated link-out entries (`source` + `homepage`); forgekit-authored skills keep their bodies. `forge install <external-skill>` fetches the body from the upstream source on demand instead of serving a copy; skill detail pages render "maintained upstream — view at source" for body-less entries. Rationale in `docs/decisions/2026-06-06-curated-index-link-dont-rehost.md`.
 
 ## [0.29.1] - 2026-06-18
