@@ -70,11 +70,7 @@ The `locales/pt-BR/` tree mirrors `packages/catalog/catalog/` and `packages/core
 All new repos, clones, worktrees, and large artifacts go on `/Volumes/External HD/`, never under `~/`.
 Worktrees live at `/Volumes/External HD/Desenvolvimento/.worktrees/`.
 
-# CLAUDE.md
-
-Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
-
-**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
+# Behavioral Guidelines
 
 ## 1. Think Before Coding
 
@@ -82,7 +78,7 @@ Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-s
 
 Before implementing:
 - State your assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them - don't pick silently.
+- If multiple interpretations exist, present them — don't pick silently.
 - If a simpler approach exists, say so. Push back when warranted.
 - If something is unclear, stop. Name what's confusing. Ask.
 
@@ -106,7 +102,7 @@ When editing existing code:
 - Don't "improve" adjacent code, comments, or formatting.
 - Don't refactor things that aren't broken.
 - Match existing style, even if you'd do it differently.
-- If you notice unrelated dead code, mention it - don't delete it.
+- If you notice unrelated dead code, mention it — don't delete it.
 
 When your changes create orphans:
 - Remove imports/variables/functions that YOUR changes made unused.
@@ -132,7 +128,59 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
----
+## 5. Hard Rules
+
+- **No AI attribution.** Never add `Co-Authored-By:` or "Generated with…" trailers to commits, PRs, issues, or release notes.
+- **Idempotency — state-check before mutation.** Before any write (file edit, API call, git push, DB upsert), query current state; if already satisfied, skip and log "already done."
+- **Parallel execution is mandatory for ≥2 independent units.** Don't serialize what can run concurrently.
+- **Dispatcher ≠ executor.** Orchestrators must not implement logic-bearing changes. Trivial inline edits (string constants, log messages, comments) are allowed.
+- **No big-bang rewrites without a gate.** Default to incremental delivery.
+
+## 6. Code Standards
+
+- Functions: <50 lines, cyclomatic complexity <10, line width <100 chars
+- No comments unless asked
+- No speculative features, no premature abstraction
+- Replace, don't deprecate
+- Security-first: never expose credentials, validate inputs, sanitize outputs
+- `any` types are tech debt — use `unknown` and type guards instead
+
+## 7. Workflow
+
+- Branch naming: `feature/`, `fix/`, `chore/`, `refactor/`, `ci/`, `docs/`, `release/`
+- Conventional commits: feat, fix, refactor, chore, docs, style, ci, test
+- Run lint + build + test before PR
+- Commit constantly with value: after each functional step, commit + push
+- Never push directly to main — all changes via PR
+
+## 8. Testing
+
+- Coverage target: >80% (no false positives)
+- Test business logic and user value, NOT trivial getters/setters/enums
+- Edge cases, error conditions, integration flows
+- Realistic test data reflecting actual usage
+
+## 9. Documentation Governance
+
+- NEVER create task-specific docs in repo root (e.g., *_COMPLETE.md, STATUS_*.md)
+- Task completion info belongs in: commit messages, CHANGELOG.md, PR descriptions
+- Allowed root .md: README, CHANGELOG, CONTRIBUTING, CLAUDE, ARCHITECTURE, SECURITY
+
+## 10. Security
+
+- Run vulnerability scan for high/critical issues before merge
+- Never commit secrets (.env, credentials, API keys)
+- Validate inputs at system boundaries — not inside internal functions
+- Use `unknown` over `any` — it forces type narrowing and prevents unsafe operations
+
+## 11. Gotchas
+
+- **Pre-commit hooks**: Always run before commits — use `HUSKY=0` prefix to skip only for non-code changes
+- **Catalog validation**: `pnpm catalog:validate` must pass after any catalog change
+- **Referential integrity**: When removing a catalog entry, audit all collection `.yaml` files first
+- **Locale parity**: New catalog entries need pt-BR stubs
+- **Bundle size**: Check bundle impact before adding new dependencies
+- **Error handling**: Always handle promises — unhandled rejections crash the app
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
 
