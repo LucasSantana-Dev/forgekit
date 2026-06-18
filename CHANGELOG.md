@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.29.1] - 2026-06-18
+
+### Added
+
+- **Workflow alignment with local standards**: Added 7 Claude Code hooks (bash-prefilter, protect-files, turn-counter, session-budget-guard, sessionend-memory-writer, pre-compact-summary, post-compact-reset) for safety, session management, and context hygiene. Added 2 composite skill templates (session-bootstrap, scope-and-execute).
+
+- **6 new catalog agents**: homelab-ops (Docker/k3s/Pi-hole/Caddy), lucky-bot-dev (TypeScript monorepo), infra-reviewer (read-only config reviewer), linkedin-automation (Chrome extension), rag-engineer (hybrid retrieval), discord-bot-factory (Discord.js patterns). Catalog now has 28 agents total.
+
+### Changed
+
+- **CLAUDE.md rewrite**: Replaced generic behavioral guidelines (lines 73-137) with battle-tested rules from local workflow — Hard Rules, Code Standards, Workflow, Testing, Documentation Governance, Security, Gotchas.
+
 ## [0.29.0] - 2026-06-10
 
 ### Added
