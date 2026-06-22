@@ -9,7 +9,7 @@ import { loadGatewayConfig, pingGateway, registerUpstream } from "../lib/gateway
 // use simple scalar/array/object shapes. Import js-yaml lazily so the CLI
 // stays tiny for the common `list`/`install` paths.
 async function parseYaml(text: string): Promise<Record<string, unknown>> {
-  const { default: yaml } = await import("js-yaml");
+  const yaml = await import("js-yaml");
   return yaml.load(text) as Record<string, unknown>;
 }
 
