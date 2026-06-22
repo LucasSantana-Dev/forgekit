@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **`skill-leak-check` CI lint — fail the build on maintainer-environment leaks in authored skills.** New `scripts/skill-leak-check.js` (wired into `npm run validate`) scans `packages/**` and `locales/**` `SKILL.md` for a denylist of *literal* maintainer tokens (`/Users/lucassantana`, `-Users-lucassantana`, `/Volumes/External HD`, `oac-workstation`). Deliberately literal, not pattern-class: generic `/Users/`/`/Volumes/` would false-positive on the catalog's own placeholder examples (`/Users/jdoe`, `/Users/yourname`) and on the public GitHub org `github.com/LucasSantana-Dev/...`. `~/.claude/` and `$HOME` are allowed. Rationale in `docs/decisions/2026-06-22-skill-leak-lint.md`.
+
+### Fixed
+
+- **Scrubbed 22 maintainer-environment leaks across 13 authored skills** (caught by the new lint): `canonical_source` home-dir paths → `~/`; `recall` project-slug → `<project>` (EN + pt-BR); worktree-root examples (`branch-hygiene`, `repo-bootstrap`) → `$HOME/.worktrees`; `mac-optimize` external-disk refs → `/Volumes/<external-drive>`. Reactive scrubbing had previously missed the `recall` leak across multiple commits; the lint makes this proactive. See also `docs/decisions/2026-06-22-recall-skill-portability.md`.
+
+### Changed
+
+- **Curated index — link to external skills, don't re-host them.** forgekit no longer vendors `SKILL.md` body copies for skills it didn't author. The externally-sourced catalog skills (from `anthropics/skills`, `obra/superpowers`, `alirezarezvani/claude-skills`) now keep only their manifests as curated link-out entries (`source` + `homepage`); forgekit-authored skills keep their bodies. `forge install <external-skill>` fetches the body from the upstream source on demand instead of serving a copy; skill detail pages render "maintained upstream — view at source" for body-less entries. Rationale in `docs/decisions/2026-06-06-curated-index-link-dont-rehost.md`.
+
 ## [0.29.1] - 2026-06-18
 
 ### Added
@@ -29,10 +41,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - Wired 6 orphan skills into collections: `adt-specs-aggregate-roadmap` → spec-and-planning, `adt-sync-pt-parity` + `claude-automation-recommender` → skill-authoring, `gemini-context-cache` → token-and-context-optimization, `gemini-grounding-config` → api-and-mcp-development, `vertex-ai-setup` → local-models-starter.
-
-### Changed
-
-- **Curated index — link to external skills, don't re-host them.** forgekit no longer vendors `SKILL.md` body copies for skills it didn't author. The externally-sourced catalog skills (from `anthropics/skills`, `obra/superpowers`, `alirezarezvani/claude-skills`) now keep only their manifests as curated link-out entries (`source` + `homepage`); forgekit-authored skills keep their bodies. `forge install <external-skill>` fetches the body from the upstream source on demand instead of serving a copy; skill detail pages render "maintained upstream — view at source" for body-less entries. Rationale in `docs/decisions/2026-06-06-curated-index-link-dont-rehost.md`.
 
 ## [0.28.0] - 2026-05-27
 

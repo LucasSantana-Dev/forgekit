@@ -6,7 +6,7 @@ auto-invoke: '"first PR in <repo>", "I just cloned X", "what''s a safe first cha
 metadata:
   owner: global-agents
   tier: contextual
-  canonical_source: /Users/lucassantana/.claude/skills/first-pr
+  canonical_source: ~/.claude/skills/first-pr
 ---
 
 # First PR

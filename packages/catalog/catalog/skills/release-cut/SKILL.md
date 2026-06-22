@@ -6,7 +6,7 @@ auto-invoke: 'manual only, BUT nudged by next-priority / session-bootstrap when 
 metadata:
   owner: global-agents
   tier: contextual
-  canonical_source: /Users/lucassantana/.claude/skills/release-cut
+  canonical_source: ~/.claude/skills/release-cut
 ---
 
 # Release Cut

@@ -6,7 +6,7 @@ auto-invoke: '"bootstrap this repo", "set up release branch", "new repo setup", 
 metadata:
   owner: global-agents
   tier: contextual
-  canonical_source: /Users/lucassantana/.claude/skills/repo-bootstrap
+  canonical_source: ~/.claude/skills/repo-bootstrap
 ---
 
 # Repo Bootstrap
@@ -115,7 +115,7 @@ minors hold for review, framework packages always hold.
 
 ```json
 {
-  "worktree_root": "/Volumes/External HD/Desenvolvimento/.worktrees",
+  "worktree_root": "$HOME/.worktrees",
   "stale_pr_threshold_days": 7,
   "protect_branches": ["main", "master", "release", "develop", "staging"],
   "skip_phases": []

@@ -6,7 +6,7 @@ auto-invoke: '"postmortem", "incident review", "what did we learn from", "write 
 metadata:
   owner: global-agents
   tier: contextual
-  canonical_source: /Users/lucassantana/.claude/skills/incident-followup
+  canonical_source: ~/.claude/skills/incident-followup
 ---
 
 # Incident Followup

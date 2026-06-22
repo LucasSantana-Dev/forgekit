@@ -5,7 +5,7 @@ disable-model-invocation: true
 metadata:
   owner: global-agents
   tier: contextual
-  canonical_source: /Users/lucassantana/.agents/skills/create-subagent
+  canonical_source: ~/.agents/skills/create-subagent
 ---
 
 
