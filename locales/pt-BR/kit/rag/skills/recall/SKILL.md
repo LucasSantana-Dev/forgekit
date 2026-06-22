@@ -2,6 +2,7 @@
 name: recall
 description: Semantic-search personal knowledge (memory, plans, handoffs, skills, Codex rules) via the local RAG index at ~/.claude/rag-index/. Use when a query is fuzzy or cross-file ("how did we fix X", "what did we decide about Y", "which skill handles Z"). Complements grep (exact) and Serena (code symbols). If the user asks a recall question that doesn't map to a specific known file, reach here first.
 type: skill
+mcp_servers: [rag-index]
 ---
 
 # recall
@@ -32,6 +33,14 @@ Flags:
 - `--top N` (default 5)
 - `--scope memory,plans,handoffs,skills,codex` (default all)
 - `--format json` (structured output for programmatic callers)
+
+## No results / missing index
+
+Don't fail silently — say which case you hit:
+
+- **Index missing** (no `~/.claude/rag-index/index.sqlite`): the index hasn't been built. Say so and point to **Rebuild** below — do not hard-fail the turn.
+- **Zero hits**: report "no matches" plainly. Suggest broadening the query or a narrower `--scope`, and confirm the relevant files are actually indexed (see **Index sources**).
+- **Lead with the verdict**: state hit count + top result first, then detail.
 
 ## Index sources
 
