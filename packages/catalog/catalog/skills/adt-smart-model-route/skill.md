@@ -56,12 +56,12 @@ Classifies each incoming prompt and injects a `systemMessage` telling the AI whi
 }
 ```
 
-Or for OAC workstation proxy:
+Or to route through a local LiteLLM / Ollama proxy (set these to your own host + key):
 
 ```json
 "env": {
-  "ANTHROPIC_API_KEY": "sk-forge-local",
-  "ANTHROPIC_BASE_URL": "http://oac-workstation:4000"
+  "ANTHROPIC_API_KEY": "${LITELLM_MASTER_KEY}",
+  "ANTHROPIC_BASE_URL": "http://<your-litellm-host>:4000"
 }
 ```
 
