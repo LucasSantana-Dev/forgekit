@@ -6,7 +6,7 @@ auto-invoke: '"branch hygiene", "clean up branches", "prune branches", "stale wo
 metadata:
   owner: global-agents
   tier: contextual
-  canonical_source: /Users/lucassantana/.claude/skills/branch-hygiene
+  canonical_source: ~/.claude/skills/branch-hygiene
 ---
 
 # Branch Hygiene
@@ -60,14 +60,14 @@ git worktree list --porcelain
 ```
 
 Compare `git worktree list` output against the directory listing under
-`$WORKTREE_ROOT` (default: `/Volumes/External HD/Desenvolvimento/.worktrees/` —
+`$WORKTREE_ROOT` (default: `$HOME/.worktrees/` —
 the user's storage policy). For any directory that exists on disk but is NOT
 registered as a worktree:
 - Confirm with user before removing (single prompt summarizing all orphans)
 - `rm -rf` only after explicit confirmation
 - Record paths removed in the reconciliation block
 
-If `/Volumes/External HD` is not mounted, skip the orphan sweep with
+If the worktree volume is not mounted, skip the orphan sweep with
 `(skipped: External HD not mounted)`.
 
 ### Phase 4 — Branches merged to main (composite logic)
@@ -165,7 +165,7 @@ Optional `.claude/branch-hygiene-config.json` in the repo root:
 
 ```json
 {
-  "worktree_root": "/Volumes/External HD/Desenvolvimento/.worktrees",
+  "worktree_root": "$HOME/.worktrees",
   "stale_pr_threshold_days": 7,
   "protect_branches": ["main", "master", "release", "develop", "staging"],
   "skip_phases": []

@@ -136,9 +136,9 @@ All cache; all regenerates on demand. No confirmation needed.
 **Verify before clearing**: `df -g /` baseline → cleanup → `df -g /` again.
 
 ### Tier B — move user files to External HD (~18G, reversible)
-Confirm target is mounted: `df "/Volumes/External HD"`. Then move (don't copy+delete):
+Confirm target is mounted: `df "/Volumes/<external-drive>"`. Then move (don't copy+delete):
 ```bash
-mv ~/Downloads/{*.iso,*.mkv,Archives,Games} "/Volumes/External HD/Downloads-archive/"
+mv ~/Downloads/{*.iso,*.mkv,Archives,Games} "/Volumes/<external-drive>/Downloads-archive/"
 ```
 Delete re-downloadable installer DMGs/zips outright:
 ```bash
@@ -148,7 +148,7 @@ rm -f ~/Downloads/*.dmg ~/Downloads/*.zip ~/Downloads/*.tbz2
 ### Tier C — dev relocation (~37G on this box, needs explicit OK)
 Use `external-dev-relocation` skill. Before moving:
 1. Audit git status of each ~/Desenvolvimento/<repo> for uncommitted work.
-2. Compare against canonical copy at `/Volumes/External HD/Desenvolvimento/<repo>`.
+2. Compare against canonical copy at `/Volumes/<external-drive>/Desenvolvimento/<repo>`.
 3. Never delete a tree with uncommitted changes without pushing first.
 
 ### Known-ambiguous, don't auto-clean

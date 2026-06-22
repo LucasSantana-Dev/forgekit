@@ -6,7 +6,7 @@ auto-invoke: end-of-task + recall-questions + checkpoint-requests
 metadata:
   owner: global-agents
   tier: contextual
-  canonical_source: /Users/lucassantana/.claude/skills/knowledge-loop
+  canonical_source: ~/.claude/skills/knowledge-loop
 ---
 
 # Knowledge Loop

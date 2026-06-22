@@ -35,7 +35,7 @@ Flags:
 
 ## Index sources
 
-- `~/.claude/projects/-Users-lucassantana/memory/*.md`
+- `~/.claude/projects/<project>/memory/*.md`
 - `~/.claude/plans/*.md`
 - `~/.claude/handoffs/*/*.md`
 - `~/.claude/skills/*/SKILL.md`

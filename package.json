@@ -23,9 +23,10 @@
     "node": ">=22"
   },
   "scripts": {
-    "validate": "npm run validate:shell && npm run validate:schema",
+    "validate": "npm run validate:shell && npm run validate:schema && npm run validate:leaks",
     "validate:shell": "shellcheck -e SC2016 packages/core/tools/*.sh",
     "validate:schema": "node scripts/validate-schemas.js",
+    "validate:leaks": "node scripts/skill-leak-check.js",
     "backlog:check": "node scripts/reconcile-backlog-state.mjs --check",
     "backlog:reconcile": "node scripts/reconcile-backlog-state.mjs --write",
     "backlog:reconcile:dry": "node scripts/reconcile-backlog-state.mjs",
