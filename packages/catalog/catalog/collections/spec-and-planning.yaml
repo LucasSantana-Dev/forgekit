@@ -31,6 +31,8 @@ items:
   id: adt-feature-from-zero
 - kind: skill
   id: adt-specs-aggregate-roadmap
+- kind: skill
+  id: xp
 - kind: agent
   id: planner
 - kind: agent
