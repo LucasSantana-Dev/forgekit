@@ -41,6 +41,8 @@ items:
   id: adt-smart-commands
 - kind: skill
   id: adt-schedule
+- kind: skill
+  id: xp
 translations:
   pt-BR:
     name: Power User do Claude Code

@@ -11,13 +11,7 @@ tags:
 - testing
 items:
 - kind: skill
-  id: frontend-design
-- kind: skill
   id: webapp-testing
-- kind: skill
-  id: eng-api-design-reviewer
-- kind: skill
-  id: eng-database-designer
 - kind: skill
   id: code-review
 - kind: skill
@@ -42,8 +36,6 @@ items:
   id: adt-seo-a11y-audit
 - kind: skill
   id: adt-vercel-patterns
-- kind: skill
-  id: web-artifacts-builder
 translations:
   pt-BR:
     name: Desenvolvimento Web Full-Stack

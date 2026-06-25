@@ -692,21 +692,6 @@
       "deprecated": false
     },
     {
-      "kind": "collection",
-      "id": "web-scraping",
-      "name": "Web Scraping & Research",
-      "description": "Tools for scraping, crawling, and extracting structured data from the web using Firecrawl. Covers single-page scraping, multi-page crawls, site mapping, search, file downloads, browser-based interaction, and autonomous agent-driven extraction.",
-      "tags": [
-        "web",
-        "scraping",
-        "firecrawl",
-        "research",
-        "data-extraction"
-      ],
-      "collectionMembership": [],
-      "deprecated": false
-    },
-    {
       "kind": "command",
       "id": "compact",
       "name": "Compact Context",
@@ -3376,25 +3361,6 @@
     },
     {
       "kind": "skill",
-      "id": "brainstorming",
-      "name": "Brainstorming",
-      "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
-      "tags": [
-        "skill-md",
-        "community",
-        "forgekit",
-        "design"
-      ],
-      "collectionMembership": [
-        "codebase-onboarding",
-        "research-and-writing",
-        "spec-and-planning"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
       "id": "branch-hygiene",
       "name": "Branch Hygiene",
       "description": "Composite skill — one-pass cleanup of stale local branches, dead worktrees, merged branches, and abandoned remote PR branches. Chains `git fetch --prune` → clean_gone → worktree prune → delete merged-to-main/release branches → delete remote PR branches whose PRs merged >7 days ago. Use instead of running clean_gone alone; that only catches half the rot.",
@@ -3407,22 +3373,6 @@
       ],
       "collectionMembership": [
         "git-and-version-control"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "claude-api",
-      "name": "Claude Api",
-      "description": "Build, debug, and optimize Claude API / Anthropic SDK apps. Apps built with this skill should include prompt caching. Also handles migrating existing Claude API code between Claude model versions (4.5 → 4.6, 4.6 → 4.7, retired-model replacements). TRIGGER when: code imports `anthropic`/`@anthropic-ai/sdk`; user asks for the Claude API, Anthropic SDK, or Managed Agents; user adds/modifies/tunes a Claude feature (caching, thinking, compaction, tool use, batch, files, citations, memory) or model (O",
-      "tags": [
-        "skill-md",
-        "anthropic-official",
-        "api"
-      ],
-      "collectionMembership": [
-        "api-and-mcp-development"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -3543,368 +3493,6 @@
     },
     {
       "kind": "skill",
-      "id": "doc-coauthoring",
-      "name": "Doc Coauthoring",
-      "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
-      "tags": [
-        "skill-md",
-        "anthropic-official",
-        "documents"
-      ],
-      "collectionMembership": [
-        "research-and-writing"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "docx",
-      "name": "Docx",
-      "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx files, inserting or replacing images in documents, performing find-and-replace in Word files, working with tracked changes or comments, ",
-      "tags": [
-        "skill-md",
-        "anthropic-official",
-        "documents",
-        "design",
-        "comms"
-      ],
-      "collectionMembership": [
-        "professional-work-toolkit"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "eng-api-design-reviewer",
-      "name": "Eng Api Design Reviewer",
-      "description": "API Design Reviewer",
-      "tags": [
-        "skill-md",
-        "community",
-        "engineering",
-        "design",
-        "api"
-      ],
-      "collectionMembership": [
-        "api-and-mcp-development",
-        "web-app-development"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "eng-api-test-suite-builder",
-      "name": "Eng Api Test Suite Builder",
-      "description": "Use when the user asks to generate API tests, create integration test suites, test REST endpoints, or build contract tests.",
-      "tags": [
-        "skill-md",
-        "community",
-        "engineering",
-        "mcp",
-        "testing",
-        "api"
-      ],
-      "collectionMembership": [
-        "api-and-mcp-development"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "eng-ci-cd-pipeline-builder",
-      "name": "Eng CI CD Pipeline Builder",
-      "description": "CI/CD Pipeline Builder",
-      "tags": [
-        "skill-md",
-        "community",
-        "engineering",
-        "mcp",
-        "deploy"
-      ],
-      "collectionMembership": [
-        "infrastructure-and-devops"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "eng-code-tour",
-      "name": "Eng Code Tour",
-      "description": "Use when the user asks to create a CodeTour .tour file — persona-targeted, step-by-step walkthroughs that link to real files and line numbers. Trigger for: create a tour, onboarding tour, architecture tour, PR review tour, explain how X works, vibe check, RCA tour, contributor guide, or any structured code walkthrough request.",
-      "tags": [
-        "skill-md",
-        "community",
-        "engineering",
-        "git",
-        "planning"
-      ],
-      "collectionMembership": [
-        "codebase-onboarding"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "eng-database-designer",
-      "name": "Eng Database Designer",
-      "description": "Use when the user asks to design database schemas, plan data migrations, optimize queries, choose between SQL and NoSQL, or model data relationships.",
-      "tags": [
-        "skill-md",
-        "community",
-        "engineering",
-        "design",
-        "planning",
-        "database",
-        "deploy"
-      ],
-      "collectionMembership": [
-        "web-app-development"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "eng-dependency-auditor",
-      "name": "Eng Dependency Auditor",
-      "description": "Dependency Auditor",
-      "tags": [
-        "skill-md",
-        "community",
-        "engineering",
-        "security"
-      ],
-      "collectionMembership": [
-        "infrastructure-and-devops",
-        "professional-work-toolkit",
-        "security-first-dev"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "eng-docker-development",
-      "name": "Eng Docker Development",
-      "description": "Docker and container development agent skill and plugin for Dockerfile optimization, docker-compose orchestration, multi-stage builds, and container security hardening. Use when: user wants to optimize a Dockerfile, create or improve docker-compose configurations, implement multi-stage builds, audit container security, reduce image size, or follow container best practices. Covers build performance, layer caching, secret management, and production-ready container patterns.",
-      "tags": [
-        "skill-md",
-        "community",
-        "engineering",
-        "design",
-        "git",
-        "security",
-        "infra"
-      ],
-      "collectionMembership": [
-        "infrastructure-and-devops"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "eng-env-secrets-manager",
-      "name": "Eng Env Secrets Manager",
-      "description": "Env & Secrets Manager",
-      "tags": [
-        "skill-md",
-        "community",
-        "engineering",
-        "security"
-      ],
-      "collectionMembership": [
-        "infrastructure-and-devops",
-        "professional-work-toolkit",
-        "security-first-dev"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "eng-focused-fix",
-      "name": "Eng Focused Fix",
-      "description": "Use when the user asks to fix, debug, or make a specific feature/module/area work end-to-end. Triggers: 'make X work', 'fix the Y feature', 'the Z module is broken', 'focus on [area]'. Not for quick single-bug fixes — this is for systematic deep-dive repair across all files and dependencies.",
-      "tags": [
-        "skill-md",
-        "community",
-        "engineering",
-        "debugging",
-        "deploy"
-      ],
-      "collectionMembership": [
-        "production-debugging",
-        "verification-review-gate"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "eng-git-worktree-manager",
-      "name": "Eng Git Worktree Manager",
-      "description": "Git Worktree Manager",
-      "tags": [
-        "skill-md",
-        "community",
-        "engineering",
-        "git"
-      ],
-      "collectionMembership": [
-        "git-and-version-control"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "firecrawl",
-      "name": "Firecrawl",
-      "description": "Web scraping, search, crawling, and page interaction via the Firecrawl CLI. Covers real-time web search with full page content extraction, single-page scraping, multi-page crawls, site mapping, file downloads, and browser interaction. Use when the user wants to search the web, scrape a URL, extract data from a website, or interact with pages requiring clicks or logins.",
-      "tags": [
-        "skill-md",
-        "web",
-        "scraping",
-        "firecrawl",
-        "search"
-      ],
-      "collectionMembership": [
-        "web-scraping"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "firecrawl-agent",
-      "name": "Firecrawl Agent",
-      "description": "AI-powered autonomous data extraction that navigates complex sites and returns structured JSON. Use this skill when the user wants structured data from websites, needs to extract pricing tiers, product listings, directory entries, or any data as JSON with a schema. Triggers on \"extract structured data\", \"get all the products\", \"pull pricing info\", \"extract as JSON\", or when the user provides a JSON schema for website data. More powerful than simple scraping for multi-page structured extraction.",
-      "tags": [
-        "skill-md",
-        "web",
-        "scraping",
-        "firecrawl",
-        "data-extraction"
-      ],
-      "collectionMembership": [
-        "web-scraping"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "firecrawl-crawl",
-      "name": "Firecrawl Crawl",
-      "description": "Bulk extract content from an entire website or site section. Use this skill when the user wants to crawl a site, extract all pages from a docs section, bulk-scrape multiple pages following links, or says \"crawl\", \"get all the pages\", \"extract everything under /docs\", \"bulk extract\", or needs content from many pages on the same site. Handles depth limits, path filtering, and concurrent extraction.",
-      "tags": [
-        "skill-md",
-        "web",
-        "scraping",
-        "firecrawl"
-      ],
-      "collectionMembership": [
-        "web-scraping"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "firecrawl-download",
-      "name": "Firecrawl Download",
-      "description": "Download an entire website as local files — markdown, screenshots, or multiple formats per page. Use this skill when the user wants to save a site locally, download documentation for offline use, bulk-save pages as files, or says \"download the site\", \"save as local files\", \"offline copy\", \"download all the docs\", or \"save for reference\". Combines site mapping and scraping into organized local directories.",
-      "tags": [
-        "skill-md",
-        "web",
-        "scraping",
-        "firecrawl"
-      ],
-      "collectionMembership": [
-        "web-scraping"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "firecrawl-instruct",
-      "name": "Firecrawl Instruct",
-      "description": "Control a live browser session on any scraped page — click buttons, fill forms, navigate flows, and extract data using natural language or code. Use when content is behind JavaScript interaction: login flows, form submission, pagination, infinite scroll, or multi-step wizards. Also handles authenticated scraping via browser profiles.",
-      "tags": [
-        "skill-md",
-        "web",
-        "scraping",
-        "firecrawl",
-        "browser"
-      ],
-      "collectionMembership": [
-        "web-scraping"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "firecrawl-map",
-      "name": "Firecrawl Map",
-      "description": "Discover and list all URLs on a website, with optional search filtering. Use this skill when the user wants to find a specific page on a large site, list all URLs, see the site structure, find where something is on a domain, or says \"map the site\", \"find the URL for\", \"what pages are on\", or \"list all pages\". Essential when the user knows which site but not which exact page.",
-      "tags": [
-        "skill-md",
-        "web",
-        "scraping",
-        "firecrawl"
-      ],
-      "collectionMembership": [
-        "web-scraping"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "firecrawl-scrape",
-      "name": "Firecrawl Scrape",
-      "description": "Extract clean markdown from any URL, including JavaScript-rendered SPAs. Use this skill whenever the user provides a URL and wants its content, says \"scrape\", \"grab\", \"fetch\", \"pull\", \"get the page\", \"extract from this URL\", or \"read this webpage\". Handles JS-rendered pages, multiple concurrent URLs, and returns LLM-optimized markdown. Use this instead of WebFetch for any webpage content extraction.",
-      "tags": [
-        "skill-md",
-        "web",
-        "scraping",
-        "firecrawl"
-      ],
-      "collectionMembership": [
-        "web-scraping"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "firecrawl-search",
-      "name": "Firecrawl Search",
-      "description": "Web search with full page content extraction. Use this skill whenever the user asks to search the web, find articles, research a topic, look something up, find recent news, discover sources, or says \"search for\", \"find me\", \"look up\", \"what are people saying about\", or \"find articles about\". Returns real search results with optional full-page markdown — not just snippets. Provides capabilities beyond Claude's built-in WebSearch.",
-      "tags": [
-        "skill-md",
-        "web",
-        "scraping",
-        "firecrawl",
-        "search"
-      ],
-      "collectionMembership": [
-        "web-scraping"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
       "id": "first-pr",
       "name": "First PR",
       "description": "Composite skill — land a safe first PR in an unfamiliar repo without rediscovery loops or guessing at conventions. Chains onboard-new-repo (architecture + scripts + CI scan) → context-pack (relevant files + standards + ADRs) → scope-and-execute (narrow the task) → test-driven-development (failing test first) → pr-to-release (open the PR). Use the first time you contribute to a repo.",
@@ -3917,23 +3505,6 @@
       ],
       "collectionMembership": [
         "codebase-onboarding"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "frontend-design",
-      "name": "Frontend Design",
-      "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.",
-      "tags": [
-        "skill-md",
-        "anthropic-official",
-        "webapp",
-        "design"
-      ],
-      "collectionMembership": [
-        "web-app-development"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -4086,22 +3657,6 @@
     },
     {
       "kind": "skill",
-      "id": "internal-comms",
-      "name": "Internal Comms",
-      "description": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
-      "tags": [
-        "skill-md",
-        "anthropic-official",
-        "comms"
-      ],
-      "collectionMembership": [
-        "research-and-writing"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
       "id": "mac-optimize",
       "name": "Mac Optimize",
       "description": "Diagnose and fix macOS resource pressure for Claude Code and parallel agent workflows. Use when load average is high, swap is saturated, the CLI feels sluggish, or before spinning up multiple worktrees and subagents. Covers CPU top-talkers, swap pressure, zombie claude processes, Node heap tuning, Spotlight and background-agent pruning, and memory purge. Apple Silicon aware.",
@@ -4171,23 +3726,6 @@
       ],
       "collectionMembership": [
         "multi-agent-orchestration"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
-      "id": "pdf",
-      "name": "Pdf",
-      "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
-      "tags": [
-        "skill-md",
-        "anthropic-official",
-        "documents",
-        "design"
-      ],
-      "collectionMembership": [
-        "professional-work-toolkit"
       ],
       "version": "0.1.0",
       "deprecated": false
@@ -4306,23 +3844,6 @@
     },
     {
       "kind": "skill",
-      "id": "slack-gif-creator",
-      "name": "Slack Gif Creator",
-      "description": "Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users request animated GIFs for Slack like \"make me a GIF of X doing Y for Slack.\"",
-      "tags": [
-        "skill-md",
-        "anthropic-official",
-        "design",
-        "comms"
-      ],
-      "collectionMembership": [
-        "professional-work-toolkit"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
       "id": "spec-driven-development",
       "name": "Spec Driven Development",
       "description": "AI agents are fast at writing code but have no memory of your intent. You describe a feature in a prompt, the agent builds it, and three sessions later a different agent (or you) changes it in a way that drifts from the original requirement. The spec lives only in your head.",
@@ -4417,24 +3938,6 @@
     },
     {
       "kind": "skill",
-      "id": "web-artifacts-builder",
-      "name": "Web Artifacts Builder",
-      "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
-      "tags": [
-        "skill-md",
-        "anthropic-official",
-        "mcp",
-        "webapp",
-        "design"
-      ],
-      "collectionMembership": [
-        "web-app-development"
-      ],
-      "version": "0.1.0",
-      "deprecated": false
-    },
-    {
-      "kind": "skill",
       "id": "webapp-testing",
       "name": "Webapp Testing",
       "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
@@ -4452,18 +3955,20 @@
     },
     {
       "kind": "skill",
-      "id": "xlsx",
-      "name": "Xlsx",
-      "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \"the xlsx in my",
+      "id": "xp",
+      "name": "XP Navigator",
+      "description": "Drive Extreme Programming pair-development cycles — plan → test → implement → refactor → commit — with TDD discipline and role boundaries.",
       "tags": [
         "skill-md",
-        "anthropic-official",
-        "documents",
-        "design",
-        "api"
+        "forgekit",
+        "core",
+        "testing",
+        "planning",
+        "composite"
       ],
       "collectionMembership": [
-        "professional-work-toolkit"
+        "claude-code-power-user",
+        "spec-and-planning"
       ],
       "version": "0.1.0",
       "deprecated": false

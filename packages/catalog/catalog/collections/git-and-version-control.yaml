@@ -15,8 +15,6 @@ items:
 - kind: skill
   id: git-worktrees
 - kind: skill
-  id: eng-git-worktree-manager
-- kind: skill
   id: adt-checkpoint
 - kind: agent
   id: git-master

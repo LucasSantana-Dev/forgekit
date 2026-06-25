@@ -17,8 +17,6 @@ items:
 - kind: skill
   id: adt-debug-deep
 - kind: skill
-  id: eng-focused-fix
-- kind: skill
   id: adt-build-fix
 - kind: skill
   id: adt-self-heal

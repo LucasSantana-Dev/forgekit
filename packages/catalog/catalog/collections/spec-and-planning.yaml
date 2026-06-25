@@ -18,8 +18,6 @@ items:
 - kind: skill
   id: spec-driven-development
 - kind: skill
-  id: brainstorming
-- kind: skill
   id: adt-adr-write
 - kind: skill
   id: adt-research-and-decide
@@ -31,6 +29,8 @@ items:
   id: adt-feature-from-zero
 - kind: skill
   id: adt-specs-aggregate-roadmap
+- kind: skill
+  id: xp
 - kind: agent
   id: planner
 - kind: agent
