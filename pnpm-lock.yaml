@@ -37,7 +37,7 @@ importers:
         version: 3.7.3
       astro:
         specifier: ^7.0.0
-        version: 7.0.0(@astrojs/markdown-remark@7.2.0)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(rollup@4.62.2)(tsx@4.22.3)(yaml@2.9.0)
+        version: 7.0.0(@astrojs/markdown-remark@7.2.0)(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.4)(rollup@4.62.2)(tsx@4.22.3)(yaml@2.9.0)
       gray-matter:
         specifier: ^4.0.3
         version: 4.0.3
@@ -48,6 +48,9 @@ importers:
         specifier: ^18.0.4
         version: 18.0.4
     devDependencies:
+      '@playwright/test':
+        specifier: ^1.61.1
+        version: 1.61.1
       '@types/js-yaml':
         specifier: ^4.0.9
         version: 4.0.9
@@ -1118,6 +1121,11 @@ packages:
     resolution: {integrity: sha512-QNqXyfVS2wm9hweSYD2O7F0G06uurj9kZ96TRQE5Y9hU7+tgdZwIkbAKc5Ocy1HxEY2kuDQa6cQ1WRs/O5LFKA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
+  '@playwright/test@1.61.1':
+    resolution: {integrity: sha512-8nKv6+0RJSL9FE4jYOEGXnPeM/Hg12qZpmqzZjRh3qM0Y7c3z1mrOTfFLids72RDQYVh9WpLEfR5WdpNX4fkig==}
+    engines: {node: '>=18'}
+    hasBin: true
+
   '@poppinss/colors@4.1.6':
     resolution: {integrity: sha512-H9xkIdFswbS8n1d6vmRd8+c10t2Qe+rZITbbDHHkQixH5+2x1FDGmi/0K+WgWiqQFKPSlIYB7jlH6Kpfn6Fleg==}
 
@@ -2121,6 +2129,11 @@ packages:
   fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
 
+  fsevents@2.3.2:
+    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -2951,6 +2964,16 @@ packages:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
     engines: {node: '>=8'}
 
+  playwright-core@1.61.1:
+    resolution: {integrity: sha512-h7Qlt6m4REp25qvIdvbDtVmD4LqVXfpRxhORv9L0jzETM05p4fuPJ3dKyuSXQxDSbXnmS79HAgi9589lGSpLkg==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  playwright@1.61.1:
+    resolution: {integrity: sha512-DWnY5o3YbLWK4GovuAVwpqL+1VwGNdUGrRr++8j8PtQQzvAVZUIMjKQ90fY689sEJZJBbZVw1rXaOKSTitkzPQ==}
+    engines: {node: '>=18'}
+    hasBin: true
+
   postcss@8.5.15:
     resolution: {integrity: sha512-FfR8sjd4em2T6fb3I2MwAJU7HWVMr9zba+enmQeeWFfCbm+UOC/0X4DS8XtpUTMwWMGbjKYP7xjfNekzyGmB3A==}
     engines: {node: ^10 || ^12 || >=14}
@@ -3591,9 +3614,9 @@ snapshots:
   '@astrojs/compiler-binding-linux-x64-musl@0.2.2':
     optional: true
 
-  '@astrojs/compiler-binding-wasm32-wasi@0.2.2(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)':
+  '@astrojs/compiler-binding-wasm32-wasi@0.2.2(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)':
     dependencies:
-      '@napi-rs/wasm-runtime': 1.1.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
+      '@napi-rs/wasm-runtime': 1.1.5(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)
     transitivePeerDependencies:
       - '@emnapi/core'
       - '@emnapi/runtime'
@@ -3605,7 +3628,7 @@ snapshots:
   '@astrojs/compiler-binding-win32-x64-msvc@0.2.2':
     optional: true
 
-  '@astrojs/compiler-binding@0.2.2(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)':
+  '@astrojs/compiler-binding@0.2.2(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)':
     optionalDependencies:
       '@astrojs/compiler-binding-darwin-arm64': 0.2.2
       '@astrojs/compiler-binding-darwin-x64': 0.2.2
@@ -3613,16 +3636,16 @@ snapshots:
       '@astrojs/compiler-binding-linux-arm64-musl': 0.2.2
       '@astrojs/compiler-binding-linux-x64-gnu': 0.2.2
       '@astrojs/compiler-binding-linux-x64-musl': 0.2.2
-      '@astrojs/compiler-binding-wasm32-wasi': 0.2.2(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
+      '@astrojs/compiler-binding-wasm32-wasi': 0.2.2(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)
       '@astrojs/compiler-binding-win32-arm64-msvc': 0.2.2
       '@astrojs/compiler-binding-win32-x64-msvc': 0.2.2
     transitivePeerDependencies:
       - '@emnapi/core'
       - '@emnapi/runtime'
 
-  '@astrojs/compiler-rs@0.2.2(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)':
+  '@astrojs/compiler-rs@0.2.2(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)':
     dependencies:
-      '@astrojs/compiler-binding': 0.2.2(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
+      '@astrojs/compiler-binding': 0.2.2(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)
     transitivePeerDependencies:
       - '@emnapi/core'
       - '@emnapi/runtime'
@@ -4539,6 +4562,10 @@ snapshots:
 
   '@pkgr/core@0.2.9': {}
 
+  '@playwright/test@1.61.1':
+    dependencies:
+      playwright: 1.61.1
+
   '@poppinss/colors@4.1.6':
     dependencies:
       kleur: 4.1.5
@@ -4954,9 +4981,9 @@ snapshots:
   array-iterate@2.0.1:
     optional: true
 
-  astro@7.0.0(@astrojs/markdown-remark@7.2.0)(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(rollup@4.62.2)(tsx@4.22.3)(yaml@2.9.0):
+  astro@7.0.0(@astrojs/markdown-remark@7.2.0)(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.4)(rollup@4.62.2)(tsx@4.22.3)(yaml@2.9.0):
     dependencies:
-      '@astrojs/compiler-rs': 0.2.2(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
+      '@astrojs/compiler-rs': 0.2.2(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)
       '@astrojs/internal-helpers': 0.10.0
       '@astrojs/markdown-satteri': 0.3.1
       '@astrojs/telemetry': 3.3.2
@@ -5545,6 +5572,9 @@ snapshots:
       signal-exit: 4.1.0
 
   fs.realpath@1.0.0: {}
+
+  fsevents@2.3.2:
+    optional: true
 
   fsevents@2.3.3:
     optional: true
@@ -6776,6 +6806,14 @@ snapshots:
   pkg-dir@4.2.0:
     dependencies:
       find-up: 4.1.0
+
+  playwright-core@1.61.1: {}
+
+  playwright@1.61.1:
+    dependencies:
+      playwright-core: 1.61.1
+    optionalDependencies:
+      fsevents: 2.3.2
 
   postcss@8.5.15:
     dependencies:
