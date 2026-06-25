@@ -4410,6 +4410,26 @@
       "deprecated": false
     },
     {
+      "kind": "skill",
+      "id": "xp",
+      "name": "XP Navigator",
+      "description": "Drive Extreme Programming pair-development cycles — plan → test → implement → refactor → commit — with TDD discipline and role boundaries.",
+      "tags": [
+        "skill-md",
+        "forgekit",
+        "core",
+        "testing",
+        "planning",
+        "composite"
+      ],
+      "collectionMembership": [
+        "claude-code-power-user",
+        "spec-and-planning"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
       "kind": "tool",
       "id": "capture-training",
       "name": "Capture Training",

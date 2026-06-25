@@ -1,0 +1,27 @@
+{
+  "id": "xp",
+  "name": "XP Navigator",
+  "description": "Drive Extreme Programming pair-development cycles — plan → test → implement → refactor → commit — with TDD discipline and role boundaries.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "forgekit",
+    "core",
+    "testing",
+    "planning",
+    "composite"
+  ],
+  "provider": "claude",
+  "editors": [
+    "claude-code"
+  ],
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit",
+  "translations": {
+    "pt-BR": {
+      "name": "XP Navigator",
+      "description": "Conduza ciclos de desenvolvimento em par com Extreme Programming — plan → test → implement → refactor → commit — com disciplina TDD e limites de papel."
+    }
+  }
+}
