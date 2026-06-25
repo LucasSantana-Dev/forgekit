@@ -40,6 +40,7 @@
     "cli:build": "pnpm --filter forge-kit run build",
     "cli:typecheck": "pnpm --filter forge-kit run typecheck",
     "web:dev": "pnpm --filter @forge-kit/web run dev",
+    "web:test:e2e": "pnpm --filter @forge-kit/web run test:e2e",
     "web:build": "pnpm --filter @forge-kit/web run build",
     "setup:check": "bash packages/setup/scripts/ci-check.sh",
     "workspace:validate": "npm run validate && npm run lint && npm run test && pnpm run catalog:validate && pnpm run catalog:llms && pnpm run cli:typecheck && pnpm run web:build",
