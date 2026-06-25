@@ -34,6 +34,12 @@ items:
   id: planner
 - kind: skill
   id: adt-parallel-investigate
+- kind: skill
+  id: agent-teams
+- kind: skill
+  id: subagent-driven-development
+- kind: skill
+  id: parallel-phases
 - kind: doc
   id: claude-code-workflows
 - kind: doc

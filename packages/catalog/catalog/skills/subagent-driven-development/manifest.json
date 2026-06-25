@@ -1,0 +1,28 @@
+{
+  "id": "subagent-driven-development",
+  "name": "Subagent-Driven Development",
+  "description": "Implement features by dispatching a fresh subagent per task with mandatory two-stage review (spec compliance then code quality) after each task.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "forgekit",
+    "core",
+    "orchestration",
+    "agents",
+    "composite",
+    "testing"
+  ],
+  "provider": "claude",
+  "editors": [
+    "claude-code"
+  ],
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit",
+  "translations": {
+    "pt-BR": {
+      "name": "Desenvolvimento Orientado a Subagentes",
+      "description": "Implemente funcionalidades despachando um subagente por tarefa com revisão obrigatória em dois estágios (conformidade com spec + qualidade de código) após cada tarefa."
+    }
+  }
+}
