@@ -1,0 +1,27 @@
+{
+  "id": "agent-teams",
+  "name": "Agent Teams",
+  "description": "Decompose a task into parallel workstreams, assign agent ownership, run integration at dependency boundaries, and synthesize results.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "forgekit",
+    "core",
+    "orchestration",
+    "agents",
+    "composite"
+  ],
+  "provider": "claude",
+  "editors": [
+    "claude-code"
+  ],
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit",
+  "translations": {
+    "pt-BR": {
+      "name": "Times de Agentes",
+      "description": "Decomponha uma tarefa em fluxos paralelos, atribua agentes responsáveis, integre nos pontos de dependência e sintetize os resultados."
+    }
+  }
+}

@@ -34,6 +34,8 @@ items:
   id: planner
 - kind: skill
   id: adt-parallel-investigate
+- kind: skill
+  id: agent-teams
 - kind: doc
   id: claude-code-workflows
 - kind: doc
