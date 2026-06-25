@@ -1,0 +1,28 @@
+{
+  "id": "parallel-phases",
+  "name": "Parallel Phases",
+  "description": "Execute phased plans by fanning out one agent per task per wave, reconciling per wave, gating between phases with verify commands, and emitting a phase × outcome report.",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "forgekit",
+    "core",
+    "orchestration",
+    "composite",
+    "agents",
+    "planning"
+  ],
+  "provider": "claude",
+  "editors": [
+    "claude-code"
+  ],
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit",
+  "translations": {
+    "pt-BR": {
+      "name": "Fases Paralelas",
+      "description": "Execute planos em fases distribuindo um agente por tarefa, reconciliando por onda, aplicando gates de verificação e emitindo um relatório fase × resultado."
+    }
+  }
+}
