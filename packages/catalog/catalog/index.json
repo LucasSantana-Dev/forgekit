@@ -4322,6 +4322,26 @@
     },
     {
       "kind": "skill",
+      "id": "subagent-driven-development",
+      "name": "Subagent-Driven Development",
+      "description": "Implement features by dispatching a fresh subagent per task with mandatory two-stage review (spec compliance then code quality) after each task.",
+      "tags": [
+        "skill-md",
+        "forgekit",
+        "core",
+        "orchestration",
+        "agents",
+        "composite",
+        "testing"
+      ],
+      "collectionMembership": [
+        "multi-agent-orchestration"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
       "id": "task-orchestration",
       "name": "Task Orchestration",
       "description": "You have 5 projects, each with a session. You open each one, paste \"continue with next priorities\", wait, switch, repeat. You're acting as a human cron job.",
