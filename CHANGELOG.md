@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.30.0] - 2026-06-24
+
 ### Removed
 
 - **28 external link-out catalog entries removed per quality gates ADR** (`docs/decisions/2026-06-24-catalog-curation-quality-gates.md`): 8 `firecrawl-*` (dead private repo), 10 `eng-*` (404 paths), 1 `brainstorming` (404), 9 anthropics/skills entries (`doc-coauthoring`, `docx`, `pdf`, `xlsx`, `slack-gif-creator`, `web-artifacts-builder`, `internal-comms`, `claude-api`, `frontend-design`) that fail depth/trigger gates. Also removed empty `web-scraping` collection. Retained: `skill-creator`, `webapp-testing`, `mcp-builder` (all pass gates); forgekit-owned entries exempt.
