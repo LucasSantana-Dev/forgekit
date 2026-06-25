@@ -3357,6 +3357,25 @@
     },
     {
       "kind": "skill",
+      "id": "agent-teams",
+      "name": "Agent Teams",
+      "description": "Decompose a task into parallel workstreams, assign agent ownership, run integration at dependency boundaries, and synthesize results.",
+      "tags": [
+        "skill-md",
+        "forgekit",
+        "core",
+        "orchestration",
+        "agents",
+        "composite"
+      ],
+      "collectionMembership": [
+        "multi-agent-orchestration"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
       "id": "brainstorming",
       "name": "Brainstorming",
       "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
@@ -4138,6 +4157,26 @@
     },
     {
       "kind": "skill",
+      "id": "parallel-phases",
+      "name": "Parallel Phases",
+      "description": "Execute phased plans by fanning out one agent per task per wave, reconciling per wave, gating between phases with verify commands, and emitting a phase × outcome report.",
+      "tags": [
+        "skill-md",
+        "forgekit",
+        "core",
+        "orchestration",
+        "composite",
+        "agents",
+        "planning"
+      ],
+      "collectionMembership": [
+        "multi-agent-orchestration"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
       "id": "pdf",
       "name": "Pdf",
       "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
@@ -4297,6 +4336,26 @@
       ],
       "collectionMembership": [
         "spec-and-planning"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
+      "id": "subagent-driven-development",
+      "name": "Subagent-Driven Development",
+      "description": "Implement features by dispatching a fresh subagent per task with mandatory two-stage review (spec compliance then code quality) after each task.",
+      "tags": [
+        "skill-md",
+        "forgekit",
+        "core",
+        "orchestration",
+        "agents",
+        "composite",
+        "testing"
+      ],
+      "collectionMembership": [
+        "multi-agent-orchestration"
       ],
       "version": "0.1.0",
       "deprecated": false
