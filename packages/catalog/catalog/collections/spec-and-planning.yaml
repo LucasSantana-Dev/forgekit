@@ -18,8 +18,6 @@ items:
 - kind: skill
   id: spec-driven-development
 - kind: skill
-  id: brainstorming
-- kind: skill
   id: adt-adr-write
 - kind: skill
   id: adt-research-and-decide

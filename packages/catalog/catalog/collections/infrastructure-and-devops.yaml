@@ -12,14 +12,6 @@ tags:
 - containers
 - secrets
 items:
-- kind: skill
-  id: eng-docker-development
-- kind: skill
-  id: eng-ci-cd-pipeline-builder
-- kind: skill
-  id: eng-env-secrets-manager
-- kind: skill
-  id: eng-dependency-auditor
 - kind: server
   id: docker
 - kind: server

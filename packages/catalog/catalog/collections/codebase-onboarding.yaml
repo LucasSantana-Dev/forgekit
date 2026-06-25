@@ -15,13 +15,9 @@ items:
 - kind: skill
   id: adt-onboard-new-repo
 - kind: skill
-  id: eng-code-tour
-- kind: skill
   id: adt-repo-intake
 - kind: skill
   id: adt-learn
-- kind: skill
-  id: brainstorming
 - kind: server
   id: context7
 - kind: server

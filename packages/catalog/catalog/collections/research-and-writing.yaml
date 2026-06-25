@@ -13,12 +13,6 @@ items:
 - kind: skill
   id: adt-research
 - kind: skill
-  id: doc-coauthoring
-- kind: skill
-  id: internal-comms
-- kind: skill
-  id: brainstorming
-- kind: skill
   id: prompting-discipline
 - kind: skill
   id: adt-plan
