@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Removed
+
+- **28 external link-out catalog entries removed per quality gates ADR** (`docs/decisions/2026-06-24-catalog-curation-quality-gates.md`): 8 `firecrawl-*` (dead private repo), 10 `eng-*` (404 paths), 1 `brainstorming` (404), 9 anthropics/skills entries (`doc-coauthoring`, `docx`, `pdf`, `xlsx`, `slack-gif-creator`, `web-artifacts-builder`, `internal-comms`, `claude-api`, `frontend-design`) that fail depth/trigger gates. Also removed empty `web-scraping` collection. Retained: `skill-creator`, `webapp-testing`, `mcp-builder` (all pass gates); forgekit-owned entries exempt.
+
 ### Added
 
 - **`skill-leak-check` CI lint — fail the build on maintainer-environment leaks in authored skills.** New `scripts/skill-leak-check.js` (wired into `npm run validate`) scans `packages/**` and `locales/**` `SKILL.md` for a denylist of *literal* maintainer tokens (`/Users/lucassantana`, `-Users-lucassantana`, `/Volumes/External HD`, `oac-workstation`). Deliberately literal, not pattern-class: generic `/Users/`/`/Volumes/` would false-positive on the catalog's own placeholder examples (`/Users/jdoe`, `/Users/yourname`) and on the public GitHub org `github.com/LucasSantana-Dev/...`. `~/.claude/` and `$HOME` are allowed. Rationale in `docs/decisions/2026-06-22-skill-leak-lint.md`.

@@ -13,10 +13,6 @@ items:
 - kind: skill
   id: prompt-injection-defense
 - kind: skill
-  id: eng-dependency-auditor
-- kind: skill
-  id: eng-env-secrets-manager
-- kind: skill
   id: code-review
 - kind: agent
   id: adt-security-auditor
