@@ -177,3 +177,12 @@ entries. Imported entries retain their source repository reference and license.
 _Avoid_: promotion (the local→catalog contributor path); sync (import is
 one-time, not continuous); upload (implies user-authored content, not
 external sourcing).
+
+## Related Projects
+
+**sharekit** (`LucasSantana-Dev/sharekit`): A CLI tool for managing and sharing
+configuration profiles across machines and team members. Owned by the same author;
+separate repository with its own issue tracker and release cycle. Not part of the
+forgekit catalog — sharekit is an application, not an installable AI skill or hook.
+Reference it when documenting cross-tool workflows that involve both profile
+management (sharekit) and AI-assisted development tooling (forgekit).
