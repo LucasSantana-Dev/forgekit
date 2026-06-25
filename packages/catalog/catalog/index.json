@@ -3357,6 +3357,25 @@
     },
     {
       "kind": "skill",
+      "id": "agent-teams",
+      "name": "Agent Teams",
+      "description": "Decompose a task into parallel workstreams, assign agent ownership, run integration at dependency boundaries, and synthesize results.",
+      "tags": [
+        "skill-md",
+        "forgekit",
+        "core",
+        "orchestration",
+        "agents",
+        "composite"
+      ],
+      "collectionMembership": [
+        "multi-agent-orchestration"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
       "id": "brainstorming",
       "name": "Brainstorming",
       "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
