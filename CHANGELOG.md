@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **Harness quality + cost instrumentation — 3 tools + 1 hook.** Catalog entries for the "optimize what you measure" toolchain: `harness-skill-scorecard` (structural skill-quality score: HARD invalid-YAML/unclosed-fence vs SOFT missing-stop-conditions, regression-gateable) and `memory-quality-scorecard` (memory-corpus quality: HARD no-frontmatter/invalid-YAML vs SOFT thin/orphan/stale/duplicate) — both `category: benchmarking`; `harness-metrics` (`category: observability`) aggregates both scorecards + self-test + rolling 7-day token cost into a dated JSONL time-series with a visible improvement/regression trend; and the `session-cost-telemetry` SessionEnd hook, which appends per-session tokens + estimated USD by model (Opus/Sonnet/Haiku pricing table) to `~/.claude/metrics/sessions.jsonl` so down-tiering shows up as dollars saved. Scripts identity-sanitized; `catalog:validate` + schema + leak checks pass. Catalog: tools 11→14, hooks 26→27.
+
 ## [0.30.0] - 2026-06-24
 
 ### Removed

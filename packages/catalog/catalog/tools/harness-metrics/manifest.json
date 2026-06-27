@@ -1,0 +1,35 @@
+{
+  "id": "harness-metrics",
+  "name": "Harness Metrics",
+  "description": "The 'optimize what you measure' engine: aggregate skill + memory quality scorecards, self-test pass/fail, and rolling 7-day token cost into one dated JSONL time-series, then print the trend so improvement or regression is visible — not point-in-time. Pairs with the skill + memory scorecard tools. Python 3; run bare to append today's row + show the trend, or --trend / --json / --date YYYY-MM-DD.",
+  "version": "0.1.0",
+  "tags": [
+    "tool",
+    "forgekit",
+    "metrics",
+    "cost",
+    "observability"
+  ],
+  "provider": "claude",
+  "runtime": "python",
+  "category": "observability",
+  "install": {
+    "copy_to": "~/.local/bin/harness-metrics",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/tools/harness-metrics.py"
+  },
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/blob/main/packages/core/tools/harness-metrics.py",
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Métricas do Harness",
+      "description": "O motor de 'otimize o que você mede': agrega os scorecards de qualidade de skills + memória, o status do self-test e o custo de tokens dos últimos 7 dias em uma série temporal JSONL datada, e imprime a tendência para que melhora ou regressão fique visível — não apenas pontual. Combina com os tools de scorecard de skills e memória. Python 3; execute sem args para anexar a linha do dia + mostrar a tendência, ou --trend / --json / --date YYYY-MM-DD."
+    }
+  }
+}
