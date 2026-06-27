@@ -1,0 +1,35 @@
+{
+  "id": "harness-skill-scorecard",
+  "name": "Harness Skill Scorecard",
+  "description": "Score a skills catalog's structural quality: HARD defects (invalid YAML frontmatter, unclosed code fences) vs SOFT nudges (missing stop-conditions, no done-when criteria). Emits a regression-gateable percentage so skill quality is a tracked number, not a vibe. Requires Python 3 + PyYAML; run with --root <skills-dir> --json.",
+  "version": "0.1.0",
+  "tags": [
+    "tool",
+    "forgekit",
+    "skills",
+    "quality",
+    "eval"
+  ],
+  "provider": "claude",
+  "runtime": "python",
+  "category": "benchmarking",
+  "install": {
+    "copy_to": "~/.local/bin/harness-skill-scorecard",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/tools/harness-skill-scorecard.py"
+  },
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/blob/main/packages/core/tools/harness-skill-scorecard.py",
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Scorecard de Qualidade de Skills",
+      "description": "Mede a qualidade estrutural de um catálogo de skills: defeitos HARD (YAML inválido, code fences não fechados) vs avisos SOFT (sem stop-conditions, sem critérios done-when). Gera uma porcentagem que serve de regression gate, tornando a qualidade das skills um número rastreável. Requer Python 3 + PyYAML; execute com --root <dir-skills> --json."
+    }
+  }
+}

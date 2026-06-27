@@ -1,0 +1,35 @@
+{
+  "id": "memory-quality-scorecard",
+  "name": "Memory Quality Scorecard",
+  "description": "Objective quality metric for a memory/notes corpus: HARD defects (no frontmatter, invalid YAML, missing name/description) vs SOFT nudges (thin description, orphan [[wikilinks]], stale candidates, duplicate descriptions). Produces a trackable percentage for regression gates so memory quality improves over time instead of rotting. Python 3 + PyYAML; run with --root <memory-dir> --json (or --stale to list prune candidates).",
+  "version": "0.1.0",
+  "tags": [
+    "tool",
+    "forgekit",
+    "memory",
+    "quality",
+    "eval"
+  ],
+  "provider": "claude",
+  "runtime": "python",
+  "category": "benchmarking",
+  "install": {
+    "copy_to": "~/.local/bin/memory-quality-scorecard",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "git",
+    "repo": "https://github.com/LucasSantana-Dev/forgekit",
+    "ref": "main",
+    "path": "packages/core/tools/memory-quality-scorecard.py"
+  },
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/blob/main/packages/core/tools/memory-quality-scorecard.py",
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Scorecard de Qualidade de Memória",
+      "description": "Métrica objetiva de qualidade para um corpus de memória/notas: defeitos HARD (sem frontmatter, YAML inválido, sem name/description) vs avisos SOFT (descrição curta, [[wikilinks]] órfãos, candidatos a stale, descrições duplicadas). Gera uma porcentagem rastreável para regression gates, fazendo a qualidade da memória melhorar com o tempo. Python 3 + PyYAML; execute com --root <dir-memória> --json (ou --stale para listar candidatos a prune)."
+    }
+  }
+}
