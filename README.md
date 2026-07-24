@@ -2,359 +2,346 @@
 
 # Forge Kit
 
+**Ship faster with AI — battle-tested rules, skills, and workflows for every major coding agent.**
+
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Latest Release](https://img.shields.io/github/v/release/LucasSantana-Dev/forgekit)](https://github.com/LucasSantana-Dev/forgekit/releases)
+[![Shell](https://img.shields.io/badge/shell-bash%20%7C%20zsh-4EAA25?logo=gnu-bash&logoColor=white)](https://github.com/LucasSantana-Dev/forgekit)
 
 **Works with:**
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-black?style=flat-square&logo=anthropic&logoColor=white)](https://claude.ai/code)
-[![Codex](https://img.shields.io/badge/Codex-412991?style=flat-square&logo=openai&logoColor=white)](https://openai.com/codex)
 [![Cursor](https://img.shields.io/badge/Cursor-000000?style=flat-square)](https://cursor.sh)
 [![Windsurf](https://img.shields.io/badge/Windsurf-0066FF?style=flat-square)](https://codeium.com/windsurf)
+[![Codex](https://img.shields.io/badge/Codex-412991?style=flat-square&logo=openai&logoColor=white)](https://openai.com/codex)
 [![GitHub Copilot](https://img.shields.io/badge/GitHub%20Copilot-000000?style=flat-square&logo=github&logoColor=white)](https://github.com/features/copilot)
 
-Forge Kit is the unified home for the former `ai-dev-toolkit`, `ai-dev-toolkit-setup`,
-`ai-dev-toolkit-pt-br`, and `ai-dev-toolkit-library` projects.
+---
 
-It combines reusable agent rules, portable skills, setup automation, a catalog,
-a CLI, and a bilingual web app so AI coding agents start with project conventions,
-workflow guardrails, and installable tooling from the first session.
+## Why Forge Kit?
 
-## Monorepo layout
+AI agents code faster when they follow your conventions. Forge Kit gives them:
 
-```text
-.
-├── apps/web              # Astro catalog web app
-├── infra/gateway         # Local MCP gateway stack
-├── locales/pt-BR         # Portuguese toolkit content
-├── packages/catalog      # Catalog data, schemas, importers, validation
-├── packages/cli          # forge-kit CLI, with legacy adtl alias
-└── packages/setup        # Machine bootstrap layer
-```
+- **Portable rules** — Drop a single file into any project; agents immediately follow your conventions, workflow guardrails, and decision-making patterns.
+- **29 reusable skills** — From code review to orchestration to security scans; work across every tool (Claude Code, Cursor, Windsurf, etc.).
+- **21 battle-tested patterns** — Full lifecycle playbooks: context building, testing, async execution, multi-model routing, memory systems, and more.
+- **Plug-and-play agents** — 15 specialty agents with defined roles, capabilities, and fallback chains—organize your team's work before agents execute it.
+- **Full autonomy setup** — One command to detect your tools, sync rules, install skills, and configure provider chains.
 
-## First-time install?
+**Result:** Agents ship more, you review less, and your codebase stays consistent across sessions and teams.
 
-Most users should start with [`packages/setup`](packages/setup/README.md) — the
-machine bootstrap layer that consumes this toolkit at a pinned version. It
-detects your installed tools, applies pre-built configurations, and installs the
-entire skill and rule set in one command.
+---
 
-## 30-second install
+## 30-Second Install
+
+Copy one rule file to give your AI agent your project conventions:
 
 ```bash
-# Copy one file to give your AI agent your project conventions
-cp packages/core/rules/CLAUDE.md    ~/my-project/CLAUDE.md    # Claude Code / OpenCode
-cp packages/core/rules/AGENTS.md    ~/my-project/AGENTS.md    # Codex CLI
-cp packages/core/rules/.cursorrules ~/my-project/.cursorrules  # Cursor
-```
-
-Or install the full toolkit (rules + 29 skills + MCP config) in one command:
-
-```bash
-FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --profile standard
-```
-
-## How do I start using this?
-
-Copy one rule file into your project. That single file gives your AI agent your conventions, workflow, and guardrails before the first prompt.
-
-```bash
-# Clone the toolkit
+# Clone or download the toolkit
 git clone https://github.com/LucasSantana-Dev/forgekit.git
 cd forgekit
 
-# Copy the rule file that matches your tool
+# Pick the rule file for your tool
 cp packages/core/rules/CLAUDE.md    ~/my-project/CLAUDE.md       # Claude Code / OpenCode
-cp packages/core/rules/AGENTS.md    ~/my-project/AGENTS.md       # Codex CLI
 cp packages/core/rules/.cursorrules ~/my-project/.cursorrules     # Cursor
 cp packages/core/rules/.windsurfrules ~/my-project/.windsurfrules # Windsurf
+cp packages/core/rules/AGENTS.md    ~/my-project/AGENTS.md       # Codex CLI
 cp packages/core/rules/COPILOT.md   ~/my-project/COPILOT.md      # GitHub Copilot
 ```
 
 Open your AI tool in `~/my-project/`. The agent now follows your rules automatically.
 
-## How do I install everything at once with forge-kit?
+### Full Toolkit Install (One Command)
 
-`forge-kit` detects your tools, syncs rules, installs 29 portable skills, merges MCP servers, and configures provider registries — all in one command.
+To install all rules, skills, hooks, and MCP configurations:
 
 ```bash
-# Auto-detect installed tools and apply standard profile
+# Auto-detect tools and apply standard profile
 FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --profile standard
-
-# Target specific tools with a specific profile
-FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh \
-  --tools claude-code,codex,opencode \
-  --profile standard
 ```
 
-Preview what will change before committing:
-
+**Options:**
 ```bash
-# Dry run — shows exactly what would be created, updated, or skipped
-FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --tools all --profile standard --dry-run
+# Target specific tools
+FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh \
+  --tools claude-code,cursor,windsurf \
+  --profile standard
 
-# Show what forge-kit has installed
+# Dry run — preview changes
+FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh \
+  --profile standard --dry-run
+
+# Check installation status
 FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --status
 
 # Remove all forge-kit managed files
 FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --uninstall
 ```
 
-### How do I use the interactive setup wizard?
+### Interactive Setup Wizard
 
-The wizard walks you through provider selection, fallback chains, token optimization, and autonomy preferences — then generates a `.forge-setup.json` config with resolved model maps.
+Resolve provider selection, fallback chains, token optimization, and autonomy preferences:
 
 ```bash
-# Run the interactive setup wizard
 sh packages/core/kit/setup.sh
-# Follow prompts to select provider, fallback, optimization preset, and profile
-# Output: .forge-setup.json with resolved model maps and agent assignments
 ```
 
-It prompts for:
-
+Prompts for:
 - Primary AI provider (Anthropic, OpenAI, Google, OpenRouter, Ollama)
-- Fallback provider
+- Fallback provider for resilience
 - Local model usage (hybrid cloud + local)
 - Token optimization preset (standard, aggressive, minimal)
 - Install profile and orchestration preferences
 
-## What patterns are included?
+Output: `.forge-setup.json` with resolved model maps and agent assignments.
 
-21 tool-agnostic playbooks covering the full AI-assisted development lifecycle:
+---
 
-| Pattern                                                        | When you need it                                     |
-| -------------------------------------------------------------- | ---------------------------------------------------- |
-| [Context Building](packages/core/patterns/context-building.md)               | Agents guess instead of finding project knowledge    |
-| [Task Orchestration](packages/core/patterns/task-orchestration.md)           | Multi-step work needs less supervision               |
-| [Code Review](packages/core/patterns/code-review.md)                         | Catching bugs, logic defects, and security issues    |
-| [Testing with AI](packages/core/patterns/testing.md)                         | Higher-value test generation and TDD workflows       |
-| [Multi-Model Routing](packages/core/patterns/multi-model-routing.md)         | Reducing cost by routing cheap tasks to cheap models |
-| [Memory Systems](packages/core/patterns/memory-systems.md)                   | Decisions persisting across sessions                 |
-| [Session Management](packages/core/patterns/session-management.md)           | Parallel sessions conflicting or losing context      |
-| [Prompt Engineering](packages/core/patterns/prompt-engineering.md)           | Inconsistent or imprecise agent responses            |
-| [Git Worktrees](packages/core/patterns/git-worktrees.md)                     | Isolating concurrent tasks on separate branches      |
-| [Agent Observability](packages/core/patterns/agent-observability.md)         | Tracing and regression-testing agent behavior        |
-| [OpenTelemetry GenAI](packages/core/patterns/opentelemetry-genai.md)         | Vendor-neutral LLM instrumentation and telemetry     |
-| [Multi-Repo Workflows](packages/core/patterns/multi-repo.md)                 | Cross-repository coordination                        |
-| [Permission Boundaries](packages/core/patterns/permission-boundaries.md)     | Minimum-privilege tool access                        |
-| [Prompt Injection Defense](packages/core/patterns/prompt-injection-defense.md) | Layered defenses against direct and indirect attacks |
-| [Streaming Orchestration](packages/core/patterns/streaming-orchestration.md) | Event-driven turn loops and token budgeting          |
-| [Tool Registry Patterns](packages/core/patterns/tool-registry-patterns.md)   | Decoupling tool metadata from implementation         |
-| [Spec Driven Development](packages/core/patterns/spec-driven-development.md) | Agents need a stable contract before building        |
-| [MCP Tool Lazy-Loading](packages/core/patterns/mcp-tool-lazy-loading.md)     | Reducing context bloat from 50+ tool schemas         |
-| [Agent Evals as CI](packages/core/patterns/agent-evals-ci.md)               | Threshold-based PR gates for agent reliability       |
-| [Benchmark Reality Gap](packages/core/patterns/benchmark-reality-gap.md)     | Agent eval accuracy when curated benchmarks overestimate |
-| [SKILL.md Adoption](packages/core/patterns/skill-md-adoption.md)            | Vendor-neutral skill discovery and cross-tool auto-invocation |
+## What's Included
 
-## What skills are included?
+| Component | Count | Purpose |
+| --- | --- | --- |
+| **Portable Rules** | 5 | Drop-in convention files for Claude Code, Cursor, Windsurf, Codex, Copilot |
+| **Skills** | 29 | Reusable workflows across all tools: loop, dispatch, review, orchestrate, etc. |
+| **Playbook Patterns** | 21 | Full-lifecycle guidance: context building, testing, memory, observability, security, specs |
+| **Specialty Agents** | 15 | Organized team with defined roles, tiers, and capabilities |
+| **MCP Integration** | 6 | Tool adapters + centralized gateway for unified model context |
+| **Setup Automation** | 4 | Profiles (standard, minimal, research, durable) + detection logic |
 
-29 portable skills installed to every tool via `forge-kit`:
+### Key Skills at a Glance
 
-```bash
-# Skills live in packages/core/kit/core/skills/ and get copied to each tool's skill directory
-ls packages/core/kit/core/skills/
+| Skill | What it does |
+| --- | --- |
+| `loop` | Autonomous dev cycle — plan → implement → test → review → fix → commit → PR |
+| `orchestrate` | Break complex work into phases with dependency tracking |
+| `dispatch` | Spawn parallel subtasks across worker agents |
+| `route` | Classify task complexity and pick the right model tier |
+| `fallback` | Handle provider failures with automatic fallback chains |
+| `resume` | Recover session state from git, plans, and open PRs |
+| `tdd` | Red/green/refactor cycle with strict ordering |
+| `secure` | 5-point security scan: secrets, deps, inputs, permissions, injection |
+| `review` | Code review with style, logic defects, and SOLID checks |
+| `memory` | Durable session state across multiple agent interactions |
 
-# Output:
-# context.md   cost.md      debug.md     dispatch.md  fallback.md
-# loop.md      memory.md    orchestrate.md  plan.md   research.md
-# resume.md    review.md    route.md     schedule.md  secure.md
-# ship.md      tdd.md       verify.md
+See `packages/core/kit/core/skills/` for the full set.
+
+### Playbook Patterns (21 Total)
+
+Context building, task orchestration, code review, testing with AI, multi-model routing, memory systems, session management, prompt engineering, git worktrees, observability, telemetry, multi-repo workflows, permission boundaries, prompt injection defense, streaming orchestration, tool registry patterns, spec-driven development, lazy-loaded MCP tools, agent evals as CI, benchmark reality gap, and SKILL.md adoption.
+
+Full catalog: [`packages/core/patterns/`](packages/core/patterns/)
+
+---
+
+## How It Works
+
+### Architecture: Monorepo Layout
+
+```
+forgekit/
+├── apps/web              # Astro catalog web app — browse patterns, agents, skills
+├── infra/gateway         # Local MCP gateway stack — unified context server
+├── locales/pt-BR         # Portuguese toolkit content
+├── packages/
+│   ├── catalog           # Catalog schemas, importers, validation
+│   ├── cli               # forge-kit CLI + legacy adtl alias
+│   ├── setup             # Machine bootstrap layer
+│   └── core/             # Rules, skills, patterns, agents, implementations
 ```
 
-Key skills for autonomous development:
+### The Loop: How Agents Execute
 
-| Skill         | What it does                                                                |
-| ------------- | --------------------------------------------------------------------------- |
-| `loop`        | Autonomous dev cycle — plan → implement → test → review → fix → commit → PR |
-| `route`       | Classify task complexity and pick the right model tier                      |
-| `orchestrate` | Break complex work into phases with dependency tracking                     |
-| `dispatch`    | Spawn parallel subtasks across worker agents                                |
-| `fallback`    | Handle model/provider failures with automatic fallback chains               |
-| `resume`      | Recover session state from git, plans, and open PRs                         |
-| `tdd`         | Red/green/refactor cycle with strict ordering                               |
-| `secure`      | 5-point security scan: secrets, deps, inputs, permissions, injection        |
+Agents execute in phases with quality gates and safe escalation:
 
-## How does the agent system work?
-
-15 specialty agents organized in an org chart, each with a defined role, tier, tool access list, and fallback chain:
-
-```text
-orchestrator (Lead Orchestrator)
-├── architect (Software Architect)
-│   ├── frontend — React, CSS, UI, animations
-│   ├── backend — APIs, databases, auth, services
-│   ├── worker — Generalist implementation and execution
-│   ├── devops — CI/CD, Docker, deployment, monitoring
-│   ├── tester — Tests, coverage, e2e, regression
-│   └── security — Vulns, secrets, OWASP, audit
-├── reviewer — Code review, style, logic defects
-│   ├── ts-reviewer — TypeScript and JavaScript review
-│   ├── python-reviewer — Python review
-│   ├── go-reviewer — Go review
-│   └── rust-reviewer — Rust review
-├── writer — README, docs, CHANGELOG, API docs
-├── researcher — Web search, library investigation
-└── explorer — Fast codebase grep (cheapest tier)
 ```
-
-Tasks are routed to the right specialist automatically:
-
-```json
-{
-  "specialtyRouting": {
-    "ui-work": "frontend",
-    "api-work": "backend",
-    "ci-cd": "devops",
-    "testing": "tester",
-    "security-scan": "security",
-      "documentation": "writer",
-      "code-review": "reviewer",
-      "ts-review": "ts-reviewer",
-      "python-review": "python-reviewer",
-      "go-review": "go-reviewer",
-      "rust-review": "rust-reviewer"
-  }
-}
-```
-
-Agents reference tiers (`haiku`/`sonnet`/`opus`), not specific models. Swap providers without changing agent definitions.
-
-## How does autonomous execution work?
-
-The loop engine runs the full dev cycle without stopping:
-
-```text
 PLAN → IMPLEMENT → VERIFY → REVIEW → SECURE → COMMIT
   ↓ (repeat per phase)
 QUALITY GATES → PUSH → PR
 ```
 
-Configuration in `packages/core/kit/core/autopilot.json`:
+Each phase is gated by:
+- Type checking and linting
+- Test coverage verification
+- Security baseline checks
+- Code review gates (style, logic, SOLID)
+- Safe escalation for destructive actions (deploy, force push, migrations)
 
-```json
-{
-  "defaultLevel": "autonomous",
-  "levels": {
-    "autonomous": {
-      "autoCommit": true,
-      "autoPush": true,
-      "autoPR": true,
-      "autoDispatch": true,
-      "autoFix": true,
-      "autoEscalate": true,
-      "maxUnattendedPhases": 99,
-      "pauseOn": ["deploy to production", "database migration", "force push"]
-    }
-  }
-}
+**Never pauses for:** lint fixes, type fixes, test fixes, commits, pushes, or file edits.
+
+**Always pauses for:** production deploys, database migrations, force pushes.
+
+Configuration: `packages/core/kit/core/autopilot.json`
+
+### Specialist Routing
+
+15 agents organized by domain. Tasks route automatically:
+
+```
+orchestrator (Lead)
+├── architect (Design)
+│   ├── frontend       # React, CSS, UI, animations
+│   ├── backend        # APIs, databases, auth
+│   ├── worker         # Generalist execution
+│   ├── devops         # CI/CD, Docker, deployment
+│   ├── tester         # Tests, coverage, e2e
+│   └── security       # Vulns, secrets, OWASP
+├── reviewer           # Code review specialist
+│   ├── ts-reviewer    # TypeScript / JavaScript
+│   ├── python-reviewer
+│   ├── go-reviewer
+│   └── rust-reviewer
+├── writer             # Docs, README, CHANGELOG
+├── researcher         # Web search, investigation
+└── explorer           # Fast codebase grep
 ```
 
-Agents never pause for lint fixes, type fixes, test fixes, commits, pushes, or file edits. They only stop for genuinely destructive actions.
+Agents reference **tiers** (`haiku`/`sonnet`/`opus`), not specific models — swap providers without changing definitions.
 
-## How do I run quality checks?
+---
+
+## Get Started: Adoption Paths
+
+### Day 1: One File
+```bash
+cp packages/core/rules/CLAUDE.md ~/my-project/CLAUDE.md
+```
+Agents now follow your conventions.
+
+### Day 2: Context Grounding
+Use pattern: [`packages/core/patterns/context-building.md`](packages/core/patterns/context-building.md)
+Agents locate project knowledge automatically.
+
+### Day 3: Execution Reliability
+Use pattern: [`packages/core/patterns/task-orchestration.md`](packages/core/patterns/task-orchestration.md)
+Multi-step work happens with less supervision.
+
+### Days 4–7: Full Toolkit
+Run:
+```bash
+FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --profile standard
+```
+
+Install all 29 skills, 21 patterns, MCP config, and 15 specialist agents.
+
+For prioritized work instead of general adoption, see [`BACKLOG.md`](BACKLOG.md).
+
+---
+
+## Quality Checks & Releases
+
+### Validate the Toolkit
 
 ```bash
-# Install dependencies
 npm install
-
-# Run the full validation suite
 npm test                 # 16 governance tests
 npm run lint             # ESLint on scripts and tests
-npm run validate         # Company schema + packages/core/kit/core config validation
+npm run validate         # Schema + config validation
 npm run validate:schema  # Schema validation only
-
-# Run the parity audit — shows cross-tool feature gaps
-node scripts/parity-audit.js
 ```
 
-## How do I preflight a release before mutating a repo?
+### Pre-flight Release Checks
 
 ```bash
-python3 packages/core/tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog
-python3 packages/core/tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog --github-release
+python3 packages/core/tools/release.py \
+  --repo /path/to/repo \
+  --verify \
+  --level patch \
+  --notes-file RELEASE_NOTES.md \
+  --changelog
 ```
 
-The preflight checks git cleanliness, git identity, target tag availability, version source detection, notes-file destination, changelog readiness, and optional `gh` readiness before any release mutation.
+Checks: git cleanliness, git identity, target tag availability, version detection, notes readiness, changelog, and optional GitHub CLI readiness — *before any release mutation*.
 
-Example parity audit output:
+### Parity Audit
 
-```text
-Coverage: claude-code 6/6, codex 6/6, opencode 6/6, cursor 6/6, windsurf 6/6, antigravity 6/6
-Skills: 19 | Configs: 8 | Gaps: 0
+Cross-tool feature coverage:
+
+```bash
+node scripts/parity-audit.js
+
+# Output example:
+# Coverage: claude-code 6/6, cursor 6/6, windsurf 6/6, ...
+# Skills: 29 | Configs: 8 | Gaps: 0
 ```
 
-## What does the repository contain?
-
-```text
-packages/core/patterns/            15 tool-agnostic workflow playbooks
-packages/core/rules/               Drop-in rule templates (Claude, Codex, Cursor, Windsurf, Copilot)
-packages/core/kit/
-  packages/core/kit/install.sh     Entry point for forge-kit
-  packages/core/kit/setup.sh       Interactive setup wizard
-  packages/core/kit/core/          8 engine configs + 29 portable skills
-  packages/core/kit/adapters/      Per-tool adapters (6 tools)
-  packages/core/kit/profiles/      Install profiles (standard, minimal, research, durable)
-packages/core/implementations/     Reference setups for Claude Code, Codex, OpenCode, Cursor, Windsurf, Antigravity
-packages/core/companies/           Pre-built multi-agent organizations
-packages/core/tools/               Setup scripts + curated productivity stack
-packages/core/best-practices/      Security, workflow, context management standards
-packages/core/examples/            Starter assets (backlog, memory structure)
-```
-
-## How do I adopt this incrementally?
-
-| Day | Focus                            | Resource                                                                                                                         |
-| --- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Drop in a rule file              | [`packages/core/rules/`](packages/core/rules/)                                                                                                               |
-| 2   | Ground agents in project context | [`packages/core/patterns/context-building.md`](packages/core/patterns/context-building.md)                                                                   |
-| 3   | Improve execution reliability    | [`packages/core/patterns/task-orchestration.md`](packages/core/patterns/task-orchestration.md)                                                               |
-| 4   | Review and test quality          | [`packages/core/patterns/code-review.md`](packages/core/patterns/code-review.md), [`packages/core/patterns/testing.md`](packages/core/patterns/testing.md)                               |
-| 5   | Add memory and observability     | [`packages/core/patterns/memory-systems.md`](packages/core/patterns/memory-systems.md), [`packages/core/patterns/agent-observability.md`](packages/core/patterns/agent-observability.md) |
-| 6   | Spec-driven contracts            | [`packages/core/patterns/spec-driven-development.md`](packages/core/patterns/spec-driven-development.md)                                                     |
-| 7   | Full team setup with forge-kit   | [`packages/core/kit/`](packages/core/kit/) + [`packages/core/implementations/`](packages/core/implementations/)                                                                          |
-
-Need the current prioritized repository work instead of the general adoption guide? See [`BACKLOG.md`](BACKLOG.md).
+---
 
 ## Troubleshooting
 
-### Missing Node ≥22
-
-The toolkit requires Node 22 or later. Check your version:
+### Node ≥22 Required
 
 ```bash
 node --version
 ```
 
-If you see `v20.*` or earlier, update Node via your package manager or [nodejs.org](https://nodejs.org).
+If you see `v20.*` or earlier, update via your package manager or [nodejs.org](https://nodejs.org).
 
-### Wrong shell
+### Shell Compatibility
 
-Some tools only work in bash or zsh. Check:
-
+Some tools only work in bash or zsh:
 ```bash
 echo $SHELL
 ```
 
-If it shows a different shell, switch: `exec bash` or `exec zsh`.
+If needed: `exec bash` or `exec zsh`
 
-### ~/.claude directory permissions
+### Permission Issues
 
-If `forge-kit` reports permission errors installing to `~/.claude`, fix ownership:
-
+If forge-kit reports errors writing to `~/.claude`:
 ```bash
 chmod -R u+rwx ~/.claude
 ```
 
-### Unsupported provider combinations
+### Invalid Provider Combinations
 
-Not all provider fallback chains are supported. Example: Anthropic + Ollama fallback is not a valid pairing. The setup wizard will guide you to valid combinations. If you configured manually, verify your `~/.forge-setup.json` provider chain against the docs.
+Not all fallback chains are valid (e.g., Anthropic + Ollama). The setup wizard guides you to supported pairings. Verify your manual `~/.forge-setup.json` against the docs.
 
-## How do I contribute?
+---
 
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+## How to Contribute
 
-High-impact areas: new reference implementations, production-tested pattern updates, adapter improvements, and documentation accuracy fixes.
+Forge Kit is open to community contributions. High-impact areas:
+
+- **Reference implementations** — Production setups for Claude Code, Codex, Cursor, Windsurf, Copilot
+- **Pattern updates** — Refinements to existing playbooks, new patterns from real workflows
+- **Adapter improvements** — Better tool-specific integration and configuration
+- **Documentation** — Accuracy fixes, translation, adoption guides
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the full contribution workflow.
+
+---
+
+## Repository Contents
+
+```
+packages/core/patterns/       21 tool-agnostic workflow playbooks
+packages/core/rules/          Drop-in rule templates (Claude, Codex, Cursor, Windsurf, Copilot)
+packages/core/kit/
+  install.sh                  Entry point for forge-kit
+  setup.sh                    Interactive setup wizard
+  core/                       8 engine configs + 29 portable skills
+  adapters/                   Per-tool adapters (6 tools)
+  profiles/                   Install profiles (standard, minimal, research, durable)
+packages/core/implementations Reference setups for each tool
+packages/core/companies/      Pre-built multi-agent organizations
+packages/core/tools/          Setup scripts + productivity stack
+packages/core/best-practices/ Security, workflow, context management standards
+packages/core/examples/       Starter assets (backlog, memory structure)
+```
+
+For detailed context about the project, see [`CONTEXT.md`](CONTEXT.md).
+
+---
 
 ## License
 
 [MIT](LICENSE)
+
+---
+
+## Learn More
+
+- **[CLAUDE.md](CLAUDE.md)** — Governance and conventions for this project
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** — How to contribute
+- **[CONTEXT.md](CONTEXT.md)** — Project architecture and goals
+- **[BACKLOG.md](BACKLOG.md)** — Prioritized work ahead
+- **[CHANGELOG.md](CHANGELOG.md)** — Release history
