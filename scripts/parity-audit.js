@@ -22,6 +22,8 @@ const ADAPTERS = [
   "cursor",
   "windsurf",
   "antigravity",
+  "zed",
+  "vscode",
 ];
 
 function auditAdapter(name) {
