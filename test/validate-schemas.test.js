@@ -287,7 +287,7 @@ describe("validateKit", () => {
 
   test("parity audit runs and reports all adapters", () => {
     const audit = runParityAudit();
-    expect(audit.results.length).toBe(6);
+    expect(audit.results.length).toBe(8);
     expect(audit.skills.length).toBeGreaterThanOrEqual(16);
     expect(audit.configs.length).toBeGreaterThanOrEqual(8);
     for (const r of audit.results) {

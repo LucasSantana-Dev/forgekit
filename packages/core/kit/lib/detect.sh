@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 # forge-kit: AI tool auto-detection
 
-FORGE_SUPPORTED_TOOLS="claude-code codex opencode cursor windsurf antigravity"
+FORGE_SUPPORTED_TOOLS="claude-code codex opencode cursor windsurf antigravity zed vscode"
 
 # Return 0 if a tool is installed, 1 otherwise
 is_tool_installed() {
@@ -30,6 +30,16 @@ is_tool_installed() {
 	antigravity)
 		command -v antigravity >/dev/null 2>&1 ||
 			[ -d "$home/.antigravity" ]
+		;;
+	zed)
+		command -v zed >/dev/null 2>&1 ||
+			[ -d "/Applications/Zed.app" ] ||
+			[ -d "$home/Applications/Zed.app" ]
+		;;
+	vscode)
+		command -v code >/dev/null 2>&1 ||
+			[ -d "/Applications/Visual Studio Code.app" ] ||
+			[ -d "$home/Applications/Visual Studio Code.app" ]
 		;;
 	*)
 		return 1
@@ -64,6 +74,8 @@ get_config_dir() {
 	cursor) printf '%s' "${CWD:-.}" ;;
 	windsurf) printf '%s' "${CWD:-.}" ;;
 	antigravity) printf '%s/.antigravity' "$home" ;;
+	zed) printf '%s' "${CWD:-.}" ;;
+	vscode) printf '%s' "${CWD:-.}" ;;
 	*) printf '%s/.config/%s' "$home" "$1" ;;
 	esac
 }
