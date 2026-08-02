@@ -170,7 +170,7 @@ adapter_uninstall() {
 	removed_hooks="false"
 
 	if [ -f "$opencode_dir/system.md" ]; then
-		if grep -q "^# forge-kit" "$opencode_dir/system.md" 2>/dev/null; then
+		if grep -q "forge-kit Universal Rules" "$opencode_dir/system.md" 2>/dev/null; then
 			if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
 				log_info "[DRY RUN] Would remove $opencode_dir/system.md"
 			else

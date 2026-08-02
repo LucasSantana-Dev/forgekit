@@ -141,7 +141,7 @@ adapter_uninstall() {
 	codex_dir="$(get_config_dir codex)"
 
 	if [ -f "$codex_dir/AGENTS.md" ]; then
-		if grep -q "^# forge-kit" "$codex_dir/AGENTS.md" 2>/dev/null; then
+		if grep -q "forge-kit Universal Rules" "$codex_dir/AGENTS.md" 2>/dev/null; then
 			if [ "${FORGE_DRY_RUN:-false}" = "true" ]; then
 				log_info "[DRY RUN] Would remove $codex_dir/AGENTS.md"
 			else
