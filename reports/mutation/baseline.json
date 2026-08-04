@@ -1,0 +1,47 @@
+{
+  "recordedAt": "2026-08-03T23:26:21.000Z",
+  "tool": "stryker 9.6.1 (jest-runner, node --experimental-vm-modules)",
+  "scope": [
+    "scripts/parity-audit.js",
+    "scripts/reconcile-backlog-state.mjs",
+    "scripts/validate-schemas.js"
+  ],
+  "thresholds": {
+    "high": 60,
+    "low": 40,
+    "break": null
+  },
+  "modules": {
+    "scripts/parity-audit.js": {
+      "killed": 72,
+      "survived": 98,
+      "noCoverage": 186,
+      "runtimeErrors": 0,
+      "mutationScore": 20.22,
+      "coveredScore": 42.35
+    },
+    "scripts/reconcile-backlog-state.mjs": {
+      "killed": 71,
+      "survived": 4,
+      "noCoverage": 80,
+      "runtimeErrors": 0,
+      "mutationScore": 45.81,
+      "coveredScore": 94.67
+    },
+    "scripts/validate-schemas.js": {
+      "killed": 143,
+      "survived": 90,
+      "noCoverage": 71,
+      "runtimeErrors": 44,
+      "mutationScore": 47.04,
+      "coveredScore": 61.37
+    }
+  },
+  "overall": {
+    "killed": 286,
+    "survived": 192,
+    "noCoverage": 337,
+    "mutationScore": 35.09,
+    "coveredScore": 59.83
+  }
+}

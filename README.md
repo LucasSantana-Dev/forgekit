@@ -238,6 +238,22 @@ npm run validate         # Schema + config validation
 npm run validate:schema  # Schema validation only
 ```
 
+### Mutation Testing (nightly/weekly, not per-PR)
+
+Scoped Stryker run over the only 3 leaf modules with jest coverage
+(`scripts/validate-schemas.js`, `scripts/parity-audit.js`,
+`scripts/reconcile-backlog-state.mjs` — parsers, validation, classification,
+and pure backlog-reconciliation logic). Scope and rationale live in
+`stryker.conf.json`.
+
+```bash
+npm run test:mutation    # full scoped run; writes reports/mutation/mutation.json
+```
+
+Each mutant spawns a jest run, so this is a scheduled quality gate, not a PR
+check. Thresholds are informational (high 60 / low 40, `break: null`) — treat
+survived mutants as a concrete list of missing test cases.
+
 ### Pre-flight Release Checks
 
 ```bash
