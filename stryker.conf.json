@@ -1,0 +1,80 @@
+{
+  "$schema": "https://stryker-mutator.io/schemas/stryker-schema.json",
+  "_comment": [
+    "Scoped mutation testing (Stryker) for pure leaf modules with existing jest coverage.",
+    "Modeled on OmniRoute's approach: mutate ONLY a small set of leaves, never the whole repo.",
+    "",
+    "SCOPE RATIONALE:",
+    "  The root jest suite (testMatch **/test/**/*.test.js) covers exactly 3 source modules:",
+    "    - scripts/validate-schemas.js   (frontmatter parsing, company/kit schema validation)",
+    "    - scripts/parity-audit.js       (adapter/skills/config parity classification)",
+    "    - scripts/reconcile-backlog-state.mjs (parseArgs, inferPrNumber/inferReleaseTag, reconcileBacklog)",
+    "  These are the only modules where mutants can be killed by existing tests, so they are",
+    "  the only honest mutation scope. locales/pt-BR/scripts/* are near-identical mirrors and",
+    "  are excluded to avoid double cost; scripts/skill-leak-check.js has NO tests (every",
+    "  mutant would survive by definition) and is excluded until it gains coverage.",
+    "",
+    "RUNNER CHOICE: @stryker-mutator/jest-runner (tests are real jest, unlike OmniRoute's",
+    "node:test tap-runner setup). Jest 30 + ESM (--experimental-vm-modules) is handled by the",
+    "runner automatically for type:module projects; jest.config.js is reused via configFile.",
+    "",
+    "CADENCE: nightly/weekly, NOT per-PR — each mutant spawns a jest run.",
+    "  npm run test:mutation           # full scoped run (sets NODE_OPTIONS for ESM jest)",
+    "  NODE_OPTIONS=--experimental-vm-modules npx stryker run --dryRunOnly    # validate baseline only",
+    "",
+    "Baseline recorded in reports/mutation/mutation.json (jsonReporter).",
+    "",
+    "JEST OVERRIDE: jest.config.js ignores /.stryker-tmp/ so repo-level `npm test` skips sandbox",
+    "copies. Inside the Stryker sandbox every path contains .stryker-tmp, which would exclude ALL",
+    "tests (dry run: 'No tests were found'), so the jest.config override below narrows",
+    "testPathIgnorePatterns back to /node_modules/ for mutation runs only."
+  ],
+  "packageManager": "npm",
+  "testRunner": "jest",
+  "plugins": ["@stryker-mutator/jest-runner"],
+  "jest": {
+    "configFile": "jest.config.js",
+    "enableFindRelatedTests": true,
+    "config": {
+      "testPathIgnorePatterns": ["/node_modules/"]
+    }
+  },
+  "mutate": [
+    "scripts/validate-schemas.js",
+    "scripts/parity-audit.js",
+    "scripts/reconcile-backlog-state.mjs"
+  ],
+  "_ignorePatterns_comment": "ignorePatterns only controls what is NOT copied into the Stryker sandbox; scope is set by `mutate` above. Exclude heavy, mutation-irrelevant trees to keep sandbox creation fast.",
+  "ignorePatterns": [
+    ".agents",
+    ".claude",
+    ".serena",
+    ".sisyphus",
+    "apps/web/.next",
+    "apps/web/out",
+    "coverage",
+    "graphify-out",
+    "reports",
+    ".worktrees",
+    ".stryker-tmp",
+    "*.png"
+  ],
+  "reporters": ["progress", "clear-text", "html", "json"],
+  "htmlReporter": {
+    "fileName": "reports/mutation/mutation.html"
+  },
+  "jsonReporter": {
+    "fileName": "reports/mutation/mutation.json"
+  },
+  "coverageAnalysis": "perTest",
+  "timeoutMS": 60000,
+  "timeoutFactor": 2.5,
+  "concurrency": 4,
+  "thresholds": {
+    "high": 60,
+    "low": 40,
+    "break": null
+  },
+  "tempDirName": ".stryker-tmp",
+  "cleanTempDir": true
+}
