@@ -8,27 +8,27 @@ has a NUMBER you can track over time and regression-gate (the sibling of harness
     duplicate description (near-dup memories dilute retrieval).
 
 Usage:
-  memory-quality-scorecard.py                # human table
-  memory-quality-scorecard.py --json         # machine JSON (baseline / time-series)
-  memory-quality-scorecard.py --root <dir>   # override memory dir
-  memory-quality-scorecard.py --stale        # list staleness-candidate files for a prune pass
+  memory-quality-scorecard.py --root <dir>            # human table
+  memory-quality-scorecard.py --root <dir> --json     # machine JSON (baseline / time-series)
+  memory-quality-scorecard.py --root <dir> --stale    # list staleness-candidate files for a prune pass
 """
 import os, re, sys, json, glob
 from collections import Counter
 
-ROOT = os.path.expanduser("~/.claude/projects/-Users-<user>/memory")
-if "--root" in sys.argv:
-    _ri = sys.argv.index("--root")
-    if _ri + 1 >= len(sys.argv):
-        raise SystemExit("error: --root requires a value")
-    ROOT = sys.argv[_ri + 1]
+if "--root" not in sys.argv:
+    raise SystemExit("error: --root <memory-dir> is required (no safe default across users/projects)")
+_ri = sys.argv.index("--root")
+if _ri + 1 >= len(sys.argv):
+    raise SystemExit("error: --root requires a value")
+ROOT = sys.argv[_ri + 1]
 AS_JSON = "--json" in sys.argv
 LIST_STALE = "--stale" in sys.argv
 
 try:
     import yaml
-except Exception:
-    yaml = None
+except ImportError:
+    raise SystemExit("error: PyYAML is required (pip install PyYAML) — without it, invalid "
+                      "frontmatter would silently score as valid instead of failing HARD.")
 
 STALE_RE = re.compile(r"\b(merged|fixed|shipped|closed|deployed|resolved)\b.{0,40}#\d+|\bPR #\d+\b.{0,20}\b(merged|landed)\b", re.I)
 WIKILINK_RE = re.compile(r"\[\[([a-z0-9][a-z0-9_-]+)\]\]", re.I)
@@ -39,21 +39,26 @@ def parse(path):
     if not m:
         return None, None, text
     fm_raw, body = m.group(1), m.group(2)
-    if yaml is None:
-        return {}, body, text
     try:
-        return (yaml.safe_load(fm_raw) or {}), body, text
+        data = yaml.safe_load(fm_raw)
     except Exception:
         return "INVALID", body, text
+    if data is None:
+        data = {}
+    if not isinstance(data, dict):
+        return "NOT-A-MAPPING", body, text
+    return data, body, text
 
 def check(path, names):
     name = os.path.basename(path)[:-3]
     hard, soft, stale = [], [], False
     fm, body, text = parse(path)
     if fm is None:
-        hard.append("no-frontmatter"); return name, hard, soft, stale
+        hard.append("no-frontmatter"); return name, hard, soft, stale, ""
     if fm == "INVALID":
-        hard.append("invalid-yaml"); return name, hard, soft, stale
+        hard.append("invalid-yaml"); return name, hard, soft, stale, ""
+    if fm == "NOT-A-MAPPING":
+        hard.append("invalid-frontmatter"); return name, hard, soft, stale, ""
     if not (fm.get("name") or "").strip():
         hard.append("no-name")
     desc = (fm.get("description") or "").strip()
@@ -75,21 +80,22 @@ def check(path, names):
             soft.append("orphan-link"); break
     if STALE_RE.search(text):
         soft.append("stale-candidate"); stale = True
-    return name, hard, soft, stale
+    return name, hard, soft, stale, desc.lower()
 
 def main():
     paths = sorted(p for p in glob.glob(os.path.join(ROOT, "*.md"))
                    if os.path.basename(p) != "MEMORY.md")
     names = {os.path.basename(p)[:-3].lower() for p in paths}
-    rows, descs = [], Counter()
-    for p in paths:
-        r = check(p, names); rows.append(r)
-        fm, _, _ = parse(p)
-        if isinstance(fm, dict):
-            d = (fm.get("description") or "").strip().lower()
-            if d:
-                descs[d] += 1
-    dups = sum(1 for d, n in descs.items() if n > 1)
+    raw_rows = [check(p, names) for p in paths]
+    descs = Counter(d for *_, d in raw_rows if d)
+    dup_descs = {d for d, n in descs.items() if n > 1}
+    # Mark every row sharing a duplicate description BEFORE hard_fail/clean/soft_breakdown
+    # are computed below, so duplicates are reflected in those summary fields too.
+    rows = [
+        (name, hard, soft + ["duplicate-description"] if desc in dup_descs else soft, stale)
+        for name, hard, soft, stale, desc in raw_rows
+    ]
+    dups = len(dup_descs)
     total = len(rows)
     hard_fail = [r for r in rows if r[1]]
     clean = [r for r in rows if not r[1] and not r[2]]

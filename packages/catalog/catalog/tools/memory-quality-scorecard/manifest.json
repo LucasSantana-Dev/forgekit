@@ -15,7 +15,8 @@
   "category": "benchmarking",
   "install": {
     "copy_to": "~/.local/bin/memory-quality-scorecard",
-    "chmod_exec": true
+    "chmod_exec": true,
+    "dependencies": ["PyYAML"]
   },
   "source": {
     "type": "git",

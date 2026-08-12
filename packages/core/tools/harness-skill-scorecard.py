@@ -27,15 +27,14 @@ AS_JSON = "--json" in sys.argv
 
 try:
     import yaml
-except Exception:
-    yaml = None
+except ImportError:
+    raise SystemExit("error: PyYAML is required (pip install PyYAML) — without it, invalid "
+                      "frontmatter would silently score as valid instead of failing HARD.")
 
 def frontmatter(text):
     m = re.match(r"^---\n(.*?)\n---\n", text, re.S)
     if not m:
         return None, "no-frontmatter"
-    if yaml is None:
-        return {}, None
     try:
         return (yaml.safe_load(m.group(1)) or {}), None
     except Exception as e:

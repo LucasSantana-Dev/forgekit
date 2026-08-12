@@ -21,7 +21,7 @@ METRICS_DIR = f"{HOME}/.claude/metrics"
 SERIES = f"{METRICS_DIR}/harness-metrics.jsonl"
 SESSIONS = f"{METRICS_DIR}/sessions.jsonl"
 APPEND = "--trend" not in sys.argv and "--json" not in sys.argv
-DATE = None
+DATE = time.strftime("%Y-%m-%d")
 if "--date" in sys.argv:
     _di = sys.argv.index("--date")
     if _di + 1 >= len(sys.argv):
@@ -68,11 +68,37 @@ def rolling_token_cost():
         n += 1
     return {"sessions_7d": n, "tokens_7d": toks, "est_cost_usd_7d": round(cost, 2)} if n else None
 
+CATALOG_KIND_FIELDS = {
+    "skill": "catalog_skills", "server": "catalog_servers",
+    "collection": "catalog_collections", "doc": "catalog_docs",
+    "agent": "catalog_agents", "hook": "catalog_hooks",
+    "command": "catalog_commands", "tool": "catalog_tools",
+}
+
+def catalog_counts():
+    """Count catalog entries by kind, if a catalog index.json is reachable.
+    Only true inside a forgekit repo checkout (or FORGEKIT_CATALOG_INDEX set) —
+    the installed single-file tool has no bundled catalog, so this degrades to
+    None like the other optional signals below rather than erroring."""
+    path = os.environ.get("FORGEKIT_CATALOG_INDEX") or "packages/catalog/catalog/index.json"
+    if not os.path.exists(path):
+        return None
+    try:
+        entries = json.load(open(path)).get("entries", [])
+    except Exception:
+        return None
+    counts = {}
+    for e in entries:
+        k = e.get("kind")
+        if k:
+            counts[k] = counts.get(k, 0) + 1
+    return {field: counts.get(kind, 0) for kind, field in CATALOG_KIND_FIELDS.items()}
+
 def collect():
     skill = run_json("harness-skill-scorecard.py")
     mem = run_json("memory-quality-scorecard.py")
     row = {
-        "date": DATE or "unset",
+        "date": DATE,
         "skill_structural_pct": skill.get("structural_score_pct"),
         "skill_hard_fail": skill.get("hard_fail"),
         "skill_count": skill.get("total_skills"),
@@ -86,6 +112,9 @@ def collect():
     tc = rolling_token_cost()
     if tc:
         row.update(tc)
+    cc = catalog_counts()
+    if cc:
+        row.update(cc)
     return row
 
 def fmt(v):

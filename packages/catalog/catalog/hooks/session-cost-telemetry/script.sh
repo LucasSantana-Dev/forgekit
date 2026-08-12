@@ -16,20 +16,31 @@ except Exception:
     sys.exit(0)
 tp = d.get("transcript_path") or ""
 sid = d.get("session_id") or ""
-cwd = d.get("cwd") or ""
 if not tp or not os.path.exists(tp):
     sys.exit(0)
 
 # price per 1M tokens (USD): [input, output, cache_write, cache_read]. Update as pricing changes.
+# https://platform.claude.com/docs/en/about-claude/pricing (checked 2026-08-12)
 PRICES = {
-    "opus":   [15.0, 75.0, 18.75, 1.50],
-    "sonnet": [ 3.0, 15.0,  3.75, 0.30],
-    "haiku":  [ 1.0,  5.0,  1.25, 0.10],
+    "opus":       [15.0, 75.0, 18.75, 1.50],
+    "sonnet":     [ 3.0, 15.0,  3.75, 0.30],
+    "haiku-4-5":  [ 1.0,  5.0,  1.25, 0.10],
+    "haiku-3-5":  [ 0.80, 4.0,  1.0,  0.08],  # retired, kept for historical transcripts
 }
 def tier(model):
+    # Anthropic model ids order the version number differently across
+    # generations ("claude-haiku-4-5-*" vs "claude-3-5-haiku-*"), so match on
+    # presence of the version marker rather than a fixed substring position.
     m = (model or "").lower()
-    for k in PRICES:
-        if k in m: return k
+    if "haiku" in m and ("4-5" in m or "4.5" in m):
+        return "haiku-4-5"
+    if "haiku" in m and ("3-5" in m or "3.5" in m):
+        return "haiku-3-5"
+    if "haiku" in m:
+        return "haiku-4-5"  # unrecognized Haiku id: assume current-gen pricing
+    for k in ("opus", "sonnet"):
+        if k in m:
+            return k
     return None
 
 per_model = {}   # model -> [in, out, cwrite, cread]
@@ -66,7 +77,6 @@ for model,(i,o,cw,cr) in per_model.items():
 row = {
     "ts": time.time(),
     "session_id": sid[:12],
-    "cwd": cwd,
     "input_tokens": tot_in, "output_tokens": tot_out,
     "cache_write_tokens": tot_cw, "cache_read_tokens": tot_cr,
     "total_tokens": tot_in+tot_out+tot_cw+tot_cr,
