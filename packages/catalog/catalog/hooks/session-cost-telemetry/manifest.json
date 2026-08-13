@@ -1,0 +1,32 @@
+{
+  "id": "session-cost-telemetry",
+  "name": "Session Cost Telemetry",
+  "description": "Claude Code SessionEnd hook: parse the session transcript's per-message token usage and append one per-session cost row — tokens + estimated USD, broken down by model — to ~/.claude/metrics/sessions.jsonl. Built-in pricing table for Opus/Sonnet/Haiku so down-tiering shows up as dollars saved. Silent, never blocks (exit 0). Feeds the harness-metrics rolling cost trend.",
+  "version": "0.1.0",
+  "tags": [
+    "hook",
+    "claude-code",
+    "cost",
+    "token-optimization",
+    "observability"
+  ],
+  "provider": "claude",
+  "event": "SessionEnd",
+  "runtime": "bash",
+  "install": {
+    "copy_to": "~/.claude/hooks/session-cost-telemetry.sh",
+    "chmod_exec": true
+  },
+  "source": {
+    "type": "local",
+    "path": "~/.claude/hooks/session-cost-telemetry.sh"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "translations": {
+    "pt-BR": {
+      "name": "Telemetria de Custo de Sessão",
+      "description": "Hook SessionEnd do Claude Code: lê o uso de tokens por mensagem no transcript da sessão e anexa uma linha de custo por sessão — tokens + USD estimado, por modelo — em ~/.claude/metrics/sessions.jsonl. Tabela de preços embutida para Opus/Sonnet/Haiku, então reduzir o tier aparece como dólares economizados. Silencioso, nunca bloqueia (exit 0). Alimenta a tendência de custo do harness-metrics."
+    }
+  }
+}

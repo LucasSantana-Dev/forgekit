@@ -1407,6 +1407,22 @@
     },
     {
       "kind": "hook",
+      "id": "session-cost-telemetry",
+      "name": "Session Cost Telemetry",
+      "description": "Claude Code SessionEnd hook: parse the session transcript's per-message token usage and append one per-session cost row — tokens + estimated USD, broken down by model — to ~/.claude/metrics/sessions.jsonl. Built-in pricing table for Opus/Sonnet/Haiku so down-tiering shows up as dollars saved. Silent, never blocks (exit 0). Feeds the harness-metrics rolling cost trend.",
+      "tags": [
+        "hook",
+        "claude-code",
+        "cost",
+        "token-optimization",
+        "observability"
+      ],
+      "collectionMembership": [],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "hook",
       "id": "session-setup",
       "name": "Session Setup",
       "description": "Claude Code session setup hook (Fish version) Optimizes session for productivity and token efficiency",
@@ -3989,6 +4005,38 @@
     },
     {
       "kind": "tool",
+      "id": "harness-metrics",
+      "name": "Harness Metrics",
+      "description": "The 'optimize what you measure' engine: aggregate skill + memory quality scorecards, self-test pass/fail, and rolling 7-day token cost into one dated JSONL time-series, then print the trend so improvement or regression is visible — not point-in-time. Pairs with the skill + memory scorecard tools. Python 3; run bare to append today's row + show the trend, or --trend / --json / --date YYYY-MM-DD.",
+      "tags": [
+        "tool",
+        "forgekit",
+        "metrics",
+        "cost",
+        "observability"
+      ],
+      "collectionMembership": [],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "tool",
+      "id": "harness-skill-scorecard",
+      "name": "Harness Skill Scorecard",
+      "description": "Score a skills catalog's structural quality: HARD defects (invalid YAML frontmatter, unclosed code fences) vs SOFT nudges (missing stop-conditions, no done-when criteria). Emits a regression-gateable percentage so skill quality is a tracked number, not a vibe. Requires Python 3 + PyYAML; run with --root <skills-dir> --json.",
+      "tags": [
+        "tool",
+        "forgekit",
+        "skills",
+        "quality",
+        "eval"
+      ],
+      "collectionMembership": [],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "tool",
       "id": "install-macos",
       "name": "Install Macos",
       "description": "Bootstrap Homebrew and the core Forge Kit CLI stack on macOS. Use on a fresh machine or to repair drift; recommended for developer Macs with admin access and network access.",
@@ -4042,6 +4090,22 @@
       "collectionMembership": [
         "mcp-ops-and-recovery"
       ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "tool",
+      "id": "memory-quality-scorecard",
+      "name": "Memory Quality Scorecard",
+      "description": "Objective quality metric for a memory/notes corpus: HARD defects (no frontmatter, invalid YAML, missing name/description) vs SOFT nudges (thin description, orphan [[wikilinks]], stale candidates, duplicate descriptions). Produces a trackable percentage for regression gates so memory quality improves over time instead of rotting. Python 3 + PyYAML; run with --root <memory-dir> --json (or --stale to list prune candidates).",
+      "tags": [
+        "tool",
+        "forgekit",
+        "memory",
+        "quality",
+        "eval"
+      ],
+      "collectionMembership": [],
       "version": "0.1.0",
       "deprecated": false
     },
