@@ -1,4 +1,4 @@
-import { describe, test, expect } from "@jest/globals";
+import { describe, test, expect, jest } from "@jest/globals";
 import {
   validateCompany,
   validateAll,
@@ -72,6 +72,34 @@ describe("validateCompany", () => {
     expect(errors.some((e) => e.includes("unknown skill: missing-skill"))).toBe(
       true,
     );
+    fs.rmSync(tmpDir, { recursive: true });
+  });
+
+  test("returns error for agent missing a required section", () => {
+    const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "test-company-"));
+    const agentDir = path.join(tmpDir, "agents", "test-agent");
+    const skillDir = path.join(tmpDir, "skills", "test-skill");
+    fs.mkdirSync(agentDir, { recursive: true });
+    fs.mkdirSync(skillDir, { recursive: true });
+    fs.writeFileSync(
+      path.join(agentDir, "AGENTS.md"),
+      "---\nname: Test\ntitle: Tester\nskills: []\n---\nBody without any required sections.",
+    );
+    fs.writeFileSync(
+      path.join(skillDir, "SKILL.md"),
+      "---\nname: Test Skill\n---\n",
+    );
+    const errors = validateCompany(tmpDir);
+    for (const section of [
+      "## What triggers you",
+      "## What you do",
+      "## What you produce",
+      "## Who you hand off to",
+    ]) {
+      expect(errors).toContain(
+        `Agent test-agent missing section: ${section}`,
+      );
+    }
     fs.rmSync(tmpDir, { recursive: true });
   });
 });
@@ -310,6 +338,68 @@ describe("validateKit", () => {
       expect(content).toMatch(/name:/);
       expect(content).toMatch(/description:/);
       expect(content).toMatch(/triggers:/);
+    }
+  });
+
+  test("validateKit flags skills missing name, description, or triggers", () => {
+    const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "test-kit-skills-"));
+    const skillsDir = path.join(tmpDir, "kit/core/skills");
+    fs.mkdirSync(skillsDir, { recursive: true });
+    fs.writeFileSync(
+      path.join(skillsDir, "bad-skill.md"),
+      "---\nname: Bad Skill\n---\nBody without required fields.\n",
+    );
+
+    const errors = validateKit(tmpDir);
+    expect(
+      errors.some((e) =>
+        e.includes("Skill bad-skill.md missing field: description"),
+      ),
+    ).toBe(true);
+    expect(
+      errors.some((e) =>
+        e.includes("Skill bad-skill.md missing field: triggers"),
+      ),
+    ).toBe(true);
+
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  });
+
+  test("validateKit flags skills with no frontmatter and empty skills dir", () => {
+    const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "test-kit-skills-"));
+    const skillsDir = path.join(tmpDir, "kit/core/skills");
+    fs.mkdirSync(skillsDir, { recursive: true });
+    fs.writeFileSync(
+      path.join(skillsDir, "no-frontmatter.md"),
+      "Body without any frontmatter.\n",
+    );
+
+    const errors = validateKit(tmpDir);
+    expect(errors).toContain("No frontmatter in skill: no-frontmatter.md");
+
+    fs.rmSync(skillsDir, { recursive: true, force: true });
+    fs.mkdirSync(skillsDir, { recursive: true });
+    const emptyErrors = validateKit(tmpDir);
+    expect(emptyErrors).toContain("No core skills found");
+
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  });
+
+  test("parity audit reports gaps when adapters miss features", () => {
+    const logSpy = jest.spyOn(console, "log").mockImplementation(() => {});
+    try {
+      const audit = runParityAudit();
+      expect(audit.gaps.length).toBeGreaterThan(0);
+      expect(audit.gaps).toContain("claude-code missing: Hooks manifest");
+      expect(audit.gaps).toContain("codex missing: Hooks manifest");
+      expect(audit.gaps).not.toContain("claude-code missing: Rules file");
+      for (const gap of audit.gaps) {
+        expect(gap).toMatch(/^[a-z-]+ missing: .+$/);
+      }
+      const printed = logSpy.mock.calls.map((c) => String(c[0]));
+      expect(printed.some((line) => /Gaps \(\d+\):/.test(line))).toBe(true);
+    } finally {
+      logSpy.mockRestore();
     }
   });
 

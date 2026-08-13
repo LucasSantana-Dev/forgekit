@@ -4,7 +4,7 @@
 #
 # Options:
 #   --tools <list>     Tools to install for (default: auto)
-#                      Values: all, auto, or comma-separated: claude-code,codex,opencode,cursor,windsurf,antigravity
+#                      Values: all, auto, or comma-separated: claude-code,codex,opencode,cursor,windsurf,antigravity,zed,vscode
 #   --profile <name>   Profile to use (default: standard)
 #                      Values: standard, minimal, research, durable
 #   --dry-run          Print what would be done without making changes
@@ -91,7 +91,7 @@ Usage:
   sh install.sh [options]
 
 Options:
-  --tools <list>     Tools: all, auto, or claude-code,codex,opencode,cursor,windsurf,antigravity
+  --tools <list>     Tools: all, auto, or claude-code,codex,opencode,cursor,windsurf,antigravity,zed,vscode
   --profile <name>   Profile: standard (default), minimal, research, durable
   --dry-run          Show what would change without making changes
   --with-hooks       Install code hooks (format, typecheck, evaluate) to ~/.claude/hooks/

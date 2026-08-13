@@ -45,3 +45,8 @@ graphify-out/
 # Personal product/design notes (use docs/ for shipped versions)
 PRODUCT.md
 DESIGN.md
+
+# Stryker mutation testing artifacts
+.stryker-tmp/
+reports/mutation/mutation.html
+reports/mutation/mutation.json

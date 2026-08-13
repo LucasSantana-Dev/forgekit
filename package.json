@@ -32,6 +32,7 @@
     "backlog:reconcile:dry": "node scripts/reconcile-backlog-state.mjs",
     "typecheck:plugin": "tsc -p tsconfig.plugin.json",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:mutation": "NODE_OPTIONS=--experimental-vm-modules stryker run",
     "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
     "lint": "eslint scripts/ test/",
     "catalog:validate": "pnpm --filter @forge-kit/catalog-scripts run validate",
@@ -49,6 +50,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@stryker-mutator/core": "9.6.1",
+    "@stryker-mutator/jest-runner": "9.6.1",
     "ajv": "^8",
     "eslint": "^10",
     "jest": "^30",
