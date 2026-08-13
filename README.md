@@ -313,6 +313,21 @@ Not all fallback chains are valid (e.g., Anthropic + Ollama). The setup wizard g
 
 ---
 
+## Ecosystem Heritage
+
+Forge Kit consolidates four formerly-separate repos. Each is retired into it in turn —
+archived (read-only) with a README pointing back here, never deleted, so old bookmarks
+and search results still resolve.
+
+| Repo | Now lives at | Status |
+| --- | --- | --- |
+| [`ai-dev-toolkit-library`](https://github.com/LucasSantana-Dev/ai-dev-toolkit-library) | `packages/catalog`, `packages/cli`, `apps/web`, `infra/gateway` | Archived 2026-08-13 (pre-archive commit `8d9ead5`) |
+| [`ai-dev-toolkit`](https://github.com/LucasSantana-Dev/ai-dev-toolkit) | `packages/core` | Not yet archived |
+| [`ai-dev-toolkit-setup`](https://github.com/LucasSantana-Dev/ai-dev-toolkit-setup) | `packages/setup` | Not yet archived |
+| [`ai-dev-toolkit-pt-br`](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br) | `locales/pt-BR` | Not yet archived |
+
+---
+
 ## How to Contribute
 
 Forge Kit is open to community contributions. High-impact areas:
