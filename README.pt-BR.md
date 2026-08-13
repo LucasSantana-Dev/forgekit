@@ -320,14 +320,16 @@ Nem todas as cadeias de fallback do provider são suportadas. Exemplo: Anthropic
 
 ## Herança do ecossistema
 
-Forge Kit consolida quatro repositórios antes separados. Cada um é aposentado nele por
-vez — arquivado (somente leitura) com um README apontando de volta pra cá, nunca
-deletado, pra que bookmarks antigos e resultados de busca continuem resolvendo.
+Forge Kit consolida quatro repositórios antes separados. `ai-dev-toolkit` virou este
+repositório diretamente por um rename no GitHub (o nome antigo agora só redireciona pra
+cá). Os outros três são aposentados aos poucos, conforme o conteúdo migra — arquivados
+(somente leitura) com um README apontando de volta pra cá, nunca deletados, pra que
+bookmarks antigos e resultados de busca continuem resolvendo.
 
 | Repositório | Agora vive em | Status |
 | --- | --- | --- |
+| `ai-dev-toolkit` | este repositório | Renomeado para `forgekit` em 2026-04-25 |
 | [`ai-dev-toolkit-library`](https://github.com/LucasSantana-Dev/ai-dev-toolkit-library) | `packages/catalog`, `packages/cli`, `apps/web`, `infra/gateway` | Arquivado em 2026-08-13 (commit pré-arquivamento `8d9ead5`) |
-| [`ai-dev-toolkit`](https://github.com/LucasSantana-Dev/ai-dev-toolkit) | `packages/core` | Ainda não arquivado |
 | [`ai-dev-toolkit-setup`](https://github.com/LucasSantana-Dev/ai-dev-toolkit-setup) | `packages/setup` | Ainda não arquivado |
 | [`ai-dev-toolkit-pt-br`](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br) | `locales/pt-BR` | Ainda não arquivado |
 
