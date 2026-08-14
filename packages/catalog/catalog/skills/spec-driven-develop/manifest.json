@@ -1,0 +1,30 @@
+{
+  "id": "spec-driven-develop",
+  "name": "Spec Driven Develop",
+  "description": "Mandatory default for non-trivial build/add/fix/implement/refactor requests. Chains existing skills through spec-kit's workflow phases (specify, clarify, plan, tasks, implement, verify) without installing spec-kit's CLI. Adapts docs/specs/ convention. Supersedes /plan as the default for multi-step work. Skip trivial edits (<3 files).",
+  "version": "0.1.0",
+  "tags": [
+    "skill-md",
+    "planning",
+    "workflow",
+    "composite",
+    "orchestration"
+  ],
+  "provider": "claude",
+  "editors": [
+    "claude-code"
+  ],
+  "source": {
+    "type": "local",
+    "path": "adapted from github.com/github/spec-kit"
+  },
+  "license": "MIT",
+  "author": "Lucas Santana",
+  "homepage": "https://github.com/LucasSantana-Dev/forgekit/tree/main/packages/catalog/catalog/skills/spec-driven-develop",
+  "translations": {
+    "pt-BR": {
+      "name": "Spec Driven Develop",
+      "description": "Ponto de entrada obrigatório padrão para pedidos não triviais de build/add/fix/implement/refactor. Encadeia skills existentes através das fases de fluxo do spec-kit (especificar, esclarecer, planejar, tarefas, implementar, verificar) sem instalar a CLI do spec-kit. Adapta convenção docs/specs/. Substitui /plan como padrão para trabalho multi-passo. Pule edições triviais (<3 arquivos)."
+    }
+  }
+}

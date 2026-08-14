@@ -3860,6 +3860,24 @@
     },
     {
       "kind": "skill",
+      "id": "spec-driven-develop",
+      "name": "Spec Driven Develop",
+      "description": "Mandatory default for non-trivial build/add/fix/implement/refactor requests. Chains existing skills through spec-kit's workflow phases (specify, clarify, plan, tasks, implement, verify) without installing spec-kit's CLI. Adapts docs/specs/ convention. Supersedes /plan as the default for multi-step work. Skip trivial edits (<3 files).",
+      "tags": [
+        "skill-md",
+        "planning",
+        "workflow",
+        "composite",
+        "orchestration"
+      ],
+      "collectionMembership": [
+        "spec-and-planning"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "skill",
       "id": "spec-driven-development",
       "name": "Spec Driven Development",
       "description": "AI agents are fast at writing code but have no memory of your intent. You describe a feature in a prompt, the agent builds it, and three sessions later a different agent (or you) changes it in a way that drifts from the original requirement. The spec lives only in your head.",
