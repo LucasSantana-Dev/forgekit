@@ -7,6 +7,8 @@ description: Mandatory default entry point for any non-trivial build/add/fix/imp
 
 Composite skill. Chains existing skills into spec-kit's phase order and terminology, without spec-kit's CLI or `.specify/` directory convention.
 
+**See also:** `spec-driven-development` teaches the underlying SDD pattern (spec-as-contract, agent grounding, anti-patterns) in the abstract. This skill is its operational form for this harness — the concrete composite that actually chains sub-skills phase by phase. Read the pattern skill first if the "why" is unclear; use this one to execute.
+
 ## Why this exists
 
 GitHub's spec-kit enforces a structured spec → plan → tasks → implement workflow via a `specify` CLI that scaffolds `.specify/` templates. This harness already has an equivalent skill for every phase — `adt-specs-spec-new`, `grill-with-docs`, `plan`, `plan-to-issues`, `dispatch`/`orchestrate`, `review`/`verify`. Installing the actual CLI would duplicate that coverage, add an external dependency, and fight the existing `docs/specs/<date>-<slug>/` convention. This skill gets spec-kit's discipline (explicit phases, no skipping straight to code) without the tool.
