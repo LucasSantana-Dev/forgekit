@@ -1547,11 +1547,12 @@ const jsonLd = {
         if (!btn) return;
         const text = btn.dataset.copy || btn.previousElementSibling?.textContent || "";
         navigator.clipboard.writeText(text.trim()).then(() => {
-          const original = btn.textContent;
-          btn.textContent = "✓ copied";
+          const original = btn.innerHTML;
+          btn.innerHTML =
+            '<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg> copied';
           btn.classList.add("copied");
           setTimeout(() => {
-            btn.textContent = original;
+            btn.innerHTML = original;
             btn.classList.remove("copied");
           }, 1500);
         });
