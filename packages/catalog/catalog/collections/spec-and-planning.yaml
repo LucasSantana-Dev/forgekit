@@ -18,6 +18,8 @@ items:
 - kind: skill
   id: spec-driven-development
 - kind: skill
+  id: spec-driven-develop
+- kind: skill
   id: adt-adr-write
 - kind: skill
   id: adt-research-and-decide
