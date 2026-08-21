@@ -75,10 +75,10 @@ Agentes executam em fases com gates (`PLAN → IMPLEMENT → VERIFY → REVIEW �
 
 ## Guias
 
-- **Novo por aqui:** [começo em 10 minutos](docs/guides/ten-minute-start.md) · [escolha sua primeira ferramenta](docs/guides/pick-your-first-tool.md) · [getting started](docs/guides/getting-started.md)
+- **Novo por aqui:** [começo em 10 minutos](docs/guides/ten-minute-start.md) · [escolha sua primeira ferramenta](docs/guides/pick-your-first-tool.md) · [primeiros passos](docs/guides/getting-started.md)
 - **Adotando:** [trilha iniciante](docs/guides/adoption-beginner.md) · [trilha avançada](docs/guides/adoption-advanced.md) · [para times](docs/guides/for-teams.md)
 - **Operando:** [instalação](docs/guides/installing.md) · [modelos locais](docs/guides/local-models.md) · [servidores MCP](docs/guides/mcp-servers.md) · [higiene de segredos](docs/guides/secret-hygiene.md)
-- **Mantendo este repo:** [manutenção e quality gates](docs/guides/maintenance.md) · [troubleshooting](docs/guides/troubleshooting.md)
+- **Mantendo este repo:** [manutenção e quality gates](docs/guides/maintenance.md) · [solução de problemas](docs/guides/troubleshooting.md)
 
 ---
 
