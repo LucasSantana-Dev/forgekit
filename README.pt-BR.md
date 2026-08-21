@@ -2,343 +2,103 @@
 
 # Forge Kit
 
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Latest Release](https://img.shields.io/github/v/release/LucasSantana-Dev/forgekit)](https://github.com/LucasSantana-Dev/forgekit/releases)
+**Entregue mais rápido com IA: regras, skills e workflows testados em batalha para todos os principais agentes de código.**
 
-Forge Kit é a casa unificada dos antigos projetos `ai-dev-toolkit`,
-`ai-dev-toolkit-setup`, `ai-dev-toolkit-pt-br` e `ai-dev-toolkit-library`.
+[![Licença MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Última Release](https://img.shields.io/github/v/release/LucasSantana-Dev/forgekit)](https://github.com/LucasSantana-Dev/forgekit/releases)
 
-Ele reúne regras para agentes, skills portáveis, automação de setup, catálogo,
-CLI e web app bilíngue para que agentes AI de codificação comecem com
-convenções, fluxo de trabalho e guardrails desde a primeira sessão.
+**Funciona com:** Claude Code · Cursor · Windsurf · Codex · Copilot · Zed · VSCode · Kimi Code · OpenCode
 
-## Layout do monorepo
+**Navegue tudo em [forgekit.lucassantana.tech](https://forgekit.lucassantana.tech/)**: catálogo pesquisável de todas as skills, agentes, hooks, servidores MCP e coleções, com comando de instalação por entrada.
 
-```text
-.
-├── apps/web              # Web app Astro do catálogo
-├── infra/gateway         # Stack local de gateway MCP
-├── locales/pt-BR         # Conteúdo em português
-├── packages/catalog      # Catálogo, schemas, importadores e validação
-├── packages/cli          # CLI forge-kit, com alias legado adtl
-└── packages/setup        # Camada de bootstrap de máquina
-```
+---
 
-## Primeira instalação?
+## Começo rápido
 
-A maioria dos usuários deve começar com [`packages/setup`](packages/setup/README.pt-BR.md) — a camada de bootstrap de máquina que consome este toolkit em uma versão fixada. Ela detecta suas ferramentas instaladas, aplica configurações pré-construídas e instala todo o conjunto de skills e regras em um comando.
-
-## Como começar?
-
-Copie um arquivo de rule para seu projeto. Esse arquivo único oferece a seu agente AI suas convenções, fluxo de trabalho e guardrails antes do primeiro prompt.
+**Opção 1, um arquivo de regras (30 segundos).** Copie um arquivo de convenções para o seu projeto; o agente passa a segui-lo imediatamente:
 
 ```bash
-# Clone the toolkit
-git clone https://github.com/LucasSantana-Dev/forgekit.git
-cd forgekit
-
-# Copy the rule file that matches your tool
-cp packages/core/rules/CLAUDE.md    ~/my-project/CLAUDE.md       # Claude Code / OpenCode
-cp packages/core/rules/AGENTS.md    ~/my-project/AGENTS.md       # Codex CLI
-cp packages/core/rules/.cursorrules ~/my-project/.cursorrules     # Cursor
-cp packages/core/rules/.windsurfrules ~/my-project/.windsurfrules # Windsurf
-cp packages/core/rules/COPILOT.md   ~/my-project/COPILOT.md      # GitHub Copilot
+git clone https://github.com/LucasSantana-Dev/forgekit.git && cd forgekit
+cp packages/core/rules/CLAUDE.md ~/meu-projeto/CLAUDE.md   # Claude Code / OpenCode
 ```
 
-Abra sua ferramenta AI em `~/my-project/`. O agente agora segue suas regras automaticamente.
+Outras ferramentas: `.cursorrules` (Cursor), `.windsurfrules` (Windsurf), `AGENTS.md` (Codex), `COPILOT.md` (Copilot); todos em [`packages/core/rules/`](packages/core/rules/).
 
-## Como instalar tudo de uma vez com forge-kit?
-
-`forge-kit` detecta suas ferramentas, sincroniza regras, instala 29 skills portáveis, mescla servidores MCP e configura registros de providers — tudo em um comando.
+**Opção 2, instalar uma entrada do catálogo.** Encontre no [site do catálogo](https://forgekit.lucassantana.tech/) e rode:
 
 ```bash
-# Auto-detect installed tools and apply standard profile
+npx forge-kit install <entry-id>
+```
+
+**Opção 3, toolkit completo (um comando).** Regras, skills, hooks e config MCP para cada ferramenta detectada:
+
+```bash
 FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --profile standard
-
-# Target specific tools with a specific profile
-FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh \
-  --tools claude-code,codex,opencode \
-  --profile standard
 ```
 
-Visualize o que será alterado antes de confirmar:
+Flags (`--tools`, `--dry-run`, `--status`, `--uninstall`), perfis e o wizard interativo (`setup.sh`) estão no [guia de instalação](docs/guides/installing.md).
 
-```bash
-# Dry run — shows exactly what would be created, updated, or skipped
-FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --tools all --profile standard --dry-run
+---
 
-# Show what forge-kit has installed
-FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --status
+## O que tem dentro
 
-# Remove all forge-kit managed files
-FORGE_KIT_DIR=./packages/core/kit sh packages/core/kit/install.sh --uninstall
+| Componente | Qtde | Navegar |
+| --- | --- | --- |
+| Skills | 111 | [catálogo](https://forgekit.lucassantana.tech/skills/) · [`packages/catalog/catalog/skills/`](packages/catalog/catalog/skills/) |
+| Hooks | 27 | [catálogo](https://forgekit.lucassantana.tech/hooks/) |
+| Agentes | 22 | [catálogo](https://forgekit.lucassantana.tech/agents/) |
+| Servidores MCP | 22 | [catálogo](https://forgekit.lucassantana.tech/servers/) |
+| Coleções | 21 | [catálogo](https://forgekit.lucassantana.tech/collections/) |
+| Padrões de playbook | 21 | [`packages/core/patterns/`](packages/core/patterns/) |
+| Ferramentas | 14 | [catálogo](https://forgekit.lucassantana.tech/tools/) |
+| Arquivos de regras drop-in | 5 | [`packages/core/rules/`](packages/core/rules/) |
+
+Tudo com tradução pt-BR ([`locales/pt-BR/`](locales/pt-BR/)).
+
+---
+
+## Como funciona
+
+```
+forgekit/
+├── apps/web              # Site do catálogo (Astro)
+├── packages/catalog      # Fonte do catálogo + validação
+├── packages/cli          # CLI forge-kit
+├── packages/setup        # Bootstrap de máquina
+├── packages/core         # Regras, skills, padrões, agentes, instalador do kit
+└── locales/pt-BR         # Espelho em português
 ```
 
-### Como usar o assistente interativo de setup?
+Agentes executam em fases com gates (`PLAN → IMPLEMENT → VERIFY → REVIEW → SECURE → COMMIT`), corrigindo lint/tipos/testes sozinhos e sempre pausando para ações destrutivas (deploys, migrations, force push). Agentes especialistas roteiam por domínio e referenciam *tiers* de modelo (`haiku`/`sonnet`/`opus`), permitindo trocar de provider sem tocar nas definições. Detalhes: [primitives](docs/guides/primitives.md) · [agents vs skills](docs/guides/agents-vs-skills.md) · [tool matrix](docs/guides/tool-matrix.md).
 
-O assistente guia você através da seleção de provider, cadeias de fallback, otimização de token e preferências de autonomia — então gera uma configuração `.forge-setup.json` com mapas de model resolvidos.
+---
 
-```bash
-# Run the interactive setup wizard
-sh packages/core/kit/setup.sh
-# Follow prompts to select provider, fallback, optimization preset, and profile
-# Output: .forge-setup.json with resolved model maps and agent assignments
-```
+## Guias
 
-Ele solicita:
+- **Novo por aqui:** [começo em 10 minutos](docs/guides/ten-minute-start.md) · [escolha sua primeira ferramenta](docs/guides/pick-your-first-tool.md) · [getting started](docs/guides/getting-started.md)
+- **Adotando:** [trilha iniciante](docs/guides/adoption-beginner.md) · [trilha avançada](docs/guides/adoption-advanced.md) · [para times](docs/guides/for-teams.md)
+- **Operando:** [instalação](docs/guides/installing.md) · [modelos locais](docs/guides/local-models.md) · [servidores MCP](docs/guides/mcp-servers.md) · [higiene de segredos](docs/guides/secret-hygiene.md)
+- **Mantendo este repo:** [manutenção e quality gates](docs/guides/maintenance.md) · [troubleshooting](docs/guides/troubleshooting.md)
 
-- Primary AI provider (Anthropic, OpenAI, Google, OpenRouter, Ollama)
-- Fallback provider
-- Local model usage (hybrid cloud + local)
-- Token optimization preset (standard, aggressive, minimal)
-- Install profile and orchestration preferences
-
-## Que patterns estão incluídos?
-
-15 playbooks agnósticos de ferramentas cobrindo o ciclo de vida completo do desenvolvimento assistido por IA:
-
-| Pattern                                                        | Quando você precisa dele                                    |
-| -------------------------------------------------------------- | ----------------------------------------------------------- |
-| [Context Building](packages/core/patterns/context-building.md)               | Agentes adivinham em vez de encontrar conhecimento do projeto    |
-| [Task Orchestration](packages/core/patterns/task-orchestration.md)           | Trabalho multi-passo precisa de menos supervisão               |
-| [Code Review](packages/core/patterns/code-review.md)                         | Capturando bugs, defetos de lógica e problemas de segurança    |
-| [Testing with AI](packages/core/patterns/testing.md)                         | Geração de teste de maior valor e fluxos TDD                   |
-| [Multi-Model Routing](packages/core/patterns/multi-model-routing.md)         | Reduzindo custo roteando tarefas baratas para modelos baratos   |
-| [Memory Systems](packages/core/patterns/memory-systems.md)                   | Decisões persistindo entre sessões                             |
-| [Session Management](packages/core/patterns/session-management.md)           | Sessões paralelas conflitando ou perdendo contexto             |
-| [Prompt Engineering](packages/core/patterns/prompt-engineering.md)           | Respostas de agente inconsistentes ou imprecisas              |
-| [Git Worktrees](packages/core/patterns/git-worktrees.md)                     | Isolando tarefas simultâneas em branches separadas             |
-| [Agent Observability](packages/core/patterns/agent-observability.md)         | Rastreamento e teste de regressão de comportamento de agente  |
-| [Multi-Repo Workflows](packages/core/patterns/multi-repo.md)                 | Coordenação entre repositórios                                |
-| [Permission Boundaries](packages/core/patterns/permission-boundaries.md)     | Acesso de ferramenta de privilégio mínimo                     |
-| [Streaming Orchestration](packages/core/patterns/streaming-orchestration.md) | Loops de turno orientado por evento e orçamento de token     |
-| [Tool Registry Patterns](packages/core/patterns/tool-registry-patterns.md)   | Desacoplando metadados de ferramenta de implementação         |
-| [Spec Driven Development](packages/core/patterns/spec-driven-development.md) | Agentes precisam de um contrato estável antes de construir     |
-
-## Que skills estão incluídas?
-
-29 skills portáveis instaladas em cada ferramenta via `forge-kit`:
-
-```bash
-# Skills live in packages/core/kit/core/skills/ and get copied to each tool's skill directory
-ls packages/core/kit/core/skills/
-
-# Output:
-# context.md   cost.md      debug.md     dispatch.md  fallback.md
-# loop.md      memory.md    orchestrate.md  plan.md   research.md
-# resume.md    review.md    route.md     schedule.md  secure.md
-# ship.md      tdd.md       verify.md
-```
-
-Skills-chave para desenvolvimento autônomo:
-
-| Skill         | O que faz                                                                             |
-| ------------- | ------------------------------------------------------------------------------------- |
-| `loop`        | Ciclo dev autônomo — plan → implement → test → review → fix → commit → PR            |
-| `route`       | Classifica complexidade de tarefa e escolhe o tier de model certo                     |
-| `orchestrate` | Quebra trabalho complexo em fases com rastreamento de dependência                     |
-| `dispatch`    | Spawn subtarefas paralelas entre agentes workers                                     |
-| `fallback`    | Manipula falhas de model/provider com cadeias de fallback automáticas                 |
-| `resume`      | Recupera estado de sessão de git, plans e PRs abertas                                 |
-| `tdd`         | Ciclo Red/green/refactor com ordenação estrita                                       |
-| `secure`      | Scan de segurança de 5 pontos: secrets, deps, inputs, permissions, injection         |
-
-## Como funciona o sistema de agents?
-
-15 agentes especialistas organizados em um organograma, cada um com um papel definido, tier, lista de acesso de ferramenta e cadeia de fallback:
-
-```text
-orchestrator (Lead Orchestrator)
-├── architect (Software Architect)
-│   ├── frontend — React, CSS, UI, animations
-│   ├── backend — APIs, databases, auth, services
-│   ├── worker — Generalist implementation and execution
-│   ├── devops — CI/CD, Docker, deployment, monitoring
-│   ├── tester — Tests, coverage, e2e, regression
-│   └── security — Vulns, secrets, OWASP, audit
-├── reviewer — Code review, style, logic defects
-│   ├── ts-reviewer — TypeScript and JavaScript review
-│   ├── python-reviewer — Python review
-│   ├── go-reviewer — Go review
-│   └── rust-reviewer — Rust review
-├── writer — README, docs, CHANGELOG, API docs
-├── researcher — Web search, library investigation
-└── explorer — Fast codebase grep (cheapest tier)
-```
-
-Tarefas são roteadas para o especialista certo automaticamente:
-
-```json
-{
-  "specialtyRouting": {
-    "ui-work": "frontend",
-    "api-work": "backend",
-    "ci-cd": "devops",
-    "testing": "tester",
-    "security-scan": "security",
-      "documentation": "writer",
-      "code-review": "reviewer",
-      "ts-review": "ts-reviewer",
-      "python-review": "python-reviewer",
-      "go-review": "go-reviewer",
-      "rust-review": "rust-reviewer"
-  }
-}
-```
-
-Agentes referenciam tiers (`haiku`/`sonnet`/`opus`), não models específicos. Troque providers sem alterar definições de agent.
-
-## Como funciona a execução autônoma?
-
-O loop engine executa o ciclo dev completo sem parar:
-
-```text
-PLAN → IMPLEMENT → VERIFY → REVIEW → SECURE → COMMIT
-  ↓ (repeat per phase)
-QUALITY GATES → PUSH → PR
-```
-
-Configuração em `packages/core/kit/core/autopilot.json`:
-
-```json
-{
-  "defaultLevel": "autonomous",
-  "levels": {
-    "autonomous": {
-      "autoCommit": true,
-      "autoPush": true,
-      "autoPR": true,
-      "autoDispatch": true,
-      "autoFix": true,
-      "autoEscalate": true,
-      "maxUnattendedPhases": 99,
-      "pauseOn": ["deploy to production", "database migration", "force push"]
-    }
-  }
-}
-```
-
-Agentes nunca pausam por lint fixes, type fixes, test fixes, commits, pushes ou edições de arquivo. Eles só param para ações genuinamente destrutivas.
-
-## Como rodar checks de qualidade?
-
-```bash
-# Install dependencies
-npm install
-
-# Run the full validation suite
-npm test                 # 16 governance tests
-npm run lint             # ESLint on scripts and tests
-npm run validate         # Company schema + packages/core/kit/core config validation
-npm run validate:schema  # Schema validation only
-
-# Run the parity audit — shows cross-tool feature gaps
-node scripts/parity-audit.js
-```
-
-## Como validar um release antes de mutar um repo?
-
-```bash
-python3 packages/core/tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog
-python3 packages/core/tools/release.py --repo /path/to/repo --verify --level patch --notes-file RELEASE_NOTES.md --changelog --github-release
-```
-
-Os checks de preflight verificam limpeza de git, identidade de git, disponibilidade de tag de destino, detecção de fonte de versão, destino de arquivo de notas, prontidão de changelog e prontidão opcional de `gh` antes de qualquer mutação de release.
-
-Exemplo de saída de parity audit:
-
-```text
-Coverage: claude-code 6/6, codex 6/6, opencode 6/6, cursor 6/6, windsurf 6/6, antigravity 6/6
-Skills: 19 | Configs: 8 | Gaps: 0
-```
-
-## O que o repositório contém?
-
-```text
-packages/core/patterns/            15 tool-agnostic workflow playbooks
-packages/core/rules/               Drop-in rule templates (Claude, Codex, Cursor, Windsurf, Copilot)
-packages/core/kit/
-  packages/core/kit/install.sh     Entry point for forge-kit
-  packages/core/kit/setup.sh       Interactive setup wizard
-  packages/core/kit/core/          8 engine configs + 29 portable skills
-  packages/core/kit/adapters/      Per-tool adapters (6 tools)
-  packages/core/kit/profiles/      Install profiles (standard, minimal, research, durable)
-packages/core/implementations/     Reference setups for Claude Code, Codex, OpenCode, Cursor, Windsurf, Antigravity
-packages/core/companies/           Pre-built multi-agent organizations
-packages/core/tools/               Setup scripts + curated productivity stack
-packages/core/best-practices/      Security, workflow, context management standards
-packages/core/examples/            Starter assets (backlog, memory structure)
-```
-
-## Como adotar incrementalmente?
-
-| Dia | Foco                                          | Recurso                                                                                                                         |
-| --- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Copiar um arquivo de rule                     | [`packages/core/rules/`](packages/core/rules/)                                                                                                              |
-| 2   | Fundamentar agentes em contexto do projeto    | [`packages/core/patterns/context-building.md`](packages/core/patterns/context-building.md)                                                                   |
-| 3   | Melhorar confiabilidade de execução           | [`packages/core/patterns/task-orchestration.md`](packages/core/patterns/task-orchestration.md)                                                               |
-| 4   | Revisar e testar qualidade                    | [`packages/core/patterns/code-review.md`](packages/core/patterns/code-review.md), [`packages/core/patterns/testing.md`](packages/core/patterns/testing.md)                               |
-| 5   | Adicionar memória e observabilidade           | [`packages/core/patterns/memory-systems.md`](packages/core/patterns/memory-systems.md), [`packages/core/patterns/agent-observability.md`](packages/core/patterns/agent-observability.md) |
-| 6   | Contratos orientados por spec                 | [`packages/core/patterns/spec-driven-development.md`](packages/core/patterns/spec-driven-development.md)                                                     |
-| 7   | Setup completo de time com forge-kit          | [`packages/core/kit/`](packages/core/kit/) + [`packages/core/implementations/`](packages/core/implementations/)                                                                          |
-
-Precisa do trabalho atual priorizado do repositório em vez do guia geral de adoção? Veja [`BACKLOG.md`](BACKLOG.md).
-
-## Troubleshooting
-
-### Missing Node ≥22
-
-O toolkit requer Node 22 ou posterior. Verifique sua versão:
-
-```bash
-node --version
-```
-
-Se você ver `v20.*` ou anterior, atualize o Node via seu gerenciador de pacotes ou [nodejs.org](https://nodejs.org).
-
-### Wrong shell
-
-Algumas ferramentas só funcionam em bash ou zsh. Verifique:
-
-```bash
-echo $SHELL
-```
-
-Se mostrar um shell diferente, mude: `exec bash` ou `exec zsh`.
-
-### ~/.claude directory permissions
-
-Se `forge-kit` relatar erros de permissão ao instalar em `~/.claude`, corrija a propriedade:
-
-```bash
-chmod -R u+rwx ~/.claude
-```
-
-### Unsupported provider combinations
-
-Nem todas as cadeias de fallback do provider são suportadas. Exemplo: Anthropic + Ollama fallback não é um emparelhamento válido. O assistente de setup o guiará para combinações válidas. Se você configurou manualmente, verifique sua cadeia de provider `~/.forge-setup.json` contra a documentação.
+---
 
 ## Herança do ecossistema
 
-Forge Kit consolida quatro repositórios antes separados. `ai-dev-toolkit` virou este
-repositório diretamente por um rename no GitHub (o nome antigo agora só redireciona pra
-cá). Os outros três são aposentados aos poucos, conforme o conteúdo migra — arquivados
-(somente leitura) com um README apontando de volta pra cá, nunca deletados, pra que
-bookmarks antigos e resultados de busca continuem resolvendo.
+O Forge Kit consolida quatro repos antes separados; os aposentados ficam arquivados como somente-leitura com um ponteiro de volta para cá.
 
-| Repositório | Agora vive em | Status |
+| Repo | Agora vive em | Status |
 | --- | --- | --- |
-| `ai-dev-toolkit` | este repositório | Renomeado para `forgekit` em 2026-04-25 |
+| `ai-dev-toolkit` | este repo | Renomeado para `forgekit` em 2026-04-25 |
 | [`ai-dev-toolkit-library`](https://github.com/LucasSantana-Dev/ai-dev-toolkit-library) | `packages/catalog`, `packages/cli`, `apps/web`, `infra/gateway` | Arquivado em 2026-08-13 (commit pré-arquivamento `8d9ead5`) |
 | [`ai-dev-toolkit-setup`](https://github.com/LucasSantana-Dev/ai-dev-toolkit-setup) | `packages/setup` | Ainda não arquivado |
 | [`ai-dev-toolkit-pt-br`](https://github.com/LucasSantana-Dev/ai-dev-toolkit-pt-br) | `locales/pt-BR` | Ainda não arquivado |
 
-## Como contribuir?
+---
 
-Veja [CONTRIBUTING.md](CONTRIBUTING.md).
+## Contribuindo
 
-Áreas de alto impacto: novas implementações de referência, atualizações de pattern testadas em produção, melhorias de adapter e correções de precisão de documentação.
+Áreas de alto impacto: implementações de referência, refinamento de padrões, melhorias de adapters e docs/traduções. Veja [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Licença
 
-[MIT](LICENSE)
+[MIT](LICENSE) · Mais contexto: [`CONTEXT.md`](CONTEXT.md) · [`CHANGELOG.md`](CHANGELOG.md) · [`BACKLOG.md`](BACKLOG.md)
