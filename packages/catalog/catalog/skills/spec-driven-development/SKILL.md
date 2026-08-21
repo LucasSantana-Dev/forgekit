@@ -10,6 +10,8 @@ description: >-
 
 > Write the spec first. The agent writes the code. Both are working from the same source of truth.
 
+**See also:** `spec-driven-develop` operationalizes this pattern as a composite skill — it chains this harness's actual sub-skills (specify, clarify, plan, tasks, implement, verify) instead of describing the pattern in the abstract. Use it as the concrete entry point once you've internalized the "why" here.
+
 ## The Problem
 
 AI agents are fast at writing code but have no memory of your intent. You describe a feature in a prompt, the agent builds it, and three sessions later a different agent (or you) changes it in a way that drifts from the original requirement. The spec lives only in your head.
