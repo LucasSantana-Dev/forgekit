@@ -6,9 +6,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- ci: **`deploy-web.yml` now fires automatically after a release.** Releases created by `release.yml` with `GITHUB_TOKEN` never emit a `release: published` event to other workflows (GitHub anti-recursion rule), so the webapp deploy silently required a manual `workflow_dispatch` since June. `release.yml` now triggers `deploy-web.yml` explicitly via `gh workflow run` (exempt from the rule) after creating the tag.
+
+## [0.31.0] - 2026-08-21
+
 ### Added
 
+- feat(kit): **Zed and VSCode adapters** (#321). Both follow the project-local editor pattern (cursor/windsurf): rules file, skills dir, providers config, MCP merge. Zed writes `.rules` and merges MCP servers into `.zed/settings.json` under `context_servers`; VSCode writes `.github/copilot-instructions.md` and merges MCP servers for Copilot.
+- feat(kit): **Kimi Code CLI adapter** (#328). Kimi has real event-driven hooks (PreToolUse, PostToolUse, UserPromptSubmit, SubagentStart/Stop) via `[[hooks]]` TOML entries in `config.toml`, with a stdin-JSON contract compatible with forge-kit's existing PostToolUse hook scripts unchanged.
 - feat: **Harness quality + cost instrumentation — 3 tools + 1 hook.** Catalog entries for the "optimize what you measure" toolchain: `harness-skill-scorecard` (structural skill-quality score: HARD invalid-YAML/unclosed-fence vs SOFT missing-stop-conditions, regression-gateable) and `memory-quality-scorecard` (memory-corpus quality: HARD no-frontmatter/invalid-YAML vs SOFT thin/orphan/stale/duplicate) — both `category: benchmarking`; `harness-metrics` (`category: observability`) aggregates both scorecards + self-test + rolling 7-day token cost into a dated JSONL time-series with a visible improvement/regression trend; and the `session-cost-telemetry` SessionEnd hook, which appends per-session tokens + estimated USD by model (Opus/Sonnet/Haiku pricing table) to `~/.claude/metrics/sessions.jsonl` so down-tiering shows up as dollars saved. Scripts identity-sanitized; `catalog:validate` + schema + leak checks pass. Catalog: tools 11→14, hooks 26→27.
+
+### Changed
+
+- feat(web): **Real SVG icons replace Unicode glyphs.** Catalog kind icons (`KIND_ICONS` in `apps/web/src/lib/ui.ts`) are now inline feather-style SVGs (stroke `currentColor`) instead of Unicode characters, and the copy-button feedback uses an SVG check instead of a checkmark glyph. Consistent rendering across OS/font stacks.
+- fix(web): **`getTools()` no longer breaks the build when a tool dir contains subdirectories** (e.g. local `__pycache__`): script file selection now filters to regular files via `withFileTypes`, fixing a local-only `EISDIR` during `astro build`.
+- test: **Scoped mutation testing + 28 negative tests from survivor analysis** (#329). `stryker.conf.json` scoped to 3 jest-covered leaf modules; mutation score 25.89 → 35.09 total / 44.99 → 59.83 covered; baseline in `reports/mutation/baseline.json`.
+- docs: **README improved for discoverability and user journey** (#309); **Ecosystem Heritage section** added (EN + pt-BR) (#336, #337).
+
+### Deprecated
+
+- chore(kit/rag): **`kit/rag` deprecated in favor of the standalone shelfmark repo** (#335).
 
 ## [0.30.0] - 2026-06-24
 
