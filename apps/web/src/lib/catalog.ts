@@ -401,8 +401,8 @@ export async function getTools(): Promise<Tool[]> {
     if (!existsSync(manifestPath)) continue;
     const data = JSON.parse(await readFile(manifestPath, "utf8"));
     const { readdir } = await import("node:fs/promises");
-    const files = await readdir(path.join(base, slug));
-    const scriptFile = files.find((f) => f !== "manifest.json");
+    const entries = await readdir(path.join(base, slug), { withFileTypes: true });
+    const scriptFile = entries.find((e) => e.isFile() && e.name !== "manifest.json")?.name;
     const script = scriptFile ? await readFile(path.join(base, slug, scriptFile), "utf8") : "";
     out.push({ ...(data as Omit<Tool, "script">), script });
   }

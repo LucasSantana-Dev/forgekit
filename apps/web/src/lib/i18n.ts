@@ -143,7 +143,7 @@ export const SHELL: Record<Locale, Record<string, string>> = {
       "Let token-savings hooks rewrite noisy commands automatically.",
 
     "installCopy.label": "Copy command",
-    "installCopy.copied": "✓ copied",
+    "installCopy.copied": "copied",
 
     "list.skills.title": "Skills",
     "list.skills.description": "Browse {count} installable Claude Code skills — context, RAG, planning, testing, security, and more, grouped by category.",
