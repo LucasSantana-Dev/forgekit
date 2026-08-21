@@ -27,7 +27,7 @@ const base = import.meta.env.BASE_URL;
 
 <div class="entry-header" style={`--entry-accent: var(--kind-${kind})`}>
   <div class="entry-header-top">
-    <span class="entry-icon" aria-hidden="true">{icon}</span>
+    <span class="entry-icon" aria-hidden="true" set:html={icon} />
     <span class={`kind kind-${kind}`}>{label}</span>
     {provider && (
       <a

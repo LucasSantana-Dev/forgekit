@@ -14,16 +14,32 @@ const KIND_GLYPHS: Record<Kind, string> = {
   tutorial: "TUT",
 };
 
+function iconSvg(inner: string): string {
+  return `<svg viewBox="0 0 16 16" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
+}
+
 const KIND_ICONS: Record<Kind, string> = {
-  skill: "✦",
-  server: "⌬",
-  agent: "◌",
-  collection: "▣",
-  doc: "▤",
-  hook: "↯",
-  command: "⌘",
-  tool: "⚙",
-  tutorial: "▷",
+  skill: iconSvg('<path d="M8 1.5l1.7 4.8 4.8 1.7-4.8 1.7L8 14.5l-1.7-4.8-4.8-1.7 4.8-1.7L8 1.5z"/>'),
+  server: iconSvg(
+    '<rect x="2" y="2.5" width="12" height="4.5" rx="1.5"/><rect x="2" y="9" width="12" height="4.5" rx="1.5"/><circle cx="4.7" cy="4.75" r="0.9" fill="currentColor" stroke="none"/><circle cx="4.7" cy="11.25" r="0.9" fill="currentColor" stroke="none"/>',
+  ),
+  agent: iconSvg(
+    '<rect x="3" y="5.5" width="10" height="7.5" rx="2"/><path d="M8 5.5V3.5"/><circle cx="8" cy="2.7" r="1"/><circle cx="6" cy="9.2" r="0.9" fill="currentColor" stroke="none"/><circle cx="10" cy="9.2" r="0.9" fill="currentColor" stroke="none"/>',
+  ),
+  collection: iconSvg(
+    '<rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/>',
+  ),
+  doc: iconSvg(
+    '<path d="M9.5 1.8H4.2A1.2 1.2 0 0 0 3 3v10a1.2 1.2 0 0 0 1.2 1.2h7.6A1.2 1.2 0 0 0 13 13V5.3L9.5 1.8z"/><path d="M9.5 1.8v3.5H13"/><path d="M5.5 8.5h5M5.5 11h5"/>',
+  ),
+  hook: iconSvg('<path d="M8.7 1.3L2 9.3h6l-.7 5.4 6.7-8H8l.7-5.4z"/>'),
+  command: iconSvg(
+    '<rect x="1.8" y="2.5" width="12.4" height="11" rx="1.5"/><path d="M4.5 6l2.5 2-2.5 2"/><path d="M8.5 10.5h3"/>',
+  ),
+  tool: iconSvg(
+    '<circle cx="8" cy="8" r="2.2"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M12.6 3.4l-1.4 1.4M4.8 11.2l-1.4 1.4"/>',
+  ),
+  tutorial: iconSvg('<circle cx="8" cy="8" r="6.3"/><path d="M6.6 5.5l4 2.5-4 2.5z"/>'),
 };
 
 const ACRONYM_REPLACEMENTS: Array<[RegExp, string]> = [
