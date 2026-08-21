@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- ci: **`deploy-web.yml` now fires automatically after a release.** Releases created by `release.yml` with `GITHUB_TOKEN` never emit a `release: published` event to other workflows (GitHub anti-recursion rule), so the webapp deploy silently required a manual `workflow_dispatch` since June. `release.yml` now triggers `deploy-web.yml` explicitly via `gh workflow run` (exempt from the rule) after creating the tag.
+
 ## [0.31.0] - 2026-08-21
 
 ### Added

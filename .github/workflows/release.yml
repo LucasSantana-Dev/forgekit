@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   release:
@@ -50,3 +51,13 @@ jobs:
             --title "${{ steps.version.outputs.tag }}" \
             --notes-file /tmp/release-notes.md \
             --target main
+
+      # Releases created with GITHUB_TOKEN do not emit a `release: published`
+      # event to other workflows (GitHub anti-recursion rule), so deploy-web.yml
+      # would never fire on its own. workflow_dispatch is exempt from that rule,
+      # so trigger the deploy explicitly (requires `actions: write`).
+      - name: Trigger webapp deploy
+        if: steps.tag_check.outputs.exists == 'false'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy-web.yml --ref main
