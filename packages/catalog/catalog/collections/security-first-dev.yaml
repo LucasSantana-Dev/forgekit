@@ -28,6 +28,8 @@ items:
   id: security-scan
 - kind: hook
   id: protect-files
+- kind: hook
+  id: computer-use-guard
 - kind: skill
   id: adt-plugin-audit
 - kind: skill
