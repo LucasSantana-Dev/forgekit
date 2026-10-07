@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - docs: **README rewritten as a slim front door (379 → ~104 lines, EN + pt-BR).** Leads with the live catalog site, three-option quick start, one linked component table with real counts (111 skills / 27 hooks / 22 agents / 22 servers / 21 collections / 14 tools), and a curated guide index into `docs/guides/`. Maintainer-only content moved out verbatim: quality checks / mutation testing / release pre-flight / parity audit → `docs/guides/maintenance.md`; troubleshooting → `docs/guides/troubleshooting.md`.
+- deps: **bumped 9 dependencies** (devDeps, patches and security fixes for `@humanfs/node`, `browserslist`, `astro`, `js-yaml` 3.x and 4.x, `brace-expansion`). See PRs #346, #348, #349, #350, #352, #354, #355, #357, #360.
 
 ### Fixed
 
