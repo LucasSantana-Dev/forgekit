@@ -1217,6 +1217,23 @@
     },
     {
       "kind": "hook",
+      "id": "computer-use-guard",
+      "name": "Computer Use Guard",
+      "description": "Claude Code PreToolUse hook for mcp__computer-use__request_access: denies shell-equivalent apps (terminals, IDEs, Docker), Finder, System Settings, credential stores, remote-control apps, clipboardRead and systemKeyCombos. App names are Unicode and path normalized and matched exactly; fails closed on a missing python3, bad payload or internal error. Self-contained (python3 stdlib).",
+      "tags": [
+        "hook",
+        "claude-code",
+        "security",
+        "computer-use"
+      ],
+      "collectionMembership": [
+        "security-first-dev"
+      ],
+      "version": "0.1.0",
+      "deprecated": false
+    },
+    {
+      "kind": "hook",
       "id": "context-backup",
       "name": "Context Backup",
       "description": "Context backup hook for Claude Code Backs up important context before compaction",

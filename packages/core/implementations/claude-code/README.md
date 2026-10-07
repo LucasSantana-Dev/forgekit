@@ -955,6 +955,15 @@ See [hooks/pre-tool-use.sh](./hooks/pre-tool-use.sh) for comprehensive examples:
 - Secret scanning = [Security Best Practices](../../best-practices/security.md)
 - Safeguards = [Agent Gotchas](../../patterns/agent-gotchas.md)
 
+### Permission Rules for Credentials and Force Pushes
+
+`settings.user.example.json` ships `permissions.deny` and `permissions.ask` rules that cover what a hook cannot see or should not decide alone:
+
+- `deny` Read on credential locations (`~/.ssh`, `~/.aws`, `~/.config/gcloud`, `~/.kube`, `~/.gnupg`, `~/.netrc`, `~/.npmrc`, the Docker config, the `gh` hosts file) and on `.env` variants. The `!` entries carve out template files (`.env.example`, `.env.sample`, `.env.template`, `.env.dist`, `.env.defaults`) so they stay readable.
+- `ask` on `git push` with `--force`, `-f`, a `+refspec` or `--mirror`, so history rewrites need a human yes instead of being silently blocked or silently allowed.
+
+Deny rules win over `allow`, so the starter `Read` allow entry does not re-open these paths. Rules guard Claude's own Read tool; pair them with a Bash hook such as `secret-detection` and the `computer-use-guard` hook (matcher `mcp__computer-use__request_access`) so a shell, Finder or password manager cannot become a side door to the same files.
+
 ## Performance Optimization
 
 ### Token Budget Management
