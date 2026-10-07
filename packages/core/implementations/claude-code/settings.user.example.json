@@ -1,9 +1,43 @@
 {
   "permissions": {
-    "allow": ["Read", "Glob", "Grep", "LS"],
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "LS"
+    ],
     "deny": [
       "Bash(rm -rf /)",
-      "Bash(git push --force origin main)"
+      "Bash(git push --force origin main)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.config/gcloud/**)",
+      "Read(~/.kube/**)",
+      "Read(~/.gnupg/**)",
+      "Read(~/.netrc)",
+      "Read(~/.npmrc)",
+      "Read(~/.docker/config.json)",
+      "Read(~/.config/gh/hosts.yml)",
+      "Read(//**/.env)",
+      "Read(//**/.env.local)",
+      "Read(//**/.env.production)",
+      "Read(//**/.env.staging)",
+      "Read(//**/.env.test)",
+      "Read(//**/.env.development)",
+      "Read(//**/.env.*.local)",
+      "Read(.env.*)",
+      "Read(!.env.example)",
+      "Read(!.env.sample)",
+      "Read(!.env.template)",
+      "Read(!.env.dist)",
+      "Read(!.env.defaults)"
+    ],
+    "ask": [
+      "Bash(git push *--force*)",
+      "Bash(git push -f*)",
+      "Bash(git push * -f*)",
+      "Bash(git push *+*)",
+      "Bash(git push *--mirror*)"
     ]
   },
   "hooks": {
