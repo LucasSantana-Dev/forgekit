@@ -8,9 +8,14 @@ permissions:
   issues: write
   pull-requests: write
 
+# Inline: the reusable LucasSantana-Dev/github-org-workflows repo no longer
+# exists, so the old `uses:` call failed every week.
 jobs:
   stale:
-    uses: LucasSantana-Dev/github-org-workflows/.github/workflows/reusable-stale.yml@main
-    with:
-      days-before-stale: 30
-      days-before-close: 14
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/stale@5bef64f04d4e0a6e2d4bf6e4495c6cc5d0dacd81 # v9.1.0
+        with:
+          days-before-stale: 30
+          days-before-close: 14
