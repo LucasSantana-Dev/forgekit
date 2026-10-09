@@ -6,9 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- feat(hooks): **`computer-use-guard` PreToolUse hook** (matcher `mcp__computer-use__request_access`, in the `security-first-dev` collection). Computer use drives the real desktop, so Bash/Read hooks cannot see it. The guard denies shell-equivalent apps (terminals, IDEs, Docker), Finder, System Settings, credential stores, remote-control apps, `clipboardRead` and `systemKeyCombos`. App names are Unicode and path normalized and matched exactly (no substring hits); it fails closed on a missing python3, bad payload or internal error. Self-contained (python3 stdlib); regression tests in `test/computer-use-guard.test.js`.
+- docs(claude-code): **credential-read deny rules and force-push ask rules** in `settings.user.example.json`, with a short explanation in the Claude Code implementation README.
+
 ### Changed
 
 - docs: **README rewritten as a slim front door (379 → ~104 lines, EN + pt-BR).** Leads with the live catalog site, three-option quick start, one linked component table with real counts (111 skills / 27 hooks / 22 agents / 22 servers / 21 collections / 14 tools), and a curated guide index into `docs/guides/`. Maintainer-only content moved out verbatim: quality checks / mutation testing / release pre-flight / parity audit → `docs/guides/maintenance.md`; troubleshooting → `docs/guides/troubleshooting.md`.
+- deps: **bumped 9 dependencies** (devDeps, patches and security fixes for `@humanfs/node`, `browserslist`, `astro`, `js-yaml` 3.x and 4.x, `brace-expansion`). See PRs #346, #348, #349, #350, #352, #354, #355, #357, #360.
 
 ### Fixed
 
