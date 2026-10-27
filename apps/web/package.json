@@ -20,7 +20,7 @@
   "devDependencies": {
     "@playwright/test": "^1.61.1",
     "@types/js-yaml": "^4.0.9",
-    "typescript": "^5.6.3",
+    "typescript": "^7.0.2",
     "wrangler": "^4"
   }
 }
