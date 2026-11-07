@@ -1,6 +1,6 @@
 ---
 name: fallback
-description: Graceful degradation when primary approach fails. Try alternates in priority order; record which path succeeded for future routing.
+description: Graceful degradation when primary approach fails. Try alternates in priority order; record which path succeeded for future routing. Plan B when the first plan fails.
 triggers:
   - "try fallback"
   - "primary failed"

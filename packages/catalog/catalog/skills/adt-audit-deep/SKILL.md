@@ -1,6 +1,6 @@
 ---
 name: audit-deep
-description: Composite skill — full project health check across testing, config, hooks, performance, security, MCP, and plugins. Runs the audit skills in parallel and reconciles into one severity-ranked report with prioritized remediation plan. Use weekly per active project, before major releases, or as part of quarterly tech-debt review.
+description: Composite skill — full project health check across testing, config, hooks, performance, security, MCP, and plugins. Runs the audit skills in parallel and reconciles into one severity-ranked report with prioritized remediation plan. Use weekly per active project, before major releases, or as part of quarterly tech-debt review. Run pre release as a health gate.
 triggers:
   - audit-deep
   - weekly-per-repo

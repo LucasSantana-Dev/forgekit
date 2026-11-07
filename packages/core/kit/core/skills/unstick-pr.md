@@ -1,6 +1,6 @@
 ---
 name: unstick-pr
-description: Recover a PR whose head SHA disagrees with its branch ref (webhook desync). Force-push and close+reopen rarely fix it — recreate the PR.
+description: Recover a PR whose head SHA disagrees with its branch ref (webhook desync). Force-push and close+reopen rarely fix it — recreate the PR. Use when a PR is conflicting but local is clean.
 triggers:
   - unstick pr
   - webhook desync

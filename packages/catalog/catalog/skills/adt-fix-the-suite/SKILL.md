@@ -8,7 +8,6 @@ triggers:
   - test-failure-clusters
   - cleanup
   - mutation
-  - capture
 ---
 
 # Fix The Suite

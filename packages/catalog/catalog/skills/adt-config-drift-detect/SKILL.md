@@ -5,7 +5,6 @@ triggers:
   - config-drift-detect
   - scheduled-weekly
   - pre-refactor
-  - audit
   - cleanup
   - refactor
 ---

@@ -6,7 +6,6 @@ triggers:
   - production-down
   - sentry-spike
   - ship-it-detected-new-errors
-  - ship
   - deploy
   - incident
 ---

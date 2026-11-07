@@ -1,6 +1,6 @@
 ---
 name: agent-teams
-description: Decompose a task into parallel workstreams, assign agent ownership, run integration at dependency boundaries, and synthesize results.
+description: Decompose a task into parallel workstreams, assign agent ownership, run integration at dependency boundaries, and synthesize results. Use to run a multi agent workflow.
 triggers:
   - decompose multi-agent work
   - plan parallel agent teams

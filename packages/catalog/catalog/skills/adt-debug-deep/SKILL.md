@@ -1,6 +1,6 @@
 ---
 name: debug-deep
-description: Composite skill — full debugging workflow from "this is broken" to root cause and fix. Chains systematic-debugging (root-cause hypotheses) → tracer agent (evidence walk) → sentry (production correlation if applicable) → ci-watch (regression check) → incident-response (if production-impacting). Use when a bug needs deep investigation, not just a quick fix.
+description: Composite skill — full debugging workflow from "this is broken" to root cause and fix. Chains systematic-debugging (root-cause hypotheses) → tracer agent (evidence walk) → sentry (production correlation if applicable) → ci-watch (regression check) → incident-response (if production-impacting). Use when a bug needs deep investigation, not just a quick fix. Deep debug for hard bugs and recurring failures.
 triggers:
   - debug-deep
   - complex-bug-reports

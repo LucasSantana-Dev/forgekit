@@ -1,11 +1,10 @@
 ---
 name: refactor-pipeline
-description: Composite skill — safely refactor a module end-to-end with sequencing, parallel implementation, post-refactor cleanup, and rationale capture. Chains refactor-plan (phased plan + rollback) → three-man-team (architect/builder/reviewer in parallel) → fix-the-suite post-refactor → adr-write → docs-sync. Use for non-trivial refactors that need both careful sequencing and durable record.
+description: Composite skill — safely refactor a module end-to-end with sequencing, parallel implementation, post-refactor cleanup, and rationale capture. Chains refactor-plan (phased plan + rollback) → three-man-team (architect/builder/reviewer in parallel) → fix-the-suite post-refactor → adr-write → docs-sync. Use for non-trivial refactors that need both careful sequencing and durable record. Use for refactor requests with cross file scope.
 triggers:
   - refactor-pipeline
   - refactor-requests-with-cross-file-scope
   - cleanup
-  - capture
   - refactor
 ---
 
