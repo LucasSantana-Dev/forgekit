@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- ci: **context gate** (`.github/workflows/context-gate.yml`). Runs the hitgate context gate over catalog skills and core notes against baselines in `.hitgate/`, and fails a PR that makes a skill trigger or note description stop reaching its own document. Usage and re-freeze steps in `docs/guides/maintenance.md`.
 - feat(hooks): **`computer-use-guard` PreToolUse hook** (matcher `mcp__computer-use__request_access`, in the `security-first-dev` collection). Computer use drives the real desktop, so Bash/Read hooks cannot see it. The guard denies shell-equivalent apps (terminals, IDEs, Docker), Finder, System Settings, credential stores, remote-control apps, `clipboardRead` and `systemKeyCombos`. App names are Unicode and path normalized and matched exactly (no substring hits); it fails closed on a missing python3, bad payload or internal error. Self-contained (python3 stdlib); regression tests in `test/computer-use-guard.test.js`.
 - docs(claude-code): **credential-read deny rules and force-push ask rules** in `settings.user.example.json`, with a short explanation in the Claude Code implementation README.
 

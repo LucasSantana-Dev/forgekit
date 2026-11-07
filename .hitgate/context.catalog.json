@@ -1,0 +1,5283 @@
+{
+  "n": 469,
+  "mrr": 0.553,
+  "hit@1": 0.469,
+  "hit@3": 0.625,
+  "hit@5": 0.682,
+  "by_scope": {
+    "none": {
+      "n": 469,
+      "mrr": 0.553,
+      "hit@1": 0.469,
+      "hit@3": 0.625,
+      "hit@5": 0.682
+    }
+  },
+  "by_intent": {
+    "note": {
+      "n": 50,
+      "mrr": 0.967,
+      "hit@1": 0.96,
+      "hit@3": 0.98,
+      "hit@5": 0.98
+    },
+    "skill-trigger": {
+      "n": 419,
+      "mrr": 0.503,
+      "hit@1": 0.411,
+      "hit@3": 0.582,
+      "hit@5": 0.647
+    }
+  },
+  "per_case": [
+    {
+      "query": "add a skill",
+      "expect": "/skills/adt-add/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-add/SKILL.md:?"
+    },
+    {
+      "query": "add a pattern",
+      "expect": "/skills/adt-add/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-add/SKILL.md:?"
+    },
+    {
+      "query": "add a hook",
+      "expect": "/skills/adt-add/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-add/SKILL.md:?"
+    },
+    {
+      "query": "add an agent",
+      "expect": "/skills/adt-add/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-add/SKILL.md:?"
+    },
+    {
+      "query": "add a guide",
+      "expect": "/skills/adt-add/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-add/SKILL.md:?"
+    },
+    {
+      "query": "add to toolkit",
+      "expect": "/skills/adt-add/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-add/SKILL.md:?"
+    },
+    {
+      "query": "adr-write",
+      "expect": "/skills/adt-adr-write/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-adr-write/SKILL.md:?"
+    },
+    {
+      "query": "capture",
+      "expect": "/skills/adt-adr-write/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/skills/adt-research-and-decide/SKILL.md:?"
+    },
+    {
+      "query": "refactor",
+      "expect": "/skills/adt-adr-write/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/skills/adt-refactor-pipeline/SKILL.md:?"
+    },
+    {
+      "query": "audit-deep",
+      "expect": "/skills/adt-audit-deep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-audit-deep/SKILL.md:?"
+    },
+    {
+      "query": "weekly-per-repo",
+      "expect": "/skills/adt-audit-deep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-audit-deep/SKILL.md:?"
+    },
+    {
+      "query": "pre-release",
+      "expect": "/skills/adt-audit-deep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/adt-security-auditor.md:?"
+    },
+    {
+      "query": "tech-debt-review",
+      "expect": "/skills/adt-audit-deep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-audit-deep/SKILL.md:?"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-audit-deep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "audit",
+      "expect": "/skills/adt-audit-deep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
+    },
+    {
+      "query": "which skill",
+      "expect": "/skills/adt-auto-invoke/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-ship-it/SKILL.md:?"
+    },
+    {
+      "query": "what skill should i use",
+      "expect": "/skills/adt-auto-invoke/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "skill routing",
+      "expect": "/skills/adt-auto-invoke/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-fallback/SKILL.md:?"
+    },
+    {
+      "query": "auto-invoke",
+      "expect": "/skills/adt-auto-invoke/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-auto-invoke/SKILL.md:?"
+    },
+    {
+      "query": "build-fix",
+      "expect": "/skills/adt-build-fix/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/agents/debugger.md:?"
+    },
+    {
+      "query": "build error",
+      "expect": "/skills/adt-build-fix/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/agents/debugger.md:?"
+    },
+    {
+      "query": "tsc error",
+      "expect": "/skills/adt-build-fix/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/agents/debugger.md:?"
+    },
+    {
+      "query": "compile fail",
+      "expect": "/skills/adt-build-fix/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-build-fix/SKILL.md:?"
+    },
+    {
+      "query": "module not found",
+      "expect": "/skills/adt-build-fix/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/benchmark-reality-gap.md:?"
+    },
+    {
+      "query": "checkpoint",
+      "expect": "/skills/adt-checkpoint/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-checkpoint/SKILL.md:?"
+    },
+    {
+      "query": "save wip",
+      "expect": "/skills/adt-checkpoint/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-checkpoint/SKILL.md:?"
+    },
+    {
+      "query": "safety save",
+      "expect": "/skills/adt-checkpoint/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-checkpoint/SKILL.md:?"
+    },
+    {
+      "query": "wip backup",
+      "expect": "/skills/adt-checkpoint/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-checkpoint/SKILL.md:?"
+    },
+    {
+      "query": "stash backup",
+      "expect": "/skills/adt-checkpoint/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "ci watch",
+      "expect": "/skills/adt-ci-watch/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-ci-watch/SKILL.md:?"
+    },
+    {
+      "query": "failing checks",
+      "expect": "/skills/adt-ci-watch/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-ci-watch/SKILL.md:?"
+    },
+    {
+      "query": "check the pipeline",
+      "expect": "/skills/adt-ci-watch/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/llm-evaluation.md:?"
+    },
+    {
+      "query": "ci blocker",
+      "expect": "/skills/adt-ci-watch/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-ci-watch/SKILL.md:?"
+    },
+    {
+      "query": "checks failing",
+      "expect": "/skills/adt-ci-watch/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-ci-watch/SKILL.md:?"
+    },
+    {
+      "query": "compress assets",
+      "expect": "/skills/adt-compress-assets/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-compress-assets/SKILL.md:?"
+    },
+    {
+      "query": "optimize images",
+      "expect": "/skills/adt-compress-assets/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-compress-assets/SKILL.md:?"
+    },
+    {
+      "query": "shrink the assets folder",
+      "expect": "/skills/adt-compress-assets/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-compress-assets/SKILL.md:?"
+    },
+    {
+      "query": "convert to webp",
+      "expect": "/skills/adt-compress-assets/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-compress-assets/SKILL.md:?"
+    },
+    {
+      "query": "optimize image sizes",
+      "expect": "/skills/adt-compress-assets/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-compress-assets/SKILL.md:?"
+    },
+    {
+      "query": "config-drift-detect",
+      "expect": "/skills/adt-config-drift-detect/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-config-drift-detect/SKILL.md:?"
+    },
+    {
+      "query": "scheduled-weekly",
+      "expect": "/skills/adt-config-drift-detect/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/skills/adt-token-audit/SKILL.md:?"
+    },
+    {
+      "query": "pre-refactor",
+      "expect": "/skills/adt-config-drift-detect/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-refactor-pipeline/SKILL.md:?"
+    },
+    {
+      "query": "audit",
+      "expect": "/skills/adt-config-drift-detect/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
+    },
+    {
+      "query": "cleanup",
+      "expect": "/skills/adt-config-drift-detect/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/skills/adt-fix-the-suite/SKILL.md:?"
+    },
+    {
+      "query": "refactor",
+      "expect": "/skills/adt-config-drift-detect/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-refactor-pipeline/SKILL.md:?"
+    },
+    {
+      "query": "optimize context",
+      "expect": "/skills/adt-context/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-optimize/SKILL.md:?"
+    },
+    {
+      "query": "context too large",
+      "expect": "/skills/adt-context/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/tutorials/rag-recall-setup.md:?"
+    },
+    {
+      "query": "compact",
+      "expect": "/skills/adt-context/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-context/SKILL.md:?"
+    },
+    {
+      "query": "session slow",
+      "expect": "/skills/adt-context/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-optimize/SKILL.md:?"
+    },
+    {
+      "query": "free up context",
+      "expect": "/skills/adt-context/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-session-bootstrap/SKILL.md:?"
+    },
+    {
+      "query": "context pressure",
+      "expect": "/skills/adt-context/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/mac-optimize/SKILL.md:?"
+    },
+    {
+      "query": "clean context",
+      "expect": "/skills/adt-context-hygiene/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/best-context-management.md:?"
+    },
+    {
+      "query": "session bloated",
+      "expect": "/skills/adt-context-hygiene/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-test-cleanup/SKILL.md:?"
+    },
+    {
+      "query": "context too long",
+      "expect": "/skills/adt-context-hygiene/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/tutorials/rag-recall-setup.md:?"
+    },
+    {
+      "query": "prune session",
+      "expect": "/skills/adt-context-hygiene/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/branch-hygiene/SKILL.md:?"
+    },
+    {
+      "query": "switch task",
+      "expect": "/skills/adt-context-hygiene/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/task-orchestration/SKILL.md:?"
+    },
+    {
+      "query": "cost",
+      "expect": "/skills/adt-cost/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/docs/ai-observability.md:?"
+    },
+    {
+      "query": "how much did that cost",
+      "expect": "/skills/adt-cost/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/rag-architecture.md:?"
+    },
+    {
+      "query": "token usage",
+      "expect": "/skills/adt-cost/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-token-audit/SKILL.md:?"
+    },
+    {
+      "query": "budget",
+      "expect": "/skills/adt-cost/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/streaming-orchestration.md:?"
+    },
+    {
+      "query": "spending",
+      "expect": "/skills/adt-cost/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/multi-model-routing.md:?"
+    },
+    {
+      "query": "debug-deep",
+      "expect": "/skills/adt-debug-deep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-production-incident/SKILL.md:?"
+    },
+    {
+      "query": "complex-bug-reports",
+      "expect": "/skills/adt-debug-deep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 5,
+      "top_hit": "/docs/multi-model-routing.md:?"
+    },
+    {
+      "query": "production-incidents",
+      "expect": "/skills/adt-debug-deep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/skills/adt-ship-it/SKILL.md:?"
+    },
+    {
+      "query": "recurring-failures",
+      "expect": "/skills/adt-debug-deep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-schedule/SKILL.md:?"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-debug-deep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "debug",
+      "expect": "/skills/adt-debug-deep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/skills/adt-production-incident/SKILL.md:?"
+    },
+    {
+      "query": "dep lifecycle",
+      "expect": "/skills/adt-dep-lifecycle/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-dep-lifecycle/SKILL.md:?"
+    },
+    {
+      "query": "dependency audit",
+      "expect": "/skills/adt-dep-lifecycle/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-dep-lifecycle/SKILL.md:?"
+    },
+    {
+      "query": "update dependencies",
+      "expect": "/skills/adt-dep-lifecycle/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/best-workflow.md:?"
+    },
+    {
+      "query": "dependabot triage",
+      "expect": "/skills/adt-dep-lifecycle/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-dep-lifecycle/SKILL.md:?"
+    },
+    {
+      "query": "bump deps",
+      "expect": "/skills/adt-dep-lifecycle/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-release-flow/SKILL.md:?"
+    },
+    {
+      "query": "audit dependencies",
+      "expect": "/skills/adt-dep-lifecycle/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-security-sweep/SKILL.md:?"
+    },
+    {
+      "query": "design-build",
+      "expect": "/skills/adt-design-build/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-design-build/SKILL.md:?"
+    },
+    {
+      "query": "ui-build-requests",
+      "expect": "/skills/adt-design-build/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-design-build/SKILL.md:?"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-design-build/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "audit",
+      "expect": "/skills/adt-design-build/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
+    },
+    {
+      "query": "design",
+      "expect": "/skills/adt-design-build/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-design-build/SKILL.md:?"
+    },
+    {
+      "query": "eval",
+      "expect": "/skills/adt-eval/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/docs/braintrust-evals.md:?"
+    },
+    {
+      "query": "evaluate",
+      "expect": "/skills/adt-eval/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-rag-quality/SKILL.md:?"
+    },
+    {
+      "query": "benchmark",
+      "expect": "/skills/adt-eval/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/benchmark-reality-gap.md:?"
+    },
+    {
+      "query": "test the model",
+      "expect": "/skills/adt-eval/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/reasoning-model-prompting.md:?"
+    },
+    {
+      "query": "measure quality",
+      "expect": "/skills/adt-eval/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-token-audit/SKILL.md:?"
+    },
+    {
+      "query": "llm quality",
+      "expect": "/skills/adt-eval/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/braintrust-evals.md:?"
+    },
+    {
+      "query": "output quality",
+      "expect": "/skills/adt-eval/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/reasoning-model-prompting.md:?"
+    },
+    {
+      "query": "try fallback",
+      "expect": "/skills/adt-fallback/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-fallback/SKILL.md:?"
+    },
+    {
+      "query": "primary failed",
+      "expect": "/skills/adt-fallback/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-fallback/SKILL.md:?"
+    },
+    {
+      "query": "alternate approach",
+      "expect": "/skills/adt-fallback/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-fallback/SKILL.md:?"
+    },
+    {
+      "query": "plan b",
+      "expect": "/skills/adt-fallback/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/planner.md:?"
+    },
+    {
+      "query": "feature-from-zero",
+      "expect": "/skills/adt-feature-from-zero/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-feature-from-zero/SKILL.md:?"
+    },
+    {
+      "query": "greenfield-feature-requests",
+      "expect": "/skills/adt-feature-from-zero/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-feature-from-zero/SKILL.md:?"
+    },
+    {
+      "query": "spec-to-prod-workflows",
+      "expect": "/skills/adt-feature-from-zero/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-ship-it/SKILL.md:?"
+    },
+    {
+      "query": "ship",
+      "expect": "/skills/adt-feature-from-zero/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-scope-and-execute/SKILL.md:?"
+    },
+    {
+      "query": "feature",
+      "expect": "/skills/adt-feature-from-zero/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-feature-from-zero/SKILL.md:?"
+    },
+    {
+      "query": "greenfield",
+      "expect": "/skills/adt-feature-from-zero/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-feature-from-zero/SKILL.md:?"
+    },
+    {
+      "query": "fix-the-suite",
+      "expect": "/skills/adt-fix-the-suite/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-fix-the-suite/SKILL.md:?"
+    },
+    {
+      "query": "bloated-suite",
+      "expect": "/skills/adt-fix-the-suite/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-test-cleanup/SKILL.md:?"
+    },
+    {
+      "query": "slow-suite",
+      "expect": "/skills/adt-fix-the-suite/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-test-pipeline/SKILL.md:?"
+    },
+    {
+      "query": "test-failure-clusters",
+      "expect": "/skills/adt-fix-the-suite/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-fix-the-suite/SKILL.md:?"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-fix-the-suite/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "cleanup",
+      "expect": "/skills/adt-fix-the-suite/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-fix-the-suite/SKILL.md:?"
+    },
+    {
+      "query": "mutation",
+      "expect": "/skills/adt-fix-the-suite/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/skills/adt-mutation-test/SKILL.md:?"
+    },
+    {
+      "query": "capture",
+      "expect": "/skills/adt-fix-the-suite/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-research-and-decide/SKILL.md:?"
+    },
+    {
+      "query": "end-of-task + recall-questions + checkpoint-requests",
+      "expect": "/skills/adt-knowledge-loop/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-knowledge-loop/SKILL.md:?"
+    },
+    {
+      "query": "learn",
+      "expect": "/skills/adt-learn/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-learn/SKILL.md:?"
+    },
+    {
+      "query": "extract patterns",
+      "expect": "/skills/adt-learn/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-learn/SKILL.md:?"
+    },
+    {
+      "query": "what did I learn",
+      "expect": "/skills/adt-learn/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/incident-followup/SKILL.md:?"
+    },
+    {
+      "query": "save pattern",
+      "expect": "/skills/adt-learn/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-knowledge-loop/SKILL.md:?"
+    },
+    {
+      "query": "continuous learning",
+      "expect": "/skills/adt-learn/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/xp/SKILL.md:?"
+    },
+    {
+      "query": "loop",
+      "expect": "/skills/adt-loop/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-loop/SKILL.md:?"
+    },
+    {
+      "query": "execute this plan",
+      "expect": "/skills/adt-loop/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-scope-and-execute/SKILL.md:?"
+    },
+    {
+      "query": "keep going safely",
+      "expect": "/skills/adt-loop/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-token-audit/SKILL.md:?"
+    },
+    {
+      "query": "work through these",
+      "expect": "/skills/adt-loop/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/skills/parallel-phases/SKILL.md:?"
+    },
+    {
+      "query": "drain the queue",
+      "expect": "/skills/adt-loop/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-session-bootstrap/SKILL.md:?"
+    },
+    {
+      "query": "keep cycling",
+      "expect": "/skills/adt-loop/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-context-hygiene/SKILL.md:?"
+    },
+    {
+      "query": "run iteratively",
+      "expect": "/skills/adt-loop/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-loop/SKILL.md:?"
+    },
+    {
+      "query": "memory",
+      "expect": "/skills/adt-memory/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "remember this",
+      "expect": "/skills/adt-memory/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-knowledge-loop/SKILL.md:?"
+    },
+    {
+      "query": "save for next session",
+      "expect": "/skills/adt-memory/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-knowledge-loop/SKILL.md:?"
+    },
+    {
+      "query": "persist",
+      "expect": "/skills/adt-memory/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-memory/SKILL.md:?"
+    },
+    {
+      "query": "cross-session",
+      "expect": "/skills/adt-memory/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-specs-aggregate-roadmap/SKILL.md:?"
+    },
+    {
+      "query": "merge-confidently",
+      "expect": "/skills/adt-merge-confidently/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-merge-confidently/SKILL.md:?"
+    },
+    {
+      "query": "merge-requests",
+      "expect": "/skills/adt-merge-confidently/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/docs/ai-observability.md:?"
+    },
+    {
+      "query": "pr-completion-claims",
+      "expect": "/skills/adt-merge-confidently/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/verifier.md:?"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-merge-confidently/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 5,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "merge",
+      "expect": "/skills/adt-merge-confidently/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-merge-confidently/SKILL.md:?"
+    },
+    {
+      "query": "multi-agent",
+      "expect": "/skills/adt-multi-agent/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/docs/claude-managed-agents.md:?"
+    },
+    {
+      "query": "parallel agents",
+      "expect": "/skills/adt-multi-agent/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/agents/env-gemini-cli.md:?"
+    },
+    {
+      "query": "agent orchestration",
+      "expect": "/skills/adt-multi-agent/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/claude-code-workflows.md:?"
+    },
+    {
+      "query": "dag execution",
+      "expect": "/skills/adt-multi-agent/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-multi-agent/SKILL.md:?"
+    },
+    {
+      "query": "mutation-test",
+      "expect": "/skills/adt-mutation-test/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-test-pipeline/SKILL.md:?"
+    },
+    {
+      "query": "mutation",
+      "expect": "/skills/adt-mutation-test/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-mutation-test/SKILL.md:?"
+    },
+    {
+      "query": "next priority",
+      "expect": "/skills/adt-next-priority/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-next-priority/SKILL.md:?"
+    },
+    {
+      "query": "what should happen now",
+      "expect": "/skills/adt-next-priority/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/agents/adt-systematic-debugger.md:?"
+    },
+    {
+      "query": "triage this repo",
+      "expect": "/skills/adt-next-priority/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-dep-lifecycle/SKILL.md:?"
+    },
+    {
+      "query": "onboard-new-repo",
+      "expect": "/skills/adt-onboard-new-repo/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-onboard-new-repo/SKILL.md:?"
+    },
+    {
+      "query": "first-touch-on-unknown-repo",
+      "expect": "/skills/adt-onboard-new-repo/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-onboard-new-repo/SKILL.md:?"
+    },
+    {
+      "query": "post-repo-clone",
+      "expect": "/skills/adt-onboard-new-repo/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/env-codex-app.md:?"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-onboard-new-repo/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "optimize",
+      "expect": "/skills/adt-optimize/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-optimize/SKILL.md:?"
+    },
+    {
+      "query": "orchestrate parallel work",
+      "expect": "/skills/adt-orchestrate/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-multi-agent/SKILL.md:?"
+    },
+    {
+      "query": "coordinate subagents",
+      "expect": "/skills/adt-orchestrate/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-orchestrate/SKILL.md:?"
+    },
+    {
+      "query": "multi-agent task",
+      "expect": "/skills/adt-orchestrate/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-multi-agent/SKILL.md:?"
+    },
+    {
+      "query": "parallel workstreams",
+      "expect": "/skills/adt-orchestrate/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/agent-teams/SKILL.md:?"
+    },
+    {
+      "query": "check all open prs",
+      "expect": "/skills/adt-parallel-investigate/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/claude-code-routines-monitor.md:?"
+    },
+    {
+      "query": "investigate across repos",
+      "expect": "/skills/adt-parallel-investigate/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-parallel-investigate/SKILL.md:?"
+    },
+    {
+      "query": "parallel investigate",
+      "expect": "/skills/adt-parallel-investigate/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-parallel-investigate/SKILL.md:?"
+    },
+    {
+      "query": "audit each",
+      "expect": "/skills/adt-parallel-investigate/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/claude-code-workflows.md:?"
+    },
+    {
+      "query": "status of every",
+      "expect": "/skills/adt-parallel-investigate/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/verifier.md:?"
+    },
+    {
+      "query": "perf audit",
+      "expect": "/skills/adt-perf-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
+    },
+    {
+      "query": "performance audit",
+      "expect": "/skills/adt-perf-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-perf-audit/SKILL.md:?"
+    },
+    {
+      "query": "slow build",
+      "expect": "/skills/adt-perf-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/agents/debugger.md:?"
+    },
+    {
+      "query": "slow tests",
+      "expect": "/skills/adt-perf-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/skills/adt-test-pipeline/SKILL.md:?"
+    },
+    {
+      "query": "performance regression",
+      "expect": "/skills/adt-perf-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-perf-audit/SKILL.md:?"
+    },
+    {
+      "query": "optimize performance",
+      "expect": "/skills/adt-perf-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-perf-audit/SKILL.md:?"
+    },
+    {
+      "query": "profile this",
+      "expect": "/skills/adt-perf-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-perf-audit/SKILL.md:?"
+    },
+    {
+      "query": "create a plan",
+      "expect": "/skills/adt-plan/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/planner.md:?"
+    },
+    {
+      "query": "plan this",
+      "expect": "/skills/adt-plan/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/agents/planner.md:?"
+    },
+    {
+      "query": "what is the approach",
+      "expect": "/skills/adt-plan/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-fallback/SKILL.md:?"
+    },
+    {
+      "query": "draft a plan",
+      "expect": "/skills/adt-plan/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/docs/claude-code-cloud-review-plan.md:?"
+    },
+    {
+      "query": "design the rollout",
+      "expect": "/skills/adt-plan/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-design-build/SKILL.md:?"
+    },
+    {
+      "query": "phase this work",
+      "expect": "/skills/adt-plan/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/skills/parallel-phases/SKILL.md:?"
+    },
+    {
+      "query": "implementation strategy",
+      "expect": "/skills/adt-plan/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/test-engineer.md:?"
+    },
+    {
+      "query": "audit plugins",
+      "expect": "/skills/adt-plugin-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-plugin-audit/SKILL.md:?"
+    },
+    {
+      "query": "what plugins am I missing",
+      "expect": "/skills/adt-plugin-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/agents/critic.md:?"
+    },
+    {
+      "query": "check anthropic marketplace",
+      "expect": "/skills/adt-plugin-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-plugin-audit/SKILL.md:?"
+    },
+    {
+      "query": "plugin delta",
+      "expect": "/skills/adt-plugin-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-plugin-audit/SKILL.md:?"
+    },
+    {
+      "query": "pr-merge-readiness",
+      "expect": "/skills/adt-pr-merge-readiness/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-pr-merge-readiness/SKILL.md:?"
+    },
+    {
+      "query": "merge",
+      "expect": "/skills/adt-pr-merge-readiness/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-merge-confidently/SKILL.md:?"
+    },
+    {
+      "query": "production-incident",
+      "expect": "/skills/adt-production-incident/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-production-incident/SKILL.md:?"
+    },
+    {
+      "query": "production-down",
+      "expect": "/skills/adt-production-incident/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 5,
+      "top_hit": "/docs/braintrust-evals.md:?"
+    },
+    {
+      "query": "sentry-spike",
+      "expect": "/skills/adt-production-incident/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-production-incident/SKILL.md:?"
+    },
+    {
+      "query": "ship-it-detected-new-errors",
+      "expect": "/skills/adt-production-incident/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/debugger.md:?"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-production-incident/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "ship",
+      "expect": "/skills/adt-production-incident/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-scope-and-execute/SKILL.md:?"
+    },
+    {
+      "query": "deploy",
+      "expect": "/skills/adt-production-incident/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/skills/adt-ship-it/SKILL.md:?"
+    },
+    {
+      "query": "incident",
+      "expect": "/skills/adt-production-incident/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-production-incident/SKILL.md:?"
+    },
+    {
+      "query": "rag",
+      "expect": "/skills/adt-rag/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/tutorials/rag-recall-setup.md:?"
+    },
+    {
+      "query": "retrieval",
+      "expect": "/skills/adt-rag/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/docs/rag-architecture.md:?"
+    },
+    {
+      "query": "build a rag",
+      "expect": "/skills/adt-rag/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag/SKILL.md:?"
+    },
+    {
+      "query": "semantic search",
+      "expect": "/skills/adt-rag/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/ai-observability.md:?"
+    },
+    {
+      "query": "document retrieval",
+      "expect": "/skills/adt-rag/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/docs/rag-architecture.md:?"
+    },
+    {
+      "query": "vector search",
+      "expect": "/skills/adt-rag/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/rag-architecture.md:?"
+    },
+    {
+      "query": "rag coverage",
+      "expect": "/skills/adt-rag-coverage/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag-coverage/SKILL.md:?"
+    },
+    {
+      "query": "corpus audit",
+      "expect": "/skills/adt-rag-coverage/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag-coverage/SKILL.md:?"
+    },
+    {
+      "query": "rag gaps",
+      "expect": "/skills/adt-rag-coverage/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-rag-curate/SKILL.md:?"
+    },
+    {
+      "query": "coverage audit",
+      "expect": "/skills/adt-rag-coverage/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag-coverage/SKILL.md:?"
+    },
+    {
+      "query": "what's missing from rag",
+      "expect": "/skills/adt-rag-coverage/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-rag-curate/SKILL.md:?"
+    },
+    {
+      "query": "rag curate",
+      "expect": "/skills/adt-rag-curate/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag-curate/SKILL.md:?"
+    },
+    {
+      "query": "curate corpus",
+      "expect": "/skills/adt-rag-curate/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag-curate/SKILL.md:?"
+    },
+    {
+      "query": "improve rag",
+      "expect": "/skills/adt-rag-curate/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-knowledge-loop/SKILL.md:?"
+    },
+    {
+      "query": "add to rag",
+      "expect": "/skills/adt-rag-curate/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/tutorials/rag-recall-setup.md:?"
+    },
+    {
+      "query": "rag coverage gaps",
+      "expect": "/skills/adt-rag-curate/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-rag-coverage/SKILL.md:?"
+    },
+    {
+      "query": "rag drift",
+      "expect": "/skills/adt-rag-drift/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag-drift/SKILL.md:?"
+    },
+    {
+      "query": "stale chunks",
+      "expect": "/skills/adt-rag-drift/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag-drift/SKILL.md:?"
+    },
+    {
+      "query": "rag outdated",
+      "expect": "/skills/adt-rag-drift/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/tutorials/rag-recall-setup.md:?"
+    },
+    {
+      "query": "drift detection",
+      "expect": "/skills/adt-rag-drift/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/docs/ai-observability.md:?"
+    },
+    {
+      "query": "rag rebuild",
+      "expect": "/skills/adt-rag-index-rebuild/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag-index-rebuild/SKILL.md:?"
+    },
+    {
+      "query": "reindex",
+      "expect": "/skills/adt-rag-index-rebuild/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag-index-rebuild/SKILL.md:?"
+    },
+    {
+      "query": "index rebuild",
+      "expect": "/skills/adt-rag-index-rebuild/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag-index-rebuild/SKILL.md:?"
+    },
+    {
+      "query": "force reindex",
+      "expect": "/skills/adt-rag-index-rebuild/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag-index-rebuild/SKILL.md:?"
+    },
+    {
+      "query": "rag inspect",
+      "expect": "/skills/adt-rag-inspect/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag-inspect/SKILL.md:?"
+    },
+    {
+      "query": "inspect chunks",
+      "expect": "/skills/adt-rag-inspect/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/skills/adt-rag-drift/SKILL.md:?"
+    },
+    {
+      "query": "what's indexed",
+      "expect": "/skills/adt-rag-inspect/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/adt-database-reviewer.md:?"
+    },
+    {
+      "query": "chunk inspection",
+      "expect": "/skills/adt-rag-inspect/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/rag-architecture.md:?"
+    },
+    {
+      "query": "rag debug",
+      "expect": "/skills/adt-rag-inspect/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-rag/SKILL.md:?"
+    },
+    {
+      "query": "rag quality",
+      "expect": "/skills/adt-rag-quality/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag-quality/SKILL.md:?"
+    },
+    {
+      "query": "retrieval quality",
+      "expect": "/skills/adt-rag-quality/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag-quality/SKILL.md:?"
+    },
+    {
+      "query": "query scores",
+      "expect": "/skills/adt-rag-quality/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/rag-architecture.md:?"
+    },
+    {
+      "query": "rag performance",
+      "expect": "/skills/adt-rag-quality/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/tutorials/rag-recall-setup.md:?"
+    },
+    {
+      "query": "refactor-pipeline",
+      "expect": "/skills/adt-refactor-pipeline/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-refactor-pipeline/SKILL.md:?"
+    },
+    {
+      "query": "refactor-requests-with-cross-file-scope",
+      "expect": "/skills/adt-refactor-pipeline/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/executor.md:?"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-refactor-pipeline/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "cleanup",
+      "expect": "/skills/adt-refactor-pipeline/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 5,
+      "top_hit": "/skills/adt-fix-the-suite/SKILL.md:?"
+    },
+    {
+      "query": "capture",
+      "expect": "/skills/adt-refactor-pipeline/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-research-and-decide/SKILL.md:?"
+    },
+    {
+      "query": "refactor",
+      "expect": "/skills/adt-refactor-pipeline/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-refactor-pipeline/SKILL.md:?"
+    },
+    {
+      "query": "release",
+      "expect": "/skills/adt-release-flow/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/skills/hotfix/SKILL.md:?"
+    },
+    {
+      "query": "bump version",
+      "expect": "/skills/adt-release-flow/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-release-flow/SKILL.md:?"
+    },
+    {
+      "query": "create release",
+      "expect": "/skills/adt-release-flow/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/env-windsurf.md:?"
+    },
+    {
+      "query": "tag and release",
+      "expect": "/skills/adt-release-flow/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/release-cut/SKILL.md:?"
+    },
+    {
+      "query": "publish version",
+      "expect": "/skills/adt-release-flow/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/skills/adt-add/SKILL.md:?"
+    },
+    {
+      "query": "new repo",
+      "expect": "/skills/adt-repo-intake/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-onboard-new-repo/SKILL.md:?"
+    },
+    {
+      "query": "onboard",
+      "expect": "/skills/adt-repo-intake/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-repo-intake/SKILL.md:?"
+    },
+    {
+      "query": "what is this project",
+      "expect": "/skills/adt-repo-intake/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/claude-automation-recommender/SKILL.md:?"
+    },
+    {
+      "query": "explore codebase",
+      "expect": "/skills/adt-repo-intake/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/planner.md:?"
+    },
+    {
+      "query": "repo overview",
+      "expect": "/skills/adt-repo-intake/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/tutorials/rag-recall-setup.md:?"
+    },
+    {
+      "query": "research",
+      "expect": "/skills/adt-research/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-research-and-decide/SKILL.md:?"
+    },
+    {
+      "query": "investigate",
+      "expect": "/skills/adt-research/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-parallel-investigate/SKILL.md:?"
+    },
+    {
+      "query": "what does X do",
+      "expect": "/skills/adt-research/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/critic.md:?"
+    },
+    {
+      "query": "how does X work",
+      "expect": "/skills/adt-research/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/best-ai-skill-stewardship.md:?"
+    },
+    {
+      "query": "find information about",
+      "expect": "/skills/adt-research/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/document-specialist.md:?"
+    },
+    {
+      "query": "ultraresearch",
+      "expect": "/skills/adt-research/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": null
+    },
+    {
+      "query": "research-and-decide",
+      "expect": "/skills/adt-research-and-decide/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-research-and-decide/SKILL.md:?"
+    },
+    {
+      "query": "choice-questions",
+      "expect": "/skills/adt-research-and-decide/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/agents/planner.md:?"
+    },
+    {
+      "query": "library-evaluations",
+      "expect": "/skills/adt-research-and-decide/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/docs/braintrust-evals.md:?"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-research-and-decide/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "capture",
+      "expect": "/skills/adt-research-and-decide/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-research-and-decide/SKILL.md:?"
+    },
+    {
+      "query": "research",
+      "expect": "/skills/adt-research-and-decide/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-research-and-decide/SKILL.md:?"
+    },
+    {
+      "query": "resume",
+      "expect": "/skills/adt-resume/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-self-heal/SKILL.md:?"
+    },
+    {
+      "query": "pick up where I left off",
+      "expect": "/skills/adt-resume/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/incident-followup/SKILL.md:?"
+    },
+    {
+      "query": "continue session",
+      "expect": "/skills/adt-resume/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-resume/SKILL.md:?"
+    },
+    {
+      "query": "continue from checkpoint",
+      "expect": "/skills/adt-resume/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/skills/adt-checkpoint/SKILL.md:?"
+    },
+    {
+      "query": "where was I",
+      "expect": "/skills/adt-resume/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/best-ai-skill-stewardship.md:?"
+    },
+    {
+      "query": "restore context",
+      "expect": "/skills/adt-resume/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/context-building/SKILL.md:?"
+    },
+    {
+      "query": "route this task",
+      "expect": "/skills/adt-route/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-route/SKILL.md:?"
+    },
+    {
+      "query": "what skill fits",
+      "expect": "/skills/adt-route/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/context-building/SKILL.md:?"
+    },
+    {
+      "query": "pick the right skill",
+      "expect": "/skills/adt-route/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/hotfix/SKILL.md:?"
+    },
+    {
+      "query": "route me to",
+      "expect": "/skills/adt-route/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-route/SKILL.md:?"
+    },
+    {
+      "query": "schedule",
+      "expect": "/skills/adt-schedule/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-schedule/SKILL.md:?"
+    },
+    {
+      "query": "recurring",
+      "expect": "/skills/adt-schedule/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-schedule/SKILL.md:?"
+    },
+    {
+      "query": "cron",
+      "expect": "/skills/adt-schedule/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/task-orchestration/SKILL.md:?"
+    },
+    {
+      "query": "run every",
+      "expect": "/skills/adt-schedule/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-specs-aggregate-roadmap/SKILL.md:?"
+    },
+    {
+      "query": "automate on schedule",
+      "expect": "/skills/adt-schedule/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-schedule/SKILL.md:?"
+    },
+    {
+      "query": "scope-and-execute",
+      "expect": "/skills/adt-scope-and-execute/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-scope-and-execute/SKILL.md:?"
+    },
+    {
+      "query": "open-ended-feature-or-fix-requests",
+      "expect": "/skills/adt-scope-and-execute/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-plan/SKILL.md:?"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-scope-and-execute/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "merge",
+      "expect": "/skills/adt-scope-and-execute/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/skills/adt-merge-confidently/SKILL.md:?"
+    },
+    {
+      "query": "secure this",
+      "expect": "/skills/adt-secure/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-secure/SKILL.md:?"
+    },
+    {
+      "query": "security check",
+      "expect": "/skills/adt-secure/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-audit-deep/SKILL.md:?"
+    },
+    {
+      "query": "scan for vulns",
+      "expect": "/skills/adt-secure/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-security-sweep/SKILL.md:?"
+    },
+    {
+      "query": "run security review",
+      "expect": "/skills/adt-secure/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/agent-observability.md:?"
+    },
+    {
+      "query": "security-sweep",
+      "expect": "/skills/adt-security-sweep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-security-sweep/SKILL.md:?"
+    },
+    {
+      "query": "quarterly-per-repo",
+      "expect": "/skills/adt-security-sweep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-security-sweep/SKILL.md:?"
+    },
+    {
+      "query": "pre-security-release",
+      "expect": "/skills/adt-security-sweep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/agents/adt-security-auditor.md:?"
+    },
+    {
+      "query": "post-incident",
+      "expect": "/skills/adt-security-sweep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-production-incident/SKILL.md:?"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-security-sweep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "release",
+      "expect": "/skills/adt-security-sweep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/hotfix/SKILL.md:?"
+    },
+    {
+      "query": "security",
+      "expect": "/skills/adt-security-sweep/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-security-sweep/SKILL.md:?"
+    },
+    {
+      "query": "self-heal",
+      "expect": "/skills/adt-self-heal/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-self-heal/SKILL.md:?"
+    },
+    {
+      "query": "self heal",
+      "expect": "/skills/adt-self-heal/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-self-heal/SKILL.md:?"
+    },
+    {
+      "query": "auto-recover",
+      "expect": "/skills/adt-self-heal/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-resume/SKILL.md:?"
+    },
+    {
+      "query": "recover from error",
+      "expect": "/skills/adt-self-heal/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-resume/SKILL.md:?"
+    },
+    {
+      "query": "retry",
+      "expect": "/skills/adt-self-heal/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/streaming-orchestration.md:?"
+    },
+    {
+      "query": "agent stuck",
+      "expect": "/skills/adt-self-heal/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/streaming-orchestration.md:?"
+    },
+    {
+      "query": "loop failure",
+      "expect": "/skills/adt-self-heal/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/incident-followup/SKILL.md:?"
+    },
+    {
+      "query": "seo-a11y-audit",
+      "expect": "/skills/adt-seo-a11y-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
+    },
+    {
+      "query": "seo audit",
+      "expect": "/skills/adt-seo-a11y-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
+    },
+    {
+      "query": "accessibility audit",
+      "expect": "/skills/adt-seo-a11y-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
+    },
+    {
+      "query": "a11y",
+      "expect": "/skills/adt-seo-a11y-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
+    },
+    {
+      "query": "site audit",
+      "expect": "/skills/adt-seo-a11y-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
+    },
+    {
+      "query": "pre-launch check",
+      "expect": "/skills/adt-seo-a11y-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/docs/persona-startup-mvp.md:?"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-seo-a11y-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "session-bootstrap",
+      "expect": "/skills/adt-session-bootstrap/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-session-bootstrap/SKILL.md:?"
+    },
+    {
+      "query": "first-prompt-of-session",
+      "expect": "/skills/adt-session-bootstrap/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-session-bootstrap/SKILL.md:?"
+    },
+    {
+      "query": "post-resume",
+      "expect": "/skills/adt-session-bootstrap/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-self-heal/SKILL.md:?"
+    },
+    {
+      "query": "post-handoff-load",
+      "expect": "/skills/adt-session-bootstrap/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/env-claude-code.md:?"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-session-bootstrap/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "ship",
+      "expect": "/skills/adt-ship/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 5,
+      "top_hit": "/skills/adt-scope-and-execute/SKILL.md:?"
+    },
+    {
+      "query": "create PR",
+      "expect": "/skills/adt-ship/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-specs-spec-new/SKILL.md:?"
+    },
+    {
+      "query": "commit and push",
+      "expect": "/skills/adt-ship/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-ship/SKILL.md:?"
+    },
+    {
+      "query": "ready to merge",
+      "expect": "/skills/adt-ship/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-merge-confidently/SKILL.md:?"
+    },
+    {
+      "query": "check before ship",
+      "expect": "/skills/adt-ship-check/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-ship-check/SKILL.md:?"
+    },
+    {
+      "query": "pre-commit check",
+      "expect": "/skills/adt-ship-check/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/best-security.md:?"
+    },
+    {
+      "query": "verify before push",
+      "expect": "/skills/adt-ship-check/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 5,
+      "top_hit": "/docs/best-security.md:?"
+    },
+    {
+      "query": "ready to commit",
+      "expect": "/skills/adt-ship-check/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/git-master.md:?"
+    },
+    {
+      "query": "quality gate",
+      "expect": "/skills/adt-ship-check/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-verify/SKILL.md:?"
+    },
+    {
+      "query": "ship-it",
+      "expect": "/skills/adt-ship-it/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-scope-and-execute/SKILL.md:?"
+    },
+    {
+      "query": "post-merge-deployment",
+      "expect": "/skills/adt-ship-it/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-ship-it/SKILL.md:?"
+    },
+    {
+      "query": "release-cut-requests",
+      "expect": "/skills/adt-ship-it/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/release-cut/SKILL.md:?"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-ship-it/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "ship",
+      "expect": "/skills/adt-ship-it/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-scope-and-execute/SKILL.md:?"
+    },
+    {
+      "query": "deploy",
+      "expect": "/skills/adt-ship-it/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-ship-it/SKILL.md:?"
+    },
+    {
+      "query": "release",
+      "expect": "/skills/adt-ship-it/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/hotfix/SKILL.md:?"
+    },
+    {
+      "query": "incident",
+      "expect": "/skills/adt-ship-it/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-production-incident/SKILL.md:?"
+    },
+    {
+      "query": "smart commands",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-smart-commands/SKILL.md:?"
+    },
+    {
+      "query": "when to use /think",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-smart-commands/SKILL.md:?"
+    },
+    {
+      "query": "when to compact",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-context/SKILL.md:?"
+    },
+    {
+      "query": "should I switch models",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/task-orchestration/SKILL.md:?"
+    },
+    {
+      "query": "use extended thinking",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/reasoning-model-prompting.md:?"
+    },
+    {
+      "query": "/think",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-smart-commands/SKILL.md:?"
+    },
+    {
+      "query": "/compact",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-context/SKILL.md:?"
+    },
+    {
+      "query": "/model",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/multi-model-routing.md:?"
+    },
+    {
+      "query": "/clear",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/xp/SKILL.md:?"
+    },
+    {
+      "query": "slash commands",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/command-development/SKILL.md:?"
+    },
+    {
+      "query": "smart model routing",
+      "expect": "/skills/adt-smart-model-route/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-smart-model-route/SKILL.md:?"
+    },
+    {
+      "query": "model selection",
+      "expect": "/skills/adt-smart-model-route/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-ui-audit/SKILL.md:?"
+    },
+    {
+      "query": "route by complexity",
+      "expect": "/skills/adt-smart-model-route/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-smart-model-route/SKILL.md:?"
+    },
+    {
+      "query": "choose model",
+      "expect": "/skills/adt-smart-model-route/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/reasoning-model-prompting.md:?"
+    },
+    {
+      "query": "auto model",
+      "expect": "/skills/adt-smart-model-route/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-smart-model-route/SKILL.md:?"
+    },
+    {
+      "query": "task complexity",
+      "expect": "/skills/adt-smart-model-route/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-smart-commands/SKILL.md:?"
+    },
+    {
+      "query": "sync pt parity",
+      "expect": "/skills/adt-sync-pt-parity/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-sync-pt-parity/SKILL.md:?"
+    },
+    {
+      "query": "mirror en to pt",
+      "expect": "/skills/adt-sync-pt-parity/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-sync-pt-parity/SKILL.md:?"
+    },
+    {
+      "query": "update pt-br repo",
+      "expect": "/skills/adt-sync-pt-parity/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-sync-pt-parity/SKILL.md:?"
+    },
+    {
+      "query": "sync portuguese",
+      "expect": "/skills/adt-sync-pt-parity/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-sync-memories/SKILL.md:?"
+    },
+    {
+      "query": "test-cleanup",
+      "expect": "/skills/adt-test-cleanup/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-fix-the-suite/SKILL.md:?"
+    },
+    {
+      "query": "audit",
+      "expect": "/skills/adt-test-cleanup/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
+    },
+    {
+      "query": "test pipeline",
+      "expect": "/skills/adt-test-pipeline/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-test-pipeline/SKILL.md:?"
+    },
+    {
+      "query": "improve test suite",
+      "expect": "/skills/adt-test-pipeline/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-fix-the-suite/SKILL.md:?"
+    },
+    {
+      "query": "clean up tests",
+      "expect": "/skills/adt-test-pipeline/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/test-engineer.md:?"
+    },
+    {
+      "query": "fix test coverage",
+      "expect": "/skills/adt-test-pipeline/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/agents/test-engineer.md:?"
+    },
+    {
+      "query": "test health audit",
+      "expect": "/skills/adt-test-pipeline/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-test-pipeline/SKILL.md:?"
+    },
+    {
+      "query": "suite cleanup",
+      "expect": "/skills/adt-test-pipeline/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-fix-the-suite/SKILL.md:?"
+    },
+    {
+      "query": "ticket",
+      "expect": "/skills/adt-ticket/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-ticket/SKILL.md:?"
+    },
+    {
+      "query": "issue body",
+      "expect": "/skills/adt-ticket/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-ticket/SKILL.md:?"
+    },
+    {
+      "query": "changelog",
+      "expect": "/skills/adt-ticket/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/repo-bootstrap/SKILL.md:?"
+    },
+    {
+      "query": "what did we ship",
+      "expect": "/skills/adt-ticket/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-knowledge-loop/SKILL.md:?"
+    },
+    {
+      "query": "ticket summary",
+      "expect": "/skills/adt-ticket/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-ticket/SKILL.md:?"
+    },
+    {
+      "query": "token audit",
+      "expect": "/skills/adt-token-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-token-audit/SKILL.md:?"
+    },
+    {
+      "query": "token usage report",
+      "expect": "/skills/adt-token-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-cost/SKILL.md:?"
+    },
+    {
+      "query": "how many tokens",
+      "expect": "/skills/adt-token-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/claude-code-workflows.md:?"
+    },
+    {
+      "query": "cache hit rate",
+      "expect": "/skills/adt-token-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/docs/ai-observability.md:?"
+    },
+    {
+      "query": "session cost",
+      "expect": "/skills/adt-token-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-cost/SKILL.md:?"
+    },
+    {
+      "query": "token spend",
+      "expect": "/skills/adt-token-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-token-audit/SKILL.md:?"
+    },
+    {
+      "query": "where are tokens going",
+      "expect": "/skills/adt-token-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-token-audit/SKILL.md:?"
+    },
+    {
+      "query": "how expensive was that session",
+      "expect": "/skills/adt-token-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-session-bootstrap/SKILL.md:?"
+    },
+    {
+      "query": "ui-audit",
+      "expect": "/skills/adt-ui-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/skills/adt-design-build/SKILL.md:?"
+    },
+    {
+      "query": "audit",
+      "expect": "/skills/adt-ui-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
+    },
+    {
+      "query": "review",
+      "expect": "/skills/adt-ui-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-secure/SKILL.md:?"
+    },
+    {
+      "query": "unstick pr",
+      "expect": "/skills/adt-unstick-pr/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-unstick-pr/SKILL.md:?"
+    },
+    {
+      "query": "webhook desync",
+      "expect": "/skills/adt-unstick-pr/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-unstick-pr/SKILL.md:?"
+    },
+    {
+      "query": "pr head stuck",
+      "expect": "/skills/adt-unstick-pr/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-unstick-pr/SKILL.md:?"
+    },
+    {
+      "query": "pr conflicting but local clean",
+      "expect": "/skills/adt-unstick-pr/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/branch-hygiene/SKILL.md:?"
+    },
+    {
+      "query": "vercel-patterns",
+      "expect": "/skills/adt-vercel-patterns/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-vercel-patterns/SKILL.md:?"
+    },
+    {
+      "query": "patterns",
+      "expect": "/skills/adt-vercel-patterns/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-vercel-patterns/SKILL.md:?"
+    },
+    {
+      "query": "verify",
+      "expect": "/skills/adt-verify/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/skills/adt-design-build/SKILL.md:?"
+    },
+    {
+      "query": "quality check",
+      "expect": "/skills/adt-verify/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/code-reviewer.md:?"
+    },
+    {
+      "query": "run tests",
+      "expect": "/skills/adt-verify/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/test-engineer.md:?"
+    },
+    {
+      "query": "before commit",
+      "expect": "/skills/adt-verify/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/git-master.md:?"
+    },
+    {
+      "query": "before PR",
+      "expect": "/skills/adt-verify/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-pr-merge-readiness/SKILL.md:?"
+    },
+    {
+      "query": "decompose multi-agent work",
+      "expect": "/skills/agent-teams/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/agent-teams/SKILL.md:?"
+    },
+    {
+      "query": "plan parallel agent teams",
+      "expect": "/skills/agent-teams/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/agent-teams/SKILL.md:?"
+    },
+    {
+      "query": "run multi-agent workflow",
+      "expect": "/skills/agent-teams/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/best-workflow.md:?"
+    },
+    {
+      "query": "\"branch hygiene\"",
+      "expect": "/skills/branch-hygiene/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/branch-hygiene/SKILL.md:?"
+    },
+    {
+      "query": "\"clean up branches\"",
+      "expect": "/skills/branch-hygiene/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/branch-hygiene/SKILL.md:?"
+    },
+    {
+      "query": "\"prune branches\"",
+      "expect": "/skills/branch-hygiene/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/branch-hygiene/SKILL.md:?"
+    },
+    {
+      "query": "\"stale worktrees\"",
+      "expect": "/skills/branch-hygiene/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/branch-hygiene/SKILL.md:?"
+    },
+    {
+      "query": "\"dead worktrees\"",
+      "expect": "/skills/branch-hygiene/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/branch-hygiene/SKILL.md:?"
+    },
+    {
+      "query": "\"git is a mess\"",
+      "expect": "/skills/branch-hygiene/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/git-master.md:?"
+    },
+    {
+      "query": "local-branch-count > 30 at session start",
+      "expect": "/skills/branch-hygiene/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/branch-hygiene/SKILL.md:?"
+    },
+    {
+      "query": "debug this",
+      "expect": "/skills/debug/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-production-incident/SKILL.md:?"
+    },
+    {
+      "query": "why is this failing",
+      "expect": "/skills/debug/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/test-engineer.md:?"
+    },
+    {
+      "query": "root cause",
+      "expect": "/skills/debug/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/skills/adt-debug-deep/SKILL.md:?"
+    },
+    {
+      "query": "investigate",
+      "expect": "/skills/debug/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-parallel-investigate/SKILL.md:?"
+    },
+    {
+      "query": "ultradebug",
+      "expect": "/skills/debug/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/adt-ultrathink-debugger.md:?"
+    },
+    {
+      "query": "\"first PR in <repo>\"",
+      "expect": "/skills/first-pr/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/first-pr/SKILL.md:?"
+    },
+    {
+      "query": "\"I just cloned X\"",
+      "expect": "/skills/first-pr/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-debug-deep/SKILL.md:?"
+    },
+    {
+      "query": "\"what''s a safe first change\"",
+      "expect": "/skills/first-pr/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/first-pr/SKILL.md:?"
+    },
+    {
+      "query": "new-repo detection on first non-trivial work",
+      "expect": "/skills/first-pr/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 5,
+      "top_hit": "/skills/spec-driven-develop/SKILL.md:?"
+    },
+    {
+      "query": "handoff pattern",
+      "expect": "/skills/handoff-diet/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/handoff-diet/SKILL.md:?"
+    },
+    {
+      "query": "wakeup anti-pattern",
+      "expect": "/skills/handoff-diet/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/handoff-diet/SKILL.md:?"
+    },
+    {
+      "query": "handoff diet",
+      "expect": "/skills/handoff-diet/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/handoff-diet/SKILL.md:?"
+    },
+    {
+      "query": "scheduled-weekly + post-hook-wiring",
+      "expect": "/skills/hook-effectiveness/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/hook-effectiveness/SKILL.md:?"
+    },
+    {
+      "query": "\"prod is broken\"",
+      "expect": "/skills/hotfix/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 5,
+      "top_hit": "/skills/adt-ship-it/SKILL.md:?"
+    },
+    {
+      "query": "\"hotfix\"",
+      "expect": "/skills/hotfix/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/skills/incident-followup/SKILL.md:?"
+    },
+    {
+      "query": "\"emergency fix\"",
+      "expect": "/skills/hotfix/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/hotfix/SKILL.md:?"
+    },
+    {
+      "query": "\"users can''t X right now\"",
+      "expect": "/skills/hotfix/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-next-priority/SKILL.md:?"
+    },
+    {
+      "query": "urgency markers",
+      "expect": "/skills/hotfix/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/agents/critic.md:?"
+    },
+    {
+      "query": "\"postmortem\"",
+      "expect": "/skills/incident-followup/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/incident-followup/SKILL.md:?"
+    },
+    {
+      "query": "\"incident review\"",
+      "expect": "/skills/incident-followup/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-production-incident/SKILL.md:?"
+    },
+    {
+      "query": "\"what did we learn from\"",
+      "expect": "/skills/incident-followup/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/incident-followup/SKILL.md:?"
+    },
+    {
+      "query": "\"write up the incident\"",
+      "expect": "/skills/incident-followup/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/incident-followup/SKILL.md:?"
+    },
+    {
+      "query": "post-hotfix Phase 10",
+      "expect": "/skills/incident-followup/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/incident-followup/SKILL.md:?"
+    },
+    {
+      "query": "post-rollback",
+      "expect": "/skills/incident-followup/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-production-incident/SKILL.md:?"
+    },
+    {
+      "query": "mcp audit",
+      "expect": "/skills/mcp-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/mcp-audit/SKILL.md:?"
+    },
+    {
+      "query": "which mcp servers do I use",
+      "expect": "/skills/mcp-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/mcp-audit/SKILL.md:?"
+    },
+    {
+      "query": "audit mcp usage",
+      "expect": "/skills/mcp-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/docs/best-context-management.md:?"
+    },
+    {
+      "query": "find unused mcp",
+      "expect": "/skills/mcp-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "mcp cleanup",
+      "expect": "/skills/mcp-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/mcp-audit/SKILL.md:?"
+    },
+    {
+      "query": "mcp removal candidates",
+      "expect": "/skills/mcp-audit/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/mcp-audit/SKILL.md:?"
+    },
+    {
+      "query": "execute this plan",
+      "expect": "/skills/parallel-phases/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-scope-and-execute/SKILL.md:?"
+    },
+    {
+      "query": "work through these phases",
+      "expect": "/skills/parallel-phases/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/parallel-phases/SKILL.md:?"
+    },
+    {
+      "query": "swarm over this backlog",
+      "expect": "/skills/parallel-phases/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/parallel-phases/SKILL.md:?"
+    },
+    {
+      "query": "parallelize this plan",
+      "expect": "/skills/parallel-phases/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/parallel-phases/SKILL.md:?"
+    },
+    {
+      "query": "fan out per task",
+      "expect": "/skills/parallel-phases/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-parallel-investigate/SKILL.md:?"
+    },
+    {
+      "query": "manual only",
+      "expect": "/skills/release-cut/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/mcp-audit/SKILL.md:?"
+    },
+    {
+      "query": "BUT nudged by next-priority / session-bootstrap when release..main has ≥5 commits",
+      "expect": "/skills/release-cut/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/skills/adt-session-bootstrap/SKILL.md:?"
+    },
+    {
+      "query": "\"bootstrap this repo\"",
+      "expect": "/skills/repo-bootstrap/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/repo-bootstrap/SKILL.md:?"
+    },
+    {
+      "query": "\"set up release branch\"",
+      "expect": "/skills/repo-bootstrap/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/repo-bootstrap/SKILL.md:?"
+    },
+    {
+      "query": "\"new repo setup\"",
+      "expect": "/skills/repo-bootstrap/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 4,
+      "top_hit": "/skills/adt-onboard-new-repo/SKILL.md:?"
+    },
+    {
+      "query": "\"configure release workflow\"",
+      "expect": "/skills/repo-bootstrap/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/repo-bootstrap/SKILL.md:?"
+    },
+    {
+      "query": "first session in a repo with no `release` branch and no `.claude/` directory",
+      "expect": "/skills/repo-bootstrap/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/repo-bootstrap/SKILL.md:?"
+    },
+    {
+      "query": "execute plan with subagents",
+      "expect": "/skills/subagent-driven-development/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/adt-scope-and-execute/SKILL.md:?"
+    },
+    {
+      "query": "subagent-driven implementation",
+      "expect": "/skills/subagent-driven-development/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/subagent-driven-development/SKILL.md:?"
+    },
+    {
+      "query": "dispatch per task with reviews",
+      "expect": "/skills/subagent-driven-development/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 5,
+      "top_hit": "/skills/adt-scope-and-execute/SKILL.md:?"
+    },
+    {
+      "query": "pair programming with structured cycles",
+      "expect": "/skills/xp/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/xp/SKILL.md:?"
+    },
+    {
+      "query": "test-driven incremental development",
+      "expect": "/skills/xp/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/skills/first-pr/SKILL.md:?"
+    },
+    {
+      "query": "role-divided driver/navigator flow",
+      "expect": "/skills/xp/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 3,
+      "top_hit": "/skills/adt-release-flow/SKILL.md:?"
+    },
+    {
+      "query": "continuous refactoring discipline",
+      "expect": "/skills/xp/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": 1,
+      "top_hit": "/skills/xp/SKILL.md:?"
+    },
+    {
+      "query": "small-batch delivery with review",
+      "expect": "/skills/xp/SKILL.md",
+      "scope": "none",
+      "intent": "skill-trigger",
+      "hit_rank": null,
+      "top_hit": "/docs/persona-agency.md:?"
+    },
+    {
+      "query": "Code Reviewer — systematically identifies bugs, security issues, test coverage gaps, and style violations",
+      "expect": "/agents/adt-code-reviewer.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/adt-code-reviewer.md:?"
+    },
+    {
+      "query": "Database Reviewer — schema design, migrations, indexes, constraints, transaction boundaries",
+      "expect": "/agents/adt-database-reviewer.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/adt-database-reviewer.md:?"
+    },
+    {
+      "query": "Security Auditor — OWASP checks, dependency scanning, secrets detection, threat paths",
+      "expect": "/agents/adt-security-auditor.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/adt-security-auditor.md:?"
+    },
+    {
+      "query": "Systematic Debugger — evidence-driven root cause analysis, hypothesis testing",
+      "expect": "/agents/adt-systematic-debugger.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/adt-systematic-debugger.md:?"
+    },
+    {
+      "query": "Ultrathink Debugger — deep reasoning for gnarly bugs, 3+ level traces",
+      "expect": "/agents/adt-ultrathink-debugger.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/adt-ultrathink-debugger.md:?"
+    },
+    {
+      "query": "Strategic Architecture & Debugging Advisor (Opus, READ-ONLY)",
+      "expect": "/agents/architect.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": null,
+      "top_hit": "/docs/multi-model-routing.md:?"
+    },
+    {
+      "query": "Expert code review specialist with severity-rated feedback, logic defect detection, SOLID principle checks, style, performance, and quality strategy",
+      "expect": "/agents/code-reviewer.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/code-reviewer.md:?"
+    },
+    {
+      "query": "Work plan and code review expert — thorough, structured, multi-perspective (Opus)",
+      "expect": "/agents/critic.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/critic.md:?"
+    },
+    {
+      "query": "Root-cause analysis, regression isolation, stack trace analysis, build/compilation error resolution",
+      "expect": "/agents/debugger.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/debugger.md:?"
+    },
+    {
+      "query": "External Documentation & Reference Specialist",
+      "expect": "/agents/document-specialist.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/document-specialist.md:?"
+    },
+    {
+      "query": "Configuration guide for Claude Code — CLAUDE.md, sub-agents, hooks, skills, slash commands, and model wiring",
+      "expect": "/agents/env-claude-code.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/env-claude-code.md:?"
+    },
+    {
+      "query": "Configuration guide for the OpenAI Codex web app — cloud-sandboxed coding agent with internet access, available on ChatGPT Plus and Team plans",
+      "expect": "/agents/env-codex-app.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/env-codex-app.md:?"
+    },
+    {
+      "query": "Configuration guide for OpenAI Codex CLI — AGENTS.md, approval modes, multi-agent via Codex SDK, sandboxed execution",
+      "expect": "/agents/env-codex-cli.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/env-codex-cli.md:?"
+    },
+    {
+      "query": "Configuration guide for Cursor IDE — Rules system, AGENTS.md, Agent mode, Background Agents, and Composer 2.0",
+      "expect": "/agents/env-cursor.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/env-cursor.md:?"
+    },
+    {
+      "query": "Configuration guide for Gemini CLI — GEMINI.md / AGENT.md context files, sub-agents, Agent Skills, and MCP integration",
+      "expect": "/agents/env-gemini-cli.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/env-gemini-cli.md:?"
+    },
+    {
+      "query": "Configuration guide for AWS Kiro IDE and CLI — steering files, spec-driven development (feature/bugfix/design-first), Agent Skills, hooks, MCP, and AWS integrations",
+      "expect": "/agents/env-kiro.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/env-kiro.md:?"
+    },
+    {
+      "query": "Configuration guide for Windsurf IDE — rules hierarchy, Cascade agent, memories, and MCP integration",
+      "expect": "/agents/env-windsurf.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/env-windsurf.md:?"
+    },
+    {
+      "query": "Focused task executor for implementation work (Sonnet)",
+      "expect": "/agents/executor.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 3,
+      "top_hit": "/docs/multi-model-routing.md:?"
+    },
+    {
+      "query": "Git expert for atomic commits, rebasing, and history management with style detection",
+      "expect": "/agents/git-master.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/git-master.md:?"
+    },
+    {
+      "query": "Strategic planning consultant with interview workflow (Opus)",
+      "expect": "/agents/planner.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/planner.md:?"
+    },
+    {
+      "query": "Test strategy, integration/e2e coverage, flaky test hardening, TDD workflows",
+      "expect": "/agents/test-engineer.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/test-engineer.md:?"
+    },
+    {
+      "query": "Verification strategy, evidence-based completion checks, test adequacy",
+      "expect": "/agents/verifier.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/agents/verifier.md:?"
+    },
+    {
+      "query": "'AI coding agents produce outputs that look correct but fail in subtle ways: - Hallucinated function names that pass review but fail at runtime - Tool call sequences that work once but regress under different inputs - Prompt changes that improve one case but silently degrade another'",
+      "expect": "/docs/agent-observability.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/agent-observability.md:?"
+    },
+    {
+      "query": "Production AI systems require deep observability into model performance, cost, and data quality. This pattern covers instrumentation, alerting, and data quality monitoring for LLM-powered applications.",
+      "expect": "/docs/ai-observability.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/ai-observability.md:?"
+    },
+    {
+      "query": "'SWE-bench and similar curated benchmarks overestimate agent capability by 50%+ in real-world deployment. The gap emerges from benchmark framing: clean task descriptions with sufficient context don''t resemble actual user queries, which are ambiguous, under-specified, and embedded in noisy ticket systems. Closing the gap requires domain-specific evaluation sets grounded in real user behavior.'",
+      "expect": "/docs/benchmark-reality-gap.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/benchmark-reality-gap.md:?"
+    },
+    {
+      "query": "Coding agents amplify what you already are. They don't substitute for what you aren't.",
+      "expect": "/docs/best-ai-skill-stewardship.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/best-ai-skill-stewardship.md:?"
+    },
+    {
+      "query": "'### Progressive Loading Don''t read entire files upfront. Build context incrementally: 1. Start with project structure (glob, ls) 2. Read specific functions (grep for signatures, then read targeted lines) 3. Load full files only when editing them'",
+      "expect": "/docs/best-context-management.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/best-context-management.md:?"
+    },
+    {
+      "query": "'### Never in shell config Move API keys from ~/.bashrc/config.fish to a separate file: ``bash # ~/.config/fish/conf.d/secrets.fish (chmod 600) set -gx API_KEY \"your-key\" ``'",
+      "expect": "/docs/best-security.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/best-security.md:?"
+    },
+    {
+      "query": "`` feature/my-feature → PR to main → automated deploy ``",
+      "expect": "/docs/best-workflow.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/best-workflow.md:?"
+    },
+    {
+      "query": "Open-source eval framework (AutoEvals) + managed platform for scoring LLM + agent outputs. LLM-as-judge, multi-step agent evals, tool-use scoring, human annotation. Positioned as eval-first (not observability). Note: OpenAI Evals platform sunsetting Oct 31 2026.",
+      "expect": "/docs/braintrust-evals.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/braintrust-evals.md:?"
+    },
+    {
+      "query": "RESEARCH PREVIEW: Comprehensive code review and interactive planning in the cloud. Run /ultrareview for multi-agent bug hunting; /ultraplan to draft plans collaboratively and execute remotely.",
+      "expect": "/docs/claude-code-cloud-review-plan.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/claude-code-cloud-review-plan.md:?"
+    },
+    {
+      "query": "Fire templated cloud agents on a schedule, GitHub event, or API call with Routines. Stream background events into the conversation with Monitor to tail logs, watch CI, and react in real-time without polling.",
+      "expect": "/docs/claude-code-routines-monitor.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/claude-code-routines-monitor.md:?"
+    },
+    {
+      "query": "Orchestrate dozens to hundreds of subagents from a single command. Use workflows when a task is too large for one conversation — codebase-wide audits, large migrations, cross-repo coordination.",
+      "expect": "/docs/claude-code-workflows.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/claude-code-workflows.md:?"
+    },
+    {
+      "query": "Anthropic's hosted agent runtime (public beta since April 2026) — sandboxed execution, state management, sessions, scoped permissions, and tracing with token pricing plus $0.08/session-hour. Adopt when you want turnkey multi-step autonomy without infrastructure. Understand tradeoffs vs. local agents, launchd, and CI-based orchestration.",
+      "expect": "/docs/claude-managed-agents.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/claude-managed-agents.md:?"
+    },
+    {
+      "query": "Bring an OpenAI Codex CLI installation into full parity with Claude Code on the same machine — share the skill catalog via symlink, mirror per-project memory into the repo, add a composite-first principle to AGENTS.md, and verify the shared RAG index works from both tools.",
+      "expect": "/docs/codex-parity.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/codex-parity.md:?"
+    },
+    {
+      "query": "'Model choice is now a cost/quality tradeoff, not a binary \"do I need reasoning\" decision. This pattern extends packages/core/patterns/multi-model-routing.md with explicit economics: token pricing, caching strategy, and output-format optimization that recovers 40-60% of spend.'",
+      "expect": "/docs/cost-aware-routing.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/cost-aware-routing.md:?"
+    },
+    {
+      "query": "Measure before you ship. Intuition about model quality is unreliable — score it systematically. This guide covers evaluation frameworks, golden datasets, regression testing, and production monitoring for LLM-powered features.",
+      "expect": "/docs/llm-evaluation.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/llm-evaluation.md:?"
+    },
+    {
+      "query": "Run Llama, Qwen, Mistral, and other open-weight models directly on your machine via Ollama, LM Studio, or llama.cpp — private, offline-capable, zero per-token cost. Covers when local makes sense over the Claude API, the tradeoffs, and how to wire each runtime into Forge Kit workflows.",
+      "expect": "/docs/local-models.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/local-models.md:?"
+    },
+    {
+      "query": "How Claude Code lazily resolves MCP tool schemas via ToolSearch, and how that changes which tools you can call at any moment.",
+      "expect": "/docs/mcp-tool-lazy-loading.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/mcp-tool-lazy-loading.md:?"
+    },
+    {
+      "query": "Using a frontier model for every task wastes money and time. Using a weak model for hard tasks wastes your time fixing its output. The optimal strategy routes tasks to the right capability tier.",
+      "expect": "/docs/multi-model-routing.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/multi-model-routing.md:?"
+    },
+    {
+      "query": "Vendor lock-in to observability layers has cost you money. Decoupling telemetry collection from analysis backends lets you migrate from Datadog to Grafana without rewriting instrumentation. OpenTelemetry GenAI Semantic Conventions (GA March 2026) is the standard way forward.",
+      "expect": "/docs/opentelemetry-genai.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/opentelemetry-genai.md:?"
+    },
+    {
+      "query": "Delivery Agency is a compact services-oriented company template. It is designed for client projects where discovery, execution, QA, and communication must all move in sync.",
+      "expect": "/docs/persona-agency.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/persona-agency.md:?"
+    },
+    {
+      "query": "Fullstack Forge is a full-service software development consultancy built from 66 specialized skills. The company uses a hub-and-spoke workflow: the CTO routes work to the appropriate team lead, and team leads assign tasks to specialists with deep domain expertise.",
+      "expect": "/docs/persona-fullstack-forge.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/persona-fullstack-forge.md:?"
+    },
+    {
+      "query": "Open Source Maintainer Collective is a lightweight company template for maintainers who need structure around releases, documentation, community support, and issue triage.",
+      "expect": "/docs/persona-open-source-maintainer.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/persona-open-source-maintainer.md:?"
+    },
+    {
+      "query": "Solopreneur Studio is a compact agent company for a founder-led product. It keeps the org simple: one founder/operator drives priorities, one product engineer ships, and one growth operator closes the loop with users.",
+      "expect": "/docs/persona-solopreneur.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/persona-solopreneur.md:?"
+    },
+    {
+      "query": "Startup MVP Lab is a small company template for early-stage startups. It separates product direction, implementation, and launch so teams move fast without blurring ownership.",
+      "expect": "/docs/persona-startup-mvp.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/persona-startup-mvp.md:?"
+    },
+    {
+      "query": "Retrieval-Augmented Generation (RAG) connects LLMs to external knowledge. This guide covers production-ready patterns for building, debugging, and scaling RAG pipelines.",
+      "expect": "/docs/rag-architecture.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/rag-architecture.md:?"
+    },
+    {
+      "query": "'Reasoning models (Claude Opus 4 with extended thinking, o3/o3-mini) operate at a different cost and latency boundary than standard models. They trade 2-10x latency and 3-5x token cost for dramatically higher first-pass quality on hard problems. This requires a different prompting discipline: less scaffolding, more constraints, explicit reasoning budgets.'",
+      "expect": "/docs/reasoning-model-prompting.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/reasoning-model-prompting.md:?"
+    },
+    {
+      "query": "You send a prompt and wait. You don't know if the agent is stuck, hallucinating, or burning through tokens on the wrong task. When something goes wrong, you can't tell where. Budget overruns happen silently.",
+      "expect": "/docs/streaming-orchestration.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/docs/streaming-orchestration.md:?"
+    },
+    {
+      "query": "How to install and configure the adt-rag skill suite so Claude can retrieve project knowledge without re-reading files on every prompt.",
+      "expect": "/tutorials/rag-recall-setup.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/tutorials/rag-recall-setup.md:?"
+    }
+  ],
+  "docs": 156,
+  "shadowed": [
+    {
+      "query": "capture",
+      "expect": "/skills/adt-adr-write/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/skills/adt-research-and-decide/SKILL.md"
+    },
+    {
+      "query": "refactor",
+      "expect": "/skills/adt-adr-write/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/skills/adt-refactor-pipeline/SKILL.md"
+    },
+    {
+      "query": "pre-release",
+      "expect": "/skills/adt-audit-deep/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/adt-security-auditor.md"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-audit-deep/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "audit",
+      "expect": "/skills/adt-audit-deep/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/skills/adt-seo-a11y-audit/SKILL.md"
+    },
+    {
+      "query": "which skill",
+      "expect": "/skills/adt-auto-invoke/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-ship-it/SKILL.md"
+    },
+    {
+      "query": "what skill should i use",
+      "expect": "/skills/adt-auto-invoke/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "skill routing",
+      "expect": "/skills/adt-auto-invoke/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-fallback/SKILL.md"
+    },
+    {
+      "query": "build-fix",
+      "expect": "/skills/adt-build-fix/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/agents/debugger.md"
+    },
+    {
+      "query": "build error",
+      "expect": "/skills/adt-build-fix/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/agents/debugger.md"
+    },
+    {
+      "query": "tsc error",
+      "expect": "/skills/adt-build-fix/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/agents/debugger.md"
+    },
+    {
+      "query": "module not found",
+      "expect": "/skills/adt-build-fix/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/benchmark-reality-gap.md"
+    },
+    {
+      "query": "stash backup",
+      "expect": "/skills/adt-checkpoint/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "check the pipeline",
+      "expect": "/skills/adt-ci-watch/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/llm-evaluation.md"
+    },
+    {
+      "query": "scheduled-weekly",
+      "expect": "/skills/adt-config-drift-detect/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/skills/adt-token-audit/SKILL.md"
+    },
+    {
+      "query": "pre-refactor",
+      "expect": "/skills/adt-config-drift-detect/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-refactor-pipeline/SKILL.md"
+    },
+    {
+      "query": "audit",
+      "expect": "/skills/adt-config-drift-detect/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-seo-a11y-audit/SKILL.md"
+    },
+    {
+      "query": "cleanup",
+      "expect": "/skills/adt-config-drift-detect/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/skills/adt-fix-the-suite/SKILL.md"
+    },
+    {
+      "query": "refactor",
+      "expect": "/skills/adt-config-drift-detect/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-refactor-pipeline/SKILL.md"
+    },
+    {
+      "query": "optimize context",
+      "expect": "/skills/adt-context/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-optimize/SKILL.md"
+    },
+    {
+      "query": "context too large",
+      "expect": "/skills/adt-context/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/tutorials/rag-recall-setup.md"
+    },
+    {
+      "query": "session slow",
+      "expect": "/skills/adt-context/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-optimize/SKILL.md"
+    },
+    {
+      "query": "free up context",
+      "expect": "/skills/adt-context/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-session-bootstrap/SKILL.md"
+    },
+    {
+      "query": "context pressure",
+      "expect": "/skills/adt-context/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/mac-optimize/SKILL.md"
+    },
+    {
+      "query": "clean context",
+      "expect": "/skills/adt-context-hygiene/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/best-context-management.md"
+    },
+    {
+      "query": "session bloated",
+      "expect": "/skills/adt-context-hygiene/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-test-cleanup/SKILL.md"
+    },
+    {
+      "query": "context too long",
+      "expect": "/skills/adt-context-hygiene/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/tutorials/rag-recall-setup.md"
+    },
+    {
+      "query": "prune session",
+      "expect": "/skills/adt-context-hygiene/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/branch-hygiene/SKILL.md"
+    },
+    {
+      "query": "switch task",
+      "expect": "/skills/adt-context-hygiene/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/task-orchestration/SKILL.md"
+    },
+    {
+      "query": "cost",
+      "expect": "/skills/adt-cost/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/docs/ai-observability.md"
+    },
+    {
+      "query": "how much did that cost",
+      "expect": "/skills/adt-cost/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/rag-architecture.md"
+    },
+    {
+      "query": "token usage",
+      "expect": "/skills/adt-cost/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-token-audit/SKILL.md"
+    },
+    {
+      "query": "budget",
+      "expect": "/skills/adt-cost/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/streaming-orchestration.md"
+    },
+    {
+      "query": "spending",
+      "expect": "/skills/adt-cost/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/multi-model-routing.md"
+    },
+    {
+      "query": "debug-deep",
+      "expect": "/skills/adt-debug-deep/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-production-incident/SKILL.md"
+    },
+    {
+      "query": "complex-bug-reports",
+      "expect": "/skills/adt-debug-deep/SKILL.md",
+      "rank": 5,
+      "shadowed_by": "/docs/multi-model-routing.md"
+    },
+    {
+      "query": "production-incidents",
+      "expect": "/skills/adt-debug-deep/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/skills/adt-ship-it/SKILL.md"
+    },
+    {
+      "query": "recurring-failures",
+      "expect": "/skills/adt-debug-deep/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-schedule/SKILL.md"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-debug-deep/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "debug",
+      "expect": "/skills/adt-debug-deep/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/skills/adt-production-incident/SKILL.md"
+    },
+    {
+      "query": "update dependencies",
+      "expect": "/skills/adt-dep-lifecycle/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/best-workflow.md"
+    },
+    {
+      "query": "bump deps",
+      "expect": "/skills/adt-dep-lifecycle/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-release-flow/SKILL.md"
+    },
+    {
+      "query": "audit dependencies",
+      "expect": "/skills/adt-dep-lifecycle/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-security-sweep/SKILL.md"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-design-build/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "audit",
+      "expect": "/skills/adt-design-build/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-seo-a11y-audit/SKILL.md"
+    },
+    {
+      "query": "eval",
+      "expect": "/skills/adt-eval/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/docs/braintrust-evals.md"
+    },
+    {
+      "query": "evaluate",
+      "expect": "/skills/adt-eval/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-rag-quality/SKILL.md"
+    },
+    {
+      "query": "benchmark",
+      "expect": "/skills/adt-eval/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/benchmark-reality-gap.md"
+    },
+    {
+      "query": "test the model",
+      "expect": "/skills/adt-eval/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/reasoning-model-prompting.md"
+    },
+    {
+      "query": "measure quality",
+      "expect": "/skills/adt-eval/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-token-audit/SKILL.md"
+    },
+    {
+      "query": "llm quality",
+      "expect": "/skills/adt-eval/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/braintrust-evals.md"
+    },
+    {
+      "query": "output quality",
+      "expect": "/skills/adt-eval/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/reasoning-model-prompting.md"
+    },
+    {
+      "query": "plan b",
+      "expect": "/skills/adt-fallback/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/planner.md"
+    },
+    {
+      "query": "spec-to-prod-workflows",
+      "expect": "/skills/adt-feature-from-zero/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-ship-it/SKILL.md"
+    },
+    {
+      "query": "ship",
+      "expect": "/skills/adt-feature-from-zero/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-scope-and-execute/SKILL.md"
+    },
+    {
+      "query": "bloated-suite",
+      "expect": "/skills/adt-fix-the-suite/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-test-cleanup/SKILL.md"
+    },
+    {
+      "query": "slow-suite",
+      "expect": "/skills/adt-fix-the-suite/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-test-pipeline/SKILL.md"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-fix-the-suite/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "mutation",
+      "expect": "/skills/adt-fix-the-suite/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/skills/adt-mutation-test/SKILL.md"
+    },
+    {
+      "query": "capture",
+      "expect": "/skills/adt-fix-the-suite/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-research-and-decide/SKILL.md"
+    },
+    {
+      "query": "what did I learn",
+      "expect": "/skills/adt-learn/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/incident-followup/SKILL.md"
+    },
+    {
+      "query": "save pattern",
+      "expect": "/skills/adt-learn/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-knowledge-loop/SKILL.md"
+    },
+    {
+      "query": "continuous learning",
+      "expect": "/skills/adt-learn/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/xp/SKILL.md"
+    },
+    {
+      "query": "execute this plan",
+      "expect": "/skills/adt-loop/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-scope-and-execute/SKILL.md"
+    },
+    {
+      "query": "keep going safely",
+      "expect": "/skills/adt-loop/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-token-audit/SKILL.md"
+    },
+    {
+      "query": "work through these",
+      "expect": "/skills/adt-loop/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/skills/parallel-phases/SKILL.md"
+    },
+    {
+      "query": "drain the queue",
+      "expect": "/skills/adt-loop/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-session-bootstrap/SKILL.md"
+    },
+    {
+      "query": "keep cycling",
+      "expect": "/skills/adt-loop/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-context-hygiene/SKILL.md"
+    },
+    {
+      "query": "memory",
+      "expect": "/skills/adt-memory/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "remember this",
+      "expect": "/skills/adt-memory/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-knowledge-loop/SKILL.md"
+    },
+    {
+      "query": "save for next session",
+      "expect": "/skills/adt-memory/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-knowledge-loop/SKILL.md"
+    },
+    {
+      "query": "cross-session",
+      "expect": "/skills/adt-memory/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-specs-aggregate-roadmap/SKILL.md"
+    },
+    {
+      "query": "merge-requests",
+      "expect": "/skills/adt-merge-confidently/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/docs/ai-observability.md"
+    },
+    {
+      "query": "pr-completion-claims",
+      "expect": "/skills/adt-merge-confidently/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/verifier.md"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-merge-confidently/SKILL.md",
+      "rank": 5,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "multi-agent",
+      "expect": "/skills/adt-multi-agent/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/docs/claude-managed-agents.md"
+    },
+    {
+      "query": "parallel agents",
+      "expect": "/skills/adt-multi-agent/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/agents/env-gemini-cli.md"
+    },
+    {
+      "query": "agent orchestration",
+      "expect": "/skills/adt-multi-agent/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/claude-code-workflows.md"
+    },
+    {
+      "query": "mutation-test",
+      "expect": "/skills/adt-mutation-test/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-test-pipeline/SKILL.md"
+    },
+    {
+      "query": "what should happen now",
+      "expect": "/skills/adt-next-priority/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/agents/adt-systematic-debugger.md"
+    },
+    {
+      "query": "triage this repo",
+      "expect": "/skills/adt-next-priority/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-dep-lifecycle/SKILL.md"
+    },
+    {
+      "query": "post-repo-clone",
+      "expect": "/skills/adt-onboard-new-repo/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/env-codex-app.md"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-onboard-new-repo/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "orchestrate parallel work",
+      "expect": "/skills/adt-orchestrate/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-multi-agent/SKILL.md"
+    },
+    {
+      "query": "multi-agent task",
+      "expect": "/skills/adt-orchestrate/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-multi-agent/SKILL.md"
+    },
+    {
+      "query": "parallel workstreams",
+      "expect": "/skills/adt-orchestrate/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/agent-teams/SKILL.md"
+    },
+    {
+      "query": "check all open prs",
+      "expect": "/skills/adt-parallel-investigate/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/claude-code-routines-monitor.md"
+    },
+    {
+      "query": "audit each",
+      "expect": "/skills/adt-parallel-investigate/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/claude-code-workflows.md"
+    },
+    {
+      "query": "status of every",
+      "expect": "/skills/adt-parallel-investigate/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/verifier.md"
+    },
+    {
+      "query": "perf audit",
+      "expect": "/skills/adt-perf-audit/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-seo-a11y-audit/SKILL.md"
+    },
+    {
+      "query": "slow build",
+      "expect": "/skills/adt-perf-audit/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/agents/debugger.md"
+    },
+    {
+      "query": "slow tests",
+      "expect": "/skills/adt-perf-audit/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/skills/adt-test-pipeline/SKILL.md"
+    },
+    {
+      "query": "create a plan",
+      "expect": "/skills/adt-plan/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/planner.md"
+    },
+    {
+      "query": "plan this",
+      "expect": "/skills/adt-plan/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/agents/planner.md"
+    },
+    {
+      "query": "what is the approach",
+      "expect": "/skills/adt-plan/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-fallback/SKILL.md"
+    },
+    {
+      "query": "draft a plan",
+      "expect": "/skills/adt-plan/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/docs/claude-code-cloud-review-plan.md"
+    },
+    {
+      "query": "design the rollout",
+      "expect": "/skills/adt-plan/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-design-build/SKILL.md"
+    },
+    {
+      "query": "phase this work",
+      "expect": "/skills/adt-plan/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/skills/parallel-phases/SKILL.md"
+    },
+    {
+      "query": "implementation strategy",
+      "expect": "/skills/adt-plan/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/test-engineer.md"
+    },
+    {
+      "query": "what plugins am I missing",
+      "expect": "/skills/adt-plugin-audit/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/agents/critic.md"
+    },
+    {
+      "query": "merge",
+      "expect": "/skills/adt-pr-merge-readiness/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-merge-confidently/SKILL.md"
+    },
+    {
+      "query": "production-down",
+      "expect": "/skills/adt-production-incident/SKILL.md",
+      "rank": 5,
+      "shadowed_by": "/docs/braintrust-evals.md"
+    },
+    {
+      "query": "ship-it-detected-new-errors",
+      "expect": "/skills/adt-production-incident/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/debugger.md"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-production-incident/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "ship",
+      "expect": "/skills/adt-production-incident/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-scope-and-execute/SKILL.md"
+    },
+    {
+      "query": "deploy",
+      "expect": "/skills/adt-production-incident/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/skills/adt-ship-it/SKILL.md"
+    },
+    {
+      "query": "rag",
+      "expect": "/skills/adt-rag/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/tutorials/rag-recall-setup.md"
+    },
+    {
+      "query": "retrieval",
+      "expect": "/skills/adt-rag/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/docs/rag-architecture.md"
+    },
+    {
+      "query": "semantic search",
+      "expect": "/skills/adt-rag/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/ai-observability.md"
+    },
+    {
+      "query": "document retrieval",
+      "expect": "/skills/adt-rag/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/docs/rag-architecture.md"
+    },
+    {
+      "query": "vector search",
+      "expect": "/skills/adt-rag/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/rag-architecture.md"
+    },
+    {
+      "query": "rag gaps",
+      "expect": "/skills/adt-rag-coverage/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-rag-curate/SKILL.md"
+    },
+    {
+      "query": "what's missing from rag",
+      "expect": "/skills/adt-rag-coverage/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-rag-curate/SKILL.md"
+    },
+    {
+      "query": "improve rag",
+      "expect": "/skills/adt-rag-curate/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-knowledge-loop/SKILL.md"
+    },
+    {
+      "query": "add to rag",
+      "expect": "/skills/adt-rag-curate/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/tutorials/rag-recall-setup.md"
+    },
+    {
+      "query": "rag coverage gaps",
+      "expect": "/skills/adt-rag-curate/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-rag-coverage/SKILL.md"
+    },
+    {
+      "query": "rag outdated",
+      "expect": "/skills/adt-rag-drift/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/tutorials/rag-recall-setup.md"
+    },
+    {
+      "query": "drift detection",
+      "expect": "/skills/adt-rag-drift/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/docs/ai-observability.md"
+    },
+    {
+      "query": "inspect chunks",
+      "expect": "/skills/adt-rag-inspect/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/skills/adt-rag-drift/SKILL.md"
+    },
+    {
+      "query": "what's indexed",
+      "expect": "/skills/adt-rag-inspect/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/adt-database-reviewer.md"
+    },
+    {
+      "query": "chunk inspection",
+      "expect": "/skills/adt-rag-inspect/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/rag-architecture.md"
+    },
+    {
+      "query": "rag debug",
+      "expect": "/skills/adt-rag-inspect/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-rag/SKILL.md"
+    },
+    {
+      "query": "query scores",
+      "expect": "/skills/adt-rag-quality/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/rag-architecture.md"
+    },
+    {
+      "query": "rag performance",
+      "expect": "/skills/adt-rag-quality/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/tutorials/rag-recall-setup.md"
+    },
+    {
+      "query": "refactor-requests-with-cross-file-scope",
+      "expect": "/skills/adt-refactor-pipeline/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/executor.md"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-refactor-pipeline/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "cleanup",
+      "expect": "/skills/adt-refactor-pipeline/SKILL.md",
+      "rank": 5,
+      "shadowed_by": "/skills/adt-fix-the-suite/SKILL.md"
+    },
+    {
+      "query": "capture",
+      "expect": "/skills/adt-refactor-pipeline/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-research-and-decide/SKILL.md"
+    },
+    {
+      "query": "release",
+      "expect": "/skills/adt-release-flow/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/skills/hotfix/SKILL.md"
+    },
+    {
+      "query": "create release",
+      "expect": "/skills/adt-release-flow/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/env-windsurf.md"
+    },
+    {
+      "query": "tag and release",
+      "expect": "/skills/adt-release-flow/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/release-cut/SKILL.md"
+    },
+    {
+      "query": "publish version",
+      "expect": "/skills/adt-release-flow/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/skills/adt-add/SKILL.md"
+    },
+    {
+      "query": "new repo",
+      "expect": "/skills/adt-repo-intake/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-onboard-new-repo/SKILL.md"
+    },
+    {
+      "query": "what is this project",
+      "expect": "/skills/adt-repo-intake/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/claude-automation-recommender/SKILL.md"
+    },
+    {
+      "query": "explore codebase",
+      "expect": "/skills/adt-repo-intake/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/planner.md"
+    },
+    {
+      "query": "repo overview",
+      "expect": "/skills/adt-repo-intake/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/tutorials/rag-recall-setup.md"
+    },
+    {
+      "query": "research",
+      "expect": "/skills/adt-research/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-research-and-decide/SKILL.md"
+    },
+    {
+      "query": "investigate",
+      "expect": "/skills/adt-research/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-parallel-investigate/SKILL.md"
+    },
+    {
+      "query": "what does X do",
+      "expect": "/skills/adt-research/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/critic.md"
+    },
+    {
+      "query": "how does X work",
+      "expect": "/skills/adt-research/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/best-ai-skill-stewardship.md"
+    },
+    {
+      "query": "find information about",
+      "expect": "/skills/adt-research/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/document-specialist.md"
+    },
+    {
+      "query": "ultraresearch",
+      "expect": "/skills/adt-research/SKILL.md",
+      "rank": null,
+      "shadowed_by": null
+    },
+    {
+      "query": "choice-questions",
+      "expect": "/skills/adt-research-and-decide/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/agents/planner.md"
+    },
+    {
+      "query": "library-evaluations",
+      "expect": "/skills/adt-research-and-decide/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/docs/braintrust-evals.md"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-research-and-decide/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "resume",
+      "expect": "/skills/adt-resume/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-self-heal/SKILL.md"
+    },
+    {
+      "query": "pick up where I left off",
+      "expect": "/skills/adt-resume/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/incident-followup/SKILL.md"
+    },
+    {
+      "query": "continue from checkpoint",
+      "expect": "/skills/adt-resume/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/skills/adt-checkpoint/SKILL.md"
+    },
+    {
+      "query": "where was I",
+      "expect": "/skills/adt-resume/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/best-ai-skill-stewardship.md"
+    },
+    {
+      "query": "restore context",
+      "expect": "/skills/adt-resume/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/context-building/SKILL.md"
+    },
+    {
+      "query": "what skill fits",
+      "expect": "/skills/adt-route/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/context-building/SKILL.md"
+    },
+    {
+      "query": "pick the right skill",
+      "expect": "/skills/adt-route/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/hotfix/SKILL.md"
+    },
+    {
+      "query": "cron",
+      "expect": "/skills/adt-schedule/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/task-orchestration/SKILL.md"
+    },
+    {
+      "query": "run every",
+      "expect": "/skills/adt-schedule/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-specs-aggregate-roadmap/SKILL.md"
+    },
+    {
+      "query": "open-ended-feature-or-fix-requests",
+      "expect": "/skills/adt-scope-and-execute/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-plan/SKILL.md"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-scope-and-execute/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "merge",
+      "expect": "/skills/adt-scope-and-execute/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/skills/adt-merge-confidently/SKILL.md"
+    },
+    {
+      "query": "security check",
+      "expect": "/skills/adt-secure/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-audit-deep/SKILL.md"
+    },
+    {
+      "query": "scan for vulns",
+      "expect": "/skills/adt-secure/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-security-sweep/SKILL.md"
+    },
+    {
+      "query": "run security review",
+      "expect": "/skills/adt-secure/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/agent-observability.md"
+    },
+    {
+      "query": "pre-security-release",
+      "expect": "/skills/adt-security-sweep/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/agents/adt-security-auditor.md"
+    },
+    {
+      "query": "post-incident",
+      "expect": "/skills/adt-security-sweep/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-production-incident/SKILL.md"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-security-sweep/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "release",
+      "expect": "/skills/adt-security-sweep/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/hotfix/SKILL.md"
+    },
+    {
+      "query": "auto-recover",
+      "expect": "/skills/adt-self-heal/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-resume/SKILL.md"
+    },
+    {
+      "query": "recover from error",
+      "expect": "/skills/adt-self-heal/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-resume/SKILL.md"
+    },
+    {
+      "query": "retry",
+      "expect": "/skills/adt-self-heal/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/streaming-orchestration.md"
+    },
+    {
+      "query": "agent stuck",
+      "expect": "/skills/adt-self-heal/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/streaming-orchestration.md"
+    },
+    {
+      "query": "loop failure",
+      "expect": "/skills/adt-self-heal/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/incident-followup/SKILL.md"
+    },
+    {
+      "query": "pre-launch check",
+      "expect": "/skills/adt-seo-a11y-audit/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/docs/persona-startup-mvp.md"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-seo-a11y-audit/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "post-resume",
+      "expect": "/skills/adt-session-bootstrap/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-self-heal/SKILL.md"
+    },
+    {
+      "query": "post-handoff-load",
+      "expect": "/skills/adt-session-bootstrap/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/env-claude-code.md"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-session-bootstrap/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "ship",
+      "expect": "/skills/adt-ship/SKILL.md",
+      "rank": 5,
+      "shadowed_by": "/skills/adt-scope-and-execute/SKILL.md"
+    },
+    {
+      "query": "create PR",
+      "expect": "/skills/adt-ship/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-specs-spec-new/SKILL.md"
+    },
+    {
+      "query": "ready to merge",
+      "expect": "/skills/adt-ship/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-merge-confidently/SKILL.md"
+    },
+    {
+      "query": "pre-commit check",
+      "expect": "/skills/adt-ship-check/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/best-security.md"
+    },
+    {
+      "query": "verify before push",
+      "expect": "/skills/adt-ship-check/SKILL.md",
+      "rank": 5,
+      "shadowed_by": "/docs/best-security.md"
+    },
+    {
+      "query": "ready to commit",
+      "expect": "/skills/adt-ship-check/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/git-master.md"
+    },
+    {
+      "query": "quality gate",
+      "expect": "/skills/adt-ship-check/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-verify/SKILL.md"
+    },
+    {
+      "query": "ship-it",
+      "expect": "/skills/adt-ship-it/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-scope-and-execute/SKILL.md"
+    },
+    {
+      "query": "release-cut-requests",
+      "expect": "/skills/adt-ship-it/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/release-cut/SKILL.md"
+    },
+    {
+      "query": "composite skill",
+      "expect": "/skills/adt-ship-it/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "ship",
+      "expect": "/skills/adt-ship-it/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-scope-and-execute/SKILL.md"
+    },
+    {
+      "query": "release",
+      "expect": "/skills/adt-ship-it/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/hotfix/SKILL.md"
+    },
+    {
+      "query": "incident",
+      "expect": "/skills/adt-ship-it/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-production-incident/SKILL.md"
+    },
+    {
+      "query": "when to compact",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-context/SKILL.md"
+    },
+    {
+      "query": "should I switch models",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/task-orchestration/SKILL.md"
+    },
+    {
+      "query": "use extended thinking",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/reasoning-model-prompting.md"
+    },
+    {
+      "query": "/compact",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-context/SKILL.md"
+    },
+    {
+      "query": "/model",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/multi-model-routing.md"
+    },
+    {
+      "query": "/clear",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/xp/SKILL.md"
+    },
+    {
+      "query": "slash commands",
+      "expect": "/skills/adt-smart-commands/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/command-development/SKILL.md"
+    },
+    {
+      "query": "model selection",
+      "expect": "/skills/adt-smart-model-route/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-ui-audit/SKILL.md"
+    },
+    {
+      "query": "choose model",
+      "expect": "/skills/adt-smart-model-route/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/reasoning-model-prompting.md"
+    },
+    {
+      "query": "task complexity",
+      "expect": "/skills/adt-smart-model-route/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-smart-commands/SKILL.md"
+    },
+    {
+      "query": "sync portuguese",
+      "expect": "/skills/adt-sync-pt-parity/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-sync-memories/SKILL.md"
+    },
+    {
+      "query": "test-cleanup",
+      "expect": "/skills/adt-test-cleanup/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-fix-the-suite/SKILL.md"
+    },
+    {
+      "query": "audit",
+      "expect": "/skills/adt-test-cleanup/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-seo-a11y-audit/SKILL.md"
+    },
+    {
+      "query": "improve test suite",
+      "expect": "/skills/adt-test-pipeline/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-fix-the-suite/SKILL.md"
+    },
+    {
+      "query": "clean up tests",
+      "expect": "/skills/adt-test-pipeline/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/test-engineer.md"
+    },
+    {
+      "query": "fix test coverage",
+      "expect": "/skills/adt-test-pipeline/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/agents/test-engineer.md"
+    },
+    {
+      "query": "suite cleanup",
+      "expect": "/skills/adt-test-pipeline/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-fix-the-suite/SKILL.md"
+    },
+    {
+      "query": "changelog",
+      "expect": "/skills/adt-ticket/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/repo-bootstrap/SKILL.md"
+    },
+    {
+      "query": "what did we ship",
+      "expect": "/skills/adt-ticket/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-knowledge-loop/SKILL.md"
+    },
+    {
+      "query": "token usage report",
+      "expect": "/skills/adt-token-audit/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-cost/SKILL.md"
+    },
+    {
+      "query": "how many tokens",
+      "expect": "/skills/adt-token-audit/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/claude-code-workflows.md"
+    },
+    {
+      "query": "cache hit rate",
+      "expect": "/skills/adt-token-audit/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/docs/ai-observability.md"
+    },
+    {
+      "query": "session cost",
+      "expect": "/skills/adt-token-audit/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-cost/SKILL.md"
+    },
+    {
+      "query": "how expensive was that session",
+      "expect": "/skills/adt-token-audit/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-session-bootstrap/SKILL.md"
+    },
+    {
+      "query": "ui-audit",
+      "expect": "/skills/adt-ui-audit/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/skills/adt-design-build/SKILL.md"
+    },
+    {
+      "query": "audit",
+      "expect": "/skills/adt-ui-audit/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-seo-a11y-audit/SKILL.md"
+    },
+    {
+      "query": "review",
+      "expect": "/skills/adt-ui-audit/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-secure/SKILL.md"
+    },
+    {
+      "query": "pr conflicting but local clean",
+      "expect": "/skills/adt-unstick-pr/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/branch-hygiene/SKILL.md"
+    },
+    {
+      "query": "verify",
+      "expect": "/skills/adt-verify/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/skills/adt-design-build/SKILL.md"
+    },
+    {
+      "query": "quality check",
+      "expect": "/skills/adt-verify/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/code-reviewer.md"
+    },
+    {
+      "query": "run tests",
+      "expect": "/skills/adt-verify/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/test-engineer.md"
+    },
+    {
+      "query": "before commit",
+      "expect": "/skills/adt-verify/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/git-master.md"
+    },
+    {
+      "query": "before PR",
+      "expect": "/skills/adt-verify/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-pr-merge-readiness/SKILL.md"
+    },
+    {
+      "query": "run multi-agent workflow",
+      "expect": "/skills/agent-teams/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/best-workflow.md"
+    },
+    {
+      "query": "\"git is a mess\"",
+      "expect": "/skills/branch-hygiene/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/git-master.md"
+    },
+    {
+      "query": "debug this",
+      "expect": "/skills/debug/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-production-incident/SKILL.md"
+    },
+    {
+      "query": "why is this failing",
+      "expect": "/skills/debug/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/test-engineer.md"
+    },
+    {
+      "query": "root cause",
+      "expect": "/skills/debug/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/skills/adt-debug-deep/SKILL.md"
+    },
+    {
+      "query": "investigate",
+      "expect": "/skills/debug/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-parallel-investigate/SKILL.md"
+    },
+    {
+      "query": "ultradebug",
+      "expect": "/skills/debug/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/adt-ultrathink-debugger.md"
+    },
+    {
+      "query": "\"I just cloned X\"",
+      "expect": "/skills/first-pr/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-debug-deep/SKILL.md"
+    },
+    {
+      "query": "new-repo detection on first non-trivial work",
+      "expect": "/skills/first-pr/SKILL.md",
+      "rank": 5,
+      "shadowed_by": "/skills/spec-driven-develop/SKILL.md"
+    },
+    {
+      "query": "\"prod is broken\"",
+      "expect": "/skills/hotfix/SKILL.md",
+      "rank": 5,
+      "shadowed_by": "/skills/adt-ship-it/SKILL.md"
+    },
+    {
+      "query": "\"hotfix\"",
+      "expect": "/skills/hotfix/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/skills/incident-followup/SKILL.md"
+    },
+    {
+      "query": "\"users can''t X right now\"",
+      "expect": "/skills/hotfix/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-next-priority/SKILL.md"
+    },
+    {
+      "query": "urgency markers",
+      "expect": "/skills/hotfix/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/agents/critic.md"
+    },
+    {
+      "query": "\"incident review\"",
+      "expect": "/skills/incident-followup/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-production-incident/SKILL.md"
+    },
+    {
+      "query": "post-rollback",
+      "expect": "/skills/incident-followup/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-production-incident/SKILL.md"
+    },
+    {
+      "query": "audit mcp usage",
+      "expect": "/skills/mcp-audit/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/docs/best-context-management.md"
+    },
+    {
+      "query": "find unused mcp",
+      "expect": "/skills/mcp-audit/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/docs/codex-parity.md"
+    },
+    {
+      "query": "execute this plan",
+      "expect": "/skills/parallel-phases/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-scope-and-execute/SKILL.md"
+    },
+    {
+      "query": "fan out per task",
+      "expect": "/skills/parallel-phases/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-parallel-investigate/SKILL.md"
+    },
+    {
+      "query": "manual only",
+      "expect": "/skills/release-cut/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/mcp-audit/SKILL.md"
+    },
+    {
+      "query": "BUT nudged by next-priority / session-bootstrap when release..main has ≥5 commits",
+      "expect": "/skills/release-cut/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/skills/adt-session-bootstrap/SKILL.md"
+    },
+    {
+      "query": "\"new repo setup\"",
+      "expect": "/skills/repo-bootstrap/SKILL.md",
+      "rank": 4,
+      "shadowed_by": "/skills/adt-onboard-new-repo/SKILL.md"
+    },
+    {
+      "query": "execute plan with subagents",
+      "expect": "/skills/subagent-driven-development/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/adt-scope-and-execute/SKILL.md"
+    },
+    {
+      "query": "dispatch per task with reviews",
+      "expect": "/skills/subagent-driven-development/SKILL.md",
+      "rank": 5,
+      "shadowed_by": "/skills/adt-scope-and-execute/SKILL.md"
+    },
+    {
+      "query": "test-driven incremental development",
+      "expect": "/skills/xp/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/skills/first-pr/SKILL.md"
+    },
+    {
+      "query": "role-divided driver/navigator flow",
+      "expect": "/skills/xp/SKILL.md",
+      "rank": 3,
+      "shadowed_by": "/skills/adt-release-flow/SKILL.md"
+    },
+    {
+      "query": "small-batch delivery with review",
+      "expect": "/skills/xp/SKILL.md",
+      "rank": null,
+      "shadowed_by": "/docs/persona-agency.md"
+    },
+    {
+      "query": "Strategic Architecture & Debugging Advisor (Opus, READ-ONLY)",
+      "expect": "/agents/architect.md",
+      "rank": null,
+      "shadowed_by": "/docs/multi-model-routing.md"
+    },
+    {
+      "query": "Focused task executor for implementation work (Sonnet)",
+      "expect": "/agents/executor.md",
+      "rank": 3,
+      "shadowed_by": "/docs/multi-model-routing.md"
+    }
+  ]
+}
