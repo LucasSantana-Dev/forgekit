@@ -1,6 +1,6 @@
 ---
 name: checkpoint
-description: Git-level WIP safety net. Stashes uncommitted work, tags, and pushes to remote
+description: Git-level WIP safety net. Stashes uncommitted work, tags, and pushes to remote. Acts as a stash backup.
 triggers:
   - checkpoint
   - save wip

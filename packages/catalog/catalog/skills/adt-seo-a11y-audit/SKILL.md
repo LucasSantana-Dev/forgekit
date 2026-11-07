@@ -8,7 +8,6 @@ triggers:
   - a11y
   - site audit
   - pre-launch check
-  - composite skill
 ---
 
 # SEO + Accessibility Audit

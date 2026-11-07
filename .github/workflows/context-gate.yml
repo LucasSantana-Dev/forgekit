@@ -1,0 +1,51 @@
+name: Context gate
+
+# Blocks changes that make a skill trigger or a note description stop reaching its own
+# document (hitgate context gate, lexical BM25 proxy). Baselines live in .hitgate/.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/catalog/catalog/**"
+      - "packages/core/**"
+      - ".hitgate/**"
+      - ".github/workflows/context-gate.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "packages/catalog/catalog/**"
+      - "packages/core/**"
+      - ".hitgate/**"
+      - ".github/workflows/context-gate.yml"
+
+permissions:
+  contents: read
+
+env:
+  # hitgate main after PR 150; bump deliberately and re-freeze if scoring changes.
+  HITGATE_REF: d403e5065f27118da801948ff5bba4ba5eeba2d1
+
+jobs:
+  context-gate:
+    name: Skill and note reachability
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
+
+      - name: Install hitgate
+        run: |
+          python3 -m venv "$RUNNER_TEMP/hg"
+          "$RUNNER_TEMP/hg/bin/pip" install --quiet "git+https://github.com/LucasSantana-Dev/hitgate@${HITGATE_REF}"
+          echo "$RUNNER_TEMP/hg/bin" >> "$GITHUB_PATH"
+
+      - name: Gate catalog skills
+        run: hitgate-context packages/catalog/catalog --baseline .hitgate/context.catalog.json --out "$RUNNER_TEMP/out" --label catalog --show 10
+
+      - name: Gate core notes
+        if: success() || failure()
+        run: hitgate-context packages/core --baseline .hitgate/context.core.json --out "$RUNNER_TEMP/out" --label core --show 10

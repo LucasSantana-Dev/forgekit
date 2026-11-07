@@ -1,11 +1,10 @@
 ---
 name: feature-from-zero
-description: Mega-composite — full greenfield feature development from idea to live. Chains research-and-decide (validate the idea + capture decision) → scope-and-execute (analysis + plan + implement) → design-build (if UI involved) → fix-the-suite (if tests need work) → merge-confidently → ship-it → knowledge-loop. The single command for "build feature X end-to-end."
+description: Mega-composite — full greenfield feature development from idea to live. Chains research-and-decide (validate the idea + capture decision) → scope-and-execute (analysis + plan + implement) → design-build (if UI involved) → fix-the-suite (if tests need work) → merge-confidently → ship-it → knowledge-loop. The single command for "build feature X end-to-end." Use for spec to prod workflows.
 triggers:
   - feature-from-zero
   - greenfield-feature-requests
   - spec-to-prod-workflows
-  - ship
   - feature
   - greenfield
 ---

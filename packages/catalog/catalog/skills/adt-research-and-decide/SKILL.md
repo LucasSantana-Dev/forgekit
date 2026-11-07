@@ -5,7 +5,6 @@ triggers:
   - research-and-decide
   - choice-questions
   - library-evaluations
-  - composite skill
   - capture
   - research
 ---

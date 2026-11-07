@@ -8,11 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- ci: **context gate** (`.github/workflows/context-gate.yml`). Runs the hitgate context gate over catalog skills and core notes against baselines in `.hitgate/`, and fails a PR that makes a skill trigger or note description stop reaching its own document. Usage and re-freeze steps in `docs/guides/maintenance.md`.
 - feat(hooks): **`computer-use-guard` PreToolUse hook** (matcher `mcp__computer-use__request_access`, in the `security-first-dev` collection). Computer use drives the real desktop, so Bash/Read hooks cannot see it. The guard denies shell-equivalent apps (terminals, IDEs, Docker), Finder, System Settings, credential stores, remote-control apps, `clipboardRead` and `systemKeyCombos`. App names are Unicode and path normalized and matched exactly (no substring hits); it fails closed on a missing python3, bad payload or internal error. Self-contained (python3 stdlib); regression tests in `test/computer-use-guard.test.js`.
 - docs(claude-code): **credential-read deny rules and force-push ask rules** in `settings.user.example.json`, with a short explanation in the Claude Code implementation README.
 
 ### Changed
 
+- fix(catalog): **one-word tag triggers no longer shadow each other.** 22 more skill descriptions gained the words their trigger phrases use (for example "plan b", "triage this repo", "prod is broken"), and 10 shared single-word tags (`audit`, `capture`, `ship`, `release`, `incident`, `review`) were dropped from skills that only borrowed them. Context gate skill-trigger Hit@5 0.911 to 0.990, shadowed cases 119 to 89, no case newly unreachable; `.hitgate/context.catalog.json` re-frozen.
+- fix(catalog): **skill trigger phrases now reach their own skill.** 45 skill descriptions gained the words users actually type (for example "benchmark", "remember this", "how much did that cost"), and the shared `composite skill` tag was dropped from 14 skills' triggers since a phrase every composite shares cannot route to any one of them. Context gate skill-trigger Hit@5 0.647 to 0.911, overall Hit@5 0.682 to 0.919, no case newly unreachable; `.hitgate/context.catalog.json` re-frozen.
 - docs: **README rewritten as a slim front door (379 → ~104 lines, EN + pt-BR).** Leads with the live catalog site, three-option quick start, one linked component table with real counts (111 skills / 27 hooks / 22 agents / 22 servers / 21 collections / 14 tools), and a curated guide index into `docs/guides/`. Maintainer-only content moved out verbatim: quality checks / mutation testing / release pre-flight / parity audit → `docs/guides/maintenance.md`; troubleshooting → `docs/guides/troubleshooting.md`.
 - deps: **bumped 9 dependencies** (devDeps, patches and security fixes for `@humanfs/node`, `browserslist`, `astro`, `js-yaml` 3.x and 4.x, `brace-expansion`). See PRs #346, #348, #349, #350, #352, #354, #355, #357, #360.
 

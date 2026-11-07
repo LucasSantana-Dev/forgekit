@@ -1,6 +1,6 @@
 ---
 name: schedule
-description: Define and manage recurring automated agent runs — CI monitoring, dep updates, security scans
+description: Define and manage recurring automated agent runs — CI monitoring, dep updates, security scans. Use for cron jobs or to run every day or week.
 triggers:
   - schedule
   - recurring

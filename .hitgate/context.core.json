@@ -1,0 +1,900 @@
+{
+  "n": 96,
+  "mrr": 0.874,
+  "hit@1": 0.823,
+  "hit@3": 0.917,
+  "hit@5": 0.948,
+  "by_scope": {
+    "none": {
+      "n": 96,
+      "mrr": 0.874,
+      "hit@1": 0.823,
+      "hit@3": 0.917,
+      "hit@5": 0.948
+    }
+  },
+  "by_intent": {
+    "note": {
+      "n": 96,
+      "mrr": 0.874,
+      "hit@1": 0.823,
+      "hit@3": 0.917,
+      "hit@5": 0.948
+    }
+  },
+  "per_case": [
+    {
+      "query": "A full-service software development consultancy with 66 specialized skills covering 12 programming languages, 7 backend frameworks, frontend/mobile, infrastructure, security, data science, and DevOps",
+      "expect": "/companies/fullstack-forge/COMPANY.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/companies/fullstack-forge/COMPANY.md:?"
+    },
+    {
+      "query": "API design, distributed systems, and MCP integration specialists",
+      "expect": "/companies/fullstack-forge/teams/api-architecture/TEAM.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 2,
+      "top_hit": "/companies/fullstack-forge/COMPANY.md:?"
+    },
+    {
+      "query": "Backend framework specialists covering NestJS, Django, FastAPI, Spring Boot, .NET, Rails, and Laravel",
+      "expect": "/companies/fullstack-forge/teams/backend-engineering/TEAM.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": null,
+      "top_hit": "/companies/fullstack-forge/COMPANY.md:?"
+    },
+    {
+      "query": "Data engineering, machine learning, and AI specialists covering pandas, Spark, ML pipelines, fine-tuning, prompt engineering, and RAG",
+      "expect": "/companies/fullstack-forge/teams/data-ml/TEAM.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/companies/fullstack-forge/teams/data-ml/TEAM.md:?"
+    },
+    {
+      "query": "DevOps and site reliability engineers handling CI/CD, monitoring, chaos engineering, and production reliability",
+      "expect": "/companies/fullstack-forge/teams/devops-sre/TEAM.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/companies/fullstack-forge/teams/devops-sre/TEAM.md:?"
+    },
+    {
+      "query": "Frontend and mobile specialists covering React, Next.js, Vue, Angular, React Native, and Flutter",
+      "expect": "/companies/fullstack-forge/teams/frontend-mobile/TEAM.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 2,
+      "top_hit": "/companies/fullstack-forge/COMPANY.md:?"
+    },
+    {
+      "query": "Cloud, container orchestration, and database specialists for AWS, Azure, GCP, Kubernetes, Terraform, and PostgreSQL",
+      "expect": "/companies/fullstack-forge/teams/infrastructure-cloud/TEAM.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/companies/fullstack-forge/teams/infrastructure-cloud/TEAM.md:?"
+    },
+    {
+      "query": "12 programming language specialists covering Python, TypeScript, Go, Rust, C++, C#, Java, Kotlin, Swift, PHP, JavaScript, and SQL",
+      "expect": "/companies/fullstack-forge/teams/language-engineering/TEAM.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 5,
+      "top_hit": "/companies/fullstack-forge/COMPANY.md:?"
+    },
+    {
+      "query": "Third-party platform specialists for Salesforce, Shopify, WordPress, and Atlassian",
+      "expect": "/companies/fullstack-forge/teams/platform-specialists/TEAM.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/companies/fullstack-forge/teams/platform-specialists/TEAM.md:?"
+    },
+    {
+      "query": "Testing and code quality specialists covering unit, integration, E2E, performance testing, code review, and documentation",
+      "expect": "/companies/fullstack-forge/teams/quality-testing/TEAM.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 2,
+      "top_hit": "/companies/fullstack-forge/COMPANY.md:?"
+    },
+    {
+      "query": "Security engineering covering OWASP Top 10 prevention, secure coding, vulnerability auditing, and full-stack security",
+      "expect": "/companies/fullstack-forge/teams/security/TEAM.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/companies/fullstack-forge/teams/security/TEAM.md:?"
+    },
+    {
+      "query": "A lean one-founder company template for shipping product, growth, and support work without a large team.",
+      "expect": "/companies/solopreneur/COMPANY.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/companies/solopreneur/COMPANY.md:?"
+    },
+    {
+      "query": "A startup-focused company template optimized for rapid MVP shipping, customer discovery, and launch iteration.",
+      "expect": "/companies/startup-mvp/COMPANY.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/companies/startup-mvp/COMPANY.md:?"
+    },
+    {
+      "query": "Key architectural decisions and their rationale",
+      "expect": "/examples/.claude/memory/project-decisions.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": null,
+      "top_hit": "/kit/core/skills/research-and-decide.md:?"
+    },
+    {
+      "query": "Developer workflow preferences, coding style, and communication patterns",
+      "expect": "/examples/.claude/memory/user-preferences.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/examples/.claude/memory/user-preferences.md:?"
+    },
+    {
+      "query": "Hand a ready PR off to GitHub auto-merge + background watcher, so the session doesn't block on CI. Use when a PR has CI green pending OR is one rebase away from green. Replaces the \"schedule wakeup every 5min to recheck CI\" anti-pattern.",
+      "expect": "/implementations/claude-code/skills/auto-ship.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 2,
+      "top_hit": "/implementations/claude-code/skills/handoff-diet.md:?"
+    },
+    {
+      "query": "SonarCloud coverage-fail repair via focused subagent. Takes PR#, fetches coverage gap, dispatches test-writing subagent, handles force-with-lease push and re-scan polling. Codifies the \"add tests only, no source changes\" pattern.",
+      "expect": "/implementations/claude-code/skills/coverage-gap.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/implementations/claude-code/skills/coverage-gap.md:?"
+    },
+    {
+      "query": "Meta-skill codifying the no-wakeup-polling pattern. Describes the ScheduleWakeup anti-pattern, the fix (--auto merge + detached watcher), and when to still use wakeups. Reduces handoff spam by 80%.",
+      "expect": "/implementations/claude-code/skills/handoff-diet.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/implementations/claude-code/skills/handoff-diet.md:?"
+    },
+    {
+      "query": "Reference checklist for npm-workspaces + Prisma Dockerfiles. Pure doc skill. Prevents the 3 prod outages this week (missing node_modules, shared not built, Prisma not generated, env var typos).",
+      "expect": "/implementations/claude-code/skills/monorepo-dockerfile.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/implementations/claude-code/skills/monorepo-dockerfile.md:?"
+    },
+    {
+      "query": "Multi-PR state snapshot in one GraphQL query. Takes space-separated PR numbers, returns table with state, merge status, failing checks, pending checks. Replaces \"for P in 645 646 647; do gh pr view...\" polling loop.",
+      "expect": "/implementations/claude-code/skills/pr-snapshot.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/implementations/claude-code/skills/pr-snapshot.md:?"
+    },
+    {
+      "query": "SSH rebuild Lucky services + detached Docker watcher. Pulls main, kicks off background build, returns immediately with ETA. No session blocking on 25min Docker rebuilds.",
+      "expect": "/implementations/claude-code/skills/prod-rebuild.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/implementations/claude-code/skills/prod-rebuild.md:?"
+    },
+    {
+      "query": "Merge a PR safely to main with strict CI-green enforcement. Never bypass branch protection — no `--admin`, no `--no-verify`. Use when asked to merge, ship, or land a PR to main.",
+      "expect": "/implementations/claude-code/skills/safe-merge.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/implementations/claude-code/skills/safe-merge.md:?"
+    },
+    {
+      "query": "Complete git workflow - commit changes with conventional commit message, push to remote, and create pull request",
+      "expect": "/implementations/claude-code/skills/ship.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/implementations/claude-code/skills/ship.md:?"
+    },
+    {
+      "query": "Run full quality gate suite (lint, type-check, test, build) to verify code before commit or PR",
+      "expect": "/implementations/claude-code/skills/verify.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 2,
+      "top_hit": "/kit/core/skills/verify.md:?"
+    },
+    {
+      "query": "Monorepo version bump + changelog promotion + PR + auto-merge. Takes NEXT_VERSION arg, bumps root + workspace package.json files, promotes [Unreleased] in CHANGELOG.md, commits, pushes, creates PR, and queues auto-merge in one go.",
+      "expect": "/implementations/claude-code/skills/version-bump.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/implementations/claude-code/skills/version-bump.md:?"
+    },
+    {
+      "query": "React and Next.js specialist for frontend implementation, debugging, and refactoring.",
+      "expect": "/implementations/claude-code/subagents/react-engineer.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/implementations/claude-code/subagents/react-engineer.md:?"
+    },
+    {
+      "query": "Meta-adder for toolkit artifacts. Single entry point to add a skill, pattern, best-practice, hook, agent, or guide with correct frontmatter + sync to 4 publish targets.",
+      "expect": "/kit/core/skills/add.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/add.md:?"
+    },
+    {
+      "query": "Capture an Architecture Decision Record — what was decided, why, what alternatives were considered, and when to revisit. Writes a numbered ADR file to docs/adr/ in the active repo, with consistent formatting that downstream skills (improve-codebase-architecture, refactor-plan) can read. Use right after deciding something non-obvious so the reasoning isn't lost.",
+      "expect": "/kit/core/skills/adr-write.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/adr-write.md:?"
+    },
+    {
+      "query": "Composite skill — full project health check across testing, config, hooks, performance, security, MCP, and plugins. Runs the audit skills in parallel and reconciles into one severity-ranked report with prioritized remediation plan. Use weekly per active project, before major releases, or as part of quarterly tech-debt review.",
+      "expect": "/kit/core/skills/audit-deep.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/audit-deep.md:?"
+    },
+    {
+      "query": "Meta-skill — defines when to apply other skills automatically without being asked",
+      "expect": "/kit/core/skills/auto-invoke.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/auto-invoke.md:?"
+    },
+    {
+      "query": "Keep EN/PT README.md pairs in parity across a repo (and across twin repos like ai-dev-toolkit + ai-dev-toolkit-pt-br).",
+      "expect": "/kit/core/skills/bilingual-readme-sync.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/bilingual-readme-sync.md:?"
+    },
+    {
+      "query": "Local build-error triage. Detects common compile errors and suggests fixes",
+      "expect": "/kit/core/skills/build-fix.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/build-fix.md:?"
+    },
+    {
+      "query": "Git-level WIP safety net. Stashes uncommitted work, tags, and pushes to remote",
+      "expect": "/kit/core/skills/checkpoint.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/checkpoint.md:?"
+    },
+    {
+      "query": "Inspect current CI state, identify the first real blocker, separate required failures from noise, and monitor until checks settle. Use when checks are failing, flaky, or blocking a merge.",
+      "expect": "/kit/core/skills/ci-watch.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/ci-watch.md:?"
+    },
+    {
+      "query": "Losslessly compress PNG and SVG assets in place and generate .webp siblings for every raster image. Use when the user asks to \"compress assets\", \"optimize images\", \"shrink the assets folder\", or \"convert to webp\". Runs a deterministic pipeline via oxipng + svgo + cwebp + ImageMagick.",
+      "expect": "/kit/core/skills/compress-assets.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 2,
+      "top_hit": "/implementations/claude-code/skills/compress-assets/SKILL.md:?"
+    },
+    {
+      "query": "Audit project gates (jest/vitest coverage thresholds, tsconfig strictness, eslint rules, husky/lint-staged, sonar quality gate, branch protection) and flag values mathematically incompatible with reasonable defaults for the project's app type. Surfaces conflicts BEFORE skills like test-cleanup or ship hit them. Use weekly, automatically, or before any major refactor.",
+      "expect": "/kit/core/skills/config-drift-detect.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/config-drift-detect.md:?"
+    },
+    {
+      "query": "Keep sessions focused and efficient — prune stale outputs, preserve active state, recommend compaction",
+      "expect": "/kit/core/skills/context-hygiene.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/context-hygiene.md:?"
+    },
+    {
+      "query": "Optimize context window usage — compact stale data, compress via summarization, preserve active state",
+      "expect": "/kit/core/skills/context.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 3,
+      "top_hit": "/kit/core/skills/optimize.md:?"
+    },
+    {
+      "query": "Track and report token usage and estimated cost per session, agent, and phase",
+      "expect": "/kit/core/skills/cost.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/cost.md:?"
+    },
+    {
+      "query": "Composite skill — full debugging workflow from \"this is broken\" to root cause and fix. Chains hypothesis-tree (root-cause candidates) → tracer agent (evidence walk) → error-monitoring query (production correlation if applicable) → ci-watch (regression check) → production-incident (if production-impacting). Use when a bug needs deep investigation, not just a quick fix.",
+      "expect": "/kit/core/skills/debug-deep.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/debug-deep.md:?"
+    },
+    {
+      "query": "Full dependency lifecycle composite — audit known vulnerabilities, triage by severity and breaking-change risk, upgrade targeted packages, verify tests pass, ship PR. Use monthly, before releases, or when dependency alerts are stacking. Never do a blanket upgrade; always triage first.",
+      "expect": "/kit/core/skills/dep-lifecycle.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/dep-lifecycle.md:?"
+    },
+    {
+      "query": "Composite skill — design, scaffold, build, and verify a UI in one workflow. Chains ui-ux-pro-max or web-design-guidelines (audit/principles) → shadcn or tailwind-design-system (component scaffold) → impeccable or frontend-design (build) → webapp-testing (verify). Use when the task is \"build this page\", \"design and implement X\", or any new UI surface.",
+      "expect": "/kit/core/skills/design-build.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/design-build.md:?"
+    },
+    {
+      "query": "Evaluate LLM outputs systematically — benchmarks, automated metrics, human preference, and regression tracking",
+      "expect": "/kit/core/skills/eval.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/eval.md:?"
+    },
+    {
+      "query": "Graceful degradation when primary approach fails. Try alternates in priority order; record which path succeeded for future routing.",
+      "expect": "/kit/core/skills/fallback.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/fallback.md:?"
+    },
+    {
+      "query": "Mega-composite — full greenfield feature development from idea to live. Chains research-and-decide (validate the idea + capture decision) → scope-and-execute (analysis + plan + implement) → design-build (if UI involved) → fix-the-suite (if tests need work) → merge-confidently → ship-it → knowledge-loop. The single command for \"build feature X end-to-end.\"",
+      "expect": "/kit/core/skills/feature-from-zero.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/feature-from-zero.md:?"
+    },
+    {
+      "query": "Composite skill — diagnose, repair, and validate a test suite end-to-end. Chains test-health (diagnose) → config-drift-detect (gate compatibility) → test-cleanup (prune + add integration tests) → mutation-test (validate survivors) → adr-write (capture decisions) → docs-sync. Use when \"the test suite is bad\" or you've hit the test-cleanup-bails-at-the-gate failure mode.",
+      "expect": "/kit/core/skills/fix-the-suite.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/fix-the-suite.md:?"
+    },
+    {
+      "query": "Composite skill — query, capture, improve, and persist knowledge in one workflow. Chains recall (RAG query) → sync-memories (write durable note) → rag-curate (improve weak retrievals) → handoff (durable snapshot if session-ending). Use when the work involves \"what did we decide\", \"remember this\", \"save where we are\", or any closing checkpoint.",
+      "expect": "/kit/core/skills/knowledge-loop.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/knowledge-loop.md:?"
+    },
+    {
+      "query": "Auto-extract reusable patterns from the current session into skills or memory",
+      "expect": "/kit/core/skills/learn.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/learn.md:?"
+    },
+    {
+      "query": "Default execution rhythm — inspect → act → verify → checkpoint — applied iteratively until the task is done or a clear blocker emerges. Use when working through a known plan, draining a queue (PRs, issues, dependency bumps), or executing a multi-step recipe where each step's output informs the next. Each iteration must produce a concrete artifact (commit, comment, decision) and a one-line state update. Stop on first unrecoverable error rather than retrying blindly. Pair with `ship` for merge-bound work and `handoff` if budget runs out mid-loop.",
+      "expect": "/kit/core/skills/loop.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/loop.md:?"
+    },
+    {
+      "query": "Persist decisions, preferences, and project state across sessions using structured memory types",
+      "expect": "/kit/core/skills/memory.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/memory.md:?"
+    },
+    {
+      "query": "Composite skill — take a PR from \"I think it's ready\" to merged with full gate verification. Chains pr-merge-readiness (verdict) → ci-watch (if CI blockers) → ship (when verdict is MERGE). Use as the one-call answer to \"can I merge this?\" instead of running the checks sequentially.",
+      "expect": "/kit/core/skills/merge-confidently.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/merge-confidently.md:?"
+    },
+    {
+      "query": "Choose and configure inference servers (vLLM, TGI, Ollama) — quantization, batching, scaling, and serving patterns",
+      "expect": "/kit/core/skills/model-serving.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/model-serving.md:?"
+    },
+    {
+      "query": "Orchestrate teams of specialized agents — DAG execution, task distribution, state sharing, failure recovery",
+      "expect": "/kit/core/skills/multi-agent.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/multi-agent.md:?"
+    },
+    {
+      "query": "Run mutation testing against a project's test suite to verify the tests actually catch failures when source code is broken. Use after major test changes, before declaring a suite \"good\", or when coverage % looks healthy but you suspect tests aren't catching real bugs.",
+      "expect": "/kit/core/skills/mutation-test.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/mutation-test.md:?"
+    },
+    {
+      "query": "Decide the highest-value safe thing to do right now in the active repo or workspace.",
+      "expect": "/kit/core/skills/next-priority.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": null,
+      "top_hit": "/kit/core/skills/session-bootstrap.md:?"
+    },
+    {
+      "query": "Next.js App Router patterns, best practices, and cache components guidance. Use when building or debugging App Router code, implementing Server Components and Actions, optimizing rendering modes, configuring caching strategies, or migrating to Cache Components. Covers file conventions, RSC boundaries, data patterns, metadata, route handlers, caching modes, partial prerendering, cache invalidation, and Next.js 16+ features.",
+      "expect": "/kit/core/skills/nextjs-patterns.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/nextjs-patterns.md:?"
+    },
+    {
+      "query": "Composite skill — first-touch workflow for an unfamiliar repo. Chains adt-repo-intake (understand) → audit-deep (health check) → config-drift-detect (gate audit) → init (CLAUDE.md if missing) → fewer-permission-prompts (prune permission noise). Use when entering a new repo for the first time, taking over from another developer, or after a major repo restructure.",
+      "expect": "/kit/core/skills/onboard-new-repo.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/onboard-new-repo.md:?"
+    },
+    {
+      "query": "Optimize context usage for the session by reducing bloat, improving token efficiency, and focusing on relevant areas. Use when context is growing large, responses are slow, or switching between unrelated tasks. Covers context analysis, compacting, targeted pruning, MCP-first strategies, and focused scoping by area.",
+      "expect": "/kit/core/skills/optimize.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/optimize.md:?"
+    },
+    {
+      "query": "Coordinate multiple subagents/worktrees for parallel workstreams. Decomposes larger tasks into independent sub-tasks, dispatches each to a dedicated agent.",
+      "expect": "/kit/core/skills/orchestrate.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/orchestrate.md:?"
+    },
+    {
+      "query": "Fan out N independent investigations as parallel agents in a single tool-use block, then roll up the results. Use whenever the same question must be answered against multiple repos, PRs, or services.",
+      "expect": "/kit/core/skills/parallel-investigate.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/parallel-investigate.md:?"
+    },
+    {
+      "query": "End-to-end performance audit composite — baseline the slow metric, profile to find the real hotspot, implement the smallest targeted fix, re-benchmark to confirm improvement, capture in ADR. Use when users report slowness, CI shows runtime regression, or before a release. Never optimize without profiling first.",
+      "expect": "/kit/core/skills/perf-audit.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/perf-audit.md:?"
+    },
+    {
+      "query": "Build a compact, validation-gated implementation plan for multi-step, risky, or ambiguous work — typically when phases need explicit checkpoints, the change touches multiple files/services, or the user wants alignment before execution. Output goes to `.claude/plans/<topic>.md` (or `.agents/plans/`) with goal, in/out-of-scope, phased steps, validation per phase, and replanning triggers. Skip for trivial single-file fixes, bug investigations (use `tracer`), or open-ended exploration (use `explore`). Pair with `ship` once the plan ends and merge work begins.",
+      "expect": "/kit/core/skills/plan.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/plan.md:?"
+    },
+    {
+      "query": "Diff the Anthropic `claude-plugins-official` marketplace against installed plugins and surface the delta, filtering known-unwanted entries (language LSPs you don't use, SaaS integrations you don't use, sample/demo plugins).",
+      "expect": "/kit/core/skills/plugin-audit.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/plugin-audit.md:?"
+    },
+    {
+      "query": "Aggregate every signal that gates a PR merge (CI, reviews, conflicts, branch staleness, security scans, third-party reviewers like CodeRabbit/Greptile/Sonar) into a single readiness verdict — MERGE / WAIT / FIX. Use as the one-call check before clicking merge instead of running ci-watch + manual scan.",
+      "expect": "/kit/core/skills/pr-merge-readiness.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/pr-merge-readiness.md:?"
+    },
+    {
+      "query": "Composite skill — full production incident workflow from alert to post-mortem. Chains error-monitoring triage → debug-deep (root cause) → coordinated fix + comms → ship-it (rollback or hotfix deploy) → adr-write (post-mortem). Use when production is on fire — not for dev-time debugging (use debug-deep alone for that).",
+      "expect": "/kit/core/skills/production-incident.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/production-incident.md:?"
+    },
+    {
+      "query": "Manually improve corpus quality by adding missing docs and filling retrieval gaps",
+      "expect": "/kit/core/skills/rag-curate.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/rag-curate.md:?"
+    },
+    {
+      "query": "Build and debug Retrieval-Augmented Generation pipelines — chunking, embedding, retrieval, reranking",
+      "expect": "/kit/core/skills/rag.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 2,
+      "top_hit": "/companies/fullstack-forge/skills/rag-architect/SKILL.md:?"
+    },
+    {
+      "query": "Index and overview of available skills in the toolkit",
+      "expect": "/kit/core/skills/README.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 5,
+      "top_hit": "/kit/core/skills/route.md:?"
+    },
+    {
+      "query": "Composite skill — safely refactor a module end-to-end with sequencing, parallel implementation, post-refactor cleanup, and rationale capture. Chains refactor-plan (phased plan + rollback) → three-man-team (architect/builder/reviewer in parallel) → fix-the-suite post-refactor → adr-write → docs-sync. Use for non-trivial refactors that need both careful sequencing and durable record.",
+      "expect": "/kit/core/skills/refactor-pipeline.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/refactor-pipeline.md:?"
+    },
+    {
+      "query": "Ship validated changes with repeatable release evidence — version bump, changelog, tag, and optional GitHub release",
+      "expect": "/kit/core/skills/release-flow.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/release-flow.md:?"
+    },
+    {
+      "query": "Onboard into an unfamiliar repository fast before making any changes",
+      "expect": "/kit/core/skills/repo-intake.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": null,
+      "top_hit": "/implementations/claude-code/skills/ship.md:?"
+    },
+    {
+      "query": "Composite skill — research a question, challenge the conclusion, plan adoption, and capture the decision. Chains adt-research or brainstorming (explore) → critic agent (challenge) → plan (sequence) → adr-write (record). Use when evaluating a library / pattern / architecture choice — forces the research-to-ADR pairing that usually slips.",
+      "expect": "/kit/core/skills/research-and-decide.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/research-and-decide.md:?"
+    },
+    {
+      "query": "Deep research on a topic using web search, docs, and codebase analysis",
+      "expect": "/kit/core/skills/research.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/research.md:?"
+    },
+    {
+      "query": "Recover session state from git, plans, and open PRs, then continue from the last completed phase without repeating work",
+      "expect": "/kit/core/skills/resume.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/resume.md:?"
+    },
+    {
+      "query": "Route a task to the most fitting skill or agent. Parses user intent, checks installed-skill inventory, and picks the best match (single skill or chain).",
+      "expect": "/kit/core/skills/route.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/route.md:?"
+    },
+    {
+      "query": "Define and manage recurring automated agent runs — CI monitoring, dep updates, security scans",
+      "expect": "/kit/core/skills/schedule.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/schedule.md:?"
+    },
+    {
+      "query": "Composite skill — understand a problem area, plan the work, execute it, and ship it in one chained workflow. Chains adt-repo-intake or ecosystem-health (analysis) → context-pack (load context) → plan (phased plan) → parallel agents or loop (execute) → ship (merge). Use when the task is \"fix the X area\" or \"implement Y end-to-end\" — the single command for analysis through merge.",
+      "expect": "/kit/core/skills/scope-and-execute.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/scope-and-execute.md:?"
+    },
+    {
+      "query": "Run a security-first pass for config, credentials, dependency risk, and unsafe operational shortcuts. Use when touching secrets, auth, config, deployment, or risky dependencies.",
+      "expect": "/kit/core/skills/secure.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/secure.md:?"
+    },
+    {
+      "query": "Composite skill — full security pass across secrets, dependencies, code paths, and OWASP risks. Chains socket-audit (npm supply chain) + semgrep (pattern scan) + code-security (code review for vulns) in parallel, reconciles into one severity-ranked report with remediation plan. Use quarterly per active repo or before any release of security-sensitive code.",
+      "expect": "/kit/core/skills/security-sweep.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/security-sweep.md:?"
+    },
+    {
+      "query": "Autonomous error recovery — detect failures, diagnose root cause, apply fixes, and resume without stopping",
+      "expect": "/kit/core/skills/self-heal.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/self-heal.md:?"
+    },
+    {
+      "query": "Composite skill — full SEO + Accessibility audit of a website or webapp in one workflow. Chains audit-website (squirrelscan SEO + tech + perf scan) + seo-audit (SEO framing) + playwright-best-practices (axe-core a11y) + ui-audit (design-system accessibility patterns) → reconciled severity-ranked report split by SEO vs A11y vs Both. Use for periodic site health checks, pre-launch audits, or when search rankings drop.",
+      "expect": "/kit/core/skills/seo-a11y-audit.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/seo-a11y-audit.md:?"
+    },
+    {
+      "query": "Composite skill — start-of-day routine. Chains wake-up (compact brief) → next-priority (decide) → pr-snapshot (PR queue) → context-pack (load relevant context if work-intent). Replaces \"what was I doing\", \"what's next\", \"load context\" with one invocation. Auto-fires on the first non-trivial prompt of a fresh session.",
+      "expect": "/kit/core/skills/session-bootstrap.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/session-bootstrap.md:?"
+    },
+    {
+      "query": "Verify work before committing, pushing, or requesting review",
+      "expect": "/kit/core/skills/ship-check.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": null,
+      "top_hit": "/implementations/claude-code/skills/ship.md:?"
+    },
+    {
+      "query": "Composite skill — take a merged PR all the way to production. Chains version-bump → changelog-update → ship (tag + release) → deployment-automation or vercel-deploy / cloudflare-deploy / prod-rebuild → post-deploy verify (sentry + ci-watch). Distinct from merge-confidently which stops at merge; this one ends with \"live in prod, verified, no incidents.\"",
+      "expect": "/kit/core/skills/ship-it.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/ship-it.md:?"
+    },
+    {
+      "query": "Commit, push, and open a pull request with a conventional commit message",
+      "expect": "/kit/core/skills/ship.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 2,
+      "top_hit": "/implementations/claude-code/skills/ship.md:?"
+    },
+    {
+      "query": "Sync durable project or session knowledge into the available memory systems so future sessions have accurate context. Use when meaningful work is complete and the user wants the result remembered.",
+      "expect": "/kit/core/skills/sync-memories.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/sync-memories.md:?"
+    },
+    {
+      "query": "Sync files (skills/patterns/agents/specs) from EN canonical repo to PT mirror, inserting \"Tradução pendente\" blockquote after YAML frontmatter, then open PR.",
+      "expect": "/kit/core/skills/sync-pt-parity.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/sync-pt-parity.md:?"
+    },
+    {
+      "query": "Audit and prune a bloated test suite down to the minimum tests that hit the coverage threshold and guard real behavior. Replaces many shallow unit tests with fewer well-scoped integration tests. Use when test count is disproportionate to app size.",
+      "expect": "/kit/core/skills/test-cleanup.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/test-cleanup.md:?"
+    },
+    {
+      "query": "Read-only diagnostic that reports the state of a project's test suite — count vs. proportionality, coverage vs. threshold, runtime, slowest tests, flaky test estimate, dead tests, and which other testing skills to run next. Use as the entry point before any test cleanup, generation, or mutation work.",
+      "expect": "/kit/core/skills/test-health.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/test-health.md:?"
+    },
+    {
+      "query": "Full test suite improvement composite — audit health, prune dead tests, validate with mutation testing, capture rationale in ADR. Use after a major feature ship, before tightening coverage gates, or when the suite shows bloat, excessive skips, or slow runtime. Chains test-health → test-cleanup → mutation-test → adr-write.",
+      "expect": "/kit/core/skills/test-pipeline.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/test-pipeline.md:?"
+    },
+    {
+      "query": "Assemble a Jira/Linear/GitHub-Issue body from recent commits, diff, and branch context",
+      "expect": "/kit/core/skills/ticket.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/ticket.md:?"
+    },
+    {
+      "query": "UI/UX design system reference, pattern library, and focused review guidance for web and mobile applications. Use for targeted design research, pattern selection, UX audits, accessibility guidance, palette and typography selection, layout heuristics, and component pattern research. Covers 50+ styles, 97 color palettes, 57 font pairings, Web Interface Guidelines compliance, and concrete visual/usability improvements for modern SaaS and product interfaces.",
+      "expect": "/kit/core/skills/ui-audit.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/ui-audit.md:?"
+    },
+    {
+      "query": "Recover a PR whose head SHA disagrees with its branch ref (webhook desync). Force-push and close+reopen rarely fix it — recreate the PR.",
+      "expect": "/kit/core/skills/unstick-pr.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/unstick-pr.md:?"
+    },
+    {
+      "query": "React composition and performance optimization patterns from Vercel. Use when building component libraries, refactoring components with prop proliferation, optimizing React/Next.js performance, or designing scalable component architectures. Covers composition patterns, React 19 APIs, performance optimization across waterfalls, bundle size, server/client rendering, and re-render optimization.",
+      "expect": "/kit/core/skills/vercel-patterns.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/kit/core/skills/vercel-patterns.md:?"
+    },
+    {
+      "query": "Run full quality gate suite before committing or creating a PR",
+      "expect": "/kit/core/skills/verify.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 5,
+      "top_hit": "/implementations/claude-code/skills/verify.md:?"
+    },
+    {
+      "query": "Vendor-neutral unit-of-procedural-knowledge spec enabling cross-tool skill discovery and auto-invocation.",
+      "expect": "/patterns/skill-md-adoption.md",
+      "scope": "none",
+      "intent": "note",
+      "hit_rank": 1,
+      "top_hit": "/patterns/skill-md-adoption.md:?"
+    }
+  ],
+  "docs": 188,
+  "shadowed": [
+    {
+      "query": "API design, distributed systems, and MCP integration specialists",
+      "expect": "/companies/fullstack-forge/teams/api-architecture/TEAM.md",
+      "rank": 2,
+      "shadowed_by": "/companies/fullstack-forge/COMPANY.md"
+    },
+    {
+      "query": "Backend framework specialists covering NestJS, Django, FastAPI, Spring Boot, .NET, Rails, and Laravel",
+      "expect": "/companies/fullstack-forge/teams/backend-engineering/TEAM.md",
+      "rank": null,
+      "shadowed_by": "/companies/fullstack-forge/COMPANY.md"
+    },
+    {
+      "query": "Frontend and mobile specialists covering React, Next.js, Vue, Angular, React Native, and Flutter",
+      "expect": "/companies/fullstack-forge/teams/frontend-mobile/TEAM.md",
+      "rank": 2,
+      "shadowed_by": "/companies/fullstack-forge/COMPANY.md"
+    },
+    {
+      "query": "12 programming language specialists covering Python, TypeScript, Go, Rust, C++, C#, Java, Kotlin, Swift, PHP, JavaScript, and SQL",
+      "expect": "/companies/fullstack-forge/teams/language-engineering/TEAM.md",
+      "rank": 5,
+      "shadowed_by": "/companies/fullstack-forge/COMPANY.md"
+    },
+    {
+      "query": "Testing and code quality specialists covering unit, integration, E2E, performance testing, code review, and documentation",
+      "expect": "/companies/fullstack-forge/teams/quality-testing/TEAM.md",
+      "rank": 2,
+      "shadowed_by": "/companies/fullstack-forge/COMPANY.md"
+    },
+    {
+      "query": "Key architectural decisions and their rationale",
+      "expect": "/examples/.claude/memory/project-decisions.md",
+      "rank": null,
+      "shadowed_by": "/kit/core/skills/research-and-decide.md"
+    },
+    {
+      "query": "Hand a ready PR off to GitHub auto-merge + background watcher, so the session doesn't block on CI. Use when a PR has CI green pending OR is one rebase away from green. Replaces the \"schedule wakeup every 5min to recheck CI\" anti-pattern.",
+      "expect": "/implementations/claude-code/skills/auto-ship.md",
+      "rank": 2,
+      "shadowed_by": "/implementations/claude-code/skills/handoff-diet.md"
+    },
+    {
+      "query": "Run full quality gate suite (lint, type-check, test, build) to verify code before commit or PR",
+      "expect": "/implementations/claude-code/skills/verify.md",
+      "rank": 2,
+      "shadowed_by": "/kit/core/skills/verify.md"
+    },
+    {
+      "query": "Losslessly compress PNG and SVG assets in place and generate .webp siblings for every raster image. Use when the user asks to \"compress assets\", \"optimize images\", \"shrink the assets folder\", or \"convert to webp\". Runs a deterministic pipeline via oxipng + svgo + cwebp + ImageMagick.",
+      "expect": "/kit/core/skills/compress-assets.md",
+      "rank": 2,
+      "shadowed_by": "/implementations/claude-code/skills/compress-assets/SKILL.md"
+    },
+    {
+      "query": "Optimize context window usage — compact stale data, compress via summarization, preserve active state",
+      "expect": "/kit/core/skills/context.md",
+      "rank": 3,
+      "shadowed_by": "/kit/core/skills/optimize.md"
+    },
+    {
+      "query": "Decide the highest-value safe thing to do right now in the active repo or workspace.",
+      "expect": "/kit/core/skills/next-priority.md",
+      "rank": null,
+      "shadowed_by": "/kit/core/skills/session-bootstrap.md"
+    },
+    {
+      "query": "Build and debug Retrieval-Augmented Generation pipelines — chunking, embedding, retrieval, reranking",
+      "expect": "/kit/core/skills/rag.md",
+      "rank": 2,
+      "shadowed_by": "/companies/fullstack-forge/skills/rag-architect/SKILL.md"
+    },
+    {
+      "query": "Index and overview of available skills in the toolkit",
+      "expect": "/kit/core/skills/README.md",
+      "rank": 5,
+      "shadowed_by": "/kit/core/skills/route.md"
+    },
+    {
+      "query": "Onboard into an unfamiliar repository fast before making any changes",
+      "expect": "/kit/core/skills/repo-intake.md",
+      "rank": null,
+      "shadowed_by": "/implementations/claude-code/skills/ship.md"
+    },
+    {
+      "query": "Verify work before committing, pushing, or requesting review",
+      "expect": "/kit/core/skills/ship-check.md",
+      "rank": null,
+      "shadowed_by": "/implementations/claude-code/skills/ship.md"
+    },
+    {
+      "query": "Commit, push, and open a pull request with a conventional commit message",
+      "expect": "/kit/core/skills/ship.md",
+      "rank": 2,
+      "shadowed_by": "/implementations/claude-code/skills/ship.md"
+    },
+    {
+      "query": "Run full quality gate suite before committing or creating a PR",
+      "expect": "/kit/core/skills/verify.md",
+      "rank": 5,
+      "shadowed_by": "/implementations/claude-code/skills/verify.md"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 name: xp
-description: "Extreme Programming for AI-human pair development. Use when: pair programming with your AI, building incrementally with tests, working with clear role division, or the user mentions XP/YAGNI/simple design/continuous refactoring."
+description: "Extreme Programming for AI-human pair development. Use when: pair programming with your AI, building incrementally with tests, working with clear role division, or the user mentions XP/YAGNI/simple design/continuous refactoring. Use for small batch delivery with review and test driven incremental development."
 triggers:
   - pair programming with structured cycles
   - test-driven incremental development

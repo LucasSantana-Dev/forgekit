@@ -1,13 +1,11 @@
 ---
 name: production-incident
-description: Composite skill — full production incident workflow from alert to post-mortem. Chains sentry (triage incoming events) → debug-deep (root cause) → incident-response (coordinate fix + comms) → ship-it (rollback or hotfix deploy) → adr-write (post-mortem). Use when production is on fire — not for dev-time debugging (use debug-deep alone for that).
+description: Composite skill — full production incident workflow from alert to post-mortem. Chains sentry (triage incoming events) → debug-deep (root cause) → incident-response (coordinate fix + comms) → ship-it (rollback or hotfix deploy) → adr-write (post-mortem). Use when production is on fire — not for dev-time debugging (use debug-deep alone for that). Use when production is down or a deploy shipped new errors.
 triggers:
   - production-incident
   - production-down
   - sentry-spike
   - ship-it-detected-new-errors
-  - composite skill
-  - ship
   - deploy
   - incident
 ---

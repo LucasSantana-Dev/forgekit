@@ -1,6 +1,6 @@
 ---
 name: rag-coverage
-description: Audit corpus distribution by source type and repo; identify coverage gaps and underindexed topics
+description: Audit corpus distribution by source type and repo; identify coverage gaps and underindexed topics. Answers what's missing from RAG.
 triggers:
   - rag coverage
   - corpus audit

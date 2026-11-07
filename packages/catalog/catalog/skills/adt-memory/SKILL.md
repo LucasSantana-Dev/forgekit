@@ -1,6 +1,6 @@
 ---
 name: memory
-description: Persist decisions, preferences, and project state across sessions using structured memory types
+description: Persist decisions, preferences, and project state across sessions using structured memory types. Use to remember this, save for next session, and keep cross-session memory.
 triggers:
   - memory
   - remember this
