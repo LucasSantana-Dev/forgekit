@@ -1,6 +1,6 @@
 ---
 name: cost
-description: Track and report token usage and estimated cost per session, agent, and phase. Use when session cost or budget matters: how much did that cost, spending so far, and token usage per phase.
+description: Track and report token usage and estimated cost per session, agent, and phase. Use when session cost or budget matters, for example how much did that cost, spending so far, and token usage per phase.
 triggers:
   - cost
   - how much did that cost

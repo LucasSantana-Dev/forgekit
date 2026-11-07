@@ -1,6 +1,6 @@
 ---
 name: repo-intake
-description: Onboard into an unfamiliar repository fast before making any changes. Use on a new repo to explore the codebase and get a repo overview: what is this project and how is it built.
+description: Onboard into an unfamiliar repository fast before making any changes. Use on a new repo to explore the codebase and get a repo overview, for example what is this project and how is it built.
 triggers:
   - new repo
   - onboard

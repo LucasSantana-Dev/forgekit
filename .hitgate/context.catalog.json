@@ -1,14 +1,14 @@
 {
   "n": 455,
-  "mrr": 0.811,
-  "hit@1": 0.736,
+  "mrr": 0.81,
+  "hit@1": 0.734,
   "hit@3": 0.89,
   "hit@5": 0.919,
   "by_scope": {
     "none": {
       "n": 455,
-      "mrr": 0.811,
-      "hit@1": 0.736,
+      "mrr": 0.81,
+      "hit@1": 0.734,
       "hit@3": 0.89,
       "hit@5": 0.919
     }
@@ -23,8 +23,8 @@
     },
     "skill-trigger": {
       "n": 405,
-      "mrr": 0.792,
-      "hit@1": 0.709,
+      "mrr": 0.791,
+      "hit@1": 0.706,
       "hit@3": 0.879,
       "hit@5": 0.911
     }
@@ -491,8 +491,8 @@
       "expect": "/skills/adt-cost/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": 1,
-      "top_hit": "/skills/adt-cost/SKILL.md:?"
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-token-audit/SKILL.md:?"
     },
     {
       "query": "budget",
@@ -3744,6 +3744,12 @@
       "expect": "/skills/adt-context-hygiene/SKILL.md",
       "rank": 3,
       "shadowed_by": "/skills/task-orchestration/SKILL.md"
+    },
+    {
+      "query": "token usage",
+      "expect": "/skills/adt-cost/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-token-audit/SKILL.md"
     },
     {
       "query": "budget",

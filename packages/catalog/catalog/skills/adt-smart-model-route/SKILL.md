@@ -1,6 +1,6 @@
 ---
 name: smart-model-route
-description: Auto-classify prompt complexity via Haiku (with heuristic fallback) and inject model routing hints for Agent tool calls. Wired as a UserPromptSubmit hook — fires on every prompt, routes low tasks to Haiku, standard to Sonnet, complex to Sonnet with thorough reasoning, and critical (security/arch/migrations) to Opus. Handles model selection: choose model by task complexity.
+description: Auto-classify prompt complexity via Haiku (with heuristic fallback) and inject model routing hints for Agent tool calls. Wired as a UserPromptSubmit hook — fires on every prompt, routes low tasks to Haiku, standard to Sonnet, complex to Sonnet with thorough reasoning, and critical (security/arch/migrations) to Opus. Handles model selection, for example choose model by task complexity.
 triggers:
   - smart model routing
   - model selection
