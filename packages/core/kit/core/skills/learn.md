@@ -1,6 +1,6 @@
 ---
 name: learn
-description: Auto-extract reusable patterns from the current session into skills or memory
+description: Auto-extract reusable patterns from the current session into skills or memory. Use for continuous learning, for example what did I learn, save pattern.
 triggers:
   - learn
   - extract patterns

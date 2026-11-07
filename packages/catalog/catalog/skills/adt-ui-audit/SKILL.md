@@ -1,10 +1,9 @@
 ---
 name: ui-audit
-description: UI/UX design system reference, pattern library, and focused review guidance for web and mobile applications. Use for targeted design research, pattern selection, UX audits, accessibility guidance, palette and typography selection, layout heuristics, and component pattern research. Covers 50+ styles, 97 color palettes, 57 font pairings, Web Interface Guidelines compliance, and concrete visual/usability improvements for modern SaaS and product interfaces.
+description: UI/UX design system reference, pattern library, and focused review guidance for web and mobile applications. Use for targeted design research, pattern selection, UX audits, accessibility guidance, palette and typography selection, layout heuristics, and component pattern research. Covers 50+ styles, 97 color palettes, 57 font pairings, Web Interface Guidelines compliance, and concrete visual/usability improvements for modern SaaS and product interfaces. Use for a ui-audit or UI review.
 triggers:
   - ui-audit
   - audit
-  - review
 ---
 
 # UI Audit - Design Intelligence & Review Guidance

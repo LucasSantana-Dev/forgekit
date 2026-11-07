@@ -1,6 +1,6 @@
 ---
 name: rag
-description: Build and debug Retrieval-Augmented Generation pipelines — chunking, embedding, retrieval, reranking
+description: Build and debug Retrieval-Augmented Generation pipelines — chunking, embedding, retrieval, reranking. Covers RAG, semantic search, vector search, and document retrieval. Use for any RAG question, RAG pipeline or RAG debug.
 triggers:
   - rag
   - retrieval

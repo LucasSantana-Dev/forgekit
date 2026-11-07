@@ -1,6 +1,6 @@
 ---
 name: dep-lifecycle
-description: Full dependency lifecycle composite — audit known vulnerabilities, triage by severity and breaking-change risk, upgrade targeted packages, verify tests pass, ship PR. Use monthly, before releases, or when dependency alerts are stacking. Never do a blanket upgrade; always triage first.
+description: Full dependency lifecycle composite — audit known vulnerabilities, triage by severity and breaking-change risk, upgrade targeted packages, verify tests pass, ship PR. Use monthly, before releases, or when dependency alerts are stacking. Never do a blanket upgrade; always triage first. Use to update dependencies, bump deps, or audit dependencies.
 triggers:
   - dep lifecycle
   - dependency audit

@@ -1,6 +1,6 @@
 ---
 name: verify
-description: Run full quality gate suite before committing or creating a PR
+description: Run full quality gate suite before committing or creating a PR. Use to verify, run tests and a quality check before commit or before PR.
 triggers:
   - verify
   - quality check

@@ -1,6 +1,6 @@
 ---
 name: first-pr
-description: 'Composite skill — land a safe first PR in an unfamiliar repo without rediscovery loops or guessing at conventions. Chains onboard-new-repo (architecture + scripts + CI scan) → context-pack (relevant files + standards + ADRs for the scoped change) → scope-and-execute (narrow the task) → test-driven-development (write failing test first) → pr-to-release (open the PR). Use the first time you contribute to a repo OR when an unfamiliar contributor needs a guided first change.'
+description: 'Composite skill — land a safe first PR in an unfamiliar repo without rediscovery loops or guessing at conventions. Chains onboard-new-repo (architecture + scripts + CI scan) → context-pack (relevant files + standards + ADRs for the scoped change) → scope-and-execute (narrow the task) → test-driven-development (write failing test first) → pr-to-release (open the PR). Use the first time you contribute to a repo OR when an unfamiliar contributor needs a guided first change. Use when I just cloned a repo and want a first contribution.'
 user-invocable: true
 auto-invoke: '"first PR in <repo>", "I just cloned X", "what''s a safe first change", new-repo detection on first non-trivial work'
 metadata:

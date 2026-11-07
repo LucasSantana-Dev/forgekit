@@ -1,6 +1,6 @@
 ---
 name: token-audit
-description: Audit historical Claude Code token usage from JSONL session files — shows total spend, cache hit rates, top costly sessions, weekly trends, and where tokens are going. Run after heavy sessions or weekly to measure optimization impact.
+description: Audit historical Claude Code token usage from JSONL session files — shows total spend, cache hit rates, top costly sessions, weekly trends, and where tokens are going. Run after heavy sessions or weekly to measure optimization impact. Answers how many tokens a session used, how expensive was that session, session cost, and token usage report.
 triggers:
   - token audit
   - token usage report

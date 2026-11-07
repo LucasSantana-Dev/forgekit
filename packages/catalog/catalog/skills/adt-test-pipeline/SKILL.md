@@ -1,6 +1,6 @@
 ---
 name: test-pipeline
-description: Full test suite improvement composite — audit health, prune dead tests, validate with mutation testing, capture rationale in ADR. Use after a major feature ship, before tightening coverage gates, or when the suite shows bloat, excessive skips, or slow runtime. Chains test-health → test-cleanup → mutation-test → adr-write.
+description: Full test suite improvement composite — audit health, prune dead tests, validate with mutation testing, capture rationale in ADR. Use after a major feature ship, before tightening coverage gates, or when the suite shows bloat, excessive skips, or slow runtime. Chains test-health → test-cleanup → mutation-test → adr-write. Use to improve the test suite, clean up tests, fix test coverage, or for suite cleanup.
 triggers:
   - test pipeline
   - improve test suite

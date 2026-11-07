@@ -1,6 +1,6 @@
 ---
 name: rag-drift
-description: Detect and fix stale chunks (files that changed or were deleted since last indexing)
+description: Detect and fix stale chunks (files that changed or were deleted since last indexing). Use when RAG is outdated.
 triggers:
   - rag drift
   - stale chunks

@@ -1,6 +1,6 @@
 ---
 name: resume
-description: Recover session state from git, plans, and open PRs, then continue from the last completed phase without repeating work
+description: Recover session state from git, plans, and open PRs, then continue from the last completed phase without repeating work. Use to resume, pick up where I left off, restore context, continue from checkpoint, or answer where was I.
 triggers:
   - resume
   - pick up where I left off

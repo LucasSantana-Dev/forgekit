@@ -1,6 +1,6 @@
 ---
 name: route
-description: Route a task to the most fitting skill or agent. Parses user intent, checks installed-skill inventory, and picks the best match (single skill or chain).
+description: Route a task to the most fitting skill or agent. Parses user intent, checks installed-skill inventory, and picks the best match (single skill or chain). Use to pick the right skill, for example what skill fits this task.
 triggers:
   - "route this task"
   - "what skill fits"

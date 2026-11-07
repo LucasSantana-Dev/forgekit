@@ -1,6 +1,6 @@
 ---
 name: incident-followup
-description: 'Composite skill — runs the postmortem chain after any production incident (`/hotfix`, rollback, or prod outage acknowledged). Chains adt-research (root-cause learning) → adr-write (decision capture) → generate-tests (regression test) → security-sweep (conditional, only if root cause is auth/input/secret-related) → knowledge-loop (memory + RAG curation) → handoff. Stops the silent-postmortem failure mode where a hotfix ships and the lessons evaporate. Auto-queues after `/hotfix` Phase 10 completes; also fires when user says "postmortem", "what did we learn", "write up the incident".'
+description: 'Composite skill — runs the postmortem chain after any production incident (`/hotfix`, rollback, or prod outage acknowledged). Chains adt-research (root-cause learning) → adr-write (decision capture) → generate-tests (regression test) → security-sweep (conditional, only if root cause is auth/input/secret-related) → knowledge-loop (memory + RAG curation) → handoff. Stops the silent-postmortem failure mode where a hotfix ships and the lessons evaporate. Auto-queues after `/hotfix` Phase 10 completes; also fires when user says "postmortem", "what did we learn", "write up the incident". Run post rollback.'
 user-invocable: true
 auto-invoke: '"postmortem", "incident review", "what did we learn from", "write up the incident", post-hotfix Phase 10, post-rollback'
 metadata:
