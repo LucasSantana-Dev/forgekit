@@ -1,6 +1,6 @@
 ---
 name: merge-confidently
-description: Composite skill — take a PR from "I think it's ready" to merged with full gate verification. Chains pr-merge-readiness (verdict) → ci-watch / gh-fix-ci (if blockers) → gh-address-comments (if review needed) → ship (when verdict is MERGE). Use as the one-call answer to "can I merge this?" instead of running 4 skills sequentially.
+description: Composite skill — take a PR from "I think it's ready" to merged with full gate verification. Chains pr-merge-readiness (verdict) → ci-watch / gh-fix-ci (if blockers) → gh-address-comments (if review needed) → ship (when verdict is MERGE). Use as the one-call answer to "can I merge this?" instead of running 4 skills sequentially. Checks PR completion claims before merge.
 triggers:
   - merge-confidently
   - merge-requests

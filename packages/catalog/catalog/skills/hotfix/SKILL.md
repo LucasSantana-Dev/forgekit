@@ -1,6 +1,6 @@
 ---
 name: hotfix
-description: 'Composite skill — emergency bypass of the release branch when production is broken and waiting for the next release-cut is not viable. Chains incident scoping → branch from main (NOT release) → minimal fix → pr-merge-readiness → merge to main → patch-version tag → deploy → cherry-pick to release branch → post-deploy verify (sentry + ci-watch). Use ONLY for production-impacting breakage; routine "small fix" work belongs in /pr-to-release.'
+description: 'Composite skill — emergency bypass of the release branch when production is broken and waiting for the next release-cut is not viable. Chains incident scoping → branch from main (NOT release) → minimal fix → pr-merge-readiness → merge to main → patch-version tag → deploy → cherry-pick to release branch → post-deploy verify (sentry + ci-watch). Use ONLY for production-impacting breakage; routine "small fix" work belongs in /pr-to-release. Use when prod is broken or users can not use the app right now.'
 user-invocable: true
 auto-invoke: '"prod is broken", "hotfix", "emergency fix", "users can''t X right now", urgency markers'
 metadata:

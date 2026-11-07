@@ -1,16 +1,16 @@
 {
-  "n": 455,
-  "mrr": 0.81,
-  "hit@1": 0.734,
-  "hit@3": 0.89,
-  "hit@5": 0.919,
+  "n": 445,
+  "mrr": 0.877,
+  "hit@1": 0.8,
+  "hit@3": 0.955,
+  "hit@5": 0.989,
   "by_scope": {
     "none": {
-      "n": 455,
-      "mrr": 0.81,
-      "hit@1": 0.734,
-      "hit@3": 0.89,
-      "hit@5": 0.919
+      "n": 445,
+      "mrr": 0.877,
+      "hit@1": 0.8,
+      "hit@3": 0.955,
+      "hit@5": 0.989
     }
   },
   "by_intent": {
@@ -22,11 +22,11 @@
       "hit@5": 0.98
     },
     "skill-trigger": {
-      "n": 405,
-      "mrr": 0.791,
-      "hit@1": 0.706,
-      "hit@3": 0.879,
-      "hit@5": 0.911
+      "n": 395,
+      "mrr": 0.865,
+      "hit@1": 0.78,
+      "hit@3": 0.952,
+      "hit@5": 0.99
     }
   },
   "per_case": [
@@ -123,8 +123,8 @@
       "expect": "/skills/adt-audit-deep/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/agents/adt-security-auditor.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-audit-deep/SKILL.md:?"
     },
     {
       "query": "tech-debt-review",
@@ -139,7 +139,7 @@
       "expect": "/skills/adt-audit-deep/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": 3,
+      "hit_rank": 4,
       "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
     },
     {
@@ -359,14 +359,6 @@
       "top_hit": "/skills/adt-config-drift-detect/SKILL.md:?"
     },
     {
-      "query": "audit",
-      "expect": "/skills/adt-config-drift-detect/SKILL.md",
-      "scope": "none",
-      "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
-    },
-    {
       "query": "cleanup",
       "expect": "/skills/adt-config-drift-detect/SKILL.md",
       "scope": "none",
@@ -468,7 +460,7 @@
       "scope": "none",
       "intent": "skill-trigger",
       "hit_rank": 3,
-      "top_hit": "/skills/task-orchestration/SKILL.md:?"
+      "top_hit": "/skills/adt-smart-commands/SKILL.md:?"
     },
     {
       "query": "cost",
@@ -515,8 +507,8 @@
       "expect": "/skills/adt-debug-deep/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": 2,
-      "top_hit": "/skills/adt-production-incident/SKILL.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-debug-deep/SKILL.md:?"
     },
     {
       "query": "complex-bug-reports",
@@ -539,15 +531,15 @@
       "expect": "/skills/adt-debug-deep/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-schedule/SKILL.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-debug-deep/SKILL.md:?"
     },
     {
       "query": "debug",
       "expect": "/skills/adt-debug-deep/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": 5,
+      "hit_rank": 4,
       "top_hit": "/skills/debug/SKILL.md:?"
     },
     {
@@ -613,14 +605,6 @@
       "intent": "skill-trigger",
       "hit_rank": 1,
       "top_hit": "/skills/adt-design-build/SKILL.md:?"
-    },
-    {
-      "query": "audit",
-      "expect": "/skills/adt-design-build/SKILL.md",
-      "scope": "none",
-      "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
     },
     {
       "query": "design",
@@ -715,7 +699,7 @@
       "expect": "/skills/adt-fallback/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
+      "hit_rank": 5,
       "top_hit": "/skills/adt-plan/SKILL.md:?"
     },
     {
@@ -739,16 +723,8 @@
       "expect": "/skills/adt-feature-from-zero/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-ship-it/SKILL.md:?"
-    },
-    {
-      "query": "ship",
-      "expect": "/skills/adt-feature-from-zero/SKILL.md",
-      "scope": "none",
-      "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-scope-and-execute/SKILL.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-feature-from-zero/SKILL.md:?"
     },
     {
       "query": "feature",
@@ -815,14 +791,6 @@
       "top_hit": "/skills/adt-mutation-test/SKILL.md:?"
     },
     {
-      "query": "capture",
-      "expect": "/skills/adt-fix-the-suite/SKILL.md",
-      "scope": "none",
-      "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-research-and-decide/SKILL.md:?"
-    },
-    {
       "query": "end-of-task + recall-questions + checkpoint-requests",
       "expect": "/skills/adt-knowledge-loop/SKILL.md",
       "scope": "none",
@@ -883,7 +851,7 @@
       "expect": "/skills/adt-loop/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": 4,
+      "hit_rank": 5,
       "top_hit": "/skills/adt-scope-and-execute/SKILL.md:?"
     },
     {
@@ -979,16 +947,16 @@
       "expect": "/skills/adt-merge-confidently/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": 2,
-      "top_hit": "/docs/ai-observability.md:?"
+      "hit_rank": 4,
+      "top_hit": "/skills/adt-scope-and-execute/SKILL.md:?"
     },
     {
       "query": "pr-completion-claims",
       "expect": "/skills/adt-merge-confidently/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/agents/verifier.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-merge-confidently/SKILL.md:?"
     },
     {
       "query": "merge",
@@ -1059,16 +1027,16 @@
       "expect": "/skills/adt-next-priority/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": 3,
-      "top_hit": "/agents/adt-systematic-debugger.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-next-priority/SKILL.md:?"
     },
     {
       "query": "triage this repo",
       "expect": "/skills/adt-next-priority/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-dep-lifecycle/SKILL.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-next-priority/SKILL.md:?"
     },
     {
       "query": "onboard-new-repo",
@@ -1091,8 +1059,8 @@
       "expect": "/skills/adt-onboard-new-repo/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/agents/env-codex-app.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-onboard-new-repo/SKILL.md:?"
     },
     {
       "query": "optimize",
@@ -1123,7 +1091,7 @@
       "expect": "/skills/adt-orchestrate/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": 2,
+      "hit_rank": 3,
       "top_hit": "/skills/adt-multi-agent/SKILL.md:?"
     },
     {
@@ -1355,8 +1323,8 @@
       "expect": "/skills/adt-production-incident/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": 3,
-      "top_hit": "/skills/adt-debug-deep/SKILL.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-production-incident/SKILL.md:?"
     },
     {
       "query": "ship-it-detected-new-errors",
@@ -1365,14 +1333,6 @@
       "intent": "skill-trigger",
       "hit_rank": 1,
       "top_hit": "/skills/adt-production-incident/SKILL.md:?"
-    },
-    {
-      "query": "ship",
-      "expect": "/skills/adt-production-incident/SKILL.md",
-      "scope": "none",
-      "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-scope-and-execute/SKILL.md:?"
     },
     {
       "query": "deploy",
@@ -1395,8 +1355,8 @@
       "expect": "/skills/adt-rag/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/tutorials/rag-recall-setup.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-rag/SKILL.md:?"
     },
     {
       "query": "retrieval",
@@ -1619,8 +1579,8 @@
       "expect": "/skills/adt-rag-inspect/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": 1,
-      "top_hit": "/skills/adt-rag-inspect/SKILL.md:?"
+      "hit_rank": 2,
+      "top_hit": "/skills/adt-rag/SKILL.md:?"
     },
     {
       "query": "rag quality",
@@ -1667,8 +1627,8 @@
       "expect": "/skills/adt-refactor-pipeline/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/agents/executor.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-refactor-pipeline/SKILL.md:?"
     },
     {
       "query": "cleanup",
@@ -1677,14 +1637,6 @@
       "intent": "skill-trigger",
       "hit_rank": 5,
       "top_hit": "/skills/adt-fix-the-suite/SKILL.md:?"
-    },
-    {
-      "query": "capture",
-      "expect": "/skills/adt-refactor-pipeline/SKILL.md",
-      "scope": "none",
-      "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-research-and-decide/SKILL.md:?"
     },
     {
       "query": "refactor",
@@ -1995,8 +1947,8 @@
       "expect": "/skills/adt-scope-and-execute/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-plan/SKILL.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-scope-and-execute/SKILL.md:?"
     },
     {
       "query": "merge",
@@ -2060,7 +2012,7 @@
       "scope": "none",
       "intent": "skill-trigger",
       "hit_rank": 2,
-      "top_hit": "/agents/adt-security-auditor.md:?"
+      "top_hit": "/skills/adt-audit-deep/SKILL.md:?"
     },
     {
       "query": "post-incident",
@@ -2315,8 +2267,8 @@
       "expect": "/skills/adt-ship-it/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/release-cut/SKILL.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-ship-it/SKILL.md:?"
     },
     {
       "query": "ship",
@@ -2333,22 +2285,6 @@
       "intent": "skill-trigger",
       "hit_rank": 1,
       "top_hit": "/skills/adt-ship-it/SKILL.md:?"
-    },
-    {
-      "query": "release",
-      "expect": "/skills/adt-ship-it/SKILL.md",
-      "scope": "none",
-      "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-release-flow/SKILL.md:?"
-    },
-    {
-      "query": "incident",
-      "expect": "/skills/adt-ship-it/SKILL.md",
-      "scope": "none",
-      "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-production-incident/SKILL.md:?"
     },
     {
       "query": "smart commands",
@@ -2411,7 +2347,7 @@
       "expect": "/skills/adt-smart-commands/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
+      "hit_rank": 3,
       "top_hit": "/skills/adt-smart-model-route/SKILL.md:?"
     },
     {
@@ -2517,14 +2453,6 @@
       "intent": "skill-trigger",
       "hit_rank": 3,
       "top_hit": "/skills/adt-fix-the-suite/SKILL.md:?"
-    },
-    {
-      "query": "audit",
-      "expect": "/skills/adt-test-cleanup/SKILL.md",
-      "scope": "none",
-      "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
     },
     {
       "query": "test pipeline",
@@ -2695,14 +2623,6 @@
       "top_hit": "/skills/adt-seo-a11y-audit/SKILL.md:?"
     },
     {
-      "query": "review",
-      "expect": "/skills/adt-ui-audit/SKILL.md",
-      "scope": "none",
-      "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-secure/SKILL.md:?"
-    },
-    {
       "query": "unstick pr",
       "expect": "/skills/adt-unstick-pr/SKILL.md",
       "scope": "none",
@@ -2731,8 +2651,8 @@
       "expect": "/skills/adt-unstick-pr/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/branch-hygiene/SKILL.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/adt-unstick-pr/SKILL.md:?"
     },
     {
       "query": "vercel-patterns",
@@ -2811,8 +2731,8 @@
       "expect": "/skills/agent-teams/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/docs/best-workflow.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/agent-teams/SKILL.md:?"
     },
     {
       "query": "\"branch hygiene\"",
@@ -2859,8 +2779,8 @@
       "expect": "/skills/branch-hygiene/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/agents/git-master.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/branch-hygiene/SKILL.md:?"
     },
     {
       "query": "local-branch-count > 30 at session start",
@@ -2907,8 +2827,8 @@
       "expect": "/skills/debug/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/agents/adt-ultrathink-debugger.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/debug/SKILL.md:?"
     },
     {
       "query": "\"first PR in <repo>\"",
@@ -2923,8 +2843,8 @@
       "expect": "/skills/first-pr/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-debug-deep/SKILL.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/first-pr/SKILL.md:?"
     },
     {
       "query": "\"what''s a safe first change\"",
@@ -2979,8 +2899,8 @@
       "expect": "/skills/hotfix/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": 5,
-      "top_hit": "/skills/adt-ship-it/SKILL.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/hotfix/SKILL.md:?"
     },
     {
       "query": "\"hotfix\"",
@@ -3003,8 +2923,8 @@
       "expect": "/skills/hotfix/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-next-priority/SKILL.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/hotfix/SKILL.md:?"
     },
     {
       "query": "urgency markers",
@@ -3059,8 +2979,8 @@
       "expect": "/skills/incident-followup/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/adt-refactor-pipeline/SKILL.md:?"
+      "hit_rank": 3,
+      "top_hit": "/skills/adt-production-incident/SKILL.md:?"
     },
     {
       "query": "mcp audit",
@@ -3211,8 +3131,8 @@
       "expect": "/skills/subagent-driven-development/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/docs/claude-code-workflows.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/subagent-driven-development/SKILL.md:?"
     },
     {
       "query": "subagent-driven implementation",
@@ -3243,8 +3163,8 @@
       "expect": "/skills/xp/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/skills/first-pr/SKILL.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/xp/SKILL.md:?"
     },
     {
       "query": "role-divided driver/navigator flow",
@@ -3267,8 +3187,8 @@
       "expect": "/skills/xp/SKILL.md",
       "scope": "none",
       "intent": "skill-trigger",
-      "hit_rank": null,
-      "top_hit": "/docs/persona-agency.md:?"
+      "hit_rank": 1,
+      "top_hit": "/skills/xp/SKILL.md:?"
     },
     {
       "query": "Code Reviewer \u2014 systematically identifies bugs, security issues, test coverage gaps, and style violations",
@@ -3686,15 +3606,9 @@
       "shadowed_by": "/skills/adt-refactor-pipeline/SKILL.md"
     },
     {
-      "query": "pre-release",
-      "expect": "/skills/adt-audit-deep/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/agents/adt-security-auditor.md"
-    },
-    {
       "query": "audit",
       "expect": "/skills/adt-audit-deep/SKILL.md",
-      "rank": 3,
+      "rank": 4,
       "shadowed_by": "/skills/adt-seo-a11y-audit/SKILL.md"
     },
     {
@@ -3708,12 +3622,6 @@
       "expect": "/skills/adt-build-fix/SKILL.md",
       "rank": 2,
       "shadowed_by": "/agents/debugger.md"
-    },
-    {
-      "query": "audit",
-      "expect": "/skills/adt-config-drift-detect/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-seo-a11y-audit/SKILL.md"
     },
     {
       "query": "cleanup",
@@ -3743,7 +3651,7 @@
       "query": "switch task",
       "expect": "/skills/adt-context-hygiene/SKILL.md",
       "rank": 3,
-      "shadowed_by": "/skills/task-orchestration/SKILL.md"
+      "shadowed_by": "/skills/adt-smart-commands/SKILL.md"
     },
     {
       "query": "token usage",
@@ -3758,12 +3666,6 @@
       "shadowed_by": "/docs/streaming-orchestration.md"
     },
     {
-      "query": "debug-deep",
-      "expect": "/skills/adt-debug-deep/SKILL.md",
-      "rank": 2,
-      "shadowed_by": "/skills/adt-production-incident/SKILL.md"
-    },
-    {
       "query": "complex-bug-reports",
       "expect": "/skills/adt-debug-deep/SKILL.md",
       "rank": 5,
@@ -3776,22 +3678,10 @@
       "shadowed_by": "/skills/adt-ship-it/SKILL.md"
     },
     {
-      "query": "recurring-failures",
-      "expect": "/skills/adt-debug-deep/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-schedule/SKILL.md"
-    },
-    {
       "query": "debug",
       "expect": "/skills/adt-debug-deep/SKILL.md",
-      "rank": 5,
+      "rank": 4,
       "shadowed_by": "/skills/debug/SKILL.md"
-    },
-    {
-      "query": "audit",
-      "expect": "/skills/adt-design-build/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-seo-a11y-audit/SKILL.md"
     },
     {
       "query": "eval",
@@ -3808,20 +3698,8 @@
     {
       "query": "plan b",
       "expect": "/skills/adt-fallback/SKILL.md",
-      "rank": null,
+      "rank": 5,
       "shadowed_by": "/skills/adt-plan/SKILL.md"
-    },
-    {
-      "query": "spec-to-prod-workflows",
-      "expect": "/skills/adt-feature-from-zero/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-ship-it/SKILL.md"
-    },
-    {
-      "query": "ship",
-      "expect": "/skills/adt-feature-from-zero/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-scope-and-execute/SKILL.md"
     },
     {
       "query": "fix-the-suite",
@@ -3848,15 +3726,9 @@
       "shadowed_by": "/skills/adt-mutation-test/SKILL.md"
     },
     {
-      "query": "capture",
-      "expect": "/skills/adt-fix-the-suite/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-research-and-decide/SKILL.md"
-    },
-    {
       "query": "execute this plan",
       "expect": "/skills/adt-loop/SKILL.md",
-      "rank": 4,
+      "rank": 5,
       "shadowed_by": "/skills/adt-scope-and-execute/SKILL.md"
     },
     {
@@ -3880,38 +3752,14 @@
     {
       "query": "merge-requests",
       "expect": "/skills/adt-merge-confidently/SKILL.md",
-      "rank": 2,
-      "shadowed_by": "/docs/ai-observability.md"
-    },
-    {
-      "query": "pr-completion-claims",
-      "expect": "/skills/adt-merge-confidently/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/agents/verifier.md"
-    },
-    {
-      "query": "what should happen now",
-      "expect": "/skills/adt-next-priority/SKILL.md",
-      "rank": 3,
-      "shadowed_by": "/agents/adt-systematic-debugger.md"
-    },
-    {
-      "query": "triage this repo",
-      "expect": "/skills/adt-next-priority/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-dep-lifecycle/SKILL.md"
+      "rank": 4,
+      "shadowed_by": "/skills/adt-scope-and-execute/SKILL.md"
     },
     {
       "query": "onboard-new-repo",
       "expect": "/skills/adt-onboard-new-repo/SKILL.md",
       "rank": 2,
       "shadowed_by": "/skills/adt-repo-intake/SKILL.md"
-    },
-    {
-      "query": "post-repo-clone",
-      "expect": "/skills/adt-onboard-new-repo/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/agents/env-codex-app.md"
     },
     {
       "query": "orchestrate parallel work",
@@ -3922,7 +3770,7 @@
     {
       "query": "multi-agent task",
       "expect": "/skills/adt-orchestrate/SKILL.md",
-      "rank": 2,
+      "rank": 3,
       "shadowed_by": "/skills/adt-multi-agent/SKILL.md"
     },
     {
@@ -3962,28 +3810,10 @@
       "shadowed_by": "/skills/adt-merge-confidently/SKILL.md"
     },
     {
-      "query": "sentry-spike",
-      "expect": "/skills/adt-production-incident/SKILL.md",
-      "rank": 3,
-      "shadowed_by": "/skills/adt-debug-deep/SKILL.md"
-    },
-    {
-      "query": "ship",
-      "expect": "/skills/adt-production-incident/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-scope-and-execute/SKILL.md"
-    },
-    {
       "query": "deploy",
       "expect": "/skills/adt-production-incident/SKILL.md",
       "rank": 2,
       "shadowed_by": "/skills/adt-ship-it/SKILL.md"
-    },
-    {
-      "query": "rag",
-      "expect": "/skills/adt-rag/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/tutorials/rag-recall-setup.md"
     },
     {
       "query": "rag gaps",
@@ -3998,22 +3828,16 @@
       "shadowed_by": "/docs/ai-observability.md"
     },
     {
-      "query": "refactor-requests-with-cross-file-scope",
-      "expect": "/skills/adt-refactor-pipeline/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/agents/executor.md"
+      "query": "rag debug",
+      "expect": "/skills/adt-rag-inspect/SKILL.md",
+      "rank": 2,
+      "shadowed_by": "/skills/adt-rag/SKILL.md"
     },
     {
       "query": "cleanup",
       "expect": "/skills/adt-refactor-pipeline/SKILL.md",
       "rank": 5,
       "shadowed_by": "/skills/adt-fix-the-suite/SKILL.md"
-    },
-    {
-      "query": "capture",
-      "expect": "/skills/adt-refactor-pipeline/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-research-and-decide/SKILL.md"
     },
     {
       "query": "new repo",
@@ -4052,12 +3876,6 @@
       "shadowed_by": "/docs/braintrust-evals.md"
     },
     {
-      "query": "open-ended-feature-or-fix-requests",
-      "expect": "/skills/adt-scope-and-execute/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-plan/SKILL.md"
-    },
-    {
       "query": "merge",
       "expect": "/skills/adt-scope-and-execute/SKILL.md",
       "rank": 3,
@@ -4067,7 +3885,7 @@
       "query": "pre-security-release",
       "expect": "/skills/adt-security-sweep/SKILL.md",
       "rank": 2,
-      "shadowed_by": "/agents/adt-security-auditor.md"
+      "shadowed_by": "/skills/adt-audit-deep/SKILL.md"
     },
     {
       "query": "post-incident",
@@ -4124,33 +3942,15 @@
       "shadowed_by": "/skills/adt-scope-and-execute/SKILL.md"
     },
     {
-      "query": "release-cut-requests",
-      "expect": "/skills/adt-ship-it/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/release-cut/SKILL.md"
-    },
-    {
       "query": "ship",
       "expect": "/skills/adt-ship-it/SKILL.md",
       "rank": 2,
       "shadowed_by": "/skills/adt-scope-and-execute/SKILL.md"
     },
     {
-      "query": "release",
-      "expect": "/skills/adt-ship-it/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-release-flow/SKILL.md"
-    },
-    {
-      "query": "incident",
-      "expect": "/skills/adt-ship-it/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-production-incident/SKILL.md"
-    },
-    {
       "query": "/model",
       "expect": "/skills/adt-smart-commands/SKILL.md",
-      "rank": null,
+      "rank": 3,
       "shadowed_by": "/skills/adt-smart-model-route/SKILL.md"
     },
     {
@@ -4184,12 +3984,6 @@
       "shadowed_by": "/skills/adt-fix-the-suite/SKILL.md"
     },
     {
-      "query": "audit",
-      "expect": "/skills/adt-test-cleanup/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-seo-a11y-audit/SKILL.md"
-    },
-    {
       "query": "changelog",
       "expect": "/skills/adt-ticket/SKILL.md",
       "rank": 2,
@@ -4220,18 +4014,6 @@
       "shadowed_by": "/skills/adt-seo-a11y-audit/SKILL.md"
     },
     {
-      "query": "review",
-      "expect": "/skills/adt-ui-audit/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-secure/SKILL.md"
-    },
-    {
-      "query": "pr conflicting but local clean",
-      "expect": "/skills/adt-unstick-pr/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/branch-hygiene/SKILL.md"
-    },
-    {
       "query": "quality check",
       "expect": "/skills/adt-verify/SKILL.md",
       "rank": 2,
@@ -4256,52 +4038,16 @@
       "shadowed_by": "/skills/adt-multi-agent/SKILL.md"
     },
     {
-      "query": "run multi-agent workflow",
-      "expect": "/skills/agent-teams/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/docs/best-workflow.md"
-    },
-    {
-      "query": "\"git is a mess\"",
-      "expect": "/skills/branch-hygiene/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/agents/git-master.md"
-    },
-    {
-      "query": "ultradebug",
-      "expect": "/skills/debug/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/agents/adt-ultrathink-debugger.md"
-    },
-    {
-      "query": "\"I just cloned X\"",
-      "expect": "/skills/first-pr/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-debug-deep/SKILL.md"
-    },
-    {
       "query": "new-repo detection on first non-trivial work",
       "expect": "/skills/first-pr/SKILL.md",
       "rank": 5,
       "shadowed_by": "/skills/spec-driven-develop/SKILL.md"
     },
     {
-      "query": "\"prod is broken\"",
-      "expect": "/skills/hotfix/SKILL.md",
-      "rank": 5,
-      "shadowed_by": "/skills/adt-ship-it/SKILL.md"
-    },
-    {
       "query": "\"hotfix\"",
       "expect": "/skills/hotfix/SKILL.md",
       "rank": 3,
       "shadowed_by": "/skills/incident-followup/SKILL.md"
-    },
-    {
-      "query": "\"users can''t X right now\"",
-      "expect": "/skills/hotfix/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-next-priority/SKILL.md"
     },
     {
       "query": "urgency markers",
@@ -4318,8 +4064,8 @@
     {
       "query": "post-rollback",
       "expect": "/skills/incident-followup/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/adt-refactor-pipeline/SKILL.md"
+      "rank": 3,
+      "shadowed_by": "/skills/adt-production-incident/SKILL.md"
     },
     {
       "query": "audit mcp usage",
@@ -4364,28 +4110,10 @@
       "shadowed_by": "/skills/adt-onboard-new-repo/SKILL.md"
     },
     {
-      "query": "execute plan with subagents",
-      "expect": "/skills/subagent-driven-development/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/docs/claude-code-workflows.md"
-    },
-    {
-      "query": "test-driven incremental development",
-      "expect": "/skills/xp/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/skills/first-pr/SKILL.md"
-    },
-    {
       "query": "role-divided driver/navigator flow",
       "expect": "/skills/xp/SKILL.md",
       "rank": 3,
       "shadowed_by": "/agents/debugger.md"
-    },
-    {
-      "query": "small-batch delivery with review",
-      "expect": "/skills/xp/SKILL.md",
-      "rank": null,
-      "shadowed_by": "/docs/persona-agency.md"
     },
     {
       "query": "Strategic Architecture & Debugging Advisor (Opus, READ-ONLY)",

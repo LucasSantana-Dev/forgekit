@@ -1,6 +1,6 @@
 ---
 name: scope-and-execute
-description: Composite skill — understand a problem area, plan the work, execute it, and ship it in one chained workflow. Chains adt-repo-intake or ecosystem-health (analysis) → context-pack (load context) → plan (phased plan) → dispatch or loop (execute) → ship (merge). Use when the task is "fix the X area" or "implement Y end-to-end" — the single command for analysis through merge.
+description: Composite skill — understand a problem area, plan the work, execute it, and ship it in one chained workflow. Chains adt-repo-intake or ecosystem-health (analysis) → context-pack (load context) → plan (phased plan) → dispatch or loop (execute) → ship (merge). Use when the task is "fix the X area" or "implement Y end-to-end" — the single command for analysis through merge. Use for open ended feature or fix requests.
 triggers:
   - scope-and-execute
   - open-ended-feature-or-fix-requests

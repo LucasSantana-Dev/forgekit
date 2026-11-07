@@ -4,7 +4,6 @@ description: UI/UX design system reference, pattern library, and focused review 
 triggers:
   - ui-audit
   - audit
-  - review
 ---
 
 # UI Audit - Design Intelligence & Review Guidance

@@ -1,14 +1,12 @@
 ---
 name: ship-it
-description: Composite skill — take a merged PR all the way to production. Chains version-bump → changelog-update → ship (tag + release) → deployment-automation or vercel-deploy / cloudflare-deploy / prod-rebuild → post-deploy verify (sentry + ci-watch). Distinct from merge-confidently which stops at merge; this one ends with "live in prod, verified, no incidents."
+description: Composite skill — take a merged PR all the way to production. Chains version-bump → changelog-update → ship (tag + release) → deployment-automation or vercel-deploy / cloudflare-deploy / prod-rebuild → post-deploy verify (sentry + ci-watch). Distinct from merge-confidently which stops at merge; this one ends with "live in prod, verified, no incidents." Handles release cut requests once the PR is merged.
 triggers:
   - ship-it
   - post-merge-deployment
   - release-cut-requests
   - ship
   - deploy
-  - release
-  - incident
 ---
 
 # Ship It

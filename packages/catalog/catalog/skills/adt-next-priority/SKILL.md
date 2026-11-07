@@ -1,6 +1,6 @@
 ---
 name: next-priority
-description: Decide the highest-value safe thing to do right now in the active repo or workspace.
+description: Decide the highest-value safe thing to do right now in the active repo or workspace. Use to triage this repo and pick what to do next.
 triggers:
   - next priority
   - what should happen now
