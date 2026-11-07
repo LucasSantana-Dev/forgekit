@@ -52,3 +52,26 @@ node scripts/parity-audit.js
 # Coverage: claude-code 6/6, cursor 6/6, windsurf 6/6, ...
 # Skills: 29 | Configs: 8 | Gaps: 0
 ```
+
+## Context gate (skill and note reachability)
+
+The `Context gate` workflow runs [hitgate](https://github.com/LucasSantana-Dev/hitgate)'s context gate on every PR that touches `packages/catalog/catalog/` or `packages/core/`. It mines a test case from every skill trigger, auto-invoke phrase and note `description`, ranks all documents with BM25, and fails when Hit@5 drops more than 5 points or when a phrase that used to reach its own document no longer does. A hit means the phrase still finds its document under a lexical proxy, not that the document is good.
+
+Baselines live in `.hitgate/`. Run the gate locally before pushing:
+
+```bash
+pip install "git+https://github.com/LucasSantana-Dev/hitgate@d403e5065f27118da801948ff5bba4ba5eeba2d1"
+hitgate-context packages/catalog/catalog --baseline .hitgate/context.catalog.json --out /tmp/hg
+hitgate-context packages/core --baseline .hitgate/context.core.json --out /tmp/hg
+```
+
+The output lists newly unreachable phrases and the documents that now shadow them. Fix the trigger or description, or re-freeze when the change is intended (for example a skill was removed on purpose):
+
+```bash
+hitgate-context packages/catalog/catalog --label catalog --out .hitgate
+hitgate-context packages/core --label core --out .hitgate
+```
+
+Freeze on Linux or macOS. On Windows the gate also picks up lowercase `skill.md` files that CI does not see, so a Windows freeze will not match CI.
+
+For a local pre-commit hook without Python, build the static binary from `rust/hitgate-context` in the hitgate repo and use its `hooks/pre-commit` with `HITGATE_CONTEXT_ROOT=packages/catalog/catalog` and `HITGATE_CONTEXT_BASELINE=.hitgate/context.catalog.json`.
