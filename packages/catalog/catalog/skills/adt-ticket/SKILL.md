@@ -1,6 +1,6 @@
 ---
 name: ticket
-description: Assemble a Jira/Linear/GitHub-Issue body from recent commits, diff, and branch context
+description: Assemble a Jira/Linear/GitHub-Issue body from recent commits, diff, and branch context. Also drafts a changelog of what did we ship.
 triggers:
   - ticket
   - issue body

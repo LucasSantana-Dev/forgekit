@@ -1,6 +1,6 @@
 ---
 name: rag-curate
-description: Manually improve corpus quality by adding missing docs and filling retrieval gaps
+description: Manually improve corpus quality by adding missing docs and filling retrieval gaps. Use to improve RAG, add to RAG, or close RAG coverage gaps.
 triggers:
   - rag curate
   - curate corpus

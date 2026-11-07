@@ -3,7 +3,6 @@ name: test-cleanup
 description: Audit and prune a bloated test suite down to the minimum tests that hit the coverage threshold and guard real behavior. Replaces many shallow unit tests with fewer well-scoped integration tests. Use when test count is disproportionate to app size.
 triggers:
   - test-cleanup
-  - audit
 ---
 
 # Test Cleanup

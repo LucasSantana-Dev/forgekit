@@ -1,6 +1,6 @@
 ---
 name: loop
-description: Default execution rhythm — inspect → act → verify → checkpoint — applied iteratively until the task is done or a clear blocker emerges. Use when working through a known plan, draining a queue (PRs, issues, dependency bumps), or executing a multi-step recipe where each step's output informs the next. Each iteration must produce a concrete artifact (commit, comment, decision) and a one-line state update. Stop on first unrecoverable error rather than retrying blindly. Pair with `ship` for merge-bound work and `handoff` if budget runs out mid-loop.
+description: Default execution rhythm — inspect → act → verify → checkpoint — applied iteratively until the task is done or a clear blocker emerges. Use when working through a known plan, draining a queue (PRs, issues, dependency bumps), or executing a multi-step recipe where each step's output informs the next. Each iteration must produce a concrete artifact (commit, comment, decision) and a one-line state update. Stop on first unrecoverable error rather than retrying blindly. Pair with `ship` for merge-bound work and `handoff` if budget runs out mid-loop. Use to execute this plan, keep going safely, keep cycling through work, and drain the queue.
 triggers:
   - loop
   - execute this plan

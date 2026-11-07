@@ -1,6 +1,6 @@
 ---
 name: parallel-investigate
-description: Fan out N independent investigations as parallel agents in a single tool-use block, then roll up the results. Use whenever the same question must be answered against multiple repos, PRs, or services.
+description: Fan out N independent investigations as parallel agents in a single tool-use block, then roll up the results. Use whenever the same question must be answered against multiple repos, PRs, or services. Use to check all open PRs, audit each repo, or get the status of every service.
 triggers:
   - check all open prs
   - investigate across repos

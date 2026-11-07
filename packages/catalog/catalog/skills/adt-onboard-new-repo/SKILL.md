@@ -1,11 +1,10 @@
 ---
 name: onboard-new-repo
-description: Composite skill — first-touch workflow for an unfamiliar repo. Chains adt-repo-intake (understand) → audit-deep (health check) → config-drift-detect (gate audit) → init (CLAUDE.md if missing) → fewer-permission-prompts (prune permission noise). Use when entering a new repo for the first time, taking over from another developer, or after a major repo restructure.
+description: Composite skill — first-touch workflow for an unfamiliar repo. Chains adt-repo-intake (understand) → audit-deep (health check) → config-drift-detect (gate audit) → init (CLAUDE.md if missing) → fewer-permission-prompts (prune permission noise). Use when entering a new repo for the first time, taking over from another developer, or after a major repo restructure. Use post repo clone, right after you clone a repo.
 triggers:
   - onboard-new-repo
   - first-touch-on-unknown-repo
   - post-repo-clone
-  - composite skill
 ---
 
 # Onboard New Repo

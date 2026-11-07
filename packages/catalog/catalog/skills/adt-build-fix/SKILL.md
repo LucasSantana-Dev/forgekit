@@ -1,6 +1,6 @@
 ---
 name: build-fix
-description: Local build-error triage. Detects common compile errors and suggests fixes
+description: Local build-error triage. Detects common compile errors and suggests fixes. Use on a build error, tsc error, or module not found.
 triggers:
   - build-fix
   - build error

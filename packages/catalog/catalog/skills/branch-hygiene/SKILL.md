@@ -1,6 +1,6 @@
 ---
 name: branch-hygiene
-description: 'Composite skill — one-pass cleanup of stale local branches, dead worktrees, merged branches, and abandoned remote PR branches. Chains `git fetch --prune` → `clean_gone` (kill [gone] branches) → worktree prune + offer-to-remove dead worktrees → list-and-delete branches merged to main and release → delete remote PR branches whose PRs merged >7 days ago. Use instead of running `clean_gone` alone — that only catches half the rot. Daily-friction composite; fires on "clean up branches", "branch hygiene", "stale worktrees", and on session start when local branch count > 30.'
+description: 'Composite skill — one-pass cleanup of stale local branches, dead worktrees, merged branches, and abandoned remote PR branches. Chains `git fetch --prune` → `clean_gone` (kill [gone] branches) → worktree prune + offer-to-remove dead worktrees → list-and-delete branches merged to main and release → delete remote PR branches whose PRs merged >7 days ago. Use instead of running `clean_gone` alone — that only catches half the rot. Daily-friction composite; fires on "clean up branches", "branch hygiene", "stale worktrees", and on session start when local branch count > 30. Use when git is a mess with too many branches.'
 user-invocable: true
 auto-invoke: '"branch hygiene", "clean up branches", "prune branches", "stale worktrees", "dead worktrees", "git is a mess", local-branch-count > 30 at session start'
 metadata:

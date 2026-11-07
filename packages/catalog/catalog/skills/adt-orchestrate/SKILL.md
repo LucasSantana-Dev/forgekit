@@ -1,6 +1,6 @@
 ---
 name: orchestrate
-description: Coordinate multiple subagents/worktrees for parallel workstreams. Decomposes larger tasks into independent sub-tasks, dispatches each to a dedicated agent.
+description: Coordinate multiple subagents/worktrees for parallel workstreams. Decomposes larger tasks into independent sub-tasks, dispatches each to a dedicated agent. Use for a multi-agent task or parallel workstreams.
 triggers:
   - "orchestrate parallel work"
   - "coordinate subagents"

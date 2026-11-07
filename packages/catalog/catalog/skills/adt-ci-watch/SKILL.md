@@ -1,6 +1,6 @@
 ---
 name: ci-watch
-description: Inspect current CI state, identify the first real blocker, separate required failures from noise, and monitor until checks settle. Use when checks are failing, flaky, or blocking a merge.
+description: Inspect current CI state, identify the first real blocker, separate required failures from noise, and monitor until checks settle. Use when checks are failing, flaky, or blocking a merge. Use to check the pipeline.
 triggers:
   - ci watch
   - failing checks
