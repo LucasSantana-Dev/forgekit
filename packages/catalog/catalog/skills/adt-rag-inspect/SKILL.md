@@ -1,6 +1,6 @@
 ---
 name: rag-inspect
-description: Examine what's actually stored in the index for specific items
+description: Examine what's actually stored in the index for specific items. Use for RAG debug and chunk inspection: inspect chunks and see what's indexed.
 triggers:
   - rag inspect
   - inspect chunks

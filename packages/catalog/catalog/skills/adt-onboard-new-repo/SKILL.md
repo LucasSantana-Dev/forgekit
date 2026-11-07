@@ -5,7 +5,6 @@ triggers:
   - onboard-new-repo
   - first-touch-on-unknown-repo
   - post-repo-clone
-  - composite skill
 ---
 
 # Onboard New Repo

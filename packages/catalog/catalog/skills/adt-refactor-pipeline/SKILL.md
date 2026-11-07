@@ -4,7 +4,6 @@ description: Composite skill — safely refactor a module end-to-end with sequen
 triggers:
   - refactor-pipeline
   - refactor-requests-with-cross-file-scope
-  - composite skill
   - cleanup
   - capture
   - refactor

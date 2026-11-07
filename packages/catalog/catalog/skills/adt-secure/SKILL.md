@@ -1,6 +1,6 @@
 ---
 name: secure
-description: Shortcut for security review on current change set. Runs layered checks (secret-scan, dep-audit, semgrep, OWASP patterns, prompt-injection review).
+description: Shortcut for security review on current change set. Runs layered checks (secret-scan, dep-audit, semgrep, OWASP patterns, prompt-injection review). Use for a security check, to scan for vulns, or to run security review.
 triggers:
   - "secure this"
   - "security check"

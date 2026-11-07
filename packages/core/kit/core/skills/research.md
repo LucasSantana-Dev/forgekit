@@ -1,6 +1,6 @@
 ---
 name: research
-description: Deep research on a topic using web search, docs, and codebase analysis
+description: Deep research on a topic using web search, docs, and codebase analysis. Use to research or investigate a topic, find information about a library, or answer what does X do and how does X work.
 triggers:
   - research
   - investigate

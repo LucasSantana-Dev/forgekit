@@ -1,6 +1,6 @@
 ---
 name: auto-invoke
-description: Meta-skill — defines when to apply other skills automatically without being asked
+description: Meta-skill — defines when to apply other skills automatically without being asked. Answers which skill to use and handles skill routing: what skill should I use for this task.
 triggers:
   - which skill
   - what skill should i use

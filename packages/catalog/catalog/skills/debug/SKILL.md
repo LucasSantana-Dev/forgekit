@@ -1,6 +1,6 @@
 ---
 name: debug
-description: Systematic root-cause analysis for bugs, errors, and unexpected behavior
+description: Systematic root-cause analysis for bugs, errors, and unexpected behavior. Use to debug this, find the root cause, or investigate why is this failing.
 triggers:
   - debug this
   - why is this failing

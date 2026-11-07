@@ -1,6 +1,6 @@
 ---
 name: self-heal
-description: Autonomous error recovery — detect failures, diagnose root cause, apply fixes, and resume without stopping
+description: Autonomous error recovery — detect failures, diagnose root cause, apply fixes, and resume without stopping. Use to auto-recover and retry when an agent is stuck, a loop failure repeats, or you need to recover from an error.
 triggers:
   - self-heal
   - self heal

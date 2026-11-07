@@ -1,12 +1,11 @@
 ---
 name: security-sweep
-description: Composite skill — full security pass across secrets, dependencies, code paths, and OWASP risks. Chains security-audit (broad) + socket-audit (npm supply chain) + semgrep (pattern scan) + code-security (code review for vulns) in parallel, reconciles into one severity-ranked report with remediation plan. Use quarterly per active repo or before any release of security-sensitive code.
+description: Composite skill — full security pass across secrets, dependencies, code paths, and OWASP risks. Chains security-audit (broad) + socket-audit (npm supply chain) + semgrep (pattern scan) + code-security (code review for vulns) in parallel, reconciles into one severity-ranked report with remediation plan. Use quarterly per active repo or before any release of security-sensitive code. Use before a security release or post-incident.
 triggers:
   - security-sweep
   - quarterly-per-repo
   - pre-security-release
   - post-incident
-  - composite skill
   - release
   - security
 ---

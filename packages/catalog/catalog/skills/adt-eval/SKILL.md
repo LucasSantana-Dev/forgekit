@@ -1,6 +1,6 @@
 ---
 name: eval
-description: Evaluate LLM outputs systematically — benchmarks, automated metrics, human preference, and regression tracking
+description: Evaluate LLM outputs systematically — benchmarks, automated metrics, human preference, and regression tracking. Use to benchmark or test the model, measure LLM output quality, and compare eval runs.
 triggers:
   - eval
   - evaluate

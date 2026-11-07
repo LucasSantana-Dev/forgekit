@@ -5,7 +5,6 @@ triggers:
   - ship-it
   - post-merge-deployment
   - release-cut-requests
-  - composite skill
   - ship
   - deploy
   - release

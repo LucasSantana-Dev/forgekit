@@ -6,7 +6,6 @@ triggers:
   - bloated-suite
   - slow-suite
   - test-failure-clusters
-  - composite skill
   - cleanup
   - mutation
   - capture
