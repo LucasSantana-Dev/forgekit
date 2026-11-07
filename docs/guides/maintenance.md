@@ -72,6 +72,6 @@ hitgate-context packages/catalog/catalog --label catalog --out .hitgate
 hitgate-context packages/core --label core --out .hitgate
 ```
 
-Freeze on Linux or macOS. On Windows the gate also picks up lowercase `skill.md` files that CI does not see, so a Windows freeze will not match CI.
+Name skill files `SKILL.md` exactly. On Linux a lowercase `skill.md` is mined as a plain note, while Windows matches it as a skill, so the two platforms would disagree.
 
 For a local pre-commit hook without Python, build the static binary from `rust/hitgate-context` in the hitgate repo and use its `hooks/pre-commit` with `HITGATE_CONTEXT_ROOT=packages/catalog/catalog` and `HITGATE_CONTEXT_BASELINE=.hitgate/context.catalog.json`.
