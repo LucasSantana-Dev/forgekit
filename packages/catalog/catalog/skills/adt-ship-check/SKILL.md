@@ -1,6 +1,6 @@
 ---
 name: ship-check
-description: Verify work before committing, pushing, or requesting review
+description: Verify work before committing, pushing, or requesting review. Use for a pre-commit check, verify before push, ready to commit, or a quick quality gate.
 triggers:
   - check before ship
   - pre-commit check

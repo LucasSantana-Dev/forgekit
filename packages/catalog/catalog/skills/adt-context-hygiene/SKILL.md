@@ -1,6 +1,6 @@
 ---
 name: context-hygiene
-description: Keep sessions focused and efficient — prune stale outputs, preserve active state, recommend compaction
+description: Keep sessions focused and efficient — prune stale outputs, preserve active state, recommend compaction. Use to clean context when a session is bloated or too long, to prune a session, or before you switch task.
 triggers:
   - clean context
   - session bloated

@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- fix(catalog): **skill trigger phrases now reach their own skill.** 45 skill descriptions gained the words users actually type (for example "benchmark", "remember this", "how much did that cost"), and the shared `composite skill` tag was dropped from 14 skills' triggers since a phrase every composite shares cannot route to any one of them. Context gate skill-trigger Hit@5 0.647 to 0.911, overall Hit@5 0.682 to 0.919, no case newly unreachable; `.hitgate/context.catalog.json` re-frozen.
 - docs: **README rewritten as a slim front door (379 → ~104 lines, EN + pt-BR).** Leads with the live catalog site, three-option quick start, one linked component table with real counts (111 skills / 27 hooks / 22 agents / 22 servers / 21 collections / 14 tools), and a curated guide index into `docs/guides/`. Maintainer-only content moved out verbatim: quality checks / mutation testing / release pre-flight / parity audit → `docs/guides/maintenance.md`; troubleshooting → `docs/guides/troubleshooting.md`.
 - deps: **bumped 9 dependencies** (devDeps, patches and security fixes for `@humanfs/node`, `browserslist`, `astro`, `js-yaml` 3.x and 4.x, `brace-expansion`). See PRs #346, #348, #349, #350, #352, #354, #355, #357, #360.
 

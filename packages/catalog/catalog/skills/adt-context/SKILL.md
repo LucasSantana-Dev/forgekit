@@ -1,6 +1,6 @@
 ---
 name: context
-description: Optimize context window usage — compact stale data, compress via summarization, preserve active state
+description: Optimize context window usage — compact stale data, compress via summarization, preserve active state. Use when the context is too large, the session is slow, or you need to free up context under context pressure.
 triggers:
   - optimize context
   - context too large

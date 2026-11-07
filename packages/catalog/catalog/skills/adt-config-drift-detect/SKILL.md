@@ -1,6 +1,6 @@
 ---
 name: config-drift-detect
-description: Audit project gates (jest/vitest coverage thresholds, tsconfig strictness, eslint rules, husky/lint-staged, sonar quality gate, branch protection) and flag values mathematically incompatible with reasonable defaults for the project's app type. Surfaces conflicts BEFORE skills like test-cleanup or ship hit them. Use weekly, automatically, or before any major refactor.
+description: Audit project gates (jest/vitest coverage thresholds, tsconfig strictness, eslint rules, husky/lint-staged, sonar quality gate, branch protection) and flag values mathematically incompatible with reasonable defaults for the project's app type. Surfaces conflicts BEFORE skills like test-cleanup or ship hit them. Use weekly, automatically, or before any major refactor. Run it as a scheduled weekly audit, pre-refactor, or as part of config cleanup.
 triggers:
   - config-drift-detect
   - scheduled-weekly

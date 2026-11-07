@@ -4,7 +4,6 @@ description: Composite skill — design, scaffold, build, and verify a UI in one
 triggers:
   - design-build
   - ui-build-requests
-  - composite skill
   - audit
   - design
 ---

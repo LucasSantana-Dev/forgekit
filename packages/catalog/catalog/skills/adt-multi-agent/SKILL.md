@@ -1,6 +1,6 @@
 ---
 name: multi-agent
-description: Orchestrate teams of agents — DAG execution, routing, state sharing, failure recovery. Use when coordinating parallel agents in task pipelines with dependencies or distributing work by capability.
+description: Orchestrate teams of agents — DAG execution, routing, state sharing, failure recovery. Use when coordinating parallel agents in task pipelines with dependencies or distributing work by capability. Use for multi-agent work, parallel agents, and agent orchestration.
 triggers:
   - multi-agent
   - parallel agents

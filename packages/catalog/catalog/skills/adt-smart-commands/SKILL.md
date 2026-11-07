@@ -1,6 +1,6 @@
 ---
 name: smart-commands
-description: Decision guide for when to proactively use Claude Code slash commands — /think, /model, /compact, /clear. Use when choosing whether to invoke a command before or during a task, or when a complexity-classifier hook has flagged a task as high or critical. Pairs with the complexity-classifier UserPromptSubmit hook.
+description: Decision guide for when to proactively use Claude Code slash commands — /think, /model, /compact, /clear. Use when choosing whether to invoke a command before or during a task, or when a complexity-classifier hook has flagged a task as high or critical. Pairs with the complexity-classifier UserPromptSubmit hook. Answers when to compact, should I switch models, and whether to use extended thinking.
 triggers:
   - smart commands
   - when to use /think

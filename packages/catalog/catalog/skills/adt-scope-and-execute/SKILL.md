@@ -4,7 +4,6 @@ description: Composite skill — understand a problem area, plan the work, execu
 triggers:
   - scope-and-execute
   - open-ended-feature-or-fix-requests
-  - composite skill
   - merge
 ---
 

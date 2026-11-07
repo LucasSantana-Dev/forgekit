@@ -6,7 +6,6 @@ triggers:
   - complex-bug-reports
   - production-incidents
   - recurring-failures
-  - composite skill
   - debug
 ---
 

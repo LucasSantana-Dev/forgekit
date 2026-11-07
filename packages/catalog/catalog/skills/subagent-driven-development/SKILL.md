@@ -1,6 +1,6 @@
 ---
 name: subagent-driven-development
-description: Implement features by dispatching a fresh subagent per task with mandatory two-stage review (spec compliance then code quality) after each task.
+description: Implement features by dispatching a fresh subagent per task with mandatory two-stage review (spec compliance then code quality) after each task. Reviews gate every task before the next dispatch.
 triggers:
   - execute plan with subagents
   - subagent-driven implementation

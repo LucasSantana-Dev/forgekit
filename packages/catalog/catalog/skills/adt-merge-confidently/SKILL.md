@@ -5,7 +5,6 @@ triggers:
   - merge-confidently
   - merge-requests
   - pr-completion-claims
-  - composite skill
   - merge
 ---
 

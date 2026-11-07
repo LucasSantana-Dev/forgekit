@@ -6,7 +6,6 @@ triggers:
   - weekly-per-repo
   - pre-release
   - tech-debt-review
-  - composite skill
   - audit
 ---
 

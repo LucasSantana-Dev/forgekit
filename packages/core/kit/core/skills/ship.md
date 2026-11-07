@@ -1,6 +1,6 @@
 ---
 name: ship
-description: Commit, push, and open a pull request with a conventional commit message
+description: Commit, push, and open a pull request with a conventional commit message. Use to create PR when the branch is ready to merge.
 triggers:
   - ship
   - create PR

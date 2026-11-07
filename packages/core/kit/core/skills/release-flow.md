@@ -1,6 +1,6 @@
 ---
 name: release-flow
-description: Ship validated changes with repeatable release evidence — version bump, changelog, tag, and optional GitHub release
+description: Ship validated changes with repeatable release evidence — version bump, changelog, tag, and optional GitHub release. Use to create release, tag and release, or publish version.
 triggers:
   - release
   - bump version

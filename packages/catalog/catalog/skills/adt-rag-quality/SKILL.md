@@ -1,6 +1,6 @@
 ---
 name: rag-quality
-description: Evaluate retrieval quality from the local RAG index
+description: Evaluate retrieval quality from the local RAG index. Use to check query scores and RAG performance.
 triggers:
   - rag quality
   - retrieval quality
