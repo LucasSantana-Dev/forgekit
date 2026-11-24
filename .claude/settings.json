@@ -26,7 +26,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Volumes/External HD/Desenvolvimento/ai-dev-toolkit/.claude/hooks/turn-counter.sh",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/turn-counter.sh\"",
             "timeout": 5000
           }
         ]
@@ -36,7 +36,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"/Volumes/External HD/Desenvolvimento/ai-dev-toolkit/.claude/hooks/session-budget-guard.sh\"",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/session-budget-guard.sh\"",
             "timeout": 5000
           }
         ]
@@ -48,7 +48,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"/Volumes/External HD/Desenvolvimento/ai-dev-toolkit/.claude/hooks/bash-prefilter.sh\"",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/bash-prefilter.sh\"",
             "timeout": 10000
           }
         ]
@@ -58,7 +58,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"/Volumes/External HD/Desenvolvimento/ai-dev-toolkit/.claude/hooks/protect-files.sh\"",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/protect-files.sh\"",
             "timeout": 5000
           }
         ]
@@ -69,7 +69,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"/Volumes/External HD/Desenvolvimento/ai-dev-toolkit/.claude/hooks/sessionend-memory-writer.sh\"",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/sessionend-memory-writer.sh\"",
             "timeout": 5000
           }
         ]
@@ -80,7 +80,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"/Volumes/External HD/Desenvolvimento/ai-dev-toolkit/.claude/hooks/pre-compact-summary.sh\"",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/pre-compact-summary.sh\"",
             "timeout": 5000
           }
         ]
@@ -91,11 +91,15 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"/Volumes/External HD/Desenvolvimento/ai-dev-toolkit/.claude/hooks/post-compact-reset.sh\"",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/post-compact-reset.sh\"",
             "timeout": 5000
           }
         ]
       }
     ]
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
   }
 }
